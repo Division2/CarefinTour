@@ -298,7 +298,7 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-9">
-									<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required>
+									<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
 								</div>
 								<div class="col-sm-3">
 									<button type="button" class="btn btn-warning" onclick="goPopup()">주소찾기</button>
