@@ -16,7 +16,7 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	private SqlSession sql;
 	
 	private static String namespace = "com.spring.ex.TravelPhotoMapper";
-	
+	//게시글 목록 조회
 	@Override
 	public List<TravelPhotoVO> list() throws Exception {
 		
@@ -26,6 +26,12 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	@Override
 	public void write(TravelPhotoVO travelPhotoVO) throws Exception {
 		sql.insert(namespace + ".insert", travelPhotoVO);
+		
+	}
+	// 게시글 조회
+	@Override
+	public TravelPhotoVO read(int prid) throws Exception {
+		return sql.selectOne(namespace + ".read", prid);
 		
 	}
 }

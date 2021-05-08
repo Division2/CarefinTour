@@ -9,5 +9,7 @@ public interface TravelPhotoBoardDAO {
 	public List<TravelPhotoVO> list() throws Exception;
 	
 	public void write(TravelPhotoVO travelphotoVO) throws Exception;
+	
+	public TravelPhotoVO read(int prid) throws Exception;
 
 }
