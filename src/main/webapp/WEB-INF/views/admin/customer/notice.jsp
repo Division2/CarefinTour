@@ -39,7 +39,7 @@
 						<div class="col-sm-4">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary" onclick="location.href='addnotice'">등록</button>
+									<button class="btn btn-primary" onclick="location.href='noticeWrite'">등록</button>
 									<button class="btn btn-primary" onclick="location.href='modifynotice'">수정</button>
 									<button class="btn btn-primary">삭제</button>
 								</div>

@@ -110,9 +110,9 @@ public class CareController {
 	public String notice() {
 		return "customer/notice";
 	}
-	@RequestMapping("addnotice")
-	public String addnotice() {
-		return "customer/addnotice";
+	@RequestMapping("noticeWrite")
+	public String noticewrite() {
+		return "customer/noticeWrite";
 	}
 	@RequestMapping("inquire")
 	public String inquire() {

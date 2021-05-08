@@ -55,7 +55,6 @@ public class NoticeBoardController {
 
 		int totalCount = service.NoticeTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		System.out.println(page);
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);

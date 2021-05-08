@@ -38,6 +38,12 @@
 					</form>
 				</div>
 				<table class="table table-hover table-white">
+					<colgroup>
+						<col width="50px">
+						<col width="150px">
+						<col width="50px">
+						<col width="50px">
+					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -50,64 +56,66 @@
 					<c:forEach items="${NoticeList }" var="NoticeBoardVO">
 						<tr>
 							<td>${NoticeBoardVO.nId }</td>
-							<td>${NoticeBoardVO.title }</td>
+							<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
 							<td>${NoticeBoardVO.reDate }</td>
 							<td>1</td>
 						</tr>
 					</c:forEach>
 					</tbody>
 				</table>
-			<!-- 게시글 페이징 처리(기준 10개) -->
-			<nav aria-label="Page navigation">
-				<ul class="pagination justify-content-center">
-					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
-					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-							<li class="page-item disabled">
-								<a class="page-link" href="/ex/notice?page=${Paging.prevPageNo}">Previus</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="/ex/notice?page=${Paging.prevPageNo}">Previus</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
-					<!-- 페이지 갯수만큼 버튼 생성 -->
-					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+				<!-- 게시글 페이징 처리(기준 10개) -->
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center">
+						<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 						<c:choose>
-							<c:when test="${i eq Paging.pageNo }">
+							<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="/ex/notice?page=${i}"><c:out value="${i }"/></a>
+									<a class="page-link" href="/ex/notice?page=${Paging.prevPageNo}">Previus</a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="/ex/notice?page=${i}"><c:out value="${i }"/></a>
+									<a class="page-link" href="/ex/notice?page=${Paging.prevPageNo}">Previus</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
-					</c:forEach>
-					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
-					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-							<li class="page-item disabled">
-								<a class="page-link" href="/ex/notice?page=${Paging.nextPageNo}">Next</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="/ex/notice?page=${Paging.nextPageNo}">Next</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</nav>
+						<!-- 페이지 갯수만큼 버튼 생성 -->
+						<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+							<c:choose>
+								<c:when test="${i eq Paging.pageNo }">
+									<li class="page-item disabled">
+										<a class="page-link" href="/ex/notice?page=${i}"><c:out value="${i }"/></a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="/ex/notice?page=${i}"><c:out value="${i }"/></a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+						<c:choose>
+							<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+								<li class="page-item disabled">
+									<a class="page-link" href="/ex/notice?page=${Paging.nextPageNo}">Next</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a class="page-link" href="/ex/notice?page=${Paging.nextPageNo}">Next</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</nav>
+				<c:if test="${sessionScope.member.getUserID() ne null && sessionScope.member.getGrade() ne 'User'}">
 				<div class="d-flex">
 					<div class="ml-auto">
-						<button class="btn btn-primary" onclick="javascript:location='/ex/addnotice'">등록</button>
+						<button class="btn btn-primary" onclick="javascript:location='/ex/noticeWrite'">등록</button>
 					</div>
 				</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
