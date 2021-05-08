@@ -50,8 +50,8 @@ ul{
 						<form class="form-inline">	
 							<label style="font-size:18px;">숙박 지역</label>
 								 &emsp; &emsp;								
-								<select onchange="onLeftDurationChange();" class="form-control" style="width:185px;height:38px;" >
-	                                <option value="">전체</option>
+								<select id="areaNum" name="areaNum" onchange="getText(this)" class="form-control" style="width:185px;height:38px;">
+	                                <option value="" selected="selected">전체</option>
 	                                <option value="1">서울</option>
 	                                <option value="2">인천</option>
 	                                <option value="3">대전</option>
@@ -71,6 +71,8 @@ ul{
 	                                <option value="39">제주도</option>
                                 </select>     
                                 &emsp;
+                                
+                                <input type="button" value="검색" onclick="search()">
 						</form>
                    	</th>           
                 </tr>
@@ -301,6 +303,7 @@ ul{
     var dataPerPage = 12;    // 한 페이지에 나타낼 데이터 수
     var pageCount = 10;        // 한 화면에 나타낼 페이지 수
     //var totalData;    // 총 데이터 수
+    var target;
 	var currentPage = 1;
 
     function paging(totalData, dataPerPage, pageCount, currentPage){
@@ -369,10 +372,9 @@ ul{
     
 	function sta(x) {
 	    $.ajax({
-		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x+ goodStay=1,
+		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
 		       dataType : 'json',
 		       type : 'GET',
-		       
 		       success : function(data) {
 		    	   var count =  data.response.body.totalCount;
 		    	   
@@ -420,6 +422,73 @@ ul{
 		    })
 	}
 	
+    function getText(obj){
+		 target = document.getElementById("areaNum");
+		 //alert(target.options[target.selectedIndex].value);
+
+ 	}
+	
+	
+	function search(){
+		 //var hoteltype = document.getElementById("hoteltype");
+		 
+
+		    $.ajax({
+		    	   url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&areaCode=' +target+'&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1',
+			       dataType : 'json',
+			       type : 'GET',
+			       success : function(data) {
+			    	   var count =  data.response.body.totalCount;
+			    	   
+			    	   for(var c=0;c<12;c++){
+			    		   fr.push( data.response.body.items.item[c].firstimage);
+			    		   fName.push( data.response.body.items.item[c].title);
+			    	   }
+			    	   
+		 	    	   try {
+		 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
+		 	    		   
+						   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
+						   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
+						   localStorage.setItem("img3", fr[2]);
+						   localStorage.setItem("img4", fr[3]);
+						   localStorage.setItem("img5", fr[4]);
+						   localStorage.setItem("img6", fr[5]);
+						   localStorage.setItem("img7", fr[6]);
+						   localStorage.setItem("img8", fr[7]);
+						   localStorage.setItem("img9", fr[8]);
+						   localStorage.setItem("img10", fr[9]);
+						   localStorage.setItem("img11", fr[10]);
+						   localStorage.setItem("img12", fr[11]);
+						   
+						   localStorage.setItem("title1", fName[0]); //숙박업소 이름
+						   localStorage.setItem("title2", fName[1]);
+						   localStorage.setItem("title3", fName[2]);
+						   localStorage.setItem("title4", fName[3]);
+						   localStorage.setItem("title5", fName[4]);
+						   localStorage.setItem("title6", fName[5]);
+						   localStorage.setItem("title7", fName[6]);
+						   localStorage.setItem("title8", fName[7]);
+						   localStorage.setItem("title9", fName[8]);
+						   localStorage.setItem("title10", fName[9]);
+						   localStorage.setItem("title11", fName[10]);
+						   localStorage.setItem("title12", fName[11]);
+						   
+				           location.reload();
+						} catch (e) {
+						   if (e == QUOTA_EXCEEDED_ERR) {
+						     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
+						  }
+						}  
+			       }
+			    })
+		 
+	} 
+	 ﻿
+
+
+	 
+
 	$("document").ready(function(){ //첫번째 실행위한 초기값 설정, 실행하면 검색된 결과에 따라 바뀜
 		try{
     		if(localStorage.getItem("pas") == "undefined"){
@@ -436,7 +505,9 @@ ul{
     		
        }catch(e){
        }
+       var target = document.getElementById("areaNum");
         paging(totalData, dataPerPage, pageCount,localStorage.getItem("pas"));
+        
     });
 	</script>
 
