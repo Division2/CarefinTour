@@ -1,0 +1,231 @@
+/* 로그인 스크립트 */
+$(document).ready(function() {
+	$('#Login').click(function() {
+		var param = {'UserID':$("#UserID").val(), 'Password': $("#Password").val(), 'lastDate': $("#lastDate").val()};
+		$.ajax({
+			url: "/ex/Login",
+			type: "POST",
+			data: param,
+			success: function(data) {
+				if (data != 1) {
+					swal({
+						title: "로그인",
+						text: "아이디 또는 비밀번호가 잘못되었습니다.",
+						icon: "error",
+						timer: 3000
+					});
+				}
+				else {
+					swal({
+						title: "로그인",
+						text: "로그인 성공",
+						icon: "success",
+						buttons : {
+							confirm : {
+								value : true
+							}
+						}
+					}).then((result) => {
+						if(result) {
+							location.reload();
+						}
+					});
+				}
+			},
+			error: function() {
+				swal({
+					title: "로그인",
+					text: "문제가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
+					icon: "error",
+					timer: 3000
+				});
+			}
+		});
+	})
+})
+
+/* 회원가입 아이디 중복확인 */
+$(document).ready(function() {
+	$('#IDCheck').click(function() {
+		var param = {'UserID':$("#RegisterUserID").val()};
+		if ($("#RegisterUserID").val() == "") {
+			swal({
+				title: "중복확인",
+				text: "아이디를 입력해주세요.",
+				icon: "info",
+				timer: 3000
+			});
+		}
+		else {
+			$.ajax({
+				url: "/ex/IDCheck",
+				type: "POST",
+				data: param,
+				success: function(data) {
+					if (data != 1) {
+						swal({
+							title: "중복확인",
+							text: "이미 사용중인 아이디입니다.",
+							icon: "error",
+							timer: 3000
+						});
+					}
+					else {
+						swal({
+							title: "중복확인",
+							text: "사용할 수 있는 아이디입니다.",
+							icon: "success",
+							buttons : {
+								confirm : {
+									value : true
+								}
+							}
+						});
+						$Register_Button = $('#register').attr('disabled', false);
+						$IDCheck_Button = $('#IDCheck').attr('disabled', true);
+						$Register_UserID = $('#RegisterUserID').prop('readonly', true);
+					}
+				},
+				error: function() {
+					swal({
+						title: "오류",
+						text: "오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
+						icon: "error",
+						timer: 3000
+					});
+				}
+			});
+		}
+	})
+})
+
+/* 회원가입 유효성 검사 */
+function Register() {
+	var UserID = $("#RegisterUserID").val();
+	var Password = $("#RegisterPassword").val();
+	var Name = $("#Name").val();
+	var Email = $("#Email").val();
+	var Phone = $("#Phone").val();
+	var Birth = $("#Birth").val();
+	var Address = $("#Address").val();
+	var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,20}$/.test(Password);			//영문, 숫자
+	var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,20}$/.test(Password);	//영문, 특수문자
+	var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,20}$/.test(Password);		//특수문자, 숫자
+	
+	if(!UserID) {
+		swal({
+			title: "회원가입",
+			text: "아이디가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Password) {
+		swal({
+			title: "회원가입",
+			text: "비밀번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!(check1 || check2 || check3)) {
+		swal({
+			title: "비밀번호 확인",
+			text: "사용할 수 없는 비밀번호입니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(/(\w)\1\1/.test(Password)) {
+		swal({
+			title: "비밀번호 확인",
+			text: "같은 문자를 3회 이상 사용하실 수 없습니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(Password.search(UserID)>-1) {
+		swal({
+			title: "비밀번호 확인",
+			text: "비밀번호에 아이디가 포함되어 있습니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Name) {
+		swal({
+			title: "회원가입",
+			text: "이름이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Email) {
+		swal({
+			title: "회원가입",
+			text: "이메일이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Phone) {
+		swal({
+			title: "회원가입",
+			text: "휴대폰 번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Birth) {
+		swal({
+			title: "회원가입",
+			text: "생년월일이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Address) {
+		swal({
+			title: "회원가입",
+			text: "주소가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	$( "#form" ).submit();
+}
+
+/* 휴대폰 번호 입력 */
+$(document).ready(function() {
+	$("#Phone").keyup(function() {
+	    var inputVal = $(this).val();
+	    $(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
+})
+
+/* 회원가입 취소 버튼 */
+$(document).ready(function() {
+	$('#registerReset').click(function() {
+		$Register_Button = $('#register').attr('disabled', true);
+		$IDCheck_Button = $('#IDCheck').attr('disabled', false);
+		$Register_UserID = $('#RegisterUserID').prop('readonly', false);
+	})
+})
+
+/* 회원가입 주소 찾기(도로명주소API) */
+function goPopup() {
+	window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+}
+function jusoCallBack(roadFullAddr) {
+	document.form.Address.value = roadFullAddr;
+}

@@ -1,0 +1,471 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>호텔예약 - 블루핀투어</title>
+<link href="css/section.css" rel="stylesheet">
+<link href="css/component.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+
+<style>
+ul{
+   list-style:none;
+
+   }
+</style>
+
+</head>
+<body>
+	
+	<div class="">  </div>
+	<jsp:include page="../layout/header.jsp"/>
+	<div class="container">
+		<h3><strong>지역별 숙박정보</strong></h3><hr style="background:#1E90FF;border:solid 1px #96CDFA; ">							
+			<table class="table" style="background:#f1f3f5;height:auto;border:solid 1px #e2e2e2;">
+				<tr>
+					<th bgcolor="#F9F9F9" height="80px" >																		                         
+						<form class="form-inline">	
+							<label style="font-size:18px;">숙박 종류</label>
+								 &emsp; &emsp;								
+								<select onchange="onLeftDurationChange();" class="form-control" style="width:185px;height:38px;" >
+	                                <option value="1">전체</option>
+	                                <option value="2">관광호텔</option>
+	                                <option value="3">수상관광호텔</option>
+	                                <option value="4">전통호텔</option>
+	                                <option value="">가족호텔</option>
+	                                <option value="">콘도미니엄</option>
+	                                <option value="">유스호스텔</option>
+	                                <option value="">펜션</option>
+	                                <option value="">여관</option>
+	                                <option value="">모텔</option>
+	                                <option value="">민박</option>
+	                                <option value="">게스트하우스</option>
+	                                <option value="">홈스테이</option>
+	                                <option value="">서비스드레지던스</option>
+	                                <option value="">의료관광호텔</option>  
+	                                <option value="">소형호텔</option>
+	                                <option value="">한옥스테이</option>
+                                </select>     
+						</form>
+                   	</th>           
+                </tr>
+          
+                <tr>
+					<th bgcolor="#F9F9F9" height="80px">					
+						<form class="form-inline">	
+							<label style="font-size:18px;">숙박 지역</label>
+								 &emsp; &emsp;								
+								<select onchange="onLeftDurationChange();" class="form-control" style="width:185px;height:38px;" >
+	                                <option value="">전체</option>
+	                                <option value="1">서울</option>
+	                                <option value="2">인천</option>
+	                                <option value="3">대전</option>
+	                                <option value="4">대구</option>
+	                                <option value="5">광주</option>
+	                                <option value="6">부산</option>
+	                                <option value="7">울산</option>
+	                                <option value="8">세종시</option>
+	                                <option value="9">경기도</option>
+	                                <option value="10">강원도</option>
+	                                <option value="11">충청북도</option>
+	                                <option value="12">충청남도</option>
+	                                <option value="13">경상북도</option>
+	                                <option value="14">경사남도</option>
+	                                <option value="15">전라북도</option>
+	                                <option value="16">전라남도</option>
+	                                <option value="17">제주도</option>
+                                </select>     
+                                &emsp;
+                                <select onchange="onLeftDurationChange();" class="form-control" style="width:185px;height:38px;" >
+	                                <option value="1"></option>
+	                                <option value="2">2박</option>
+	                                <option value="3">3박</option>
+	                                <option value="4">4박</option>
+                                </select>  														                               	
+						</form>
+                   	</th>           
+                </tr>
+                 
+                 <tr>
+                	<td>
+	                	<div align="center">
+							<button type="button" class="form-control" style="width:350px;height:70px;background:#96CDFA;font-size:30px;color:white;">빠른검색</button>																			
+	                	</div>
+                 	</td>
+                 </tr>
+            </table><p>  
+             
+	                              		
+	                              		 
+    <h4><strong>국내 숙박</strong></h4>
+		<table class="table" >
+			<tr align="center">
+				<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img1") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+                            	<script>
+									document.write(localStorage.getItem("title1"));
+								</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img2") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+                            	<script>
+									document.write(localStorage.getItem("title2"));
+								</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img3") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+                            	<script>
+									document.write(localStorage.getItem("title3"));
+								</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img4") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            <script>
+									document.write(localStorage.getItem("title4"));
+								</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+		    </tr>
+			<tr align="center">
+				<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img5") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title5"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img6") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title6"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img7") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title7"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img8") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title8"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+			</tr>
+			<tr align="center">
+				<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img9") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title9"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img10") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title10"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img11") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title11"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+            	<th>
+					<ul>
+						<li>
+                        	<a href="">
+                            	<script>
+									document.write("<img src='" +localStorage.getItem("img12") + "'width='220' height='168' /><br>");
+								</script>
+                            	<h6> 
+	                            	<script>
+										document.write(localStorage.getItem("title12"));
+									</script>
+	                            </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </th>
+			</tr>
+			<tr>
+				<td colspan="4">
+				 	<div id="paging" align="center"></div>
+				</td>
+			</tr>
+		</table>
+	
+	</div>
+	<script>
+	var fr = []; //숙박업소 이미지
+	var fName = []; //숙박업소 이름
+	var totalData = localStorage.getItem("count");    // 총 데이터 수
+    var dataPerPage = 12;    // 한 페이지에 나타낼 데이터 수
+    var pageCount = 10;        // 한 화면에 나타낼 페이지 수
+    //var totalData;    // 총 데이터 수
+	var currentPage = 1;
+
+    function paging(totalData, dataPerPage, pageCount, currentPage){
+    	
+    	
+        console.log("currentPage : " + currentPage);
+        
+        var totalPage = Math.ceil(totalData/dataPerPage);
+        var pageGroup = Math.ceil(currentPage/pageCount); 
+        
+        console.log("pageGroup : " + pageGroup);
+        
+        var last = pageGroup * pageCount;    // 화면에 보여질 마지막 페이지 번호
+        if(last > totalPage)
+            last = totalPage;
+        var first = last - (pageCount-1);    // 화면에 보여질 첫번째 페이지 번호
+        var next = last+1;
+        var prev = first-1;
+        
+        console.log("last : " + last);
+        console.log("first : " + first);
+        console.log("next : " + next);
+        console.log("prev : " + prev);
+ 
+        var $pingingView = $("#paging");
+        
+        var html = "";
+        
+        if(prev > 0)
+            html += "<a href=# id='prev'><</a> ";
+        
+        for(var i=first; i <= last; i++){
+            html += "<a href='#' id=" + i + ">" + i + "</a> ";
+        }
+        
+        if(last < totalPage)
+            html += "<a href=# id='next'>></a>";
+        
+        $("#paging").html(html);    // 페이지 목록 생성
+        $("#paging a").css("color", "black");
+        $("#paging a#" + currentPage).css({"text-decoration":"none", 
+                                           "color":"red", 
+                                           "font-weight":"bold"});    // 현재 페이지 표시
+                                           
+        $("#paging a").click(function(){
+            
+            var $item = $(this);
+            var $id = $item.attr("id");
+            var selectedPage = $item.text();
+            
+            if($id == "next")    selectedPage = next;
+            if($id == "prev")    selectedPage = prev;
+            
+            paging(totalData, dataPerPage, pageCount, selectedPage);
+            try{
+            	 localStorage.setItem("pas",selectedPage);
+            }catch(e){
+            	if (e == QUOTA_EXCEEDED_ERR) {
+				     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
+				}            	
+            }
+            sta(selectedPage);
+        });
+                                           
+    }
+    
+	function sta(x) {
+	    $.ajax({
+		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&areaCode=&sigunguCode=&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
+		      
+		       dataType : 'json',
+		       type : 'GET',
+		       success : function(data) {
+		    	   var count =  data.response.body.totalCount;
+		    	   
+		    	   for(var c=0;c<12;c++){
+		    		   fr.push( data.response.body.items.item[c].firstimage);
+		    		   fName.push( data.response.body.items.item[c].title);
+		    	   }
+		    	   
+	 	    	   try {
+	 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
+	 	    		   
+					   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
+					   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
+					   localStorage.setItem("img3", fr[2]);
+					   localStorage.setItem("img4", fr[3]);
+					   localStorage.setItem("img5", fr[4]);
+					   localStorage.setItem("img6", fr[5]);
+					   localStorage.setItem("img7", fr[6]);
+					   localStorage.setItem("img8", fr[7]);
+					   localStorage.setItem("img9", fr[8]);
+					   localStorage.setItem("img10", fr[9]);
+					   localStorage.setItem("img11", fr[10]);
+					   localStorage.setItem("img12", fr[11]);
+					   
+					   localStorage.setItem("title1", fName[0]); //숙박업소 이름
+					   localStorage.setItem("title2", fName[1]);
+					   localStorage.setItem("title3", fName[2]);
+					   localStorage.setItem("title4", fName[3]);
+					   localStorage.setItem("title5", fName[4]);
+					   localStorage.setItem("title6", fName[5]);
+					   localStorage.setItem("title7", fName[6]);
+					   localStorage.setItem("title8", fName[7]);
+					   localStorage.setItem("title9", fName[8]);
+					   localStorage.setItem("title10", fName[9]);
+					   localStorage.setItem("title11", fName[10]);
+					   localStorage.setItem("title12", fName[11]);
+					   
+			           location.reload();
+					} catch (e) {
+					   if (e == QUOTA_EXCEEDED_ERR) {
+					     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
+					  }
+					}  
+		       }
+		    })
+	}    
+	
+	$("document").ready(function(){ //첫번째 실행위한 초기값 설정, 실행하면 검색된 결과에 따라 바뀜
+		try{
+    		if(localStorage.getItem("pas") == "undefined"){
+    			 localStorage.setItem("pas", 1);
+    		}else if(localStorage.getItem("pas") <= 0){
+    			 localStorage.setItem("pas", 1);
+    		}
+    		if(localStorage.getItem("title1") == "null"){
+    			 sta(1);
+    		}
+    		if(localStorage.getItem("count") == "null"){
+    			localStorage.setItem("count", 1000);
+   		    }
+    		
+       }catch(e){
+       }
+        paging(totalData, dataPerPage, pageCount,localStorage.getItem("pas"));
+    });
+	</script>
+
+
+
+	
+	
+	
+	<jsp:include page="../layout/footer.jsp"/>
+</body>
+</html>

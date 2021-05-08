@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.MemberMapper">
+	<!-- 회원 로그인 -->
+	<select id="MemberLogin" resultType="MemberDTO">
+		SELECT * FROM account WHERE UserID = #{UserID} AND Password = #{Password}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="MemberSignUp">
+		INSERT INTO account(
+			UserID,
+			Password,
+			Name,
+			Grade,
+			Email,
+			Phone,
+			Birth,
+			Sex,
+			Address,
+			Mileage)
+		VALUES(
+			#{UserID},
+			#{Password},
+			#{Name},
+			#{Grade},
+			#{Email},
+			#{Phone},
+			#{Birth},
+			#{Sex},
+			#{Address},
+			#{Mileage})
+    </insert>
+    
+    <!-- 회원가입 시 아이디 중복확인 -->
+    <select id="IDCheck" resultType="MemberDTO">
+    	SELECT * FROM account WHERE UserID = #{UserID}
+    </select>
+    
+    <!-- 회원정보 수정 -->
+	<update id="memberUpdate">
+		UPDATE account SET 
+		RPASSWORD = #{Password},
+		NAME = #{Name}
+		WHERE USERID = #{userID}
+	</update>
+	
+    <!-- 로그인 시 lastDate 갱신 -->
+    <update id="MemberLoginDateLog">
+    	UPDATE account SET lastDate = #{lastDate} WHERE UserID = #{UserID}
+    </update>
+</mapper>
