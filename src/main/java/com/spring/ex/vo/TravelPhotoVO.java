@@ -8,21 +8,7 @@ public class TravelPhotoVO {
 	private String content;
 	private String name;
 	private String image;
-	
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	private Date redate;
-	
-	public Date getRedate() {
-		return redate;
-	}
-	public void setRedate(Date redate) {
-		this.redate = redate;
-	}
 	
 	public int getPrid() {
 		return prid;
@@ -48,12 +34,20 @@ public class TravelPhotoVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public String getImage() {
+		return image;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setImage(String image) {
+		this.image = image;
 	}
-	private Date regdate;
+	public Date getRedate() {
+		return redate;
+	}
+	public void setRedate(Date redate) {
+		this.redate = redate;
+	}
+	
+	
+	
 	
 }

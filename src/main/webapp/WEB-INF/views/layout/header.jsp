@@ -214,7 +214,7 @@
 							</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="topangler">탑앵글러</a>
-								<a class="dropdown-item" href="travelphoto">여행포토</a>
+								<a class="dropdown-item" href="/ex/list.do">여행포토</a>
 							</div>
 						</li>
 					</ul>

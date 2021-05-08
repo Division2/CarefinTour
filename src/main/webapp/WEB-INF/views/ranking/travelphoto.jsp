@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,20 +26,24 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<section>
-					<a href="#">
-						<img src='<c:url value="/resources/image/gallery/iu.jpg"/>' alt="로고">
-					</a>
-						<h6>
-							<a href="#">갤러리 테스트</a>
-						</h6>
-					<p>
-						<span class="sr-only">작성자 </span>
-						<span class="sv_member">박성동</span>
-						<br>
-						<span class="sr-only">조회 </span><i class="fas fa-eye"></i> 363<br>
-						<span class="sr-only">작성일 </span><i class="far fa-clock"></i> 04-28
-					</p>
-				</section>
+					<table>
+					<c:forEach var="list" items="${list}">
+							<a href="#">
+								<img src='<c:url value="/resources/image/gallery/iu.jpg"/>' alt="로고">
+							</a>
+							<h6>
+								<a href="#"><c:out value="${list.title}"/></a>
+							</h6>
+							<p>
+								<span class="sr-only">작성자 </span>
+								<span class="sv_member"><c:out value="${list.name}"/></span>
+								<br>
+								<span class="sr-only">조회 </span><i class="fas fa-eye"></i> 363<br>
+								<span class="sr-only">작성일 </span><i class="far fa-clock"></i><fmt:formatDate value="${list.redate}" pattern="MM-dd"/>
+							</p>							
+						</c:forEach>	
+					</table>
+				</section>	
 			</div>
 			<div class="col-sm-3">
 				<section>

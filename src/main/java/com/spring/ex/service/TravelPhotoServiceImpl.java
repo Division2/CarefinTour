@@ -15,9 +15,9 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	
 	@Inject
 	private TravelPhotoBoardDAO dao;
-	
+
 	@Override
-	public List<TravelPhotoVO> list() throws Exception {
+	public List<TravelPhotoVO> list()throws Exception {
 		// TODO Auto-generated method stub
 		return dao.list();
 	}
@@ -25,6 +25,12 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	@Override
 	public void addphoto(TravelPhotoVO travelPhotoVO) throws Exception {
 		dao.write(travelPhotoVO);
+	}
+	// 게시글 조회
+	@Override
+	public TravelPhotoVO read(int prid) throws Exception {
+		return dao.read(prid);
+		
 	}
 
 }
