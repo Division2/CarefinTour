@@ -21,12 +21,8 @@
 			<div class="col-md-8">
 				<h1>공지사항</h1>
 				<hr>
-				<form id="NoticeWrite" name="NoticeWrite" action="/ex/noticeWrite" method="POST">
+				<form id="NoticeModify" name="NoticeModify" action="/ex/noticeWrite" method="POST">
 					<div class="form-group row">
-						<label class="form-label col-sm-2" for="important">중요</label>
-						<div class="col-sm-1">
-							<input class="form-control" type="checkbox" id="Important" name="Important">
-						</div>
 					</div>
 					<div class="form-group row">
 						<label class="form-label col-sm-2" for="Title">제목</label>
@@ -43,8 +39,8 @@
 					<div class="form-group row">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10">
-							<button type="button" class="btn btn-primary" onclick="NoticeWrite()">등록</button>
-							<button type="reset" class="btn btn-primary">취소</button>
+							<button type="button" class="btn btn-primary" onclick="NoticeModify()">수정</button>
+							<button type="button" class="btn btn-danger" onclick="NoticeDelete()">삭제</button>
 						</div>
 					</div>
 				</form>

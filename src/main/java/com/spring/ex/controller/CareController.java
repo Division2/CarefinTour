@@ -114,6 +114,10 @@ public class CareController {
 	public String noticewrite() {
 		return "customer/noticeWrite";
 	}
+	@RequestMapping("noticeView")
+	public String noticeview() {
+		return "customer/noticeView";
+	}
 	@RequestMapping("inquire")
 	public String inquire() {
 		return "customer/inquire";

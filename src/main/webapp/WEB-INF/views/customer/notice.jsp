@@ -58,7 +58,7 @@
 							<td>${NoticeBoardVO.nId }</td>
 							<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
 							<td>${NoticeBoardVO.reDate }</td>
-							<td>1</td>
+							<td>${NoticeBoardVO.hit }</td>
 						</tr>
 					</c:forEach>
 					</tbody>

@@ -6,6 +6,7 @@ public class NoticeBoardVO {
 	private String content;
 	private String important;
 	private Object reDate;
+	private int hit;
 	
 	public int getnId() {
 		return nId;
@@ -36,5 +37,11 @@ public class NoticeBoardVO {
 	}
 	public void setReDate(Object reDate) {
 		this.reDate = reDate;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 }
