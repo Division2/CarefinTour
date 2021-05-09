@@ -74,7 +74,7 @@ public class MemberController {
 	}
 	
 	//회원가입 아이디 중복확인
-	@RequestMapping(value = "IDCheck", method = RequestMethod.POST)
+	@RequestMapping(value = "/IDCheck", method = RequestMethod.POST)
 	public @ResponseBody int IDCheck(MemberDTO dto) throws Exception {
 		
 		int result = 0;
