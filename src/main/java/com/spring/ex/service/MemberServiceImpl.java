@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDAO;
 import com.spring.ex.dto.MemberDTO;
+import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -62,4 +63,5 @@ public class MemberServiceImpl implements MemberService {
 	public void memberUpdate(MemberDTO dto) throws Exception {		
 		dao.memberUpdate(dto);
 	}
+	
 }

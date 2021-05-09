@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.TravelPhotoService;
 import com.spring.ex.vo.TravelPhotoVO;
@@ -30,9 +31,9 @@ public class TravelPhotoController {
 		
 		//게시물 작성
 		@RequestMapping(value = "/gaza", method = RequestMethod.POST)
-		public String postWrite(TravelPhotoVO travelPhotoVO) throws Exception{
-			service.addphoto(travelPhotoVO);
-			System.out.println(travelPhotoVO.getTitle());
+		public String postWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest) throws Exception{
+			service.addphoto(travelPhotoVO, mpRequest);
+			
 			return "index";
 		}
 		//게시물 목록

@@ -1,6 +1,7 @@
 package com.spring.ex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -33,5 +34,11 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	public TravelPhotoVO read(int prid) throws Exception {
 		return sql.selectOne(namespace + ".read", prid);
 		
+	}
+	
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert(namespace + ".insertFile", map);
 	}
 }

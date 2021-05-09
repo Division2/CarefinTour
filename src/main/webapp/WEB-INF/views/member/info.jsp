@@ -29,7 +29,9 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<input type="text" name="account" id="userId" value="${member.userID }" class="form-control" required readonly>
+										<c:forEach var="list" items="${list}">
+										<input type="text" name="account" id="userId" value="${list.userID}"class="form-control" required readonly>
+										</c:forEach>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -48,7 +50,9 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
 										</div>
-										<input type="text" name="userName" id="userName" value="${member.Name }" class="form-control" required>
+										<c:forEach var="list" items="${list}">
+										<input type="text" name="userName" id="userName" value="${list.name }" class="form-control" required>
+									</c:forEach>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">

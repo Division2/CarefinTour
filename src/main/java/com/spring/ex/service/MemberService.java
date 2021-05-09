@@ -26,4 +26,5 @@ public interface MemberService {
 	public MemberDTO IDCheck(MemberDTO dto) throws Exception;
 	//회원 정보수정
 	public void memberUpdate(MemberDTO dto) throws Exception;
+	
 }

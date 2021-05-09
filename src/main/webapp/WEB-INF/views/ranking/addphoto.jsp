@@ -20,7 +20,7 @@
 			<h1>여행 포토 등록</h1>
 		</div>
 		<hr>
-		<form action="/ex/gaza" method="POST">
+		<form action="/ex/gaza" method="POST" enctype="multipart/form-data">   
         <div class="form-group row">
             <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
             <div class="col-sm-10">
@@ -42,8 +42,8 @@
          <div class="form-group row">
             <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
             <div class="col-sm-10">
-                <div class="custom-file" id="file">
-                    <input type="file" class="custom-file-input" id="image" name="image">
+                <div class="custom-file" id="file">            
+                    <input type="file" class="custom-file-input" id="file" name="file">
                     <label class="custom-file-label" for="customFile">파일 입력</label>
                 </div>
             </div>

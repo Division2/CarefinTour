@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -94,6 +95,7 @@ public class MemberController {
 		
 		return "member/info";
 	}
+	
 
 	@RequestMapping(value="/memberUpdate", method = RequestMethod.POST)
 	public String registerUpdate(MemberDTO vo, HttpSession session) throws Exception{

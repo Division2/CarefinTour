@@ -1,6 +1,7 @@
 package com.spring.ex.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -11,5 +12,7 @@ public interface TravelPhotoBoardDAO {
 	public void write(TravelPhotoVO travelphotoVO) throws Exception;
 	
 	public TravelPhotoVO read(int prid) throws Exception;
+	
+	public void insertFile(Map<String, Object> map) throws Exception;
 
 }

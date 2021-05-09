@@ -49,4 +49,5 @@ public class MemberDAOImpl implements MemberDAO {
 	public void memberUpdate(MemberDTO dto) throws Exception {
 		sqlSession.update("MemberMapper.info",dto);
 	}
+	
 }
