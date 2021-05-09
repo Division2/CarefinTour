@@ -47,7 +47,35 @@ function NoticeModify() {
 		});
 		return false;
 	}
-	$("#NoticeBoardModify").submit();
+	else {
+		Swal.fire({
+			title: '공지사항',
+			text: "정말 수정하시겠습니까?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '확인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				swal({
+					title: "공지사항",
+					text: "게시물이 수정되었습니다.",
+					icon: "success",
+					buttons : {
+						confirm : {
+							value : true
+						}
+					}
+				}).then((result) => {
+					if(result) {
+						$("#NoticeBoardModify").submit();
+					}
+				});
+			}
+		})
+	}
 }
 
 //jquery 파라미터 값 받아오기
