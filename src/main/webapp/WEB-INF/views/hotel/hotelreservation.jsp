@@ -358,7 +358,7 @@ ul{
 	<div class="container5" align="center">
 					<ul>
 						<li>
-                        	<a href="">
+                        	<a href="hoteldetail">
                         		<div id="tableResult1">
                             	<script>
                             	    //document.write("<img src='" + fr[0] + "'width='220' height='168' /><br>");

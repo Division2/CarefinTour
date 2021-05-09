@@ -63,9 +63,9 @@ public class CareController {
 	public String hotelreservation() {
 		return "hotel/hotelreservation";
 	}
-	@RequestMapping("hotelreservation2")
-	public String hotelreservation2() {
-		return "hotel/hotelreservation2";
+	@RequestMapping("hoteldetail")
+	public String hoteldetail() {
+		return "hotel/hoteldetail";
 	}
 	//여행 후기(탑앵글러, 여행포토)
 	@RequestMapping("topangler")
