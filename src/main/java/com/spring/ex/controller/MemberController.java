@@ -89,10 +89,11 @@ public class MemberController {
 	}
 	//회원 정보수정
 		@RequestMapping(value = "update", method = RequestMethod.POST)
-		public String update(MemberDTO dto, HttpSession session) throws Exception {
+		public String MemberInfoUpdate(MemberDTO dto, HttpSession session) throws Exception {
 
-			service.update(dto);
+			service.MemberInfoUpdate(dto);
 			session.invalidate();
-			return "redirect:/main";
+			
+			return "member/info";
 		}
 }
