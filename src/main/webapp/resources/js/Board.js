@@ -111,7 +111,9 @@ function NoticeDelete() {
 			}).then((result) => {
 				if(result) {
 					var nId = getParameterByName('nId');
-					location.href='noticeDelete?nId=' + nId;
+					var auth = getParameterByName('auth');
+					
+					location.href='noticeDelete?nId=' + nId + '&auth=' + auth;
 					location.href='notice'
 				}
 			});
