@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,13 +68,13 @@ public class MemberController {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script>location.href='/ex/main';</script>");
+			out.println("<script>location.href='main';</script>");
 			out.close();
 		}
 	}
 	
 	//회원가입 아이디 중복확인
-	@RequestMapping(value = "IDCheck", method = RequestMethod.POST)
+	@RequestMapping(value = "/IDCheck", method = RequestMethod.POST)
 	public @ResponseBody int IDCheck(MemberDTO dto) throws Exception {
 		
 		int result = 0;
@@ -89,11 +88,11 @@ public class MemberController {
 		return result;
 	}
 	//회원 정보수정
-		@RequestMapping(value = "update", method = RequestMethod.POST)
-		public String update(MemberDTO dto, HttpSession session) throws Exception {
-
-			service.update(dto);
-			session.invalidate();
-			return "redirect:/main";
-		}
+	@RequestMapping(value = "/MemberInfoUpdate", method = RequestMethod.POST)
+	public String MemberInfoUpdate(MemberDTO dto, HttpSession session) throws Exception {
+		service.MemberInfoUpdate(dto);
+		session.invalidate();
+		
+		return "member/info";
+	}
 }

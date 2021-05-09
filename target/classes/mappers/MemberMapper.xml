@@ -39,14 +39,14 @@
     </select>
     
   <!-- 회원정보 수정 -->
-	  <update id="update">
-		UPDATE account set
-		Password = #{password},
+	  <update id="MemberInfoUpdate">
+		UPDATE account SET
+			Password = #{password},
 			Name = #{name},
 			Email = #{email},
 			Phone = #{phone},
 			Address = #{address}
-		WHERE UserID = #{userID};
+		WHERE UserID = #{userID}
 	</update>
 	
     <!-- 로그인 시 lastDate 갱신 -->

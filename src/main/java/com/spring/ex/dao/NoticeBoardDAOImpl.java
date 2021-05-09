@@ -19,8 +19,8 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	
 	//공지사항 등록
 	@Override
-	public int Write(NoticeBoardVO vo) throws Exception{
-		return sqlSession.insert(namespace + ".Write", vo);
+	public int NoticeWrite(NoticeBoardVO vo) throws Exception{
+		return sqlSession.insert(namespace + ".NoticeWrite", vo);
 	}
 
 	//공지사항 출력
@@ -33,5 +33,21 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	@Override
 	public int NoticeTotalCount() throws Exception {
 		return sqlSession.selectOne(namespace + ".getNoticeTotalCount");
+	}
+
+	//공지사항 게시글 내용
+	@Override
+	public NoticeBoardVO NoticeBoardView(int nId) throws Exception {
+		return sqlSession.selectOne(namespace + ".NoticeBoardView", nId);
+	}
+
+	@Override
+	public int NoticeModify(NoticeBoardVO vo) throws Exception {
+		return sqlSession.update(namespace + ".NoticeModify", vo);
+	}
+
+	@Override
+	public int NoticeDelete(int nId) throws Exception {
+		return sqlSession.delete(namespace + ".NoticeDelete", nId);
 	}
 }

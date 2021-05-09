@@ -5,7 +5,7 @@
 <mapper namespace="com.spring.ex.NoticeBoardMapper">
 
 	<!-- 공지사항 등록 -->
-	<insert id="Write">
+	<insert id="NoticeWrite">
 		INSERT INTO notice(title, content, important) VALUES (#{title}, #{content}, #{important})
 	</insert>
 	
@@ -18,4 +18,19 @@
 	<select id="getNoticeTotalCount" resultType="int">
 		SELECT COUNT(*) FROM notice
 	</select>
+	
+	<!-- 공지사항 게시글 내용 -->
+	<select id="NoticeBoardView" resultType="NoticeBoardVO">
+		SELECT * FROM notice WHERE NId = #{nId}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="NoticeModify">
+		UPDATE notice SET Title = #{title}, Content = #{content}, Important = #{important} WHERE nId = #{nId}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="NoticeDelete">
+		DELETE FROM notice WHERE nId = #{nId}
+	</delete>
 </mapper>

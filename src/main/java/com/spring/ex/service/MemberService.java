@@ -25,6 +25,6 @@ public interface MemberService {
 	//회원가입 시 아이디 중복확인
 	public MemberDTO IDCheck(MemberDTO dto) throws Exception;
 	//회원정보 수정
-		public void update(MemberDTO dto) throws Exception;
+	public void MemberInfoUpdate(MemberDTO dto) throws Exception;
 	
 }

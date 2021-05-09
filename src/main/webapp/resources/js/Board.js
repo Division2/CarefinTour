@@ -21,7 +21,7 @@ function NoticeWrite() {
 		});
 		return false;
 	}
-	$( "#NoticeWrite").submit();
+	$("#NoticeBoardWrite").submit();
 }
 
 /* 공지사항 수정 유효성 검사 */
@@ -47,7 +47,15 @@ function NoticeModify() {
 		});
 		return false;
 	}
-	$( "#NoticeModify").submit();
+	$("#NoticeBoardModify").submit();
+}
+
+//jquery 파라미터 값 받아오기
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 /* 공지사항 삭제 comfirm */
@@ -59,11 +67,26 @@ function NoticeDelete() {
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
-		confirmButtonText: '승인',
+		confirmButtonText: '확인',
 		cancelButtonText: '취소'
 	}).then((result) => {
 		if (result.isConfirmed) {
-			Swal.fire('공지사항', '게시물이 삭제되었습니다.', 'success')
+			swal({
+				title: "공지사항",
+				text: "게시물이 삭제되었습니다.",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					var nId = getParameterByName('nId');
+					location.href='noticeDelete?nId=' + nId;
+					location.href='notice'
+				}
+			});
 		}
 	})
 }

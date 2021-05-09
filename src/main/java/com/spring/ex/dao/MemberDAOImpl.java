@@ -48,8 +48,8 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	//회원정보 수정
 		@Override
-		public void update(MemberDTO dto) throws Exception {
-			sqlSession.update(namespace+".update", dto); 
+		public void MemberInfoUpdate(MemberDTO dto) throws Exception {
+			sqlSession.update(namespace+".MemberInfoUpdate", dto); 
 		}
 	
 }

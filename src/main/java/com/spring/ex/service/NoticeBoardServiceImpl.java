@@ -18,8 +18,8 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	
 	//공지사항 등록
 	@Override
-	public int Write(NoticeBoardVO vo) throws Exception {
-		return dao.Write(vo);
+	public int NoticeWrite(NoticeBoardVO vo) throws Exception {
+		return dao.NoticeWrite(vo);
 	}
 
 	//공지사항 출력
@@ -32,5 +32,21 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	@Override
 	public int NoticeTotalCount() throws Exception {
 		return dao.NoticeTotalCount();
+	}
+
+	//공지사항 게시글 내용
+	@Override
+	public NoticeBoardVO NoticeBoardView(int nId) throws Exception {
+		return dao.NoticeBoardView(nId);
+	}
+
+	@Override
+	public int NoticeModify(NoticeBoardVO vo) throws Exception {
+		return dao.NoticeModify(vo);
+	}
+
+	@Override
+	public int NoticeDelete(int nId) throws Exception {
+		return dao.NoticeDelete(nId);
 	}
 }

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDAO;
 import com.spring.ex.dto.MemberDTO;
-import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -42,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		out.println("<script>location.href='/ex/main';</script>");
+		out.println("<script>location.href='main';</script>");
 		out.close();
 	}
 	
@@ -60,11 +59,9 @@ public class MemberServiceImpl implements MemberService {
 
 	//정보 수정
 	@Override
-	public void update(MemberDTO dto) throws Exception {
+	public void MemberInfoUpdate(MemberDTO dto) throws Exception {
 		
 		//받은 vo를 DAO로 보내줍니다.
-		dao.update(dto);
-		
+		dao.MemberInfoUpdate(dto);
 	}
-	
 }
