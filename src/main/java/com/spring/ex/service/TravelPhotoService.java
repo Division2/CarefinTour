@@ -1,6 +1,7 @@
 package com.spring.ex.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -10,7 +11,8 @@ public interface TravelPhotoService {
 		//게시물 목록
 		public List<TravelPhotoVO> list() throws Exception;
 		//게시물 작성
-		public void addphoto(TravelPhotoVO travelPhotoVO,  MultipartHttpServletRequest mpRequest) throws Exception;
-		//게시물 조회
+		public void addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception;
+		//게시물 조회(아직 안만듬)
 		public TravelPhotoVO read(int prid) throws Exception;
+	
 }

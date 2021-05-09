@@ -29,7 +29,7 @@
 					<table>
 					<c:forEach var="list" items="${list}">
 							<a href="#">
-								<img src='<c:url value="/resources/image/gallery/iu.jpg"/>' alt="로고">
+								<img src='<c:url value="/resources/image/photoreview_folder/${list.s_file_name}"/>' alt="로고">
 							</a>
 							<h6>
 								<a href="#"><c:out value="${list.title}"/></a>

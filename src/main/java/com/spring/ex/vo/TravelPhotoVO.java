@@ -9,6 +9,8 @@ public class TravelPhotoVO {
 	private String name;
 	private String image;
 	private Date redate;
+	private String s_file_name;
+
 	
 	public int getPrid() {
 		return prid;
@@ -46,6 +48,12 @@ public class TravelPhotoVO {
 	}
 	public void setRedate(Date redate) {
 		this.redate = redate;
+	}
+	public String getS_file_name() {
+		return s_file_name;
+	}
+	public void setS_file_name(String s_file_name) {
+		this.s_file_name = s_file_name;
 	}
 	
 	

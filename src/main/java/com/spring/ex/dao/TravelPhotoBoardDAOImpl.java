@@ -25,20 +25,15 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	}
 	// 게시글 작성
 	@Override
-	public void write(TravelPhotoVO travelPhotoVO) throws Exception {
-		sql.insert(namespace + ".insert", travelPhotoVO);
+	public void write(Map<String, Object> map) throws Exception {
+		sql.insert(namespace + ".insert", map);
 		
 	}
-	// 게시글 조회
+	// 게시글 조회(아직 안만듬)
 	@Override
 	public TravelPhotoVO read(int prid) throws Exception {
 		return sql.selectOne(namespace + ".read", prid);
 		
 	}
 	
-	@Override
-	public void insertFile(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		sql.insert(namespace + ".insertFile", map);
-	}
 }

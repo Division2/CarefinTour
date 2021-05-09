@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -46,15 +47,5 @@ public class TravelPhotoController {
 			
 			return "ranking/travelphoto";
 		}
-		//게시물 조회
-		@RequestMapping(value = "/readView", method = RequestMethod.GET)
-		public String read(TravelPhotoVO travelPhotoVO, Model model) throws Exception{
-			logger.info("read");
-			
-			model.addAttribute("read", service.read(travelPhotoVO.getPrid()));
-			
-			
-			return "/board/readView";
-		}
-	
+		
 }

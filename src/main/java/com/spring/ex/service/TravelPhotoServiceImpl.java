@@ -30,19 +30,20 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	//게시물 작성
 	@Override
 	public void addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
-		dao.write(travelPhotoVO);
 		
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(travelPhotoVO, mpRequest); 
 		int size = list.size();
 		for(int i=0; i<size; i++){ 
-			dao.insertFile(list.get(i)); 
+			dao.write(list.get(i)); 
 		}
 	}
-	// 게시글 조회
+	// 게시글 조회(아직 안만듬)
 	@Override
 	public TravelPhotoVO read(int prid) throws Exception {
 		return dao.read(prid);
 		
 	}
+
+	
 
 }
