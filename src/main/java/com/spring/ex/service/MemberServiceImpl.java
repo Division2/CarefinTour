@@ -60,8 +60,11 @@ public class MemberServiceImpl implements MemberService {
 
 	//정보 수정
 	@Override
-	public void memberUpdate(MemberDTO dto) throws Exception {		
-		dao.memberUpdate(dto);
+	public void update(MemberDTO dto) throws Exception {
+		
+		//받은 vo를 DAO로 보내줍니다.
+		dao.update(dto);
+		
 	}
 	
 }

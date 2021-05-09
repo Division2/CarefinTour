@@ -20,8 +20,8 @@
 			<div class="col-md-8">
 				<h1>정보 수정</h1>
 				<hr>
-					<div class="d-flex flex-column">
-						<form>
+				<form action="update" method="post" name="fr" id="updateForm">
+									
 							<!-- 아이디 & 비밀번호 -->
 							<div class="form-group row">
 								<div class="col-xs-6 col-md-6">
@@ -29,9 +29,9 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<c:forEach var="list" items="${list}">
-										<input type="text" name="account" id="userId" value="${list.userID}"class="form-control" required readonly>
-										</c:forEach>
+										
+										<input type="text" name="userID" id="userID" value="${member.userID}" class="form-control" required readonly>
+									
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -39,7 +39,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">비밀번호</span>
 										</div>
-										<input type="password" name="userPass" id="userPass" class="form-control">
+										<input type="password" name="password" id="password" value="${member.password}" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -49,10 +49,8 @@
 									<div class="input-group my-2 mb-1">
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
-										</div>
-										<c:forEach var="list" items="${list}">
-										<input type="text" name="userName" id="userName" value="${list.name }" class="form-control" required>
-									</c:forEach>
+										</div>				
+										<input type="text" name="name" id="name" value="${member.name}"class="form-control" required>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -60,7 +58,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">생년월일</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" required>
+										<input type="text" name="birth" id="birth" class="form-control" required readonly>
 									</div>
 								</div>
 							</div>
@@ -71,7 +69,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이메일</span>
 										</div>
-										<input type="email" name="name" id="name" class="form-control" required>
+										<input type="email" name="email" id="email" value="${member.email}" class="form-control" required>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -79,7 +77,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">휴대전화</span>
 										</div>
-										<input type="tel" name="name" id="name" class="form-control" required>
+										<input type="tel" name="phone" id="phone" value="${member.phone}" class="form-control" required>
 									</div>
 								</div>
 							</div>
@@ -90,26 +88,29 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">주소</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" required>
+										<input type="text" id="address" name="address" class="form-control" placeholder="주소" required readonly>
 									</div>
 								</div>
 								<div class="col-xs-2 col-md-2">
 									<div class="input-group my-2 mb-1">
-										<button class="btn btn-info">주소 찾기</button>
+										<button class="btn btn-info" onclick="goPopup()">주소 찾기</button>
 									</div>
 								</div>
 							</div>
-						</form>
+						
+	</form>
 					</div>
 				<div class="d-flex">
 					<div class="ml-auto">
-						<button class="btn btn-primary" type="submit" onclick="javascript:location='#'">수정하기</button>
-					</div>
+						<button class="btn btn-primary"  onclick="$('#updateForm').submit()">수정하기</button>
+					</div>		
 				</div>
+			
 				<br>
 			</div>
+		
 		</div>
-	</div>
+
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>
