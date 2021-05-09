@@ -88,7 +88,7 @@ public class MemberController {
 		return result;
 	}
 	//회원 정보수정
-		@RequestMapping(value = "update", method = RequestMethod.POST)
+		@RequestMapping(value = "/MemberInfoUpdate", method = RequestMethod.POST)
 		public String MemberInfoUpdate(MemberDTO dto, HttpSession session) throws Exception {
 
 			service.MemberInfoUpdate(dto);
