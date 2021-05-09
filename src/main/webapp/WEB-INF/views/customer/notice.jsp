@@ -42,14 +42,12 @@
 						<col width="50px">
 						<col width="150px">
 						<col width="50px">
-						<col width="50px">
 					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성일</th>
-							<th>조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -58,7 +56,6 @@
 							<td>${NoticeBoardVO.nId }</td>
 							<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
 							<td>${NoticeBoardVO.reDate }</td>
-							<td>${NoticeBoardVO.hit }</td>
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -70,12 +67,12 @@
 						<c:choose>
 							<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="/ex/notice?page=${Paging.prevPageNo}">Previus</a>
+									<a class="page-link" href="notice?page=${Paging.prevPageNo}">Previus</a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="/ex/notice?page=${Paging.prevPageNo}">Previus</a>
+									<a class="page-link" href="notice?page=${Paging.prevPageNo}">Previus</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
@@ -84,12 +81,12 @@
 							<c:choose>
 								<c:when test="${i eq Paging.pageNo }">
 									<li class="page-item disabled">
-										<a class="page-link" href="/ex/notice?page=${i}"><c:out value="${i }"/></a>
+										<a class="page-link" href="notice?page=${i}"><c:out value="${i }"/></a>
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item">
-										<a class="page-link" href="/ex/notice?page=${i}"><c:out value="${i }"/></a>
+										<a class="page-link" href="notice?page=${i}"><c:out value="${i }"/></a>
 									</li>
 								</c:otherwise>
 							</c:choose>
@@ -98,12 +95,12 @@
 						<c:choose>
 							<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="/ex/notice?page=${Paging.nextPageNo}">Next</a>
+									<a class="page-link" href="notice?page=${Paging.nextPageNo}">Next</a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="/ex/notice?page=${Paging.nextPageNo}">Next</a>
+									<a class="page-link" href="notice?page=${Paging.nextPageNo}">Next</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
@@ -112,7 +109,7 @@
 				<c:if test="${sessionScope.member.getUserID() ne null && sessionScope.member.getGrade() ne 'User'}">
 				<div class="d-flex">
 					<div class="ml-auto">
-						<button class="btn btn-primary" onclick="javascript:location='/ex/noticeWrite'">등록</button>
+						<button class="btn btn-primary" onclick="javascript:location='noticeWrite'">등록</button>
 					</div>
 				</div>
 				</c:if>
