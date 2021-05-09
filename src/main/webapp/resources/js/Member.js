@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('#Login').click(function() {
 		var param = {'UserID':$("#UserID").val(), 'Password': $("#Password").val(), 'lastDate': $("#lastDate").val()};
 		$.ajax({
-			url: "/ex/Login",
+			url: "Login",
 			type: "POST",
 			data: param,
 			success: function(data) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
 				else {
 					swal({
 						title: "로그인",
-						text: "로그인 성공",
+						text: "환영합니다 " + $("#UserID").val() + "님",
 						icon: "success",
 						buttons : {
 							confirm : {
@@ -58,7 +58,7 @@ $(document).ready(function() {
 		}
 		else {
 			$.ajax({
-				url: "/ex/IDCheck",
+				url: "IDCheck",
 				type: "POST",
 				data: param,
 				success: function(data) {
