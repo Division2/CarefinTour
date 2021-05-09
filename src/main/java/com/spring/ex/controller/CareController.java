@@ -2,6 +2,7 @@ package com.spring.ex.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class CareController {
@@ -63,9 +64,9 @@ public class CareController {
 	public String hotelreservation() {
 		return "hotel/hotelreservation";
 	}
-	@RequestMapping("hotelreservation2")
-	public String hotelreservation2() {
-		return "hotel/hotelreservation2";
+	@RequestMapping("hoteldetail")
+	public String hoteldetail() {
+		return "hotel/hoteldetail";
 	}
 	//여행 후기(탑앵글러, 여행포토)
 	@RequestMapping("topangler")
@@ -165,7 +166,7 @@ public class CareController {
 	public String mileage() {
 		return "member/mileage";
 	}
-	@RequestMapping("info")
+	@RequestMapping(value="/info", method = RequestMethod.GET)
 	public String info() {
 		return "member/info";
 	}

@@ -88,21 +88,11 @@ public class MemberController {
 		return result;
 	}
 	//회원 정보수정
-	
-	@RequestMapping(value="/info", method = RequestMethod.GET)
-	public String registerUpdateView() throws Exception {
-		
-		return "member/info";
-	}
-	
+		@RequestMapping(value = "update", method = RequestMethod.POST)
+		public String update(MemberDTO dto, HttpSession session) throws Exception {
 
-	@RequestMapping(value="/memberUpdate", method = RequestMethod.POST)
-	public String registerUpdate(MemberDTO vo, HttpSession session) throws Exception{
-		
-		service.memberUpdate(vo);
-		
-		session.invalidate();
-		
-		return "redirect:/";
-	}
+			service.update(dto);
+			session.invalidate();
+			return "redirect:/main";
+		}
 }
