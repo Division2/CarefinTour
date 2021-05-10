@@ -133,16 +133,18 @@ public class NoticeBoardController {
 	}
 	
 	//공지사항 삭제
-	@RequestMapping(value = "/noticeDelete")
+	@RequestMapping(value = "/noticeDelete", method = RequestMethod.GET)
 	public void NoticeDelete(HttpServletRequest request) throws Exception {
 		int result = 0;
 		
 		int nId = Integer.parseInt(request.getParameter("nId"));
+		String auth = request.getParameter("auth");
 		
-		result = service.NoticeDelete(nId);
+		if (auth != "Admin") {
+			result = service.NoticeDelete(nId);
+		}
 		
 		logger.info("nId : " + nId);
 		logger.info("게시물 삭제 : " + result);
-		System.out.println(result);
 	}
 }
