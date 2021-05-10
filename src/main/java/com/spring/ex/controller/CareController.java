@@ -178,7 +178,7 @@ public class CareController {
 	public String inquirydetails() {
 		return "member/inquirydetails";
 	}
-	@RequestMapping(value="/withdrawl", method = RequestMethod.GET)
+	@RequestMapping(value="/withdrawal", method = RequestMethod.GET)
 	public String withdrawal() {
 		return "member/withdrawal";
 	}
