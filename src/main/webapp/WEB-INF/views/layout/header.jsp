@@ -43,10 +43,10 @@
 					</c:if>
 					<c:if test="${member != null }">
 						<li class="nav-item">
-							<a class="nav-link text-primary" href="/ex/logout">로그아웃</a>
+							<a class="nav-link text-primary" href="logout">로그아웃</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-primary" href="/ex/mypage">마이페이지</a>
+							<a class="nav-link text-primary" href="mypage">마이페이지</a>
 						</li>
 					</c:if>
 						<li class="nav-item">
@@ -215,7 +215,7 @@
 							</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="topangler">탑앵글러</a>
-								<a class="dropdown-item" href="/ex/list.do">여행포토</a>
+								<a class="dropdown-item" href="list.do">여행포토</a>
 							</div>
 						</li>
 					</ul>
@@ -267,7 +267,7 @@
 						<h4>회원가입</h4>
 					</div>
 					<div class="d-flex flex-column text-center">
-						<form name="form" id="form" action="/ex/SignUp" method="POST">
+						<form name="form" id="form" action="SignUp" method="POST">
 							<div class="form-group row">
 								<div class="col-sm-9">
 									<input type="text" class="form-control" id="RegisterUserID" name="UserID" placeholder="아이디" required autofocus>

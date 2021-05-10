@@ -2,6 +2,7 @@ package com.spring.ex.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class CareController {
@@ -118,6 +119,10 @@ public class CareController {
 	public String noticeview() {
 		return "customer/noticeView";
 	}
+	@RequestMapping("noticeModifyView")
+	public String noticemodify() {
+		return "customer/noticeModify";
+	}
 	@RequestMapping("inquire")
 	public String inquire() {
 		return "customer/inquire";
@@ -161,7 +166,7 @@ public class CareController {
 	public String mileage() {
 		return "member/mileage";
 	}
-	@RequestMapping("info")
+	@RequestMapping(value="/info", method = RequestMethod.GET)
 	public String info() {
 		return "member/info";
 	}

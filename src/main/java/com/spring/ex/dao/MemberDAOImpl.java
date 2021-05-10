@@ -45,9 +45,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO IDCheck(MemberDTO dto) throws Exception {
 		return sqlSession.selectOne(namespace + ".IDCheck", dto);
 	}
-	@Override
-	public void memberUpdate(MemberDTO dto) throws Exception {
-		sqlSession.update("MemberMapper.info",dto);
-	}
+	
+	//회원정보 수정
+		@Override
+		public void MemberInfoUpdate(MemberDTO dto) throws Exception {
+			sqlSession.update(namespace+".MemberInfoUpdate", dto); 
+		}
 	
 }

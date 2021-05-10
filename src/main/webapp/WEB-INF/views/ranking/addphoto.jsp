@@ -20,7 +20,7 @@
 			<h1>여행 포토 등록</h1>
 		</div>
 		<hr>
-		<form action="/ex/gaza" method="POST" enctype="multipart/form-data">   
+		<form action="gaza" method="POST" enctype="multipart/form-data">   
         <div class="form-group row">
             <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
             <div class="col-sm-10">

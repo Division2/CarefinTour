@@ -38,12 +38,15 @@
     	SELECT * FROM account WHERE UserID = #{UserID}
     </select>
     
-    <!-- 회원정보 수정 -->
-	<update id="memberUpdate">
-		UPDATE account SET 
-		RPASSWORD = #{Password},
-		NAME = #{Name}
-		WHERE USERID = #{userID}
+  <!-- 회원정보 수정 -->
+	  <update id="MemberInfoUpdate">
+		UPDATE account SET
+			Password = #{password},
+			Name = #{name},
+			Email = #{email},
+			Phone = #{phone},
+			Address = #{address}
+		WHERE UserID = #{userID}
 	</update>
 	
     <!-- 로그인 시 lastDate 갱신 -->
