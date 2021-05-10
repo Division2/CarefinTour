@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,8 @@ import javax.inject.Inject;
 
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.dao.TravelPhotoBoardDAO;
@@ -23,9 +26,9 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	private TravelPhotoBoardDAO dao;
 	//게시물 목록
 	@Override
-	public List<TravelPhotoVO> list()throws Exception {
+	public List<TravelPhotoVO> list(HashMap<String, Integer> map)throws Exception {
 		// TODO Auto-generated method stub
-		return dao.list();
+		return dao.list(map);
 	}
 	//게시물 작성
 	@Override
@@ -37,11 +40,16 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 			dao.write(list.get(i)); 
 		}
 	}
-	// 게시글 조회(아직 안만듬)
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public TravelPhotoVO read(int prid) throws Exception {
+			dao.boardHit(prid);
 		return dao.read(prid);
-		
+	}
+	//공지사항 게시물 총 갯수
+	@Override
+	public int PhotoTotalCount() throws Exception {
+		return dao.PhotoTotalCount();
 	}
 
 	
