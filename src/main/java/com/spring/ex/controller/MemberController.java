@@ -98,7 +98,7 @@ public class MemberController {
 	}
 	
 	// 회원 탈퇴 
-	@RequestMapping(value="/memberDelete", method = RequestMethod.POST)
+	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
 	public String memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr) throws Exception{
 				
 		// 세션에 있는 member를 가져와 member변수에 넣어줍니다.
