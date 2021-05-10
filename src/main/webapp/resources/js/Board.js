@@ -21,6 +21,12 @@ function NoticeWrite() {
 		});
 		return false;
 	}
+	if($("#Important_CheckBox").is(":checked") == true) {
+		$("#Important").val("Y");
+	}
+	else {
+		$("#Important").val("N");
+	}
 	$("#NoticeBoardWrite").submit();
 }
 

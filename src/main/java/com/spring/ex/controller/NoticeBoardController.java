@@ -23,7 +23,7 @@ import com.spring.ex.vo.PagingVO;
 @Controller
 public class NoticeBoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(TravelPhotoController.class);
+	private static final Logger logger = LoggerFactory.getLogger(NoticeBoardController.class);
 	
 	@Inject
 	NoticeBoardService service;
@@ -32,6 +32,8 @@ public class NoticeBoardController {
 	@RequestMapping(value = "/noticeWrite", method = RequestMethod.POST)
 	public void Write(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
 		int result = 0;
+		
+		logger.info("Checked : " + vo.getImportant());
 		
 		result = service.NoticeWrite(vo);
 		
@@ -63,9 +65,36 @@ public class NoticeBoardController {
 		map.put("PageSize", paging.getPageSize());
 		
 		List<NoticeBoardVO> List = service.NoticeList(map);
-		
+
 		model.addAttribute("NoticeList", List);
 		model.addAttribute("Paging", paging);
+		
+		return "customer/notice";
+	}
+	
+	//공지사항 검색
+	@RequestMapping(value = "/noticeSearch", method = RequestMethod.GET)
+	public String NoticeSearchView(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
+		
+		String title = request.getParameter("title");
+		int totalCount = service.NoticeSearchTotalCount(title);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("paging", paging);
+		map.put("title", title);
+		
+		List<NoticeBoardVO> List = service.NoticeSearchList(map);
+		
+		model.addAttribute("NoticeList", List);
+		model.addAttribute("Paging1", paging);
 		
 		return "customer/notice";
 	}

@@ -27,11 +27,11 @@
 							<option>전체</option>
 						</select>
 					</div>
-					<form action="" method="GET" class="form-inline">
+					<form action="noticeSearch" method="GET" class="form-inline">
 						<select class="form-control">
 							<option>제목</option>
 						</select>
-						<input type="text" name="search" id="search" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
+						<input type="text" name="title" id="title" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
 						<button type="submit" class="btn px-3 btn-primary">
 							<i class="fas fa-search"></i>
 						</button>

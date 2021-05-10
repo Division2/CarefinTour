@@ -33,10 +33,10 @@
 						<label class="form-label col-sm-2" for="important">중요</label>
 						<div class="col-sm-1">
 						<c:choose>
-							<c:when test="${content.important eq on }">
+							<c:when test="${content.important eq 'Y' }">
 								<input class="form-control" type="checkbox" id="Important" name="Important" checked>
 							</c:when>
-							<c:when test="${content.important ne on }">
+							<c:when test="${content.important eq 'N' }">
 								<input class="form-control" type="checkbox" id="Important" name="Important">
 							</c:when>
 						</c:choose>

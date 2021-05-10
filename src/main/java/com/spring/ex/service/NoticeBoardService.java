@@ -27,4 +27,10 @@ public interface NoticeBoardService {
 	
 	//공지사항 삭제
 	public int NoticeDelete(int nId) throws Exception;
+	
+	//공지사항 검색
+	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception;
+	
+	//공지사항 검색 게시물 총 갯수
+	public int NoticeSearchTotalCount(String title) throws Exception;
 }
