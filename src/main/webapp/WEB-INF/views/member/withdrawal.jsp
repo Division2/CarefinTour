@@ -35,16 +35,55 @@
 					<label for="agree">내용을 모두 확인하였습니다.</label>
 				</div>
 				<br>
-				<div class="d-flex">
-					<div class="mx-auto">
-						<input type="button" name="signout" id="signout" class="btn btn-primary" value="회원 탈퇴">
-						<input type="button" name="signout" id="signout" class="btn btn-secondary" value="취소">
+						<script type="text/javascript">
+										$(document).ready(function(){
+											// 취소
+											$(".cencle").on("click", function(){				
+												location.href = "/";						    
+											})
+										
+											$("#submit").on("click", function(){
+												if($("#userPass").val()==""){
+													alert("비밀번호를 입력해주세요.");
+													$("#userPass").focus();
+													return false;
+												}	
+											});																	
+										})
+						</script>
+					<section id="container">
+						<form action="memberDelete" method="post">
+							<div class="form-group has-feedback">
+								<label class="control-label" for="userId">아이디</label>
+								<input class="form-control" type="text" id="userId" name="userId" value="${member.userID}" readonly="readonly"/>
+							</div>
+							<div class="form-group has-feedback">
+								<label class="control-label" for="userPass">패스워드</label>
+								<input class="form-control" type="password" id="userPass" name="userPass" />
+							</div>
+							<div class="form-group has-feedback">
+								<label class="control-label" for="userName">성명</label>
+								<input class="form-control" type="text" id="userName" name="userName" value="${member.name}" readonly="readonly"/>
+							</div>
+							<div class="d-flex">
+								<div class="mx-auto">
+							<div class="form-group has-feedback">
+								<button class="btn btn-primary" type="submit" id="submit">회원탈퇴</button>
+								<button class="btn btn-secondary" type="button">취소</button>
+							</div>
+								</div>
+							</div>
+						</form>
+						<div>
+						</div>
+					</section>
+							<c:if test="${msg == false}">
+								비밀번호가 맞지 않습니다.
+							</c:if>
+							<br>
+						</div>
 					</div>
 				</div>
-				<br>
-			</div>
-		</div>
-	</div>
-	<jsp:include page="../layout/footer.jsp"/>
-</body>
-</html>
+				<jsp:include page="../layout/footer.jsp"/>
+			</body>
+			</html>

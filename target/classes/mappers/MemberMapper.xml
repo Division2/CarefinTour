@@ -49,6 +49,13 @@
 		WHERE UserID = #{userID}
 	</update>
 	
+	<!-- 회원탈퇴 -->
+<!-- 회원탈퇴 -->
+<delete id="memberDelete">
+	DELETE FROM account
+	WHERE  UserID = #{userID}
+	  AND Password = #{password}
+</delete>
     <!-- 로그인 시 lastDate 갱신 -->
     <update id="MemberLoginDateLog">
     	UPDATE account SET lastDate = #{lastDate} WHERE UserID = #{UserID}
