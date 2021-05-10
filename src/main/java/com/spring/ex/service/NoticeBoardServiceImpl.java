@@ -40,13 +40,27 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		return dao.NoticeBoardView(nId);
 	}
 
+	//공지사항 수정
 	@Override
 	public int NoticeModify(NoticeBoardVO vo) throws Exception {
 		return dao.NoticeModify(vo);
 	}
 
+	//공지사항 삭제
 	@Override
 	public int NoticeDelete(int nId) throws Exception {
 		return dao.NoticeDelete(nId);
+	}
+	
+	//공지사항 검색
+	@Override
+	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception {
+		return dao.NoticeSearchList(map);
+	}
+	
+	//공지사항 검색 게시물 총 갯수
+	@Override
+	public int NoticeSearchTotalCount(String title) throws Exception {
+		return dao.NoticeSearchTotalCount(title);
 	}
 }

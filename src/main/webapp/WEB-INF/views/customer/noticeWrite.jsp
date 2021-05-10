@@ -30,7 +30,8 @@
 					<div class="form-group row">
 						<label class="form-label col-sm-2" for="important">중요</label>
 						<div class="col-sm-1">
-							<input class="form-control" type="checkbox" id="Important" name="Important">
+							<input class="form-control" type="checkbox" id="Important_CheckBox" name="Important_CheckBox">
+							<input type="hidden" id="Important" name="Important">
 						</div>
 					</div>
 					<div class="form-group row">

@@ -28,7 +28,7 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	public List<NoticeBoardVO> NoticeList(HashMap<String, Integer> map) throws Exception {
 		return sqlSession.selectList(namespace + ".NoticeView", map);
 	}
-
+	
 	//공지사항 게시물 총 갯수
 	@Override
 	public int NoticeTotalCount() throws Exception {
@@ -41,13 +41,28 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 		return sqlSession.selectOne(namespace + ".NoticeBoardView", nId);
 	}
 
+	//공지사항 수정
 	@Override
 	public int NoticeModify(NoticeBoardVO vo) throws Exception {
 		return sqlSession.update(namespace + ".NoticeModify", vo);
 	}
 
+	//공지사항 삭제
 	@Override
 	public int NoticeDelete(int nId) throws Exception {
 		return sqlSession.delete(namespace + ".NoticeDelete", nId);
 	}
+	
+	//공지사항 검색
+	@Override
+	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".NoticeSearchView", map);
+	}
+
+	//공지사항 검색 게시물 총 갯수
+	@Override
+	public int NoticeSearchTotalCount(String title) throws Exception {
+		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", title);
+	}
+
 }
