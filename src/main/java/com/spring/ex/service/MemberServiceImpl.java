@@ -64,4 +64,10 @@ public class MemberServiceImpl implements MemberService {
 		//받은 vo를 DAO로 보내줍니다.
 		dao.MemberInfoUpdate(dto);
 	}
+	//회원탈퇴
+	// 업데이트에서 처리한 내용과 같습니다.
+		@Override
+		public void memberDelete(MemberDTO dto) throws Exception {
+			dao.memberDelete(dto);
+		}
 }

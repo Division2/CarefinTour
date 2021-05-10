@@ -6,12 +6,16 @@
 
 	<!-- 공지사항 등록 -->
 	<insert id="NoticeWrite">
-		INSERT INTO notice(title, content, important) VALUES (#{title}, #{content}, #{important})
+		INSERT INTO notice(Title, Content, Important) VALUES (#{title}, #{content}, #{important})
 	</insert>
 	
 	<!-- 공지사항 출력 -->
 	<select id="NoticeView" resultType="NoticeBoardVO">
-		SELECT * FROM notice order BY NId DESC LIMIT #{Page}, #{PageSize}
+	 	SELECT * FROM notice order BY nId DESC LIMIT #{Page}, #{PageSize}
+<!--	SELECT * FROM notice WHERE Important = 'Y' ORDER by nId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY Important='Y' DESC, nId DESC  LIMIT #{Page}, #{PageSize}
+		(SELECT * FROM notice WHERE Important = 'Y') UNION (SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}) -->
 	</select>
 	
 	<!-- 공지사항 게시물 총 갯수 -->
@@ -33,4 +37,14 @@
 	<delete id="NoticeDelete">
 		DELETE FROM notice WHERE nId = #{nId}
 	</delete>
+	
+	<!-- 공지사항 검색 -->
+	<select id="NoticeSearchView" resultType="NoticeBoardVO">
+		SELECT * FROM notice WHERE Title LIKE '%${title}%' LIMIT #{paging.pageNo}, #{paging.pageSize}
+	</select>
+	
+	<!-- 공지사항 검색 게시물 총 갯수 -->
+	<select id="getNoticeSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE Title LIKE '%${title}%'
+	</select>
 </mapper>

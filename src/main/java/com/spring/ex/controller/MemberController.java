@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.dto.MemberDTO;
 import com.spring.ex.service.MemberService;
@@ -93,6 +94,24 @@ public class MemberController {
 		service.MemberInfoUpdate(dto);
 		session.invalidate();
 		
-		return "member/info";
+		 return "redirect:/main";
 	}
+	
+	// 회원 탈퇴 
+	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
+	public String memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr) throws Exception{
+				
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		String sessionPass = member.getPassword();
+		String voPass = dto.getPassword();
+				
+		if(!(sessionPass.equals(voPass))) {
+			rttr.addFlashAttribute("msg", false);
+						return "redirect:/withdrawal";
+					}
+					service.memberDelete(dto);
+					session.invalidate();
+					return "redirect:/main";
+		}
+
 }
