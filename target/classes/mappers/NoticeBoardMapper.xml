@@ -17,7 +17,7 @@
 		SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
 		
 		SELECT * FROM(SELECT * FROM notice UNION SELECT * FROM notice LIMIT #{Page}, #{PageSize}) AS a order BY Important = 'Y' DESC, nId DESC -->
-		SELECT * FROM(SELECT * FROM notice UNION SELECT * FROM notice order BY Important = 'Y' DESC, nId DESC LIMIT #{Page}, #{PageSize}) AS a
+		(SELECT * FROM notice UNION SELECT * FROM notice order BY Important = 'Y' DESC, nId DESC LIMIT #{Page}, #{PageSize})
 	</select>
 	
 	<!-- 공지사항 중요 게시물 총 갯수 -->
