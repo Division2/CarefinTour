@@ -34,7 +34,7 @@
 									<span class="input-group-text">아이디</span>
 								</div>
 								
-								<input type="text" name="userID" id="userID" value="${member.userID}" class="form-control" required readonly>
+								<input type="text" name="UserID" id="UserID" value="${member.getUserID()}" class="form-control" required readonly>
 							
 							</div>
 						</div>
@@ -43,7 +43,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">비밀번호</span>
 								</div>
-								<input type="password" name="password" id="password" value="${member.password}" class="form-control">
+								<input type="password" name="Password" id="Password" value="${member.getPassword()}" class="form-control">
 							</div>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">이름</span>
 								</div>				
-								<input type="text" name="name" id="name" value="${member.name}"class="form-control" required>
+								<input type="text" name="Name" id="Name" value="${member.getName()}"class="form-control" required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-md-6">
@@ -62,7 +62,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">생년월일</span>
 								</div>
-								<input type="text" name="birth" id="birth" class="form-control" required readonly>
+								<input type="text" name="Birth" id="Birth" class="form-control" required readonly>
 							</div>
 						</div>
 					</div>
@@ -73,7 +73,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">이메일</span>
 								</div>
-								<input type="email" name="email" id="email" value="${member.email}" class="form-control" required>
+								<input type="email" name="Email" id="Email" value="${member.getEmail()}" class="form-control" required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-md-6">
@@ -81,7 +81,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">휴대전화</span>
 								</div>
-								<input type="tel" name="phone" id="phone" value="${member.phone}" class="form-control" required>
+								<input type="tel" name="Phone" id="Phone" value="${member.getPhone()}" class="form-control" required>
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">주소</span>
 								</div>
-								<input type="text" id="address" name="address" class="form-control" placeholder="주소" required readonly>
+								<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
 							</div>
 						</div>
 						<div class="col-xs-2 col-md-2">

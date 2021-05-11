@@ -11,11 +11,16 @@
 	
 	<!-- 공지사항 출력 -->
 	<select id="NoticeView" resultType="NoticeBoardVO">
-	 	SELECT * FROM notice order BY nId DESC LIMIT #{Page}, #{PageSize}
-<!--	SELECT * FROM notice WHERE Important = 'Y' ORDER by nId DESC LIMIT #{Page}, #{PageSize}
+	<!--SELECT * FROM notice order BY nId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM notice WHERE Important = 'Y' ORDER by nId DESC LIMIT #{Page}, #{PageSize}
 		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
-		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY Important='Y' DESC, nId DESC  LIMIT #{Page}, #{PageSize}
-		(SELECT * FROM notice WHERE Important = 'Y') UNION (SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}) -->
+		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY Important='Y' DESC, nId DESC  LIMIT #{Page}, #{PageSize} -->
+		(SELECT * FROM notice WHERE Important = 'Y') UNION (SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize})
+	</select>
+	
+	<!-- 공지사항 중요 게시물 총 갯수 -->
+	<select id="getImportantNoticeTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE Important = 'Y'
 	</select>
 	
 	<!-- 공지사항 게시물 총 갯수 -->
