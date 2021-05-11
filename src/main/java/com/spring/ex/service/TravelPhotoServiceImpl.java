@@ -32,13 +32,14 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	}
 	//게시물 작성
 	@Override
-	public void addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
+	public int addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
 		
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(travelPhotoVO, mpRequest); 
 		int size = list.size();
 		for(int i=0; i<size; i++){ 
 			dao.write(list.get(i)); 
 		}
+		return size;
 	}
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override

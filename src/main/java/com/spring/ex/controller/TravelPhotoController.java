@@ -1,11 +1,12 @@
 package com.spring.ex.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,12 +30,22 @@ public class TravelPhotoController {
 		TravelPhotoService service;
 		
 		//게시물 작성
-		@RequestMapping(value = "/gaza", method = RequestMethod.POST)
-		public String postWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest) throws Exception{
-			service.addphoto(travelPhotoVO, mpRequest);
-			
-			return "ranking/travelphoto";
-		}
+	   @RequestMapping(value = "/gaza", method = RequestMethod.POST)
+	      public void postWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception{
+	         
+	         int result = 0;
+	            
+	         result = service.addphoto(travelPhotoVO,mpRequest);
+	         
+	         if (result == 1) {
+	            response.setContentType("text/html;charset=utf-8");
+	            PrintWriter out = response.getWriter();
+	            
+	            out.println("<script>location.href='list'</script>");
+	            out.close();
+	         }   
+	      }
+
 		//게시물 출력
 		@RequestMapping(value = "/list", method = RequestMethod.GET)
 		public String list(Model model, HttpServletRequest request) throws Exception{

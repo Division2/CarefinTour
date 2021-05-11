@@ -26,8 +26,8 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	}
 	// 게시글 작성
 	@Override
-	public void write(Map<String, Object> map) throws Exception {
-		sql.insert(namespace + ".insert", map);
+	public int write(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".insert", map);
 		
 	}
 	// 게시글 조회
