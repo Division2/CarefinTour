@@ -95,7 +95,7 @@ public class NoticeBoardController {
 		List<NoticeBoardVO> List = service.NoticeSearchList(map);
 		
 		model.addAttribute("NoticeList", List);
-		model.addAttribute("Paging1", paging);
+		model.addAttribute("Paging", paging);
 		
 		return "customer/notice";
 	}
