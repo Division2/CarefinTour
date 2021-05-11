@@ -40,9 +40,9 @@
 							location.href = "/main";						    
 							})
 							$("#submit").on("click", function(){
-							if($("#userPass").val()==""){										
+							if($("#password").val()==""){										
 							alert("비밀번호를 입력해주세요.");
-							$("#userPass").focus();
+							$("#password").focus();
 								return false;
 							}	
 							});
@@ -52,18 +52,18 @@
 						</script>
 
 					<section id="container">
-						<form action="memberDelete" method="post">
+						<form action="memberDelete" method="POST">
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userId">아이디</label>
-								<input class="form-control" type="text" id="userId" name="userId" value="${member.userID}" readonly="readonly"/>
+								<label class="control-label" for="UserId">아이디</label>
+								<input class="form-control" type="text" id="UserID" name="UserID" value="${member.getUserID()}" readonly="readonly"/>
 							</div>
 							<div class="form-group has-feedback">
-								<label class="control-label" for="userPass">패스워드</label>
+								<label class="control-label" for="Password">패스워드</label>
 								<input class="form-control" type="password" id="Password" name="Password" />
 							</div>
 							<div class="form-group has-feedback">
 								<label class="control-label" for="userName">성명</label>
-								<input class="form-control" type="text" id="userName" name="userName" value="${member.name}" readonly="readonly"/>
+								<input class="form-control" type="text" id="Name" name="Name" value="${member.getName()}" readonly="readonly"/>
 							</div>
 							<div class="d-flex">
 								<div class="mx-auto">
