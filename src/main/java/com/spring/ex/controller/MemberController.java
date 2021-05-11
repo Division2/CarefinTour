@@ -94,27 +94,27 @@ public class MemberController {
 		service.MemberInfoUpdate(dto);
 		session.invalidate();
 		
-		return "member/info";
+		 return "redirect:/main";
 	}
 	
 	// 회원 탈퇴 
 	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
-	public String memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr) throws Exception{
-				
-		// 세션에 있는 member를 가져와 member변수에 넣어줍니다.
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		// 세션에있는 비밀번호
-		String sessionPass = member.getPassword();
-		// dto로 들어오는 비밀번호
-		String voPass = dto.getPassword();
-				
-		if(!(sessionPass.equals(voPass))) {
-			rttr.addFlashAttribute("msg", false);
-						return "member/withdrawl";
-					}
-					service.memberDelete(dto);
-					session.invalidate();
-					return "member/main";
+	public void memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
+		
+		MemberDTO sessionInfo = (MemberDTO)session.getAttribute("member");
+		
+		System.out.println("DTO : " + dto.getPassword());
+		System.out.println("Session : " + sessionInfo.getPassword());
+		
+		if (dto.getPassword().equals(sessionInfo.getPassword())) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			service.memberDelete(dto);
+			session.invalidate();
+			
+			out.println("<script>location.href='main';</script>");
+			out.close();
 		}
-
+	}
 }

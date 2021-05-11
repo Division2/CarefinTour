@@ -47,18 +47,14 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	//회원정보 수정
-		@Override
-		public void MemberInfoUpdate(MemberDTO dto) throws Exception {
-			sqlSession.update(namespace+".MemberInfoUpdate", dto); 
-		}
-		
-		@Override
-		public void memberDelete(MemberDTO dto) throws Exception {
-			// MemberVO에 담긴 값들을 보내줍니다.
-			// 그럼 xml에서 memberMapper.memberDelete에 보시면
-			//  #{userId}, #{userPass}에 파라미터값이 매칭이 되겠지요.
-			sqlSession.delete(namespace+".memberDelete", dto);
-			
-		}	
-	
+	@Override
+	public void MemberInfoUpdate(MemberDTO dto) throws Exception {
+		sqlSession.update(namespace+".MemberInfoUpdate", dto); 
+		System.out.println(sqlSession);
+	}
+	//회원탈퇴
+	@Override
+	public void memberDelete(MemberDTO dto) throws Exception {
+		sqlSession.delete(namespace+".memberDelete", dto);
+	}	
 }

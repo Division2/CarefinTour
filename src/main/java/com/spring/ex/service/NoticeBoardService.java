@@ -16,6 +16,9 @@ public interface NoticeBoardService {
 	//공지사항 출력
 	public List<NoticeBoardVO> NoticeList(HashMap<String, Integer> map) throws Exception;
 	
+	//공지사항 중요 게시물 총 갯수
+	public int ImportantNoticeTotalCount() throws Exception;
+	
 	//공지사항 게시물 총 갯수
 	public int NoticeTotalCount() throws Exception;
 	

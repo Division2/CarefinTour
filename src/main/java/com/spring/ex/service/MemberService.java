@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dto.MemberDTO;
 
+
 @Service
 public interface MemberService {
 	//전체 멤버 출력

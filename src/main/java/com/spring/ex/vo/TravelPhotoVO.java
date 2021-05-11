@@ -10,8 +10,36 @@ public class TravelPhotoVO {
 	private String image;
 	private Date redate;
 	private String s_file_name;
+	private String o_file_name;
+	private int good;
+	private int bad;
+	private int hit;
 
 	
+	public int getGood() {
+		return good;
+	}
+	public void setGood(int good) {
+		this.good = good;
+	}
+	public int getBad() {
+		return bad;
+	}
+	public void setBad(int bad) {
+		this.bad = bad;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public String getO_file_name() {
+		return o_file_name;
+	}
+	public void setO_file_name(String o_file_name) {
+		this.o_file_name = o_file_name;
+	}
 	public int getPrid() {
 		return prid;
 	}

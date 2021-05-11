@@ -51,12 +51,13 @@ public class NoticeBoardController {
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
 
 		int totalCount = service.NoticeTotalCount();
+		int importantCount = service.ImportantNoticeTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);
 		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
+		paging.setTotalCount(totalCount - importantCount);
 		
 		page = (page - 1) * 10;
 		
