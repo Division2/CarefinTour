@@ -22,11 +22,7 @@
 				<h1>공지사항</h1>
 				<hr>
 				<div class="d-flex">
-					<div class="mr-auto">
-						<select class="form-control">
-							<option>전체</option>
-						</select>
-					</div>
+					<div class="mr-auto"></div>
 					<form action="noticeSearch" method="GET" class="form-inline">
 						<select class="form-control">
 							<option>제목</option>
