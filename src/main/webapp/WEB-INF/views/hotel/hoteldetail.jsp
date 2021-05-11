@@ -17,12 +17,14 @@
 <title>호텔예약 - 케어핀투어</title>
 <link href="css/section.css" rel="stylesheet">
 <link href="css/component.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/d9cab3f7fe.js" crossorigin="anonymous"></script>
-<!--데이트 피커  -->
-<link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css>
-<link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 <style>
 ul{
    list-style:none;
@@ -32,6 +34,63 @@ ul{
 </head>
 <body>
 
+<script type="text/javascript">
+
+/* function sta(x) {
+    $.ajax({
+	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D'+ accommodationType +'&areaCode='  + ga +'&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
+	       dataType : 'json',
+	       type : 'GET',
+	       success : function(data) {
+	    	   var count =  data.response.body.totalCount;
+	    	   fCount = data.response.body.items.item;
+	    	   //console.log(fCount);
+	    	     
+	    	   for(var c=0; c<fCount.length; c++){
+	    		   fr.push( data.response.body.items.item[c].firstimage);
+	    		   fName.push( data.response.body.items.item[c].title);
+	    	   }
+	    	   
+ 	    	   try {
+ 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
+ 	    		   
+				   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
+				   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
+				   localStorage.setItem("img3", fr[2]);
+				   localStorage.setItem("img4", fr[3]);
+				   localStorage.setItem("img5", fr[4]);
+				   localStorage.setItem("img6", fr[5]);
+				   localStorage.setItem("img7", fr[6]);
+				   localStorage.setItem("img8", fr[7]);
+				   localStorage.setItem("img9", fr[8]);
+				   localStorage.setItem("img10", fr[9]);
+				   localStorage.setItem("img11", fr[10]);
+				   localStorage.setItem("img12", fr[11]);
+				   
+				   localStorage.setItem("title1", fName[0]); //숙박업소 이름
+				   localStorage.setItem("title2", fName[1]);
+				   localStorage.setItem("title3", fName[2]);
+				   localStorage.setItem("title4", fName[3]);
+				   localStorage.setItem("title5", fName[4]);
+				   localStorage.setItem("title6", fName[5]);
+				   localStorage.setItem("title7", fName[6]);
+				   localStorage.setItem("title8", fName[7]);
+				   localStorage.setItem("title9", fName[8]);
+				   localStorage.setItem("title10", fName[9]);
+				   localStorage.setItem("title11", fName[10]);
+				   localStorage.setItem("title12", fName[11]);
+				   
+		           location.reload();
+				} catch (e) {
+				   if (e == QUOTA_EXCEEDED_ERR) {
+				     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
+				  }
+				}  
+	       }
+	    })
+} */
+console.log(localStorage.getItem("searchDetail"));
+</script>
 	<jsp:include page="../layout/header.jsp"/>
 	
 	<div class="container">

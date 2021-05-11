@@ -29,6 +29,12 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 		return sqlSession.selectList(namespace + ".NoticeView", map);
 	}
 	
+	//공지사항 중요 게시물 총 갯수
+	@Override
+	public int ImportantNoticeTotalCount() throws Exception {
+		return sqlSession.selectOne(namespace + ".getImportantNoticeTotalCount");
+	}
+	
 	//공지사항 게시물 총 갯수
 	@Override
 	public int NoticeTotalCount() throws Exception {
@@ -64,5 +70,4 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 	public int NoticeSearchTotalCount(String title) throws Exception {
 		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", title);
 	}
-
 }

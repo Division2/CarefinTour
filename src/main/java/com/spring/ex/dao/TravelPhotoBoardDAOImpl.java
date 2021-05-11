@@ -1,5 +1,6 @@
 package com.spring.ex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,21 +20,32 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	private static String namespace = "com.spring.ex.TravelPhotoMapper";
 	//게시글 목록 조회
 	@Override
-	public List<TravelPhotoVO> list() throws Exception {
+	public List<TravelPhotoVO> list(HashMap<String, Integer> map) throws Exception {
 		
-		return sql.selectList(namespace + ".list");
+		return sql.selectList(namespace + ".list",map);
 	}
 	// 게시글 작성
 	@Override
-	public void write(Map<String, Object> map) throws Exception {
-		sql.insert(namespace + ".insert", map);
+	public int write(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".insert", map);
 		
 	}
-	// 게시글 조회(아직 안만듬)
+	// 게시글 조회
 	@Override
 	public TravelPhotoVO read(int prid) throws Exception {
 		return sql.selectOne(namespace + ".read", prid);
 		
 	}
+	//여행포토 게시물 총 갯수
+	@Override
+	public int PhotoTotalCount() throws Exception {
+		return sql.selectOne(namespace + ".getPhotoTotalCount");
+	}
 	
+	//게시글 조회수
+	@Override
+	public void boardHit(int prid) throws Exception {
+		// TODO Auto-generated method stub
+		sql.update(namespace  + ".boardHit", prid);
+	}
 }

@@ -6,13 +6,10 @@
 <meta charset="UTF-8">
 
 <title>호텔예약 - 블루핀투어</title>
-<link href="css/section.css" rel="stylesheet">
-<link href="css/component.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
@@ -128,6 +125,7 @@ ul{
     accommodationType ="";
     accommodationType =localStorage.getItem("searchAccommodationType");
     var fCount = [  ];
+    var countId = [ ];
 	ga = "";
 	ga = localStorage.getItem("searchPag");
 	function sta(x) {
@@ -139,15 +137,31 @@ ul{
 		    	   var count =  data.response.body.totalCount;
 		    	   fCount = data.response.body.items.item;
 		    	   //console.log(fCount);
-		    		   
+		    		  
 		    	   for(var c=0; c<fCount.length; c++){
 		    		   fr.push( data.response.body.items.item[c].firstimage);
 		    		   fName.push( data.response.body.items.item[c].title);
+		    		   countId.push(data.response.body.items.item[c].contentid);
 		    	   }
 		    	   
 	 	    	   try {
 	 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
 	 	    		   
+	 	    		   localStorage.setItem('cId1', countId[0]);
+	 	    		   localStorage.setItem('cId2', countId[1]);
+	 	    		   localStorage.setItem('cId3', countId[2]);
+	 	    		   localStorage.setItem('cId4', countId[3]);
+	 	    		   localStorage.setItem('cId5', countId[4]);
+	 	    	 	   localStorage.setItem('cId6', countId[5]);
+	 	    	 	   localStorage.setItem('cId7', countId[6]);
+	 	    	 	   localStorage.setItem('cId8', countId[7]);
+	 	    	 	   localStorage.setItem('cId9', countId[8]);
+	 	    	 	   var $ad2 = countId[1];
+	 	    	 	   localStorage.setItem('cId10', countId[9]);
+	 	    	 	   localStorage.setItem('cId11', countId[10]);
+	 	    	 	   localStorage.setItem('cId12', countId[11]);
+	 	    	 	   console.log($ad2);
+	 	    	 	   
 					   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
 					   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
 					   localStorage.setItem("img3", fr[2]);
@@ -183,8 +197,9 @@ ul{
 		       }
 		    })
 	}
-	
-	
+	function hoteldetail1(){
+	    	localStorage.setItem('searchDetail', 1);
+ 	}
 	
 	function search(){
 		sta(1)
@@ -358,11 +373,12 @@ ul{
 	<div class="container5" align="center">
 					<ul>
 						<li>
-                        	<a href="hoteldetail">
+                        	<a href="hoteldetail" onclick="hoteldetail1();">
                         		<div id="tableResult1">
                             	<script>
                             	    //document.write("<img src='" + fr[0] + "'width='220' height='168' /><br>");
                             	    //console.log(fr[0]);
+                            	    
 									document.write("<img src='" +localStorage.getItem("img1") + "' width='220' height='168' /><br>");
 								</script>
                             	<h6> 
@@ -378,7 +394,7 @@ ul{
   	  
 					<ul>
 						<li>
-                        	<a href="">
+                        	<a href="hoteldetail?ad2=asd">
                         		<div id="tableResult2">
                             	<script>
 									document.write("<img src='" +localStorage.getItem("img2") + "'width='220' height='168' /><br>");
@@ -392,7 +408,7 @@ ul{
                             </a>
                         </li>
                     </ul>
-  
+                    
 					<ul>
 						<li>
                         	<a href="">
