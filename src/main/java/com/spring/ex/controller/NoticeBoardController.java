@@ -56,8 +56,8 @@ public class NoticeBoardController {
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount - importantCount);
+		paging.setPageSize(15);
+		paging.setTotalCount(totalCount + importantCount);
 		
 		page = (page - 1) * 10;
 		

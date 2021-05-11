@@ -53,9 +53,18 @@
 					<tbody>
 					<c:forEach items="${NoticeList }" var="NoticeBoardVO">
 						<tr>
+					<c:choose>
+						<c:when test="${NoticeBoardVO.important ne 'Y' }">
 							<td>${NoticeBoardVO.nId }</td>
 							<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
 							<td>${NoticeBoardVO.reDate }</td>
+						</c:when>
+						<c:otherwise>
+							<td style="background: rgb(120,215,255);"><i class="fas fa-bullhorn"></i></td>
+							<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
+							<td style="background: rgb(120,215,255);">${NoticeBoardVO.reDate }</td>
+						</c:otherwise>
+					</c:choose>
 						</tr>
 					</c:forEach>
 					</tbody>
