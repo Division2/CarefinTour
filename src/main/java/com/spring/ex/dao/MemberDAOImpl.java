@@ -56,6 +56,5 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void memberDelete(MemberDTO dto) throws Exception {
 		sqlSession.delete(namespace+".memberDelete", dto);
-		System.out.println(dto.getPassword());
 	}	
 }

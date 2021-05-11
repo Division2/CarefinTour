@@ -67,6 +67,5 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void memberDelete(MemberDTO dto) throws Exception {
 		dao.memberDelete(dto);
-		System.out.println(dto.getPassword());
 	}
 }
