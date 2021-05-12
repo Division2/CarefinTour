@@ -126,3 +126,49 @@ function NoticeDelete() {
 		}
 	})
 }
+
+/* 1:1문의 등록 유효성 검사 */
+function InquiryWrite() {
+	var Name = $("#Name").val();
+	var Phone = $("#Phone").val();
+	var Title = $("#Title").val();
+	var Content = $("#Content").val();
+	
+	if(!Name) {
+		swal({
+			title: "1:1 문의",
+			text: "제목이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Phone) {
+		swal({
+			title: "1:1 문의",
+			text: "휴대폰 번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Title) {
+		swal({
+			title: "1:1 문의",
+			text: "제목이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Content) {
+		swal({
+			title: "1:1 문의",
+			text: "내용이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	$("#InquiryBoardWrite").submit();
+}

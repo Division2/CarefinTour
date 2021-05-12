@@ -137,7 +137,7 @@ public class CareController {
 		return "customer/inquiry";
 	}
 	@RequestMapping("inquiryWrite")
-	public String inquiryWrite() {
+	public String inquirywrite() {
 		return "customer/inquiryWrite";
 	}
 	//도로명주소 API

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>케어핀투어 - 고객센터</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -42,20 +43,32 @@
 					<thead>
 						<tr>
 							<th>번호</th>
+							<th>카테고리</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
-							<th>상태</th>
+							<th>답변상태</th>
 						</tr>
 					</thead>
 					<tbody>
 					<c:forEach items="${InquiryList }" var="InquiryBoardVO">
 						<tr>
-							<td>${InquiryBoardVO.getiId() }</td>
-							<td>1</td>
-							<td>2</td>
-							<td>3</td>
-							<td>4</td>
+							<td>${InquiryBoardVO.iId }</td>
+							<td>${InquiryBoardVO.category }</td>
+							<td><a href="inquiryView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
+							<td>${InquiryBoardVO.name}</td>
+							<td>${InquiryBoardVO.reDate }</td>
+						<c:choose>
+							<c:when test="${InquiryBoardVO.status eq 0}">
+								<td><span class="inquiry-status status-0">답변대기</span></td>
+							</c:when>
+							<c:when test="${InquiryBoardVO.status eq 1}">
+								<td><span class="inquiry-status status-1">답변보류</span></td>
+							</c:when>
+							<c:otherwise>
+								<td><span class="inquiry-status status-2">답변완료</span></td>
+							</c:otherwise>
+						</c:choose>
 						</tr>
 					</c:forEach>
 					</tbody>

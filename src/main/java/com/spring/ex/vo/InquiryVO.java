@@ -2,7 +2,7 @@ package com.spring.ex.vo;
 
 public class InquiryVO {
 	private int iId;
-	private String catogory;
+	private String category;
 	private String name;
 	private String phone;
 	private String title;
@@ -16,11 +16,11 @@ public class InquiryVO {
 	public void setiId(int iId) {
 		this.iId = iId;
 	}
-	public String getCatogory() {
-		return catogory;
+	public String getCategory() {
+		return category;
 	}
-	public void setCatogory(String catogory) {
-		this.catogory = catogory;
+	public void setCatogory(String category) {
+		this.category = category;
 	}
 	public String getName() {
 		return name;

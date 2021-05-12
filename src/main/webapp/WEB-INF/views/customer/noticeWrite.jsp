@@ -15,7 +15,7 @@
 	<jsp:include page="../layout/header.jsp"/>
 	
 	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'User'}">
-		<script>NoticeAuthCheck();</script>
+		<script>AuthCheck();</script>
 	</c:if>
 
 	<div class="container">
