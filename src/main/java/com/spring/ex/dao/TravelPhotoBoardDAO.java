@@ -9,6 +9,8 @@ import com.spring.ex.vo.TravelPhotoVO;
 public interface TravelPhotoBoardDAO {
 	//여행 게시판 리스트	
 	public List<TravelPhotoVO> list(HashMap<String, Integer> map) throws Exception;
+	//마이여행 게시판 리스트	
+	public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception;
 	//여행 게시판 입력	
 	public int write(Map<String, Object> map) throws Exception;
 	//게시판 읽기(아직 안만듬)	

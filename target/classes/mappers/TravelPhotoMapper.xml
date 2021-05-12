@@ -14,6 +14,11 @@
 		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
 	</select>
 	
+	<!-- 마이여행포토 게시물 화면출력 -->
+	<select id="mylist" resultType="TravelPhotoVO">
+		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
+	</select>
+	
 	<!-- 여행포토 게시물 읽기  -->
 	<select id="read" parameterType="int" resultType="TravelPhotoVO">
 		SELECT	prid, title, content, name, redate FROM photoreview WHERE prid = #{prid}

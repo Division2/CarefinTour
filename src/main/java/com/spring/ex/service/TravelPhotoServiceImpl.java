@@ -30,6 +30,12 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 		// TODO Auto-generated method stub
 		return dao.list(map);
 	}
+	//마이게시물 목록
+	@Override
+	public List<TravelPhotoVO> mylist(HashMap<String, Integer> map)throws Exception {
+		// TODO Auto-generated method stub
+		return dao.mylist(map);
+	}
 	//게시물 작성
 	@Override
 	public int addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {

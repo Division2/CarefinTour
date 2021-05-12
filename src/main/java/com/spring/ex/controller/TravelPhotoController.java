@@ -73,6 +73,34 @@ public class TravelPhotoController {
 			
 			return "ranking/travelphoto";
 		}
+		//마이게시물 출력
+		@RequestMapping(value = "/mylist", method = RequestMethod.GET)
+		public String mylist(Model model, HttpServletRequest request) throws Exception{
+			
+			int totalCount = service.PhotoTotalCount();
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(12);
+			paging.setTotalCount(totalCount);
+			
+			page = (page - 1) * 12;
+			
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());
+			
+			List<TravelPhotoVO> List = service.mylist(map);
+			
+			model.addAttribute("mylist", List);
+			model.addAttribute("Paging", paging);
+			
+			logger.info("mylist");
+			
+			return "ranking/myaddphoto";
+		}
+
 		//게시물 조회
 		@RequestMapping(value = "/readView", method = RequestMethod.GET)
 		public String read(TravelPhotoVO travelPhotoVO, Model model) throws Exception{
