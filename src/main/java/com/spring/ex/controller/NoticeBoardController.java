@@ -31,11 +31,10 @@ public class NoticeBoardController {
 	//공지사항 작성
 	@RequestMapping(value = "/noticeWrite", method = RequestMethod.POST)
 	public void Write(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
-		int result = 0;
 		
 		logger.info("Checked : " + vo.getImportant());
 		
-		result = service.NoticeWrite(vo);
+		int result = service.NoticeWrite(vo);
 		
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");

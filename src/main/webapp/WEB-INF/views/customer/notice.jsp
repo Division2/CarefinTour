@@ -164,6 +164,7 @@
 						<button class="btn btn-primary" onclick="javascript:location='noticeWrite'">등록</button>
 					</div>
 				</div>
+				<br>
 				</c:if>
 			</div>
 		</div>

@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="../layout/header.jsp"/>
 	
-	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'User'}">
+	<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() eq 'User'}">
 		<script>AuthCheck();</script>
 	</c:if>
 

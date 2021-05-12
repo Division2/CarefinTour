@@ -129,15 +129,25 @@ function NoticeDelete() {
 
 /* 1:1문의 등록 유효성 검사 */
 function InquiryWrite() {
-	var Name = $("#Name").val();
-	var Phone = $("#Phone").val();
+	var Category = $("#Category option:selected").val();
+	var Name = $("#UserName").val();
+	var Phone = $("#UserPhone").val();
 	var Title = $("#Title").val();
 	var Content = $("#Content").val();
 	
-	if(!Name) {
+	if(Category == 'null') {
 		swal({
 			title: "1:1 문의",
-			text: "제목이 입력되지 않았습니다.",
+			text: "카테고리가 선택되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Name) {
+		swal({
+			title: "1:1 문의",
+			text: "이름이 입력되지 않았습니다.",
 			icon: "warning",
 			timer: 3000
 		});

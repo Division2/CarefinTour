@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="../layout/header.jsp"/>
 	
-	<c:if test="${sessionScope.member ne null}">
+	<c:if test="${sessionScope.member eq null}">
 		<script>AuthCheck();</script>
 	</c:if>
 
@@ -31,7 +31,7 @@
 					<label class="col-sm-2" for="Category">문의유형</label>
 					<div class="col-sm-10">
 						<select class="form-control" id="Category" name="Category">
-							<option>문의 유형 선택</option>
+							<option value="null">문의 유형 선택</option>
 							<option value="패키지문의">패키지 문의</option>
 							<option value="여행문의">여행 문의</option>
 							<option value="결제문의">결제 문의</option>
@@ -43,13 +43,13 @@
 				<div class="form-group row">
 					<label class="col-sm-2" for="Name">작성자</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="text" id="Name" name="Name">
+						<input class="form-control" type="text" id="UserName" name="Name" value="${member.getName()}" readonly>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2" for="Phone">휴대전화</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="tel" id="Phone" name="Phone">
+						<input class="form-control" type="tel" id="UserPhone" name="Phone" value="${member.getPhone()}" readonly>
 					</div>
 				</div>
 				<div class="form-group row">
