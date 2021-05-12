@@ -1,28 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
-<!--현재 날짜 받아서 대입시킬떄 필요한건  -->
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%
-	Date nowTime = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd");
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
 <title>호텔예약 - 케어핀투어</title>
-<link href="css/section.css" rel="stylesheet">
-<link href="css/component.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 <style>
@@ -35,6 +25,14 @@ ul{
 <body>
 
 <script type="text/javascript">
+//url로 넘어온 코드값을 반환
+$.urlParam = function(name){
+    var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+    return results[1] || 0;
+}
+
+var searchDetailId = $.urlParam('cId')
+console.log(searchDetailId);
 
 /* function sta(x) {
     $.ajax({
@@ -89,7 +87,6 @@ ul{
 	       }
 	    })
 } */
-console.log(localStorage.getItem("searchDetail"));
 </script>
 	<jsp:include page="../layout/header.jsp"/>
 	
