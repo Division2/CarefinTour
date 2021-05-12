@@ -52,7 +52,7 @@
 				</table>
 				<div class="d-flex">
 					<div class="ml-auto">
-						<button class="btn btn-primary" onclick="javascript:location='addinquire'">문의하기</button>
+						<button class="btn btn-primary" onclick="javascript:location='inquiryWrite'">문의하기</button>
 					</div>
 				</div>
 			</div>

@@ -132,13 +132,13 @@ public class CareController {
 	public String noticemodify() {
 		return "customer/noticeModify";
 	}
-	@RequestMapping("inquire")
+	@RequestMapping("inquiry")
 	public String inquire() {
-		return "customer/inquire";
+		return "customer/inquiry";
 	}
-	@RequestMapping("addinquire")
-	public String addinquire() {
-		return "customer/addinquire";
+	@RequestMapping("inquiryWrite")
+	public String inquiryWrite() {
+		return "customer/inquiryWrite";
 	}
 	//도로명주소 API
 	@RequestMapping("jusoPopup")
