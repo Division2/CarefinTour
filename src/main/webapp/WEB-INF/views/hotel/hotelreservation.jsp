@@ -30,6 +30,8 @@ ul{
 </style>
 </head>
 	<script>
+	
+	//페이징
 	var fr = []; //숙박업소 이미지
 	var fName = []; //숙박업소 이름
 	var totalData = localStorage.getItem("count");    // 총 데이터 수
@@ -101,7 +103,7 @@ ul{
                                            
     }
 
-    
+    //검색 값 설정
     function high(){
         a = document.getElementById("areaNum");
         ga = a.options[a.selectedIndex].value; 
@@ -202,7 +204,6 @@ ul{
 	//숙박업소 목록 출력
 	function showView(){ 
 		if(localStorage.getItem("title1")=="undefined"){
-			
 		}else{
 			for(var i=1;i<=(localStorage.getItem("fCount").length+1)/16;i++){
 	    		document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
@@ -235,64 +236,48 @@ ul{
 	
 	<jsp:include page="../layout/header.jsp"/>
 	<div class="container">
-		<h3><strong>지역별 숙박정보</strong></h3><hr style="background:#1E90FF;border:solid 1px #96CDFA; ">							
-			<table class="table" style="background:#f1f3f5;height:auto;border:solid 1px #e2e2e2;">
-				<tr >
-					<th bgcolor="#F9F9F9" height="50px" >																		                         
-						<form class="form-inline">	
-							<label style="font-size:18px;">숙박 종류</label>
-								 &emsp; &emsp;	
-								
-								<select id="aType" onchange="high2();" class="form-control" style="width:185px;height:38px;" >
-	                                <option >숙박 종류</option>
-	                                <option value="">전체</option>
-	                            <!--     <option value="&goodStay=1">굿스테이</option> -->
-	                                <option value="&hanOk=1">한옥</option>
-	                                <option value="&benikia=1">베니키아</option>
-                                </select>     					
-						</form>
-                   	</th>           
-                </tr>
-          
-                <tr>
-					<th bgcolor="#F9F9F9" height="50px">					
-						<form class="form-inline">	
-							<label style="font-size:18px;">숙박 지역</label>
-								 &emsp; &emsp;								
-								<select id="areaNum" name="areaNum" onchange="high();" class="form-control" style="width:185px;height:38px;" >
-	                                <option  selected="selected">지역선택</option>
-	                                <option value="">전체</option>
-	                                <option value="1">서울</option>
-	                                <option value="2">인천</option>
-	                                <option value="3">대전</option>
-	                                <option value="4">대구</option>
-	                                <option value="5">광주</option>
-	                                <option value="6">부산</option>
-	                                <option value="7">울산</option>
-	                                <option value="8">세종시</option>
-	                                <option value="31">경기도</option>
-	                                <option value="32">강원도</option>
-	                                <option value="33">충청북도</option>
-	                                <option value="34">충청남도</option>
-	                                <option value="35">경상북도</option>
-	                                <option value="36">경사남도</option>
-	                                <option value="37">전라북도</option>
-	                                <option value="38">전라남도</option>
-	                                <option value="39">제주도</option>
-                                </select>     
-                                &emsp;
-                                
-						</form>
-                   	</th>           
-                </tr>
+		<h3><strong>지역별 숙박정보</strong></h3><hr style="background:#1E90FF;">							
+		<table class="table" style="background:#f1f3f5;height:auto;border:solid 1px #e2e2e2;">
+        	<tr align="center">
+				<th bgcolor="#F9F9F9" height="30px">					
+					<form class="form-inline">	
+					<label style="font-size:18px;">숙박 지역</label>&emsp; &emsp;								
+						<select id="areaNum" name="areaNum" onchange="high();" class="form-control" style="width:185px;height:50px;" >
+	                        <option  selected="selected">지역선택</option>
+	                        <option value="">전체</option>
+	                        <option value="1">서울</option>
+	                        <option value="2">인천</option>
+	                        <option value="3">대전</option>
+	                        <option value="4">대구</option>
+	                        <option value="5">광주</option>
+	                        <option value="6">부산</option>
+	                        <option value="7">울산</option>
+	                        <option value="8">세종시</option>
+	                        <option value="31">경기도</option>
+	                        <option value="32">강원도</option>
+	                        <option value="33">충청북도</option>
+	                        <option value="34">충청남도</option>
+	                        <option value="35">경상북도</option>
+	                        <option value="36">경사남도</option>
+	                        <option value="37">전라북도</option>
+	                        <option value="38">전라남도</option>
+	                        <option value="39">제주도</option>
+                        </select>&emsp;     
+					</form>
+                </th>     
+                
+               	<td align="right" bgcolor="#F9F9F9" >
+					<button type="button" class="form-control" onclick="search();" style="width:100px;height:50px;background:#96CDFA;font-size:25px;color:white;">검색</button>																			
+               	</td>
+           </tr>
                  
-                 <tr>
-                	<td>
-	                	<div align="center">
-							<button type="button" class="form-control" onclick="search();" style="width:300px;height:70px;background:#96CDFA;font-size:30px;color:white;">빠른검색</button>																			
-	                	</div>
-                 	</td>
-        	</tr>
+       		<!-- <tr>
+          		<td>
+	              	<div align="center">
+						<button type="button" class="form-control" onclick="search();" style="width:300px;height:50px;background:#96CDFA;font-size:30px;color:white;">빠른검색</button>																			
+	              	</div>
+          		</td>
+   			</tr> -->
         </table><p>  
 	                              		
 	   	<script> 
