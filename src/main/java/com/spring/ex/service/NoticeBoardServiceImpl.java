@@ -27,6 +27,12 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	public List<NoticeBoardVO> NoticeList(HashMap<String, Integer> map) throws Exception {
 		return dao.NoticeList(map);
 	}
+	
+	//공지사항 중요 게시물 총 갯수
+	@Override
+	public int ImportantNoticeTotalCount() throws Exception {
+		return dao.ImportantNoticeTotalCount();
+	}
 
 	//공지사항 게시물 총 갯수
 	@Override

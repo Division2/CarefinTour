@@ -99,19 +99,22 @@ public class MemberController {
 	
 	// 회원 탈퇴 
 	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
-	public String memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr) throws Exception{
-				
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		String sessionPass = member.getPassword();
-		String voPass = dto.getPassword();
-				
-		if(!(sessionPass.equals(voPass))) {
-			rttr.addFlashAttribute("msg", false);
-						return "redirect:/withdrawal";
-					}
-					service.memberDelete(dto);
-					session.invalidate();
-					return "redirect:/main";
+	public void memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
+		
+		MemberDTO sessionInfo = (MemberDTO)session.getAttribute("member");
+		
+		System.out.println("DTO : " + dto.getPassword());
+		System.out.println("Session : " + sessionInfo.getPassword());
+		
+		if (dto.getPassword().equals(sessionInfo.getPassword())) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			service.memberDelete(dto);
+			session.invalidate();
+			
+			out.println("<script>location.href='main';</script>");
+			out.close();
 		}
-
+	}
 }

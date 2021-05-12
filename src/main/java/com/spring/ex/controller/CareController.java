@@ -81,6 +81,15 @@ public class CareController {
 	public String addphoto() {
 		return "ranking/addphoto";
 	}
+	@RequestMapping("myaddphoto")
+	public String myaddphoto() {
+		return "ranking/myaddphoto";
+	}
+	@RequestMapping("updatePhoto")
+	public String updatePhoto() {
+		return "ranking/updatePhoto";
+	}
+
 	//여행정보
 	@RequestMapping("exchangeinfo")
 	public String exchangeinfo() {
@@ -166,7 +175,7 @@ public class CareController {
 	public String mileage() {
 		return "member/mileage";
 	}
-	@RequestMapping(value="/info", method = RequestMethod.GET)
+	@RequestMapping("/info")
 	public String info() {
 		return "member/info";
 	}
@@ -178,7 +187,7 @@ public class CareController {
 	public String inquirydetails() {
 		return "member/inquirydetails";
 	}
-	@RequestMapping(value="/withdrawal", method = RequestMethod.GET)
+	@RequestMapping("/withdrawal")
 	public String withdrawal() throws Exception {
 		return "member/withdrawal";
 	}
