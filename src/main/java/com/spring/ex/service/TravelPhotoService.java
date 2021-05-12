@@ -17,5 +17,11 @@ public interface TravelPhotoService {
 		public TravelPhotoVO read(int prid) throws Exception;
 		//여행포토 게시물 총 갯수
 		public int PhotoTotalCount() throws Exception;
+		//마이여행 게시판 리스트	
+		public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception;
+		// 게시물 수정
+		public void update(TravelPhotoVO travelPhotoVO) throws Exception;		
+		// 게시물 삭제
+		public void delete(int prid) throws Exception;
 	
 }

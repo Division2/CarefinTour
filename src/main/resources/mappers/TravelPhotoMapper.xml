@@ -14,6 +14,11 @@
 		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
 	</select>
 	
+	<!-- 마이여행포토 게시물 화면출력 -->
+	<select id="mylist" resultType="TravelPhotoVO">
+		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
+	</select>
+	
 	<!-- 여행포토 게시물 읽기  -->
 	<select id="read" parameterType="int" resultType="TravelPhotoVO">
 		SELECT	prid, title, content, name, redate FROM photoreview WHERE prid = #{prid}
@@ -26,10 +31,16 @@
 	
 	<!-- 게시판 조회수 -->
     <update id="boardHit" parameterType="int">
-    	UPDATE photoreview SET
-    	hit = hit+1
-    	WHERE prid = #{prid}
+    	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
+    
+    <update id="update" parameterType="TravelPhotoVO">
+		UPDATE photoreview SET title = #{title}, content = #{content} WHERE prid = #{prid} 
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM photoreview WHERE prid = #{prid}
+	</delete>
 	
 
  

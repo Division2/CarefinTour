@@ -30,6 +30,12 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 		// TODO Auto-generated method stub
 		return dao.list(map);
 	}
+	//마이게시물 목록
+	@Override
+	public List<TravelPhotoVO> mylist(HashMap<String, Integer> map)throws Exception {
+		// TODO Auto-generated method stub
+		return dao.mylist(map);
+	}
 	//게시물 작성
 	@Override
 	public int addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -47,11 +53,23 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 			dao.boardHit(prid);
 		return dao.read(prid);
 	}
-	//공지사항 게시물 총 갯수
+	//게시물 총 갯수
 	@Override
 	public int PhotoTotalCount() throws Exception {
 		return dao.PhotoTotalCount();
 	}
+	//게시물 수정
+	@Override
+	public void update(TravelPhotoVO travelPhotoVO) throws Exception {
+
+		dao.update(travelPhotoVO);
+	}
+	//게시물 삭제
+	@Override
+	public void delete(int prid) throws Exception {		
+		dao.delete(prid);
+	}
+
 
 	
 

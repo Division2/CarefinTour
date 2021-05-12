@@ -19,7 +19,10 @@
 		<div class="d-flex">
 			<h1>여행 포토</h1>
 			<div class="ml-auto">
+			<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
 				<button class="btn btn-primary" onclick="location.href='addphoto'">등록</button>
+				<button class="btn btn-primary" onclick="location.href='mylist.my'">내 후기</button>
+				</c:if>
 			</div>
 		</div>
 		<hr>

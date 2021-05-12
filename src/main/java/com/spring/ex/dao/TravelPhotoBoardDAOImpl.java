@@ -24,6 +24,12 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 		
 		return sql.selectList(namespace + ".list",map);
 	}
+	//마이게시글 목록 조회
+	@Override
+	public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception {
+		
+		return sql.selectList(namespace + ".mylist",map);
+	}
 	// 게시글 작성
 	@Override
 	public int write(Map<String, Object> map) throws Exception {
@@ -47,5 +53,19 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	public void boardHit(int prid) throws Exception {
 		// TODO Auto-generated method stub
 		sql.update(namespace  + ".boardHit", prid);
+	}
+	
+	// 게시물 수정
+	@Override
+	public void update(TravelPhotoVO travelPhotoVO) throws Exception {
+		
+		sql.update(namespace + ".update", travelPhotoVO);
+	}
+
+	// 게시물 삭제
+	@Override
+	public void delete(int prid) throws Exception {
+		
+		sql.delete(namespace + ".delete", prid);
 	}
 }

@@ -30,7 +30,7 @@
         <div class="form-group row">
             <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="author" name="name" required>
+                <input type="text" class="form-control" id="author" name="name" required readonly value="${sessionScope.member.getUserID()}">
             </div>
         </div>
         <div class="form-group row">

@@ -10,6 +10,32 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
+			var formObj = $("form[name='readForm']");
+			
+			// 수정 
+			$(".update_btn").on("click", function(){
+				formObj.attr("action", "/ex/update");
+				formObj.attr("method", "get");
+				formObj.submit();				
+			})
+			
+			// 삭제
+			$(".delete_btn").on("click", function(){
+				formObj.attr("action", "/ex/delete");
+				formObj.attr("method", "post");
+				formObj.submit();
+			})
+			
+			// 취소
+			$(".list_btn").on("click", function(){
+				
+				location.href = "/ex/mylist";
+			})
+		})
+	</script>
 <title>케어핀투어 - 여행 포토</title>
 </head>
 <body>
@@ -29,7 +55,8 @@
 			<hr />
 			
 			<section id="container">
-				<form role="form" method="post">
+				<form name="readForm" role="form" method="post">
+					<input type="hidden" id="prid" name="prid" value="${read.prid}" />
 					<table>
 						<tbody>
 							<tr>
@@ -60,6 +87,11 @@
 							</tr>		
 						</tbody>			
 					</table>
+					<div>
+					<button type="submit" class="update_btn">수정</button>
+					<button type="submit" class="delete_btn">삭제</button>
+					<button type="submit" class="list_btn">목록</button>	
+					</div>
 				</form>
 			</section>
 			<hr />
