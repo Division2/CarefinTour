@@ -16,8 +16,10 @@
 	
 		SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
 		
-		SELECT * FROM(SELECT * FROM notice UNION SELECT * FROM notice LIMIT #{Page}, #{PageSize}) AS a order BY Important = 'Y' DESC, nId DESC -->
-		(SELECT * FROM notice UNION SELECT * FROM notice order BY Important = 'Y' DESC, nId DESC LIMIT #{Page}, #{PageSize})
+		SELECT * FROM(SELECT * FROM notice UNION SELECT * FROM notice LIMIT #{Page}, #{PageSize}) AS a order BY Important = 'Y' DESC, nId DESC
+		(SELECT * FROM notice UNION SELECT * FROM notice order BY Important = 'Y' DESC, nId DESC LIMIT #{Page}, #{PageSize}) -->
+		
+		(SELECT * FROM notice WHERE Important = 'Y') UNION (SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize})
 	</select>
 	
 	<!-- 공지사항 중요 게시물 총 갯수 -->
@@ -47,11 +49,11 @@
 	
 	<!-- 공지사항 검색 -->
 	<select id="NoticeSearchView" resultType="NoticeBoardVO">
-		SELECT * FROM notice WHERE Title LIKE '%${title}%' LIMIT #{paging.pageNo}, #{paging.pageSize}
+		SELECT * FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 공지사항 검색 게시물 총 갯수 -->
 	<select id="getNoticeSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM notice WHERE Title LIKE '%${title}%'
+		SELECT COUNT(*) FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%')
 	</select>
 </mapper>

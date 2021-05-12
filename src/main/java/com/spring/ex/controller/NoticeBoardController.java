@@ -56,8 +56,8 @@ public class NoticeBoardController {
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);
-		paging.setPageSize(15);
-		paging.setTotalCount(totalCount + importantCount);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount - importantCount);
 		
 		page = (page - 1) * 10;
 		
@@ -89,13 +89,16 @@ public class NoticeBoardController {
 		page = (page - 1) * 10;
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("paging", paging);
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
 		map.put("title", title);
 		
 		List<NoticeBoardVO> List = service.NoticeSearchList(map);
 		
+		//페이지를 담아줘야행
 		model.addAttribute("NoticeList", List);
 		model.addAttribute("Paging", paging);
+		model.addAttribute("Title", title);
 		
 		return "customer/notice";
 	}
