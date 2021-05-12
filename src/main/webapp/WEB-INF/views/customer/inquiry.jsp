@@ -48,7 +48,17 @@
 							<th>상태</th>
 						</tr>
 					</thead>
-					
+					<tbody>
+					<c:forEach items="${InquiryList }" var="InquiryBoardVO">
+						<tr>
+							<td>${InquiryBoardVO.getiId() }</td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+						</tr>
+					</c:forEach>
+					</tbody>
 				</table>
 				<div class="d-flex">
 					<div class="ml-auto">
