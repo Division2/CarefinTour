@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.ex.dto.MemberDTO;
 import com.spring.ex.service.MemberService;
+import com.spring.ex.vo.MemberVO;
 
 @Controller
 public class MemberController {
@@ -22,7 +22,7 @@ public class MemberController {
 	private MemberService service;
 	
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
-	public @ResponseBody int Login(MemberDTO dto, HttpServletRequest request) throws Exception {
+	public @ResponseBody int Login(MemberVO dto, HttpServletRequest request) throws Exception {
 		
 		int result = 0;
 		HttpSession session = request.getSession();
@@ -31,7 +31,7 @@ public class MemberController {
 		System.out.println("로그인 웹 요청 PW : " + request.getParameter("Password"));
 		System.out.println("로그인 요청 시각 : " + request.getParameter("lastDate"));
 		
-		MemberDTO member = service.Login(dto);
+		MemberVO member = service.Login(dto);
 		
 		if (member != null) {
 			//로그인 시 lastDate 갱신
@@ -52,7 +52,7 @@ public class MemberController {
 	
 	// 회원가입
 	@RequestMapping(value = "/SignUp", method = RequestMethod.POST)
-	public void postSignUp(MemberDTO dto, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void postSignUp(MemberVO dto, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int result = 0;
 		HttpSession session = request.getSession();
@@ -76,11 +76,11 @@ public class MemberController {
 	
 	//회원가입 아이디 중복확인
 	@RequestMapping(value = "/IDCheck", method = RequestMethod.POST)
-	public @ResponseBody int IDCheck(MemberDTO dto) throws Exception {
+	public @ResponseBody int IDCheck(MemberVO dto) throws Exception {
 		
 		int result = 0;
 		
-		MemberDTO IDCheck = service.IDCheck(dto);
+		MemberVO IDCheck = service.IDCheck(dto);
 		System.out.println(IDCheck);
 		if (IDCheck == null) {
 			result = 1;
@@ -90,7 +90,7 @@ public class MemberController {
 	}
 	//회원 정보수정
 	@RequestMapping(value = "/MemberInfoUpdate", method = RequestMethod.POST)
-	public String MemberInfoUpdate(MemberDTO dto, HttpSession session) throws Exception {
+	public String MemberInfoUpdate(MemberVO dto, HttpSession session) throws Exception {
 		service.MemberInfoUpdate(dto);
 		session.invalidate();
 		
@@ -99,9 +99,9 @@ public class MemberController {
 	
 	// 회원 탈퇴 
 	@RequestMapping(value= "/memberDelete", method = RequestMethod.POST)
-	public void memberDelete(MemberDTO dto, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
+	public void memberDelete(MemberVO dto, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
 		
-		MemberDTO sessionInfo = (MemberDTO)session.getAttribute("member");
+		MemberVO sessionInfo = (MemberVO)session.getAttribute("member");
 		
 		System.out.println("DTO : " + dto.getPassword());
 		System.out.println("Session : " + sessionInfo.getPassword());

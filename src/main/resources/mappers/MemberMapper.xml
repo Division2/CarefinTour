@@ -3,7 +3,7 @@
 
 <mapper namespace="com.spring.ex.MemberMapper">
 	<!-- 회원 로그인 -->
-	<select id="MemberLogin" resultType="MemberDTO">
+	<select id="MemberLogin" resultType="MemberVO">
 		SELECT * FROM account WHERE UserID = #{UserID} AND Password = #{Password}
 	</select>
 	
@@ -34,7 +34,7 @@
     </insert>
     
     <!-- 회원가입 시 아이디 중복확인 -->
-    <select id="IDCheck" resultType="MemberDTO">
+    <select id="IDCheck" resultType="MemberVO">
     	SELECT * FROM account WHERE UserID = #{UserID}
     </select>
     

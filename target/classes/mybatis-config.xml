@@ -3,7 +3,7 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.ex.dto.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.spring.ex.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.spring.ex.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
 		<typeAlias type="com.spring.ex.vo.InquiryVO" alias="InquiryVO"/>
 		<typeAlias type="com.spring.ex.vo.TravelPhotoVO" alias="TravelPhotoVO"/>

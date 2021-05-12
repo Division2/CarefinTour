@@ -1,6 +1,6 @@
-package com.spring.ex.dto;
+package com.spring.ex.vo;
 
-public class MemberDTO {
+public class MemberVO {
 	private String UserID;
 	private String Password;
 	private String Name;
