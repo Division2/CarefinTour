@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
 <title>호텔예약 - 블루핀투어</title>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+<script src="https://kit.fontawesome.com/d9cab3f7fe.js" crossorigin="anonymous"></script>
+
+<!-- 제이쿼리 스크립트 위로 부트스트랩 올리면 메뉴바가 작동안해요 -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 
@@ -25,19 +29,15 @@ ul{
 }
 </style>
 </head>
-
 	<script>
 	var fr = []; //숙박업소 이미지
 	var fName = []; //숙박업소 이름
 	var totalData = localStorage.getItem("count");    // 총 데이터 수
     var dataPerPage = 12;    // 한 페이지에 나타낼 데이터 수
     var pageCount = 10;        // 한 화면에 나타낼 페이지 수
-    //var totalData;    // 총 데이터 수
 	var currentPage = 1;
     
     function paging(totalData, dataPerPage, pageCount, currentPage){
-    	
-    	
         console.log("currentPage : " + currentPage);
         
         var totalPage = Math.ceil(totalData/dataPerPage);
@@ -101,14 +101,6 @@ ul{
                                            
     }
 
-    function high2(){
-        afType = document.getElementById("aType");
-        accommodationType = afType.options[afType.selectedIndex].value; 
-        try {
-       		localStorage.setItem("searchAccommodationType", accommodationType);
- 	   }catch (e) {
- 		}
-    }
     
     function high(){
         a = document.getElementById("areaNum");
@@ -122,30 +114,30 @@ ul{
 	 	}
     }
     
-    accommodationType ="";
-    accommodationType =localStorage.getItem("searchAccommodationType");
-    var fCount = [  ];
+    var fCount = [];
     var countId = [ ];
-	ga = "";
+	ga = " ";
 	ga = localStorage.getItem("searchPag");
 	function sta(x) {
 	    $.ajax({
-		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D'+ accommodationType +'&areaCode='  + ga +'&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
+		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&areaCode='  + ga +'&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
 		       dataType : 'json',
 		       type : 'GET',
 		       success : function(data) {
 		    	   var count =  data.response.body.totalCount;
 		    	   fCount = data.response.body.items.item;
-		    	   //console.log(fCount);
-		    		  
+		    	   console.log(fCount);
+		    	   nc = count - fCount;  
 		    	   for(var c=0; c<fCount.length; c++){
-		    		   fr.push( data.response.body.items.item[c].firstimage);
-		    		   fName.push( data.response.body.items.item[c].title);
+		    		   fr.push(data.response.body.items.item[c].firstimage);
+		    		   fName.push(data.response.body.items.item[c].title);
 		    		   countId.push(data.response.body.items.item[c].contentid);
 		    	   }
 		    	   
+		    	   
 	 	    	   try {
 	 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
+	 	    		   localStorage.setItem("fCount", fCount);
 	 	    		   
 	 	    		   localStorage.setItem('cId1', countId[0]);
 	 	    		   localStorage.setItem('cId2', countId[1]);
@@ -156,11 +148,9 @@ ul{
 	 	    	 	   localStorage.setItem('cId7', countId[6]);
 	 	    	 	   localStorage.setItem('cId8', countId[7]);
 	 	    	 	   localStorage.setItem('cId9', countId[8]);
-	 	    	 	   var $ad2 = countId[1];
 	 	    	 	   localStorage.setItem('cId10', countId[9]);
 	 	    	 	   localStorage.setItem('cId11', countId[10]);
 	 	    	 	   localStorage.setItem('cId12', countId[11]);
-	 	    	 	   console.log($ad2);
 	 	    	 	   
 					   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
 					   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
@@ -193,115 +183,61 @@ ul{
 					   if (e == QUOTA_EXCEEDED_ERR) {
 					     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
 					  }
-					}  
+					}  keys
 		       }
 		    })
 	}
-	function hoteldetail1(){
-	    	localStorage.setItem('searchDetail', 1);
- 	}
 	
+	//검색된 태그 출력
+	function showTitleView(){
+		if(localStorage.getItem("searchTag") == null){
+			for(var i=0; i<4;i++){
+				document.write("<br><br><br><br><br>" );
+			}
+		}else if(localStorage.getItem("searchTag") != null){
+			document.write(" <h4> <strong>" + localStorage.getItem("searchTag") +"</strong></h4><hr>");
+		}
+	}
+	
+	//숙박업소 목록 출력
+	function showView(){ 
+		if(localStorage.getItem("title1")=="undefined"){
+			
+		}else{
+			for(var i=1;i<=(localStorage.getItem("fCount").length+1)/16;i++){
+	    		document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
+			    document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");
+			    document.write("<h6>" + localStorage.getItem("title"+i) + "</h6> </ul></li>");
+			    document.write("</a>");
+		    }
+		}
+	}
+	
+	
+	//지역검색
 	function search(){
-		sta(1)
+		sta(1);
 		localStorage.setItem("pas", 1);
 		paging(totalData, dataPerPage, pageCount, localStorage.getItem("pas"));
 	}﻿
 
-	$("document").ready(function(){ //첫번째 실행위한 초기값 설정, 실행하면 검색된 결과에 따라 바뀜
-		try{
-    		if(localStorage.getItem("pas") == "undefined"){
-    			 localStorage.setItem("pas", 1);
-    		}else if(localStorage.getItem("pas") <= 0){
-    			 localStorage.setItem("pas", 1);
-    		}
-    		if(localStorage.getItem("title1") == "null"){
-    			 sta(1);
-    		}
-    		if(localStorage.getItem("count") == "null"){
-    			localStorage.setItem("count", 1000);
-   		    }
-    		if( localStorage.getItem("searchTag") =="null"){
-    			 localStorage.setItem("searchTag", "전체");
-    		}
-   			
-			window.onload = function(){
-				var tableShow1 = document.getElementById("tableResult1");
-				var tableShow2 = document.getElementById("tableResult2");
-				var tableShow3 = document.getElementById("tableResult3");
-				var tableShow4 = document.getElementById("tableResult4");
-				var tableShow5 = document.getElementById("tableResult5");
-				var tableShow6 = document.getElementById("tableResult6");
-				var tableShow7 = document.getElementById("tableResult7");
-				var tableShow8 = document.getElementById("tableResult8");
-				var tableShow9 = document.getElementById("tableResult9");
-				var tableShow10 = document.getElementById("tableResult10");
-				var tableShow11 = document.getElementById("tableResult11");
-				var tableShow12 = document.getElementById("tableResult12");
-	   			if(localStorage.getItem("title1") == "undefined"){
-	   				localStorage.setItem("title1", " ");
-	   				tableShow1.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title2") == "undefined"){
-	   				localStorage.setItem("title2", " ");
-	   				tableShow2.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title3") == "undefined"){
-	   				localStorage.setItem("title3", " ");
-	   				tableShow3.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title4") == "undefined"){
-	   				localStorage.setItem("title4", " ");
-	   				tableShow4.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title5") == "undefined"){
-	   				localStorage.setItem("title5", " ");
-	   				tableShow5.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title6") == "undefined"){
-	   				localStorage.setItem("title6", " ");
-	   				tableShow6.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title7") == "undefined"){
-	   				localStorage.setItem("title7", " ");
-	   				tableShow7.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title8") == "undefined"){
-	   				localStorage.setItem("title8", " ");
-	   				tableShow8.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title9") == "undefined"){
-	   				localStorage.setItem("title9", " ");
-	   				tableShow9.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title10") == "undefined"){
-	   				localStorage.setItem("title10", " ");
-	   				tableShow10.style.display = 'none';
-	       		}
-	   			if(localStorage.getItem("title11") == "undefined"){
-	   				localStorage.setItem("title11", " ");
-	   				tableShow11.style.display = 'none';
-	       		}
-				if(localStorage.getItem("title12") == "undefined"){
-	   				localStorage.setItem("title12", " ");
-	   				tableShow12.style.display = 'none';
-	       		}
-  	    	}
-       }catch(e){
-       }
-       
+	//페이징 출력
+	$("document").ready(function(){ 
+       console.log("1   :  "+localStorage.getItem("fCount").length);
        console.log(localStorage.getItem("searchPag"));
        paging(totalData, dataPerPage, pageCount, localStorage.getItem("pas"));
         
     });
 	</script>
+
+
 <body>
 	
-	<div class="">  </div>
 	<jsp:include page="../layout/header.jsp"/>
 	<div class="container">
 		<h3><strong>지역별 숙박정보</strong></h3><hr style="background:#1E90FF;border:solid 1px #96CDFA; ">							
 			<table class="table" style="background:#f1f3f5;height:auto;border:solid 1px #e2e2e2;">
-				<tr>
+				<tr >
 					<th bgcolor="#F9F9F9" height="50px" >																		                         
 						<form class="form-inline">	
 							<label style="font-size:18px;">숙박 종류</label>
@@ -356,237 +292,21 @@ ul{
 							<button type="button" class="form-control" onclick="search();" style="width:300px;height:70px;background:#96CDFA;font-size:30px;color:white;">빠른검색</button>																			
 	                	</div>
                  	</td>
-                 </tr>
-            </table><p>  
-          
+        	</tr>
+        </table><p>  
 	                              		
-	                              		 
-    <h4>
-   	 <strong>
-   		<script> 
-  	 	 	document.write(localStorage.getItem("searchTag"));
-   		 </script>
-   	 </strong>
-    </h4>
-   
-     <hr>
-	<div class="container5" align="center">
-					<ul>
-						<li>
-                        	<a href="hoteldetail" onclick="hoteldetail1();">
-                        		<div id="tableResult1">
-                            	<script>
-                            	    //document.write("<img src='" + fr[0] + "'width='220' height='168' /><br>");
-                            	    //console.log(fr[0]);
-                            	    
-									document.write("<img src='" +localStorage.getItem("img1") + "' width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-                            	<script>
-									document.write(localStorage.getItem("title1"));
-									//document.write(fName[0]);
-								</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                   </ul>
-  	  
-					<ul>
-						<li>
-                        	<a href="hoteldetail?ad2=asd">
-                        		<div id="tableResult2">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img2") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-                            	<script>
-									document.write(localStorage.getItem("title2"));
-								</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-                    
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult3">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img3") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-                            	<script>
-									document.write(localStorage.getItem("title3"));
-								</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-    
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult4">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img4") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            <script>
-									document.write(localStorage.getItem("title4"));
-								</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult5">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img5") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title5"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-         
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult6">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img6") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title6"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-       
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult7">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img7") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title7"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-        
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult8">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img8") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title8"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult9">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img9") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title9"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-           
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult10">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img10") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title10"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-
-					<ul>
-						<li>
-                        	<a href="">
-                        		<div id="tableResult11">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img11") + "'width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title11"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-
-					<ul>
-						<li>
-                        	<a href="">
-                        	   <div id="tableResult12">
-                            	<script>
-									document.write("<img src='" +localStorage.getItem("img12") + "' id='test' width='220' height='168' /><br>");
-								</script>
-                            	<h6> 
-	                            	<script>
-										document.write(localStorage.getItem("title12"));
-									</script>
-	                            </h6>
-	                            </div>
-                            </a>
-                        </li>
-                    </ul>
-
+	   	<script> 
+	   		showTitleView();
+	   	</script>
+	   
+		<div class="container5" align="center">
+		    <script>
+		    	showView();
+		    </script>
 		</div>
-	</div>
 	
 	<div id="paging" align="center"></div><br>
 
-	
-	
-	
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>
