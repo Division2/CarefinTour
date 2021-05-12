@@ -133,7 +133,7 @@ public class CareController {
 		return "customer/noticeModify";
 	}
 	@RequestMapping("inquiry")
-	public String inquire() {
+	public String inquiry() {
 		return "customer/inquiry";
 	}
 	@RequestMapping("inquiryWrite")
