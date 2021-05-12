@@ -41,10 +41,35 @@
 						<br>
 						<span class="sr-only">조회 </span><i class="fas fa-eye"></i><c:out value="${list.hit}"/> <br>
 						<span class="sr-only">작성일 </span><i class="far fa-clock"></i><fmt:formatDate value="${list.redate}" pattern="MM-dd"/>
-					</p>												
+					</p>
+														
 				</div>
-			</c:forEach>	
-			
+				</c:forEach>
+				
+				<table class="table table-hover table-white">
+						<colgroup>
+							<col width="50px">
+							<col width="150px">
+							<col width="50px">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="list" items="${list}">	
+							<tr>						
+								<td><i class="fas fa-bullhorn">${list.prid}</i></td>
+								<td><a href="/ex/readView?prid=${list.prid}">${list.title }</a></td>
+								<td>${list.redate}</td>						
+							</tr>
+								</c:forEach>
+						</tbody>
+					</table>		
+					
 		</div>
 				<!-- 게시글 페이징 처리(기준 10개) -->
 				<nav aria-label="Page navigation">

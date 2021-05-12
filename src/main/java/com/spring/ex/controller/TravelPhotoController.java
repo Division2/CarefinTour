@@ -111,13 +111,13 @@ public class TravelPhotoController {
 			return "ranking/travelphotoview";
 		}
 		// 게시판 수정뷰
-		@RequestMapping(value = "/updateView", method = {RequestMethod.GET, RequestMethod.POST})
+		@RequestMapping(value = "/updateView", method = RequestMethod.GET)
 		public String updateView(TravelPhotoVO travelPhotoVO, Model model) throws Exception{
 			logger.info("updateView");
 			
 			model.addAttribute("update", service.read(travelPhotoVO.getPrid()));
 			
-			return "ranking/updatePhoto";
+			return "ranking/updateView";
 		}
 		
 		// 게시판 수정

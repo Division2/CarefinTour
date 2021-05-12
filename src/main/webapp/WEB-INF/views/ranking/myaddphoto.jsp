@@ -27,11 +27,11 @@
 					<div class="col-sm-3">
 						<c:choose>
 							<c:when test = "${sessionScope.member.getUserID() eq mylist.name}">
-								<a href="/ex/readView?prid=${mylist.prid}">
+								<a href="/ex/updateView?prid=${mylist.prid}">
 									<img src='<c:url value="/resources/image/photoreview_folder/${mylist.s_file_name}"/>' width=200, height=200, alt="로고">
 								</a>
 								<h6>
-									<a href="/ex/readView?prid=${mylist.prid}"><c:out value="${mylist.title}"/></a>
+									<a href="/ex/updateView?prid=${mylist.prid}"><c:out value="${mylist.title}"/></a>
 								</h6>
 								<p>
 									<span class="sr-only">작성자 </span>

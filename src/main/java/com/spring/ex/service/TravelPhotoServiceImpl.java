@@ -66,7 +66,8 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	}
 	//게시물 삭제
 	@Override
-	public void delete(int prid) throws Exception {		
+	public void delete(int prid) throws Exception {
+		
 		dao.delete(prid);
 	}
 

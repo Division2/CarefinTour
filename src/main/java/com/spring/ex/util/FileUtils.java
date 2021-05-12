@@ -68,6 +68,42 @@ public class FileUtils {
 		return list;
 	}
 	
+	public List<Map<String, Object>> parseUpdateFileInfo(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception{ 
+		Iterator<String> iterator = mpRequest.getFileNames();
+		MultipartFile multipartFile = null; 
+		String o_file_name = null; 
+		String originalFileExtension = null; 
+		String s_file_name = null; 
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> listMap = null; 
+		int prid = travelPhotoVO.getPrid();
+		while(iterator.hasNext()){ 
+			multipartFile = mpRequest.getFile(iterator.next()); 
+			if(multipartFile.isEmpty() == false){ 
+				o_file_name = multipartFile.getOriginalFilename(); 
+				originalFileExtension = o_file_name.substring(o_file_name.lastIndexOf(".")); 
+				s_file_name = getRandomString() + originalFileExtension; 
+				multipartFile.transferTo(new File(filePath + s_file_name)); 
+				listMap = new HashMap<String,Object>();
+				listMap.put("IS_NEW", "Y");
+				listMap.put("prid", prid); 
+				listMap.put("o_file_name", o_file_name);
+				listMap.put("s_file_name", s_file_name); 
+				listMap.put("file_size", multipartFile.getSize()); 
+				list.add(listMap); 
+			} 
+		}
+		if(files != null && fileNames != null){ 
+			for(int i = 0; i<fileNames.length; i++) {
+					listMap = new HashMap<String,Object>();
+                    listMap.put("IS_NEW", "N");
+					listMap.put("prid", files[i]); 
+					list.add(listMap); 
+			}
+		}
+		return list; 
+	}
+	
 	public static String getRandomString() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}

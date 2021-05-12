@@ -85,9 +85,9 @@ public class CareController {
 	public String myaddphoto() {
 		return "ranking/myaddphoto";
 	}
-	@RequestMapping("updatePhoto")
+	@RequestMapping("updateView")
 	public String updatePhoto() {
-		return "ranking/updatePhoto";
+		return "ranking/updateView";
 	}
 
 	//여행정보

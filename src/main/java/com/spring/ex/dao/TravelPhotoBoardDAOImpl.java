@@ -61,7 +61,6 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 		
 		sql.update(namespace + ".update", travelPhotoVO);
 	}
-
 	// 게시물 삭제
 	@Override
 	public void delete(int prid) throws Exception {

@@ -13,24 +13,24 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 		$(document).ready(function(){
-			var formObj = $("form[name='readForm']");
+			var formObj = $("form[name='updateForm']");
 			
 			// 수정 
-			$("#update_btn").on("click", function(){
+			$(".update_btn").on("click", function(){
 				formObj.attr("action", "/ex/update");
 				formObj.attr("method", "get");
 				formObj.submit();				
 			})
 			
 			// 삭제
-			$("#delete_btn").on("click", function(){
+			$(".delete_btn").on("click", function(){
 				formObj.attr("action", "/ex/delete");
 				formObj.attr("method", "post");
 				formObj.submit();
 			})
 			
 			// 취소
-			$("#list_btn").on("click", function(){
+			$(".list_btn").on("click", function(){
 				
 				location.href = "/ex/mylist";
 			})
@@ -62,14 +62,14 @@
 		        <div class="form-group row">
 		            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
 			            <div class="col-sm-10">
-			                <textarea class="form-control" id="content" name="content" rows="5" required readonly>${update.content}</textarea>
+			                <textarea class="form-control" id="content" name="content" rows="5">${update.content}</textarea>
 			            </div>
 		        	</div>
 		         <div class="form-group row">
 		            <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
 			            <div class="col-sm-10">
 			                <div class="custom-file" id="file">            
-			                    <input type="file" class="custom-file-input" id="file" name="file" required readonly>
+			                    <input type="file" class="custom-file-input" id="file" name="file" value="${o_file_name}"required readonly>
 			                    <label class="custom-file-label" for="customFile">파일 입력</label>
 			                </div>
             		</div>
@@ -95,9 +95,9 @@
 	            <div class="col-auto mr-auto"></div>
 		            <div class="col-auto">
 		            	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-			                <input class="btn btn-primary" type="submit" id="update_btn" value="수정">
-			                <input class="btn btn-primary" type="submit" id="delet_btn" value="삭제">
-			                <input class="btn btn-primary" type="submit" id="list_btn" value="취소">
+			               <button type="submit" class="update_btn">수정</button>
+							<button type="submit" class="delete_btn">삭제</button>
+							<button type="submit" class="list_btn">목록</button>	
 		                </c:if>
 		            </div>
 		        </div>

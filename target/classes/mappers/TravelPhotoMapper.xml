@@ -34,8 +34,8 @@
     	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
     
-    <update id="update" parameterType="TravelPhotoVO">
-		UPDATE photoreview SET title = #{title}, content = #{content} WHERE prid = #{prid} 
+   <update id="update" parameterType="TravelPhotoVO">
+		UPDATE photoreview SET title = #{title},  content = #{content}, s_file_name = #{s_file_name}, o_file_name = #{o_file_name} WHERE prid = #{prid} 
 	</update>
 	
 	<delete id="delete" parameterType="int">
