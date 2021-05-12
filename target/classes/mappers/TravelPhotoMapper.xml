@@ -31,10 +31,16 @@
 	
 	<!-- 게시판 조회수 -->
     <update id="boardHit" parameterType="int">
-    	UPDATE photoreview SET
-    	hit = hit+1
-    	WHERE prid = #{prid}
+    	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
+    
+    <update id="update" parameterType="TravelPhotoVO">
+		UPDATE photoreview SET title = #{title}, content = #{content} WHERE prid = #{prid} 
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM photoreview WHERE prid = #{prid}
+	</delete>
 	
 
  

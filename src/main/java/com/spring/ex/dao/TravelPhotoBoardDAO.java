@@ -19,5 +19,9 @@ public interface TravelPhotoBoardDAO {
 	public int PhotoTotalCount() throws Exception;
 	// 게시판 조회수
 	public void boardHit(int prid) throws Exception;
+	// 게시물 수정
+	public void update(TravelPhotoVO travelPhotoVO) throws Exception;		
+	// 게시물 삭제
+	public void delete(int prid) throws Exception;
 
 }

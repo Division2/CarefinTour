@@ -102,13 +102,42 @@ public class TravelPhotoController {
 		}
 
 		//게시물 조회
-		@RequestMapping(value = "/readView", method = RequestMethod.GET)
+		@RequestMapping(value = "/readView", method= {RequestMethod.GET, RequestMethod.POST})
 		public String read(TravelPhotoVO travelPhotoVO, Model model) throws Exception{
 			logger.info("read");
 			
 			model.addAttribute("read", service.read(travelPhotoVO.getPrid()));
 			
 			return "ranking/travelphotoview";
+		}
+		// 게시판 수정뷰
+		@RequestMapping(value = "/updateView", method = {RequestMethod.GET, RequestMethod.POST})
+		public String updateView(TravelPhotoVO travelPhotoVO, Model model) throws Exception{
+			logger.info("updateView");
+			
+			model.addAttribute("update", service.read(travelPhotoVO.getPrid()));
+			
+			return "ranking/updatePhoto";
+		}
+		
+		// 게시판 수정
+		@RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
+		public String update(TravelPhotoVO travelPhotoVO) throws Exception{
+			logger.info("update");
+			
+			service.update(travelPhotoVO);
+			
+			return "redirect:/list";
+		}
+
+		// 게시판 삭제
+		@RequestMapping(value = "/delete", method = RequestMethod.POST)
+		public String delete(TravelPhotoVO travelPhotoVO) throws Exception{
+			logger.info("delete");
+			
+			service.delete(travelPhotoVO.getPrid());
+			
+			return "redirect:/list";
 		}
 		
 }

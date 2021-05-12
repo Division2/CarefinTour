@@ -54,4 +54,18 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 		// TODO Auto-generated method stub
 		sql.update(namespace  + ".boardHit", prid);
 	}
+	
+	// 게시물 수정
+	@Override
+	public void update(TravelPhotoVO travelPhotoVO) throws Exception {
+		
+		sql.update(namespace + ".update", travelPhotoVO);
+	}
+
+	// 게시물 삭제
+	@Override
+	public void delete(int prid) throws Exception {
+		
+		sql.delete(namespace + ".delete", prid);
+	}
 }
