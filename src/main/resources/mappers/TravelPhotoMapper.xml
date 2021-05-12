@@ -6,7 +6,7 @@
 	
 	<!-- 여행포토 게시물 등록  -->
 	<insert id="insert" parameterType="hashMap">
-			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name) VALUES (#{prid}, #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name})			
+			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size,file_no) VALUES (#{prid}, #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size},NEXTVAL(seq_prid))			
 	</insert>
 	
 	<!-- 여행포토 게시물 화면출력 -->
@@ -34,9 +34,16 @@
     	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
     
-   <update id="update" parameterType="TravelPhotoVO">
-		UPDATE photoreview SET title = #{title},  content = #{content}, s_file_name = #{s_file_name}, o_file_name = #{o_file_name} WHERE prid = #{prid} 
-	</update>
+    <select id="selectFileList" parameterType="int" resultType="hashMap">
+	SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} AND del_gb = 'N' ORDER BY prid ASC
+	</select>
+	
+   <update id="updateFile" parameterType="hashMap">
+    	UPDATE photoreview SET del_gb = 'Y' WHERE file_no = #{file_no}
+    </update>
+    <update id="update" parameterType="TravelPhotoVO">
+    	UPDATE photoreview SET name=#{name}, content=#{content} WHERE prid = #{prid}
+    </update>
 	
 	<delete id="delete" parameterType="int">
 		DELETE FROM photoreview WHERE prid = #{prid}

@@ -58,11 +58,29 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	public int PhotoTotalCount() throws Exception {
 		return dao.PhotoTotalCount();
 	}
-	//게시물 수정
+	//파일 조회
 	@Override
-	public void update(TravelPhotoVO travelPhotoVO) throws Exception {
-
+	public List<Map<String, Object>> selectFileList(int prid) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectFileList(prid);
+	}
+	//게시글 수정
+	@Override
+	public void update(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
+		
 		dao.update(travelPhotoVO);
+		
+		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(travelPhotoVO, files, fileNames, mpRequest);
+		Map<String, Object> tempMap = null;
+		int size = list.size();
+		for(int i = 0; i<size; i++) {
+			tempMap = list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")) {
+				dao.write(tempMap);
+			}else {
+				dao.updateFile(tempMap);
+			}
+		}
 	}
 	//게시물 삭제
 	@Override

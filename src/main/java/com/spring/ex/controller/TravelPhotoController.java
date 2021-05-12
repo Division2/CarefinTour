@@ -3,6 +3,7 @@ package com.spring.ex.controller;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.TravelPhotoService;
@@ -111,21 +113,23 @@ public class TravelPhotoController {
 			return "ranking/travelphotoview";
 		}
 		// 게시판 수정뷰
-		@RequestMapping(value = "/updateView", method = RequestMethod.GET)
+		@RequestMapping(value = "/updateView", method = {RequestMethod.GET, RequestMethod.POST})
 		public String updateView(TravelPhotoVO travelPhotoVO, Model model) throws Exception{
 			logger.info("updateView");
 			
 			model.addAttribute("update", service.read(travelPhotoVO.getPrid()));
+			List<Map<String, Object>> fileList = service.selectFileList(travelPhotoVO.getPrid());
+			model.addAttribute("file", fileList);
 			
 			return "ranking/updateView";
 		}
 		
 		// 게시판 수정
 		@RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
-		public String update(TravelPhotoVO travelPhotoVO) throws Exception{
+		public String update(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files,@RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception{
 			logger.info("update");
 			
-			service.update(travelPhotoVO);
+			service.update(travelPhotoVO,files,fileNames,mpRequest);
 			
 			return "redirect:/list";
 		}

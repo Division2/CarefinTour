@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -54,7 +55,18 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 		// TODO Auto-generated method stub
 		sql.update(namespace  + ".boardHit", prid);
 	}
-	
+	//파일 조회
+	@Override
+	public List<Map<String, Object>> selectFileList(int prid) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList(namespace + ".selectFileList", prid);
+	}
+	// 게시물 수정
+	@Override
+	public int updateFile(Map<String, Object> map) throws Exception {
+		
+		return sql.update(namespace + ".updateFile", map);
+	}
 	// 게시물 수정
 	@Override
 	public void update(TravelPhotoVO travelPhotoVO) throws Exception {

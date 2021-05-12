@@ -2,6 +2,7 @@ package com.spring.ex.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -17,10 +18,12 @@ public interface TravelPhotoService {
 		//여행포토 게시물 총 갯수
 		public int PhotoTotalCount() throws Exception;
 		//마이여행 게시판 리스트	
-		public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception;
-		// 게시물 수정
-		public void update(TravelPhotoVO travelPhotoVO) throws Exception;	
+		public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception;	
 		// 게시물 삭제
 		public void delete(int prid) throws Exception;
+		// 첨부파일 조회
+		public List<Map<String, Object>> selectFileList(int prid) throws Exception;
+		// 게시물 수정
+		public void update(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 }

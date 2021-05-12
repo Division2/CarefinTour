@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.spring.ex.vo.TravelPhotoVO;
 
 public interface TravelPhotoBoardDAO {
@@ -19,9 +21,13 @@ public interface TravelPhotoBoardDAO {
 	public int PhotoTotalCount() throws Exception;
 	// 게시판 조회수
 	public void boardHit(int prid) throws Exception;
+	// 파일 조회
+	public List<Map<String, Object>> selectFileList(int prid) throws Exception;
 	// 게시물 수정
-	public void update(TravelPhotoVO travelPhotoVO) throws Exception;
+	public int updateFile(Map<String, Object> map) throws Exception;
 	// 게시물 삭제
 	public void delete(int prid) throws Exception;
+	// 게시물 수정
+	public void update(TravelPhotoVO travelPhotoVO) throws Exception;
 
 }

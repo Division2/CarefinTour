@@ -42,9 +42,8 @@
          <div class="form-group row">
             <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
             <div class="col-sm-10">
-                <div class="custom-file" id="file">            
-                    <input type="file" class="custom-file-input" id="file" name="file" required readonly>
-                    <label class="custom-file-label" for="customFile">파일 입력</label>
+                <div class="custom-file" id="file">        
+               		 <input type="file" name="file">
                 </div>
             </div>
             	<script>

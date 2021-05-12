@@ -14,7 +14,6 @@ public class TravelPhotoVO {
 	private int good;
 	private int bad;
 	private int hit;
-
 	
 	public int getGood() {
 		return good;
