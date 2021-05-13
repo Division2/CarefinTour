@@ -140,6 +140,10 @@ public class CareController {
 	public String inquirywrite() {
 		return "customer/inquiryWrite";
 	}
+	@RequestMapping("inquiryView")
+	public String inquiryview() {
+		return "customer/inquiryView";
+	}
 	//도로명주소 API
 	@RequestMapping("jusoPopup")
 	public String findJuso() {
