@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 public interface TravelPhotoService {
@@ -25,5 +26,11 @@ public interface TravelPhotoService {
 		public List<Map<String, Object>> selectFileList(int prid) throws Exception;
 		// 게시물 수정
 		public void update(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
+		//게시물 작성
+		public int addfishphoto(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception;
+		//탑앵글러 목록
+		public List<TopAnlgerVO> topanglers(HashMap<String, Integer> map) throws Exception;
+		//여행포토 게시물 총 갯수
+		public int TopAnglerTotalCount() throws Exception;
 	
 }
