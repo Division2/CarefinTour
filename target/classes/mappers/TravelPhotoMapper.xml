@@ -6,7 +6,7 @@
 	
 	<!-- 여행포토 게시물 등록  -->
 	<insert id="insert" parameterType="hashMap">
-			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size,file_no) VALUES (#{prid}, #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size},NEXTVAL(seq_prid))			
+			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size) VALUES (NEXTVAL(SEQ_prid), #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size})			
 	</insert>
 	
 	<!-- 여행포토 게시물 화면출력 -->
@@ -35,12 +35,13 @@
     </update>
     
     <select id="selectFileList" parameterType="int" resultType="hashMap">
-	SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} AND del_gb = 'N' ORDER BY prid ASC
+	SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
 	</select>
 	
    <update id="updateFile" parameterType="hashMap">
-    	UPDATE photoreview SET del_gb = 'Y' WHERE file_no = #{file_no}
+    	UPDATE photoreview SET s_file_name=#{s_file_name}, o_file_name=#{o_file_name}, file_size=#{file_size} WHERE prid = #{prid}
     </update>
+    
     <update id="update" parameterType="TravelPhotoVO">
     	UPDATE photoreview SET name=#{name}, content=#{content} WHERE prid = #{prid}
     </update>

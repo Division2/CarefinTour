@@ -13,7 +13,7 @@ import com.spring.ex.vo.TravelPhotoVO;
 
 @Component("fileUtils")
 public class FileUtils {
-	private static final String filePath = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	private static final String filePath = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
 	
 	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
@@ -95,10 +95,10 @@ public class FileUtils {
 			} 
 		}
 		if(files != null && fileNames != null){ 
-			for(int i = 0; i<fileNames.length; i++) {
+			for(int i = 0; i<files.length; i++) {
 					listMap = new HashMap<String,Object>();
 					listMap.put("IS_NEW", "N"); 
-					listMap.put("file_no", files[i]); 
+					listMap.put("prid", files[i]); 
 					list.add(listMap); 
 			}
 		}
