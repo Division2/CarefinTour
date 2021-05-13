@@ -80,6 +80,35 @@ public class InquiryBoardController {
 		return "customer/inquiry";
 	}
 	
+	//1:1 문의 검색
+	@RequestMapping(value = "/inquirySearch", method = RequestMethod.GET)
+	public String NoticeSearchView(InquiryVO vo, HttpServletRequest request, Model model) throws Exception {
+		
+		String title = request.getParameter("title");
+		int totalCount = service.InquirySearchTotalCount(title);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		map.put("title", title);
+		
+		List<InquiryVO> List = service.InquirySearchList(map);
+		
+		model.addAttribute("InquiryList", List);
+		model.addAttribute("Paging", paging);
+		model.addAttribute("Title", title);
+		
+		return "customer/inquiry";
+	}
+	
 	//1:1 문의 게시글, 답변 문의 게시글 내용
 	@RequestMapping(value = "/inquiryView", method = RequestMethod.GET)
 	public String InquiryBoardView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {

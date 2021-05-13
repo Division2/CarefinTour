@@ -32,23 +32,33 @@
 		SELECT * FROM inquiryAnswer WHERE iId = #{iId}
 	</select>
 	
-	<!-- 1:1문의 답변 등록 시 답변완료로 변경 -->
+	<!-- 1:1 문의 답변 등록 시 답변완료로 변경 -->
 	<update id="InquiryStatusUpdate">
 		UPDATE inquiry SET Status = 2 WHERE iId = #{iId}
 	</update>
 	
-	<!-- 공지사항 수정 -->
+	<!-- 1:1 문의 수정 -->
 	<update id="InquiryAnswerModify">
 		UPDATE inquiryAnswer SET answerContent = #{answerContent} WHERE iId = #{iId}
 	</update>
 	
-	<!-- 1:1문의 답변 삭제 -->
+	<!-- 1:1 문의 답변 삭제 -->
 	<delete id="InquiryAnswerDelete">
 		DELETE FROM inquiryAnswer WHERE iId = #{iId}
 	</delete>
 	
-	<!-- 1:1문의 답변 삭제 시 답변대기로 변경 -->
+	<!-- 1:1 문의 답변 삭제 시 답변대기로 변경 -->
 	<update id="InquiryStatusUpdate2">
 		UPDATE inquiry SET Status = 0 WHERE iId = #{iId}
 	</update>
+	
+	<!-- 1:1 문의 검색 -->
+	<select id="InquirySearchView" resultType="InquiryVO">
+		SELECT * FROM inquiry WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 1:1 문의 검색 게시물 총 갯수 -->
+	<select id="getInquirySearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM inquiry WHERE Title LIKE CONCAT('%', #{title}, '%')
+	</select>
 </mapper>

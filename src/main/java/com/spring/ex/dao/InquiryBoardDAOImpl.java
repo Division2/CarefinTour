@@ -36,7 +36,7 @@ public class InquiryBoardDAOImpl implements InquiryBoardDAO {
 		return sqlSession.selectOne(namespace + ".getInquiryTotalCount");
 	}
 	
-	//1:1문의 게시글 내용
+	//1:1 문의 게시글 내용
 	@Override
 	public InquiryVO InquiryBoardView(int iId) throws Exception {
 		return sqlSession.selectOne(namespace + ".InquiryBoardView", iId);
@@ -48,33 +48,45 @@ public class InquiryBoardDAOImpl implements InquiryBoardDAO {
 		return sqlSession.insert(namespace + ".InquiryAnswerWrite", vo);
 	}
 	
-	//1:1문의 답변 게시글 내용
+	//1:1 문의 답변 게시글 내용
 	@Override
 	public InquiryAnswerVO InquiryAnswerBoardView(int iId) throws Exception {
 		return sqlSession.selectOne(namespace + ".InquiryAnswerBoardView", iId);
 	}
 	
-	//1:1문의 답변 등록 시 답변완료로 변경
+	//1:1 문의 답변 등록 시 답변완료로 변경
 	@Override
 	public void InquiryStatusUpdate(int iId) throws Exception {
 		sqlSession.update(namespace + ".InquiryStatusUpdate", iId);
 	}
 	
-	//1:1문의 답변 수정
+	//1:1 문의 답변 수정
 	@Override
 	public int InquiryAnswerModify(InquiryAnswerVO vo) throws Exception {
 		return sqlSession.update(namespace + ".InquiryAnswerModify", vo);
 	}
 	
-	//1:1문의 답변 삭제
+	//1:1 문의 답변 삭제
 	@Override
 	public int InquiryAnswerDelete(int iId) throws Exception {
 		return sqlSession.delete(namespace + ".InquiryAnswerDelete", iId);
 	}
 	
-	//1:1문의 답변 등록 시 답변완료로 변경
+	//1:1 문의 답변 등록 시 답변완료로 변경
 	@Override
 	public void InquiryStatusUpdate2(int iId) throws Exception {
 		sqlSession.update(namespace + ".InquiryStatusUpdate2", iId);
+	}
+
+	//1:1 문의 검색
+	@Override
+	public List<InquiryVO> InquirySearchList(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".InquirySearchView", map);
+	}
+	
+	//1:1 문의 검색 게시물 총 갯수
+	@Override
+	public int InquirySearchTotalCount(String title) throws Exception {
+		return sqlSession.selectOne(namespace + ".getInquirySearchTotalCount", title);
 	}
 }
