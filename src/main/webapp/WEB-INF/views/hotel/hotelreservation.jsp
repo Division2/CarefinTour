@@ -8,6 +8,7 @@
 <title>호텔예약 - 블루핀투어</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
+
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
@@ -214,7 +215,6 @@ ul{
 		}
 	}
 	
-	
 	//지역검색
 	function search(){
 		sta(1);
@@ -239,7 +239,7 @@ ul{
 		<h3><strong>지역별 숙박정보</strong></h3><hr style="background:#1E90FF;">							
 		<table class="table" style="background:#f1f3f5;height:auto;border:solid 1px #e2e2e2;">
         	<tr align="center">
-				<th bgcolor="#F9F9F9" height="30px">					
+				<th bgcolor="#F9F9F9" height="30px" >					
 					<form class="form-inline">	
 					<label style="font-size:18px;">숙박 지역</label>&emsp; &emsp;								
 						<select id="areaNum" name="areaNum" onchange="high();" class="form-control" style="width:185px;height:50px;" >
@@ -291,7 +291,7 @@ ul{
 		</div>
 	
 	<div id="paging" align="center"></div><br>
-
+	</div>
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>
