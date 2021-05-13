@@ -76,9 +76,10 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 		for(int i = 0; i<size; i++) {
 			tempMap = list.get(i);
 			if(tempMap.get("IS_NEW").equals("Y")) {
-				dao.write(tempMap);
-			}else {
 				dao.updateFile(tempMap);
+			}else {
+				
+				dao.write(tempMap);
 			}
 		}
 	}

@@ -36,7 +36,14 @@
 				
 				$(".cancel_btn").on("click", function(){
 					event.preventDefault();
-					location.href = "/board/readView?bno=${update.prid}"
+					location.href = "/ex/readView?bno=${update.prid}"
+				})
+				
+				// 삭제
+				$(".delete_btn").on("click", function(){
+					formObj.attr("action", "/ex/delete");
+					formObj.attr("method", "post");
+					formObj.submit();
 				})
 				
 				$(".update_btn").on("click", function(){
@@ -103,10 +110,10 @@
 								<div id="fileIndex">
 									<c:forEach var="file" items="${file}" varStatus="var">
 									<div>
-										<input type="hidden" id="file_no" name="file_no_${var.index}" value="${file.file_no}">
-										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="file_no${var.index}">
+										<input type="hidden" id="prid" name="prid_${var.index}" value="${file.prid}">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="prid_${var.index}">
 										<a href="#" id="fileName" onclick="return false;">${file.o_file_name}</a>(${file.file_size}kb)
-										<button id="fileDel" onclick="fn_del('${file.file_no}','file_no_${var.index}');" type="button">삭제</button><br>
+										<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button">삭제</button><br>
 									</div>
 									</c:forEach>
 								</div>
