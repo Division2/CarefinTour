@@ -55,7 +55,6 @@
 			})
 		function fn_addFile(){
 			var fileIndex = 1;
-			//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 			$(".fileAdd_btn").on("click", function(){
 				$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
 			});
@@ -75,81 +74,64 @@
  		}
 	</script>
 	<jsp:include page="../layout/header.jsp" />
-	<div class="container">
-		<div class="d-flex">
-				<h1>여행 포토 수정/삭제</h1>
-			</div>
-			<hr>
-				<form name="updateForm" role="form" method="post" action="/ex/update" enctype="multipart/form-data">
-					<input type="hidden" id="prid" name="prid" value="${update.prid}" />
-					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
-					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">  
-				 <div class="form-group row">
-		            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
-			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="title" name="title" value="${update.title}" required>
-			            </div>
-        			</div>
-		        <div class="form-group row">
-		            <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
-			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="author" name="name" required readonly value="${update.name}">
-			            </div>
-		        	</div>
-		        <div class="form-group row">
-		            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
-			            <div class="col-sm-10">
-			                <textarea class="form-control" id="content" name="content" rows="5">${update.content}</textarea>
-			            </div>
-		        	</div>
-		         <div class="form-group row">
-		            <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
-			            <div class="col-sm-10">
-			                <span>파일 목록</span>
-								<div class="form-group" style="border: 1px solid #dbdbdb;">								
-								<div id="fileIndex">
-									<c:forEach var="file" items="${file}" varStatus="var">
-									<div>
-										<input type="hidden" id="prid" name="prid_${var.index}" value="${file.prid}">
-										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="prid_${var.index}">
-										<a href="#" id="fileName" onclick="return false;">${file.o_file_name}</a>(${file.file_size}kb)
-										<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button">삭제</button><br>
+		<div class="container">
+			<div class="d-flex">
+					<h1>여행 포토 수정/삭제</h1>
+				</div>
+				<hr>
+					<form name="updateForm" role="form" method="post" action="/ex/update" enctype="multipart/form-data">
+						<input type="hidden" id="prid" name="prid" value="${update.prid}" />
+						<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
+						<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">  
+					 <div class="form-group row">
+			            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
+				            <div class="col-sm-10">
+				                <input type="text" class="form-control" id="title" name="title" value="${update.title}" required>
+				            </div>
+	        			</div>
+			        <div class="form-group row">
+			            <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
+				            <div class="col-sm-10">
+				                <input type="text" class="form-control" id="author" name="name" required readonly value="${update.name}">
+				            </div>
+			        	</div>
+			        <div class="form-group row">
+			            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
+				            <div class="col-sm-10">
+				                <textarea class="form-control" id="content" name="content" rows="5">${update.content}</textarea>
+				            </div>
+			        	</div>
+			         <div class="form-group row">
+			            <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
+				            <div class="col-sm-10">
+				                <span>파일 목록</span>
+									<div class="form-group" style="border: 1px solid #dbdbdb;">								
+									<div id="fileIndex">
+										<c:forEach var="file" items="${file}" varStatus="var">
+										<div>
+											<input type="hidden" id="prid" name="prid_${var.index}" value="${file.prid}">
+											<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="prid_${var.index}">
+											<a href="#" id="fileName" onclick="return false;">${file.o_file_name}</a>(${file.file_size}kb)
+											<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button">삭제</button><br>
+										</div>
+										</c:forEach>
 									</div>
-									</c:forEach>
-								</div>
-								</div>
-            				</div>
-		            	<!-- <script>
-					            $('input[type=file]').on('change',function(){
-					
-					    if(window.FileReader){
-					
-					      var filename = $(this)[0].files[0].name;
-					
-					    } else {
-					
-					      var filename = $(this).val().split('/').pop().split('\\').pop();
-					
-					    }
-					
-					    $(this).siblings('label').text(filename);
-					
-					  });
-					</script> -->
+									</div>
+	            				</div>		  
+		        			</div>
+			         <div class="row">
+			            <div class="col-auto mr-auto"></div>
+				            <div class="col-auto">
+				            	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
+					               <button type="submit" class="update_btn">수정</button>
+									<button type="submit" class="delete_btn">삭제</button>
+									<button type="submit" class="list_btn">목록</button>	
+									<button type="button" class="fileAdd_btn">파일추가</button>
+				                </c:if>
+				            </div>
+				        </div>
+			        </form>
 		        </div>
-	         <div class="row">
-	            <div class="col-auto mr-auto"></div>
-		            <div class="col-auto">
-		            	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-			               <button type="submit" class="update_btn">수정</button>
-							<button type="submit" class="delete_btn">삭제</button>
-							<button type="submit" class="list_btn">목록</button>	
-							<button type="button" class="fileAdd_btn">파일추가</button>
-		                </c:if>
-		            </div>
-		        </div>
-	        </form>
-        </div>
 	<jsp:include page="../layout/footer.jsp" />
 </body>
 </html>

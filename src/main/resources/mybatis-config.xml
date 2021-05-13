@@ -7,5 +7,6 @@
 		<typeAlias type="com.spring.ex.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
 		<typeAlias type="com.spring.ex.vo.InquiryVO" alias="InquiryVO"/>
 		<typeAlias type="com.spring.ex.vo.TravelPhotoVO" alias="TravelPhotoVO"/>
+		<typeAlias type="com.spring.ex.vo.TopAnlgerVO" alias="TopAnlgerVO"/>
 	</typeAliases>
 </configuration>

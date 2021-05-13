@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 public interface TravelPhotoBoardDAO {
@@ -29,5 +30,11 @@ public interface TravelPhotoBoardDAO {
 	public void delete(int prid) throws Exception;
 	// 게시물 수정
 	public void update(TravelPhotoVO travelPhotoVO) throws Exception;
+	//탑 앵글러 게시판 입력	
+	public int fishwrite(Map<String, Object> map) throws Exception;
+	//탑 앵글러 리스트	
+	public List<TopAnlgerVO>topanglers(HashMap<String, Integer> map) throws Exception;
+	//여행포토 게시물 총 갯수
+	public int TopAnglerTotalCount() throws Exception;
 
 }

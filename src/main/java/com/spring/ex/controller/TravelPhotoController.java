@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.TravelPhotoService;
 import com.spring.ex.vo.PagingVO;
+import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Controller
@@ -57,10 +58,10 @@ public class TravelPhotoController {
 			
 			PagingVO paging = new PagingVO();
 			paging.setPageNo(page);
-			paging.setPageSize(12);
+			paging.setPageSize(8);
 			paging.setTotalCount(totalCount);
 			
-			page = (page - 1) * 12;
+			page = (page - 1) * 8;
 			
 			HashMap<String, Integer> map = new HashMap<String, Integer>();
 			map.put("Page", page);
@@ -144,4 +145,50 @@ public class TravelPhotoController {
 			return "redirect:/list";
 		}
 		
+		//탑앵글러 작성
+	   @RequestMapping(value = "/gogo", method = RequestMethod.POST)
+	      public void fishwrite(TopAnlgerVO topAnlgerVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception{
+	         
+	         int result = 0;
+	            
+	         result = service.addfishphoto(topAnlgerVO,mpRequest);
+	         
+	         if (result == 1) {
+	            response.setContentType("text/html;charset=utf-8");
+	            PrintWriter out = response.getWriter();
+	            
+	            out.println("<script>location.href='topanglers'</script>");
+	            out.close();
+	         }   
+	         logger.info("gogo");
+	      }
+		
+		//탑앵글러 출력
+		@RequestMapping(value = "/topanglers", method = RequestMethod.GET)
+		public String topanglers(Model model, HttpServletRequest request) throws Exception{
+			
+			int totalCount = service.TopAnglerTotalCount();
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			page = (page - 1) * 10;
+			
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());
+			
+			List<TopAnlgerVO> List = service.topanglers(map);
+			
+			model.addAttribute("topanglers", List);
+			model.addAttribute("Paging", paging);
+			
+			logger.info("topanglers");
+			
+			return "ranking/topangler";
+		}
+
 }

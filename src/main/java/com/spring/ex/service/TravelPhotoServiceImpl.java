@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.dao.TravelPhotoBoardDAO;
 import com.spring.ex.util.FileUtils;
+import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
@@ -47,6 +48,7 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 		}
 		return size;
 	}
+	//게시글 조회수
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public TravelPhotoVO read(int prid) throws Exception {
@@ -75,12 +77,8 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 		int size = list.size();
 		for(int i = 0; i<size; i++) {
 			tempMap = list.get(i);
-			if(tempMap.get("IS_NEW").equals("Y")) {
+			
 				dao.updateFile(tempMap);
-			}else {
-				
-				dao.write(tempMap);
-			}
 		}
 	}
 	//게시물 삭제
@@ -89,8 +87,27 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 		
 		dao.delete(prid);
 	}
-
-
-	
+	//탑앵글러 작성
+	@Override
+	public int addfishphoto(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception {
+		
+		List<Map<String,Object>> list = fileUtils.parseInsertFishFileInfo(topAnlgerVO, mpRequest); 
+		int size = list.size();
+		for(int i=0; i<size; i++){ 
+			dao.fishwrite(list.get(i)); 
+		}
+		return size;
+	}
+	//탑앵글러 목록
+	@Override
+	public List<TopAnlgerVO> topanglers(HashMap<String, Integer> map)throws Exception {
+		// TODO Auto-generated method stub
+		return dao.topanglers(map);
+	}
+	//탑앵글러 총 갯수
+	@Override
+	public int TopAnglerTotalCount() throws Exception {
+		return dao.TopAnglerTotalCount();
+	}
 
 }

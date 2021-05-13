@@ -6,7 +6,7 @@
 	
 	<!-- 여행포토 게시물 등록  -->
 	<insert id="insert" parameterType="hashMap">
-			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size) VALUES (NEXTVAL(SEQ_prid), #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size})			
+			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size) VALUES (#{prid}, #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size})			
 	</insert>
 	
 	<!-- 여행포토 게시물 화면출력 -->
@@ -34,22 +34,39 @@
     	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
     
+    <!-- 파일 리스트 받기  -->
     <select id="selectFileList" parameterType="int" resultType="hashMap">
 	SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
 	</select>
 	
+	<!-- 파일 수정(사진)  -->
    <update id="updateFile" parameterType="hashMap">
     	UPDATE photoreview SET s_file_name=#{s_file_name}, o_file_name=#{o_file_name}, file_size=#{file_size} WHERE prid = #{prid}
     </update>
     
+    <!-- 파일 수정(내용들)  -->
     <update id="update" parameterType="TravelPhotoVO">
     	UPDATE photoreview SET name=#{name}, content=#{content} WHERE prid = #{prid}
     </update>
-	
+    
+	<!-- 파일 삭제  -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM photoreview WHERE prid = #{prid}
 	</delete>
 	
+	<!-- 여행포토 게시물 등록  -->
+	<insert id="insertfish" parameterType="hashMap">
+			INSERT INTO topranking(tid,title, content, name,o_file_fish, s_file_fish, file_size, fishsize, fishname) VALUES (#{tid}, #{title}, #{content}, #{name},#{o_file_fish}, #{s_file_fish}, #{file_size}, #{fishsize},#{fishname})			
+	</insert>
+	
+	<!-- 탑앵글러 게시물 화면출력 -->
+	<select id="topanglers" resultType="TopAnlgerVO">
+		SELECT  * FROM topranking order BY tid DESC LIMIT #{Page},#{PageSize}
+	</select>
+	
+	<!-- 탑앵글러 게시물 총 갯수 -->
+	<select id="getTopAnglerTotalCount" resultType="int">
+		SELECT COUNT(*) FROM topranking
+	</select>
 
- 
 </mapper>

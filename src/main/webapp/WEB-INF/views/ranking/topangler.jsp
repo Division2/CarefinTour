@@ -17,6 +17,13 @@
 
 	<div class="container">
 		<h1>탑 랭킹</h1>
+		<div class="d-flex">
+			<div class="ml-auto">
+				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
+					<button class="btn btn-primary" onclick="location.href='fishaddphoto'">등록요청</button>
+				</c:if>
+			</div>
+		</div>
 		<hr>
 		<div class="row">
 			<div class="col-sm-4">
@@ -83,93 +90,73 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>
-						<div class="d-flex align-items-baseline">
-							<h4 class="mr-1">1</h4>
-						</div>
-					</td>
-					<td>
-						<div class="d-flex align-items-center">
-							<img src='<c:url value="/resources/image/ranking/user1.jpg"/>' class="circle-img circle-img--small mr-2" alt="User Img">
-							<div class="user-info__basic">
-								<h5 class="mb-0">박성동</h5>
+				<c:forEach var="topanglers" items="${topanglers}">
+					<tr>
+						<td>
+							<div class="d-flex align-items-baseline">
+								<h4 class="mr-1">1</h4>
 							</div>
-						</div>
-					</td>
-					<td>붕어</td>
-					<td>150cm</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="d-flex align-items-baseline">
-							<h4 class="mr-1">2</h4>
-						</div>
-					</td>
-					<td>
-						<div class="d-flex align-items-center">
-							<img src='<c:url value="/resources/image/ranking/user2.jpg"/>' class="circle-img circle-img--small mr-2" alt="User Img">
-							<div class="user-info__basic">
-								<h5 class="mb-0">전기태</h5>
+						</td>
+						<td>
+							<div class="d-flex align-items-center">
+								<img src='<c:url value="/resources/image/topangler/${topanglers.s_file_fish}"/>' class="circle-img circle-img--small mr-2" alt="User Img">
+								<div class="user-info__basic">
+									<h5 class="mb-0">${topanglers.name}</h5>
+								</div>
 							</div>
-						</div>
-					</td>
-					<td>잉어</td>
-					<td>100cm</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="d-flex align-items-baseline">
-							<h4 class="mr-1">3</h4>
-						</div>
-					</td>
-					<td>
-						<div class="d-flex align-items-center">
-							<img src='<c:url value="/resources/image/ranking/user3.jpg"/>' class="circle-img circle-img--small mr-2" alt="User Img">
-							<div class="user-info__basic">
-								<h5 class="mb-0">김요한</h5>
-							</div>
-						</div>
-					</td>
-					<td>송사리</td>
-					<td>50cm</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="d-flex align-items-baseline">
-							<h4 class="mr-1">4</h4>
-						</div>
-					</td>
-					<td>
-						<div class="d-flex align-items-center">
-							<img src='<c:url value="/resources/image/ranking/user4.jpg"/>' class="circle-img circle-img--small mr-2" alt="User Img">
-							<div class="user-info__basic">
-								<h5 class="mb-0">이인호</h5>
-							</div>
-						</div>
-					</td>
-					<td>니모</td>
-					<td>15cm</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="d-flex align-items-baseline">
-							<h4 class="mr-1">5</h4>
-						</div>
-					</td>
-					<td>
-						<div class="d-flex align-items-center">
-							<img src='<c:url value="/resources/image/ranking/user5.jpg"/>' class="circle-img circle-img--small mr-2" alt="User Img">
-							<div class="user-info__basic">
-								<h5 class="mb-0">박남일</h5>
-							</div>
-						</div>
-					</td>
-					<td>버들치</td>
-					<td>10cm</td>
-				</tr>
+						</td>
+						<td>${topanglers.fishname}</td>
+						<td>${topanglers.fishsize}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
+		<!-- 게시글 페이징 처리(기준 10개) -->
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+							<li class="page-item disabled">
+								<a class="page-link" href="topanglers.do?page=${Paging.prevPageNo}">Previus</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" href="topanglers.do?page=${Paging.prevPageNo}">Previus</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+						<c:choose>
+							<c:when test="${i eq Paging.pageNo }">
+								<li class="page-item disabled">
+									<a class="page-link" href="topanglers.do?page=${i}"><c:out value="${i}"/></a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a class="page-link" href="topanglers.do?page=${i}"><c:out value="${i}"/></a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+							<li class="page-item disabled">
+								<a class="page-link" href="traveleview?page=${Paging.nextPageNo}">Next</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" href="travelphoto?page=${Paging.nextPageNo}">Next</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</nav>
 	</div>
 
 	<jsp:include page="../layout/footer.jsp" />

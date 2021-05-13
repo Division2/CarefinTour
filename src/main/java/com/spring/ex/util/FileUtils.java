@@ -9,14 +9,19 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Component("fileUtils")
 public class FileUtils {
-	private static final String filePath = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	//여행정보 사진 저장소 경로
+	private static final String filePath = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	//탑앵글러 사진 저장소 경로
+	private static final String filePath1 = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
 	
-	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, 
-			MultipartHttpServletRequest mpRequest) throws Exception{
+	//여행후기 사진 값 넣어주는 부분	
+	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception{
 		
 		/*
 			Iterator은 데이터들의 집합체? 에서 컬렉션으로부터 정보를 얻어올 수 있는 인터페이스입니다.
@@ -68,7 +73,58 @@ public class FileUtils {
 		return list;
 	}
 	
-
+	//탑앵글러 사진 값 넣어주는 부분
+	public List<Map<String, Object>> parseInsertFishFileInfo(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception{
+	
+			Iterator<String> iterator = mpRequest.getFileNames();
+			
+			MultipartFile multipartFile = null;
+			String originalFileName = null;
+			String originalFileExtension = null;
+			String storedFileName = null;
+			
+			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+			Map<String, Object> listMap = null;
+			
+			int tid = topAnlgerVO.getTid();
+			String title = topAnlgerVO.getTitle();
+			double fishsize = topAnlgerVO.getFishsize();
+			String content = topAnlgerVO.getContent();
+			String name = topAnlgerVO.getName();
+			String fishname = topAnlgerVO.getFishname();
+			
+			
+			File file = new File(filePath1);
+			if(file.exists() == false) {
+				file.mkdirs();
+			}
+			
+			while(iterator.hasNext()) {
+				multipartFile = mpRequest.getFile(iterator.next());
+				if(multipartFile.isEmpty() == false) {
+					originalFileName = multipartFile.getOriginalFilename();
+					originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+					storedFileName = getRandomString() + originalFileExtension;
+					
+					file = new File(filePath1 + storedFileName);
+					multipartFile.transferTo(file);
+					listMap = new HashMap<String, Object>();
+					listMap.put("tid", tid);
+					listMap.put("o_file_fish", originalFileName);
+					listMap.put("s_file_fish", storedFileName);
+					listMap.put("title", title);
+					listMap.put("content", content);
+					listMap.put("name", name);
+					listMap.put("fishsize", fishsize);
+					listMap.put("fishname", fishname);
+					listMap.put("file_size", multipartFile.getSize());
+					list.add(listMap);
+				}
+			}
+			return list;
+	}
+	
+	//여행 정보 사진 수정 할떄 넣어주는 부분
 	public List<Map<String, Object>> parseUpdateFileInfo(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception{ 
 		Iterator<String> iterator = mpRequest.getFileNames();
 		MultipartFile multipartFile = null; 
@@ -104,7 +160,8 @@ public class FileUtils {
 		}
 		return list; 
 	}
-
+	
+	//사진값 랜덤 값으로 변환하는 부분
 	public static String getRandomString() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}

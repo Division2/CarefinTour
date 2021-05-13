@@ -22,7 +22,7 @@
 					})
 					$("#list_btn").on("click", function(){
 						event.preventDefault();
-						location.href = "/ranking/travelphoto"
+						location.href = "/ranking/topangler"
 					})
 					fn_addFile();
 				})
@@ -42,10 +42,10 @@
 	<jsp:include page="../layout/header.jsp" />	
 		<div class="container">
 			<div class="d-flex">
-				<h1>여행 포토 등록</h1>
+				<h1>탑앵글러 등록</h1>
 			</div>
 			<hr>
-			<form action="gaza" method="POST" name="add" enctype="multipart/form-data">   
+			<form action="gogo" method="POST" name="add" enctype="multipart/form-data">   
 	        <div class="form-group row">
 	            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
 	            <div class="col-sm-10">
@@ -55,13 +55,25 @@
 	        <div class="form-group row">
 	            <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
 	            <div class="col-sm-10">
-	                <input type="text" class="form-control" id="author" name="name" required readonly value="${sessionScope.member.getUserID()}">
+	                <input type="text" class="form-control" id="name" name="name" required readonly value="${sessionScope.member.getUserID()}">
 	            </div>
 	        </div>
 	        <div class="form-group row">
-	            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
+	            <label for="author" class="form-label col-sm-2"><strong>물고기 크기</strong></label>
 	            <div class="col-sm-10">
-	                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+	                <input type="text" class="form-control" id="fishsize" name="fishsize">
+	            </div>
+	        </div>
+	         <div class="form-group row">
+	            <label for="author" class="form-label col-sm-2"><strong>물고기 종류</strong></label>
+	            <div class="col-sm-10">
+	                <input type="text" class="form-control" id="fishname" name="fishname">
+	            </div>
+	        </div>
+	         <div class="form-group row">
+	            <label for="author" class="form-label col-sm-2"><strong>내용</strong></label>
+	            <div class="col-sm-10">
+	                <input type="text" class="form-control" id="content" name="content">
 	            </div>
 	        </div>
 	         <div class="form-group row">

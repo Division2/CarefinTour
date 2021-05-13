@@ -45,7 +45,7 @@
 					</div>
 				</c:forEach>
 			</div>
-			<!-- 게시글 페이징 처리(기준 10개) -->
+			<!-- 게시글 페이징 처리(기준 8개) -->
 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
 					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->

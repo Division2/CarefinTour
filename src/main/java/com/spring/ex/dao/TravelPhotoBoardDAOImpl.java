@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 
@@ -79,4 +80,22 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 		
 		sql.delete(namespace + ".delete", prid);
 	}
+	// 탑앵글러 작성
+	@Override
+	public int fishwrite(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".insertfish", map);
+		
+	}
+	// 탑앵글러 목록 조회
+	@Override
+	public List<TopAnlgerVO> topanglers(HashMap<String, Integer> map) throws Exception {
+		
+		return sql.selectList(namespace + ".topanglers",map);
+	}
+	// 탑앵글러 게시물 총 갯수
+	@Override
+	public int TopAnglerTotalCount() throws Exception {
+		return sql.selectOne(namespace + ".getTopAnglerTotalCount");
+	}
+	
 }
