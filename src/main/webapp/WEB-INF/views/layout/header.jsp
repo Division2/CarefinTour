@@ -27,7 +27,7 @@
 					</a>
 				</div>
 				<div class="row" style="min-width:500px; margin-left:-300px; margin-right:-200px;">
-					<input class="form-control" type="text" style="float:left;margin-top:50px;width:880px;"/>&nbsp&nbsp&nbsp
+					<input class="form-control" type="text" style="float:left;margin-top:50px;width:880px;"/>
 					<button class="btn btn-primary" type="submit" style="background:white;color:black;border:solid 1px #E2E2E2;margin-top:50px;"><b style="color:#30a0d2;"><strong>search</strong></b></button>
 					</div>
 				<div class="row" style="min-width:500px; margin-left:-300px;">	
