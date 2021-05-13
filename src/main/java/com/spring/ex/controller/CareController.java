@@ -147,10 +147,15 @@ public class CareController {
 	public String inquiryview() {
 		return "customer/inquiryView";
 	}
-	//도로명주소 API
+	//회원가입 도로명주소 API
 	@RequestMapping("jusoPopup")
 	public String findJuso() {
 		return "layout/jusoPopup";
+	}
+	//마이페이지 도로명주소 API
+	@RequestMapping("jusoPopup2")
+	public String findJuso2() {
+		return "member/jusoPopup";
 	}
 	//하단 Information(회사 개요, 여행 약관(국내, 해외) 여행자 보험)
 	@RequestMapping("company")

@@ -229,3 +229,11 @@ function goPopup() {
 function jusoCallBack(roadFullAddr) {
 	document.form.Address.value = roadFullAddr;
 }
+
+/* 마이페이지 주소 찾기(도로명주소API) */
+function goPopup2() {
+	window.open("jusoPopup2","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+}
+function jusoCallBack2(roadFullAddr) {
+	document.MemberUpdate.Address.value = roadFullAddr;
+}

@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<hr>
-				<form action="MemberInfoUpdate" method="POST" id="MemberUpdate"name="MemberUpdate" >
+				<form action="MemberInfoUpdate" method="POST" id="MemberUpdate" name="MemberUpdate" >
 					<!-- 아이디 & 비밀번호 -->
 					<div class="form-group row">
 						<div class="col-xs-6 col-md-6">
@@ -97,7 +97,7 @@
 						</div>
 						<div class="col-xs-2 col-md-2">
 							<div class="input-group my-2 mb-1">
-								<button class="btn btn-info" onclick="goPopup()">주소 찾기</button>
+								<button type="button" class="btn btn-info" onclick="goPopup2()">주소 찾기</button>
 							</div>
 						</div>
 					</div>
