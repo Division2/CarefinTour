@@ -68,7 +68,6 @@ function detail1() {
 //숙박업소명 보여주기
 function showTitle() {
 	document.write(sessionStorage.getItem("dTitle"));
-	 
 }
 
 //공통정보 보여주기
@@ -81,27 +80,27 @@ function showDetail1() {
 	document.write("</td>");
 	document.write("<td width='770'>");
 	if(sessionStorage.getItem("dZipcode") != "undefined"){
-	document.write("<h6> 우편번호 : " + sessionStorage.getItem("dZipcode")  + "</h6>");
+	document.write("<font size='2' color='#515151'><b> 우편번호 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("dZipcode")  + "</font><br>");
 	}
 	if(sessionStorage.getItem("dTelname") != "undefined"){
-		document.write("<h6> 전화명 : " +  sessionStorage.getItem("dTelname")  + "</h6>");
+		document.write("<font size='2' color='#515151'><b> 전화명 : </font></b> <font size='2' color='#878787'>" +  sessionStorage.getItem("dTelname")  + "</font><br>");
 	}
 	if(sessionStorage.getItem("dTel") != "undefined" ){
-	document.write("<h6> 전화번호 : " + sessionStorage.getItem("dTel") + "</h6>");
+	document.write("<font size='2' color='#515151'><b> 전화번호 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("dTel") + "</font><br>");
 	}
 	if(sessionStorage.getItem("dHomepage") != "undefined"){
-	document.write("<h6> 홈페이지 : " + sessionStorage.getItem("dHomepage")  + "</h6>");
+	document.write("<font size='2' color='#515151'><b> 홈페이지 : </font></b> <font size='2'>" + sessionStorage.getItem("dHomepage")  + "</font><br>");
 	}
 	if(sessionStorage.getItem("daddr1") != "undefined"){
-	document.write("<h6> 주소 : " + sessionStorage.getItem("daddr1")  + "</h6>");
+	document.write("<font size='2' color='#515151'><b> 주소 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("daddr1")  + "</font>");
 	}
 	document.write("</td></tr> ");
    
 	document.write("<tr> <td  colspan='2' width='1200'><hr>");
 	if(sessionStorage.getItem("dOverview") != "undefined"){
-	document.write("<h5><b> 개요 </b></h5><h6>" + sessionStorage.getItem("dOverview")  + "</h6>");
+	document.write("<h5><b> 개요 </b></h5><font size='2' color='#515151'>" + sessionStorage.getItem("dOverview")  + "</font>");
 	}else{
-		document.write("<h5><b> 개요 </b></h5><h6>없음</h6>");
+		document.write("<h5><b> 개요 </b></h5><font>없음</font>");
 	}
 	document.write("</td></tr>");
 	document.write("</table> <hr>");
@@ -116,12 +115,76 @@ function detail2() {
 	       type : 'GET',
 	       success : function(data2) {
 	    	   hContent2 = data2.response.body.items.item;
+	    	   sessionStorage.setItem("infocenterlodging", hContent2.infocenterlodging); //문의 및 안내
+	    	   sessionStorage.setItem("scalelodging", hContent2.scalelodging); //규 모
+	    	   sessionStorage.setItem("accomcountlodging", hContent2.accomcountlodging);//수용가능인원
+	    	   sessionStorage.setItem("roomcount", hContent2.roomcount); //객실 수
+	    	   sessionStorage.setItem("roomtype", hContent2.roomtype); //객실유형
+	    	   sessionStorage.setItem("parkinglodging", hContent2.parkinglodging);  //주차가능
+	    	   sessionStorage.setItem("chkcooking", hContent2.chkcooking); //조리가능
+	    	   sessionStorage.setItem("checkintime", hContent2.checkintime); //체크인
+	    	   sessionStorage.setItem("checkouttime", hContent2.checkouttime); //체크아웃
+	    	   
+	    	   sessionStorage.setItem("reservationlodging", hContent2.reservationlodging); //예약 안내
+	    	   sessionStorage.setItem("reservationurl", hContent2.reservationurl); //예약홈페이지
+	    	   sessionStorage.setItem("pickup", hContent2.pickup); //픽업서비스
+	    	   sessionStorage.setItem("foodplace", hContent2.foodplace); //식음료장
+	    	   sessionStorage.setItem("subfacility", hContent2.subfacility);//부대시설
+	    	   sessionStorage.setItem("refundregulation", hContent2.refundregulation);//환불규정?
 	    	   
 	    	   console.log(data2);
 	       }
 	})
 }
 
+//소개정보 보여주기 
+function showDetail2() {
+	if(sessionStorage.getItem("infocenterlodging") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 문의 및 안내 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("infocenterlodging") + "</font><br>");
+	}
+	if(sessionStorage.getItem("scalelodging") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 규 모 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("scalelodging") + "</font><br>");
+	}
+	if(sessionStorage.getItem("accomcountlodging") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 수용 가능 인원 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("accomcountlodging") + "</font><br>");
+	}
+	if(sessionStorage.getItem("roomcount") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 객실 수 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("roomcount") + "</font><br>");
+	}
+	if(sessionStorage.getItem("roomtype") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 객실 유형 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("roomtype") + "</font><br>");
+	}
+	if(sessionStorage.getItem("parkinglodging") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 주차 가능 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("parkinglodging") + "</font><br>");
+	}
+	if(sessionStorage.getItem("chkcooking") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 조리 가능 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("chkcooking") + "</font><br>");
+	}
+	if(sessionStorage.getItem("checkintime") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 체크인 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("checkintime") + "</font><br>");
+	}
+	if(sessionStorage.getItem("checkouttime") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 체크아웃 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("checkouttime") + "</font><br>");
+	}
+	if(sessionStorage.getItem("reservationlodging") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 예약 안내 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("reservationlodging") + "</font><br>");
+	}
+	if(sessionStorage.getItem("reservationurl") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 예약안내 홈페이지 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("reservationurl") + "</font><br>");
+	}
+	if(sessionStorage.getItem("pickup") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 픽업서비스 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("pickup") + "</font><br>");
+	}
+	if(sessionStorage.getItem("foodplace") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 식음료장 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("foodplace") + "</font><br>");
+	}
+	if(sessionStorage.getItem("subfacility") != "undefined" && sessionStorage.getItem("subfacility") != null && sessionStorage.getItem("subfacility") != ""){
+		document.write("<font size='2' color='#515151'><b> · 부대시설 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("subfacility") + "</font><br>");
+	}
+	if(sessionStorage.getItem("refundregulation") != "undefined"){
+		document.write("<font size='2' color='#515151'><b> · 환불규정 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("refundregulation") + "</font><br>");
+	}
+}
 
 </script>
 	<jsp:include page="../layout/header.jsp"/>
@@ -141,7 +204,7 @@ function detail2() {
                 <a class="nav-link active" data-toggle="tab" href="#qwe">공통정보</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#asd">정보2</a>
+                <a class="nav-link" data-toggle="tab" href="#asd">소개정보</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#zxc">정보3</a>
@@ -156,6 +219,11 @@ function detail2() {
               </div>
               
               <div class="tab-pane fade" id="asd">
+                <br>
+              	<font size="4" color="#368AFF"><b>&nbsp;소개</b></font><br>
+              	<script>
+             	 	showDetail2();
+              	</script>
               </div>
               
               <div class="tab-pane fade" id="zxc">
@@ -164,7 +232,6 @@ function detail2() {
         </div>
       </div>
     </div>
-    
     
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
