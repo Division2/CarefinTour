@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <title>케어핀투어 - 고객센터</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
@@ -52,12 +49,12 @@
 					<c:choose>
 						<c:when test="${NoticeBoardVO.important ne 'Y' }">
 							<td>${NoticeBoardVO.nId }</td>
-							<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
+							<td><a href="noticeView?nId=${NoticeBoardVO.nId }"><c:out escapeXml="false" value="${NoticeBoardVO.title }"/></a></td>
 							<td>${NoticeBoardVO.reDate }</td>
 						</c:when>
 						<c:otherwise>
 							<td style="background: rgb(120,215,255);"><i class="fas fa-bullhorn"></i></td>
-							<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
+							<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }"><c:out escapeXml="false" value="${NoticeBoardVO.title }"/></a></td>
 							<td style="background: rgb(120,215,255);">${NoticeBoardVO.reDate }</td>
 						</c:otherwise>
 					</c:choose>

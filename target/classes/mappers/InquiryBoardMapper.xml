@@ -4,7 +4,7 @@
 <mapper namespace="com.spring.ex.InquiryBoardMapper">
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
-		INSERT INTO inquiry(Category, Name, Phone, Title, Content, Status) VALUES (#{category}, #{name}, #{phone}, #{title}, #{content}, 0)
+		INSERT INTO inquiry(Category, UserID, Name, Phone, Title, Content, Status) VALUES (#{category}, #{userId}, #{name}, #{phone}, #{title}, #{content}, 0)
 	</insert>
 
 	<!-- 1:1 문의 출력 -->
@@ -16,4 +16,39 @@
 	<select id="getInquiryTotalCount" resultType="int">
 		SELECT COUNT(*) FROM inquiry
 	</select>
+	
+	<!-- 1:1 문의 게시글 내용 -->
+	<select id="InquiryBoardView" resultType="InquiryVO">
+		SELECT * FROM inquiry WHERE iId = #{iId}
+	</select>
+	
+	<!-- 1:1 문의 답변 작성 -->
+	<insert id="InquiryAnswerWrite">
+		INSERT INTO inquiryAnswer(IID, answerContent) VALUES (#{iId}, #{answerContent})
+	</insert>
+	
+	<!-- 1:1 문의 답변 게시글 내용 -->
+	<select id="InquiryAnswerBoardView" resultType="InquiryAnswerVO">
+		SELECT * FROM inquiryAnswer WHERE iId = #{iId}
+	</select>
+	
+	<!-- 1:1문의 답변 등록 시 답변완료로 변경 -->
+	<update id="InquiryStatusUpdate">
+		UPDATE inquiry SET Status = 2 WHERE iId = #{iId}
+	</update>
+	
+	<!-- 공지사항 수정 -->
+	<update id="InquiryAnswerModify">
+		UPDATE inquiryAnswer SET answerContent = #{answerContent} WHERE iId = #{iId}
+	</update>
+	
+	<!-- 1:1문의 답변 삭제 -->
+	<delete id="InquiryAnswerDelete">
+		DELETE FROM inquiryAnswer WHERE iId = #{iId}
+	</delete>
+	
+	<!-- 1:1문의 답변 삭제 시 답변대기로 변경 -->
+	<update id="InquiryStatusUpdate2">
+		UPDATE inquiry SET Status = 0 WHERE iId = #{iId}
+	</update>
 </mapper>

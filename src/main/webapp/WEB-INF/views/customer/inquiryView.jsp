@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%pageContext.setAttribute("crlf", "\r\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>케어핀투어 - 고객센터</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="resources/js/Board.js"/>'></script>
+<link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
-
+	<script src='<c:url value="resources/js/Board.js"/>'></script>
+	
 	<div class="container">
 		<div class="row">
 			<!-- 고객센터 사이드바 -->
@@ -21,70 +22,139 @@
 			<div class="col-md-8">
 				<h1>1:1 문의</h1>
 				<hr>
+				<div class="card">
+					<div class="card-body">
+						<h3><i class="fas fa-battery-quarter"></i> 상담내용</h3>
+						<table class="table">
+							<tbody>
+								<tr>
+									<td style="background: rgb(198, 198, 198);">이름</td>
+									<td>${content.getName() }</td>
+									<td style="background: rgb(198, 198, 198);">등록일</td>
+									<td>${content.getReDate() }</td>
+								</tr>
+								<tr>
+									<td style="background: rgb(198, 198, 198);">카테고리</td>
+									<td>${content.getCategory() }</td>
+									<td style="background: rgb(198, 198, 198);">답변여부</td>
+							<c:choose>
+								<c:when test="${content.getStatus() eq 0}">
+									<td><span class="inquiry-status status-0">답변대기</span></td>
+								</c:when>
+								<c:when test="${content.getStatus() eq 1}">
+									<td><span class="inquiry-status status-1">답변보류</span></td>
+								</c:when>
+								<c:otherwise>
+									<td><span class="inquiry-status status-2">답변완료</span></td>
+								</c:otherwise>
+							</c:choose>
+								</tr>
+								<tr>
+									<td style="background: rgb(198, 198, 198);">제목</td>
+									<td colspan="3"><c:out escapeXml="false" value="${content.getTitle() }"/></td>
+								</tr>
+								<tr>
+									<td style="background: rgb(198, 198, 198);">내용</td>
+									<td colspan="3">
+										<div style="width:500px; height: 300px;">
+											<c:out escapeXml="false" value="${fn:replace(content.getContent(), crlf, '<br>')}"/>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<br>
+				<c:if test="${answerContent ne null}">
+				<h6 class="border-bottom pb-2 mb-0"></h6>
 				<br>
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">제목</h4>
-						<p class="card-text"><small class="text-muted">서브 제목</small></p>
-						<hr>
-						<p class="card-text"><c:out escapeXml="false" value="내용"/></p>
+						<div class="d-flex">
+							<h3><i class="fas fa-battery-three-quarters"></i> 답변내용</h3>
+							<div class="ml-auto">
+								<small class="text-muted">답변시각 : ${answerContent.getReDate() }</small>
+							</div>
+						</div>
+						<table class="table">
+							<tbody>
+								<tr>
+									<td style="background: rgb(198, 198, 198);">내용</td>
+									<td colspan="3">
+										<div style="width:500px; height: 300px;">
+											<c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), crlf, '<br>')}"/>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<div class="row mt-3">
-					<div class="col-auto mr-auto"></div>
-					<div class="col-auto">
-						<form name="postUpdate" method="POST">
-						<!-- 세션의 ID와 게시글 작성자가 같을 경우에만 수정, 삭제 권한을 줌 -->
-						<c:if test="${sessionScope.Account eq dto.name }">
-							<button class="btn btn-primary" type="button" onclick="modifyView()">수정</button>
-							<button class="btn btn-primary" type="button" onclick="deletePost()">삭제</button>
-						</c:if>
-							<button class="btn btn-primary" type="button" onclick="window.location.href='board.do'">목록</button>
-						</form>
-					</div>
-				</div>
-			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
-				<h6 class="border-bottom pb-2 mb-0">댓글 목록</h6>
-				<div id="replyList"></div>
-				<c:if test="">
-					<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">등록된 댓글이 없습니다.</p>
+				<br>
 				</c:if>
-				<div class="media text-muted pt-3">
-					<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">
-						<title>꾸엑</title>
-						<rect width="100%" height="100%" fill="#007bff"></rect>
-						<text x="50%" fill="#007bff" dy=".3em">32x32</text>
-					</svg>
-					<form name="replyUpdate" method="POST">
-						<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">
-							<span class="d-block">
-								<strong class="text-gray-dark">123</strong>
-								<span style="padding-left: 7px; font-size: 9pt">
-									<c:out value=""/>
-									<!-- 대댓글, 댓글 수정은 ajax말고는 modal로 가능하다고 한당.. 나중에 천천히 하는걸로 하자. -->
-										<a href="#" data-toggle="modal" data-target="#addReply" data-postid="" data-replyid="">답글</a>
-									<!-- 세션의 ID와 댓글 작성자가 같을 경우에만 수정, 삭제 권한을 줌 -->
-										<a href="#" data-toggle="modal" data-target="#modifyReply" data-postid="" data-replyid="" data-content="">수정</a>
-										<a href="javascript:deleteReply();">삭제</a>
-								</span>
-							</span>
-							<c:out escapeXml="false" value=""/>
-						</p>
-					</form>
+				
+				<div class="d-flex">
+					<div class="ml-auto">
+					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
+						<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
+						<button class="btn btn-danger" type="button"  onclick="answerInquiryDelete()">삭제</button>
+					</c:if>
+					<c:if test="${answerContent ne null}">
+						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+					</c:if>
+					</div>
 				</div>
-			<form name="writeReply" action="writeReply.do" method="POST">
-				<input type="hidden" name="bId" id="bId" value="">
-				<input type="hidden" name="writer" id="writer" value="${sessionScope.Account }">
-				<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
-					<textarea name="content" id="content" class="form-control" rows="3" placeholder="댓글을 입력해 주세요" required></textarea>
-					<button type="submit" class="btn btn-primary" id="btnReplySave" style="width: 100%; margin-top: 0px">등 록</button>
+				
+				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User' && answerContent eq null }">
+				<h6 class="border-bottom pb-2 mb-0"></h6>
+				<br>
+				<form name="inquiryAnswerWrite" action="inquiryAnswerWrite" method="POST">
+					<div class="bg-white rounded shadow-sm">
+						<textarea id="answerContent" name="answerContent" class="form-control" rows="3" placeholder="답글을 입력해 주세요" required></textarea>
+						<input type="hidden" id="iId" name="iId" value="${param.iId }">
+						<button type="button" class="btn btn-primary" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
+					</div>
+				</form>
+				</c:if>
+				<br>
+				<div class="d-flex">
+					<div class="ml-auto">
+					<c:if test="${answerContent eq null}">
+						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+					</c:if>
+					</div>
 				</div>
-			</form>
-			</div>
+				<br>
 			</div>
 		</div>
 	</div>
+	
 	<jsp:include page="../layout/footer.jsp"/>
 	
+	<!-- 답변 수정 Modal -->
+	<div class="modal fade" id="AnswerEditModal" tabindex="-1" role="dialog" aria-labelledby="AnswerEditModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-title text-center">
+						<h4>답변내용 수정</h4>
+					</div>
+					<div class="d-flex flex-column text-center">
+						<form id="AnswerContentModify" name="AnswerContentModify" action="inquiryModify" method="POST">
+							<div class="form-group">
+								<textarea id="answerEditContent" name="answerContent" class="form-control" rows="3"><c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), '<br>', crlf)}"/></textarea>
+							</div>
+							<input type="hidden" id="iId" name="iId" value="<%=request.getParameter("iId")%>">
+							<button type="submit" class="btn btn-primary btn-block btn-round">수정하기</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

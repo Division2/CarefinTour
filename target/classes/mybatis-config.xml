@@ -6,6 +6,7 @@
 		<typeAlias type="com.spring.ex.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.spring.ex.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
 		<typeAlias type="com.spring.ex.vo.InquiryVO" alias="InquiryVO"/>
+		<typeAlias type="com.spring.ex.vo.InquiryAnswerVO" alias="InquiryAnswerVO"/>
 		<typeAlias type="com.spring.ex.vo.TravelPhotoVO" alias="TravelPhotoVO"/>
 	</typeAliases>
 </configuration>

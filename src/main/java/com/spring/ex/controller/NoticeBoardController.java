@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -128,9 +129,8 @@ public class NoticeBoardController {
 	//공지사항 수정
 	@RequestMapping(value = "/noticeModify", method = RequestMethod.POST)
 	public void Modify(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
-		int result = 0;
 		
-		result = service.NoticeModify(vo);
+		int result = service.NoticeModify(vo);
 		
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
@@ -167,16 +167,15 @@ public class NoticeBoardController {
 	//공지사항 삭제
 	@RequestMapping(value = "/noticeDelete", method = RequestMethod.GET)
 	public void NoticeDelete(HttpServletRequest request) throws Exception {
-		int result = 0;
 		
+		HttpSession session = request.getSession();
 		int nId = Integer.parseInt(request.getParameter("nId"));
-		String auth = request.getParameter("auth");
 		
-		if (auth != "Admin") {
-			result = service.NoticeDelete(nId);
+		if (session.getAttribute("auth").equals("Admin")) {
+			int result = service.NoticeDelete(nId);
+			
+			logger.info("nId : " + nId);
+			logger.info("게시물 삭제 : " + result);
 		}
-		
-		logger.info("nId : " + nId);
-		logger.info("게시물 삭제 : " + result);
 	}
 }

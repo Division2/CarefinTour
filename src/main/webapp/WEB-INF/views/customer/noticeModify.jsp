@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%pageContext.setAttribute("crlf", "\r\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>케어핀투어 - 고객센터</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="resources/js/Board.js"/>'></script>
-<script src='<c:url value="resources/js/Authority.js"/>'></script>
 </head>
 <body>
-
 	<jsp:include page="../layout/header.jsp"/>
+	<script src='<c:url value="resources/js/Board.js"/>'></script>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
 	
 	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'User'}">
 		<script>NoticeAuthCheck();</script>
@@ -34,10 +32,12 @@
 						<div class="col-sm-1">
 						<c:choose>
 							<c:when test="${content.important eq 'Y' }">
-								<input class="form-control" type="checkbox" id="Important" name="Important" checked>
+								<input class="form-control" type="checkbox" id="Important_CheckBox" name="Important_CheckBox" checked>
+								<input type="hidden" id="Important" name="Important">
 							</c:when>
 							<c:when test="${content.important eq 'N' }">
-								<input class="form-control" type="checkbox" id="Important" name="Important">
+								<input class="form-control" type="checkbox" id="Important_CheckBox" name="Important_CheckBox">
+								<input type="hidden" id="Important" name="Important">
 							</c:when>
 						</c:choose>
 						</div>
@@ -45,7 +45,7 @@
 					<div class="form-group row">
 						<label class="form-label col-sm-2" for="Title">제목</label>
 						<div class="col-sm-10">
-							<input class="form-control" type="text" id="Title" name="Title" value="${content.getTitle() }">
+							<input class="form-control" type="text" id="Title" name="Title" value='<c:out escapeXml="false" value="${content.getTitle() }"/>'>
 						</div>
 					</div>
 					<div class="form-group row">

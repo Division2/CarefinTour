@@ -6,14 +6,12 @@
 <meta charset="UTF-8">
 <title>케어핀투어 - 고객센터</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="resources/js/Board.js"/>'></script>
-<script src='<c:url value="resources/js/Authority.js"/>'></script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
-	
+	<script src='<c:url value="resources/js/Board.js"/>'></script>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
+
 	<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() eq 'User'}">
 		<script>AuthCheck();</script>
 	</c:if>

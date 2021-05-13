@@ -6,14 +6,12 @@
 <meta charset="UTF-8">
 <title>케어핀투어 - 고객센터</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="resources/js/Board.js"/>'></script>
-<script src='<c:url value="resources/js/Authority.js"/>'></script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
-	
+	<script src='<c:url value="resources/js/Board.js"/>'></script>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
+
 	<c:if test="${sessionScope.member eq null}">
 		<script>AuthCheck();</script>
 	</c:if>
@@ -41,18 +39,6 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2" for="Name">작성자</label>
-					<div class="col-sm-10">
-						<input class="form-control" type="text" id="UserName" name="Name" value="${member.getName()}" readonly>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2" for="Phone">휴대전화</label>
-					<div class="col-sm-10">
-						<input class="form-control" type="tel" id="UserPhone" name="Phone" value="${member.getPhone()}" readonly>
-					</div>
-				</div>
-				<div class="form-group row">
 					<label class="col-sm-2" for="Title">문의제목</label>
 					<div class="col-sm-10">
 						<input class="form-control" type="text" id="Title" name="Title">
@@ -64,6 +50,9 @@
 						<textarea class="form-control" rows="10" id="Content" name="Content"></textarea>
 					</div>
 				</div>
+				<input type="hidden" id="UserID" name="UserID" value="${member.getUserID()}">
+				<input type="hidden" id="UserName" name="Name" value="${member.getName()}">
+				<input type="hidden" id="UserPhone" name="Phone" value="${member.getPhone()}">
 					<div class="form-group row">
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10">

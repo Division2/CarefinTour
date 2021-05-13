@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.InquiryBoardDAO;
+import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
 
 @Service
@@ -33,5 +34,46 @@ public class InquiryBoardServiceImpl implements InquiryBoardService {
 	public int InquiryTotalCount() throws Exception {
 		return dao.InquiryTotalCount();
 	}
+	
+	//1:1문의 게시글 내용
+	@Override
+	public InquiryVO InquiryBoardView(int iId) throws Exception {
+		return dao.InquiryBoardView(iId);
+	}
 
+	//1:1 문의 답변 등록
+	@Override
+	public int InquiryAnswerWrite(InquiryAnswerVO vo) throws Exception {
+		return dao.InquiryAnswerWrite(vo);
+	}
+
+	//1:1문의 답변 게시글 내용
+	@Override
+	public InquiryAnswerVO InquiryAnswerBoardView(int iId) throws Exception {
+		return dao.InquiryAnswerBoardView(iId);
+	}
+
+	//1:1문의 답변 등록 시 답변완료로 변경
+	@Override
+	public void InquiryStatusUpdate(int iId) throws Exception {
+		dao.InquiryStatusUpdate(iId);
+	}
+	
+	//1:1문의 답변 수정
+	@Override
+	public int InquiryAnswerModify(InquiryAnswerVO vo) throws Exception {
+		return dao.InquiryAnswerModify(vo);
+	}
+
+	//1:1문의 답변 삭제
+	@Override
+	public int InquiryAnswerDelete(int iId) throws Exception {
+		return dao.InquiryAnswerDelete(iId);
+	}
+	
+	//1:1문의 답변 등록 시 답변완료로 변경
+	@Override
+	public void InquiryStatusUpdate2(int iId) throws Exception {
+		dao.InquiryStatusUpdate2(iId);
+	}
 }

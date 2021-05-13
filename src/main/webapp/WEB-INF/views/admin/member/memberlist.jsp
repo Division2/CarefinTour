@@ -69,48 +69,20 @@
 								<th>
 									<input type="checkbox">
 								</th>
-								<th>
-									AID
-								</th>
-								<th>
-									계정
-								</th>
-								<th>
-									비밀번호
-								</th>
-								<th>
-									이름
-								</th>
-								<th>
-									권한
-								</th>
-								<th>
-									이메일
-								</th>
-								<th>
-									휴대전화
-								</th>
-								<th>
-									생년월일
-								</th>
-								<th>
-									성별
-								</th>
-								<th>
-									주소
-								</th>
-								<th>
-									마일리지
-								</th>
-								<th>
-									특이사항
-								</th>
-								<th>
-									가입일자
-								</th>
-								<th>
-									최근 접속일자
-								</th>
+								<th>AID</th>
+								<th>계정</th>
+								<th>비밀번호</th>
+								<th>이름</th>
+								<th>권한</th>
+								<th>이메일</th>
+								<th>휴대전화</th>
+								<th>생년월일</th>
+								<th>성별</th>
+								<th>주소</th>
+								<th>마일리지</th>
+								<th>특이사항</th>
+								<th>가입일자</th>
+								<th>최근 접속일자</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -118,50 +90,24 @@
 								<td>
 									<input type="checkbox">
 								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
 								<td>
 									<select class="form-control">
 										<option>일반</option>
 									</select>
 								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
+								<td>Test</td>
 							</tr>
 						</tbody>
 					</table>

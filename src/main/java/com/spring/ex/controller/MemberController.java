@@ -38,6 +38,7 @@ public class MemberController {
 			service.LoginDateRenewal(dto);
 			
 			session.setAttribute("member", member);
+			session.setAttribute("auth", member.getGrade());
 			result = 1;
 		}
 		return result;
