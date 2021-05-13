@@ -34,19 +34,19 @@
 					}
 				}
 				
-				$(".cancel_btn").on("click", function(){
+				$("#list_btn").on("click", function(){
 					event.preventDefault();
-					location.href = "/ex/readView?bno=${update.prid}"
+					location.href = "/ex/mylist"
 				})
 				
 				// 삭제
-				$(".delete_btn").on("click", function(){
+				$("#delete_btn").on("click", function(){
 					formObj.attr("action", "/ex/delete");
 					formObj.attr("method", "post");
 					formObj.submit();
 				})
 				
-				$(".update_btn").on("click", function(){
+				$("#update_btn").on("click", function(){
 					
 					formObj.attr("action", "/ex/update");
 					formObj.attr("method", "post");
@@ -112,7 +112,7 @@
 											<input type="hidden" id="prid" name="prid_${var.index}" value="${file.prid}">
 											<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="prid_${var.index}">
 											<a href="#" id="fileName" onclick="return false;">${file.o_file_name}</a>(${file.file_size}kb)
-											<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button">삭제</button><br>
+											<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button" style="float:right;">삭제</button><br>
 										</div>
 										</c:forEach>
 									</div>
@@ -123,10 +123,11 @@
 			            <div class="col-auto mr-auto"></div>
 				            <div class="col-auto">
 				            	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-					               <button type="submit" class="update_btn">수정</button>
-									<button type="submit" class="delete_btn">삭제</button>
-									<button type="submit" class="list_btn">목록</button>	
-									<button type="button" class="fileAdd_btn">파일추가</button>
+				            		<input class="btn btn-primary" id="update_btn" value="수정" style="width:90px;">
+				            		<input class="btn btn-primary" id="delete_btn" value="삭제" style="width:90px;">
+				            		<input class="btn btn-primary" id="list_btn" value="목록" style="width:90px;">
+				            		<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
+            		
 				                </c:if>
 				            </div>
 				        </div>
