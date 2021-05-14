@@ -6,43 +6,40 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <title>케어핀투어 - 여행 포토</title>
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	var formObj = $("form[name='add']");
-
-	$(document).on("click","#fileDel", function() {
-		$(this).parent().remove();
-	})
-	
-	$("#list_btn").on("click", function() {
-		event.preventDefault();
-		location.href = "topangler"
-	})
-	
-	fn_addFile();
-})
-	
-function fn_addFile() {
-	var fileIndex = 1;
-	
-	$("#fileAdd_btn").on("click", function() {
-		$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-	});
-	
-	$(document).on("click","#fileDelBtn", function() {
-		$(this).parent().remove();
-	});
-}
-</script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp" />	
+	<script type="text/javascript"> 
+	$(document).ready(function() {
+		
+		var formObj = $("form[name='add']");
+	
+		$(document).on("click","#fileDel", function() {
+			$(this).parent().remove();
+		})
+		
+		$("#list_btn").on("click", function() {
+			event.preventDefault();
+			location.href = "topangler"
+		})
+		
+		fn_addFile();
+	})
+		
+	function fn_addFile() {
+		var fileIndex = 1;
+		
+		$("#fileAdd_btn").on("click", function() {
+			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		
+		$(document).on("click","#fileDelBtn", function() {
+			$(this).parent().remove();
+		});
+	}
+	</script>
+	
 		<div class="container">
 			<div class="d-flex">
 				<h1>탑앵글러 등록 요청</h1>
