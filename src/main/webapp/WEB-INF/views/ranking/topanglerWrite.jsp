@@ -45,7 +45,7 @@ function fn_addFile() {
 	<jsp:include page="../layout/header.jsp" />	
 		<div class="container">
 			<div class="d-flex">
-				<h1>탑앵글러 등록</h1>
+				<h1>탑앵글러 등록 요청</h1>
 			</div>
 			<hr>
 			<form action="topanglerWrite" method="POST" enctype="multipart/form-data">   
