@@ -304,3 +304,24 @@ function answerInquiryDelete() {
 		}
 	})
 }
+
+function test(category) {
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function () {
+		var param = {'category':category}
+		$.ajax({
+			url: "support",
+			type: "GET",
+			data: param,
+			success: function() {
+			},
+			error: function() {
+				swal({
+					title: "로그인",
+					text: "문제가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
+					icon: "error",
+					timer: 3000
+				});
+			}
+		});
+	});
+}

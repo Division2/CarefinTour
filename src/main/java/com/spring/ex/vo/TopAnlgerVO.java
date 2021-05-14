@@ -12,6 +12,7 @@ public class TopAnlgerVO {
 	private String content;
 	private String name;
 	private String fishname;
+	
 	public int getTid() {
 		return tid;
 	}
@@ -66,7 +67,4 @@ public class TopAnlgerVO {
 	public void setFishname(String fishname) {
 		this.fishname = fishname;
 	}
-	
-	
-
 }

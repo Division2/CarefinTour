@@ -6,46 +6,46 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <title>케어핀투어 - 여행 포토</title>
 </head>
 <body>
-	<script type="text/javascript">
-				$(document).ready(function(){
-					var formObj = $("form[name='add']");
-					
-					$(document).on("click","#fileDel", function(){
-						$(this).parent().remove();
-					})
-					$("#list_btn").on("click", function(){
-						event.preventDefault();
-						location.href = "/ranking/topangler"
-					})
-					fn_addFile();
-				})
-				
-			function fn_addFile(){
-				var fileIndex = 1;
-				$("#fileAdd_btn").on("click", function(){
-					$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-				});
-				$(document).on("click","#fileDelBtn", function(){
-					$(this).parent().remove();
-					
-				});
-			}
-	</script>
-
 	<jsp:include page="../layout/header.jsp" />	
+	<script type="text/javascript"> 
+	$(document).ready(function() {
+		
+		var formObj = $("form[name='add']");
+	
+		$(document).on("click","#fileDel", function() {
+			$(this).parent().remove();
+		})
+		
+		$("#list_btn").on("click", function() {
+			event.preventDefault();
+			location.href = "topangler"
+		})
+		
+		fn_addFile();
+	})
+		
+	function fn_addFile() {
+		var fileIndex = 1;
+		
+		$("#fileAdd_btn").on("click", function() {
+			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		
+		$(document).on("click","#fileDelBtn", function() {
+			$(this).parent().remove();
+		});
+	}
+	</script>
+	
 		<div class="container">
 			<div class="d-flex">
-				<h1>탑앵글러 등록</h1>
+				<h1>탑앵글러 등록 요청</h1>
 			</div>
 			<hr>
-			<form action="gogo" method="POST" name="add" enctype="multipart/form-data">   
+			<form action="topanglerWrite" method="POST" enctype="multipart/form-data">   
 	        <div class="form-group row">
 	            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
 	            <div class="col-sm-10">
