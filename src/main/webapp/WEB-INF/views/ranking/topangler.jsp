@@ -12,7 +12,19 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <title>케어핀투어 - 탑앵글러</title>
 </head>
+
 <body>
+ 	<script>
+	$(document).ready(function(){
+		
+		$("#num").on("change",function num(){
+			for(i=0; i<100;i++){
+					$("#num") + 1;
+				}
+			})
+		}
+		
+	</script>
 	<jsp:include page="../layout/header.jsp" />
 
 	<div class="container">
@@ -94,7 +106,7 @@
 					<tr>
 						<td>
 							<div class="d-flex align-items-baseline">
-								<h4 class="mr-1">1</h4>
+								<h4 class="mr-1" id="num"></h4>
 							</div>
 						</td>
 						<td>

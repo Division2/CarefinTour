@@ -42,65 +42,11 @@
 	<jsp:include page="../layout/header.jsp" />
 	<div class="container">
 		<div class="d-flex">
-				<h1>여행 포토 수정/삭제</h1>
+				<h1>여행 포토 읽기</h1>
 			</div>
 			<hr>
-				<form name="updateForm" role="form" method="post">
-					<input type="hidden" id="prid" name="prid" value="${update.prid}" />
-				 <div class="form-group row">
-		            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
-			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="title" name="title" value="${update.title}" required>
-			            </div>
-        			</div>
-		        <div class="form-group row">
-		            <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
-			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="author" name="name" required readonly value="${update.name}">
-			            </div>
-		        	</div>
-		        <div class="form-group row">
-		            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
-			            <div class="col-sm-10">
-			                <textarea class="form-control" id="content" name="content" rows="5" required readonly>${update.content}</textarea>
-			            </div>
-		        	</div>
-		         <div class="form-group row">
-		            <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
-			            <div class="col-sm-10">
-			                <div class="custom-file" id="file">            
-			                    <input type="file" class="custom-file-input" id="file" name="file" required readonly>
-			                    <label class="custom-file-label" for="customFile">파일 입력</label>
-			                </div>
-            		</div>
-		            	<script>
-					            $('input[type=file]').on('change',function(){
+				<form name="updateForm" role="form" method="post" action="ex/write">
 					
-					    if(window.FileReader){
-					
-					      var filename = $(this)[0].files[0].name;
-					
-					    } else {
-					
-					      var filename = $(this).val().split('/').pop().split('\\').pop();
-					
-					    }
-					
-					    $(this).siblings('label').text(filename);
-					
-					  });
-					</script>
-		        </div>
-	         <div class="row">
-	            <div class="col-auto mr-auto"></div>
-		            <div class="col-auto">
-		            	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-			                <input class="btn btn-primary" type="submit" id="update_btn" value="수정">
-			                <input class="btn btn-primary" type="submit" id="delet_btn" value="삭제">
-			                <input class="btn btn-primary" type="submit" id="list_btn" value="취소">
-		                </c:if>
-		            </div>
-		        </div>
 	        </form>
         </div>
 	<jsp:include page="../layout/footer.jsp" />

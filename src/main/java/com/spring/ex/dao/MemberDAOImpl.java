@@ -57,4 +57,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public void memberDelete(MemberVO dto) throws Exception {
 		sqlSession.delete(namespace+".memberDelete", dto);
 	}	
+	
+	// 패스워드 체크
+	@Override
+	public int passChk(MemberVO dto) throws Exception {
+		int result = sqlSession.selectOne(namespace + ".passChk", dto);
+		return result;
+	}
 }

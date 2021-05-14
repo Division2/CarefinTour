@@ -68,4 +68,11 @@ public class MemberServiceImpl implements MemberService {
 	public void memberDelete(MemberVO dto) throws Exception {
 		dao.memberDelete(dto);
 	}
+	
+	// 패스워드 체크
+	@Override
+	public int passChk(MemberVO dto) throws Exception {
+		int result = dao.passChk(dto);
+		return result;
+	}
 }

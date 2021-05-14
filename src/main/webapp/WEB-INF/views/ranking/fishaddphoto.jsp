@@ -49,7 +49,7 @@
 	        <div class="form-group row">
 	            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
 	            <div class="col-sm-10">
-	                <input type="text" class="form-control" id="title" name="title" required>
+	                <input type="text" class="form-control" id="title" name="title">
 	            </div>
 	        </div>
 	        <div class="form-group row">

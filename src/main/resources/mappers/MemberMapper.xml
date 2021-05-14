@@ -58,4 +58,8 @@
     <update id="MemberLoginDateLog">
     	UPDATE account SET lastDate = #{lastDate} WHERE UserID = #{UserID}
     </update>
+    <!-- 패스워드 체크  -->
+    <select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM account WHERE UserID = #{userID} AND Password = #{password}
+	</select>
 </mapper>

@@ -26,7 +26,7 @@
 				<c:forEach var="mylist" items="${mylist}">	
 					<div class="col-sm-3">
 						<c:choose>
-							<c:when test = "${sessionScope.member.getUserID() eq mylist.name}">
+							<c:when test = "${sessionScope.member.getName() eq mylist.name}">
 								<a href="/ex/updateView?prid=${mylist.prid}">
 									<img src='<c:url value="/resources/image/photoreview_folder/${mylist.s_file_name}"/>' width=200, height=200, alt="로고">
 								</a>

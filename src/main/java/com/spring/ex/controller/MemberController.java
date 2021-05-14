@@ -118,4 +118,14 @@ public class MemberController {
 			out.close();
 		}
 	}
+	
+	// 패스워드 체크
+	@ResponseBody
+	@RequestMapping(value="/passChk", method = RequestMethod.POST)
+	public int passChk(MemberVO dto) throws Exception {
+		int result = service.passChk(dto);
+		return result;
+		
+		
+	}
 }
