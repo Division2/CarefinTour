@@ -52,7 +52,7 @@
 						</li>
 					</c:if>
 						<li class="nav-item">
-							<a class="nav-link text-primary" href="support">고객센터</a>
+							<a class="nav-link text-primary" href="hotelList">고객센터</a>
 						</li>
 					</ul>
 				</div>
