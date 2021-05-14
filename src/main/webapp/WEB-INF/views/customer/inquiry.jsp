@@ -43,7 +43,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${InquiryList }" var="InquiryBoardVO">
+					<c:forEach items="${InquiryList}" var="InquiryBoardVO">
 						<tr>
 							<td>${InquiryBoardVO.iId }</td>
 							<td>${InquiryBoardVO.category }</td>

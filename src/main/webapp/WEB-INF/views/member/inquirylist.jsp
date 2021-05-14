@@ -14,9 +14,9 @@
 
 	<div class="container">
 		<div class="row">
-			<!-- 마이페이지 사이드바 -->
-			<jsp:include page="sidemypage.jsp"/>
 			
+			<jsp:include page="sidemypage.jsp"/>
+			<form action="inquiry1" method="POST">   
 			<div class="col-md-8">
 				<h1>1:1 문의 내역</h1>
 				<hr>
@@ -27,14 +27,21 @@
 							<th>제목</th>
 						</tr>
 					</thead>
-					<tbody>
+					<c:forEach items="${InquiryList1}" var="InquiryList1">
+					<tbody>					
 						<tr>
-							<td>1</td>
-							<td><a href="inquirydetails">희망 패키지 관련</a></td>
-						</tr>
+					<%-- 	<c:choose>
+							<c:when test = "${sessionScope.member.getUserID() eq InquiryList1.userId"> --%>
+								<td>${InquiryList1.iId }</td>
+								<td><a href="inquirydetails">${InquiryList1.title }</a></td>
+						<%-- 		</c:when>
+							</c:choose> --%>
+						</tr>						
 					</tbody>
+					</c:forEach>
 				</table>
 			</div>
+			</form>
 		</div>
 	</div>
 	<jsp:include page="../layout/footer.jsp"/>

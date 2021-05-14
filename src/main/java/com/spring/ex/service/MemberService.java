@@ -29,5 +29,7 @@ public interface MemberService {
 	public void MemberInfoUpdate(MemberVO dto) throws Exception;
 	//회원탈퇴
 	public void memberDelete(MemberVO dto) throws Exception;
+	//비밀번호 체크
+	public int passChk(MemberVO dto) throws Exception;
 	
 }

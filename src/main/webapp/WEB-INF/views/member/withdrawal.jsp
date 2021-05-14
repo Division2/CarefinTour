@@ -10,8 +10,39 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+<script>
+			$(document).ready(function(){
+			// 취소
+			$("#cancel").on("click", function(){				
+				location.href = "main";						    
+				})
+			$("#submit").on("click", function(){		
+			$.ajax({
+				url : "passChk",
+				type : "POST",
+				dataType : "json",
+				data : $("#delForm").serializeArray(),
+				success: function(data){
+					
+					if(data==0){
+						alert("패스워드가 틀렸습니다.");
+						return;
+					}else{
+						if(confirm("회원탈퇴하시겠습니까?")){
+							$("#delForm").submit();
+						}
+						
+					}
+				}
+			})
+			
+		});
+	})					
+</script>
 <body>
+
 	<jsp:include page="../layout/header.jsp"/>
 
 	<div class="container">
@@ -32,27 +63,9 @@
 					<input type="checkbox" name="agree" id="agree" required>
 					<label for="agree">내용을 모두 확인하였습니다.</label>
 				</div>
-				<br>
-					<script type="text/javascript">
-							$(document).ready(function(){
-							// 취소
-							$(".cancel").on("click", function(){				
-							location.href = "/main";						    
-							})
-							$("#submit").on("click", function(){
-							if($("#password").val()==""){										
-							alert("비밀번호를 입력해주세요.");
-							$("#password").focus();
-								return false;
-							}	
-							});
-							})
-																					
-										
-						</script>
-
+				<br>					
 					<section id="container">
-						<form action="memberDelete" method="POST">
+						<form action="memberDelete" name="delete" method="POST" id="delForm">
 							<div class="form-group has-feedback">
 								<label class="control-label" for="UserId">아이디</label>
 								<input class="form-control" type="text" id="UserID" name="UserID" value="${member.getUserID()}" readonly="readonly"/>
@@ -65,27 +78,27 @@
 								<label class="control-label" for="userName">성명</label>
 								<input class="form-control" type="text" id="Name" name="Name" value="${member.getName()}" readonly="readonly"/>
 							</div>
+							</form>
 							<div class="d-flex">
 								<div class="mx-auto">
 							<div class="form-group has-feedback">
 								<button class="btn btn-primary" type="submit" id="submit">회원탈퇴</button>
-								<button class="btn btn-secondary" type="button">취소</button>
+								<button class="btn btn-secondary" type="button" id="cancel">취소</button>
 							</div>
 								</div>
 							</div>
-						</form>
+						
 						<div>
-						</div>
-					<div>
-							<c:if test="${msg == false}">
-								비밀번호가 맞지 않습니다.
-							</c:if>
-						</div>
+						<c:if test="${msg == false}">
+							비밀번호가 맞지 않습니다.
+						</c:if>
+					</div>
 					</section>
 					</div>
+					
 				</div>
-				</div>
-				<jsp:include page="../layout/footer.jsp"/>
+			</div>
+		<jsp:include page="../layout/footer.jsp"/>
 
 			</body>
 
