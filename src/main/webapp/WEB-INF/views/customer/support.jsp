@@ -33,8 +33,8 @@ ul.faq li {
 					<div class="mx-auto">
 						<ul class="faq">
 							<li><a href="support">전체</a></li>
-							<li><a href="support?category=해외여행">해외여행</a></li>
-							<li><a href="support?category=테마여행">테마여행</a></li>
+							<li><a href="supportOther?category=해외여행">해외여행</a></li>
+							<li><a href="supportOther?category=테마여행">테마여행</a></li>
 						</ul>
 					</div>
 				</div>
@@ -66,9 +66,9 @@ ul.faq li {
 					</c:when>
 					<c:when test="${param.category ne null }">
 						<div id="accordion">
-							<c:forEach items="${faqOtherList}" var="List">
-							<h4><c:out value="${List.getCategory() }"/></h4>
+							<h4><c:out value="${param.category }"/></h4>
 							<hr>
+							<c:forEach items="${faqOtherList}" var="List">
 							<div class="card">
 								<!-- FAQ 질문부분 -->
 								<div class="card-header" id="heading${List.getfId()}">
@@ -89,6 +89,100 @@ ul.faq li {
 						</div>
 					</c:when>
 				</c:choose>
+				<br>
+				<!-- 게시글 페이징 처리(기준 10개) -->
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center">
+						<c:choose>
+							<c:when test="${param.category ne null }">
+								<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								<!-- 페이지 갯수만큼 버튼 생성 -->
+								<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+									<c:choose>
+										<c:when test="${i eq Paging.pageNo }">
+											<li class="page-item disabled">
+												<a class="page-link" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item">
+												<a class="page-link" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="support?page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="support?page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								<!-- 페이지 갯수만큼 버튼 생성 -->
+								<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+									<c:choose>
+										<c:when test="${i eq Paging.pageNo }">
+											<li class="page-item disabled">
+												<a class="page-link" href="support?page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item">
+												<a class="page-link" href="support?page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="support?page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="support?page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>

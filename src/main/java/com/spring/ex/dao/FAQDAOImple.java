@@ -1,5 +1,6 @@
 package com.spring.ex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,13 +18,25 @@ public class FAQDAOImple implements FAQDAO {
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView() throws Exception {
-		return sqlSession.selectList(namespace + ".FAQAllView");
+	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQAllView", map);
 	}
 
 	//자주 찾는 질문(카테고리별)
 	@Override
-	public List<FAQVO> FAQOtherView(String category) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQOtherView", category);
+	public List<FAQVO> FAQOtherView(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQOtherView", map);
+	}
+	
+	//자주 찾는 질문 총 갯수
+	@Override
+	public int FAQTotalCount() throws Exception {
+		return sqlSession.selectOne(namespace + ".getFAQTotalCount");
+	}
+	
+	//자주 찾는 질문(카테고리별) 총 갯수
+	@Override
+	public int FAQOtherTotalCount(String category) throws Exception {
+		return sqlSession.selectOne(namespace + ".getFAQOtherTotalCount", category);
 	}
 }
