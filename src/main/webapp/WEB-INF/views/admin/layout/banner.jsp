@@ -2,10 +2,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
-		<div class="sidebar-brand-icon rotate-n-15">
-			<i class="fas fa-laugh-wink"></i>
+		<div class="sidebar-brand-icon">
+			<img src='<c:url value="/resources/image/MainLogo.png"/>' width="100" height="100" style="float:left;">
 		</div>
-		<div class="sidebar-brand-text mx-3">케어핀투어</div>
+		<div class="sidebar-brand-text mx-1">케어핀투어</div>
 	</a>
 	<hr class="sidebar-divider my-0">
 	<li class="nav-item active">

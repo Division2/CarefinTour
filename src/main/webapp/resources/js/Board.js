@@ -231,7 +231,6 @@ $(document).ready(function() {
 function InquiryModify() {
 	var AnswerEditContent = $("#answerEditContent").val();
 	
-	
 	if(!AnswerEditContent) {
 		swal({
 			title: "1:1 문의",
