@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.spring.ex.TravelPhotoMapper">
-	
 	<!-- 여행포토 게시물 등록  -->
 	<insert id="insert" parameterType="hashMap">
 			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size) VALUES (#{prid}, #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size})			
@@ -54,17 +52,17 @@
 		DELETE FROM photoreview WHERE prid = #{prid}
 	</delete>
 	
-	<!-- 여행포토 게시물 등록  -->
-	<insert id="insertfish" parameterType="hashMap">
-			INSERT INTO topranking(tid,title, content, name,o_file_fish, s_file_fish, file_size, fishsize, fishname) VALUES (#{tid}, #{title}, #{content}, #{name},#{o_file_fish}, #{s_file_fish}, #{file_size}, #{fishsize},#{fishname})			
-	</insert>
-	
-	<!-- 탑앵글러 게시물 화면출력 -->
-	<select id="topanglers" resultType="TopAnlgerVO">
-		SELECT  * FROM topranking order BY tid DESC LIMIT #{Page},#{PageSize}
+	<!-- 탑 앵글러 출력 -->
+	<select id="topanglerView" resultType="TopAnlgerVO">
+		SELECT  * FROM topranking order BY tid DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<!-- 탑앵글러 게시물 총 갯수 -->
+	<!-- 탑 앵글러 등록 요청 -->
+	<insert id="topanglerWrite" parameterType="hashMap">
+			INSERT INTO topranking(tid, title, content, name, o_file_fish, s_file_fish, file_size, fishsize, fishname) VALUES (#{tid}, #{title}, #{content}, #{name},#{o_file_fish}, #{s_file_fish}, #{file_size}, #{fishsize}, #{fishname})			
+	</insert>
+	
+	<!-- 탑 앵글러 총 갯수 -->
 	<select id="getTopAnglerTotalCount" resultType="int">
 		SELECT COUNT(*) FROM topranking
 	</select>

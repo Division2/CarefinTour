@@ -7,32 +7,18 @@
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/leaderboard.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <title>케어핀투어 - 탑앵글러</title>
 </head>
 
 <body>
- 	<script>
-	$(document).ready(function(){
-		
-		$("#num").on("change",function num(){
-			for(i=0; i<100;i++){
-					$("#num") + 1;
-				}
-			})
-		}
-		
-	</script>
 	<jsp:include page="../layout/header.jsp" />
 
 	<div class="container">
-		<h1>탑 랭킹</h1>
 		<div class="d-flex">
+		<h1>탑 랭킹</h1>
 			<div class="ml-auto">
-				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-					<button class="btn btn-primary" onclick="location.href='fishaddphoto'">등록요청</button>
+				<c:if test="${sessionScope.member ne null}">
+					<button class="btn btn-primary" onclick="location.href='topanglerWrite'">등록요청</button>
 				</c:if>
 			</div>
 		</div>
@@ -102,11 +88,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="topanglers" items="${topanglers}">
+				<c:forEach items="${topangler}" var="topanglers">
 					<tr>
 						<td>
 							<div class="d-flex align-items-baseline">
-								<h4 class="mr-1" id="num"></h4>
+							<h4 class="mr-1"></h4>
 							</div>
 						</td>
 						<td>
@@ -124,51 +110,52 @@
 			</tbody>
 		</table>
 		<!-- 게시글 페이징 처리(기준 10개) -->
-			<nav aria-label="Page navigation">
-				<ul class="pagination justify-content-center">
-					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+		<nav aria-label="Page navigation">
+			<ul class="pagination justify-content-center">
+				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+						<li class="page-item disabled">
+							<a class="page-link" href="topangler?page=${Paging.prevPageNo}">Previus</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item">
+							<a class="page-link" href="topangler?page=${Paging.prevPageNo}">Previus</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				<!-- 페이지 갯수만큼 버튼 생성 -->
+				<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+						<c:when test="${i eq Paging.pageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="topanglers.do?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="topangler?page=${i}"><c:out value="${i}"/></a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="topanglers.do?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="topangler?page=${i}"><c:out value="${i}"/></a>
 							</li>
 						</c:otherwise>
 					</c:choose>
-					<!-- 페이지 갯수만큼 버튼 생성 -->
-					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
-						<c:choose>
-							<c:when test="${i eq Paging.pageNo }">
-								<li class="page-item disabled">
-									<a class="page-link" href="topanglers.do?page=${i}"><c:out value="${i}"/></a>
-								</li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item">
-									<a class="page-link" href="topanglers.do?page=${i}"><c:out value="${i}"/></a>
-								</li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
-					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-							<li class="page-item disabled">
-								<a class="page-link" href="traveleview?page=${Paging.nextPageNo}">Next</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="travelphoto?page=${Paging.nextPageNo}">Next</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
-				</ul>
-			</nav>
+				</c:forEach>
+				<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+						<li class="page-item disabled">
+							<a class="page-link" href="topangler?page=${Paging.nextPageNo}">Next</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item">
+							<a class="page-link" href="topangler?page=${Paging.nextPageNo}">Next</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</nav>
+		<br>
 	</div>
 
 	<jsp:include page="../layout/footer.jsp" />

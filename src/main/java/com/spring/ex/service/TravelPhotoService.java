@@ -10,27 +10,37 @@ import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 public interface TravelPhotoService {
-		//게시물 목록
-		public List<TravelPhotoVO> list(HashMap<String, Integer> map) throws Exception;
-		//게시물 작성
-		public int addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception;
-		//게시물 조회(아직 안만듬)
-		public TravelPhotoVO read(int prid) throws Exception;
-		//여행포토 게시물 총 갯수
-		public int PhotoTotalCount() throws Exception;
-		//마이여행 게시판 리스트	
-		public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception;	
-		// 게시물 삭제
-		public void delete(int prid) throws Exception;
-		// 첨부파일 조회
-		public List<Map<String, Object>> selectFileList(int prid) throws Exception;
-		// 게시물 수정
-		public void update(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
-		//게시물 작성
-		public int addfishphoto(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception;
-		//탑앵글러 목록
-		public List<TopAnlgerVO> topanglers(HashMap<String, Integer> map) throws Exception;
-		//여행포토 게시물 총 갯수
-		public int TopAnglerTotalCount() throws Exception;
 	
+	//게시물 목록
+	public List<TravelPhotoVO> list(HashMap<String, Integer> map) throws Exception;
+	
+	//게시물 작성
+	public int addphoto(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception;
+	
+	//게시물 조회(아직 안만듬)
+	public TravelPhotoVO read(int prid) throws Exception;
+	
+	//여행포토 게시물 총 갯수
+	public int PhotoTotalCount() throws Exception;
+	
+	//마이여행 게시판 리스트	
+	public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception;	
+	
+	// 게시물 삭제
+	public void delete(int prid) throws Exception;
+	
+	// 첨부파일 조회
+	public List<Map<String, Object>> selectFileList(int prid) throws Exception;
+	
+	// 게시물 수정
+	public void update(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
+	
+	//탑 앵글러 출력
+	public List<TopAnlgerVO> topanglerView(HashMap<String, Integer> map) throws Exception;
+
+	//탑 앵글러 등록 요청
+	public int topanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception;
+	
+	//탑 앵글러 총 갯수
+	public int TopAnglerTotalCount() throws Exception;
 }

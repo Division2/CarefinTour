@@ -72,6 +72,10 @@ public class CareController {
 	public String topangler() {
 		return "ranking/topangler";
 	}
+	@RequestMapping("topanglerWrite")
+	public String topanglerWrite() {
+		return "ranking/topanglerWrite";
+	}
 	@RequestMapping("travelphoto")
 	public String travelphoto() {
 		return "ranking/travelphoto";
@@ -87,10 +91,6 @@ public class CareController {
 	@RequestMapping("updateView")
 	public String updatePhoto() {
 		return "ranking/updateView";
-	}
-	@RequestMapping("fishaddphoto")
-	public String fishaddphoto() {
-		return "ranking/fishaddphoto";
 	}
 
 	//여행정보
