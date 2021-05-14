@@ -10,5 +10,6 @@
 		<typeAlias type="com.spring.ex.vo.FAQVO" alias="FAQVO"/>
 		<typeAlias type="com.spring.ex.vo.TravelPhotoVO" alias="TravelPhotoVO"/>
 		<typeAlias type="com.spring.ex.vo.TopAnlgerVO" alias="TopAnlgerVO"/>
+		<typeAlias type="com.spring.ex.vo.HotelVO" alias="HotelVO"/>
 	</typeAliases>
 </configuration>
