@@ -207,6 +207,7 @@
 			 <version>1.2.2</version>
 		 </dependency>
 		<!-- 첨부파일 END -->
+<<<<<<< HEAD
 		<dependency>
 	       <groupId>org.codehaus.jackson</groupId>
 	       <artifactId>jackson-mapper-asl</artifactId>
@@ -223,6 +224,9 @@
 		    <version>2.10.0</version>
 		</dependency>
 				<!-- 트랜젝션 START -->
+=======
+		<!-- 트랜젝션 START -->
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
