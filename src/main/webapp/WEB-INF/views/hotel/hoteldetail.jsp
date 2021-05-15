@@ -33,7 +33,7 @@ $.urlParam = function(name){
 var searchDetailId = $.urlParam('cId');
 var hContent; //비교해서 값이 다르면 화면 새로고침
 
-//공통정보 api
+//공통정보 api - 1번탭 시작
 function detail1() {
     $.ajax({
 	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId=' + searchDetailId + '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y',
@@ -108,7 +108,7 @@ function showDetail1() {
 	 
 }
 
-//소개정보 api
+//소개정보 api - 2번탭 시작
 function detail2() {
     $.ajax({
 	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId=' + searchDetailId + '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y',
@@ -187,7 +187,7 @@ function showDetail2() {
 	}
 }
 
-//이미지
+//이미지 -3번 탭
 hContent3 =[];
 function detail3() {
     $.ajax({
@@ -214,6 +214,8 @@ function detail3() {
 	       }
 	})
 }
+
+
 </script>
 	<jsp:include page="../layout/header.jsp"/>
 						
