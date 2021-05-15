@@ -11,12 +11,7 @@
 	<select id="InquiryView" resultType="InquiryVO">
 		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
 	</select>
-	
-	<!-- 마이페이지 1:1 문의 출력 -->
-	<select id="MyInquiryView" resultType="InquiryVO">
-		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
-	</select>
-	
+
 	<!-- 1:1 문의 게시물 총 갯수 -->
 	<select id="getInquiryTotalCount" resultType="int">
 		SELECT COUNT(*) FROM inquiry

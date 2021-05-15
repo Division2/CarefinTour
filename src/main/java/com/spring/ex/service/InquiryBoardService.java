@@ -17,9 +17,6 @@ public interface InquiryBoardService {
 	//1:1 문의 출력
 	public List<InquiryVO> InquiryList(HashMap<String, Integer> map) throws Exception;
 	
-	//마이페이지 1:1 문의 출력
-	public List<InquiryVO> MyInquiryList(HashMap<String, Integer> map) throws Exception;
-	
 	//1:1 문의 게시물 총 갯수
 	public int InquiryTotalCount() throws Exception;
 	

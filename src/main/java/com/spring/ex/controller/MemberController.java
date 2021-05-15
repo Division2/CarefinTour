@@ -89,41 +89,4 @@ public class MemberController {
 		
 		return result;
 	}
-	//회원 정보수정
-	@RequestMapping(value = "/MemberInfoUpdate", method = RequestMethod.POST)
-	public String MemberInfoUpdate(MemberVO vo, HttpSession session) throws Exception {
-		service.MemberInfoUpdate(vo);
-		session.invalidate();
-		
-		 return "redirect:/main";
-	}
-	
-	// 회원 탈퇴 
-	@RequestMapping(value= "/MemberDelete", method = RequestMethod.POST)
-	public void MemberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
-		
-		MemberVO sessionInfo = (MemberVO)session.getAttribute("member");
-		
-		System.out.println("DTO : " + vo.getPassword());
-		System.out.println("Session : " + sessionInfo.getPassword());
-		
-		if (vo.getPassword().equals(sessionInfo.getPassword())) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			service.MemberDelete(vo);
-			session.invalidate();
-			
-			out.println("<script>location.href='main';</script>");
-			out.close();
-		}
-	}
-	
-	// 패스워드 체크
-	@ResponseBody
-	@RequestMapping(value="/MemberPassChk", method = RequestMethod.POST)
-	public int MemberPassChk(MemberVO vo) throws Exception {
-		int result = service.MemberPassChk(vo);
-		return result;		
-	}
 }

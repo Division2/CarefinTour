@@ -18,7 +18,7 @@ public interface TravelPhotoBoardDAO {
 	//여행 게시판 입력	
 	public int write(Map<String, Object> map) throws Exception;
 	
-	//게시판 읽기(아직 안만듬)	
+	//게시판 읽기
 	public TravelPhotoVO read(int prid) throws Exception;
 	
 	//여행포토 게시물 총 갯수

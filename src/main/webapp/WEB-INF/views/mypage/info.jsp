@@ -21,11 +21,11 @@
 				<div class="d-flex">
 					<h1>정보 수정</h1>
 					<div class="ml-auto">
-						<button class="btn btn-primary" onclick="$('#MemberUpdate').submit()">수정하기</button>
+						<button class="btn btn-primary" onclick="$('#MyPageUpdate').submit()">수정하기</button>
 					</div>
 				</div>
 				<hr>
-				<form action="MemberInfoUpdate" method="POST" id="MemberUpdate" name="MemberUpdate" >
+				<form action="MyPageInfoUpdate" method="POST" id="MyPageUpdate" name="MyPageUpdate" >
 					<!-- 아이디 & 비밀번호 -->
 					<div class="form-group row">
 						<div class="col-xs-6 col-md-6">

@@ -57,22 +57,5 @@ public class MemberServiceImpl implements MemberService {
 		return dao.IDCheck(vo);
 	}
 
-	//정보 수정
-	@Override
-	public void MemberInfoUpdate(MemberVO vo) throws Exception {	
-		dao.MemberInfoUpdate(vo);
-	}
-	
-	//회원탈퇴
-	@Override
-	public void MemberDelete(MemberVO vo) throws Exception {
-		dao.MemberDelete(vo);
-	}
-	
-	// 패스워드 체크
-	@Override
-	public int MemberPassChk(MemberVO vo) throws Exception {
-		int result = dao.MemberPassChk(vo);
-		return result;
-	}
+
 }

@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="row">			
 				<jsp:include page="sidemypage.jsp"/>
-					<form action="inquiry1" method="POST">   
+					<form action="MyPageInquiryList" method="POST">   
 						<div class="col-md-8">
 							<h1>1:1 문의 내역</h1>
 							<hr>
@@ -27,13 +27,13 @@
 									</tr>
 								</thead>
 								<tbody>	
-									<c:forEach items="${InquiryList1}" var="InquiryList1">
+									<c:forEach items="${MyPageInquiryList}" var="MyPageInquiryList">
 										<c:choose>
-											<c:when test = "${sessionScope.member.getUserID() eq InquiryList1.userId}"> 				
+											<c:when test = "${sessionScope.member.getUserID() eq MyPageInquiryList.userId}"> 				
 												<tr>
-													<td>${InquiryList1.iId }</td>
-													<td><a href="inquirydetails">${InquiryList1.title }</a></td>
-													<td><a href="inquirydetails">${InquiryList1.reDate }</a></td>
+													<td>${MyPageInquiryList.iId }</td>
+													<td><a href="inquirydetails">${MyPageInquiryList.title }</a></td>
+													<td><a href="inquirydetails">${MyPageInquiryList.reDate }</a></td>
 												</tr>
 											</c:when>
 										</c:choose> 	
@@ -50,12 +50,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="myinquiry?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="MyPageInquiryList?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="myinquiry?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="MyPageInquiryList?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -64,12 +64,12 @@
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="myinquiry?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="MyPageInquiryList?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="myinquiry?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="MyPageInquiryList?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:otherwise>
 						</c:choose>

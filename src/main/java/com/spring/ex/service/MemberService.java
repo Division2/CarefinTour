@@ -19,16 +19,8 @@ public interface MemberService {
 	public int LoginDateRenewal(MemberVO vo) throws Exception;
 	//회원 로그아웃
 	public void logout(HttpServletResponse response) throws Exception;
-	
 	//회원가입
 	public int SignUp(MemberVO vo) throws Exception;
 	//회원가입 시 아이디 중복확인
 	public MemberVO IDCheck(MemberVO vo) throws Exception;
-	//회원정보 수정
-	public void MemberInfoUpdate(MemberVO vo) throws Exception;
-	//회원탈퇴
-	public void MemberDelete(MemberVO vo) throws Exception;
-	//비밀번호 체크
-	public int MemberPassChk(MemberVO vo) throws Exception;
-	
 }

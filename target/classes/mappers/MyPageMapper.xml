@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.MyPageMapper">
+	
+	<!-- 마이페이지 1:1 문의 출력 -->
+	<select id="MyPageInquiryList" resultType="InquiryVO">
+		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 1:1 문의 게시물 총 갯수 -->
+	<select id="getMyPageInquiryTotalCount" resultType="int">
+		SELECT COUNT(*) FROM inquiry
+	</select>
+	
+    <!-- 마이페이지 구매내역 출력 -->
+	<select id="MyPageOrderList" resultType="OrderVO">
+		SELECT * FROM order ORDER BY PID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 유저 오더 전체수 받기 -->
+	<select id="getOrderTotalCount" resultType="int">
+		SELECT COUNT(*) FROM order
+	</select>
+		  
+	<!-- 마이페이지 회원정보 수정 -->
+	<update id="MyPageInfoUpdate">
+	UPDATE account SET
+		Password = #{password},
+		Name = #{name},
+		Email = #{email},
+		Phone = #{phone},
+		Address = #{address}
+		WHERE UserID = #{userID}
+	</update>
+	
+	<!-- 마이페이지 회원탈퇴 -->
+	<delete id="MyPageDelete">
+		DELETE FROM account WHERE  UserID = #{userID} AND Password = #{password}
+	</delete>
+
+    
+    <!-- 마이페이지 패스워드 체크  -->
+    <select id="MyPagePassChk" resultType="int">
+		SELECT COUNT(*) FROM account WHERE UserID = #{userID} AND Password = #{password}
+	</select>
+</mapper>

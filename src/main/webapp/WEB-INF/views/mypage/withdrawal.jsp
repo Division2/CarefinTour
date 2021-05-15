@@ -20,7 +20,7 @@
 			})
 		$("#submit").on("click", function(){		
 		$.ajax({
-			url : "MemberPassChk",
+			url : "MyPagePassChk",
 			type : "POST",
 			dataType : "json",
 			data : $("#delForm").serializeArray(),
@@ -59,7 +59,7 @@
 						<label for="agree">내용을 모두 확인하였습니다.</label>
 					</div><br>					
 				<section id="container">
-					<form action="MemberDelete" name="delForm" method="POST" id="delForm">
+					<form action="MyPageDelete" name="delForm" method="POST" id="delForm">
 						<div class="form-group has-feedback">
 							<label class="control-label" for="UserId">아이디</label>
 							<input class="form-control" type="text" id="UserID" name="UserID" value="${member.getUserID()}" readonly="readonly"/>

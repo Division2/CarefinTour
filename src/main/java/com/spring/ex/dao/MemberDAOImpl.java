@@ -46,22 +46,4 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace + ".IDCheck", vo);
 	}
 	
-	//회원정보 수정
-	@Override
-	public void MemberInfoUpdate(MemberVO vo) throws Exception {
-		sqlSession.update(namespace+".MemberInfoUpdate", vo); 
-		System.out.println(sqlSession);
-	}
-	//회원탈퇴
-	@Override
-	public void MemberDelete(MemberVO vo) throws Exception {
-		sqlSession.delete(namespace+".MemberDelete", vo);
-	}	
-	
-	// 패스워드 체크
-	@Override
-	public int MemberPassChk(MemberVO vo) throws Exception {
-		int result = sqlSession.selectOne(namespace + ".MemberPassChk", vo);
-		return result;
-	}
 }

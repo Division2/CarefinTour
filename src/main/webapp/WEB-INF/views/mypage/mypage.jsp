@@ -51,9 +51,9 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${hotelList}" var="hotelList">
+								<c:forEach items="${MyPageOrderList}" var="MyPageOrderList">
 									<c:choose>
-										<c:when test = "${sessionScope.member.getName() eq hotelList.resname}"> 	
+										<c:when test = "${sessionScope.member.getUserID() eq MyPageOrderList.userid}"> 	
 											<tr>
 												<td colspan="2">${hotelList.productname}</td>
 											</tr>
@@ -73,12 +73,12 @@
 				<c:choose>
 					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 						<li class="page-item disabled">
-							<a class="page-link" href="hotelList?page=${Paging.prevPageNo}">Previus</a>
+							<a class="page-link" href="MyPageOrderList?page=${Paging.prevPageNo}">Previus</a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item">
-							<a class="page-link" href="hotelList?page=${Paging.prevPageNo}">Previus</a>
+							<a class="page-link" href="MyPageOrderList?page=${Paging.prevPageNo}">Previus</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
@@ -87,12 +87,12 @@
 					<c:choose>
 						<c:when test="${i eq Paging.pageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="hotelList?page=${i}"><c:out value="${i}"/></a>
+								<a class="page-link" href="MyPageOrderList?page=${i}"><c:out value="${i}"/></a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="hotelList?page=${i}"><c:out value="${i}"/></a>
+								<a class="page-link" href="MyPageOrderList?page=${i}"><c:out value="${i}"/></a>
 							</li>
 						</c:otherwise>
 					</c:choose>
