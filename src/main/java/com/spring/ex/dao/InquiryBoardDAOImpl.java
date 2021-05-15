@@ -32,8 +32,8 @@ public class InquiryBoardDAOImpl implements InquiryBoardDAO {
 	
 	//마이페이지 1:1 문의 출력
 	@Override
-	public List<InquiryVO> InquiryList1(HashMap<String, Integer> map) throws Exception {
-		return sqlSession.selectList(namespace + ".InquiryView1", map);
+	public List<InquiryVO> MyInquiryList(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".MyInquiryView", map);
 	}
 
 	//1:1 문의 게시물 총 갯수

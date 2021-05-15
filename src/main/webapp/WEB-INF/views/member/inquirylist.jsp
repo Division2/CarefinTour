@@ -11,40 +11,38 @@
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
-
-	<div class="container">
-		<div class="row">
-			
-			<jsp:include page="sidemypage.jsp"/>
-			<form action="inquiry1" method="POST">   
-			<div class="col-md-8">
-				<h1>1:1 문의 내역</h1>
-				<hr>
-				<table class="table table-hover table-white" style="width:800px;">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>제목</th>
-							<th>날짜</th>
-						</tr>
-					</thead>
-					<tbody>	
-						<c:forEach items="${InquiryList1}" var="InquiryList1">
-							<c:choose>
-								<c:when test = "${sessionScope.member.getUserID() eq InquiryList1.userId}"> 				
+		<div class="container">
+			<div class="row">			
+				<jsp:include page="sidemypage.jsp"/>
+					<form action="inquiry1" method="POST">   
+						<div class="col-md-8">
+							<h1>1:1 문의 내역</h1>
+							<hr>
+							<table class="table table-hover table-white" style="width:800px;">
+								<thead>
 									<tr>
-										<td>${InquiryList1.iId }</td>
-										<td><a href="inquirydetails">${InquiryList1.title }</a></td>
-										<td><a href="inquirydetails">${InquiryList1.reDate }</a></td>
+										<th>No</th>
+										<th>제목</th>
+										<th>날짜</th>
 									</tr>
-						 		</c:when>
-							</c:choose> 	
-						</c:forEach>					
-					</tbody>				
-				</table>
-			</div>
-			</form>
-		</div>
+								</thead>
+								<tbody>	
+									<c:forEach items="${InquiryList1}" var="InquiryList1">
+										<c:choose>
+											<c:when test = "${sessionScope.member.getUserID() eq InquiryList1.userId}"> 				
+												<tr>
+													<td>${InquiryList1.iId }</td>
+													<td><a href="inquirydetails">${InquiryList1.title }</a></td>
+													<td><a href="inquirydetails">${InquiryList1.reDate }</a></td>
+												</tr>
+											</c:when>
+										</c:choose> 	
+									</c:forEach>					
+								</tbody>				
+							</table>
+						</div>
+						</form>
+					</div>
 			<!-- 게시글 페이징 처리(기준 8개) -->
 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
@@ -52,12 +50,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="inquiry1?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="myinquiry?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="inquiry1?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="myinquiry?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -66,12 +64,12 @@
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="inquiry1?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="myinquiry?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="inquiry1?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="myinquiry?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:otherwise>
 						</c:choose>
@@ -91,7 +89,7 @@
 					</c:choose>
 				</ul>
 			</nav>
-	</div>
+		</div>
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>

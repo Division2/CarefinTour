@@ -29,7 +29,7 @@ public class TravelPhotoController {
 	TravelPhotoService service;
 	
 	//게시물 작성
-	@RequestMapping(value = "/gaza", method = RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public void postWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
 		
 		int result = service.addphoto(travelPhotoVO,mpRequest);

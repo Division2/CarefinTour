@@ -13,7 +13,7 @@
 	</select>
 	
 	<!-- 마이페이지 1:1 문의 출력 -->
-	<select id="InquiryView1" resultType="InquiryVO">
+	<select id="MyInquiryView" resultType="InquiryVO">
 		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	

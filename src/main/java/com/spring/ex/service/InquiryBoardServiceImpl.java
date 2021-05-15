@@ -31,8 +31,8 @@ public class InquiryBoardServiceImpl implements InquiryBoardService {
 	
 	//1:1 문의 출력
 	@Override
-	public List<InquiryVO> InquiryList1(HashMap<String, Integer> map) throws Exception {
-		return dao.InquiryList1(map);
+	public List<InquiryVO> MyInquiryList(HashMap<String, Integer> map) throws Exception {
+		return dao.MyInquiryList(map);
 	}
 
 	//1:1 문의 게시물 총 갯수

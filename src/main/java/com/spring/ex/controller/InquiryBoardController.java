@@ -82,8 +82,8 @@ public class InquiryBoardController {
 	
 
 	//마이페이지 1:1 문의 출력
-	@RequestMapping(value = "/inquiry1", method = RequestMethod.GET)
-	public String InquiryView1(HttpServletRequest request, Model model) throws Exception {
+	@RequestMapping(value = "/myinquiry", method = RequestMethod.GET)
+	public String MyInquiryView(HttpServletRequest request, Model model) throws Exception {
 		
 		int totalCount = service.InquiryTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -99,7 +99,7 @@ public class InquiryBoardController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<InquiryVO> List = service.InquiryList1(map);
+		List<InquiryVO> List = service.MyInquiryList(map);
 		
 		model.addAttribute("InquiryList1", List);
 		model.addAttribute("Paging", paging);

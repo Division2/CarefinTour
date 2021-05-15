@@ -14,14 +14,11 @@
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp" />
-	
 		<div class="container">
 			<div class="d-flex">
 				<h1>내가 쓴 여행후기</h1>
-				<div class="ml-auto">
-				</div>
-			</div>
-			<hr>
+					<div class="ml-auto"></div>
+			</div><hr>
 			<div class="row">
 				<c:forEach var="mylist" items="${mylist}">	
 					<div class="col-sm-3">
@@ -52,12 +49,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="mylist.my?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="mylist?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="mylist.my?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="mylist?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -66,12 +63,12 @@
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="mylist.my?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="mylist?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="mylist.my?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="mylist?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:otherwise>
 						</c:choose>
