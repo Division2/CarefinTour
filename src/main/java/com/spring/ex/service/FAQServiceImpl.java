@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,13 +17,25 @@ public class FAQServiceImpl implements FAQService {
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView() throws Exception {
-		return dao.FAQAllView();
+	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception {
+		return dao.FAQAllView(map);
 	}
 	
 	//자주 찾는 질문(카테고리별)
 	@Override
-	public List<FAQVO> FAQOtherView(String category) throws Exception {
-		return dao.FAQOtherView(category);
+	public List<FAQVO> FAQOtherView(HashMap<String, Object> map) throws Exception {
+		return dao.FAQOtherView(map);
+	}
+	
+	//자주 찾는 질문 총 갯수
+	@Override
+	public int FAQTotalCount() throws Exception {
+		return dao.FAQTotalCount();
+	}
+
+	//자주 찾는 질문(카테고리별) 총 갯수
+	@Override
+	public int FAQOtherTotalCount(String category) throws Exception {
+		return dao.FAQOtherTotalCount(category);
 	}
 }

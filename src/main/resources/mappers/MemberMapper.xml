@@ -38,28 +38,10 @@
     	SELECT * FROM account WHERE UserID = #{UserID}
     </select>
     
-	<!-- 회원정보 수정 -->
-	<update id="MemberInfoUpdate">
-	UPDATE account SET
-		Password = #{password},
-		Name = #{name},
-		Email = #{email},
-		Phone = #{phone},
-		Address = #{address}
-		WHERE UserID = #{userID}
-	</update>
-	
-	<!-- 회원탈퇴 -->
-	<delete id="memberDelete">
-		DELETE FROM account WHERE  UserID = #{userID} AND Password = #{password}
-	</delete>
-	
+    	
     <!-- 로그인 시 lastDate 갱신 -->
     <update id="MemberLoginDateLog">
     	UPDATE account SET lastDate = #{lastDate} WHERE UserID = #{UserID}
     </update>
-    <!-- 패스워드 체크  -->
-    <select id="passChk" resultType="int">
-		SELECT COUNT(*) FROM account WHERE UserID = #{userID} AND Password = #{password}
-	</select>
+  
 </mapper>

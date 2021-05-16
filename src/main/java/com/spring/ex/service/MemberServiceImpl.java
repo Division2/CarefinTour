@@ -25,14 +25,14 @@ public class MemberServiceImpl implements MemberService {
 
 	//회원 로그인
 	@Override
-	public MemberVO Login(MemberVO dto) throws Exception {
-		return dao.Login(dto);
+	public MemberVO Login(MemberVO vo) throws Exception {
+		return dao.Login(vo);
 	}
 	
 	//회원 로그인 시 lastDate 갱신
 	@Override
-	public int LoginDateRenewal(MemberVO dto) throws Exception {
-		return dao.LoginDateRenewal(dto);
+	public int LoginDateRenewal(MemberVO vo) throws Exception {
+		return dao.LoginDateRenewal(vo);
 	}
 
 	//회원 로그아웃
@@ -47,32 +47,15 @@ public class MemberServiceImpl implements MemberService {
 	
 	//회원가입
 	@Override
-	public int SignUp(MemberVO dto) throws Exception {
-		return dao.SignUp(dto);
+	public int SignUp(MemberVO vo) throws Exception {
+		return dao.SignUp(vo);
 	}
 
 	//회원가입 시 아이디 중복확인
 	@Override
-	public MemberVO IDCheck(MemberVO dto) throws Exception {
-		return dao.IDCheck(dto);
+	public MemberVO IDCheck(MemberVO vo) throws Exception {
+		return dao.IDCheck(vo);
 	}
 
-	//정보 수정
-	@Override
-	public void MemberInfoUpdate(MemberVO dto) throws Exception {	
-		dao.MemberInfoUpdate(dto);
-	}
-	
-	//회원탈퇴
-	@Override
-	public void memberDelete(MemberVO dto) throws Exception {
-		dao.memberDelete(dto);
-	}
-	
-	// 패스워드 체크
-	@Override
-	public int passChk(MemberVO dto) throws Exception {
-		int result = dao.passChk(dto);
-		return result;
-	}
+
 }

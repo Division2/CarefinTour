@@ -216,8 +216,8 @@
 								<img src='<c:url value="/resources/image/button/Review.png"/>' width="150" height="75" style="margin-right:40px;">
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="topanglers.do">탑앵글러</a>
-								<a class="dropdown-item" href="list.do">여행포토</a>
+								<a class="dropdown-item" href="topangler">탑앵글러</a>
+								<a class="dropdown-item" href="travelphoto">여행포토</a>
 							</div>
 						</li>
 					</ul>

@@ -33,7 +33,7 @@ $.urlParam = function(name){
 var searchDetailId = $.urlParam('cId');
 var hContent; //비교해서 값이 다르면 화면 새로고침
 
-//공통정보 api
+//공통정보 api - 1번탭 시작
 function detail1() {
     $.ajax({
 	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId=' + searchDetailId + '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y',
@@ -79,26 +79,27 @@ function showDetail1() {
 	document.write("<img src='" + sessionStorage.getItem("dImg") + "' width='400' height='250' /> "); 
 	document.write("</td>");
 	document.write("<td width='770'>");
+	
 	if(sessionStorage.getItem("dZipcode") != "undefined"){
-	document.write("<font size='2' color='#515151'><b> 우편번호 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("dZipcode")  + "</font><br>");
+		document.write("<font size='2' color='#515151'><b> 우편번호 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("dZipcode")  + "</font><br>");
 	}
 	if(sessionStorage.getItem("dTelname") != "undefined"){
 		document.write("<font size='2' color='#515151'><b> 전화명 : </font></b> <font size='2' color='#878787'>" +  sessionStorage.getItem("dTelname")  + "</font><br>");
 	}
 	if(sessionStorage.getItem("dTel") != "undefined" ){
-	document.write("<font size='2' color='#515151'><b> 전화번호 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("dTel") + "</font><br>");
+		document.write("<font size='2' color='#515151'><b> 전화번호 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("dTel") + "</font><br>");
 	}
 	if(sessionStorage.getItem("dHomepage") != "undefined"){
-	document.write("<font size='2' color='#515151'><b> 홈페이지 : </font></b> <font size='2'>" + sessionStorage.getItem("dHomepage")  + "</font><br>");
+		document.write("<font size='2' color='#515151'><b> 홈페이지 : </font></b> <font size='2'>" + sessionStorage.getItem("dHomepage")  + "</font><br>");
 	}
 	if(sessionStorage.getItem("daddr1") != "undefined"){
-	document.write("<font size='2' color='#515151'><b> 주소 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("daddr1")  + "</font>");
+		document.write("<font size='2' color='#515151'><b> 주소 : </font></b> <font size='2' color='#878787'>" + sessionStorage.getItem("daddr1")  + "</font>");
 	}
 	document.write("</td></tr> ");
-   
 	document.write("<tr> <td  colspan='2' width='1200'><hr>");
+	
 	if(sessionStorage.getItem("dOverview") != "undefined"){
-	document.write("<h5><b> 개요 </b></h5><font size='2' color='#515151'>" + sessionStorage.getItem("dOverview")  + "</font>");
+		document.write("<h5><b> 개요 </b></h5><font size='2' color='#515151'>" + sessionStorage.getItem("dOverview")  + "</font>");
 	}else{
 		document.write("<h5><b> 개요 </b></h5><font>없음</font>");
 	}
@@ -107,7 +108,7 @@ function showDetail1() {
 	 
 }
 
-//소개정보 api
+//소개정보 api - 2번탭 시작
 function detail2() {
     $.ajax({
 	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId=' + searchDetailId + '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y',
@@ -186,12 +187,42 @@ function showDetail2() {
 	}
 }
 
+//이미지 -3번 탭
+hContent3 =[];
+function detail3() {
+    $.ajax({
+	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId=' + searchDetailId + '&imageYN=Y',
+	       dataType : 'json',
+	       type : 'GET',
+	       success : function(data3) {
+	    	   var count =  data3.response.body.totalCount;
+	    	   //var co =  data3.response.body.items.item;
+	    	   //console.log(co);
+	    	   if(count>9){
+	    		   sessionStorage.setItem("deitilImgCount", 9);
+	    	   }if(count==0){
+	    		   $('a[data-toggle="tab"]').removeClass('disabled');
+	    	   }else{
+	    		   sessionStorage.setItem("deitilImgCount", count);
+	    	   }
+	    	   
+	    	   for(var i=0;i<count;i++){
+    			   hContent3.push(data3.response.body.items.item[i].originimgurl);
+				   console.log(hContent3[i]);
+			   	   sessionStorage.setItem("addImg"+i, hContent3[i]);
+	    	   }
+	       }
+	})
+}
+
+
 </script>
 	<jsp:include page="../layout/header.jsp"/>
 						
    	<script>
    		detail1();
 	  	detail2();
+	  	detail3();
   	</script>
               						
     <div class="container">
@@ -203,11 +234,11 @@ function showDetail2() {
               <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#qwe">공통정보</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#asd">소개정보</a>
+              <li class="nav-item" id="targetTab3">
+                <a class="nav-link" data-toggle="tab" href="#asd" >소개정보</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#zxc">정보3</a>
+                <a class="nav-link" data-toggle="tab" href="#zxc">추가이미지</a>
               </li>
             </ul>
             
@@ -226,7 +257,27 @@ function showDetail2() {
               	</script>
               </div>
               
-              <div class="tab-pane fade" id="zxc">
+			  <div class="tab-pane fade" id="zxc" align='center'>
+			  	<script>
+			     	document.write("<ul id='imagegallery'><div class='row' style='center'>");
+			  		for(var i=0;i<sessionStorage.getItem("deitilImgCount");i++){
+			  			//console.log(sessionStorage.getItem("addImg"+i)); 확인용
+			  			if(sessionStorage.getItem("addImg"+i) != null){
+			  				document.write("<li><a href='" +sessionStorage.getItem("addImg"+i) + "'>");
+			  		    	document.write("<img src='" + sessionStorage.getItem("addImg"+i) + "' width='90' height='60' /> ");
+			  		    	document.write("</a></li>");
+			  			}
+			  		}
+			  		document.write("</div></ul><img id='placeholder' src='" + sessionStorage.getItem("addImg0") + "' width='900' height='500' /> ");
+
+			  		$(document).ready(function() {
+			  		    $("#imagegallery li").on("click", function(){      
+			  		    	var boximages = $(this).find("a").attr("href");
+			  		    	$("#placeholder").attr("src", boximages);
+			  		        return false;
+			  		    });
+			  		});
+			  	</script>
               </div>
             </div>
         </div>
