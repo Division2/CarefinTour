@@ -174,7 +174,7 @@ function showDetail2() {
 	if(sessionStorage.getItem("pickup") != "undefined"){
 		document.write("<font size='2' color='#515151'><b> · 픽업서비스 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("pickup") + "</font><br>");
 	}
-	if(sessionStorage.getItem("foodplace") != "undefined"){
+	if(sessionStorage.getItem("foodplace") != "undefined" && sessionStorage.getItem("foodplace") != null && sessionStorage.getItem("foodplace") != ""){
 		document.write("<font size='2' color='#515151'><b> · 식음료장 : </font></b><font size='2' color='#878787'>" + sessionStorage.getItem("foodplace") + "</font><br>");
 	}
 	if(sessionStorage.getItem("subfacility") != "undefined" && sessionStorage.getItem("subfacility") != null && sessionStorage.getItem("subfacility") != ""){
