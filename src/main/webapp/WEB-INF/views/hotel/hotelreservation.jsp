@@ -123,65 +123,68 @@ ul{
 	ga = localStorage.getItem("searchPag");
 	function sta(x) {
 	    $.ajax({
-		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&areaCode='  + ga +'&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
+		       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&areaCode='  + ga + '&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
 		       dataType : 'json',
 		       type : 'GET',
 		       success : function(data) {
 		    	   var count =  data.response.body.totalCount;
 		    	   fCount = data.response.body.items.item;
-		    	   console.log(fCount);
-		    	   nc = count - fCount;  
+		    	   
+		    	   oneTitle = data.response.body.items.item.title;
+		    	   oneImg = data.response.body.items.item.firstimage
+		    	   oneCid = data.response.body.items.item.contentid
+	  
 		    	   for(var c=0; c<fCount.length; c++){
 		    		   fr.push(data.response.body.items.item[c].firstimage);
-		    		   if(data.response.body.items.item[c].title!="한옥게스트하우스 '安(Ahn)'"){
 		    			   fName.push(data.response.body.items.item[c].title);
-		    		   }
 		    		   countId.push(data.response.body.items.item[c].contentid);
 		    	   }
-		    	   
-		    	   
 	 	    	   try {
 	 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
 	 	    		   localStorage.setItem("fCount", fCount);
 	 	    		   
-	 	    		   localStorage.setItem('cId1', countId[0]);
-	 	    		   localStorage.setItem('cId2', countId[1]);
-	 	    		   localStorage.setItem('cId3', countId[2]);
-	 	    		   localStorage.setItem('cId4', countId[3]);
-	 	    		   localStorage.setItem('cId5', countId[4]);
-	 	    	 	   localStorage.setItem('cId6', countId[5]);
-	 	    	 	   localStorage.setItem('cId7', countId[6]);
-	 	    	 	   localStorage.setItem('cId8', countId[7]);
-	 	    	 	   localStorage.setItem('cId9', countId[8]);
-	 	    	 	   localStorage.setItem('cId10', countId[9]);
-	 	    	 	   localStorage.setItem('cId11', countId[10]);
-	 	    	 	   localStorage.setItem('cId12', countId[11]);
+	 	    		   localStorage.setItem("titleSearchResultsOne", oneTitle); 
+	 	    		   localStorage.setItem("imgSearchResultsOne", oneImg); 
+	 	    		   localStorage.setItem("cidSearchResultsOne", oneCid); 
+	 	    		   
+	 	    		   localStorage.setItem('cId0', countId[0]);
+	 	    		   localStorage.setItem('cId1', countId[1]);
+	 	    		   localStorage.setItem('cId2', countId[2]);
+	 	    		   localStorage.setItem('cId3', countId[3]);
+	 	    		   localStorage.setItem('cId4', countId[4]);
+	 	    	 	   localStorage.setItem('cId5', countId[5]);
+	 	    	 	   localStorage.setItem('cId6', countId[6]);
+	 	    	 	   localStorage.setItem('cId7', countId[7]);
+	 	    	 	   localStorage.setItem('cId8', countId[8]);
+	 	    	 	   localStorage.setItem('cId9', countId[9]);
+	 	    	 	   localStorage.setItem('cId10', countId[10]);
+	 	    	 	   localStorage.setItem('cId11', countId[11]);
 	 	    	 	   
-					   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
-					   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
-					   localStorage.setItem("img3", fr[2]);
-					   localStorage.setItem("img4", fr[3]);
-					   localStorage.setItem("img5", fr[4]);
-					   localStorage.setItem("img6", fr[5]);
-					   localStorage.setItem("img7", fr[6]);
-					   localStorage.setItem("img8", fr[7]);
-					   localStorage.setItem("img9", fr[8]);
-					   localStorage.setItem("img10", fr[9]);
-					   localStorage.setItem("img11", fr[10]);
-					   localStorage.setItem("img12", fr[11]);
+					   localStorage.setItem("img0", fr[0]); // key-value 형식으로 저장
+					   localStorage.setItem("img1", fr[1]); // 숙박업소 이미지
+					   localStorage.setItem("img2", fr[2]);
+					   localStorage.setItem("img3", fr[3]);
+					   localStorage.setItem("img4", fr[4]);
+					   localStorage.setItem("img5", fr[5]);
+					   localStorage.setItem("img6", fr[6]);
+					   localStorage.setItem("img7", fr[7]);
+					   localStorage.setItem("img8", fr[8]);
+					   localStorage.setItem("img9", fr[9]);
+					   localStorage.setItem("img10", fr[10]);
+					   localStorage.setItem("img11", fr[11]);
 					   
-					   localStorage.setItem("title1", fName[0]); //숙박업소 이름
-					   localStorage.setItem("title2", fName[1]);
-					   localStorage.setItem("title3", fName[2]);
-					   localStorage.setItem("title4", fName[3]);
-					   localStorage.setItem("title5", fName[4]);
-					   localStorage.setItem("title6", fName[5]);
-					   localStorage.setItem("title7", fName[6]);
-					   localStorage.setItem("title8", fName[7]);
-					   localStorage.setItem("title9", fName[8]);
-					   localStorage.setItem("title10", fName[9]);
-					   localStorage.setItem("title11", fName[10]);
-					   localStorage.setItem("title12", fName[11]);
+					   localStorage.setItem("title0", fName[0]); //숙박업소 이름
+					   localStorage.setItem("title1", fName[1]);
+					   localStorage.setItem("title2", fName[2]);
+					   localStorage.setItem("title3", fName[3]);
+					   localStorage.setItem("title4", fName[4]);
+					   localStorage.setItem("title5", fName[5]);
+					   localStorage.setItem("title6", fName[6]);
+					   localStorage.setItem("title7", fName[7]);
+					   localStorage.setItem("title8", fName[8]);
+					   localStorage.setItem("title9", fName[9]);
+					   localStorage.setItem("title10", fName[10]);
+					   localStorage.setItem("title11", fName[11]);
 					   
 			           location.reload();
 					} catch (e) {
@@ -189,6 +192,7 @@ ul{
 					     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
 					  }
 					} 
+		    	   
 		       }
 		    })
 	}
@@ -205,16 +209,31 @@ ul{
 	}
 	
 	//숙박업소 목록 출력
-	function showView(){ 
-		for(var i=1;i<=(localStorage.getItem("fCount").length+1)/16;i++){
-			if(localStorage.getItem("title"+i)=="undefined"){
+	function showView(){
+		if((localStorage.getItem("fCount").length+1)/16 == 1){ // 결과 값이 1이면 값이 들어가지 않아서 여기서 처리
+			document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cidSearchResultsOne") +"'>");
+			if(localStorage.getItem("img0")=="undefined"){
+				document.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='220' height='168'> ");
 			}else{
-				document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
-				document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");
-			    document.write("<h6>" + localStorage.getItem("title"+i) + "</h6> </ul></li>");
-			    document.write("</a>");
+				document.write("<ul><li><img src='" + localStorage.getItem("imgSearchResultsOne") + "' width='220' height='168' /> ");
 			}
-	    }
+		    document.write("<h6>" + localStorage.getItem("titleSearchResultsOne") + "</h6> </ul></li>");
+		    document.write("</a>");
+		}else{
+			for(var i=0;i<=(localStorage.getItem("fCount").length+1)/16;i++){ // 나머지 경우 출력
+				if(localStorage.getItem("title"+i)=="undefined"){
+				}else{
+					document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
+					if(localStorage.getItem("img"+i)=="undefined"){
+						document.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='220' height='168'> ");
+					}else{
+						document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");
+					}
+				    document.write("<h6>" + localStorage.getItem("title"+i) + "</h6> </ul></li>");
+				    document.write("</a>");
+				}
+		    }
+		}
 	}
 	
 	//지역검색

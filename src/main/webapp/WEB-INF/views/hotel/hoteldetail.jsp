@@ -76,7 +76,11 @@ function showDetail1() {
 	document.write("<table>");
 	document.write("<tr><br>");
 	document.write("<td width='430'>");
-	document.write("<img src='" + sessionStorage.getItem("dImg") + "' width='400' height='250' /> "); 
+	if(sessionStorage.getItem("dImg")== "undefined"){
+		document.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='400' height='250'> ");
+	}else{
+		document.write("<img src='" + sessionStorage.getItem("dImg") + "' width='400' height='250' /> "); 
+	}
 	document.write("</td>");
 	document.write("<td width='770'>");
 	
@@ -236,7 +240,8 @@ function showDetail3() {
 }
 
 //룸이미지 -4번 탭 시작
-hContent4 =[];
+/* hContent4 =[];
+hotelRoomImg = [][];
 function detail4() {
     $.ajax({
 	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId=' + searchDetailId + '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&listYN=Y',
@@ -255,13 +260,25 @@ function detail4() {
 	    	   console.log(sessionStorage.getItem("deitilt4Count"));
 	    	   
 	    	   for(var i=0;i<t4count;i++){ //이미지 각각 저장
-    			   //hContent4.push(data4.response.body.items.item[i].originimgurl);
+    			   hContent4.push(data4.response.body.items.item[i].roomtitle);
+	    	   	   hotelRoomImg[i][0].push(data4.response.body.items.item[i].roomimg1);
+	    	   	   hotelRoomImg[i][1].push(data4.response.body.items.item[i].roomimg2);
+	    	   	   hotelRoomImg[i][2].push(data4.response.body.items.item[i].roomimg3);
+	    	   	   hotelRoomImg[i][3].push(data4.response.body.items.item[i].roomimg4);
+	    	   	   hotelRoomImg[i][4].push(data4.response.body.items.item[i].roomimg5);
+    	   	       
+    	   	 	   sessionStorage.setItem("hotelRoomtitle"+i, hContent4[i]);
+				   sessionStorage.setItem("hotelRoomImg"+i, hotelRoomImg1[i]);
+				   sessionStorage.setItem("hotelRoomImg"+i, hotelRoomImg2[i]);
+				   sessionStorage.setItem("hotelRoomImg"+i, hotelRoomImg3[i]);
+				   sessionStorage.setItem("hotelRoomImg"+i, hotelRoomImg4[i]);
+				   sessionStorage.setItem("hotelRoomImg"+i, hotelRoomImg5[i]);
 				   //console.log(hContent4[i]);
 			   	   //sessionStorage.setItem("addImg"+i, hContent4[i]);
 	    	   }
 	       }
 	})
-} 
+}  */
 
 </script>
 	<jsp:include page="../layout/header.jsp"/>
@@ -285,10 +302,10 @@ function detail4() {
               }else{
               }
               
-              if(sessionStorage.getItem("deitilt4Count")!=0){  // 결과 없으면 탭 x
+/*               if(sessionStorage.getItem("deitilt4Count")!=0){  // 결과 없으면 탭 x
             	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab4' >룸이미지</a></li>");
               }else{
-              }
+              } */
 				
               </script>
             </ul>
@@ -332,7 +349,7 @@ function detail4() {
   		detail1();
   	</script>
   	<script>
- 	 	detail4();
+ 	 	//detail4();
 		detail3();
 	  	detail2();
   	</script>
