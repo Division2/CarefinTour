@@ -32,8 +32,8 @@
 											<c:when test = "${sessionScope.member.getUserID() eq MyPageInquiryList.userId}"> 				
 												<tr>
 													<td>${MyPageInquiryList.iId }</td>
-													<td><a href="inquirydetails">${MyPageInquiryList.title }</a></td>
-													<td><a href="inquirydetails">${MyPageInquiryList.reDate }</a></td>
+													<td><a href="inquirydetails?iId=${MyPageInquiryList.iId}">${MyPageInquiryList.title }</a></td>
+													<td><a href="inquirydetails?iId=${MyPageInquiryList.iId}">${MyPageInquiryList.reDate }</a></td>
 												</tr>
 											</c:when>
 										</c:choose> 	
@@ -50,12 +50,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="MyPageInquiryList?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="inquirylist?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="MyPageInquiryList?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="inquirylist?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -64,12 +64,12 @@
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="MyPageInquiryList?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="inquirylist?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="MyPageInquiryList?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="inquirylist?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:otherwise>
 						</c:choose>

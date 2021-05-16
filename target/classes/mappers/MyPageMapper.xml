@@ -8,6 +8,11 @@
 		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
+	<!-- 마이페이지 1:1 문의 읽기  -->
+	<select id="MyPageInquiryRead" parameterType="int" resultType="InquiryVO">
+		SELECT  Title, Content, reDate FROM inquiry WHERE IID = #{iId}
+	</select>
+	
 	<!-- 1:1 문의 게시물 총 갯수 -->
 	<select id="getMyPageInquiryTotalCount" resultType="int">
 		SELECT COUNT(*) FROM inquiry
@@ -15,12 +20,12 @@
 	
     <!-- 마이페이지 구매내역 출력 -->
 	<select id="MyPageOrderList" resultType="OrderVO">
-		SELECT * FROM order ORDER BY PID DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM historyorder ORDER BY PID DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 유저 오더 전체수 받기 -->
 	<select id="getOrderTotalCount" resultType="int">
-		SELECT COUNT(*) FROM order
+		SELECT COUNT(*) FROM historyorder
 	</select>
 		  
 	<!-- 마이페이지 회원정보 수정 -->
@@ -44,4 +49,5 @@
     <select id="MyPagePassChk" resultType="int">
 		SELECT COUNT(*) FROM account WHERE UserID = #{userID} AND Password = #{password}
 	</select>
+	
 </mapper>

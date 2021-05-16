@@ -23,13 +23,13 @@
 				<div class="form-group row">
 					<label class="col-sm-1" for="title">제목</label>
 					<div class="col-sm-10">
-						<input type="text" name="title" id="title" class="form-control" readonly>
+						<input type="text" name="title" id="title" class="form-control" value="${MyPageInquiryRead.title}" readonly >
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-1" for="content">내용</label>
 					<div class="col-sm-10">
-						<textarea name="content" id="content" class="form-control" rows="10" readonly></textarea>
+						<textarea name="content" id="content" class="form-control" rows="10" readonly>${MyPageInquiryRead.content}</textarea>
 					</div>
 				</div>
 			</div>

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.OrderVO;
+import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 
@@ -22,6 +23,12 @@ public class MyPageDAOImpl implements MyPageDAO {
 	@Override
 	public List<InquiryVO> MyPageInquiryList(HashMap<String, Integer> map) throws Exception {
 		return sqlSession.selectList(namespace + ".MyPageInquiryList", map);
+	}
+	
+	//마이페이지 1:1 문의 읽기
+	@Override
+	public InquiryVO MyPageInquiryRead(int iId) throws Exception {
+		return sqlSession.selectOne(namespace + ".MyPageInquiryRead", iId);
 	}
 	
 	//1:1 문의 게시물 총 갯수
@@ -41,12 +48,14 @@ public class MyPageDAOImpl implements MyPageDAO {
 	public int OrderTotalCount() throws Exception {
 		return sqlSession.selectOne(namespace + ".getOrderTotalCount");
 	}
+	
 	//마이페이지 회원정보 수정
 	@Override
 	public void MyPageInfoUpdate(MemberVO vo) throws Exception {
 		sqlSession.update(namespace+".MyPageInfoUpdate", vo); 
 		System.out.println(sqlSession);
 	}
+	
 	//마이페이지 회원탈퇴
 	@Override
 	public void MyPageDelete(MemberVO vo) throws Exception {

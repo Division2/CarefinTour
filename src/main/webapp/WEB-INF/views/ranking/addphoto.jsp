@@ -11,29 +11,34 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var formObj = $("form[name='add']");
-		
-		$(document).on("click","#fileDel", function(){
-			$(this).parent().remove();
-		})
-		$("#list_btn").on("click", function(){
-			event.preventDefault();
-			location.href = "/mylist"
-		})
-		fn_addFile();
+$(document).ready(function() {
+	
+	var formObj = $("form[name='add']");
+
+	$(document).on("click","#fileDel", function() {
+		$(this).parent().remove();
 	})
 	
-	function fn_addFile(){
-		var fileIndex = 1;
-		$("#fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-		});
-		$(document).on("click","#fileDelBtn", function(){
-			$(this).parent().remove();
-			
-		});
-	}
+	$("#list_btn").on("click", function() {
+		event.preventDefault();
+		location.href = "travelphoto"
+	})
+	
+	fn_addFile();
+	
+})
+	
+function fn_addFile() {
+	var fileIndex = 1;
+	
+	$("#fileAdd_btn").on("click", function() {
+		$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+	});
+	
+	$(document).on("click","#fileDelBtn", function() {
+		$(this).parent().remove();
+	});
+}
 </script>
 <title>케어핀투어 - 여행 포토</title>
 </head>
@@ -44,7 +49,7 @@
 				<h1>여행 포토 등록</h1>
 			</div>
 			<hr>
-			<form action="write" method="POST" name="add" enctype="multipart/form-data">   
+			<form action="TravelPhotoWrite" role="form" method="POST" name="add" enctype="multipart/form-data">   
 		        <div class="form-group row">
 		            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
 		            <div class="col-sm-10">
@@ -69,8 +74,10 @@
 		                <span>파일 목록</span>
 						<div class="form-group" style="border: 1px solid #dbdbdb;">								
 							<div id="fileIndex">
-								<input type="file" name="file">
-								<button id="fileDel" type="button" style='float:right;'>삭제</button><br>
+								<div>
+									<input type="file" name="file">
+									<button id="fileDel" type="button" style='float:right;'>삭제</button><br>
+								</div>
 							</div>
 						</div>
 		          	</div>		  
