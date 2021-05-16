@@ -217,12 +217,12 @@ function showDetail3() {
  	document.write("<ul id='imagegallery'><div class='row' style='center'>");
 	for(var i=0;i<sessionStorage.getItem("deitilt3Count");i++){
 		if(sessionStorage.getItem("addImg"+i) != null){
-			document.write("<li><a href='" +sessionStorage.getItem("addImg"+i) + "'>");
-	    	document.write("<img src='" + sessionStorage.getItem("addImg"+i) + "' width='90' height='60' /> ");
-	    	document.write("</a></li>");
+			document.write("&nbsp;<li><a href='" +sessionStorage.getItem("addImg"+i) + "'>");
+	    	document.write("<img src='" + sessionStorage.getItem("addImg"+i) + "' width='109' height='70' /> ");
+	    	document.write("</a></li> &nbsp;");
 		}
 	}
-	document.write("</div></ul><img id='placeholder' src='" + sessionStorage.getItem("addImg0") + "' width='900' height='500' /> ");
+	document.write("</div></ul><img id='placeholder' src='" + sessionStorage.getItem("addImg0") + "' width='95%' height='500' /> ");
 	document.write("</div>");
 
 
@@ -236,10 +236,10 @@ function showDetail3() {
 }
 
 //룸이미지 -4번 탭 시작
-/* hContent4 =[];
+hContent4 =[];
 function detail4() {
     $.ajax({
-	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId=' + searchDetailId + '&imageYN=Y',
+	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId=' + searchDetailId + '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&listYN=Y',
 	       dataType : 'json',
 	       type : 'GET',
 	       success : function(data4) {
@@ -247,8 +247,8 @@ function detail4() {
 	    	   console.log(t4count);
 	    	   if(t4count>9){
 	    		   sessionStorage.setItem("deitilt4Count", 9); // 9개까지만
-	    	   }else if(count4==0){
-	    		   sessionStorage.setItem("deitilt4Count", 0); // 추가이미지 없으면 탭 안나오게 하기 위해서
+	    	   }else if(t4count==0){
+	    		   sessionStorage.setItem("deitilt4Count", 0); 
 	    	   }else{
 	    		   sessionStorage.setItem("deitilt4Count", t4count);
 	    	   }
@@ -261,7 +261,7 @@ function detail4() {
 	    	   }
 	       }
 	})
-} */
+} 
 
 </script>
 	<jsp:include page="../layout/header.jsp"/>
@@ -277,14 +277,19 @@ function detail4() {
               <li class="nav-item" id="targetTab3">
                 <a class="nav-link" data-toggle="tab" href="#htab2" >소개정보</a>
               </li>
+              
               <script>
+              
               if(sessionStorage.getItem("deitilt3Count")!=0){  // 결과 없으면 탭 x
             	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab3' >추가이미지</a></li>");
+              }else{
               }
-/*               
+              
               if(sessionStorage.getItem("deitilt4Count")!=0){  // 결과 없으면 탭 x
-            	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab4' >추가이미지</a></li>");
-              } */
+            	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab4' >룸이미지</a></li>");
+              }else{
+              }
+				
               </script>
             </ul>
             
@@ -324,10 +329,10 @@ function detail4() {
     <br><br>
     
     <script defer>
-  		//detail4();
   		detail1();
   	</script>
   	<script>
+ 	 	detail4();
 		detail3();
 	  	detail2();
   	</script>
