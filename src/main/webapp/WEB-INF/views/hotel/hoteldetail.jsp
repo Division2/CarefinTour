@@ -109,6 +109,11 @@ function showDetail1() {
 	}
 	document.write("</td></tr>");
 	document.write("</table> <hr>");
+	
+	if(sessionStorage.getItem("dMapx") != "undefined"){
+		document.write("<font size='4' color='#368AFF'><b>&nbsp;지도</b></font><br>");
+		document.write("<div id='map' style='width:100%;height:400px;'></div>");
+	}
 	 
 }
 
@@ -315,8 +320,7 @@ function detail4() {
               	<script>
               		showDetail1();
               	</script>
-	       		<font size="4" color="#368AFF"><b>&nbsp;지도</b></font><br>
-	     		<div id="map" style="width:100%;height:400px;"></div>
+              	
               </div>
               
               <div class="tab-pane fade" id="htab2">
