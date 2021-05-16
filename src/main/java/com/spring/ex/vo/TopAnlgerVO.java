@@ -4,14 +4,15 @@ import java.sql.Date;
 
 public class TopAnlgerVO {
 	private int tid;
+	private String name;
 	private String title;
+	private String content;
 	private double fishsize;
+	private String fishname;
+	private Date redate;
 	private String s_file_fish;
 	private String o_file_fish;
-	private Date redate;
-	private String content;
-	private String name;
-	private String fishname;
+	private int ranking;
 	
 	public int getTid() {
 		return tid;
@@ -19,17 +20,41 @@ public class TopAnlgerVO {
 	public void setTid(int tid) {
 		this.tid = tid;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public double getFishsize() {
 		return fishsize;
 	}
 	public void setFishsize(double fishsize) {
 		this.fishsize = fishsize;
+	}
+	public String getFishname() {
+		return fishname;
+	}
+	public void setFishname(String fishname) {
+		this.fishname = fishname;
+	}
+	public Date getRedate() {
+		return redate;
+	}
+	public void setRedate(Date redate) {
+		this.redate = redate;
 	}
 	public String getS_file_fish() {
 		return s_file_fish;
@@ -43,28 +68,10 @@ public class TopAnlgerVO {
 	public void setO_file_fish(String o_file_fish) {
 		this.o_file_fish = o_file_fish;
 	}
-	public Date getRedate() {
-		return redate;
+	public int getRanking() {
+		return ranking;
 	}
-	public void setRedate(Date redate) {
-		this.redate = redate;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getFishname() {
-		return fishname;
-	}
-	public void setFishname(String fishname) {
-		this.fishname = fishname;
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
 	}
 }

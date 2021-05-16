@@ -12,19 +12,19 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.spring.ex.dao.TravelPhotoBoardDAO;
+import com.spring.ex.dao.TravelReviewDAO;
 import com.spring.ex.util.FileUtils;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
-public class TravelPhotoServiceImpl implements TravelPhotoService {
+public class TravelReviewServiceImpl implements TravelReviewService {
 	
 	@Resource(name = "fileUtils")
 	private FileUtils fileUtils;
 	
 	@Inject
-	private TravelPhotoBoardDAO dao;
+	private TravelReviewDAO dao;
 	
 	//게시물 목록
 	@Override
@@ -95,18 +95,18 @@ public class TravelPhotoServiceImpl implements TravelPhotoService {
 	
 	//탑 앵글러 출력
 	@Override
-	public List<TopAnlgerVO> TopanglerView(HashMap<String, Integer> map)throws Exception {
-		return dao.TopanglerView(map);
+	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception {
+		return dao.TopAnglerView(map);
 	}
 	
 	//탑앵글러 등록 요청
 	@Override
-	public int TopanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception {
+	public int TopAnglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception {
 		List<Map<String,Object>> list = fileUtils.parseInsertFishFileInfo(topAnlgerVO, mpRequest);
 		
 		int size = list.size();
 		for(int i = 0; i < size; i++){ 
-			dao.TopanglerWrite(list.get(i)); 
+			dao.TopAnglerWrite(list.get(i)); 
 		}
 		return size;
 	}

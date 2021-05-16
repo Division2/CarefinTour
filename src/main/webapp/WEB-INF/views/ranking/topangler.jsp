@@ -15,65 +15,71 @@
 		<div class="container">
 			<div class="d-flex">
 				<h1>탑 랭킹</h1>
-					<div class="ml-auto">
-						<c:if test="${sessionScope.member ne null}">
-							<button class="btn btn-primary" onclick="location.href='topanglerWrite'">등록요청</button>
-						</c:if>
-					</div>
+				<div class="ml-auto">
+					<c:if test="${sessionScope.member ne null}">
+						<button class="btn btn-primary" onclick="location.href='topanglerWrite'">등록요청</button>
+					</c:if>
+				</div>
 			</div>
 			<hr>
 			<div class="row">
+			<c:forEach items="${topangler}" var="topangler">
+			<c:if test="${topangler.getRanking() le 3}">
 				<div class="col-sm-4">
-					<div class="leaderboard-card">
-						<div class="leaderboard-card__top">
-							<h3 class="text-center">2nd</h3>
-						</div>
-						<div class="leaderboard-card__body">
-							<div class="text-center">
-								<img src='<c:url value="/resources/image/ranking/user2.jpg"/>' class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">전기태</h5>
-								<hr>
-								<div class="d-flex justify-content-between align-items-center">
-									<span><i class="fas fa-fish"></i> 잉어 100cm</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
+				<c:if test="${topangler.getRanking() eq 1}">
 					<div class="leaderboard-card leaderboard-card--first">
 						<div class="leaderboard-card__top">
 							<h3 class="text-center">1st</h3>
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
-								<img src='<c:url value="/resources/image/ranking/user1.jpg"/>' class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">박성동</h5>
+								<img src='<c:url value="/resources/image/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">${topangler.getName() }</h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
-									<span><i class="fas fa-fish"></i> 붕어 150cm</span>
+									<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="leaderboard-card">
+				</c:if>
+				<c:if test="${topangler.getRanking() eq 2}">
+					<div class="leaderboard-card leaderboard-card--second">
+						<div class="leaderboard-card__top">
+							<h3 class="text-center">2nd</h3>
+						</div>
+						<div class="leaderboard-card__body">
+							<div class="text-center">
+								<img src='<c:url value="/resources/image/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">${topangler.getName() }</h5>
+								<hr>
+								<div class="d-flex justify-content-between align-items-center">
+									<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${topangler.getRanking() eq 3}">
+					<div class="leaderboard-card leaderboard-card--third">
 						<div class="leaderboard-card__top">
 							<h3 class="text-center">3rd</h3>
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
-								<img src='<c:url value="/resources/image/ranking/user3.jpg"/>' class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">김요한</h5>
+								<img src='<c:url value="/resources/image/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">${topangler.getName() }</h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
-									<span><i class="fas fa-fish"></i> 송사리 50cm</span>
+									<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
 								</div>
 							</div>
 						</div>
 					</div>
+				</c:if>
 				</div>
+				</c:if>
+			</c:forEach>
 			</div>
 			<h4>전체 랭킹</h4>
 			<hr>
@@ -91,19 +97,19 @@
 						<tr>
 							<td>
 								<div class="d-flex align-items-baseline">
-								<h4 class="mr-1"></h4>
+								<h4 class="mr-1">${topangler.getRanking() }위</h4>
 								</div>
 							</td>
 							<td>
 								<div class="d-flex align-items-center">
-									<img src='<c:url value="/resources/image/topangler/${topangler.s_file_fish}"/>' class="circle-img circle-img--small mr-2" alt="User Img">
+									<img src='<c:url value="/resources/image/topangler/${topangler.s_file_fish }"/>' class="circle-img circle-img--small mr-2" alt="User Img">
 									<div class="user-info__basic">
-										<h5 class="mb-0">${topangler.name}</h5>
+										<h5 class="mb-0">${topangler.getName() }</h5>
 									</div>
 								</div>
 							</td>
-							<td>${topangler.fishname}</td>
-							<td>${topangler.fishsize}</td>
+							<td>${topangler.getFishname() }</td>
+							<td>${topangler.getFishsize() }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -115,12 +121,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="topangler?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="topangler?page=${Paging.prevPageNo }">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="topangler?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="topangler?page=${Paging.prevPageNo }">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -143,18 +149,20 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="topangler?page=${Paging.nextPageNo}">Next</a>
+								<a class="page-link" href="topangler?page=${Paging.nextPageNo }">Next</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="topangler?page=${Paging.nextPageNo}">Next</a>
+								<a class="page-link" href="topangler?page=${Paging.nextPageNo }">Next</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
 			</nav>
+			<br>
 		</div>
+		
 	<jsp:include page="../layout/footer.jsp" />
 </body>
 </html>

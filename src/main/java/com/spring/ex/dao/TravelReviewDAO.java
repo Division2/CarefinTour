@@ -7,7 +7,7 @@ import java.util.Map;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
-public interface TravelPhotoBoardDAO {
+public interface TravelReviewDAO {
 	
 	//여행 게시판 입력	
 	public int TravelPhotoWrite(Map<String, Object> map) throws Exception;
@@ -40,10 +40,10 @@ public interface TravelPhotoBoardDAO {
 	public void TravelPhotoDelete(int prid) throws Exception;
 		
 	//탑 앵글러 출력
-	public List<TopAnlgerVO> TopanglerView(HashMap<String, Integer> map) throws Exception;
+	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception;
 
 	//탑 앵글러 등록 요청
-	public int TopanglerWrite(Map<String, Object> map) throws Exception;
+	public int TopAnglerWrite(Map<String, Object> map) throws Exception;
 	
 	//탑 앵글러 총 갯수
 	public int TopAnglerTotalCount() throws Exception;

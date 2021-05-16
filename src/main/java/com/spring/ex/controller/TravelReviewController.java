@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.spring.ex.service.TravelPhotoService;
+import com.spring.ex.service.TravelReviewService;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Controller
 
-public class TravelPhotoController {
+public class TravelReviewController {
 	
 	@Inject
-	TravelPhotoService service;
+	TravelReviewService service;
 	
 	//게시물 작성
 	@RequestMapping(value = "/TravelPhotoWrite", method = RequestMethod.POST)
@@ -151,7 +151,7 @@ public class TravelPhotoController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<TopAnlgerVO> topanglerList = service.TopanglerView(map);
+		List<TopAnlgerVO> topanglerList = service.TopAnglerView(map);
 		
 		model.addAttribute("topangler", topanglerList);
 		model.addAttribute("Paging", paging);
@@ -163,7 +163,7 @@ public class TravelPhotoController {
 	@RequestMapping(value = "/topanglerWrite", method = RequestMethod.POST)
 	public void TopanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
 		
-		int result = service.TopanglerWrite(topAnlgerVO, mpRequest);
+		int result = service.TopAnglerWrite(topAnlgerVO, mpRequest);
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();

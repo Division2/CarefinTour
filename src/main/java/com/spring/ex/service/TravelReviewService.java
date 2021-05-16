@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
-public interface TravelPhotoService {
+public interface TravelReviewService {
 	
 	//게시물 작성
 	public int TravelPhotoWrite(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception;
@@ -36,10 +36,10 @@ public interface TravelPhotoService {
 	public void TravelPhotoUpdate(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	//탑 앵글러 출력
-	public List<TopAnlgerVO> TopanglerView(HashMap<String, Integer> map) throws Exception;
+	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception;
 
 	//탑 앵글러 등록 요청
-	public int TopanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception;
+	public int TopAnglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	//탑 앵글러 총 갯수
 	public int TopAnglerTotalCount() throws Exception;

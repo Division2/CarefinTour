@@ -14,12 +14,12 @@ import com.spring.ex.vo.TravelPhotoVO;
 
 
 @Repository
-public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
+public class TravelReviewDAOImpl implements TravelReviewDAO {
 	
 	@Inject
 	private SqlSession sql;
 	
-	private static String namespace = "com.spring.ex.TravelPhotoMapper";
+	private static String namespace = "com.spring.ex.TravelReviewMapper";
 	
 	//게시글 목록
 	@Override
@@ -83,14 +83,14 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	
 	//탑 앵글러 출력
 	@Override
-	public List<TopAnlgerVO> TopanglerView(HashMap<String, Integer> map) throws Exception {
-		return sql.selectList(namespace + ".TopanglerView", map);
+	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception {
+		return sql.selectList(namespace + ".TopAnglerView", map);
 	}
 	
 	//탑 앵글러 등록 요청
 	@Override
-	public int TopanglerWrite(Map<String, Object> map) throws Exception {
-		return sql.insert(namespace + ".TopanglerWrite", map);
+	public int TopAnglerWrite(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".TopAnglerWrite", map);
 	}
 	
 	//탑 앵글러 총 갯수
