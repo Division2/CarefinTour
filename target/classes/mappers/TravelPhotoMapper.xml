@@ -19,7 +19,7 @@
 	
 	<!-- 여행포토 게시물 읽기  -->
 	<select id="TravelPhotoRead" parameterType="int" resultType="TravelPhotoVO">
-		SELECT	prid, title, content, name, redate FROM photoreview WHERE prid = #{prid}
+		SELECT * FROM photoreview WHERE prid = #{prid}
 	</select>
 	
 	<!-- 여행포토 게시물 총 갯수 -->

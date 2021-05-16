@@ -11,44 +11,38 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-		$(document).ready(function(){
-			var formObj = $("form[name='readForm']");
-			
-			// 수정 
-			$("#update_btn").on("click", function(){
-				formObj.attr("action", "/ex/update");
-				formObj.attr("method", "get");
-				formObj.submit();				
-			})
-			
-			// 삭제
-			$("#delete_btn").on("click", function(){
-				formObj.attr("action", "/ex/delete");
-				formObj.attr("method", "post");
-				formObj.submit();
-			})
-			
-			// 취소
-			$("#list_btn").on("click", function(){
-				
-				location.href = "/ex/myaddphoto";
-			})
-		})
-	</script>
 <title>케어핀투어 - 여행 포토</title>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp" />
 	<div class="container">
-		<div class="d-flex">
-				<h1>여행 포토 읽기</h1>
-			</div>
-			<hr>
-				<form name="updateForm" role="form" method="post" action="ex/write">
-					
-	        </form>
-        </div>
+		<div class="col-md-3"></div>
+			<div style="margin-left:100px;">
+				<h1>1:1 문의 내역</h1>
+					<hr>
+						<div class="d-flex">
+							<div class="ml-auto">
+								<small class="text-muted">작성자 : ${read.name}</small>
+								<p class="card-text"><small class="text-muted">작성일 : ${read.redate }</small></p>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-1" for="title">제목</label>
+							<div class="col-sm-10">
+								${read.title}
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-1" for="content">내용</label>
+								<div class="col-sm-10">
+									<div contenteditable="false">
+									${read.content}<br>
+									<img src='<c:url value="/resources/image/photoreview_folder/${read.s_file_name}"/>' width=200, height=200, alt="로고">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 	<jsp:include page="../layout/footer.jsp" />
 </body>
 </html>

@@ -70,7 +70,7 @@ public class TravelPhotoController {
 	
 	//마이게시물 출력
 	@RequestMapping(value = "/myaddphoto", method = RequestMethod.GET)
-	public String mylist(Model model, HttpServletRequest request) throws Exception {
+	public String TravelPhotoMyList(Model model, HttpServletRequest request) throws Exception {
 		
 		int totalCount = service.PhotoTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
