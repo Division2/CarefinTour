@@ -223,6 +223,10 @@ public class CareController {
 	public String admin_package() {
 		return "admin/site/packageproduct";
 	}
+	@RequestMapping("admin/insertpackage")
+	public String admin_insertpackage() {
+		return "admin/site/insertpackage";
+	}
 	@RequestMapping("admin/theme")
 	public String admin_theme() {
 		return "admin/site/themeproduct";

@@ -58,7 +58,7 @@
 						<div class="col-sm-2">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary">등록</button>
+									<button class="btn btn-primary"  onclick="location.href='insertpackage'">등록</button>
 									<button class="btn btn-primary">삭제</button>
 								</div>
 							</div>
@@ -82,6 +82,9 @@
 								</th>
 								<th>
 									상품명
+								</th>
+								<th>
+									지역
 								</th>
 								<th>
 									기간

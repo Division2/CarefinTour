@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="col-md-3"></div>
 			<div style="margin-left:100px;">
-				<h1>1:1 문의 내역</h1>
+				<h1>여행 후기</h1>
 					<hr>
 						<div class="d-flex">
 							<div class="ml-auto">
