@@ -133,7 +133,9 @@ ul{
 		    	   nc = count - fCount;  
 		    	   for(var c=0; c<fCount.length; c++){
 		    		   fr.push(data.response.body.items.item[c].firstimage);
-		    		   fName.push(data.response.body.items.item[c].title);
+		    		   if(data.response.body.items.item[c].title!="한옥게스트하우스 '安(Ahn)'"){
+		    			   fName.push(data.response.body.items.item[c].title);
+		    		   }
 		    		   countId.push(data.response.body.items.item[c].contentid);
 		    	   }
 		    	   
@@ -204,15 +206,15 @@ ul{
 	
 	//숙박업소 목록 출력
 	function showView(){ 
-		if(localStorage.getItem("title1")=="undefined"){
-		}else{
-			for(var i=1;i<=(localStorage.getItem("fCount").length+1)/16;i++){
-	    		document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
-			    document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");
+		for(var i=1;i<=(localStorage.getItem("fCount").length+1)/16;i++){
+			if(localStorage.getItem("title"+i)=="undefined"){
+			}else{
+				document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
+				document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");
 			    document.write("<h6>" + localStorage.getItem("title"+i) + "</h6> </ul></li>");
 			    document.write("</a>");
-		    }
-		}
+			}
+	    }
 	}
 	
 	//지역검색
@@ -231,9 +233,7 @@ ul{
     });
 	</script>
 
-
 <body>
-	
 	<jsp:include page="../layout/header.jsp"/>
 	<div class="container">
 		<h3><strong>지역별 숙박정보</strong></h3><hr style="background:#1E90FF;">							
@@ -280,7 +280,7 @@ ul{
    			</tr> -->
         </table><p>  
 	                              		
-	   	<script> 
+	   	<script> //검색된 태그
 	   		showTitleView();
 	   	</script>
 	   

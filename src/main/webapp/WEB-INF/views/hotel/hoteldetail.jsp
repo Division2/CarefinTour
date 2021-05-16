@@ -58,7 +58,8 @@ function detail1() {
 	    		   sessionStorage.setItem("dTelname", hContent.telname);
 	    		   sessionStorage.setItem("dTel", hContent.tel); 
 	    		   sessionStorage.setItem("dOverview", hContent.overview); 
-		    	   
+	    		   sessionStorage.setItem("dMapx", hContent.mapx);
+	    		   sessionStorage.setItem("dMapy", hContent.mapy); 
 			   } catch (e) {
 			   }
 	       }
@@ -98,7 +99,7 @@ function showDetail1() {
 	document.write("<tr> <td  colspan='2' width='1200'><hr>");
 	
 	if(sessionStorage.getItem("dOverview") != "undefined"){
-		document.write("<h5><b> 개요 </b></h5><font size='2' color='#515151'>" + sessionStorage.getItem("dOverview")  + "</font>");
+		document.write("<font size='4' color='#368AFF'><b> 개요 </b></font><br> <font size='2' color='#515151'>" + sessionStorage.getItem("dOverview")  + "</font>");
 	}else{
 		document.write("<h5><b> 개요 </b></h5><font>없음</font>");
 	}
@@ -264,15 +265,6 @@ function detail4() {
 
 </script>
 	<jsp:include page="../layout/header.jsp"/>
-						
-   	<script>
-  		//detail4();
-   		detail3();
-   		
-	  	detail2();
-	  	detail1();
-  	</script>
-              						
     <div class="container">
       <div class="row">
         <div class="col">
@@ -286,7 +278,6 @@ function detail4() {
                 <a class="nav-link" data-toggle="tab" href="#htab2" >소개정보</a>
               </li>
               <script>
-              
               if(sessionStorage.getItem("deitilt3Count")!=0){  // 결과 없으면 탭 x
             	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab3' >추가이미지</a></li>");
               }
@@ -302,6 +293,8 @@ function detail4() {
               	<script>
               		showDetail1();
               	</script>
+	       		<font size="4" color="#368AFF"><b>&nbsp;지도</b></font><br>
+	     		<div id="map" style="width:100%;height:400px;"></div>
               </div>
               
               <div class="tab-pane fade" id="htab2">
@@ -324,10 +317,40 @@ function detail4() {
 			  	</script>
 			  </div>
             </div> 
+            
         </div>
       </div>
     </div>
+    <br><br>
     
+    <script defer>
+  		//detail4();
+  		detail1();
+  	</script>
+  	<script>
+		detail3();
+	  	detail2();
+  	</script>
+  	
+	<!--지도보기  -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51b48d7e64099981156514cbd0f41107"></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(sessionStorage.getItem("dMapy"), sessionStorage.getItem("dMapx")), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(sessionStorage.getItem("dMapy"), sessionStorage.getItem("dMapx")); 
+	var marker = new kakao.maps.Marker({// 마커 생성
+	    position: markerPosition
+	});
+	
+	marker.setMap(map);	// 마커가 지도 위에 표시되도록 설정합니다
+	</script>
+	
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>
