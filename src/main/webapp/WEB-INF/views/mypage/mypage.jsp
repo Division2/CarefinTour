@@ -46,8 +46,7 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th>여행상품</th>
-									<th>호텔</th>
+									<th colspan="2">여행상품</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -55,7 +54,8 @@
 									<c:choose>
 										<c:when test = "${sessionScope.member.getUserID() eq MyPageOrderList.userid}"> 	
 											<tr>
-												<td colspan="2">${hotelList.productname}</td>
+												<td>${MyPageOrderList.productname}</td>
+												<td>${MyPageOrderList.paymentdate}</td>
 											</tr>
 										</c:when>
 									</c:choose>
@@ -68,17 +68,17 @@
 		</div>
 		<!-- 게시글 페이징 처리(기준 8개) -->
 		<nav aria-label="Page navigation">
-			<ul class="pagination justify-content-center">
+			<ul class="pagination justify-content-center" style="margin-left:200px;">
 				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 				<c:choose>
 					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 						<li class="page-item disabled">
-							<a class="page-link" href="MyPageOrderList?page=${Paging.prevPageNo}">Previus</a>
+							<a class="page-link" href="mypage?page=${Paging.prevPageNo}">Previus</a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item">
-							<a class="page-link" href="MyPageOrderList?page=${Paging.prevPageNo}">Previus</a>
+							<a class="page-link" href="mypage?page=${Paging.prevPageNo}">Previus</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
@@ -87,12 +87,12 @@
 					<c:choose>
 						<c:when test="${i eq Paging.pageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="MyPageOrderList?page=${i}"><c:out value="${i}"/></a>
+								<a class="page-link" href="mypage?page=${i}"><c:out value="${i}"/></a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="MyPageOrderList?page=${i}"><c:out value="${i}"/></a>
+								<a class="page-link" href="mypage?page=${i}"><c:out value="${i}"/></a>
 							</li>
 						</c:otherwise>
 					</c:choose>

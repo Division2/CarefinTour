@@ -21,28 +21,28 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	
 	private static String namespace = "com.spring.ex.TravelPhotoMapper";
 	
-	//게시글 목록 조회
+	//게시글 목록
 	@Override
-	public List<TravelPhotoVO> list(HashMap<String, Integer> map) throws Exception {
-		return sql.selectList(namespace + ".list",map);
+	public List<TravelPhotoVO> TravelPhotoList(HashMap<String, Integer> map) throws Exception {
+		return sql.selectList(namespace + ".TravelPhotoList",map);
 	}
 	
-	//마이게시글 목록 조회
+	//마이게시글 목록
 	@Override
-	public List<TravelPhotoVO> mylist(HashMap<String, Integer> map) throws Exception {
-		return sql.selectList(namespace + ".mylist",map);
+	public List<TravelPhotoVO> TravelPhotoMyList(HashMap<String, Integer> map) throws Exception {
+		return sql.selectList(namespace + ".TravelPhotoMyList",map);
 	}
 	
 	// 게시글 작성
 	@Override
-	public int write(Map<String, Object> map) throws Exception {
-		return sql.insert(namespace + ".insert", map);
+	public int TravelPhotoWrite(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".TravelPhotoWrite", map);
 	}
 	
 	// 게시글 조회
 	@Override
-	public TravelPhotoVO read(int prid) throws Exception {
-		return sql.selectOne(namespace + ".read", prid);
+	public TravelPhotoVO TravelPhotoRead(int prid) throws Exception {
+		return sql.selectOne(namespace + ".TravelPhotoRead", prid);
 	}
 	
 	//여행포토 게시물 총 갯수
@@ -53,44 +53,44 @@ public class TravelPhotoBoardDAOImpl implements TravelPhotoBoardDAO {
 	
 	//게시글 조회수
 	@Override
-	public void boardHit(int prid) throws Exception {
-		sql.update(namespace  + ".boardHit", prid);
+	public void TravelPhotoBoardHit(int prid) throws Exception {
+		sql.update(namespace  + ".TravelPhotoBoardHit", prid);
 	}
 	
 	//파일 조회
 	@Override
-	public List<Map<String, Object>> selectFileList(int prid) throws Exception {
-		return sql.selectList(namespace + ".selectFileList", prid);
+	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
+		return sql.selectList(namespace + ".TravelPhotoSelectFileList", prid);
 	}
 	
 	//게시물 수정
 	@Override
-	public int updateFile(Map<String, Object> map) throws Exception {
-		return sql.update(namespace + ".updateFile", map);
+	public int TravelPhotoUpdateFile(Map<String, Object> map) throws Exception {
+		return sql.update(namespace + ".TravelPhotoUpdateFile", map);
 	}
 	
 	//게시물 수정
 	@Override
-	public void update(TravelPhotoVO travelPhotoVO) throws Exception {
-		sql.update(namespace + ".update", travelPhotoVO);
+	public void TravelPhotoUpdate(TravelPhotoVO travelPhotoVO) throws Exception {
+		sql.update(namespace + ".TravelPhotoUpdate", travelPhotoVO);
 	}
 	
 	//게시물 삭제
 	@Override
-	public void delete(int prid) throws Exception {
-		sql.delete(namespace + ".delete", prid);
+	public void TravelPhotoDelete(int prid) throws Exception {
+		sql.delete(namespace + ".TravelPhotoDelete", prid);
 	}
 	
 	//탑 앵글러 출력
 	@Override
-	public List<TopAnlgerVO> topanglerView(HashMap<String, Integer> map) throws Exception {
-		return sql.selectList(namespace + ".topanglerView", map);
+	public List<TopAnlgerVO> TopanglerView(HashMap<String, Integer> map) throws Exception {
+		return sql.selectList(namespace + ".TopanglerView", map);
 	}
 	
 	//탑 앵글러 등록 요청
 	@Override
-	public int topanglerWrite(Map<String, Object> map) throws Exception {
-		return sql.insert(namespace + ".topanglerWrite", map);
+	public int TopanglerWrite(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".TopanglerWrite", map);
 	}
 	
 	//탑 앵글러 총 갯수

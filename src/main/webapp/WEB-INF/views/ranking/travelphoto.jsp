@@ -20,25 +20,25 @@
 				<div class="ml-auto">
 					<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
 						<button class="btn btn-primary" onclick="location.href='addphoto'">등록</button>
-						<button class="btn btn-primary" onclick="location.href='mylist.my'">내 후기</button>
+						<button class="btn btn-primary" onclick="location.href='myaddphoto'">내 후기</button>
 					</c:if>
 				</div>
 			</div><hr>
 			<div class="row">
-				<c:forEach var="list" items="${list}">	
+				<c:forEach var="TravelPhotoList" items="${TravelPhotoList}">	
 					<div class="col-sm-3">
-							<a href="/ex/readView?prid=${list.prid}">
-								<img src='<c:url value="/resources/image/photoreview_folder/${list.s_file_name}"/>' width=200, height=200, alt="로고">
+							<a href="/ex/readView?prid=${TravelPhotoList.prid}">
+								<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoList.s_file_name}"/>' width=200, height=200, alt="로고">
 							</a>
 							<h6>
-								<a href="/ex/readView?prid=${list.prid}"><c:out value="${list.title}"/></a>
+								<a href="/ex/readView?prid=${TravelPhotoList.prid}"><c:out value="${TravelPhotoList.title}"/></a>
 							</h6>
 							<p>
 								<span class="sr-only">작성자 </span>
-								<span class="sv_member"><c:out value="${list.name}"/></span>
+								<span class="sv_member"><c:out value="${TravelPhotoList.name}"/></span>
 								<br>
-								<span class="sr-only">조회 </span><i class="fas fa-eye"></i><c:out value="${list.hit}"/> <br>
-								<span class="sr-only">작성일 </span><i class="far fa-clock"></i><fmt:formatDate value="${list.redate}" pattern="MM-dd"/>
+								<span class="sr-only">조회 </span><i class="fas fa-eye"></i><c:out value="${TravelPhotoList.hit}"/> <br>
+								<span class="sr-only">작성일 </span><i class="far fa-clock"></i><fmt:formatDate value="${TravelPhotoList.redate}" pattern="MM-dd"/>
 							</p>
 																
 						</div>
@@ -57,11 +57,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="list" items="${list}">	
+							<c:forEach var="TravelPhotoList" items="${TravelPhotoList}">	
 								<tr>						
-									<td><i class="fas fa-bullhorn">${list.prid}</i></td>
-									<td><a href="/ex/readView?prid=${list.prid}">${list.title }</a></td>
-									<td>${list.redate}</td>						
+									<td><i class="fas fa-bullhorn">${TravelPhotoList.prid}</i></td>
+									<td><a href="/ex/readView?prid=${TravelPhotoList.prid}">${TravelPhotoList.title }</a></td>
+									<td>${TravelPhotoList.redate}</td>						
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -74,12 +74,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="list.do?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="travelphoto?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="list.do?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="travelphoto?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -88,12 +88,12 @@
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="list.do?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="travelphoto?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="list.do?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="travelphoto?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:otherwise>
 						</c:choose>

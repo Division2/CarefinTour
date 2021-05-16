@@ -29,22 +29,22 @@ public class TravelPhotoController {
 	TravelPhotoService service;
 	
 	//게시물 작성
-	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public void postWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/TravelPhotoWrite", method = RequestMethod.POST)
+	public void TravelPhotoWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
 		
-		int result = service.addphoto(travelPhotoVO,mpRequest);
+		int result = service.TravelPhotoWrite(travelPhotoVO,mpRequest);
 		
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>location.href='list'</script>");
+			out.println("<script>location.href='travelphoto'</script>");
 			out.close();
 		}   
 	}
 	
 	//게시물 출력
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/travelphoto", method = RequestMethod.GET)
+	public String TravelPhotoList(Model model, HttpServletRequest request) throws Exception {
 		
 		int totalCount = service.PhotoTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -60,16 +60,16 @@ public class TravelPhotoController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<TravelPhotoVO> List = service.list(map);
+		List<TravelPhotoVO> List = service.TravelPhotoList(map);
 		
-		model.addAttribute("list", List);
+		model.addAttribute("TravelPhotoList", List);
 		model.addAttribute("Paging", paging);
 		
 		return "ranking/travelphoto";
 	}
 	
 	//마이게시물 출력
-	@RequestMapping(value = "/mylist", method = RequestMethod.GET)
+	@RequestMapping(value = "/myaddphoto", method = RequestMethod.GET)
 	public String mylist(Model model, HttpServletRequest request) throws Exception {
 		
 		int totalCount = service.PhotoTotalCount();
@@ -86,19 +86,19 @@ public class TravelPhotoController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<TravelPhotoVO> List = service.mylist(map);
+		List<TravelPhotoVO> List = service.TravelPhotoMyList(map);
 		
-		model.addAttribute("mylist", List);
+		model.addAttribute("TravelPhotoMyList", List);
 		model.addAttribute("Paging", paging);
 		
 		return "ranking/myaddphoto";
 	}
 	
 	//게시물 조회
-	@RequestMapping(value = "/readView", method = {RequestMethod.GET, RequestMethod.POST})
-	public String read(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
+	@RequestMapping(value = "/travelphotoview", method = {RequestMethod.GET, RequestMethod.POST})
+	public String TravelPhotoRead(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
 		
-		model.addAttribute("read", service.read(travelPhotoVO.getPrid()));
+		model.addAttribute("read", service.TravelPhotoRead(travelPhotoVO.getPrid()));
 		
 		return "ranking/travelphotoview";
 	}
@@ -107,9 +107,9 @@ public class TravelPhotoController {
 	@RequestMapping(value = "/updateView", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
 		
-		List<Map<String, Object>> fileList = service.selectFileList(travelPhotoVO.getPrid());
+		List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
 		
-		model.addAttribute("update", service.read(travelPhotoVO.getPrid()));
+		model.addAttribute("update", service.TravelPhotoRead(travelPhotoVO.getPrid()));
 		model.addAttribute("file", fileList);
 		
 		return "ranking/updateView";
@@ -117,25 +117,25 @@ public class TravelPhotoController {
 	
 	//게시판 수정
 	@RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
-	public String update(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
+	public String TravelPhotoUpdate(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
 		
-		service.update(travelPhotoVO,files,fileNames,mpRequest);
+		service.TravelPhotoUpdate(travelPhotoVO,files,fileNames,mpRequest);
 		
-		return "redirect:/list";
+		return "redirect:/myaddphoto";
 	}
 
 	//게시판 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(TravelPhotoVO travelPhotoVO) throws Exception {
+	public String TravelPhotoDelete(TravelPhotoVO travelPhotoVO) throws Exception {
 		
-		service.delete(travelPhotoVO.getPrid());
+		service.TravelPhotoDelete(travelPhotoVO.getPrid());
 		
-		return "redirect:/list";
+		return "redirect:/myaddphoto";
 	}
 	
 	//탑앵글러 출력
 	@RequestMapping(value = "/topangler", method = RequestMethod.GET)
-	public String topanglerView(Model model, HttpServletRequest request) throws Exception {
+	public String TopanglerView(Model model, HttpServletRequest request) throws Exception {
 		
 		int totalCount = service.TopAnglerTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -151,7 +151,7 @@ public class TravelPhotoController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<TopAnlgerVO> topanglerList = service.topanglerView(map);
+		List<TopAnlgerVO> topanglerList = service.TopanglerView(map);
 		
 		model.addAttribute("topangler", topanglerList);
 		model.addAttribute("Paging", paging);
@@ -161,9 +161,9 @@ public class TravelPhotoController {
 	
 	//탑앵글러 등록 요청
 	@RequestMapping(value = "/topanglerWrite", method = RequestMethod.POST)
-	public void topanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
+	public void TopanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
 		
-		int result = service.topanglerWrite(topAnlgerVO, mpRequest);
+		int result = service.TopanglerWrite(topAnlgerVO, mpRequest);
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();

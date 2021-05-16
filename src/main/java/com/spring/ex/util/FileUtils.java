@@ -155,7 +155,6 @@ public class FileUtils {
 				multipartFile.transferTo(new File(filePath + s_file_name)); 
 				
 				listMap = new HashMap<String,Object>();
-				listMap.put("IS_NEW", "Y");
 				listMap.put("prid", prid); 
 				listMap.put("o_file_name", o_file_name);
 				listMap.put("s_file_name", s_file_name); 
@@ -168,7 +167,6 @@ public class FileUtils {
 		if(files != null && fileNames != null){ 
 			for(int i = 0; i<files.length; i++) {
 				listMap = new HashMap<String,Object>();
-				listMap.put("IS_NEW", "N"); 
 				listMap.put("prid", files[i]); 
 				
 				list.add(listMap); 

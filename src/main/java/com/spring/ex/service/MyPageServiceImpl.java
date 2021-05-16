@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MyPageDAO;
 import com.spring.ex.vo.OrderVO;
+import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 
@@ -22,6 +23,13 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.MyPageInquiryList(map);
 	}
 	
+	//마이페이지 1:1 문의 조회
+	@Override
+	public InquiryVO MyPageInquiryRead(int iId) throws Exception {
+
+		return dao.MyPageInquiryRead(iId);
+	}
+	
 	//1:1 문의 게시물 총 갯수
 	@Override
 	public int MyPageInquiryTotalCount() throws Exception {
@@ -33,11 +41,13 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception {
 		return dao.MyPageOrderList(map);
 	}
+	
 	//유저 오더 전체수 받기
 	@Override
 	public int OrderTotalCount() throws Exception {
 		return dao.OrderTotalCount();
 	}
+	
 	//마이페이지 정보 수정
 	@Override
 	public void MyPageInfoUpdate(MemberVO vo) throws Exception {	

@@ -30,9 +30,10 @@
 					}
 				}
 				
+				// 목록
 				$("#list_btn").on("click", function(){
 					event.preventDefault();
-					location.href = "/ex/mylist"
+					location.href = "/ex/myaddphoto"
 				})
 				
 				// 삭제
@@ -42,6 +43,7 @@
 					formObj.submit();
 				})
 				
+				// 수정
 				$("#update_btn").on("click", function(){
 					
 					formObj.attr("action", "/ex/update");
@@ -51,7 +53,7 @@
 			})
 		function fn_addFile(){
 			var fileIndex = 1;
-			$(".fileAdd_btn").on("click", function(){
+			$("#fileAdd_btn").on("click", function(){
 				$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
 			});
 			$(document).on("click","#fileDelBtn", function(){
@@ -77,7 +79,7 @@
 			<div class="d-flex">
 					<h1>여행 포토 수정/삭제</h1>
 			</div><hr>
-				<form name="updateForm" role="form" method="post" action="/ex/update" enctype="multipart/form-data">
+				<form name="updateForm" role="form" method="post" action="/ex/TravelPhotoUpdate" enctype="multipart/form-data">
 					<input type="hidden" id="prid" name="prid" value="${update.prid}" />
 					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
 					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">  

@@ -20,22 +20,22 @@
 					<div class="ml-auto"></div>
 			</div><hr>
 			<div class="row">
-				<c:forEach var="mylist" items="${mylist}">	
+				<c:forEach var="TravelPhotoMyList" items="${TravelPhotoMyList}">	
 					<div class="col-sm-3">
 						<c:choose>
-							<c:when test = "${sessionScope.member.getName() eq mylist.name}">
-								<a href="/ex/updateView?prid=${mylist.prid}">
-									<img src='<c:url value="/resources/image/photoreview_folder/${mylist.s_file_name}"/>' width=200, height=200, alt="로고">
+							<c:when test = "${sessionScope.member.getName() eq TravelPhotoMyList.name}">
+								<a href="/ex/updateView?prid=${TravelPhotoMyList.prid}">
+									<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoMyList.s_file_name}"/>' width=200, height=200, alt="로고">
 								</a>
 								<h6>
-									<a href="/ex/updateView?prid=${mylist.prid}"><c:out value="${mylist.title}"/></a>
+									<a href="/ex/updateView?prid=${TravelPhotoMyList.prid}"><c:out value="${TravelPhotoMyList.title}"/></a>
 								</h6>
 								<p>
 									<span class="sr-only">작성자 </span>
-									<span class="sv_member"><c:out value="${mylist.name}"/></span>
+									<span class="sv_member"><c:out value="${TravelPhotoMyList.name}"/></span>
 									<br>
-									<span class="sr-only">조회 </span><i class="fas fa-eye"></i><c:out value="${mylist.hit}"/> <br>
-									<span class="sr-only">작성일 </span><i class="far fa-clock"></i><fmt:formatDate value="${mylist.redate}" pattern="MM-dd"/>
+									<span class="sr-only">조회 </span><i class="fas fa-eye"></i><c:out value="${TravelPhotoMyList.hit}"/> <br>
+									<span class="sr-only">작성일 </span><i class="far fa-clock"></i><fmt:formatDate value="${TravelPhotoMyList.redate}" pattern="MM-dd"/>
 								</p>
 							</c:when>
 						</c:choose>												
@@ -49,12 +49,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="mylist?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="myaddphoto?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="mylist?page=${Paging.prevPageNo}">Previus</a>
+								<a class="page-link" href="myaddphoto?page=${Paging.prevPageNo}">Previus</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -63,12 +63,12 @@
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
 								<li class="page-item disabled">
-									<a class="page-link" href="mylist?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="myaddphoto?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a class="page-link" href="mylist?page=${i}"><c:out value="${i}"/></a>
+									<a class="page-link" href="myaddphoto?page=${i}"><c:out value="${i}"/></a>
 								</li>
 							</c:otherwise>
 						</c:choose>

@@ -32,7 +32,7 @@
 			// 취소
 			$("#list_btn").on("click", function(){
 				
-				location.href = "/ex/mylist";
+				location.href = "/ex/myaddphoto";
 			})
 		})
 	</script>

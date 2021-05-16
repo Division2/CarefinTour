@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript"> 
 	$(document).ready(function() {
 		
@@ -21,6 +22,7 @@
 		})
 		
 		fn_addFile();
+		
 	})
 		
 	function fn_addFile() {
@@ -43,7 +45,7 @@
 			<div class="d-flex">
 				<h1>탑앵글러 등록 요청</h1>
 			</div><hr>
-			<form action="topanglerWrite" method="POST" enctype="multipart/form-data">   
+			<form action="topanglerWrite" name="add" method="POST" enctype="multipart/form-data">   
 		        <div class="form-group row">
 		            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
 			            <div class="col-sm-10">

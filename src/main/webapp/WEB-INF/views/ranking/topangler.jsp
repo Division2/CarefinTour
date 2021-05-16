@@ -87,7 +87,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${topangler}" var="topanglers">
+					<c:forEach items="${topangler}" var="topangler">
 						<tr>
 							<td>
 								<div class="d-flex align-items-baseline">
@@ -96,14 +96,14 @@
 							</td>
 							<td>
 								<div class="d-flex align-items-center">
-									<img src='<c:url value="/resources/image/topangler/${topanglers.s_file_fish}"/>' class="circle-img circle-img--small mr-2" alt="User Img">
+									<img src='<c:url value="/resources/image/topangler/${topangler.s_file_fish}"/>' class="circle-img circle-img--small mr-2" alt="User Img">
 									<div class="user-info__basic">
-										<h5 class="mb-0">${topanglers.name}</h5>
+										<h5 class="mb-0">${topangler.name}</h5>
 									</div>
 								</div>
 							</td>
-							<td>${topanglers.fishname}</td>
-							<td>${topanglers.fishsize}</td>
+							<td>${topangler.fishname}</td>
+							<td>${topangler.fishsize}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
