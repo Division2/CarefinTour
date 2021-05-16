@@ -186,7 +186,7 @@ ul{
 					   if (e == QUOTA_EXCEEDED_ERR) {
 					     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
 					  }
-					}  keys
+					} 
 		       }
 		    })
 	}

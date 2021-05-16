@@ -72,7 +72,6 @@ function showTitle() {
 
 //공통정보 보여주기
 function showDetail1() {
-	
 	document.write("<table>");
 	document.write("<tr><br>");
 	document.write("<td width='430'>");
@@ -132,8 +131,6 @@ function detail2() {
 	    	   sessionStorage.setItem("foodplace", hContent2.foodplace); //식음료장
 	    	   sessionStorage.setItem("subfacility", hContent2.subfacility);//부대시설
 	    	   sessionStorage.setItem("refundregulation", hContent2.refundregulation);//환불규정?
-	    	   
-	    	   console.log(data2);
 	       }
 	})
 }
@@ -187,7 +184,7 @@ function showDetail2() {
 	}
 }
 
-//이미지 -3번 탭
+//추가이미지 -3번 탭
 hContent3 =[];
 function detail3() {
     $.ajax({
@@ -195,34 +192,85 @@ function detail3() {
 	       dataType : 'json',
 	       type : 'GET',
 	       success : function(data3) {
-	    	   var count =  data3.response.body.totalCount;
-	    	   //var co =  data3.response.body.items.item;
-	    	   //console.log(co);
-	    	   if(count>9){
-	    		   sessionStorage.setItem("deitilImgCount", 9);
-	    	   }if(count==0){
-	    		   $('a[data-toggle="tab"]').removeClass('disabled');
+	    	   var t3count =  data3.response.body.totalCount;
+	    	   console.log("3번탭 데이터 수 : " + t3count); //확인용
+	    	   if(t3count>9){
+	    		   sessionStorage.setItem("deitilt3Count", 9); // 9개까지만
+	    	   }else if(t3count==0){
+	    		   sessionStorage.setItem("deitilt3Count", 0); // 추가이미지 없으면 탭 안나오게 하기 위해서
 	    	   }else{
-	    		   sessionStorage.setItem("deitilImgCount", count);
+	    		   sessionStorage.setItem("deitilt3Count", t3count);
 	    	   }
+	    	   console.log("3번 탭 저장된 갯수 : " + sessionStorage.getItem("deitilt3Count")); //확인용
 	    	   
-	    	   for(var i=0;i<count;i++){
+	    	   for(var i=0;i<t3count;i++){ //이미지 각각 저장
     			   hContent3.push(data3.response.body.items.item[i].originimgurl);
-				   console.log(hContent3[i]);
 			   	   sessionStorage.setItem("addImg"+i, hContent3[i]);
 	    	   }
 	       }
 	})
 }
 
+//추가이미지 3번 탭 내용 보여주기 
+function showDetail3() {
+ 	document.write("<ul id='imagegallery'><div class='row' style='center'>");
+	for(var i=0;i<sessionStorage.getItem("deitilt3Count");i++){
+		if(sessionStorage.getItem("addImg"+i) != null){
+			document.write("<li><a href='" +sessionStorage.getItem("addImg"+i) + "'>");
+	    	document.write("<img src='" + sessionStorage.getItem("addImg"+i) + "' width='90' height='60' /> ");
+	    	document.write("</a></li>");
+		}
+	}
+	document.write("</div></ul><img id='placeholder' src='" + sessionStorage.getItem("addImg0") + "' width='900' height='500' /> ");
+	document.write("</div>");
+
+
+	$(document).ready(function() {
+	    $("#imagegallery li").on("click", function(){      
+	    	var boximages = $(this).find("a").attr("href");
+	    	$("#placeholder").attr("src", boximages);
+	        return false;
+	    });
+	});
+}
+
+//룸이미지 -4번 탭 시작
+/* hContent4 =[];
+function detail4() {
+    $.ajax({
+	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId=' + searchDetailId + '&imageYN=Y',
+	       dataType : 'json',
+	       type : 'GET',
+	       success : function(data4) {
+	    	   var t4count =  data4.response.body.totalCount;
+	    	   console.log(t4count);
+	    	   if(t4count>9){
+	    		   sessionStorage.setItem("deitilt4Count", 9); // 9개까지만
+	    	   }else if(count4==0){
+	    		   sessionStorage.setItem("deitilt4Count", 0); // 추가이미지 없으면 탭 안나오게 하기 위해서
+	    	   }else{
+	    		   sessionStorage.setItem("deitilt4Count", t4count);
+	    	   }
+	    	   console.log(sessionStorage.getItem("deitilt4Count"));
+	    	   
+	    	   for(var i=0;i<t4count;i++){ //이미지 각각 저장
+    			   //hContent4.push(data4.response.body.items.item[i].originimgurl);
+				   //console.log(hContent4[i]);
+			   	   //sessionStorage.setItem("addImg"+i, hContent4[i]);
+	    	   }
+	       }
+	})
+} */
 
 </script>
 	<jsp:include page="../layout/header.jsp"/>
 						
    	<script>
-   		detail1();
+  		//detail4();
+   		detail3();
+   		
 	  	detail2();
-	  	detail3();
+	  	detail1();
   	</script>
               						
     <div class="container">
@@ -232,24 +280,31 @@ function detail3() {
             <ul class="nav nav-tabs">
             
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#qwe">공통정보</a>
+                <a class="nav-link active" data-toggle="tab" href="#htab1">공통정보</a>
               </li>
               <li class="nav-item" id="targetTab3">
-                <a class="nav-link" data-toggle="tab" href="#asd" >소개정보</a>
+                <a class="nav-link" data-toggle="tab" href="#htab2" >소개정보</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#zxc">추가이미지</a>
-              </li>
+              <script>
+              
+              if(sessionStorage.getItem("deitilt3Count")!=0){  // 결과 없으면 탭 x
+            	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab3' >추가이미지</a></li>");
+              }
+/*               
+              if(sessionStorage.getItem("deitilt4Count")!=0){  // 결과 없으면 탭 x
+            	  document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab4' >추가이미지</a></li>");
+              } */
+              </script>
             </ul>
             
             <div class="tab-content">
-              <div class="tab-pane fade show active" id="qwe">
+              <div class="tab-pane fade show active" id="htab1">
               	<script>
               		showDetail1();
               	</script>
               </div>
               
-              <div class="tab-pane fade" id="asd">
+              <div class="tab-pane fade" id="htab2">
                 <br>
               	<font size="4" color="#368AFF"><b>&nbsp;소개</b></font><br>
               	<script>
@@ -257,29 +312,18 @@ function detail3() {
               	</script>
               </div>
               
-			  <div class="tab-pane fade" id="zxc" align='center'>
+              <div class='tab-pane fade' id='htab3' align='center' >
 			  	<script>
-			     	document.write("<ul id='imagegallery'><div class='row' style='center'>");
-			  		for(var i=0;i<sessionStorage.getItem("deitilImgCount");i++){
-			  			//console.log(sessionStorage.getItem("addImg"+i)); 확인용
-			  			if(sessionStorage.getItem("addImg"+i) != null){
-			  				document.write("<li><a href='" +sessionStorage.getItem("addImg"+i) + "'>");
-			  		    	document.write("<img src='" + sessionStorage.getItem("addImg"+i) + "' width='90' height='60' /> ");
-			  		    	document.write("</a></li>");
-			  			}
-			  		}
-			  		document.write("</div></ul><img id='placeholder' src='" + sessionStorage.getItem("addImg0") + "' width='900' height='500' /> ");
-
-			  		$(document).ready(function() {
-			  		    $("#imagegallery li").on("click", function(){      
-			  		    	var boximages = $(this).find("a").attr("href");
-			  		    	$("#placeholder").attr("src", boximages);
-			  		        return false;
-			  		    });
-			  		});
+			  		showDetail3();
 			  	</script>
-              </div>
-            </div>
+			  </div>
+			  
+			 <div class='tab-pane fade' id='htab4' align='center' >
+			  	<script>
+			  		//showDetail4();
+			  	</script>
+			  </div>
+            </div> 
         </div>
       </div>
     </div>
