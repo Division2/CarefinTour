@@ -18,7 +18,11 @@
 		$("#cancel").on("click", function(){				
 			location.href = "main";						    
 			})
-		$("#submit").on("click", function(){		
+		$("#submit").on("click", function(){
+			if($("input:checkbox[name=agree]").is(":checked") == false) {
+				alert("체크가 되지않았습니다");
+				return;
+		}
 		$.ajax({
 			url : "MyPagePassChk",
 			type : "POST",
@@ -35,9 +39,9 @@
 							}
 						}
 					}	
-				})		
+				})	
 			});
-		})					
+		})		
 </script>
 <body>
 <jsp:include page="../layout/header.jsp"/>

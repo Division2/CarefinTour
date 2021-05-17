@@ -15,7 +15,7 @@
 	
 	<!-- 1:1 문의 게시물 총 갯수 -->
 	<select id="getMyPageInquiryTotalCount" resultType="int">
-		SELECT COUNT(*) FROM inquiry
+		SELECT COUNT(*) FROM inquiry WHERE UserID = #{userID}
 	</select>
 	
     <!-- 마이페이지 구매내역 출력 -->
@@ -25,7 +25,7 @@
 	
 	<!-- 유저 오더 전체수 받기 -->
 	<select id="getOrderTotalCount" resultType="int">
-		SELECT COUNT(*) FROM historyorder
+		SELECT COUNT(*) FROM historyorder WHERE userID = #{userID}
 	</select>
 		  
 	<!-- 마이페이지 회원정보 수정 -->

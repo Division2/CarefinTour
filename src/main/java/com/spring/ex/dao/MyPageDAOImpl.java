@@ -33,8 +33,8 @@ public class MyPageDAOImpl implements MyPageDAO {
 	
 	//1:1 문의 게시물 총 갯수
 	@Override
-	public int MyPageInquiryTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace + ".getMyPageInquiryTotalCount");
+	public int MyPageInquiryTotalCount(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".getMyPageInquiryTotalCount",vo);
 	}
 
 	//마이페이지 구매내역 표기
@@ -45,8 +45,8 @@ public class MyPageDAOImpl implements MyPageDAO {
 	
 	//유저 오더 전체수 받기
 	@Override
-	public int OrderTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace + ".getOrderTotalCount");
+	public int OrderTotalCount(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".getOrderTotalCount",vo);
 	}
 	
 	//마이페이지 회원정보 수정

@@ -41,13 +41,14 @@
 								</tbody>				
 							</table>
 						</div>
-						</form>
-					</div>
+					</form>
+				</div>
 			<!-- 게시글 페이징 처리(기준 8개) -->
 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
 					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
-					<c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+				<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 							<li class="page-item disabled">
 								<a class="page-link" href="inquirylist?page=${Paging.prevPageNo}">Previus</a>
@@ -78,12 +79,12 @@
 					<c:choose>
 						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 							<li class="page-item disabled">
-								<a class="page-link" href="traveleview?page=${Paging.nextPageNo}">Next</a>
+								<a class="page-link" href="inquirylist?page=${Paging.nextPageNo}">Next</a>
 							</li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item">
-								<a class="page-link" href="travelphoto?page=${Paging.nextPageNo}">Next</a>
+								<a class="page-link" href="inquirylist?page=${Paging.nextPageNo}">Next</a>
 							</li>
 						</c:otherwise>
 					</c:choose>

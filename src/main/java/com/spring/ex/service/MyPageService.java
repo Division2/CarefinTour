@@ -19,13 +19,13 @@ public interface MyPageService {
 	public InquiryVO MyPageInquiryRead(int iID) throws Exception;
 	
 	//1:1 문의 게시물 총 갯수
-	public int MyPageInquiryTotalCount() throws Exception;
+	public int MyPageInquiryTotalCount(MemberVO vo) throws Exception;
 	
 	//마이페이지 구매내역 표시
 	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception;
 	
 	//유저 오더 전체수 받기
-	public int OrderTotalCount() throws Exception;
+	public int OrderTotalCount(MemberVO vo) throws Exception;
 	
 	//마이페이지 회원정보 수정
 	public void MyPageInfoUpdate(MemberVO vo) throws Exception;

@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.TravelReviewService;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
@@ -70,9 +72,12 @@ public class TravelReviewController {
 	
 	//마이게시물 출력
 	@RequestMapping(value = "/myaddphoto", method = RequestMethod.GET)
-	public String TravelPhotoMyList(Model model, HttpServletRequest request) throws Exception {
+	public String MyTravelPhotoMyList(Model model, HttpServletRequest request, MemberVO vo, HttpSession session) throws Exception {
 		
-		int totalCount = service.PhotoTotalCount();
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
+		System.out.println("Session : " + sessioninfo.getUserID());
+		
+		int totalCount = service.MyPhotoTotalCount(sessioninfo);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();

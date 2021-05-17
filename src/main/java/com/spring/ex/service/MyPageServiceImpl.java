@@ -32,8 +32,8 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	//1:1 문의 게시물 총 갯수
 	@Override
-	public int MyPageInquiryTotalCount() throws Exception {
-		return dao.MyPageInquiryTotalCount();
+	public int MyPageInquiryTotalCount(MemberVO vo) throws Exception {
+		return dao.MyPageInquiryTotalCount(vo);
 	}
 
 	//마이페이지 구매내역 표기
@@ -44,8 +44,8 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	//유저 오더 전체수 받기
 	@Override
-	public int OrderTotalCount() throws Exception {
-		return dao.OrderTotalCount();
+	public int OrderTotalCount(MemberVO vo) throws Exception {
+		return dao.OrderTotalCount(vo);
 	}
 	
 	//마이페이지 정보 수정

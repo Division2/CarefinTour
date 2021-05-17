@@ -40,6 +40,7 @@ public class MyPageController {
 	@RequestMapping(value= "/withdrawal", method = RequestMethod.POST)
 	public void MyPageDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
 		
+		
 		MemberVO sessionInfo = (MemberVO)session.getAttribute("member");
 		
 		System.out.println("DTO : " + vo.getPassword());
@@ -67,9 +68,12 @@ public class MyPageController {
 	
 	//마이페이지 1:1 문의 구매 내역 출력
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String MyPageOrderList(HttpServletRequest request, Model model) throws Exception {
+	public String MyPageOrderList(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
 		
-		int totalCount = service.OrderTotalCount();
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
+		System.out.println("Session : " + sessioninfo.getUserID());
+		
+		int totalCount = service.OrderTotalCount(sessioninfo);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -93,9 +97,12 @@ public class MyPageController {
 	
 	//마이페이지 1:1 문의 예약 내역 출력
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
-	public String MyPageOrderList2(HttpServletRequest request, Model model) throws Exception {
+	public String MyPageOrderList2(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
 		
-		int totalCount = service.OrderTotalCount();
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
+		System.out.println("Session : " + sessioninfo.getUserID());
+			
+		int totalCount = service.OrderTotalCount(sessioninfo);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -119,10 +126,14 @@ public class MyPageController {
 	
 	//마이페이지 1:1 문의 출력
 	@RequestMapping(value = "/inquirylist", method = RequestMethod.GET)
-	public String MyPageInquiryList(HttpServletRequest request, Model model) throws Exception {
+	public String MyPageInquiryList(HttpServletRequest request, Model model, MemberVO vo,HttpSession session) throws Exception {
 		
-		int totalCount = service.MyPageInquiryTotalCount();
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
+		System.out.println("Session : " + sessioninfo.getUserID());
+		
+		int totalCount = service.MyPageInquiryTotalCount(sessioninfo);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);
@@ -139,6 +150,7 @@ public class MyPageController {
 		
 		model.addAttribute("MyPageInquiryList", List);
 		model.addAttribute("Paging", paging);
+		
 		
 		return "mypage/inquirylist";
 	}

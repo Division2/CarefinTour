@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -49,6 +50,11 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 	@Override
 	public int PhotoTotalCount() throws Exception {
 		return sql.selectOne(namespace + ".getPhotoTotalCount");
+	}
+	//여행포토 마이 게시물 총 갯수
+	@Override
+	public int MyPhotoTotalCount(MemberVO vo) throws Exception {
+		return sql.selectOne(namespace + ".getMyPhotoTotalCount",vo);
 	}
 	
 	//게시글 조회수

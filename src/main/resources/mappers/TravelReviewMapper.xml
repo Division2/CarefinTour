@@ -27,6 +27,11 @@
 		SELECT COUNT(*) FROM photoreview
 	</select>
 	
+	<!-- 여행포토 마이게시물 총 갯수 -->
+	<select id="getMyPhotoTotalCount" resultType="int">
+		SELECT COUNT(*) FROM photoreview WHERE Name = #{Name}
+	</select>
+	
 	<!-- 게시판 조회수 -->
     <update id="TravelPhotoBoardHit" parameterType="int">
     	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}

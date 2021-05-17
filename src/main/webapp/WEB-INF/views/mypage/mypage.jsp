@@ -101,12 +101,12 @@
 				<c:choose>
 					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 						<li class="page-item disabled">
-							<a class="page-link" href="traveleview?page=${Paging.nextPageNo}">Next</a>
+							<a class="page-link" href="mypage?page=${Paging.nextPageNo}">Next</a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item">
-							<a class="page-link" href="travelphoto?page=${Paging.nextPageNo}">Next</a>
+							<a class="page-link" href="mypage?page=${Paging.nextPageNo}">Next</a>
 						</li>
 					</c:otherwise>
 				</c:choose>

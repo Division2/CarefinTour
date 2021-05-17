@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -23,6 +24,9 @@ public interface TravelReviewDAO {
 	
 	//여행포토 게시물 총 갯수
 	public int PhotoTotalCount() throws Exception;
+	
+	//여행포토 마이 게시물 총 갯수
+	public int MyPhotoTotalCount(MemberVO vo) throws Exception;
 	
 	// 게시판 조회수
 	public void TravelPhotoBoardHit(int prid) throws Exception;

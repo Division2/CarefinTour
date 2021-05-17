@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
+@Service
 public interface TravelReviewService {
 	
 	//게시물 작성
@@ -25,6 +28,9 @@ public interface TravelReviewService {
 	
 	//여행포토 게시물 총 갯수
 	public int PhotoTotalCount() throws Exception;
+	
+	//여행포토 마이 게시물 총 갯수
+	public int MyPhotoTotalCount(MemberVO vo) throws Exception;
 	
 	// 게시물 삭제
 	public void TravelPhotoDelete(int prid) throws Exception;

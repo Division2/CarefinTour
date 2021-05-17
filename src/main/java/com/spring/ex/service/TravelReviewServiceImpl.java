@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.dao.TravelReviewDAO;
 import com.spring.ex.util.FileUtils;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -63,6 +64,12 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	@Override
 	public int PhotoTotalCount() throws Exception {
 		return dao.PhotoTotalCount();
+	}
+	
+	//마이게시물 총 갯수
+	@Override
+	public int MyPhotoTotalCount(MemberVO vo) throws Exception {
+		return dao.MyPhotoTotalCount(vo);
 	}
 	
 	//파일 조회
