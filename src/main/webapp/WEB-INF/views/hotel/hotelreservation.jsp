@@ -220,7 +220,7 @@ ul{
 		    document.write("<h6>" + localStorage.getItem("titleSearchResultsOne") + "</h6> </ul></li>");
 		    document.write("</a>");
 		}else{
-			for(var i=0;i<=(localStorage.getItem("fCount").length+1)/16;i++){ // 나머지 경우 출력
+			for(var i=0;i<(localStorage.getItem("fCount").length+1)/16;i++){ // 나머지 경우 출력
 				if(localStorage.getItem("title"+i)=="undefined"){
 				}else{
 					document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
