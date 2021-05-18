@@ -11,7 +11,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="../layout/header.jsp"/>
+	<jsp:include page="../layout/header.jsp"/>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
+
+	<c:if test="${sessionScope.member eq null}">
+		<script>AuthCheck();</script>
+	</c:if>
+	
 	<div class="container">
 		<div class="row">
 			<!-- 마이페이지 사이드바 -->
@@ -113,6 +119,7 @@
 			</ul>
 		</nav>
 	</div>
+	
 <jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>

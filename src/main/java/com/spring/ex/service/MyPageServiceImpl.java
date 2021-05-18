@@ -9,13 +9,39 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MyPageDAO;
 import com.spring.ex.vo.OrderVO;
-import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
-	@Inject MyPageDAO dao;
+	
+	@Inject
+	private MyPageDAO dao;
+	
+	//마이페이지 예약 내역 출력
+	@Override
+	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception {
+		return dao.MyPageOrderList(map);
+	}
+	
+	//마이페이지 예약 내역 총 갯수
+	@Override
+	public int OrderTotalCount(MemberVO vo) throws Exception {
+		return dao.OrderTotalCount(vo);
+	}
+	
+	//마이페이지 마일리지 내역 출력
+	@Override
+	public List<MileageVO> MyPageMileageList(HashMap<String, Integer> map) throws Exception {
+		return dao.MyPageMileageList(map);
+	}
+
+	//마이페이지 마일리지 내역 총 갯수
+	@Override
+	public int MileageTotalCount(MemberVO vo) throws Exception {
+		return dao.MileageTotalCount(vo);
+	}
 
 	//마이페이지 1:1 문의 출력
 	@Override
@@ -36,18 +62,6 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.MyPageInquiryTotalCount(vo);
 	}
 
-	//마이페이지 구매내역 표기
-	@Override
-	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception {
-		return dao.MyPageOrderList(map);
-	}
-	
-	//유저 오더 전체수 받기
-	@Override
-	public int OrderTotalCount(MemberVO vo) throws Exception {
-		return dao.OrderTotalCount(vo);
-	}
-	
 	//마이페이지 정보 수정
 	@Override
 	public void MyPageInfoUpdate(MemberVO vo) throws Exception {	

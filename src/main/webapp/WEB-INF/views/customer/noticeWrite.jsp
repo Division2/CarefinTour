@@ -12,7 +12,7 @@
 	<script src='<c:url value="resources/js/Board.js"/>'></script>
 	<script src='<c:url value="resources/js/Authority.js"/>'></script>
 
-	<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() eq 'User'}">
+	<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
 		<script>AuthCheck();</script>
 	</c:if>
 

@@ -9,15 +9,39 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.OrderVO;
-import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO {
 	
 	@Inject SqlSession sqlSession;
 	private static final String namespace = "com.spring.ex.MyPageMapper";
+	
+	//마이페이지 예약 내역 출력
+	@Override
+	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".MyPageOrderList", map);
+	}
+	
+	//마이페이지 예약 내역 총 갯수
+	@Override
+	public int OrderTotalCount(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".getOrderTotalCount", vo);
+	}
+	
+	//마이페이지 마일리지 내역 출력
+	@Override
+	public List<MileageVO> MyPageMileageList(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".MyPageMileageList", map);
+	}
+
+	//마이페이지 마일리지 내역 총 갯수
+	@Override
+	public int MileageTotalCount(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".getMileageTotalCount", vo);
+	}
 	
 	//마이페이지 1:1 문의 출력
 	@Override
@@ -37,18 +61,6 @@ public class MyPageDAOImpl implements MyPageDAO {
 		return sqlSession.selectOne(namespace + ".getMyPageInquiryTotalCount",vo);
 	}
 
-	//마이페이지 구매내역 표기
-	@Override
-	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception {
-		return sqlSession.selectList(namespace + ".MyPageOrderList", map);
-	}
-	
-	//유저 오더 전체수 받기
-	@Override
-	public int OrderTotalCount(MemberVO vo) throws Exception {
-		return sqlSession.selectOne(namespace + ".getOrderTotalCount",vo);
-	}
-	
 	//마이페이지 회원정보 수정
 	@Override
 	public void MyPageInfoUpdate(MemberVO vo) throws Exception {
@@ -68,5 +80,4 @@ public class MyPageDAOImpl implements MyPageDAO {
 		int result = sqlSession.selectOne(namespace + ".MyPagePassChk", vo);
 		return result;
 	}
-
 }

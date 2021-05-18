@@ -13,7 +13,8 @@ import com.spring.ex.vo.FAQVO;
 @Service
 public class FAQServiceImpl implements FAQService {
 
-	@Inject FAQDAO dao;
+	@Inject
+	private FAQDAO dao;
 	
 	//자주 찾는 질문(전체)
 	@Override

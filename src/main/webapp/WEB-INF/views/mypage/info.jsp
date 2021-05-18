@@ -62,7 +62,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">생년월일</span>
 								</div>
-								<input type="text" name="Birth" id="Birth" class="form-control" required readonly>
+								<input type="text" name="Birth" id="Birth" value="${member.getBirth() }" class="form-control" required readonly>
 							</div>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">주소</span>
 								</div>
-								<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
+								<input type="text" id="Address" name="Address" value="${member.getAddress()}" class="form-control" placeholder="주소" required readonly>
 							</div>
 						</div>
 						<div class="col-xs-2 col-md-2">

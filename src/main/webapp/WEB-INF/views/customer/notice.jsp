@@ -9,6 +9,11 @@
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
+	
+	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'Admin'}">
+		<script>NoticeAuthCheck();</script>
+	</c:if>
 
 	<div class="container">
 		<div class="row">
@@ -155,7 +160,7 @@
 						</c:choose>
 					</ul>
 				</nav>
-				<c:if test="${sessionScope.member.getUserID() ne null && sessionScope.member.getGrade() ne 'User'}">
+				<c:if test="${sessionScope.member.getUserID() ne null && sessionScope.member.getGrade() eq 'Admin'}">
 				<div class="d-flex">
 					<div class="ml-auto">
 						<button class="btn btn-primary" onclick="javascript:location='noticeWrite'">등록</button>

@@ -3,6 +3,26 @@
 
 <mapper namespace="com.spring.ex.MyPageMapper">
 	
+    <!-- 마이페이지 예약 내역 출력 -->
+	<select id="MyPageOrderList" resultType="OrderVO">
+		SELECT * FROM historyorder ORDER BY PID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 마이페이지 예약 내역 총 갯수 -->
+	<select id="getOrderTotalCount" resultType="int">
+		SELECT COUNT(*) FROM historyorder WHERE UserID = #{userID}
+	</select>
+	
+	<!-- 마이페이지 마일리지 내역 출력 -->
+	<select id="MyPageMileageList">
+		SELECT * FROM mileage WHERE UserID = #{UserID}
+	</select>
+	
+	<!-- 마이페이지 마일리지 내역 총 갯수 -->
+	<select id="getMileageTotalCount" resultType="int">
+		SELECT COUNT(*) FROM mileage WHERE UserID = #{userID}
+	</select>
+	
 	<!-- 마이페이지 1:1 문의 출력 -->
 	<select id="MyPageInquiryList" resultType="InquiryVO">
 		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
@@ -18,24 +38,14 @@
 		SELECT COUNT(*) FROM inquiry WHERE UserID = #{userID}
 	</select>
 	
-    <!-- 마이페이지 구매내역 출력 -->
-	<select id="MyPageOrderList" resultType="OrderVO">
-		SELECT * FROM historyorder ORDER BY PID DESC LIMIT #{Page}, #{PageSize}
-	</select>
-	
-	<!-- 유저 오더 전체수 받기 -->
-	<select id="getOrderTotalCount" resultType="int">
-		SELECT COUNT(*) FROM historyorder WHERE userID = #{userID}
-	</select>
-		  
 	<!-- 마이페이지 회원정보 수정 -->
 	<update id="MyPageInfoUpdate">
-	UPDATE account SET
-		Password = #{password},
-		Name = #{name},
-		Email = #{email},
-		Phone = #{phone},
-		Address = #{address}
+		UPDATE account SET
+			Password = #{password},
+			Name = #{name},
+			Email = #{email},
+			Phone = #{phone},
+			Address = #{address}
 		WHERE UserID = #{userID}
 	</update>
 	

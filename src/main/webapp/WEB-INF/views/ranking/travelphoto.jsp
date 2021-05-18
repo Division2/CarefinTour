@@ -72,7 +72,7 @@
 				<ul class="pagination justify-content-center">
 					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo}">
 							<li class="page-item disabled">
 								<a class="page-link" href="travelphoto?page=${Paging.prevPageNo}">Previus</a>
 							</li>

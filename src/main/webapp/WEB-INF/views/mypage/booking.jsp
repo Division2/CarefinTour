@@ -7,12 +7,15 @@
 <title>케어핀투어 - 회원 정보</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/my_table.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
 
+	<c:if test="${sessionScope.member eq null}">
+		<script>AuthCheck();</script>
+	</c:if>
+	
 	<div class="container">
 		<div class="row">
 			<!-- 마이페이지 사이드바 -->
@@ -40,19 +43,16 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th colspan="2">여행상품</th>
+									<th>상품명</th>
+									<th>결제일</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${MyPageOrderList}" var="MyPageOrderList">
-									<c:choose>
-										<c:when test = "${sessionScope.member.getUserID() eq MyPageOrderList.userid}"> 	
-											<tr>
-												<td>${MyPageOrderList.productname}</td>
-												<td>${MyPageOrderList.paymentdate}</td>
-											</tr>
-										</c:when>
-									</c:choose>
+								<tr>
+									<td>${MyPageOrderList.getProductname()}</td>
+									<td>${MyPageOrderList.getPaymentdate()}</td>
+								</tr>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-			<nav aria-label="Page navigation">
+		<nav aria-label="Page navigation">
 			<ul class="pagination justify-content-center" style="margin-left:200px;">
 				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 				<c:choose>
@@ -106,6 +106,7 @@
 			</ul>
 		</nav>
 	</div>
+	
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>

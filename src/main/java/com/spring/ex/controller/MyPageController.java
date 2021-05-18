@@ -27,6 +27,57 @@ import com.spring.ex.vo.PagingVO;
 public class MyPageController {
 	@Inject MyPageService service;
 	
+	//마이페이지 예약 내역 출력
+	@RequestMapping(value = "/booking", method = RequestMethod.GET)
+	public String MyPageOrderList(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
+		
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
+			
+		int totalCount = service.OrderTotalCount(sessioninfo);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		List<OrderVO> MyPageOrderList = service.MyPageOrderList(map);
+		
+		model.addAttribute("MyPageOrderList", MyPageOrderList);
+		model.addAttribute("Paging", paging);
+		
+		return "mypage/booking";
+	}
+	
+	//마이페이지 마일리지 내역 출력
+	@RequestMapping(value = "/mileage", method = RequestMethod.GET)
+	public String MyPageMileageList(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
+		
+		int totalCount = service.OrderTotalCount(sessioninfo);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		return "mypage/mileage";
+	}
+	
 	//마이 페이지 회원 정보수정
 	@RequestMapping(value = "/info", method = RequestMethod.POST)
 	public String MyPageInfoUpdate(MemberVO vo, HttpSession session) throws Exception {
@@ -64,64 +115,6 @@ public class MyPageController {
 	public int MyPagePassChk(MemberVO vo) throws Exception {
 		int result = service.MyPagePassChk(vo);
 		return result;		
-	}
-	
-	//마이페이지 1:1 문의 구매 내역 출력
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String MyPageOrderList(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
-		
-		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
-		System.out.println("Session : " + sessioninfo.getUserID());
-		
-		int totalCount = service.OrderTotalCount(sessioninfo);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		
-		List<OrderVO> List = service.MyPageOrderList(map);
-		
-		model.addAttribute("MyPageOrderList", List);
-		model.addAttribute("Paging", paging);
-		
-		return "mypage/mypage";
-	}
-	
-	//마이페이지 1:1 문의 예약 내역 출력
-	@RequestMapping(value = "/booking", method = RequestMethod.GET)
-	public String MyPageOrderList2(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
-		
-		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
-		System.out.println("Session : " + sessioninfo.getUserID());
-			
-		int totalCount = service.OrderTotalCount(sessioninfo);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		
-		List<OrderVO> List = service.MyPageOrderList(map);
-		
-		model.addAttribute("MyPageOrderList", List);
-		model.addAttribute("Paging", paging);
-		
-		return "mypage/booking";
 	}
 	
 	//마이페이지 1:1 문의 출력

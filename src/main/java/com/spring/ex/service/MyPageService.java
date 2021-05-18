@@ -8,9 +8,22 @@ import org.springframework.stereotype.Service;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 
 @Service
 public interface MyPageService {
+	
+	//마이페이지 예약 내역 출력
+	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception;
+	
+	//마이페이지 예약 내역 총 갯수
+	public int OrderTotalCount(MemberVO vo) throws Exception;
+	
+	//마이페이지 마일리지 내역 출력
+	public List<MileageVO> MyPageMileageList(HashMap<String, Integer> map) throws Exception;
+	
+	//마이페이지 마일리지 내역 총 갯수
+	public int MileageTotalCount(MemberVO vo) throws Exception;
 	
 	//마이페이지 1:1 문의 출력
 	public List<InquiryVO> MyPageInquiryList(HashMap<String, Integer> map) throws Exception;
@@ -20,12 +33,6 @@ public interface MyPageService {
 	
 	//1:1 문의 게시물 총 갯수
 	public int MyPageInquiryTotalCount(MemberVO vo) throws Exception;
-	
-	//마이페이지 구매내역 표시
-	public List<OrderVO> MyPageOrderList(HashMap<String, Integer> map) throws Exception;
-	
-	//유저 오더 전체수 받기
-	public int OrderTotalCount(MemberVO vo) throws Exception;
 	
 	//마이페이지 회원정보 수정
 	public void MyPageInfoUpdate(MemberVO vo) throws Exception;
