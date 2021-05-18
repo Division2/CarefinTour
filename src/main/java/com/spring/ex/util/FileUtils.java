@@ -20,11 +20,11 @@ import com.spring.ex.vo.TravelPhotoVO;
 public class FileUtils {
 	
 	//여행정보 사진 저장소 경로
-	private static final String filePath = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	private static final String filePath = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
 	//탑앵글러 사진 저장소 경로
-	private static final String filePath1 = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
+	private static final String filePath1 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
 	//패키지 사진 저장소 경로
-	private static final String filePath2 = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\package\\"; // 파일이 저장될 위치
+	private static final String filePath2 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\package\\"; // 파일이 저장될 위치
 	
 	//여행후기 사진 값 넣어주는 부분	
 	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -199,7 +199,7 @@ public class FileUtils {
 			String theme = vo.getTheme();
 			String area = vo.getArea();
 			String travelcity = vo.getTarvelcity();
-			Date starttravelperiod = vo.getStarttravelperiod();
+			Date startravelperiod = vo.getStartravelperiod();
 			Date arrivaltravelperiod = vo.getArrivaltravelperiod();
 			int reservationstatus = vo.getResrvationstatus();
 			int maxreservationstatus = vo.getMaxresrvationstatus();
@@ -211,7 +211,7 @@ public class FileUtils {
 			int kidprice = vo.getKidprice();
 			int smallkidprice = vo.getSmallkidprice();
 			String director = vo.getDirector();
-			Date redate = vo.getRedate();
+			Object redate = vo.getRedate();
 			int productcode = vo.getProductcode();
 			int price = vo.getPrice();
 			
@@ -240,7 +240,7 @@ public class FileUtils {
 					listMap.put("travelcity", travelcity);
 					listMap.put("o_file_name", originalFileName);
 					listMap.put("s_file_name", storedFileName);
-					listMap.put("starttravelperiod", starttravelperiod);
+					listMap.put("startravelperiod", startravelperiod);
 					listMap.put("arrivaltravelperiod",arrivaltravelperiod );
 					listMap.put("reservationstatus",reservationstatus );
 					listMap.put("maxreservationstatus", maxreservationstatus);

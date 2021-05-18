@@ -9,7 +9,7 @@ public class PackageVO {
 	private String theme;
 	private String area;
 	private String tarvelcity;
-	private Date starttravelperiod;
+	private Date startravelperiod;
 	private Date arrivaltravelperiod;
 	private int resrvationstatus;
 	private int maxresrvationstatus;
@@ -23,7 +23,7 @@ public class PackageVO {
 	private String s_file_name;
 	private String o_file_name;
 	private String director;
-	private Date redate;
+	private Object redate;
 	private int productcode;
 	private int price;
 	
@@ -57,11 +57,11 @@ public class PackageVO {
 	public void setTarvelcity(String tarvelcity) {
 		this.tarvelcity = tarvelcity;
 	}
-	public Date getStarttravelperiod() {
-		return starttravelperiod;
+	public Date getStartravelperiod() {
+		return startravelperiod;
 	}
-	public void setStarttravelperiod(Date starttravelperiod) {
-		this.starttravelperiod = starttravelperiod;
+	public void setStartravelperiod(Date startravelperiod) {
+		this.startravelperiod = startravelperiod;
 	}
 	public Date getArrivaltravelperiod() {
 		return arrivaltravelperiod;
@@ -141,10 +141,10 @@ public class PackageVO {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	public Date getRedate() {
+	public Object getRedate() {
 		return redate;
 	}
-	public void setRedate(Date redate) {
+	public void setRedate(Object redate) {
 		this.redate = redate;
 	}
 	public int getProductcode() {
@@ -159,7 +159,4 @@ public class PackageVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	
-
 }

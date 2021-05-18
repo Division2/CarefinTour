@@ -5,8 +5,8 @@
 
 <!-- 여행포토 게시물 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
-			INSERT INTO packageproduct(PID, ProductName, Theme, Area, o_file_name, s_file_name, StartTravelPeriod,  Director, reDate, productcode, price)
-				 VALUES (#{pid}, #{productname}, #{theme}, #{area},#{o_file_name}, #{s_file_name}, #{starttravelperiod}, #{director}, #{redate}, #{productcode},#{price})			
+			INSERT INTO packageproduct(PID, ProductName, Theme, Area, o_file_name, s_file_name, StarTravelPeriod,  Director, reDate, productcode, price)
+				 VALUES (#{pid}, #{productname}, #{theme}, #{area},#{o_file_name}, #{s_file_name}, #{startravelperiod}, #{director}, #{redate}, #{productcode},#{price})			
 	</insert>
 	
 </mapper>

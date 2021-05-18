@@ -24,7 +24,7 @@ public class PackageController {
 	PackageService service;
 	
 	//패키지 입력
-	@RequestMapping(value = "/insertpackage", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/admin/PackageWrite", method = RequestMethod.POST)
 	public void PackageWrite(PackageVO vo , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
 		
 		int result = service.PackageWrite(vo,mpRequest);
@@ -37,6 +37,4 @@ public class PackageController {
 			out.close();
 		}
 	}
-		
-	
 }
