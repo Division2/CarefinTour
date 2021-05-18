@@ -26,99 +26,92 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	
 	@Inject
 	private TravelReviewDAO dao;
-	
-	//게시물 목록
-	@Override
-	public List<TravelPhotoVO> TravelPhotoList(HashMap<String, Integer> map)throws Exception {
-		return dao.TravelPhotoList(map);
-	}
-	
-	//마이게시물 목록
-	@Override
-	public List<TravelPhotoVO> TravelPhotoMyList(HashMap<String, Integer> map)throws Exception {
-		return dao.TravelPhotoMyList(map);
-	}
-	
-	//게시물 작성
+
+	//여행 포토 작성
 	@Override
 	public int TravelPhotoWrite(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
+		List<Map<String,Object>> fileList = fileUtils.parseInsertFileInfo(travelPhotoVO, mpRequest); 
 		
-		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(travelPhotoVO, mpRequest); 
-		int size = list.size();
-		for(int i=0; i<size; i++){ 
-			dao.TravelPhotoWrite(list.get(i)); 
+		int size = fileList.size();
+		for(int i = 0; i < size; i++){ 
+			dao.TravelPhotoWrite(fileList.get(i)); 
 		}
 		return size;
 	}
-	
-	//게시글 조회수
-	@Transactional(isolation = Isolation.READ_COMMITTED)
+
+	//여행 포토 출력
 	@Override
-	public TravelPhotoVO TravelPhotoRead(int prid) throws Exception {
-		dao.TravelPhotoBoardHit(prid);
-		
-		return dao.TravelPhotoRead(prid);
+	public List<TravelPhotoVO> TravelPhotoList(HashMap<String, Integer> map) throws Exception {
+		return dao.TravelPhotoList(map);
 	}
-	
-	//게시물 총 갯수
+
+	//여행 포토 조회
 	@Override
-	public int PhotoTotalCount() throws Exception {
-		return dao.PhotoTotalCount();
+	public TravelPhotoVO TravelPhotoView(int prid) throws Exception {
+		return dao.TravelPhotoView(prid);
 	}
-	
-	//마이게시물 총 갯수
+
+	//여행 포토 총 갯수
 	@Override
-	public int MyPhotoTotalCount(MemberVO vo) throws Exception {
-		return dao.MyPhotoTotalCount(vo);
+	public int TravelPhotoTotalCount() throws Exception {
+		return dao.TravelPhotoTotalCount();
 	}
-	
-	//파일 조회
-	@Override
-	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
-		return dao.TravelPhotoSelectFileList(prid);
-	}
-	
-	//게시글 수정
+
+	//여행 포토 수정(사진 & 내용)
 	@Override
 	public void TravelPhotoUpdate(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
-		
+
 		dao.TravelPhotoUpdate(travelPhotoVO);
 		
 		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(travelPhotoVO, files, fileNames, mpRequest);
+		
 		Map<String, Object> tempMap = null;
+		
 		int size = list.size();
 		for(int i = 0; i < size; i++) {
 			tempMap = list.get(i);		
 			dao.TravelPhotoUpdateFile(tempMap);
 		}
 	}
-	
-	//게시물 삭제
+
+	//여행 포토 삭제
 	@Override
 	public void TravelPhotoDelete(int prid) throws Exception {
-		
 		dao.TravelPhotoDelete(prid);
 	}
+
+	//여행 포토 조회수 증가
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Override
+	public void TravelPhotoBoardHit(int prid) throws Exception {
+		dao.TravelPhotoBoardHit(prid);
+	}
+
+	//파일 조회
+	@Override
+	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
+		return dao.TravelPhotoSelectFileList(prid);
+	}
+
+	//여행 포토 내 게시글 리스트
+	@Override
+	public List<TravelPhotoVO> TravelPhotoMyList(HashMap<String, Integer> map) throws Exception {
+		return dao.TravelPhotoMyList(map);
+	}
 	
+	//여행 포토 내 게시글 총 갯수
+	@Override
+	public int MyPhotoTotalCount(MemberVO vo) throws Exception {
+		return dao.MyPhotoTotalCount(vo);
+	}
+
 	//탑 앵글러 출력
 	@Override
 	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception {
 		return dao.TopAnglerView(map);
 	}
-	
-	//탑앵글러 등록 요청
-	@Override
-	public int TopAnglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception {
-		List<Map<String,Object>> list = fileUtils.parseInsertFishFileInfo(topAnlgerVO, mpRequest);
-		
-		int size = list.size();
-		for(int i = 0; i < size; i++){ 
-			dao.TopAnglerWrite(list.get(i)); 
-		}
-		return size;
-	}
-	
-	//탑앵글러 총 갯수
+
+	//탑 앵글러 총 갯수
 	@Override
 	public int TopAnglerTotalCount() throws Exception {
 		return dao.TopAnglerTotalCount();
