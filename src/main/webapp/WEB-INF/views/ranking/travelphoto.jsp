@@ -17,7 +17,7 @@
 			<h1>여행 포토</h1>
 			<div class="ml-auto">
 				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-					<button class="btn btn-primary" onclick="location.href='addphoto'">등록</button>
+					<button class="btn btn-primary" onclick="location.href='travelphotoWrite'">등록</button>
 					<button class="btn btn-primary" onclick="location.href='myaddphoto'">내 후기</button>
 				</c:if>
 			</div>
@@ -26,13 +26,11 @@
 		<div class="row">
 			<c:forEach var="TravelPhotoList" items="${TravelPhotoList}">
 				<div class="col-sm-3">
-					<a href="/ex/travelphotoview?prid=${TravelPhotoList.prid}">
+					<a href="travelphotoView?prid=${TravelPhotoList.prid}">
 					<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoList.s_file_name}"/>' width=200, height=200, alt="로고">
 					</a>
 					<h5>
-						<a href="/ex/travelphotoview?prid=${TravelPhotoList.prid}">
-							<c:out value="${TravelPhotoList.title}" />
-						</a>
+						<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${TravelPhotoList.title}" /></a>
 					</h5>
 					<p>
 						<span class="sr-only">작성자</span>

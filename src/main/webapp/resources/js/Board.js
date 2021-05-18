@@ -305,23 +305,36 @@ function answerInquiryDelete() {
 	})
 }
 
-function test(category) {
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function () {
-		var param = {'category':category}
-		$.ajax({
-			url: "support",
-			type: "GET",
-			data: param,
-			success: function() {
-			},
-			error: function() {
-				swal({
-					title: "로그인",
-					text: "문제가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
-					icon: "error",
-					timer: 3000
-				});
-			}
-		});
-	});
+/* 여행 포토 게시글 삭제 */
+function TravelPhotoDelete() {
+	Swal.fire({
+		title: '사진 후기',
+		text: "정말 삭제하시겠습니까?",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			swal({
+				title: "사진 후기",
+				text: "게시글이 성공적으로 삭제되었습니다.",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					var prid = getParameterByName('prid');
+					
+					location.href='travelphotoDelete?prid=' + prid;
+					location.href='travelphoto';
+				}
+			});
+		}
+	})
 }

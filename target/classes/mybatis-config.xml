@@ -13,5 +13,6 @@
 		<typeAlias type="com.spring.ex.vo.OrderVO" alias="OrderVO"/>
 		<typeAlias type="com.spring.ex.vo.MileageVO" alias="MileageVO"/>
 		<typeAlias type="com.spring.ex.vo.PackageVO" alias="PackageVO"/>
+		<typeAlias type="com.spring.ex.vo.ReplyVO" alias="ReplyVO"/>
 	</typeAliases>
 </configuration>

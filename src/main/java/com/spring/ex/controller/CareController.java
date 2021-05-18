@@ -80,17 +80,21 @@ public class CareController {
 	public String travelphoto() {
 		return "ranking/travelphoto";
 	}
-	@RequestMapping("addphoto")
-	public String addphoto() {
-		return "ranking/addphoto";
+	@RequestMapping("travelphotoWrite")
+	public String travelphotoWrite() {
+		return "ranking/travelphotoWrite";
+	}
+	@RequestMapping("travelphotoView")
+	public String travelphotoView() {
+		return "ranking/travelphotoView";
+	}
+	@RequestMapping("travelphotoModify")
+	public String travelphotoModify() {
+		return "ranking/travelphotoModify";
 	}
 	@RequestMapping("myaddphoto")
 	public String myaddphoto() {
 		return "ranking/myaddphoto";
-	}
-	@RequestMapping("updateView")
-	public String updatePhoto() {
-		return "ranking/updateView";
 	}
 
 	//여행정보

@@ -13,6 +13,7 @@
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp" />
+	<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 	<div class="container">
 		<div class="card">
@@ -30,39 +31,44 @@
 				<form name="postUpdate" method="POST">
 				<!-- 세션의 ID와 게시글 작성자가 같을 경우에만 수정, 삭제 권한을 줌 -->
 				<c:if test="${sessionScope.member.getUserID() eq content.userId }">
-					<button class="btn btn-primary" type="button" onclick="location.href='updateView?prid=${param.prid}'">수정</button>
-					<button class="btn btn-danger" type="button" onclick="deletePost()">삭제</button>
+					<button class="btn btn-primary" type="button" onclick="location.href='travelphotoModifyView?prid=${param.prid}'">수정</button>
+					<button class="btn btn-danger" type="button" onclick="TravelPhotoDelete()">삭제</button>
 				</c:if>
 					<button class="btn btn-primary" type="button" onclick="location.href='travelphoto'">목록</button>
 				</form>
 			</div>
 		</div>
-		
+		<form name="writeReply" action="writeReply.do" method="POST">
+			<input type="hidden" name="bId" id="bId" value="z">
+			<input type="hidden" name="writer" id="writer" value="${sessionScope.Account }">
+			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
+				<textarea name="content" id="content" class="form-control" rows="3" placeholder="댓글을 입력해 주세요" required></textarea>
+				<button type="submit" class="btn btn-primary" id="btnReplySave" style="width: 100%; margin-top: 0px">등 록</button>
+			</div>
+		</form>
 		<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
 			<h6 class="border-bottom pb-2 mb-0">댓글 목록</h6>
 			<div id="replyList"></div>
-			<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">등록된 댓글이 없습니다.</p>
+			<c:if test="${reply.isEmpty() }">
+				<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">등록된 댓글이 없습니다.</p>
+			</c:if>
+			<c:forEach items="${reply }" var="reply">
 			<div class="media text-muted pt-3">
-				<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">
-					<title>꾸엑</title>
-					<rect width="100%" height="100%" fill="#007bff"></rect>
-					<text x="50%" fill="#007bff" dy=".3em">32x32</text>
-				</svg>
-				<img src='<c:url value="/resources/image/topangler/f35bed32e1d54920ab1a2d4aa3eb019d.jpg"/>' class="circle-img mb-2" alt="User Img">
+				<img src='<c:url value="/resources/image/topangler/ea670d248b454a1ca18fa2e3da2b49bd.jpg"/>' class="circle-img mb-2" width="32" height="32" alt="User Img">
 				<form name="replyUpdate" method="POST">
 					<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">
 						<span class="d-block">
-							<strong class="text-gray-dark">ㅋㅋㅋ</strong>
+							<strong class="text-gray-dark">${reply.getUserID() }</strong>
 							<span style="padding-left: 7px; font-size: 9pt">
-								<a href="#">답글</a>
 								<a href="#">수정</a>
 								<a href="#">삭제</a>
 							</span>
 						</span>
-						<c:out escapeXml="false" value="댓글"/>
+						<c:out escapeXml="false" value="${reply.getContent() }"/>
 					</p>
 				</form>
 			</div>
+			</c:forEach>
 		</div>
 		<br>
 	</div>
