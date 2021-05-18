@@ -211,6 +211,10 @@ $(document).ready(function() {
 	    var inputVal = $(this).val();
 	    $(this).val(inputVal.replace(/[^0-9]/gi,''));
 	});
+	$("#MyInfoPhone").keyup(function() {
+	    var inputVal = $(this).val();
+	    $(this).val(inputVal.replace(/[^0-9]/gi,''));
+	});
 })
 
 /* 회원가입 취소 버튼 */
@@ -237,3 +241,141 @@ function goPopup2() {
 function jusoCallBack2(roadFullAddr) {
 	document.MemberUpdate.Address.value = roadFullAddr;
 }
+
+/* 마이페이지 내 정보 수정 유효성 검사 */
+function MyInfoUpdate() {
+	var Password = $("#MyInfoPassword").val();
+	var Email = $("#MyInfoEmail").val();
+	var Phone = $("#MyInfoPhone").val();
+	
+	if(!Password) {
+		swal({
+			title: "내 정보",
+			text: "비밀번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Email) {
+		swal({
+			title: "내 정보",
+			text: "이메일이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Phone) {
+		swal({
+			title: "내 정보",
+			text: "내3용이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else {
+		Swal.fire({
+			title: '내 정보',
+			text: "정말 수정하시겠습니까?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '확인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				swal({
+					title: '내 정보',
+					text: "정보가 성공적으로 업데이트 되었습니다.",
+					icon: "success",
+					buttons : {
+						confirm : {
+							value : true
+						}
+					}
+				}).then((result) => {
+					if(result) {
+						$("#MyPageUpdate").submit();
+					}
+				});
+			}
+		})
+	}
+}
+
+/* 회원 탈퇴 */
+$(document).ready(function() {
+	$('#btnWithdrawal').click(function() {
+		var Password = $("#WithdrawalPassword").val();
+		
+		if($("#agree").is(":checked") == false) {
+			swal({
+				title: "회원 탈퇴",
+				text: "안내 내용에 동의하지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return;
+		}
+		else if(!Password) {
+			swal({
+				title: "회원 탈퇴",
+				text: "비밀번호가 입력되지 않았습니다." + " : " + Password,
+				icon: "warning",
+				timer: 3000
+			});
+			return;
+		}
+		else {
+			$.ajax({
+				url : "MyPagePassChk",
+				type : "POST",
+				dataType : "json",
+				data : $("#MemberWithdrawal").serializeArray(),
+				success: function(data) {
+					if(data == 0) {
+						swal({
+							title: "회원 탈퇴",
+							text: "비밀번호가 올바르지 않습니다.",
+							icon: "warning",
+							timer: 3000
+						});
+						return;
+					}
+					else {
+						Swal.fire({
+							title: '회원 탈퇴',
+							text: "정말 탈퇴하시겠습니까?",
+							icon: 'error',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: '확인',
+							cancelButtonText: '취소'
+						}).then((result) => {
+							if (result.isConfirmed) {
+								swal({
+									title: '회원 탈퇴',
+									text: "성공적으로 탈퇴되었습니다.",
+									icon: "success",
+									buttons : {
+										confirm : {
+											value : true
+										}
+									}
+								}).then((result) => {
+									if(result) {
+										$("#MemberWithdrawal").submit();
+									}
+								});
+							}
+						})
+					}
+				}
+			})
+		}
+	});
+})

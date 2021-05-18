@@ -18,7 +18,8 @@
 			Phone,
 			Birth,
 			Sex,
-			Address)
+			Address,
+			Mileage)
 		VALUES(
 			#{UserID},
 			#{Password},
@@ -28,7 +29,8 @@
 			#{Phone},
 			#{Birth},
 			#{Sex},
-			#{Address})
+			#{Address},
+			#{Mileage})
     </insert>
     
     <!-- 회원가입 시 아이디 중복확인 -->

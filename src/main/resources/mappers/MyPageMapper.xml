@@ -5,7 +5,7 @@
 	
     <!-- 마이페이지 예약 내역 출력 -->
 	<select id="MyPageOrderList" resultType="OrderVO">
-		SELECT * FROM historyorder ORDER BY PID DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM historyorder WHERE UserID = #{UserID} ORDER BY PaymentDate DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 마이페이지 예약 내역 총 갯수 -->
@@ -14,8 +14,8 @@
 	</select>
 	
 	<!-- 마이페이지 마일리지 내역 출력 -->
-	<select id="MyPageMileageList">
-		SELECT * FROM mileage WHERE UserID = #{UserID}
+	<select id="MyPageMileageList" resultType="MileageVO">
+		SELECT * FROM mileage WHERE UserID = #{UserID} ORDER BY EarnDate DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 마이페이지 마일리지 내역 총 갯수 -->
@@ -23,41 +23,38 @@
 		SELECT COUNT(*) FROM mileage WHERE UserID = #{userID}
 	</select>
 	
-	<!-- 마이페이지 1:1 문의 출력 -->
+	<!-- 마이페이지 회원정보 수정 -->
+	<update id="MyPageInfoUpdate">
+		UPDATE account SET Password = #{password}, Name = #{name}, Email = #{email}, Phone = #{phone}, Address = #{address} WHERE UserID = #{userID}
+	</update>
+	
+	<!-- 마이페이지 1:1 문의 내역 출력 -->
 	<select id="MyPageInquiryList" resultType="InquiryVO">
-		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM inquiry WHERE UserID = #{UserID} ORDER BY reDate DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<!-- 마이페이지 1:1 문의 읽기  -->
-	<select id="MyPageInquiryRead" parameterType="int" resultType="InquiryVO">
-		SELECT  Title, Content, reDate FROM inquiry WHERE IID = #{iId}
+	<!-- 마이페이지 1:1 문의 내역 조회(질문) -->
+	<select id="MyPageInquiryQuestion" resultType="InquiryVO">
+		SELECT * FROM inquiry WHERE IID = #{iId}
 	</select>
 	
-	<!-- 1:1 문의 게시물 총 갯수 -->
+	<!-- 마이페이지 1:1 문의 내역 조회(답변) -->
+	<select id="MyPageInquiryAnswer" resultType="InquiryAnswerVO">
+		SELECT * FROM inquiryAnswer WHERE iId = #{iId}
+	</select>
+	
+	<!-- 마이페이지 1:1 문의 내역 총 갯수 -->
 	<select id="getMyPageInquiryTotalCount" resultType="int">
 		SELECT COUNT(*) FROM inquiry WHERE UserID = #{userID}
 	</select>
 	
-	<!-- 마이페이지 회원정보 수정 -->
-	<update id="MyPageInfoUpdate">
-		UPDATE account SET
-			Password = #{password},
-			Name = #{name},
-			Email = #{email},
-			Phone = #{phone},
-			Address = #{address}
-		WHERE UserID = #{userID}
-	</update>
-	
-	<!-- 마이페이지 회원탈퇴 -->
+	<!-- 마이페이지 회원 탈퇴 -->
 	<delete id="MyPageDelete">
-		DELETE FROM account WHERE  UserID = #{userID} AND Password = #{password}
+		DELETE FROM account WHERE UserID = #{userID} AND Password = #{password}
 	</delete>
 
-    
-    <!-- 마이페이지 패스워드 체크  -->
+    <!-- 마이페이지 회원 탈퇴 패스워드 확인  -->
     <select id="MyPagePassChk" resultType="int">
 		SELECT COUNT(*) FROM account WHERE UserID = #{userID} AND Password = #{password}
 	</select>
-	
 </mapper>

@@ -15,7 +15,7 @@
 	<script src='<c:url value="resources/js/Authority.js"/>'></script>
 	
 	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'Admin'}">
-		<script>NoticeAuthCheck();</script>
+		<script>AuthCheck();</script>
 	</c:if>
 	
 	<div class="container">

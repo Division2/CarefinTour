@@ -308,7 +308,7 @@
 								</div>
 							</div>
 							<input type="hidden" id="Grade" name="Grade" value="User">
-							<input type="hidden" id="Mileage" name="Mileage" value="0">
+							<input type="hidden" id="Mileage" name="Mileage" value="1000">
 							<button type="button" id="register" class="btn btn-primary btn-block btn-round" onclick="Register()" disabled>회원가입</button>
 							<button type="reset" id="registerReset" class="btn btn-danger btn-block btn-round">취소</button>
 						</form>

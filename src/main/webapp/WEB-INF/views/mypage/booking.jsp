@@ -36,7 +36,7 @@
 				<div class="d-flex">
 					<div class="mx-auto">
 						<table class="table table-hover table-white">
-							<caption class="table_caption">고객님의 예약 내역입니다</caption>
+							<caption class="table_caption">${sessionScope.member.getName() }님의 예약 내역입니다</caption>
 							<colgroup>
 								<col width="300px"/>
 								<col width="300px"/>

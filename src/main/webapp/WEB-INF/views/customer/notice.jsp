@@ -9,12 +9,7 @@
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
-	<script src='<c:url value="resources/js/Authority.js"/>'></script>
 	
-	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'Admin'}">
-		<script>NoticeAuthCheck();</script>
-	</c:if>
-
 	<div class="container">
 		<div class="row">
 			<!-- 고객센터 사이드바 -->
