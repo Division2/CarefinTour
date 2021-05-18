@@ -98,20 +98,22 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach items="${package}" var="package">
 							<tr>
 								<td>
 									<input type="checkbox">
 								</td>
 								<td>
-									Test
+									${package.getPid()}
 								</td>
 								<td>
-									Test
+									${package.getProductname()}
 								</td>
 								<td>
-									Test
+									${package.getTheme()}
 								</td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

@@ -7,8 +7,12 @@ public class PackageVO {
 	private int pid;
 	private String productname;
 	private String theme;
+	private String country;
 	private String area;
 	private String tarvelcity;
+	private String s_file_name;
+	private String o_file_name;
+	private double fishsize;
 	private Date startravelperiod;
 	private Date arrivaltravelperiod;
 	private int resrvationstatus;
@@ -20,10 +24,8 @@ public class PackageVO {
 	private int adultprice;
 	private int kidprice;
 	private int smallkidprice;
-	private String s_file_name;
-	private String o_file_name;
 	private String director;
-	private Object redate;
+	private Date redate;
 	private int productcode;
 	private int price;
 	
@@ -45,6 +47,12 @@ public class PackageVO {
 	public void setTheme(String theme) {
 		this.theme = theme;
 	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
 	public String getArea() {
 		return area;
 	}
@@ -56,6 +64,18 @@ public class PackageVO {
 	}
 	public void setTarvelcity(String tarvelcity) {
 		this.tarvelcity = tarvelcity;
+	}
+	public String getS_file_name() {
+		return s_file_name;
+	}
+	public void setS_file_name(String s_file_name) {
+		this.s_file_name = s_file_name;
+	}
+	public String getO_file_name() {
+		return o_file_name;
+	}
+	public void setO_file_name(String o_file_name) {
+		this.o_file_name = o_file_name;
 	}
 	public Date getStartravelperiod() {
 		return startravelperiod;
@@ -123,29 +143,11 @@ public class PackageVO {
 	public void setSmallkidprice(int smallkidprice) {
 		this.smallkidprice = smallkidprice;
 	}
-	public String getS_file_name() {
-		return s_file_name;
-	}
-	public void setS_file_name(String s_file_name) {
-		this.s_file_name = s_file_name;
-	}
-	public String getO_file_name() {
-		return o_file_name;
-	}
-	public void setO_file_name(String o_file_name) {
-		this.o_file_name = o_file_name;
-	}
 	public String getDirector() {
 		return director;
 	}
 	public void setDirector(String director) {
 		this.director = director;
-	}
-	public Object getRedate() {
-		return redate;
-	}
-	public void setRedate(Object redate) {
-		this.redate = redate;
 	}
 	public int getProductcode() {
 		return productcode;
@@ -159,4 +161,17 @@ public class PackageVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public Date getRedate() {
+		return redate;
+	}
+	public void setRedate(Date redate) {
+		this.redate = redate;
+	}
+	public double getFishsize() {
+		return fishsize;
+	}
+	public void setFishsize(double fishsize) {
+		this.fishsize = fishsize;
+	}
+	
 }

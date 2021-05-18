@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +25,18 @@ public class PackageServiceImpl implements PackageService {
 	
 	//게시물 작성
 	@Override
-	public int PackageWrite(PackageVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
+	public int PackageWrite(PackageVO packageVo, MultipartHttpServletRequest mpRequest) throws Exception {
 		
-		List<Map<String,Object>> list = fileUtils.parseInsertPackageInfo(vo, mpRequest); 
+		List<Map<String,Object>> list = fileUtils.parseInsertPackageInfo(packageVo, mpRequest); 
 		int size = list.size();
 		for(int i=0; i<size; i++){ 
 			dao.PackageWrite(list.get(i)); 
 		}
 		return size;
+	}
+
+	@Override
+	public List<PackageVO> AdminPackageView(HashMap<String, Integer> map) throws Exception {
+		return dao.AdminPackageView(map);
 	}
 }
