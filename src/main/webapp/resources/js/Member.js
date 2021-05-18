@@ -244,15 +244,46 @@ function jusoCallBack2(roadFullAddr) {
 
 /* 마이페이지 내 정보 수정 유효성 검사 */
 function MyInfoUpdate() {
+	var UserID = $("#MyInfoUserID").val();
 	var Password = $("#MyInfoPassword").val();
 	var Email = $("#MyInfoEmail").val();
 	var Phone = $("#MyInfoPhone").val();
+	var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,20}$/.test(Password);			//영문, 숫자
+	var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,20}$/.test(Password);	//영문, 특수문자
+	var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,20}$/.test(Password);		//특수문자, 숫자
 	
 	if(!Password) {
 		swal({
 			title: "내 정보",
 			text: "비밀번호가 입력되지 않았습니다.",
 			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!(check1 || check2 || check3)) {
+		swal({
+			title: "내 정보",
+			text: "사용할 수 없는 비밀번호입니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(/(\w)\1\1/.test(Password)) {
+		swal({
+			title: "내 정보",
+			text: "같은 문자를 3회 이상 사용하실 수 없습니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(Password.search(UserID)>-1) {
+		swal({
+			title: "내 정보",
+			text: "비밀번호에 아이디가 포함되어 있습니다.",
+			icon: "error",
 			timer: 3000
 		});
 		return false;

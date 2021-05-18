@@ -38,7 +38,7 @@
 									<span class="input-group-text">아이디</span>
 								</div>
 								
-								<input type="text" id="UserID" name="UserID" value="${member.getUserID()}" class="form-control" required readonly>
+								<input type="text" id="MyInfoUserID" name="UserID" value="${member.getUserID()}" class="form-control" required readonly>
 							
 							</div>
 						</div>

@@ -56,6 +56,4 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO IDCheck(MemberVO vo) throws Exception {
 		return dao.IDCheck(vo);
 	}
-
-
 }

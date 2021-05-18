@@ -45,5 +45,4 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO IDCheck(MemberVO vo) throws Exception {
 		return sqlSession.selectOne(namespace + ".IDCheck", vo);
 	}
-	
 }
