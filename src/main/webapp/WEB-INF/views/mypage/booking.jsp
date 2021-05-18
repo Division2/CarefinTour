@@ -60,6 +60,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 게시글 페이징 처리(기준 10개) -->
 		<nav aria-label="Page navigation">
 			<ul class="pagination justify-content-center" style="margin-left:200px;">
 				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
@@ -92,7 +93,7 @@
 				</c:forEach>
 				<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
 				<c:choose>
-					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+					<c:when test="${Paging.pageNo eq Paging.finalPageNo}">
 						<li class="page-item disabled">
 							<a class="page-link" href="booking?page=${Paging.nextPageNo}">Next</a>
 						</li>

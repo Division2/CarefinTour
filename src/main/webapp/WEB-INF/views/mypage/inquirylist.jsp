@@ -58,12 +58,11 @@
 				</table>
 			</div>
 		</div>
-		<!-- 게시글 페이징 처리(기준 8개) -->
+		<!-- 게시글 페이징 처리(기준 10개) -->
 		<nav aria-label="Page navigation">
-			<ul class="pagination justify-content-center">
+			<ul class="pagination justify-content-center" style="margin-left:200px;">
 				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
-				<!-- 페이지 갯수만큼 버튼 생성 -->
-			<c:choose>
+				<c:choose>
 					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 						<li class="page-item disabled">
 							<a class="page-link" href="inquirylist?page=${Paging.prevPageNo}">Previus</a>
@@ -105,7 +104,6 @@
 				</c:choose>
 			</ul>
 		</nav>
-		<br>
 	</div>
 		
 	<jsp:include page="../layout/footer.jsp"/>

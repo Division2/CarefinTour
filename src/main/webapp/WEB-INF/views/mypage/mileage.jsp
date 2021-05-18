@@ -68,6 +68,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 게시글 페이징 처리(기준 10개) -->
 		<nav aria-label="Page navigation">
 			<ul class="pagination justify-content-center" style="margin-left:200px;">
 				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
