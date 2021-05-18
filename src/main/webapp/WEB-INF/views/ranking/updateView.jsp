@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%pageContext.setAttribute("crlf", "\r\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 			$(document).ready(function(){
 				var formObj = $("form[name='updateForm']");
@@ -92,13 +90,13 @@
 		        <div class="form-group row">
 		            <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
 			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="author" name="name" required readonly value="${update.name}">
+			                <input type="text" class="form-control" id="author" name="name" required readonly value="${update.userId}">
 			            </div>
 		        	</div>
 		        <div class="form-group row">
 		            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
 			            <div class="col-sm-10">
-			                <textarea class="form-control" id="content" name="content" rows="5">${update.content}</textarea>
+			                <textarea class="form-control" id="Content" name="Content" rows="10"><c:out escapeXml="false" value="${fn:replace(update.content, '<br>', crlf)}"/></textarea>
 			            </div>
 		        	</div>
 		         <div class="form-group row">
@@ -117,17 +115,15 @@
 										</c:forEach>
 									</div>
 								</div>
-            				</div>		  
+            				</div>
 	        			</div>
 		         <div class="row">
 		            <div class="col-auto mr-auto"></div>
 		            <div class="col-auto">
-		            	<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-		            		<input class="btn btn-primary" id="update_btn" value="수정" style="width:90px;">
-		            		<input class="btn btn-primary" id="delete_btn" value="삭제" style="width:90px;">
-		            		<input class="btn btn-primary" id="list_btn" value="목록" style="width:90px;">
-		            		<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
-		                </c:if>
+	            		<input class="btn btn-primary" id="update_btn" value="수정" style="width:90px;">
+	            		<input class="btn btn-primary" id="delete_btn" value="삭제" style="width:90px;">
+	            		<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
+	            		<input class="btn btn-primary" id="list_btn" value="목록" style="width:90px;">
 		            </div>
 		        </div>
 	        </form>

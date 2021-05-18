@@ -20,11 +20,11 @@ import com.spring.ex.vo.TravelPhotoVO;
 public class FileUtils {
 	
 	//여행정보 사진 저장소 경로
-	private static final String filePath = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	private static final String filePath = "C:\\Users\\runda\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
 	//탑앵글러 사진 저장소 경로
-	private static final String filePath1 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
+	private static final String filePath1 = "C:\\Users\\runda\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
 	//패키지 사진 저장소 경로
-	private static final String filePath2 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\package\\"; // 파일이 저장될 위치
+	private static final String filePath2 = "C:\\Users\\runda\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\package\\"; // 파일이 저장될 위치
 	
 	//여행후기 사진 값 넣어주는 부분	
 	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -47,7 +47,7 @@ public class FileUtils {
 		int prid = travelPhotoVO.getPrid();
 		String title = travelPhotoVO.getTitle();
 		String content = travelPhotoVO.getContent();
-		String name = travelPhotoVO.getName();
+		String userId = travelPhotoVO.getUserId();
 		
 		File file = new File(filePath);
 		if(file.exists() == false) {
@@ -71,7 +71,7 @@ public class FileUtils {
 				listMap.put("s_file_name", storedFileName);
 				listMap.put("title", title);
 				listMap.put("content", content);
-				listMap.put("name", name);
+				listMap.put("userId", userId);
 				listMap.put("file_size", multipartFile.getSize());
 				
 				list.add(listMap);

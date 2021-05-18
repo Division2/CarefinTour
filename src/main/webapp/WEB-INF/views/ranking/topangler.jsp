@@ -15,11 +15,6 @@
 		<div class="container">
 			<div class="d-flex">
 				<h1>탑 랭킹</h1>
-				<div class="ml-auto">
-					<c:if test="${sessionScope.member ne null}">
-						<button class="btn btn-primary" onclick="location.href='topanglerWrite'">등록요청</button>
-					</c:if>
-				</div>
 			</div>
 			<hr>
 			<div class="row">
