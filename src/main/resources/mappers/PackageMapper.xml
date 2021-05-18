@@ -3,10 +3,15 @@
 
 <mapper namespace="com.spring.ex.PackageMapper">
 
-<!-- 여행포토 게시물 등록  -->
+<!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
-			INSERT INTO packageproduct(PID, ProductName, Theme, Area, o_file_name, s_file_name, StarTravelPeriod,  Director, reDate, productcode, price)
-				 VALUES (#{pid}, #{productname}, #{theme}, #{area},#{o_file_name}, #{s_file_name}, #{startravelperiod}, #{director}, #{redate}, #{productcode},#{price})			
-	</insert>
+			INSERT INTO packageproduct(ProductName, Theme, Country, Area, TravelCity ,s_file_name, o_file_name, StarTravelPeriod, ArrivalTravelPeriod, ReservationStatus, MaxReservationStatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, Director, reDate, Productcode, Price) 
+			VALUES (#{productname}, #{theme}, #{country}, #{area}, #{travelCity}, #{s_file_name}, #{o_file_name}, #{starTravelPeriod}, #{arrivalTravelPeriod}, #{reservationStatus}, #{maxReservationStatus}, #{minReservation}, #{adultPrice}, #{kidPrice}, #{smallKidPrice},#{director}, #{redate}, #{productcode}, #{price})			
+ 
+ 	</insert>
 	
+	<!-- 여행패키지 출력 -->
+	<select id="adminPackageView" resultType="PackageVO">
+		SELECT * FROM packageproduct
+	</select>
 </mapper>
