@@ -182,7 +182,7 @@ public class FileUtils {
 	}
 	
 	//패키지 사진 값 넣어주는 부분	
-		public List<Map<String, Object>> parseInsertPackageInfo(PackageVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
+		public List<Map<String, Object>> parseInsertPackageInfo(PackageVO packageVO, MultipartHttpServletRequest mpRequest) throws Exception {
 			
 			Iterator<String> iterator = mpRequest.getFileNames();
 			
@@ -194,26 +194,30 @@ public class FileUtils {
 			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 			Map<String, Object> listMap = null;
 			
-			int pid = vo.getPid();
-			String productname = vo.getProductname();
-			String theme = vo.getTheme();
-			String area = vo.getArea();
-			String travelcity = vo.getTarvelcity();
-			Date startravelperiod = vo.getStartravelperiod();
-			Date arrivaltravelperiod = vo.getArrivaltravelperiod();
-			int reservationstatus = vo.getResrvationstatus();
-			int maxreservationstatus = vo.getMaxresrvationstatus();
-			int minreservation = vo.getMinreservation();
-			int adultcount = vo.getAdultcount();
-			int kidcount = vo.getKidcount();
-			int smallkidcount = vo.getSmallkidcount();
-			int adultprice = vo.getAdultprice();
-			int kidprice = vo.getKidprice();
-			int smallkidprice = vo.getSmallkidprice();
-			String director = vo.getDirector();
-			Object redate = vo.getRedate();
-			int productcode = vo.getProductcode();
-			int price = vo.getPrice();
+			int pid = packageVO.getPid();
+			String productname = packageVO.getProductname();
+			String theme = packageVO.getTheme();
+			String country = packageVO.getCountry();
+			String area = packageVO.getArea();
+			String tarvelcity = packageVO.getTarvelcity();
+			String s_file_name = packageVO.getS_file_name();
+			String o_file_name = packageVO.getO_file_name();
+			double fishsize = packageVO.getFishsize();
+			String startravelperiod = packageVO.getStartravelperiod();
+			String arrivaltravelperiod = packageVO.getArrivaltravelperiod();
+			int resrvationstatus = packageVO.getResrvationstatus();
+			int maxresrvationstatus = packageVO.getMaxresrvationstatus();
+			int minreservation = packageVO.getMinreservation();
+			int adultcount = packageVO.getAdultcount();
+			int kidcount = packageVO.getKidcount();
+			int smallkidcount = packageVO.getSmallkidcount();
+			int adultprice = packageVO.getAdultprice();
+			int kidprice = packageVO.getKidprice();
+			int smallkidprice = packageVO.getSmallkidprice();
+			String director = packageVO.getDirector();
+			Date redate = packageVO.getRedate();
+			String productcode = packageVO.getProductcode();
+			int price = packageVO.getPrice();
 			
 			
 			File file = new File(filePath2);
@@ -235,16 +239,17 @@ public class FileUtils {
 					listMap = new HashMap<String, Object>();
 					listMap.put("pid", pid);
 					listMap.put("productname", productname);
+					listMap.put("country", country);
 					listMap.put("theme", theme);
 					listMap.put("area", area);
-					listMap.put("travelcity", travelcity);
+					listMap.put("tarvelcity", tarvelcity);
 					listMap.put("o_file_name", originalFileName);
 					listMap.put("s_file_name", storedFileName);
 					listMap.put("startravelperiod", startravelperiod);
 					listMap.put("arrivaltravelperiod",arrivaltravelperiod );
-					listMap.put("reservationstatus",reservationstatus );
-					listMap.put("maxreservationstatus", maxreservationstatus);
-					listMap.put("minreservation",minreservation );
+					listMap.put("resrvationstatus", resrvationstatus );
+					listMap.put("maxresrvationstatus", maxresrvationstatus);
+					listMap.put("minreservation",minreservation);
 					listMap.put("adultcount", adultcount);
 					listMap.put("kidcount", kidcount);
 					listMap.put("smallkidcount", smallkidcount);

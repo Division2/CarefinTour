@@ -18,4 +18,7 @@ public interface PackageDAO {
 	
 	//여행패키지 출력
 	public List<PackageVO> AdminPackageView(HashMap<String, Integer> map) throws Exception;
+	
+	//여행패키지 총 갯수
+	public int AdminPackageTotalCount() throws Exception;
 }

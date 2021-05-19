@@ -14,4 +14,9 @@
 	<select id="adminPackageView" resultType="PackageVO">
 		SELECT * FROM packageproduct
 	</select>
+	
+	<!-- 여행패키지 총 갯수 -->
+	<select id="getAdminPackageTotalCount" resultType="int">
+		SELECT COUNT(*) FROM packageproduct
+	</select>
 </mapper>

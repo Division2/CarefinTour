@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.PackageService;
 import com.spring.ex.vo.PackageVO;
+import com.spring.ex.vo.PagingVO;
 
 @Controller
 public class PackageController {
@@ -33,8 +34,16 @@ public class PackageController {
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
+			System.out.println("");
+			
 			out.println("<script>location.href='package'</script>");
 			out.close();
+		}else {
+			System.out.println(result);
+			PrintWriter out = response.getWriter();
+			out.println("<script>location.href='insertpackage'</script>");
+			out.close();
+			System.out.println("ㄴ");
 		}
 	}
 	
@@ -42,11 +51,25 @@ public class PackageController {
 	@RequestMapping(value = "/package", method = RequestMethod.POST)
 	public String  AdminPackageView(Model model, HttpServletRequest request) throws Exception {
 		
+		int totalCount = service.AdminPackageTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
 		
 		List<PackageVO> packageList = service.AdminPackageView(map);
 		
-		model.addAttribute("topangler", packageList);
+		model.addAttribute("plist", packageList);
+		model.addAttribute("Paging", paging);
 		
 		return "site/packageproduct";
 	}

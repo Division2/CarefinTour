@@ -13,8 +13,8 @@ public class PackageVO {
 	private String s_file_name;
 	private String o_file_name;
 	private double fishsize;
-	private Date startravelperiod;
-	private Date arrivaltravelperiod;
+	private String startravelperiod;
+	private String arrivaltravelperiod;
 	private int resrvationstatus;
 	private int maxresrvationstatus;
 	private int minreservation;
@@ -26,7 +26,7 @@ public class PackageVO {
 	private int smallkidprice;
 	private String director;
 	private Date redate;
-	private int productcode;
+	private String productcode;
 	private int price;
 	
 	public int getPid() {
@@ -41,7 +41,7 @@ public class PackageVO {
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
-	public String getTheme() {
+	public String getTheme(){
 		return theme;
 	}
 	public void setTheme(String theme) {
@@ -77,16 +77,16 @@ public class PackageVO {
 	public void setO_file_name(String o_file_name) {
 		this.o_file_name = o_file_name;
 	}
-	public Date getStartravelperiod() {
+	public String getStartravelperiod() {
 		return startravelperiod;
 	}
-	public void setStartravelperiod(Date startravelperiod) {
+	public void setStartravelperiod(String startravelperiod) {
 		this.startravelperiod = startravelperiod;
 	}
-	public Date getArrivaltravelperiod() {
+	public String getArrivaltravelperiod() {
 		return arrivaltravelperiod;
 	}
-	public void setArrivaltravelperiod(Date arrivaltravelperiod) {
+	public void setArrivaltravelperiod(String arrivaltravelperiod) {
 		this.arrivaltravelperiod = arrivaltravelperiod;
 	}
 	public int getResrvationstatus() {
@@ -149,10 +149,10 @@ public class PackageVO {
 	public void setDirector(String director) {
 		this.director = director;
 	}
-	public int getProductcode() {
+	public String getProductcode() {
 		return productcode;
 	}
-	public void setProductcode(int productcode) {
+	public void setProductcode(String productcode) {
 		this.productcode = productcode;
 	}
 	public int getPrice() {

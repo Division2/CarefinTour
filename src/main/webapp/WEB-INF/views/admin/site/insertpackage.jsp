@@ -79,15 +79,15 @@ function fn_addFile() {
 					            </div>
 					        </div>
 					        <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>기간</strong></label>
+					            <label for="content" class="form-label col-sm-2"><strong>출발일</strong></label>
 					            <div class="col-sm-10">
 					                <input type="text" class="form-control" id="startravelperiod" name="startravelperiod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>등록일</strong></label>
+					            <label for="content" class="form-label col-sm-2"><strong>도착일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="redate" name="redate" required>
+					                <input type="text" class="form-control" id="arrivaltravelperiod" name="arrivaltravelperiod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">

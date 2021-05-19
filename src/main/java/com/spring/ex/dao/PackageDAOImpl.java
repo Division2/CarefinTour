@@ -23,9 +23,17 @@ public class PackageDAOImpl implements PackageDAO {
 		return sql.insert(namespace + ".PackageWrite", map);
 	}
 
+	//여행패키지 출력
 	@Override
 	public List<PackageVO> AdminPackageView(HashMap<String, Integer> map) throws Exception {
 		return sql.selectList(namespace +"AdminPackageView", map);
 	}
+	
+	//여행패키지 총 갯수
+	@Override
+	public int AdminPackageTotalCount() throws Exception {
+		return sql.selectOne(namespace + ".getAdminPackageTotalCount");
+	}
+	
 	
 }
