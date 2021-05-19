@@ -81,6 +81,9 @@ public class FileUtils {
 				listMap.put("title", title);
 				listMap.put("content", content);
 				listMap.put("userId", userId);
+				listMap.put("file_size", multipartFile.getSize());
+				
+				list.add(listMap);
 			}
 		}
 		return list;
@@ -143,6 +146,9 @@ public class FileUtils {
 				listMap.put("name", name);
 				listMap.put("fishsize", fishsize);
 				listMap.put("fishname", fishname);
+				listMap.put("file_size", multipartFile.getSize());
+				
+				list.add(listMap);
 			}
 		}
 		return list;
