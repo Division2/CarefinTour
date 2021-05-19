@@ -34,7 +34,7 @@ public class PackageController {
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			System.out.println("");
+			System.out.println("ㅅㅅ");
 			
 			out.println("<script>location.href='package'</script>");
 			out.close();

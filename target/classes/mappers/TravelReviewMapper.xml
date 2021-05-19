@@ -29,7 +29,7 @@
     
     <!-- 여행 포토 수정(내용) -->
     <update id="TravelPhotoUpdate" parameterType="TravelPhotoVO">
-    	UPDATE photoreview SET name=#{name}, content=#{content} WHERE prid = #{prid}
+    	UPDATE photoreview SET Title=#{title}, content=#{content} WHERE prid = #{prid}
     </update>
     
 	<!-- 여행 포토 삭제  -->
@@ -42,9 +42,9 @@
     	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
     
-	<!-- 여행 포토 댓글 조회 -->
+	 <!-- 여행 포토 댓글 조회 -->	 
 	<select id="TravelPhotoReplyView" resultType="ReplyVO">
-		SELECT * FROM photoreviewreply WHERE prid = #{prid} ORDER BY regDate
+		SELECT * FROM photoreviewreply WHERE PRRID = #{prid} ORDER BY regDate
 	</select>
 	
     <!-- 파일 조회 -->

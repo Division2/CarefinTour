@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 			$(document).ready(function(){
 				var formObj = $("form[name='updateForm']");
@@ -31,12 +32,12 @@
 				// 목록
 				$("#list_btn").on("click", function(){
 					event.preventDefault();
-					location.href = "/ex/myaddphoto"
+					location.href = "/ex/travelphoto"
 				})
 				
 				// 삭제
 				$("#delete_btn").on("click", function(){
-					formObj.attr("action", "/ex/delete");
+					formObj.attr("action", "/ex/travelphotoDelete");
 					formObj.attr("method", "post");
 					formObj.submit();
 				})
@@ -44,7 +45,7 @@
 				// 수정
 				$("#update_btn").on("click", function(){
 					
-					formObj.attr("action", "/ex/update");
+					formObj.attr("action", "/ex/travelphotoModify");
 					formObj.attr("method", "post");
 					formObj.submit();
 				})

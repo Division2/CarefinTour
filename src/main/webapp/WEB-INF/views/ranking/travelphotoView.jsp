@@ -31,14 +31,14 @@
 				<form name="postUpdate" method="POST">
 				<!-- 세션의 ID와 게시글 작성자가 같을 경우에만 수정, 삭제 권한을 줌 -->
 				<c:if test="${sessionScope.member.getUserID() eq content.userId }">
-					<button class="btn btn-primary" type="button" onclick="location.href='travelphotoModifyView?prid=${param.prid}'">수정</button>
+					<button class="btn btn-primary" type="button" onclick="location.href='travelphotoModifyView?prid=${content.prid}'">수정</button>
 					<button class="btn btn-danger" type="button" onclick="TravelPhotoDelete()">삭제</button>
 				</c:if>
 					<button class="btn btn-primary" type="button" onclick="location.href='travelphoto'">목록</button>
 				</form>
 			</div>
 		</div>
-		<form name="writeReply" action="writeReply.do" method="POST">
+	<%-- 	<form name="writeReply" action="writeReply.do" method="POST">
 			<input type="hidden" name="bId" id="bId" value="z">
 			<input type="hidden" name="writer" id="writer" value="${sessionScope.Account }">
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
@@ -69,7 +69,7 @@
 				</form>
 			</div>
 			</c:forEach>
-		</div>
+		</div> --%>
 		<br>
 	</div>
 	
