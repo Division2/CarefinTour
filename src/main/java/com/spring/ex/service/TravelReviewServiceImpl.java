@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.spring.ex.dao.TravelReviewDAO;
 import com.spring.ex.util.FileUtils;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -59,9 +60,9 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 
 	//여행 포토 수정(사진 & 내용)
 	@Override
-	public void TravelPhotoUpdate(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
+	public void TravelPhotoModify(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
 
-		dao.TravelPhotoUpdate(travelPhotoVO);
+		dao.TravelPhotoModify(travelPhotoVO);
 		
 		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(travelPhotoVO, files, fileNames, mpRequest);
 		
@@ -76,8 +77,8 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 
 	//여행 포토 삭제
 	@Override
-	public void TravelPhotoDelete(int prid) throws Exception {
-		dao.TravelPhotoDelete(prid);
+	public int TravelPhotoDelete(int prid) throws Exception {
+		return dao.TravelPhotoDelete(prid);
 	}
 
 	//여행 포토 조회수 증가
@@ -85,6 +86,12 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	@Override
 	public void TravelPhotoBoardHit(int prid) throws Exception {
 		dao.TravelPhotoBoardHit(prid);
+	}
+	
+	//여행 포토 댓글 조회
+	@Override
+	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception {
+		return dao.TravelPhotoReplyView(prid);
 	}
 
 	//파일 조회

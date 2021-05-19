@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -26,13 +27,16 @@ public interface TravelReviewDAO {
 	public int TravelPhotoUpdateFile(Map<String, Object> map) throws Exception;
 
 	//여행 포토 수정(내용)
-	public void TravelPhotoUpdate(TravelPhotoVO travelPhotoVO) throws Exception;
+	public void TravelPhotoModify(TravelPhotoVO travelPhotoVO) throws Exception;
 	
 	//여행 포토 삭제
-	public void TravelPhotoDelete(int prid) throws Exception;
+	public int TravelPhotoDelete(int prid) throws Exception;
 	
 	//여행 포토 조회수 증가
 	public void TravelPhotoBoardHit(int prid) throws Exception;
+	
+	//여행 포토 댓글 조회
+	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception;
 	
 	//첨부 파일 조회
 	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;

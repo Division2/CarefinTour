@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -27,13 +28,16 @@ public interface TravelReviewService {
 	public int TravelPhotoTotalCount() throws Exception;
 	
 	//여행 포토 수정(사진 & 내용)
-	public void TravelPhotoUpdate(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
+	public void TravelPhotoModify(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	//여행 포토 삭제
-	public void TravelPhotoDelete(int prid) throws Exception;
+	public int TravelPhotoDelete(int prid) throws Exception;
 	
 	//여행 포토 조회수 증가
 	public void TravelPhotoBoardHit(int prid) throws Exception;
+	
+	//여행 포토 댓글 조회
+	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception;
 	
 	//첨부파일 조회
 	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;
