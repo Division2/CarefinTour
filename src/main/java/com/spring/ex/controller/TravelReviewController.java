@@ -77,7 +77,10 @@ public class TravelReviewController {
 		service.TravelPhotoBoardHit(travelPhotoVO.getPrid());
 
 		model.addAttribute("content", service.TravelPhotoView(travelPhotoVO.getPrid()));
-		model.addAttribute("reply", service.TravelPhotoReplyView(travelPhotoVO.getPrid()));
+		/*
+		 * model.addAttribute("reply",
+		 * service.TravelPhotoReplyView(travelPhotoVO.getPrid()));
+		 */
 		
 		return "ranking/travelphotoView";
 	}
@@ -100,17 +103,19 @@ public class TravelReviewController {
 		
 		service.TravelPhotoModify(travelPhotoVO, files, fileNames, mpRequest);
 		
-		return "redirect:/myaddphoto";
+		return "redirect:/travelphoto";
 	}
 
 	//여행 포토 삭제
-	@RequestMapping(value = "/travelphotoDelete", method = RequestMethod.GET)
-	public void TravelPhotoDelete(HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/travelphotoDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String TravelPhotoDelete(HttpServletRequest request) throws Exception {
 		
 		int prid = Integer.parseInt(request.getParameter("prid"));
 		
 		int result = service.TravelPhotoDelete(prid);
 		System.out.println("게시글 삭제" + result);
+		return "redirect:/travelphoto";
+		
 	}
 	
 	//여행 포토 내 게시글 리스트

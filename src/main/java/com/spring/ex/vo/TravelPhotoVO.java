@@ -13,6 +13,7 @@ public class TravelPhotoVO {
 	private Date redate;
 	private String s_file_name;
 	private String o_file_name;
+	private String name;
 	
 	public int getPrid() {
 		return prid;
@@ -73,5 +74,11 @@ public class TravelPhotoVO {
 	}
 	public void setO_file_name(String o_file_name) {
 		this.o_file_name = o_file_name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }
