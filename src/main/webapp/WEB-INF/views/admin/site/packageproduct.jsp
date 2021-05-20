@@ -65,69 +65,35 @@
 						</div>
                     </div>
                     <br>
-                    
-					<table class="table table-hover table-white">
-						<thead>
-							<tr>
-								<th>
-									<input type="checkbox">
-								</th>
-								<th>
-									PID
-								</th>
-								<th>
-									상품 코드
-								</th>
-								<th>
-									사진
-								</th>
-								<th>
-									상품명
-								</th>
-								<th>
-									지역
-								</th>
-								<th>
-									기간
-								</th>
-								<th>
-									등록일
-								</th>
-								<th>
-									가격
-								</th>
-							</tr>
-						</thead>
-					</table>
 							
 					<table class="table table-hover table-white">
 						<thead>
-							<tr>
+							<tr align="center">
 								<th><input type="checkbox"></th>
 								<th>PID</th>
 								<th>상품코드</th>
-								<th>사진</th>
 								<th>상품명</th>
+								<th>국가</th>
 								<th>지역</th>
-								<th>출발일</th>
-								<th>도작일</th>
+								<th>출발 및 도착일</th>
 								<th>등록일</th>
 								<th>가격</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${plist}" var="plist">
-								<tr>
+								<tr align="center">
+								
 									<td><input type="checkbox"></td>
-									<td>${plist.getPid()}</td>
-									<td>${plist.getProductcode()}</td>
-									<td>사진</td>
-									<td>${plist.getProductname()}</td>
-									<td>${plist.getArea}</td>
-									<td>${plist.getStartravelperiod}</td>
-									<td>${plist.getArrivaltravelperiod}</td>
-									<td>${plist.getRedate}</td>
-									<td>${plist.getPrice}</td>
+									
+									<td><font size="3"><a href="#">${plist.getPid()}</a></font></td>
+									<td><font size="2">${plist.getProductcode()}</font></td>
+									<td><font size="2">${plist.getProductname()}</font></td>
+									<td><font size="2">${plist.getCountry()}</font></td>
+									<td><font size="2">${plist.getArea()}</font></td>
+									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
+									<td><font size="2">${plist.getRedate()}</font></td>
+									<td><font size="2">${plist.getPrice()}원</font></td>
 								</tr>
 							</c:forEach>
 						</tbody>

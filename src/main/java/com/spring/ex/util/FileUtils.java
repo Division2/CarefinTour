@@ -20,11 +20,11 @@ import com.spring.ex.vo.TravelPhotoVO;
 public class FileUtils {
 	
 	//여행정보 사진 저장소 경로
-	private static final String filePath = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	private static final String filePath = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
 	//탑앵글러 사진 저장소 경로
-	private static final String filePath1 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
+	private static final String filePath1 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
 	//패키지 사진 저장소 경로
-	private static final String filePath2 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\package\\"; // 파일이 저장될 위치
+	private static final String filePath2 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\product_package\\"; // 파일이 저장될 위치
 	
 	//여행후기 사진 값 넣어주는 부분	
 	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -218,8 +218,8 @@ public class FileUtils {
 			String country = packageVO.getCountry();
 			String area = packageVO.getArea();
 			String tarvelcity = packageVO.getTarvelcity();
-			String startravelperiod = packageVO.getStartravelperiod();
-			String arrivaltravelperiod = packageVO.getArrivaltravelperiod();
+			Date startravelperiod = packageVO.getStartravelperiod();
+			Date arrivaltravelperiod = packageVO.getArrivaltravelperiod();
 			int resrvationstatus = packageVO.getResrvationstatus();
 			int maxresrvationstatus = packageVO.getMaxresrvationstatus();
 			int minreservation = packageVO.getMinreservation();

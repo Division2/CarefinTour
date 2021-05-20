@@ -13,8 +13,8 @@ public class PackageVO {
 	private String s_file_name;
 	private String o_file_name;
 	private double fishsize;
-	private String startravelperiod;
-	private String arrivaltravelperiod;
+	private Date startravelperiod;
+	private Date arrivaltravelperiod;
 	private int resrvationstatus;
 	private int maxresrvationstatus;
 	private int minreservation;
@@ -77,16 +77,16 @@ public class PackageVO {
 	public void setO_file_name(String o_file_name) {
 		this.o_file_name = o_file_name;
 	}
-	public String getStartravelperiod() {
+	public Date getStartravelperiod() {
 		return startravelperiod;
 	}
-	public void setStartravelperiod(String startravelperiod) {
+	public void setStartravelperiod(Date startravelperiod) {
 		this.startravelperiod = startravelperiod;
 	}
-	public String getArrivaltravelperiod() {
+	public Date getArrivaltravelperiod() {
 		return arrivaltravelperiod;
 	}
-	public void setArrivaltravelperiod(String arrivaltravelperiod) {
+	public void setArrivaltravelperiod(Date arrivaltravelperiod) {
 		this.arrivaltravelperiod = arrivaltravelperiod;
 	}
 	public int getResrvationstatus() {
