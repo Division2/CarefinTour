@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;

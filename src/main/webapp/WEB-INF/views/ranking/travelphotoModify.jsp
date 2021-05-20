@@ -14,19 +14,20 @@
 <body>
 	<jsp:include page="../layout/header.jsp" />
 	<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
+	<script src='<c:url value="resources/js/photomodify.js"/>'></script>
 	
 		<div class="container">
 			<div class="d-flex">
 					<h1>여행 포토 수정/삭제</h1>
 			</div><hr>
-				<form name="travelphotoUpdate" method="POST" action="travelphotoModify" enctype="multipart/form-data">
+				<form name="travelphotoUpdate" method="POST" id="modify" action="travelphotoModify" enctype="multipart/form-data">
 					<input type="hidden" id="prid" name="prid" value="${update.prid}" />
 					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
 					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 				 <div class="form-group row">
 		            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
 			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="title" name="title" value="${update.title}" required>
+			                <input type="text" class="form-control" id="Title" name="title" value="${update.title}" required>
 			            </div>
         			</div>
 		        <div class="form-group row">
@@ -63,7 +64,7 @@
 		            <div class="col-auto mr-auto"></div>
 	            		<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
 		            <div class="col-auto">
-	            		<input class="btn btn-primary" type="submit" value="수정">
+	            		<input class="btn btn-primary" type="button" value="수정" onclick="modify()">
 	            		<input class="btn btn-primary" type="button" value="이전" onclick="location.href='travelphotoView?prid=${param.prid}'">
 	            		<input class="btn btn-primary" type="button" value="목록" onclick="location.href='travelphoto'">
 		            </div>

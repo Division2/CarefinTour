@@ -44,7 +44,7 @@
     
 	 <!-- 여행 포토 댓글 조회 -->	 
 	<select id="TravelPhotoReplyView" resultType="ReplyVO">
-		SELECT * FROM photoreviewreply WHERE PRRID = #{prid} ORDER BY regDate
+		SELECT * FROM photoreviewreply WHERE PRRID = #{prid} ORDER BY reDate
 	</select>
 	
     <!-- 파일 조회 -->

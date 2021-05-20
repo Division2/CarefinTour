@@ -6,6 +6,7 @@ public class ReplyVO {
 	private String UserID;
 	private String Content;
 	private Object regDate;
+	private String answerContent;
 	
 	public int getPrrId() {
 		return prrId;
@@ -37,4 +38,11 @@ public class ReplyVO {
 	public void setRegDate(Object regDate) {
 		this.regDate = regDate;
 	}
+	public String getAnswerContent() {
+		return answerContent;
+	}
+	public void setAnswerContent(String answerContent) {
+		this.answerContent = answerContent;
+	}
+	
 }

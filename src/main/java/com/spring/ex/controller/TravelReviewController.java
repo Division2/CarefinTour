@@ -77,10 +77,9 @@ public class TravelReviewController {
 		service.TravelPhotoBoardHit(travelPhotoVO.getPrid());
 
 		model.addAttribute("content", service.TravelPhotoView(travelPhotoVO.getPrid()));
-		/*
-		 * model.addAttribute("reply",
-		 * service.TravelPhotoReplyView(travelPhotoVO.getPrid()));
-		 */
+		
+		  model.addAttribute("reply",service.TravelPhotoReplyView(travelPhotoVO.getPrid()));
+		 
 		
 		return "ranking/travelphotoView";
 	}

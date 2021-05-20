@@ -43,3 +43,5 @@ function fn_del(value, name){
 	$("#fileNoDel").attr("value", fileNoArry);
 	$("#fileNameDel").attr("value", fileNameArry);
 }
+
+

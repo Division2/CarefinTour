@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Repository
-public interface NoticeBoardDAO {
+public interface AdminServiceCenterDAO {
 	
 	//공지사항 등록
 	public int NoticeWrite(NoticeBoardVO vo) throws Exception;
@@ -36,4 +36,5 @@ public interface NoticeBoardDAO {
 	
 	//공지사항 검색 게시물 총 갯수
 	public int NoticeSearchTotalCount(String title) throws Exception;
+
 }
