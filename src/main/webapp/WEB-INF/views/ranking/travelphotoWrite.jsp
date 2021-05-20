@@ -6,40 +6,12 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	var formObj = $("form[name='add']");
-
-	$(document).on("click","#fileDel", function() {
-		$(this).parent().remove();
-	})
-	
-	$("#list_btn").on("click", function() {
-		event.preventDefault();
-		location.href = "travelphoto"
-	})
-	
-	fn_addFile();
-	
-})
-
-function fn_addFile() {
-	var fileIndex = 1;
-	
-	$("#fileAddbtn").on("click", function() {
-        $("#fileIndex").append("<div><input type='file' style='float:left;' name='file"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='margin-left:576px;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-    });
-	
-	$(document).on("click","#fileDelBtn", function() {
-		$(this).parent().remove();
-	});
-}
-</script>
 <title>케어핀투어 - 여행 포토</title>
 </head>
 <body>	
-	<jsp:include page="../layout/header.jsp" />	
+	<jsp:include page="../layout/header.jsp" />
+	<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
+	
 		<div class="container">
 			<div class="d-flex">
 				<h1>여행 포토 등록</h1>
@@ -85,7 +57,7 @@ function fn_addFile() {
 					<div class="col-auto">
 						<input class="btn btn-primary" type="submit" value="글쓰기">
 						<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
-						<input class="btn btn-primary" id="list_btn" value="목록" style="width:90px;">
+						<input class="btn btn-primary" type="button" value="목록" onclick="location.href='travelphoto'">
 					</div>
 				</div>
 			</form>

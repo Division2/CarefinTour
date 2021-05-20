@@ -27,7 +27,14 @@
 			<c:forEach var="TravelPhotoList" items="${TravelPhotoList}">
 				<div class="col-sm-3">
 					<a href="travelphotoView?prid=${TravelPhotoList.prid}">
-					<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoList.s_file_name}"/>' width=200, height=200, alt="로고">
+						<c:choose>
+							<c:when test="${TravelPhotoList.s_file_name eq null}">
+								<img src='<c:url value="/resources/image/noImage.png"/>' width=200, height=200>
+							</c:when>
+							<c:otherwise>
+								<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoList.s_file_name}"/>' width=200, height=200>
+							</c:otherwise>
+						</c:choose>
 					</a>
 					<h5>
 						<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${TravelPhotoList.title}" /></a>

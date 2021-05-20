@@ -22,7 +22,9 @@
 				<p class="card-text"><small class="text-muted">${content.userId} | ${content.redate } | 조회수 ${content.hit }</small></p>
 				<hr>
 				<p class="card-text"><c:out escapeXml="false" value="${fn:replace(content.content, crlf, '<br>')}"/></p>
-				<img src='<c:url value="/resources/image/photoreview_folder/${content.s_file_name}"/>' width="800" height="600" alt="로고">
+				<c:if test="${content.s_file_name ne null}">
+					<img src='<c:url value="/resources/image/photoreview_folder/${content.s_file_name}"/>' width="800" height="600">
+				</c:if>
 			</div>
 		</div>
 		<br>
@@ -38,7 +40,7 @@
 				</form>
 			</div>
 		</div>
-	<%-- 	<form name="writeReply" action="writeReply.do" method="POST">
+		<form name="writeReply" action="writeReply.do" method="POST">
 			<input type="hidden" name="bId" id="bId" value="z">
 			<input type="hidden" name="writer" id="writer" value="${sessionScope.Account }">
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
@@ -69,7 +71,7 @@
 				</form>
 			</div>
 			</c:forEach>
-		</div> --%>
+		</div>
 		<br>
 	</div>
 	

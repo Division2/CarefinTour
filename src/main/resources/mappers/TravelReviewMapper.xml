@@ -49,7 +49,7 @@
 	
     <!-- 파일 조회 -->
     <select id="TravelPhotoSelectFileList" parameterType="int" resultType="hashMap">
-	SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
+		SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
 	</select>
 	
 	<!-- 여행 포토 내 게시글 리스트 -->
