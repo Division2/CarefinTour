@@ -114,11 +114,13 @@ function fn_addFile() {
 								</div>
 						    </div>
 	    					 <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>여행 최대인원</strong></label>
-					            <div class="col-sm-10">
+					            <label for="content" class="form-label col-sm-1"><strong>여행 최대인원</strong></label>
+					            <div class="col-sm-5">
 					                <input type="text" class="form-control" id="maxresrvationstatus" name="maxresrvationstatus" required>
-         					    	<label for="content" class="form-label col-sm-2"><strong>여행 최소인원</strong></label>
-					                <input type="text" class="form-control" id="minreservation" name="minreservation" required>
+					            </div>
+          					    <label for="content" class="form-label col-sm-1"><strong>여행 최소인원</strong></label>
+					            <div class="col-sm-5">
+					                <input type="text" class="form-control" id="maxresrvationstatus" name="maxresrvationstatus" required>
 					            </div>
 					        </div>
 					        

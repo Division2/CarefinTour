@@ -51,6 +51,11 @@
 							<a class="nav-link text-primary" href="mypage">마이페이지</a>
 						</li>
 					</c:if>
+					<c:if test="${sessionScope.member.getGrade() eq 'Admin'}">
+						<li class="nav-item">
+							<a class="nav-link text-primary" href="admin/main">관리자페이지</a>
+						</li>
+						</c:if>
 						<li class="nav-item">
 							<a class="nav-link text-primary" href="support">고객센터</a>
 						</li>
