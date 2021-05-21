@@ -29,7 +29,7 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="package">
+		<a class="nav-link" href="packageproduct">
 			<i class="fas fa-fw fa-table"></i>
 			<span>패키지 상품</span>
 		</a>

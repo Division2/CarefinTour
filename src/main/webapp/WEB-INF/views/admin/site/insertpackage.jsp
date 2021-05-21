@@ -81,13 +81,13 @@ function fn_addFile() {
 					        <div class="form-group row">
 					            <label for="content" class="form-label col-sm-2"><strong>출발일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="starTravelPeriod" name="starTravelPeriod" required>
+					                <input type="text" class="form-control" id="startravelperiod" name="startravelperiod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">
 					            <label for="content" class="form-label col-sm-2"><strong>도착일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="arrivalTravelPeriod" name="arrivalTravelPeriod" required>
+					                <input type="text" class="form-control" id="arrivaltravelperiod" name="arrivaltravelperiod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">
@@ -113,15 +113,21 @@ function fn_addFile() {
 									</select>
 								</div>
 						    </div>
+						    <div class="form-group row">
+					            <label for="content" class="form-label col-sm-2"><strong>여행도시</strong></label>
+					            <div class="col-sm-10">
+					                <input type="text" class="form-control" id="travelcity" name="travelcity" required>
+					            </div>
+					        </div>
 						    
 	    					 <div class="form-group row">
+	    					    <label for="content" class="form-label col-sm-2"><strong>최소인원</strong></label>
+					            <div class="col-sm-4">
+					                <input type="text" class="form-control" id="minreservation" name="minreservation" required>
+					            </div>
 					            <label for="content" class="form-label col-sm-2"><strong>최대인원</strong></label>
 					            <div class="col-sm-4">
-					                <input type="text" class="form-control" id="maxresrvationstatus" name="maxresrvationstatus" required>
-					            </div>
-          					    <label for="content" class="form-label col-sm-2"><strong>최소인원</strong></label>
-					            <div class="col-sm-4">
-					                <input type="text" class="form-control" id="maxresrvationstatus" name="maxresrvationstatus" required>
+					                <input type="text" class="form-control" id="maxreservation" name="maxreservation" required>
 					            </div>
 					        </div>
 					        

@@ -223,7 +223,7 @@ public class CareController {
 	public String admin_hotel() {
 		return "admin/site/hotelproduct";
 	}
-	@RequestMapping("admin/package")
+	@RequestMapping("admin/packageproduct")
 	public String admin_package() {
 		return "admin/site/packageproduct";
 	}

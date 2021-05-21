@@ -20,11 +20,11 @@ import com.spring.ex.vo.TravelPhotoVO;
 public class FileUtils {
 	
 	//여행정보 사진 저장소 경로
-	private static final String filePath = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	private static final String filePath = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
 	//탑앵글러 사진 저장소 경로
-	private static final String filePath1 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
+	private static final String filePath1 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
 	//패키지 사진 저장소 경로
-	private static final String filePath2 = "C:\\Users\\401ST000\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\product_package\\"; // 파일이 저장될 위치
+	private static final String filePath2 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\product_package\\"; // 파일이 저장될 위치
 	
 	//여행후기 사진 값 넣어주는 부분	
 	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -216,11 +216,11 @@ public class FileUtils {
 			String productname = packageVO.getProductname();
 			String theme = packageVO.getTheme();
 			String area = packageVO.getArea();
-			String tarvelcity = packageVO.getTarvelcity();
+			String travelcity = packageVO.getTravelcity();
 			Date startravelperiod = packageVO.getStartravelperiod();
 			Date arrivaltravelperiod = packageVO.getArrivaltravelperiod();
 			int resrvationstatus = packageVO.getReservationstatus();
-			int maxresrvationstatus = packageVO.getReservationstatus();
+			int maxreservation = packageVO.getMaxreservation();
 			int minreservation = packageVO.getMinreservation();
 			int adultcount = packageVO.getAdultcount();
 			int kidcount = packageVO.getKidcount();
@@ -251,13 +251,13 @@ public class FileUtils {
 					listMap.put("productname", productname);
 					listMap.put("theme", theme);
 					listMap.put("area", area);
-					listMap.put("tarvelcity", tarvelcity);
+					listMap.put("travelcity", travelcity);
 					listMap.put("o_file_name", originalFileName);
 					listMap.put("s_file_name", storedFileName);
 					listMap.put("startravelperiod", startravelperiod);
-					listMap.put("arrivaltravelperiod",arrivaltravelperiod );
-					listMap.put("resrvationstatus", resrvationstatus );
-					listMap.put("maxresrvationstatus", maxresrvationstatus);
+					listMap.put("arrivaltravelperiod",arrivaltravelperiod);
+					listMap.put("resrvationstatus", resrvationstatus);
+					listMap.put("maxreservation", maxreservation);
 					listMap.put("minreservation",minreservation);
 					listMap.put("adultcount", adultcount);
 					listMap.put("kidcount", kidcount);
@@ -278,13 +278,13 @@ public class FileUtils {
 					listMap.put("productname", productname);
 					listMap.put("theme", theme);
 					listMap.put("area", area);
-					listMap.put("tarvelcity", tarvelcity);
+					listMap.put("travelcity", travelcity);
 					listMap.put("o_file_name", originalFileName);
 					listMap.put("s_file_name", storedFileName);
 					listMap.put("startravelperiod", startravelperiod);
 					listMap.put("arrivaltravelperiod",arrivaltravelperiod );
-					listMap.put("resrvationstatus", resrvationstatus );
-					listMap.put("maxresrvationstatus", maxresrvationstatus);
+					listMap.put("resrvationstatus", resrvationstatus);
+					listMap.put("maxresrvation", maxreservation);
 					listMap.put("minreservation",minreservation);
 					listMap.put("adultcount", adultcount);
 					listMap.put("kidcount", kidcount);
