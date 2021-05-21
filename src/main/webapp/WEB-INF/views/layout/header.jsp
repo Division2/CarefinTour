@@ -17,6 +17,8 @@
 	<link rel="stylesheet" href='<c:url value="/resources/css/vegas.min.css"/>'>
 	<link rel="stylesheet" href='<c:url value="/resources/css/nouislider.min.css"/>'>
 	<link rel="stylesheet" href='<c:url value="/resources/css/nouislider.pips.css"/>'>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 	<!-- Template Styles -->
 	<link rel="stylesheet" href='<c:url value="/resources/css/style.css"/>'>

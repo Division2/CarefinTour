@@ -129,8 +129,6 @@
 
 	<!-- Template Script -->
 	<script src='<c:url value="/resources/js/theme.js"/>'></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src='<c:url value="/resources/js/Member.js"/>'></script>
 	
 	<!-- 로그인 Modal 부분 -->
