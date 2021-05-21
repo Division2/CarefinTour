@@ -48,7 +48,7 @@
 						</button>
 					</form>
 				</div>
-				<table class="table table-hover table-white">
+				<table class="table table-white">
 					<colgroup>
 						<col width="50px">
 						<col width="150px">
@@ -71,9 +71,9 @@
 							<td>${NoticeBoardVO.reDate }</td>
 						</c:when>
 						<c:otherwise>
-							<td style="background: rgb(120,215,255);"><i class="fas fa-bullhorn"></i></td>
-							<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }"><c:out escapeXml="false" value="${NoticeBoardVO.title }"/></a></td>
-							<td style="background: rgb(120,215,255);">${NoticeBoardVO.reDate }</td>
+							<td style="background: rgb(245,245,245);"><i class="fas fa-bullhorn"></i></td>
+							<td style="background: rgb(245,245,245);"><a href="noticeView?nId=${NoticeBoardVO.nId }"><font style="color:#ff4f5a;"><c:out escapeXml="false" value="${NoticeBoardVO.title }"/></font></a></td>
+							<td style="background: rgb(245,245,245);">${NoticeBoardVO.reDate }</td>
 						</c:otherwise>
 					</c:choose>
 						</tr>

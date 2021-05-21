@@ -124,16 +124,7 @@
 								</li>
 							</ul>
 						</div>
-						<select name="currency" id="currency" class="selectpicker">
-							<option value="USD">USD</option>
-							<option value="GBP">GBP</option>
-							<option value="AUD">AUD</option>
-						</select>
-						<select name="languages" id="languages" class="selectpicker">
-							<option value="ENG">ENG</option>
-							<option value="BN">BN</option>
-							<option value="RUS">RUS</option>
-						</select>
+						<img src='<c:url value="/resources/images/shapes/sun-1-1.png"/>' alt="" class="banner-four__sun">
 					</div>
 				</div>
 			</nav>

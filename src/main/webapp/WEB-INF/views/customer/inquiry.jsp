@@ -49,7 +49,7 @@
 						</button>
 					</form>
 				</div>
-				<table class="table table-hover table-white">
+				<table class="table table-white">
 					<colgroup>
 						<col width="10%">
 						<col width="10%">

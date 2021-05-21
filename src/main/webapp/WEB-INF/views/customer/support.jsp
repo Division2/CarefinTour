@@ -38,15 +38,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-8">
-						<ul class="thm-breadcrumb2 list-unstyled">
-							<li><a href="support" class="thm-btn contact-one__btn">전체</a></li>
-							<li><a href="supportOther?category=해외여행" class="thm-btn contact-one__btn">해외여행</a></li>
-							<li><a href="supportOther?category=테마여행" class="thm-btn contact-one__btn">테마여행</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-8">
 						<div class="accrodion-grp" data-grp-name="faq-one-accrodion">
 						<c:choose>
 							<c:when test="${param.category eq null }">
@@ -81,6 +72,7 @@
 						</div>
 					</div>
 					<div class="col-lg-4">
+						<jsp:include page="sidesupport.jsp"/>
 						<div class="sidebar">
 							<div class="offer-sidebar wow fadeInUp" data-wow-duration="1500ms" style="background-image: url(<c:url value="/resources/images/backgrounds/offer-sidebar-bg.jpg"/>);">
 								<h3>
