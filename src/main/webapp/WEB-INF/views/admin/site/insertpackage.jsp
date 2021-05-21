@@ -113,13 +113,14 @@ function fn_addFile() {
 									</select>
 								</div>
 						    </div>
+						    
 	    					 <div class="form-group row">
-					            <label for="content" class="form-label col-sm-1"><strong>여행 최대인원</strong></label>
-					            <div class="col-sm-5">
+					            <label for="content" class="form-label col-sm-2"><strong>최대인원</strong></label>
+					            <div class="col-sm-4">
 					                <input type="text" class="form-control" id="maxresrvationstatus" name="maxresrvationstatus" required>
 					            </div>
-          					    <label for="content" class="form-label col-sm-1"><strong>여행 최소인원</strong></label>
-					            <div class="col-sm-5">
+          					    <label for="content" class="form-label col-sm-2"><strong>최소인원</strong></label>
+					            <div class="col-sm-4">
 					                <input type="text" class="form-control" id="maxresrvationstatus" name="maxresrvationstatus" required>
 					            </div>
 					        </div>
@@ -146,13 +147,6 @@ function fn_addFile() {
 					            <label for="content" class="form-label col-sm-2"><strong>감독</strong></label>
 					            <div class="col-sm-10">
 					                <input type="text" class="form-control" id="director" name="director" required>
-					            </div>
-					        </div>
-					        
-					        <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>총가격</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="price" name="price">
 					            </div>
 					        </div>
 					        
