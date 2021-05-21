@@ -48,7 +48,7 @@ public class PackageController {
 	}
 	
 	//여행패키지 출력
-	@RequestMapping(value = "/admin/package", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/packageproduct", method = RequestMethod.GET)
 	public String  AdminPackageView(Model model, HttpServletRequest request) throws Exception {
 		
 		int totalCount = service.AdminPackageTotalCount();
@@ -58,7 +58,6 @@ public class PackageController {
 		paging.setPageNo(page);
 		paging.setPageSize(10);
 		paging.setTotalCount(totalCount);
-		System.out.println(totalCount);
 		page = (page - 1) * 10;
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();

@@ -7,7 +7,7 @@ public class PackageVO {
 	private String productname;
 	private String theme;
 	private String area;
-	private String tarvelcity;
+	private String travelcity;
 	private String s_file_name;
 	private String o_file_name;
 	private Date startravelperiod;
@@ -48,12 +48,6 @@ public class PackageVO {
 	}
 	public void setArea(String area) {
 		this.area = area;
-	}
-	public String getTarvelcity() {
-		return tarvelcity;
-	}
-	public void setTarvelcity(String tarvelcity) {
-		this.tarvelcity = tarvelcity;
 	}
 	public String getS_file_name() {
 		return s_file_name;
@@ -156,5 +150,11 @@ public class PackageVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getTravelcity() {
+		return travelcity;
+	}
+	public void setTravelcity(String travelcity) {
+		this.travelcity = travelcity;
 	}
 }
