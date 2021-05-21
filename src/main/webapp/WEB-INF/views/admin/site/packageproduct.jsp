@@ -36,29 +36,34 @@
 					<div class="row">
 						<div class="col-sm-2">
 							<select class="form-control">
-								<option>국가</option>
-							</select>
-						</div>
-						<div class="col-sm-2">
-							<select class="form-control">
 								<option>지역</option>
+								<option>미주/중남미/하와이</option>
+								<option>대만/동남아/서남아</option>
+								<option>중국/홍콩/러시아</option>
+								<option>유럽/아프리카</option>
+								<option>일본</option>
 							</select>
 						</div>
 						<div class="col-sm-2">
 							<select class="form-control">
-								<option>패키지</option>
+								<option>테마</option>
+								<option>낚시</option>
+								<option>허니문</option>
+								<option>골프</option>
+								<option>해외</option>
 							</select>
 						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-5">
 							<input type="text" placeholder="상품명을 입력하세요.">
 							<button type="button" class="btn px-3 btn-primary">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-3">
 							<div class="d-flex">
 								<div class="ml-auto">
 									<button class="btn btn-primary"  onclick="location.href='insertpackage'">등록</button>
+									<button class="btn btn-primary"  onclick="location.href='#'">수정</button>
 									<button class="btn btn-primary">삭제</button>
 								</div>
 							</div>
@@ -73,7 +78,7 @@
 								<th>PID</th>
 								<th>상품코드</th>
 								<th>상품명</th>
-								<th>국가</th>
+								<th>예약인원</th>
 								<th>지역</th>
 								<th>출발 및 도착일</th>
 								<th>등록일</th>
@@ -83,13 +88,11 @@
 						<tbody>
 							<c:forEach items="${plist}" var="plist">
 								<tr align="center">
-								
 									<td><input type="checkbox"></td>
-									
 									<td><font size="3"><a href="#">${plist.getPid()}</a></font></td>
 									<td><font size="2">${plist.getProductcode()}</font></td>
 									<td><font size="2">${plist.getProductname()}</font></td>
-									<td><font size="2">${plist.getCountry()}</font></td>
+									<td><font size="2">${plist.getReservationstatus() } / ${plist.getMaxreservation()}</font></td>
 									<td><font size="2">${plist.getArea()}</font></td>
 									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
 									<td><font size="2">${plist.getRedate()}</font></td>
@@ -99,9 +102,9 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- 본문 -->
 			</div>
-						<!-- 게시글 페이징 처리(기준 10개) -->
+			
+			<!-- 게시글 페이징 처리(기준 10개) -->
 			<nav aria-label="Page navigation">
 				<ul class="pagination justify-content-center">
 					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->

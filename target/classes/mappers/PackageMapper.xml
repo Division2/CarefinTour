@@ -5,8 +5,8 @@
 
 <!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
-			INSERT INTO packageproduct(ProductName, Theme, Country, Area, TravelCity ,s_file_name, o_file_name, StarTravelPeriod, ArrivalTravelPeriod, ReservationStatus, MaxReservationStatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, Director, Productcode, Price) 
-			VALUES (#{productname}, #{theme}, #{country}, #{area}, #{travelCity}, #{s_file_name}, #{o_file_name}, #{starTravelPeriod}, #{arrivalTravelPeriod}, #{reservationStatus}, #{maxReservationStatus}, #{minReservation}, #{adultPrice}, #{kidPrice}, #{smallKidPrice}, #{director}, #{productcode}, #{price})			
+			INSERT INTO packageproduct(ProductName, Theme, Area, TravelCity ,s_file_name, o_file_name, StarTravelPeriod, ArrivalTravelPeriod, ReservationStatus, Maxresrvationstatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, Director, Productcode, Price) 
+			VALUES (#{productname}, #{theme}, #{area}, #{travelCity}, #{s_file_name}, #{o_file_name}, #{starTravelPeriod}, #{arrivalTravelPeriod}, #{reservationStatus}, #{maxReservationStatus}, #{minReservation}, #{adultPrice}, #{kidPrice}, #{smallKidPrice}, #{director}, #{productcode}, #{price})			
  
  	</insert>
 	
