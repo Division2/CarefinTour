@@ -1,60 +1,423 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<style>
-	a {
-		color: #000000;
-	}
-</style>
-<footer class="footer">
-	<div class="py-5 bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-6 col-md-3" align="center">
-					<img src='<c:url value="/resources/image/FooterLogo.png"/>' width="135" height="135">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.time.format.DateTimeFormatter"%>
+<%@ page import="java.time.LocalDateTime"%>
+<%
+	//현재시간 구해서 String으로 formating
+	LocalDateTime nowTime = LocalDateTime.now();
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	String now = nowTime.format(dateTimeFormatter);   
+%>
+		<!-- 하단 푸터 -->
+		<footer class="site-footer">
+			<div class="site-footer__bg" style="background-image: url(<c:url value="/resources/images/backgrounds/footer-bg-1-1.png"/>);"></div>
+			<div class="container">
+				<div class="row">
+					<div class="footer-widget__column footer-widget__about">
+						<a href="main" class="footer-widget__logo">
+							<img src='<c:url value="/resources/images/logo-dark.png"/>' width="123" alt="">
+						</a>
+						<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
+						<a href="ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
+						<a href="tel:031-828-7700">031-828-7700</a>
+					</div>
+					<div class="footer-widget__column">
+						<h3 class="footer-widget__title">Company</h3>
+						<ul class="footer-widget__links-list list-unstyled">
+							<li><a href="destinations.html">사업자등록번호 : 123-45-67890</a></li>
+							<li><a href="tour-sidebar.html">관광사업자등록번호 : 제2021-123456호</a></li>
+							<li><a href="contact.html">E-mail : ljpk@gmail.com</a></li>
+							<li><a href="gallery.html">주소 : 경기도 의정부시 서부로 545 효행관 401호</a></li>
+						</ul>
+					</div>
+					<div class="footer-widget__column footer-widget__links">
+						<h3 class="footer-widget__title">Information</h3>
+						<ul class="footer-widget__links-list list-unstyled">
+							<li><a href="company">회사개요</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#privacypolicy">개인정보처리방침</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#useservice">이용약관</a></li>
+							<li><a href="domestictttac">여행약관</a></li>
+							<li><a href="insurance">여행자보험</a></li>
+							<li><a href="support">고객센터</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-sm-12 col-md-6">
-					<h6>Company</h6>
-					<p>사업자등록번호 : 123-45-67890<br/>관광사업자등록번호 : 제2021-123456호<br/>E-mail : ljpk@gmail.com<br/>주소 : 경기도 의정부시 서부로 545 효행관 401호</p>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<h6>Information</h6>
-					<ul class="list-unstyled">
-						<li>
-							<a href="company">회사개요</a>
-						</li>
-						<li>
-							<a href="#" data-toggle="modal" data-target="#privacypolicy">개인정보처리방침</a>
-						</li>
-						<li>
-							<a href="#" data-toggle="modal" data-target="#useservice">이용약관</a>
-						</li>
-						<li>
-							<a href="domestictttac">여행약관</a>
-						</li>
-						<li>
-							<a href="insurance">여행자보험</a>
-						</li>
-						<li>
-							<a href="support">고객센터</a>
-						</li>
-					</ul>
+			</div>
+		</footer>
+		<!-- 하단 푸터 -->
+		
+		<!-- 하단 Copyright -->
+		<div class="site-footer__bottom">
+			<div class="container">
+				<p>Copyright &copy; 2021 CarefinTour ALL rights reserved.</p>
+				<div class="site-footer__social">
+					<a href="#"><i class="fab fa-facebook-square"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-dribbble"></i></a>
 				</div>
 			</div>
 		</div>
-		<hr/>
-		<p class="m-0 text-center">Copyright &copy; (주)케어핀투어 ALL rights reserved.</p>
+		<!-- 하단 Copyright -->
+
+	<!-- 모바일 하단 푸터-->
+	<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+	<div class="side-menu__block">
+		<div class="side-menu__block-overlay custom-cursor__overlay">
+			<div class="cursor"></div>
+			<div class="cursor-follower"></div>
+		</div>
+		<div class="side-menu__block-inner ">
+			<div class="side-menu__top justify-content-end">
+				<a href="#" class="side-menu__toggler side-menu__close-btn">
+					<img src='<c:url value="/resources/images/shapes/close-1-1.png"/>' alt="">
+				</a>
+			</div>
+			<nav class="mobile-nav__container"></nav>
+			<div class="side-menu__sep"></div>
+			<div class="side-menu__content">
+				<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
+				<p>
+					<a href="ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
+					<a href="tel:031-828-7700">031-828-7700</a>
+				</p>
+				<div class="side-menu__social">
+					<a href="#"><i class="fab fa-facebook-square"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-pinterest-p"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 모바일 하단 푸터 -->
+	<div class="search-popup">
+		<div class="search-popup__overlay custom-cursor__overlay">
+			<div class="cursor"></div>
+			<div class="cursor-follower"></div>
+		</div>
+		<div class="search-popup__inner">
+			<form action="#" class="search-popup__form">
+				<input type="text" name="search" placeholder="검색어를 입력하세요...">
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+			</form>
+		</div>
 	</div>
 	
-	<!-- useservice 부분 -->
+	<!-- Plugin Script -->
+	<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/owl.carousel.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/waypoints.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/jquery.counterup.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/TweenMax.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/wow.js"/>'></script>
+	<script src='<c:url value="/resources/js/jquery.magnific-popup.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/jquery.ajaxchimp.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/swiper.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/typed-2.0.11.js"/>'></script>
+	<script src='<c:url value="/resources/js/vegas.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/jquery.validate.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/bootstrap-select.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/countdown.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/jquery.mCustomScrollbar.concat.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/bootstrap-datepicker.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/nouislider.min.js"/>'></script>
+	<script src='<c:url value="/resources/js/isotope.js"/>'></script>
+
+	<!-- Template Script -->
+	<script src='<c:url value="/resources/js/theme.js"/>'></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src='<c:url value="/resources/js/Member.js"/>'></script>
+	
+	<!-- 로그인 Modal 부분 -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-title text-center">
+						<h4>Login</h4>
+					</div>
+					<div class="d-flex flex-column text-center">
+						<div class="form-group">
+							<input type="text" class="form-control" id="UserID" name="LoginUserID" placeholder="아이디를 입력하세요" required autofocus>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="Password" placeholder="비밀번호를 입력하세요" required>
+						</div>
+						<input type="hidden" id="lastDate" name="lastDate" value="<%=now%>">
+						<button id="Login" class="btn btn-primary btn-block btn-round">로그인</button>
+					</div>
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<div class="signup-section">
+						회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 회원가입 Modal 부분 -->
+	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-title text-center">
+						<h4>Sign in</h4>
+					</div>
+					<div class="d-flex flex-column text-center">
+						<form name="form" id="form" action="SignUp" method="POST">
+							<div class="form-group row">
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="RegisterUserID" name="UserID" placeholder="아이디" required autofocus>
+								</div>
+								<div class="col-sm-3">
+									<button type="button" id="IDCheck" class="btn btn-primary">중복확인</button>
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" id="RegisterPassword" name="Password" placeholder="비밀번호" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="Name" name="Name" placeholder="이름" required>
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="Email" name="Email" placeholder="이메일" required>
+							</div>
+							<div class="form-group">
+								<input type="tel" class="form-control" id="Phone" name="Phone" maxlength="11" placeholder="-를 제외한 휴대폰 번호" required>
+							</div>
+							<div class="form-group">
+								<input type="date" class="form-control" id="Birth" name="Birth" placeholder="생일" required>
+							</div>
+							<div class="form-group">
+								<select class="form-control" id="Sex">
+									<option value="1">남자</option>
+									<option value="0">여성</option>
+								</select>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-9">
+									<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
+								</div>
+								<div class="col-sm-3">
+									<button type="button" class="btn btn-warning" onclick="goPopup()">주소찾기</button>
+								</div>
+							</div>
+							<input type="hidden" id="Grade" name="Grade" value="User">
+							<input type="hidden" id="Mileage" name="Mileage" value="0">
+							<button type="button" id="register" class="btn btn-primary btn-block btn-round" onclick="Register()" disabled>회원가입</button>
+							<button type="reset" id="registerReset" class="btn btn-danger btn-block btn-round">취소</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 예약확인 비회원 부분-->
+	<div class="modal fade" id="ReservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-title text-center">
+						<h4>check my reservation</h4>
+					</div>
+					<div class="d-flex flex-column text-center">
+						<form>
+							<div class="form-group">
+								<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="revervationnumber" placeholder="예약번호를 입력하세요">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요">
+							</div>
+							<button type="button" class="btn btn-primary btn-block btn-round">조회하기</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 개인정보처리방침 -->
+	<div class="modal fade" id="privacypolicy" tabindex="-1" role="dialog" aria-labelledby="privacypolicy" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 50%; width: 50%;">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="form-title">
+						<h4>개인정보처리방침</h4>
+					</div>
+					<div class="d-flex flex-column text-left">
+						<textarea class="form-control" style="resize:none;" rows="30">
+(주)케어핀투어(이하 ‘당사’)는 고객님의 개인정보처리방침을 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호"에 관한 법률』상의 개인정보보호 규정 및 행정안전부가 제정한 『개인정보보호법』을 준수하고 있습니다. 당사는 개인정보취급(처리)방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다. *개인정보의 수집,제공 및 활용에 동의하지 않을 권리가 있으며, 미동의시 회원가입 및 여행서비스의 제공이 제한됩니다.
+■ 개인정보의 수집방법 및 항목
+당사는 여행 서비스와 회원 서비스 제공을 위해 아래와 같이 필요한 최소한의 개인정보만을 수집합니다.
+- 회원가입 시
+구분	수집/이용 항목	수집/이용 목적
+필수	아이디, 비밀번호, 성명, 성별, 생년월일, 휴대전화번호, 이메일, CI(본인인증 회원), 법정대리인정보(성명, 관계, 연락처)	이용자 식별, 회원 서비스 제공, 본인인증, 만 14세 미만 회원가입 시 확인, 멤버십 혜택 및 각족 이벤트 정보 안내, 상품수령
+선택	영문이름, 결혼여부, 결혼기념일, 환불 시 계좌번호, 자택주소
+- 여행상품 예약 시
+수집/이용 항목	수집/이용 목적
+성명(국문/영문), 생년월일, 성별, 여권번호, 여권만료일, 여권발급일, 비자소지여부, 이 메일, 연락처, 주소	여행상품 예약 및 상담, 출국가능여부 파악, 경품배송, 만족도조사
+성명, 생년월일, 성별, 여권번호	여행자보험 가입
+성명, 신용카드번호, 유효기간, 계약자와의관계, 계좌번호	대금결제, 정산, 환불
+성명, 생년월일, 성별, 연락처, 회원번호	마일리지 서비스 제공 및 회원확인
+■ 개인정보 수집방법
+당사에서 운영하는 홈페이지(www.modetour.com)와 전화, 팩스등과 당사 상품을 판매하는 대리점에서 홈페이지회원, 여행회원, 투어마일리지(상담)신청서, 상품예약(구매) 및 그 외 본인 확인, 제휴사로부터의 당사제공 등의 방법으로 개인정보를 수집합니다.
+■ 개인정보의 수집 및 이용목적
+당사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+1. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
+-여행상품 예약, 여행자보험 가입, 항공권/호텔의 예약, 예약내역의 확인 및 상담, 컨텐츠 제공, 투어마일리지 적립, 조회, 사용 및 이에 관한 안내, 구매 및 요금 결제, 물품배송 또는 청구지 등 발송, 본인인증 및 금융서비스, 구매 및 요금결제, 환불, 출국가능여부파악, 회원카드발급, 회원우대 등
+2.고객 관리
+- 고객관리 및 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 이용 및 이용횟수 제한, 연령확인, 만 14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 분쟁조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달 등
+3. 신규서비스 및 마케팅,광고에 활용
+- 인구통계학적 특성에 따른 서비스 제공 및 광고 게재 , 이벤트, 신상품 등 광고성 정보 전달 및 참여기회제공, 접속 빈도 파악, 서비스 이용에 대한 통계, 신규 및 제휴 비지니스 관련 서비스제공 및 각종 마케팅 활동등   위 정보는 가입 당시 정보만 아니라 정보 수정으로 변경된 정보를 포함 합니다.
+■개인정보의 이용, 보유기간 및 파기
+당사는 고객님의 개인정보를 다음과 같이 수집목적 또는 제공받은 목적이 달성되거나 고객이 표명한 절차에 따라 탈퇴를 요청하거나 표명된 회원자격상실 사유에 의해 고객님의 자격을 제한 및 정지시키는 경우에는 해당 개인의 정보는 재생할 수 없는 기술적 방법을 통해 삭제되며, 어떠한 용도로도 열람 또는 이용할 수 없도록 파기됩니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 관계법령에서 정한 일정한 기간 동안 회원 정보를 보관 합니다.
+가. 계약 또는 청약철회 등에 관한 기록: 5년 (전자상거래등에서의 소비자보호에 관한 법률)
+나. 대금결제 및 재화 등의 공급에 관한 기록: 5년 (전자상거래등에서의 소비자보호에 관한 법률)
+다. 소비자의 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래등에서의 소비자보호에 관한 법률)
+라. 표시•광고에 관한 기록: 6개월
+▶ 파기방법 :
+- 종이에 출력된 개인정보: 분쇄기를 이용하여 분쇄
+- 전자적파일형태로 저장된 개인정보: 개인정보는 남기지 않으며, 기록을 재생할수 없는 방법을 통하여 기록삭제
+■ 개인정보 제공 및 공유
+1. 당사는 고객님의 동의가 있거나 관련 법령의 규정에 의한 경우를 제외하고 어떠한 경우에도 ‘개인정보의 수집 및 이용목적’ 에서 고지한 범위를 넘어 서비스와 무관한 타 기업/기관에 제공하거나 이용하지 않습니다. 단, 고객님의 개인정보를 제공 및 공유하는 경우는 다음과 같습니다.
+제공대상	제공하는 항목	제공받는 자의 이용목적
+대한항공, 아시아나항공 외 기타 항공사, 크루즈 및 기타 해운업체, 호텔 및 기타 숙박업체, 기타 현지 랜드업체
+[전체보기]	성명(영문이름포함), 생년월일, 성별, 여권/비자 유무 및 관련 정보(여권만료일, 여권번호 등), 핸드폰번호, 투어마일리지정보, 회원종류	항공권 및 기타운송업체 탑승예약, 숙박예약, 현지 행사 진행 및 고객관리 목적, 서비스 제공, 구매 및 요금 결제, 개인 식별, 불만처리 등 민원처리, 고지사항 전달,마일리지적립/전환,사용확인, 회원할인등
+Rail Europe 외 기타 철도업체
+[전체보기]	성명(영문이름포함), 여권/비자 유무 및 관련 정보(여권만료일, 여권번호 등)
+기타 현지 렌터카 업체
+[전체보기]	성명, 자택전화번호, 휴대전화번호, 생년월일, 성별
+모두투어 대리점,자회사 및 제휴사[전체보기]	성명(영문이름포함), 생년월일,성별, 여권/비자 유무 및 관련 정보(여권만료일, 여권번호 등), 연락처, 이메일, 마일리지정보, 회원종류	여행상담 및 예약확인, 일반 및 제휴 서비스 제공, 구매 및 요금 결제,마일리지적립/전환,사용확인,제휴서비스이용안내,이벤트 안내등
+DB손해보험, 한화손해보험, 에이스보험	성명(영문이름포함), 생년월일, 여권번호, 연락처	서비스 제공, 구매 및 요금 결제, 개인 식별, 가입 의사 확인, 불만처리 등 민원처리, 고지사항 전달
+삼성카드, 롯데카드, 외환카드 외 제휴신용카드사, 제휴은행 및 기타 송신 관련 업체
+[전체보기]	이름, 생년월일, 성별, 연락처, 이메일, 카드번호	요금납부/정산, 제휴서비스 이용안내/권유, 마일리지 적립, 전환, 사용, 확인, 회원할인 및 기타 연계서비스 제공
+㈜홈플러스,하나카드	성명, 생년월일, 성별, 연락처, 마일리지 정보, 회원종류, 이메일주소	홈플러스 FMC포인트등 기타 포인트 적립, 전환, 사용, 확인, 회원할인 및 기타 포인트관련 서비스 제공
+SK플래닛, ㈜엠콤, ㈜얍컴퍼니	성명, 생년월일, 성별, 핸드폰번호, 멤버십 회원번호, 마일리지 정보	모바일 멤버십관련 서비스
+㈜인터내셔날에스오에스코리아	영문이름,성별,항공사 예약번호, 티켓번호, 여정	고객의 체류정보 확인 및 응급상항 대처
+● 정보 보유 및 이용 기간 : 이용목적에 따른 개인정보 제공시, 이용목적 달성시 및 관계법령에 따른 보관기간까지 (제휴업체에는 제휴계약 종료시 까지)
+2. 영업의 양수 등 영업의 전부 또는 일부를 양도하거나, 합병ㆍ상속 등으로 서비스 제공자의 권리ㆍ의무를 이전 승계하는 경우 개인정보보호 관련 고객의 권리를 보장하기 위하여 반드시 그 사실을 고객님에게 통지합니다. 이외에는 아래의 경우에 준합니다.
+- 형사소송법, 금융실명거래 및 비밀보장에 관한 법률, 신용정보의 이용 및 보호에 관한 법률, 지방세법, 소비자보호법, 한국은행법, 등 관계법령에 의하여 수사상의 목적으로 관계기관으로부터 요구가 있는 경우
+- 통계작성 학술연구나 시장조사를 위하여 특정 개인을 식별할 수 없는 형태로 광고주, 협력사나 연구단체 등에 제공하는 경우
+- 문화관광부 인증 우수상품에 관한 해당 관련기관의 요청이 있는 경우
+- 서비스 제공에 따른 요금정산을 위하여 필요한 경우
+3. 고객님의 개인정보는 원활한 상담 진행 및 맞춤 여행상품 안내를 위한 정보제공 목적으로 아래와 같이 활용될 수 있습니다.
+- 당사는 고객님의 원활한 여행서비스를 위해 파트너 여행사와 상담센터를 운영하고 있으며 제휴사와 업무를 진행하고 고객님의 여행상품 상담과 진행에 관련하여 개인정보(성명, 연락처, 생일, 성별) 및 상품이용정보를 당사에서 제공한 관리시스템을 통해 당사와 계약된 협력사 및 대리점에서 제한적으로 열람할 수 있도록 하고 있습니다.
+- 당사의 여행상품 및 여행관련 서비스를 이용한 고객님에게 한정하여 기획여행상품이나 다양한 서비스를 홍보하고 안내 드리기 위하여 개인정보 제공 및 공유에 동의한 고객님에게 맞춤 서비스를 제공할 수 있습니다.
+■ 개인정보 취급위탁에 관한 사항
+당사는 고객의 편안한 여행업무를 지원하기 위하여 물품배송관련 전문업체에 위탁 처리하고 있습니다. 당사는 위탁업체에 업무처리를 위해 필요한 고객님의 기본 개인정보와 여행정보를 열람할 수 있게 하며 개인정보 보호의 안전을 기하기 위하여 위탁계약 종료 시까지 서비스 제공자의 개인정보 취급관련 지시엄수, 개인정보에 관한 비밀유지, 제3자 제공의 금지 및 사고시의 책임부담 등을 명확히 규정하고 당해 계약내용을 서면 및 전자적으로 보관하고 있습니다. 현재 위탁업체와 위탁업무는 다음과 같습니다.
+위탁대상자(수탁자)	위탁내용 및 목적	위탁기간
+지메카, 디엔케이플래닝, 에스앤피, 원폴라리스, 즐거운, ㈜명문기획	물품배송물품(경품)배송, 기프티콘 등 발송	계약시작일로부터
+계약종료일까지
+SK플래닛, 슈어엠주식회사	광고성 메시지 발송업무 대행	계약시작일로부터
+계약종료일까지
+중국씬싱항공, 동원여행개발, 마이비자코리아	비자발급 대행	계약시작일로부터
+계약종료일까지
+서울신용평가정보, 한국모바일인증	본인인증 확인	계약시작일로부터
+계약종료일까지
+이니시스	신용카드 결제승인, 은행자동납부 인출업무 중계, 은행계좌인증	계약시작일로부터
+계약종료일까지
+■ 개인정보의 열람, 정정, 동의 철회
+당사의 고객님 개인정보 열람 및 정정을 위해서는 홈페이지의 마이페이지내 회원정보 수정을 클릭하여 열람 또는 정정하실 수 있습니다. 당사는 개인정보에 대한 열람증명 또는 정정을 요구하는 경우 성실하게 대응합니다.
+개인정보 열람/삭제 요청서(다운로드)
+■ 만14세 미만이용자 및 법정대리인의 권리와 그 행사 방법
+만14세 미만 아동의 경우 (법정대리인 포함)는 언제든지 개인정보에 대한 열람, 정정을 요구하시거나 개인정보의 수집과 이용, 위탁 또는 제공에 대한 동의를 철회 하실 수 있습니다.
+■ 미성년자의 거래에 관한 계약 체결 및 취소
+당사는 미성년자와 재화 등의 거래에 관한 계약을 체결하고자 하는 경우에는 법정 대리인이 그 계약에 대해서 동의를 하지 아니하면 미성년자 본인 또는 법정대리인이 그 계약을 취소할 수 있습니다.
+■ 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항
+당사는 고객님의 정보를 수시로 저장하고 찾아내는 ‘쿠키(cookie)’ 등을 운용합니다. 쿠키란 당사의 웹사이트를 운영하는데 이용되는 서버가 고객님의 브라우저에 보내는 아주 작은 텍스트 파일로서 고객님의 컴퓨터 하드디스크에 저장됩니다.
+당사는 다음과 같은 목적을 위해 쿠키를 사용합니다.
+▶ 쿠키 등 사용 목적
+고객님과 비회원의 접속 빈도나 방문 시간 등을 분석, 이용자의 취향과 관심분야를 파악 및 자취 추적, 각종 이벤트 참여 정도 및 방문 회수 파악 등을 통한 타겟 마케팅 및 개인 맞춤 서비스 제공
+고객님은 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 고객님은 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.
+▶ 쿠키 설정 거부 방법
+예: 쿠키 설정을 거부하는 방법으로는 고객님이 사용하시는 웹 브라우저의 옵션을 선택함으로써 모든 쿠키를 허용하거나 쿠키를 저장할 때마다 확인을 거치거나, 모든 쿠키의 저장을 거부할 수 있습니다.
+설정방법 예(인터넷 익스플로어의 경우):
+웹 브라우저 상단의 도구 >인터넷 옵션 >개인정보
+단, 고객님께서 쿠키 설치를 거부하였을 경우 서비스 제공에 어려움이 있을 수 있습니다.
+■ 개인정보보호를 위한 기술 및 관리대책
+가. 기술적 대책
+- 고객님의 개인정보는 비밀번호에 의해 보호되며 파일 및 전송데이터를 암호화 하거나 파일 잠금기능(Lock)을 사용하여 중요한 데이터는 별도의 보안기능을 통해 보호되고 있습니다.
+- 당사는 백신프로그램을 이용하여 컴퓨터바이러스에 의한 피해를 방지하기 위한 조치를 취하고 있습니다. 백신프로그램은 주기적으로 업데이트되며 갑작스런 바이러스가 출현할 경우 백신이 나오는 즉시 이를 제공함으로써 개인정보가 침해되는 것을 방지하고 있습니다.
+- 당사는 암호알고리즘을 이용하여 네트워크상의 개인정보를 안전하게 전송할 수 있는 보안장치(SSL 또는 SET)를 채택하고 있습니다.
+- 해킹 등 외부침입에 대비하여 각 서버마다 침입차단시스템 및 취약점 분석시스템 등을 이용하여 보안에 만전을 기하고 있습니다.
+나. 관리적 대책
+당사는 회원님의 개인정보에 대한 접근권한을 최소한의 인원으로 제한하고 있습니다. 그 최소한의 인원에 해당하는 자는 다음과 같습니다
+- 이용자를 직접 상대로 하여 마케팅 업무를 수행하는 자
+- 개인정보관리책임자 및 담당자 등 개인정보관리업무를 수행하는 자
+- 기타 업무상 개인정보의 취급이 불가피한 자
+- 개인정보를 취급하는 직원을 대상으로 새로운 보안 기술 습득 및 개인정보 보호 의무 등에 관해 정기적인 사내 교육 및 외부 위탁교육을 실시하고 있습니다.
+- 입사시 전 직원의 보안서약서를 통하여 사람에 의한 정보유출을 사전에 방지하고 개인정보처리방침에 대한 이행사항 및 직원의 준수여부를 감사하기 위한 내부절차를 마련하고 있습니다.
+- 개인정보 관련 취급자의 업무 인수인계는 보안이 유지된 상태에서 철저하게 이뤄지고 있으며 입사 및 퇴사 후 개인정보 사고에 대한 책임을 명확화하고 있습니다.
+- 개인정보와 일반 데이터를 혼합하여 보관하지 않고 별도의 서버를 통해 분리하여 보관하고 있습니다.
+- 전산실 및 자료 보관실 등을 특별 보호구역으로 설정하여 출입을 통제하고 있습니다.
+- 당사는 이용자 고객님의 실수나 기본적인 인터넷의 위험성 때문에 일어나는 일들에 대해 책임을 지지 않습니다. 고객님 개개인이 본인의 개인정보를 보호하기 위해서 자신의 ID 와 비밀번호를 적절하게 관리하고 여기에 대한 책임을 져야 합니다.
+- 그 외 내부 관리자의 실수나 기술관리 상의 사고로 인해 개인정보의 상실, 유출, 변조, 훼손이 유발될 경우 당사는 즉각 고객님께 사실을 알리고 적절한 대책과 보상을 강구할 것입니다.
+■ 개인정보에 관한 민원서비스
+당사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다.
+개인정보 보호책임자	개인정보 관련 문의
+소속: 홍보마케팅부
+직위: 부서장
+성명: 육현우
+전 화: 1544-5252
+이메일: sixx@modetour.com	부서명: 고객센터
+전 화: 1544-5252
+FAX: 02-2021-7800
+고객님께서는 당사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다. 당사는 고객님들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다
+그 외 개인정보에 관한 상담이 필요한 경우에는 한국정보보호진흥원(KISA)에서 운영하는 개인정보 침해신고센터 (전화 : 118)으로 문의하실 수 있습니다.
+개인정보에 관련한 상담은 개인정보 침해신고센터, 개인정보 분쟁조정위원회, 대검찰청 사이버수사과, 경찰청 사이버안전국 등으로 문의하실 수 있습니다.
+○ 개인정보 침해신고센터(한국인터넷 진흥원 운영)
+- 전화 : (국번없이)118
+- URL : http://privacy.kisa.or.kr
+○ 개인정보 분쟁조정위원회(개인정보보호위원회 운영)
+- 전화 : 02-1833-6972
+- URL : http://www.kopico.go.kr
+○ 대검찰청 사이버수사과
+- 전화 : (국번없이)1301
+- URL : http://www.spo.go.kr
+○ 경찰청 사이버안전국
+- 전화 : (국번없이)182
+- URL : http://cyberbureau.police.go.kr
+■ 고지의 의무
+당사는 개인정보처리방침을 개정하는 경우 웹사이트 ‘공지사항’을 통해 고지하겠습니다
+공고일자 : 2020년 11월 11일
+시행일자 : 2008년 05월 27일
+ 						</textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 이용약관 -->
+	
+	<!-- 이용약관 -->
 	<div class="modal fade" id="useservice" tabindex="-1" role="dialog" aria-labelledby="userservice" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 50%; width: 50%;">
 			<div class="modal-content">
 				<div class="modal-body">
 					<div class="form-title">
 						<h4>이용약관</h4>
 					</div>
 					<div class="d-flex flex-column text-left">
-						<textarea class="form-control" style="resize:none;" cols="100" rows="100">
+						<textarea class="form-control" style="resize:none;" rows="30">
 제1장 총칙
 제1조(목적)
 이 약관은 (주)케어핀투어가 운영하는 모두투어 닷컴 사이버 몰(이하 "당사"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리•의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -216,155 +579,4 @@
 			</div>
 		</div>
 	</div>
-		
-	<div class="modal fade" id="privacypolicy" tabindex="-1" role="dialog" aria-labelledby="privacypolicy" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="form-title">
-						<h4>개인정보처리방침</h4>
-					</div>
-					<div class="d-flex flex-column text-left">
-						<textarea class="form-control" style="resize:none;" cols="100" rows="100">
-(주)케어핀투어(이하 ‘당사’)는 고객님의 개인정보처리방침을 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호"에 관한 법률』상의 개인정보보호 규정 및 행정안전부가 제정한 『개인정보보호법』을 준수하고 있습니다. 당사는 개인정보취급(처리)방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다. *개인정보의 수집,제공 및 활용에 동의하지 않을 권리가 있으며, 미동의시 회원가입 및 여행서비스의 제공이 제한됩니다.
-■ 개인정보의 수집방법 및 항목
-당사는 여행 서비스와 회원 서비스 제공을 위해 아래와 같이 필요한 최소한의 개인정보만을 수집합니다.
-- 회원가입 시
-구분	수집/이용 항목	수집/이용 목적
-필수	아이디, 비밀번호, 성명, 성별, 생년월일, 휴대전화번호, 이메일, CI(본인인증 회원), 법정대리인정보(성명, 관계, 연락처)	이용자 식별, 회원 서비스 제공, 본인인증, 만 14세 미만 회원가입 시 확인, 멤버십 혜택 및 각족 이벤트 정보 안내, 상품수령
-선택	영문이름, 결혼여부, 결혼기념일, 환불 시 계좌번호, 자택주소
-- 여행상품 예약 시
-수집/이용 항목	수집/이용 목적
-성명(국문/영문), 생년월일, 성별, 여권번호, 여권만료일, 여권발급일, 비자소지여부, 이 메일, 연락처, 주소	여행상품 예약 및 상담, 출국가능여부 파악, 경품배송, 만족도조사
-성명, 생년월일, 성별, 여권번호	여행자보험 가입
-성명, 신용카드번호, 유효기간, 계약자와의관계, 계좌번호	대금결제, 정산, 환불
-성명, 생년월일, 성별, 연락처, 회원번호	마일리지 서비스 제공 및 회원확인
-■ 개인정보 수집방법
-당사에서 운영하는 홈페이지(www.modetour.com)와 전화, 팩스등과 당사 상품을 판매하는 대리점에서 홈페이지회원, 여행회원, 투어마일리지(상담)신청서, 상품예약(구매) 및 그 외 본인 확인, 제휴사로부터의 당사제공 등의 방법으로 개인정보를 수집합니다.
-■ 개인정보의 수집 및 이용목적
-당사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
-1. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
--여행상품 예약, 여행자보험 가입, 항공권/호텔의 예약, 예약내역의 확인 및 상담, 컨텐츠 제공, 투어마일리지 적립, 조회, 사용 및 이에 관한 안내, 구매 및 요금 결제, 물품배송 또는 청구지 등 발송, 본인인증 및 금융서비스, 구매 및 요금결제, 환불, 출국가능여부파악, 회원카드발급, 회원우대 등
-2.고객 관리
-- 고객관리 및 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 이용 및 이용횟수 제한, 연령확인, 만 14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 분쟁조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달 등
-3. 신규서비스 및 마케팅,광고에 활용
-- 인구통계학적 특성에 따른 서비스 제공 및 광고 게재 , 이벤트, 신상품 등 광고성 정보 전달 및 참여기회제공, 접속 빈도 파악, 서비스 이용에 대한 통계, 신규 및 제휴 비지니스 관련 서비스제공 및 각종 마케팅 활동등   위 정보는 가입 당시 정보만 아니라 정보 수정으로 변경된 정보를 포함 합니다.
-■개인정보의 이용, 보유기간 및 파기
-당사는 고객님의 개인정보를 다음과 같이 수집목적 또는 제공받은 목적이 달성되거나 고객이 표명한 절차에 따라 탈퇴를 요청하거나 표명된 회원자격상실 사유에 의해 고객님의 자격을 제한 및 정지시키는 경우에는 해당 개인의 정보는 재생할 수 없는 기술적 방법을 통해 삭제되며, 어떠한 용도로도 열람 또는 이용할 수 없도록 파기됩니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 관계법령에서 정한 일정한 기간 동안 회원 정보를 보관 합니다.
-가. 계약 또는 청약철회 등에 관한 기록: 5년 (전자상거래등에서의 소비자보호에 관한 법률)
-나. 대금결제 및 재화 등의 공급에 관한 기록: 5년 (전자상거래등에서의 소비자보호에 관한 법률)
-다. 소비자의 불만 또는 분쟁처리에 관한 기록: 3년 (전자상거래등에서의 소비자보호에 관한 법률)
-라. 표시•광고에 관한 기록: 6개월
-▶ 파기방법 :
-- 종이에 출력된 개인정보: 분쇄기를 이용하여 분쇄
-- 전자적파일형태로 저장된 개인정보: 개인정보는 남기지 않으며, 기록을 재생할수 없는 방법을 통하여 기록삭제
-■ 개인정보 제공 및 공유
-1. 당사는 고객님의 동의가 있거나 관련 법령의 규정에 의한 경우를 제외하고 어떠한 경우에도 ‘개인정보의 수집 및 이용목적’ 에서 고지한 범위를 넘어 서비스와 무관한 타 기업/기관에 제공하거나 이용하지 않습니다. 단, 고객님의 개인정보를 제공 및 공유하는 경우는 다음과 같습니다.
-제공대상	제공하는 항목	제공받는 자의 이용목적
-대한항공, 아시아나항공 외 기타 항공사, 크루즈 및 기타 해운업체, 호텔 및 기타 숙박업체, 기타 현지 랜드업체
-[전체보기]	성명(영문이름포함), 생년월일, 성별, 여권/비자 유무 및 관련 정보(여권만료일, 여권번호 등), 핸드폰번호, 투어마일리지정보, 회원종류	항공권 및 기타운송업체 탑승예약, 숙박예약, 현지 행사 진행 및 고객관리 목적, 서비스 제공, 구매 및 요금 결제, 개인 식별, 불만처리 등 민원처리, 고지사항 전달,마일리지적립/전환,사용확인, 회원할인등
-Rail Europe 외 기타 철도업체
-[전체보기]	성명(영문이름포함), 여권/비자 유무 및 관련 정보(여권만료일, 여권번호 등)
-기타 현지 렌터카 업체
-[전체보기]	성명, 자택전화번호, 휴대전화번호, 생년월일, 성별
-모두투어 대리점,자회사 및 제휴사[전체보기]	성명(영문이름포함), 생년월일,성별, 여권/비자 유무 및 관련 정보(여권만료일, 여권번호 등), 연락처, 이메일, 마일리지정보, 회원종류	여행상담 및 예약확인, 일반 및 제휴 서비스 제공, 구매 및 요금 결제,마일리지적립/전환,사용확인,제휴서비스이용안내,이벤트 안내등
-DB손해보험, 한화손해보험, 에이스보험	성명(영문이름포함), 생년월일, 여권번호, 연락처	서비스 제공, 구매 및 요금 결제, 개인 식별, 가입 의사 확인, 불만처리 등 민원처리, 고지사항 전달
-삼성카드, 롯데카드, 외환카드 외 제휴신용카드사, 제휴은행 및 기타 송신 관련 업체
-[전체보기]	이름, 생년월일, 성별, 연락처, 이메일, 카드번호	요금납부/정산, 제휴서비스 이용안내/권유, 마일리지 적립, 전환, 사용, 확인, 회원할인 및 기타 연계서비스 제공
-㈜홈플러스,하나카드	성명, 생년월일, 성별, 연락처, 마일리지 정보, 회원종류, 이메일주소	홈플러스 FMC포인트등 기타 포인트 적립, 전환, 사용, 확인, 회원할인 및 기타 포인트관련 서비스 제공
-SK플래닛, ㈜엠콤, ㈜얍컴퍼니	성명, 생년월일, 성별, 핸드폰번호, 멤버십 회원번호, 마일리지 정보	모바일 멤버십관련 서비스
-㈜인터내셔날에스오에스코리아	영문이름,성별,항공사 예약번호, 티켓번호, 여정	고객의 체류정보 확인 및 응급상항 대처
-● 정보 보유 및 이용 기간 : 이용목적에 따른 개인정보 제공시, 이용목적 달성시 및 관계법령에 따른 보관기간까지 (제휴업체에는 제휴계약 종료시 까지)
-2. 영업의 양수 등 영업의 전부 또는 일부를 양도하거나, 합병ㆍ상속 등으로 서비스 제공자의 권리ㆍ의무를 이전 승계하는 경우 개인정보보호 관련 고객의 권리를 보장하기 위하여 반드시 그 사실을 고객님에게 통지합니다. 이외에는 아래의 경우에 준합니다.
-- 형사소송법, 금융실명거래 및 비밀보장에 관한 법률, 신용정보의 이용 및 보호에 관한 법률, 지방세법, 소비자보호법, 한국은행법, 등 관계법령에 의하여 수사상의 목적으로 관계기관으로부터 요구가 있는 경우
-- 통계작성 학술연구나 시장조사를 위하여 특정 개인을 식별할 수 없는 형태로 광고주, 협력사나 연구단체 등에 제공하는 경우
-- 문화관광부 인증 우수상품에 관한 해당 관련기관의 요청이 있는 경우
-- 서비스 제공에 따른 요금정산을 위하여 필요한 경우
-3. 고객님의 개인정보는 원활한 상담 진행 및 맞춤 여행상품 안내를 위한 정보제공 목적으로 아래와 같이 활용될 수 있습니다.
-- 당사는 고객님의 원활한 여행서비스를 위해 파트너 여행사와 상담센터를 운영하고 있으며 제휴사와 업무를 진행하고 고객님의 여행상품 상담과 진행에 관련하여 개인정보(성명, 연락처, 생일, 성별) 및 상품이용정보를 당사에서 제공한 관리시스템을 통해 당사와 계약된 협력사 및 대리점에서 제한적으로 열람할 수 있도록 하고 있습니다.
-- 당사의 여행상품 및 여행관련 서비스를 이용한 고객님에게 한정하여 기획여행상품이나 다양한 서비스를 홍보하고 안내 드리기 위하여 개인정보 제공 및 공유에 동의한 고객님에게 맞춤 서비스를 제공할 수 있습니다.
-■ 개인정보 취급위탁에 관한 사항
-당사는 고객의 편안한 여행업무를 지원하기 위하여 물품배송관련 전문업체에 위탁 처리하고 있습니다. 당사는 위탁업체에 업무처리를 위해 필요한 고객님의 기본 개인정보와 여행정보를 열람할 수 있게 하며 개인정보 보호의 안전을 기하기 위하여 위탁계약 종료 시까지 서비스 제공자의 개인정보 취급관련 지시엄수, 개인정보에 관한 비밀유지, 제3자 제공의 금지 및 사고시의 책임부담 등을 명확히 규정하고 당해 계약내용을 서면 및 전자적으로 보관하고 있습니다. 현재 위탁업체와 위탁업무는 다음과 같습니다.
-위탁대상자(수탁자)	위탁내용 및 목적	위탁기간
-지메카, 디엔케이플래닝, 에스앤피, 원폴라리스, 즐거운, ㈜명문기획	물품배송물품(경품)배송, 기프티콘 등 발송	계약시작일로부터
-계약종료일까지
-SK플래닛, 슈어엠주식회사	광고성 메시지 발송업무 대행	계약시작일로부터
-계약종료일까지
-중국씬싱항공, 동원여행개발, 마이비자코리아	비자발급 대행	계약시작일로부터
-계약종료일까지
-서울신용평가정보, 한국모바일인증	본인인증 확인	계약시작일로부터
-계약종료일까지
-이니시스	신용카드 결제승인, 은행자동납부 인출업무 중계, 은행계좌인증	계약시작일로부터
-계약종료일까지
-■ 개인정보의 열람, 정정, 동의 철회
-당사의 고객님 개인정보 열람 및 정정을 위해서는 홈페이지의 마이페이지내 회원정보 수정을 클릭하여 열람 또는 정정하실 수 있습니다. 당사는 개인정보에 대한 열람증명 또는 정정을 요구하는 경우 성실하게 대응합니다.
-개인정보 열람/삭제 요청서(다운로드)
-■ 만14세 미만이용자 및 법정대리인의 권리와 그 행사 방법
-만14세 미만 아동의 경우 (법정대리인 포함)는 언제든지 개인정보에 대한 열람, 정정을 요구하시거나 개인정보의 수집과 이용, 위탁 또는 제공에 대한 동의를 철회 하실 수 있습니다.
-■ 미성년자의 거래에 관한 계약 체결 및 취소
-당사는 미성년자와 재화 등의 거래에 관한 계약을 체결하고자 하는 경우에는 법정 대리인이 그 계약에 대해서 동의를 하지 아니하면 미성년자 본인 또는 법정대리인이 그 계약을 취소할 수 있습니다.
-■ 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항
-당사는 고객님의 정보를 수시로 저장하고 찾아내는 ‘쿠키(cookie)’ 등을 운용합니다. 쿠키란 당사의 웹사이트를 운영하는데 이용되는 서버가 고객님의 브라우저에 보내는 아주 작은 텍스트 파일로서 고객님의 컴퓨터 하드디스크에 저장됩니다.
-당사는 다음과 같은 목적을 위해 쿠키를 사용합니다.
-▶ 쿠키 등 사용 목적
-고객님과 비회원의 접속 빈도나 방문 시간 등을 분석, 이용자의 취향과 관심분야를 파악 및 자취 추적, 각종 이벤트 참여 정도 및 방문 회수 파악 등을 통한 타겟 마케팅 및 개인 맞춤 서비스 제공
-고객님은 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 고객님은 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.
-▶ 쿠키 설정 거부 방법
-예: 쿠키 설정을 거부하는 방법으로는 고객님이 사용하시는 웹 브라우저의 옵션을 선택함으로써 모든 쿠키를 허용하거나 쿠키를 저장할 때마다 확인을 거치거나, 모든 쿠키의 저장을 거부할 수 있습니다.
-설정방법 예(인터넷 익스플로어의 경우):
-웹 브라우저 상단의 도구 >인터넷 옵션 >개인정보
-단, 고객님께서 쿠키 설치를 거부하였을 경우 서비스 제공에 어려움이 있을 수 있습니다.
-■ 개인정보보호를 위한 기술 및 관리대책
-가. 기술적 대책
-- 고객님의 개인정보는 비밀번호에 의해 보호되며 파일 및 전송데이터를 암호화 하거나 파일 잠금기능(Lock)을 사용하여 중요한 데이터는 별도의 보안기능을 통해 보호되고 있습니다.
-- 당사는 백신프로그램을 이용하여 컴퓨터바이러스에 의한 피해를 방지하기 위한 조치를 취하고 있습니다. 백신프로그램은 주기적으로 업데이트되며 갑작스런 바이러스가 출현할 경우 백신이 나오는 즉시 이를 제공함으로써 개인정보가 침해되는 것을 방지하고 있습니다.
-- 당사는 암호알고리즘을 이용하여 네트워크상의 개인정보를 안전하게 전송할 수 있는 보안장치(SSL 또는 SET)를 채택하고 있습니다.
-- 해킹 등 외부침입에 대비하여 각 서버마다 침입차단시스템 및 취약점 분석시스템 등을 이용하여 보안에 만전을 기하고 있습니다.
-나. 관리적 대책
-당사는 회원님의 개인정보에 대한 접근권한을 최소한의 인원으로 제한하고 있습니다. 그 최소한의 인원에 해당하는 자는 다음과 같습니다
-- 이용자를 직접 상대로 하여 마케팅 업무를 수행하는 자
-- 개인정보관리책임자 및 담당자 등 개인정보관리업무를 수행하는 자
-- 기타 업무상 개인정보의 취급이 불가피한 자
-- 개인정보를 취급하는 직원을 대상으로 새로운 보안 기술 습득 및 개인정보 보호 의무 등에 관해 정기적인 사내 교육 및 외부 위탁교육을 실시하고 있습니다.
-- 입사시 전 직원의 보안서약서를 통하여 사람에 의한 정보유출을 사전에 방지하고 개인정보처리방침에 대한 이행사항 및 직원의 준수여부를 감사하기 위한 내부절차를 마련하고 있습니다.
-- 개인정보 관련 취급자의 업무 인수인계는 보안이 유지된 상태에서 철저하게 이뤄지고 있으며 입사 및 퇴사 후 개인정보 사고에 대한 책임을 명확화하고 있습니다.
-- 개인정보와 일반 데이터를 혼합하여 보관하지 않고 별도의 서버를 통해 분리하여 보관하고 있습니다.
-- 전산실 및 자료 보관실 등을 특별 보호구역으로 설정하여 출입을 통제하고 있습니다.
-- 당사는 이용자 고객님의 실수나 기본적인 인터넷의 위험성 때문에 일어나는 일들에 대해 책임을 지지 않습니다. 고객님 개개인이 본인의 개인정보를 보호하기 위해서 자신의 ID 와 비밀번호를 적절하게 관리하고 여기에 대한 책임을 져야 합니다.
-- 그 외 내부 관리자의 실수나 기술관리 상의 사고로 인해 개인정보의 상실, 유출, 변조, 훼손이 유발될 경우 당사는 즉각 고객님께 사실을 알리고 적절한 대책과 보상을 강구할 것입니다.
-■ 개인정보에 관한 민원서비스
-당사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다.
-개인정보 보호책임자	개인정보 관련 문의
-소속: 홍보마케팅부
-직위: 부서장
-성명: 육현우
-전 화: 1544-5252
-이메일: sixx@modetour.com	부서명: 고객센터
-전 화: 1544-5252
-FAX: 02-2021-7800
-고객님께서는 당사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다. 당사는 고객님들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다
-그 외 개인정보에 관한 상담이 필요한 경우에는 한국정보보호진흥원(KISA)에서 운영하는 개인정보 침해신고센터 (전화 : 118)으로 문의하실 수 있습니다.
-개인정보에 관련한 상담은 개인정보 침해신고센터, 개인정보 분쟁조정위원회, 대검찰청 사이버수사과, 경찰청 사이버안전국 등으로 문의하실 수 있습니다.
-○ 개인정보 침해신고센터(한국인터넷 진흥원 운영)
-- 전화 : (국번없이)118
-- URL : http://privacy.kisa.or.kr
-○ 개인정보 분쟁조정위원회(개인정보보호위원회 운영)
-- 전화 : 02-1833-6972
-- URL : http://www.kopico.go.kr
-○ 대검찰청 사이버수사과
-- 전화 : (국번없이)1301
-- URL : http://www.spo.go.kr
-○ 경찰청 사이버안전국
-- 전화 : (국번없이)182
-- URL : http://cyberbureau.police.go.kr
-■ 고지의 의무
-당사는 개인정보처리방침을 개정하는 경우 웹사이트 ‘공지사항’을 통해 고지하겠습니다
-공고일자 : 2020년 11월 11일
-시행일자 : 2008년 05월 27일
- 						</textarea>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
+	<!-- 이용 약관 -->
