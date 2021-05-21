@@ -58,6 +58,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 			return sqlSession.delete(namespace + ".NoticeDelete", nId);
 		}
 		
+		//공지사항 선택삭제 하기
+		@Override
+		public void SelectDelete(String nId) throws Exception{
+		    sqlSession.delete(namespace + ".SelectDelete", nId); 
+			}
+		
 		//공지사항 검색
 		@Override
 		public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception {

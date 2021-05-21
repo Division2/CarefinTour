@@ -1,6 +1,7 @@
 package com.spring.ex.controller;
 
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class AdminServiceCenterController {
 	
 
 	//공지사항 출력	
+	@RequestMapping(value = "/admin/notice", method = RequestMethod.GET)
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
 
 		int totalCount = service.NoticeTotalCount();
@@ -141,10 +143,10 @@ public class AdminServiceCenterController {
 		}
 	}
 	
+	
 	//공지사항 수정 내용
 	@RequestMapping(value = "/admin/noticeModifyView", method = RequestMethod.GET)
 	public String ModifyView(NoticeBoardVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
 		NoticeBoardVO content = service.NoticeBoardView(nId);
@@ -180,5 +182,19 @@ public class AdminServiceCenterController {
 			out.close();
 		}
 	}
+	
+	//게시물 선택삭제
+    @RequestMapping(value = "/admin/SelectDelete")
+    public String SelectDelete(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.SelectDelete(ajaxMsg[i]);
+        }
+        return "redirect:notice";
+    }
+    
+
 
 }

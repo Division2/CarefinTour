@@ -57,6 +57,12 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.NoticeDelete(nId);
 	}
 	
+	//공지사항 선택삭제
+	@Override
+	public void SelectDelete(String nId) throws Exception{
+		dao.SelectDelete(nId);
+	}
+	
 	//공지사항 검색
 	@Override
 	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception {
