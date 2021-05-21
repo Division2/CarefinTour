@@ -46,8 +46,8 @@ public class AdminServiceCenterController {
 		}
 	}
 	
-	//공지사항 출력
-	@RequestMapping(value = "/admin/notice", method = RequestMethod.GET)
+
+	//공지사항 출력	
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
 
 		int totalCount = service.NoticeTotalCount();
@@ -166,16 +166,18 @@ public class AdminServiceCenterController {
 	
 	//공지사항 삭제
 	@RequestMapping(value = "/admin/noticeDelete", method = RequestMethod.GET)
-	public void NoticeDelete(HttpServletRequest request) throws Exception {
+	public void NoticeDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		HttpSession session = request.getSession();
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
-		if (session.getAttribute("auth").equals("Admin")) {
-			int result = service.NoticeDelete(nId);
+		int result = service.NoticeDelete(nId);
+		
+		if (result == 1) {
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
 			
-			logger.info("nId : " + nId);
-			logger.info("게시물 삭제 : " + result);
+			out.println("<script>location.href='notice'</script>");
+			out.close();
 		}
 	}
 

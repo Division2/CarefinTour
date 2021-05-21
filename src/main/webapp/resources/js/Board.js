@@ -132,6 +132,39 @@ function NoticeDelete() {
 	})
 }
 
+/* 공지사항 삭제2 comfirm */
+function NoticeDelete2() {
+	Swal.fire({
+		title: '공지사항',
+		text: "정말 삭제하시겠습니까?",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			swal({
+				title: "공지사항",
+				text: "게시물이 삭제되었습니다.",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					var nId = getParameterByName('nId');
+					console.log("sadsa");
+					location.href='noticeDelete?nId=' + nId;
+				}
+			});
+		}
+	})
+}
+
 /* 1:1문의 등록 유효성 검사 */
 function InquiryWrite() {
 	var Category = $("#Category option:selected").val();

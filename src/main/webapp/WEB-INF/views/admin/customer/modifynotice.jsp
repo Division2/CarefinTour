@@ -16,11 +16,11 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
-<script src='<c:url value="/resources/js/Board2.js"/>'></script>
-<script src='<c:url value="/resources/js/Authority.js"/>'></script>
     <div id="wrapper">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>
@@ -29,6 +29,9 @@
 			<div id="content">
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
+				<script src='<c:url value="/resources/js/Board.js"/>'></script>
+				<script src='<c:url value="/resources/js/Authority.js"/>'></script>
+				
 				<!-- 상단 헤더 부분 -->
 				<!-- 본문 -->
 				<div class="container-fluid">
