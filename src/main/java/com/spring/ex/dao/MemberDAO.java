@@ -22,5 +22,4 @@ public interface MemberDAO {
 	
 	//회원가입 시 아이디 중복확인
 	public MemberVO IDCheck(MemberVO vo) throws Exception;
-	
 }

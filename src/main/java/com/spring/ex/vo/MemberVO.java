@@ -13,7 +13,7 @@ public class MemberVO {
 	private int Mileage;
 	private String Comment;
 	private Object lastDate;
-	
+
 	public String getUserID() {
 		return UserID;
 	}

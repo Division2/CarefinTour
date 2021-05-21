@@ -2,74 +2,73 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.ex.TravelReviewMapper">
-	<!-- 여행포토 게시물 등록  -->
+	<!-- 여행 포토 작성  -->
 	<insert id="TravelPhotoWrite" parameterType="hashMap">
-			INSERT INTO photoreview(prid,title, content, name,o_file_name, s_file_name, file_size) VALUES (#{prid}, #{title}, #{content}, #{name},#{o_file_name}, #{s_file_name}, #{file_size})			
+			INSERT INTO photoreview(UserID, Title, Content, Good, Bad, s_file_name, o_file_name, file_size) VALUES (#{userId}, #{title}, #{content}, #{good}, #{bad}, #{s_file_name}, #{o_file_name}, #{file_size})
 	</insert>
 	
-	<!-- 여행포토 게시물 화면출력 -->
+	<!-- 여행 포토 출력 -->
 	<select id="TravelPhotoList" resultType="TravelPhotoVO">
 		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
 	</select>
 	
-	<!-- 마이여행포토 게시물 화면출력 -->
-	<select id="TravelPhotoMyList" resultType="TravelPhotoVO">
-		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
-	</select>
-	
-	<!-- 여행포토 게시물 읽기  -->
-	<select id="TravelPhotoRead" parameterType="int" resultType="TravelPhotoVO">
+	<!-- 여행 포토 조회  -->
+	<select id="TravelPhotoView" parameterType="int" resultType="TravelPhotoVO">
 		SELECT * FROM photoreview WHERE prid = #{prid}
 	</select>
 	
-	<!-- 여행포토 게시물 총 갯수 -->
-	<select id="getPhotoTotalCount" resultType="int">
+	<!-- 여행 포토 총 갯수 -->
+	<select id="getTravelPhotoTotalCount" resultType="int">
 		SELECT COUNT(*) FROM photoreview
 	</select>
 	
-	<!-- 여행포토 마이게시물 총 갯수 -->
-	<select id="getMyPhotoTotalCount" resultType="int">
-		SELECT COUNT(*) FROM photoreview WHERE Name = #{Name}
-	</select>
+	<!-- 여행 포토 수정(사진) -->
+   <update id="TravelPhotoUpdateFile" parameterType="hashMap">
+    	UPDATE photoreview SET s_file_name = #{s_file_name}, o_file_name = #{o_file_name}, file_size = #{file_size} WHERE prid = #{prid}
+    </update>
+    
+    <!-- 여행 포토 수정(내용) -->
+    <update id="TravelPhotoUpdate" parameterType="TravelPhotoVO">
+    	UPDATE photoreview SET Title=#{title}, content=#{content} WHERE prid = #{prid}
+    </update>
+    
+	<!-- 여행 포토 삭제  -->
+	<delete id="TravelPhotoDelete" parameterType="int">
+		DELETE FROM photoreview WHERE prid = #{prid}
+	</delete>
 	
-	<!-- 게시판 조회수 -->
+	<!-- 여행 포토 조회수 증가 -->
     <update id="TravelPhotoBoardHit" parameterType="int">
     	UPDATE photoreview SET hit = hit+1 WHERE prid = #{prid}
     </update>
     
-    <!-- 파일 리스트 받기  -->
-    <select id="TravelPhotoSelectFileList" parameterType="int" resultType="hashMap">
-	SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
+	 <!-- 여행 포토 댓글 조회 -->	 
+	<select id="TravelPhotoReplyView" resultType="ReplyVO">
+		SELECT * FROM photoreviewreply WHERE PRRID = #{prid} ORDER BY reDate
 	</select>
 	
-	<!-- 파일 수정(사진)  -->
-   <update id="TravelPhotoUpdateFile" parameterType="hashMap">
-    	UPDATE photoreview SET s_file_name=#{s_file_name}, o_file_name=#{o_file_name}, file_size=#{file_size} WHERE prid = #{prid}
-    </update>
-    
-    <!-- 파일 수정(내용들)  -->
-    <update id="TravelPhotoUpdate" parameterType="TravelPhotoVO">
-    	UPDATE photoreview SET name=#{name}, content=#{content} WHERE prid = #{prid}
-    </update>
-    
-	<!-- 파일 삭제  -->
-	<delete id="TravelPhotoDelete" parameterType="int">
-		DELETE FROM photoreview WHERE prid = #{prid}
-	</delete>
+    <!-- 파일 조회 -->
+    <select id="TravelPhotoSelectFileList" parameterType="int" resultType="hashMap">
+		SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
+	</select>
+	
+	<!-- 여행 포토 내 게시글 리스트 -->
+	<select id="TravelPhotoMyList" resultType="TravelPhotoVO">
+		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
+	</select>
+	
+	<!-- 여행 포토 내 게시글 총 갯수 -->
+	<select id="getMyPhotoTotalCount" resultType="int">
+		SELECT COUNT(*) FROM photoreview WHERE Name = #{Name}
+	</select>
 	
 	<!-- 탑 앵글러 출력 -->
 	<select id="TopAnglerView" resultType="TopAnlgerVO">
 		SELECT *, ROW_NUMBER() OVER(ORDER BY FishSize DESC) AS ranking FROM topranking LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<!-- 탑 앵글러 등록 요청 -->
-	<insert id="TopAnglerWrite" parameterType="hashMap">
-			INSERT INTO topranking(tid, title, content, name, o_file_fish, s_file_fish, file_size, fishsize, fishname) VALUES (#{tid}, #{title}, #{content}, #{name},#{o_file_fish}, #{s_file_fish}, #{file_size}, #{fishsize}, #{fishname})			
-	</insert>
-	
 	<!-- 탑 앵글러 총 갯수 -->
 	<select id="getTopAnglerTotalCount" resultType="int">
 		SELECT COUNT(*) FROM topranking
 	</select>
-
 </mapper>

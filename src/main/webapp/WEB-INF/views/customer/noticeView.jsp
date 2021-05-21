@@ -37,7 +37,7 @@
 				<div class="row mt-3">
 					<div class="col-auto mr-auto"></div>
 					<div class="col-auto">
-					<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
+					<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
 						<button type="button" class="btn btn-primary" onclick="location.href='noticeModifyView?nId=<%=request.getParameter("nId")%>'">수정</button>
 						<button type="button" class="btn btn-danger" onclick="NoticeDelete()">삭제</button>
 					</c:if>

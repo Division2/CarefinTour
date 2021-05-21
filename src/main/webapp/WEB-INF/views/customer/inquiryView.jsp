@@ -96,7 +96,7 @@
 				
 				<div class="d-flex">
 					<div class="ml-auto">
-					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
+					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
 						<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
 						<button class="btn btn-danger" type="button"  onclick="answerInquiryDelete()">삭제</button>
 					</c:if>
@@ -106,7 +106,7 @@
 					</div>
 				</div>
 				
-				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User' && answerContent eq null }">
+				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin' && answerContent eq null }">
 				<h6 class="border-bottom pb-2 mb-0"></h6>
 				<br>
 				<form name="inquiryAnswerWrite" action="inquiryAnswerWrite" method="POST">

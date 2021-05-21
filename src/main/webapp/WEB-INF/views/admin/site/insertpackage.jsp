@@ -65,7 +65,7 @@ function fn_addFile() {
 					</div>
 					<hr>
 					<div class="row">
-					<form action="insertpackage" role="form" method="POST" name="add" enctype="multipart/form-data">   
+					<form action="PackageWrite" role="form" method="POST" name="add" enctype="multipart/form-data">   
 					        <div class="form-group row" style="width:900px;">
 					            <label for="title" class="form-label col-sm-2"><strong>상품명</strong></label>
 					            <div class="col-sm-10">
@@ -79,15 +79,15 @@ function fn_addFile() {
 					            </div>
 					        </div>
 					        <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>기간</strong></label>
+					            <label for="content" class="form-label col-sm-2"><strong>출발일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="startravelperiod" name="startravelperiod" required>
+					                <input type="text" class="form-control" id="starTravelPeriod" name="starTravelPeriod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>등록일</strong></label>
+					            <label for="content" class="form-label col-sm-2"><strong>도착일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="redate" name="redate" required>
+					                <input type="text" class="form-control" id="arrivalTravelPeriod" name="arrivalTravelPeriod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">

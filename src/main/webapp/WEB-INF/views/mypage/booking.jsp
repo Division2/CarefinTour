@@ -7,12 +7,15 @@
 <title>케어핀투어 - 회원 정보</title>
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/my_table.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
+	<script src='<c:url value="resources/js/Authority.js"/>'></script>
 
+	<c:if test="${sessionScope.member eq null}">
+		<script>AuthCheck();</script>
+	</c:if>
+	
 	<div class="container">
 		<div class="row">
 			<!-- 마이페이지 사이드바 -->
@@ -33,26 +36,23 @@
 				<div class="d-flex">
 					<div class="mx-auto">
 						<table class="table table-hover table-white">
-							<caption class="table_caption">고객님의 예약 내역입니다</caption>
+							<caption class="table_caption">${sessionScope.member.getName() }님의 예약 내역입니다</caption>
 							<colgroup>
 								<col width="300px"/>
 								<col width="300px"/>
 							</colgroup>
 							<thead>
 								<tr>
-									<th colspan="2">여행상품</th>
+									<th>상품명</th>
+									<th>결제일</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${MyPageOrderList}" var="MyPageOrderList">
-									<c:choose>
-										<c:when test = "${sessionScope.member.getUserID() eq MyPageOrderList.userid}"> 	
-											<tr>
-												<td>${MyPageOrderList.productname}</td>
-												<td>${MyPageOrderList.paymentdate}</td>
-											</tr>
-										</c:when>
-									</c:choose>
+								<tr>
+									<td>${MyPageOrderList.getProductname()}</td>
+									<td>${MyPageOrderList.getPaymentdate()}</td>
+								</tr>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -60,7 +60,8 @@
 				</div>
 			</div>
 		</div>
-			<nav aria-label="Page navigation">
+		<!-- 게시글 페이징 처리(기준 10개) -->
+		<nav aria-label="Page navigation">
 			<ul class="pagination justify-content-center" style="margin-left:200px;">
 				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 				<c:choose>
@@ -92,7 +93,7 @@
 				</c:forEach>
 				<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
 				<c:choose>
-					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+					<c:when test="${Paging.pageNo eq Paging.finalPageNo}">
 						<li class="page-item disabled">
 							<a class="page-link" href="booking?page=${Paging.nextPageNo}">Next</a>
 						</li>
@@ -106,6 +107,7 @@
 			</ul>
 		</nav>
 	</div>
+	
 	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>

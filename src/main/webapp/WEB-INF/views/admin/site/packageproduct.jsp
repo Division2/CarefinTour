@@ -65,61 +65,90 @@
 						</div>
                     </div>
                     <br>
+							
 					<table class="table table-hover table-white">
 						<thead>
-							<tr>
-								<th>
-									<input type="checkbox">
-								</th>
-								<th>
-									PID
-								</th>
-								<th>
-									상품 코드
-								</th>
-								<th>
-									사진
-								</th>
-								<th>
-									상품명
-								</th>
-								<th>
-									지역
-								</th>
-								<th>
-									기간
-								</th>
-								<th>
-									등록일
-								</th>
-								<th>
-									가격
-								</th>
+							<tr align="center">
+								<th><input type="checkbox"></th>
+								<th>PID</th>
+								<th>상품코드</th>
+								<th>상품명</th>
+								<th>국가</th>
+								<th>지역</th>
+								<th>출발 및 도착일</th>
+								<th>등록일</th>
+								<th>가격</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<input type="checkbox">
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-							</tr>
+							<c:forEach items="${plist}" var="plist">
+								<tr align="center">
+								
+									<td><input type="checkbox"></td>
+									
+									<td><font size="3"><a href="#">${plist.getPid()}</a></font></td>
+									<td><font size="2">${plist.getProductcode()}</font></td>
+									<td><font size="2">${plist.getProductname()}</font></td>
+									<td><font size="2">${plist.getCountry()}</font></td>
+									<td><font size="2">${plist.getArea()}</font></td>
+									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
+									<td><font size="2">${plist.getRedate()}</font></td>
+									<td><font size="2">${plist.getPrice()}원</font></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<!-- 본문 -->
 			</div>
-			<!-- 하단 푸터 부분 -->
+						<!-- 게시글 페이징 처리(기준 10개) -->
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center">
+					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+							<li class="page-item disabled">
+								<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+						<c:choose>
+							<c:when test="${i eq Paging.pageNo }">
+								<li class="page-item disabled">
+									<a class="page-link" href="packageproduct?page=${i}"><c:out value="${i}"/></a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a class="page-link" href="packageproduct?page=${i}"><c:out value="${i}"/></a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+							<li class="page-item disabled">
+								<a class="page-link" href="packageproduct?page=${Paging.nextPageNo }">Next</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" href="packageproduct?page=${Paging.nextPageNo }">Next</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</nav>
+			
 			<jsp:include page="../layout/footer.jsp"/>
-    		<!-- 하단 푸터 부분 -->
 		</div>
 	</div>
 </body>

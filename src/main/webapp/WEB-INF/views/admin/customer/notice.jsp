@@ -39,8 +39,8 @@
 						<div class="col-sm-4">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary" onclick="location.href='noticeWrite'">등록</button>
-									<button class="btn btn-primary" onclick="location.href='modifynotice'">수정</button>
+									<button class="btn btn-primary" onclick="location.href='addnotice'">등록</button>
+									<button type="button" class="btn btn-primary" onclick="location.href='modifynoticeView?nId=<%=request.getParameter("nId")%>'">수정</button>
 									<button class="btn btn-primary">삭제</button>
 								</div>
 							</div>
@@ -55,18 +55,126 @@
 								</th>
 								<th>No</th>
 								<th>제목</th>
+								<th>작성일</th>
+								<th>중요</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<input type="checkbox">
-								</td>
-								<td>Test</td>
-								<td>Test</td>
-							</tr>
+							<c:forEach items="${NoticeList }" var="NoticeBoardVO">
+								<tr>
+									<c:choose>
+										<c:when test="${NoticeBoardVO.important ne 'Y' }">
+											<td><input type="checkbox" value="${NoticeBoardVO.nId }"></td>
+											<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.nId }</a></td>
+											<td>${NoticeBoardVO.title }</td>
+											<td>${NoticeBoardVO.reDate }</td>
+											<td>${NoticeBoardVO.important}</td>
+										</c:when>
+										<c:otherwise>
+											<td style="background: rgb(120,215,255);"><input type="checkbox" value="${NoticeBoardVO.nId }"></td>
+											<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.nId }</a></td>
+											<td style="background: rgb(120,215,255);">${NoticeBoardVO.title }</td>
+											<td style="background: rgb(120,215,255);">${NoticeBoardVO.reDate }</td>
+											<td style="background: rgb(120,215,255);">${NoticeBoardVO.important }</td>
+										</c:otherwise>
+									</c:choose>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
+					<!-- 게시글 페이징 처리(기준 10개) -->
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center">
+						<c:choose>
+							<c:when test="${Title ne null }">
+								<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								<!-- 페이지 갯수만큼 버튼 생성 -->
+								<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+									<c:choose>
+										<c:when test="${i eq Paging.pageNo }">
+											<li class="page-item disabled">
+												<a class="page-link" href="noticeSearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item">
+												<a class="page-link" href="noticeSearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="notice?page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="notice?page=${Paging.prevPageNo}">Previus</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								<!-- 페이지 갯수만큼 버튼 생성 -->
+								<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+									<c:choose>
+										<c:when test="${i eq Paging.pageNo }">
+											<li class="page-item disabled">
+												<a class="page-link" href="notice?page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item">
+												<a class="page-link" href="notice?page=${i}"><c:out value="${i }"/></a>
+											</li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+								<c:choose>
+									<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="notice?page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="notice?page=${Paging.nextPageNo}">Next</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</nav>
 				</div>
 				<!-- 본문 -->
 			</div>

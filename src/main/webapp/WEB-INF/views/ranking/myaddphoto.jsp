@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <title>케어핀투어 - 여행 포토</title>
 </head>
 <body>
@@ -24,7 +21,7 @@
 					<div class="col-sm-3">
 						<c:choose>
 							<c:when test = "${sessionScope.member.getName() eq TravelPhotoMyList.name}">
-								<a href="/ex/updateView?prid=${TravelPhotoMyList.prid}">
+								<a href="/ex/travelphotoModifyView?prid=${TravelPhotoMyList.prid}">
 									<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoMyList.s_file_name}"/>' width=200, height=200, alt="로고">
 								</a>
 								<h6>

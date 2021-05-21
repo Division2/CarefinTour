@@ -30,25 +30,25 @@ public class TravelReviewController {
 	@Inject
 	TravelReviewService service;
 	
-	//게시물 작성
+	//여행 포토 작성
 	@RequestMapping(value = "/TravelPhotoWrite", method = RequestMethod.POST)
 	public void TravelPhotoWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
 		
-		int result = service.TravelPhotoWrite(travelPhotoVO,mpRequest);
+		int result = service.TravelPhotoWrite(travelPhotoVO, mpRequest);
 		
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>location.href='travelphoto'</script>");
 			out.close();
-		}   
+		}
 	}
 	
-	//게시물 출력
+	//여행 포토 출력
 	@RequestMapping(value = "/travelphoto", method = RequestMethod.GET)
-	public String TravelPhotoList(Model model, HttpServletRequest request) throws Exception {
+	public String TravelPhotoList(HttpServletRequest request, Model model) throws Exception {
 		
-		int totalCount = service.PhotoTotalCount();
+		int totalCount = service.TravelPhotoTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -70,7 +70,54 @@ public class TravelReviewController {
 		return "ranking/travelphoto";
 	}
 	
-	//마이게시물 출력
+	//여행 포토 조회
+	@RequestMapping(value = "/travelphotoView", method = RequestMethod.GET)
+	public String TravelPhotoView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
+		
+		service.TravelPhotoBoardHit(travelPhotoVO.getPrid());
+
+		model.addAttribute("content", service.TravelPhotoView(travelPhotoVO.getPrid()));
+		
+		  model.addAttribute("reply",service.TravelPhotoReplyView(travelPhotoVO.getPrid()));
+		 
+		
+		return "ranking/travelphotoView";
+	}
+	
+	//여행 포토 수정 화면
+	@RequestMapping(value = "/travelphotoModifyView", method = {RequestMethod.GET, RequestMethod.POST})
+	public String TravelPhotoModifyView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
+		
+		List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
+		
+		model.addAttribute("update", service.TravelPhotoView(travelPhotoVO.getPrid()));
+		model.addAttribute("file", fileList);
+		
+		return "ranking/travelphotoModify";
+	}
+	
+	//여행 포토 수정(사진 & 내용)
+	@RequestMapping(value = "/travelphotoModify", method = {RequestMethod.GET, RequestMethod.POST})
+	public String TravelPhotoModify(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
+		
+		service.TravelPhotoModify(travelPhotoVO, files, fileNames, mpRequest);
+		
+		return "redirect:/travelphoto";
+	}
+
+	//여행 포토 삭제
+	@RequestMapping(value = "/travelphotoDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	public String TravelPhotoDelete(HttpServletRequest request) throws Exception {
+		
+		int prid = Integer.parseInt(request.getParameter("prid"));
+		
+		int result = service.TravelPhotoDelete(prid);
+		System.out.println("게시글 삭제" + result);
+		return "redirect:/travelphoto";
+		
+	}
+	
+	//여행 포토 내 게시글 리스트
 	@RequestMapping(value = "/myaddphoto", method = RequestMethod.GET)
 	public String MyTravelPhotoMyList(Model model, HttpServletRequest request, MemberVO vo, HttpSession session) throws Exception {
 		
@@ -99,48 +146,9 @@ public class TravelReviewController {
 		return "ranking/myaddphoto";
 	}
 	
-	//게시물 조회
-	@RequestMapping(value = "/travelphotoview", method = {RequestMethod.GET, RequestMethod.POST})
-	public String TravelPhotoRead(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
-		
-		model.addAttribute("read", service.TravelPhotoRead(travelPhotoVO.getPrid()));
-		
-		return "ranking/travelphotoview";
-	}
-	
-	//게시판 수정뷰
-	@RequestMapping(value = "/updateView", method = {RequestMethod.GET, RequestMethod.POST})
-	public String updateView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
-		
-		List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
-		
-		model.addAttribute("update", service.TravelPhotoRead(travelPhotoVO.getPrid()));
-		model.addAttribute("file", fileList);
-		
-		return "ranking/updateView";
-	}
-	
-	//게시판 수정
-	@RequestMapping(value = "/update", method = {RequestMethod.GET, RequestMethod.POST})
-	public String TravelPhotoUpdate(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
-		
-		service.TravelPhotoUpdate(travelPhotoVO,files,fileNames,mpRequest);
-		
-		return "redirect:/myaddphoto";
-	}
-
-	//게시판 삭제
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String TravelPhotoDelete(TravelPhotoVO travelPhotoVO) throws Exception {
-		
-		service.TravelPhotoDelete(travelPhotoVO.getPrid());
-		
-		return "redirect:/myaddphoto";
-	}
-	
 	//탑앵글러 출력
 	@RequestMapping(value = "/topangler", method = RequestMethod.GET)
-	public String TopanglerView(Model model, HttpServletRequest request) throws Exception {
+	public String TopAnglerView(Model model, HttpServletRequest request) throws Exception {
 		
 		int totalCount = service.TopAnglerTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -162,19 +170,5 @@ public class TravelReviewController {
 		model.addAttribute("Paging", paging);
 		
 		return "ranking/topangler";
-	}
-	
-	//탑앵글러 등록 요청
-	@RequestMapping(value = "/topanglerWrite", method = RequestMethod.POST)
-	public void TopanglerWrite(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
-		
-		int result = service.TopAnglerWrite(topAnlgerVO, mpRequest);
-		if (result == 1) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			out.println("<script>location.href='topangler'</script>");
-			out.close();
-		}   
 	}
 }

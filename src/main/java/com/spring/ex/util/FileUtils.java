@@ -20,11 +20,11 @@ import com.spring.ex.vo.TravelPhotoVO;
 public class FileUtils {
 	
 	//여행정보 사진 저장소 경로
-	private static final String filePath = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
+	private static final String filePath = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\photoreview_folder\\"; // 파일이 저장될 위치
 	//탑앵글러 사진 저장소 경로
-	private static final String filePath1 = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
+	private static final String filePath1 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\topangler\\"; // 파일이 저장될 위치
 	//패키지 사진 저장소 경로
-	private static final String filePath2 = "C:\\Users\\inho0\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\package\\"; // 파일이 저장될 위치
+	private static final String filePath2 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\product_package\\"; // 파일이 저장될 위치
 	
 	//여행후기 사진 값 넣어주는 부분	
 	public List<Map<String, Object>> parseInsertFileInfo(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -47,13 +47,10 @@ public class FileUtils {
 		int prid = travelPhotoVO.getPrid();
 		String title = travelPhotoVO.getTitle();
 		String content = travelPhotoVO.getContent();
-		String name = travelPhotoVO.getName();
+		String userId = travelPhotoVO.getUserId();
 		
 		File file = new File(filePath);
-		if(file.exists() == false) {
-			file.mkdirs();
-		}
-		
+			
 		while(iterator.hasNext()) {
 			multipartFile = mpRequest.getFile(iterator.next());
 			
@@ -71,7 +68,19 @@ public class FileUtils {
 				listMap.put("s_file_name", storedFileName);
 				listMap.put("title", title);
 				listMap.put("content", content);
-				listMap.put("name", name);
+				listMap.put("userId", userId);
+				listMap.put("file_size", multipartFile.getSize());
+				
+				list.add(listMap);
+			}else {
+				
+				listMap = new HashMap<String, Object>();
+				listMap.put("prid", prid);
+				listMap.put("o_file_name", originalFileName);
+				listMap.put("s_file_name", storedFileName);
+				listMap.put("title", title);
+				listMap.put("content", content);
+				listMap.put("userId", userId);
 				listMap.put("file_size", multipartFile.getSize());
 				
 				list.add(listMap);
@@ -79,7 +88,6 @@ public class FileUtils {
 		}
 		return list;
 	}
-	
 	
 	//탑앵글러 사진 값 넣어주는 부분
 	public List<Map<String, Object>> parseInsertFishFileInfo(TopAnlgerVO topAnlgerVO, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -101,12 +109,8 @@ public class FileUtils {
 		String name = topAnlgerVO.getName();
 		String fishname = topAnlgerVO.getFishname();
 		
-		
 		File file = new File(filePath1);
-		if(file.exists() == false) {
-			file.mkdirs();
-		}
-		
+	
 		while(iterator.hasNext()) {
 			multipartFile = mpRequest.getFile(iterator.next());
 			
@@ -131,6 +135,20 @@ public class FileUtils {
 				
 				list.add(listMap);
 			}
+			else {
+				listMap = new HashMap<String, Object>();
+				listMap.put("tid", tid);
+				listMap.put("o_file_fish", originalFileName);
+				listMap.put("s_file_fish", storedFileName);
+				listMap.put("title", title);
+				listMap.put("content", content);
+				listMap.put("name", name);
+				listMap.put("fishsize", fishsize);
+				listMap.put("fishname", fishname);
+				listMap.put("file_size", multipartFile.getSize());
+				
+				list.add(listMap);
+			}
 		}
 		return list;
 	}
@@ -141,48 +159,48 @@ public class FileUtils {
 	
 		Iterator<String> iterator = mpRequest.getFileNames();
 		
-		MultipartFile multipartFile = null; 
-		String o_file_name = null; 
-		String originalFileExtension = null; 
-		String s_file_name = null; 
+		MultipartFile multipartFile = null;
+		String o_file_name = null;
+		String originalFileExtension = null;
+		String s_file_name = null;
 		
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-		Map<String, Object> listMap = null; 
+		Map<String, Object> listMap = null;
 		
 		int prid = travelPhotoVO.getPrid();
 		
-		while(iterator.hasNext()){ 
+		while(iterator.hasNext()) {
 			multipartFile = mpRequest.getFile(iterator.next()); 
 			
 			if(multipartFile.isEmpty() == false){ 
-				o_file_name = multipartFile.getOriginalFilename(); 
-				originalFileExtension = o_file_name.substring(o_file_name.lastIndexOf(".")); 
+				o_file_name = multipartFile.getOriginalFilename();
+				originalFileExtension = o_file_name.substring(o_file_name.lastIndexOf("."));
 				s_file_name = getRandomString() + originalFileExtension; 
 				multipartFile.transferTo(new File(filePath + s_file_name)); 
 				
 				listMap = new HashMap<String,Object>();
-				listMap.put("prid", prid); 
+				listMap.put("prid", prid);
 				listMap.put("o_file_name", o_file_name);
-				listMap.put("s_file_name", s_file_name); 
-				listMap.put("file_size", multipartFile.getSize()); 
+				listMap.put("s_file_name", s_file_name);
+				listMap.put("file_size", multipartFile.getSize());
 				
-				list.add(listMap); 
-			} 
-		}
-		
-		if(files != null && fileNames != null){ 
-			for(int i = 0; i<files.length; i++) {
-				listMap = new HashMap<String,Object>();
-				listMap.put("prid", files[i]); 
-				
-				list.add(listMap); 
+				list.add(listMap);
 			}
 		}
-		return list; 
+		
+		if(files != null && fileNames != null){
+			for(int i = 0; i<files.length; i++) {
+				listMap = new HashMap<String,Object>();
+				listMap.put("prid", files[i]);
+				
+				list.add(listMap);
+			}
+		}
+		return list;
 	}
 	
 	//패키지 사진 값 넣어주는 부분	
-		public List<Map<String, Object>> parseInsertPackageInfo(PackageVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
+		public List<Map<String, Object>> parseInsertPackageInfo(PackageVO packageVO, MultipartHttpServletRequest mpRequest) throws Exception {
 			
 			Iterator<String> iterator = mpRequest.getFileNames();
 			
@@ -194,32 +212,29 @@ public class FileUtils {
 			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 			Map<String, Object> listMap = null;
 			
-			int pid = vo.getPid();
-			String productname = vo.getProductname();
-			String theme = vo.getTheme();
-			String area = vo.getArea();
-			String travelcity = vo.getTarvelcity();
-			Date starttravelperiod = vo.getStarttravelperiod();
-			Date arrivaltravelperiod = vo.getArrivaltravelperiod();
-			int reservationstatus = vo.getResrvationstatus();
-			int maxreservationstatus = vo.getMaxresrvationstatus();
-			int minreservation = vo.getMinreservation();
-			int adultcount = vo.getAdultcount();
-			int kidcount = vo.getKidcount();
-			int smallkidcount = vo.getSmallkidcount();
-			int adultprice = vo.getAdultprice();
-			int kidprice = vo.getKidprice();
-			int smallkidprice = vo.getSmallkidprice();
-			String director = vo.getDirector();
-			Date redate = vo.getRedate();
-			int productcode = vo.getProductcode();
-			int price = vo.getPrice();
-			
+			int pid = packageVO.getPid();
+			String productname = packageVO.getProductname();
+			String theme = packageVO.getTheme();
+			String country = packageVO.getCountry();
+			String area = packageVO.getArea();
+			String tarvelcity = packageVO.getTarvelcity();
+			Date startravelperiod = packageVO.getStartravelperiod();
+			Date arrivaltravelperiod = packageVO.getArrivaltravelperiod();
+			int resrvationstatus = packageVO.getResrvationstatus();
+			int maxresrvationstatus = packageVO.getMaxresrvationstatus();
+			int minreservation = packageVO.getMinreservation();
+			int adultcount = packageVO.getAdultcount();
+			int kidcount = packageVO.getKidcount();
+			int smallkidcount = packageVO.getSmallkidcount();
+			int adultprice = packageVO.getAdultprice();
+			int kidprice = packageVO.getKidprice();
+			int smallkidprice = packageVO.getSmallkidprice();
+			String director = packageVO.getDirector();
+			Date redate = packageVO.getRedate();
+			String productcode = packageVO.getProductcode();
+			int price = packageVO.getPrice();
 			
 			File file = new File(filePath2);
-			if(file.exists() == false) {
-				file.mkdirs();
-			}
 			
 			while(iterator.hasNext()) {
 				multipartFile = mpRequest.getFile(iterator.next());
@@ -235,16 +250,17 @@ public class FileUtils {
 					listMap = new HashMap<String, Object>();
 					listMap.put("pid", pid);
 					listMap.put("productname", productname);
+					listMap.put("country", country);
 					listMap.put("theme", theme);
 					listMap.put("area", area);
-					listMap.put("travelcity", travelcity);
+					listMap.put("tarvelcity", tarvelcity);
 					listMap.put("o_file_name", originalFileName);
 					listMap.put("s_file_name", storedFileName);
-					listMap.put("starttravelperiod", starttravelperiod);
+					listMap.put("startravelperiod", startravelperiod);
 					listMap.put("arrivaltravelperiod",arrivaltravelperiod );
-					listMap.put("reservationstatus",reservationstatus );
-					listMap.put("maxreservationstatus", maxreservationstatus);
-					listMap.put("minreservation",minreservation );
+					listMap.put("resrvationstatus", resrvationstatus );
+					listMap.put("maxresrvationstatus", maxresrvationstatus);
+					listMap.put("minreservation",minreservation);
 					listMap.put("adultcount", adultcount);
 					listMap.put("kidcount", kidcount);
 					listMap.put("smallkidcount", smallkidcount);
@@ -255,7 +271,34 @@ public class FileUtils {
 					listMap.put("redate", redate);
 					listMap.put("productcode", productcode);
 					listMap.put("price", price);
-			
+					
+					list.add(listMap);
+				}
+				else {
+					listMap = new HashMap<String, Object>();
+					listMap.put("pid", pid);
+					listMap.put("productname", productname);
+					listMap.put("country", country);
+					listMap.put("theme", theme);
+					listMap.put("area", area);
+					listMap.put("tarvelcity", tarvelcity);
+					listMap.put("o_file_name", originalFileName);
+					listMap.put("s_file_name", storedFileName);
+					listMap.put("startravelperiod", startravelperiod);
+					listMap.put("arrivaltravelperiod",arrivaltravelperiod );
+					listMap.put("resrvationstatus", resrvationstatus );
+					listMap.put("maxresrvationstatus", maxresrvationstatus);
+					listMap.put("minreservation",minreservation);
+					listMap.put("adultcount", adultcount);
+					listMap.put("kidcount", kidcount);
+					listMap.put("smallkidcount", smallkidcount);
+					listMap.put("adultprice",adultprice );
+					listMap.put("kidprice",kidprice );
+					listMap.put("smallkidprice", smallkidprice);
+					listMap.put("director", director);
+					listMap.put("redate", redate);
+					listMap.put("productcode", productcode);
+					listMap.put("price", price);
 					
 					list.add(listMap);
 				}

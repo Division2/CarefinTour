@@ -53,15 +53,9 @@ public class MemberController {
 	// 회원가입
 	@RequestMapping(value = "/SignUp", method = RequestMethod.POST)
 	public void postSignUp(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		int result = 0;
 		HttpSession session = request.getSession();
 		
-		System.out.println(vo.getGrade());
-		System.out.println(vo.getMileage());
-		
-		System.out.println("ajax 회원가입 요청");
-		result = service.SignUp(vo);
+		int result = service.SignUp(vo);
 		
 		if (result == 1) {
 			session.setAttribute("member", vo);

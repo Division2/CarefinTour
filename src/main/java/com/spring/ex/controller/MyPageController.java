@@ -20,26 +20,136 @@ import com.spring.ex.service.MyPageService;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 import com.spring.ex.vo.PagingVO;
-
 
 @Controller
 public class MyPageController {
 	@Inject MyPageService service;
 	
-	//마이 페이지 회원 정보수정
-	@RequestMapping(value = "/info", method = RequestMethod.POST)
-	public String MyPageInfoUpdate(MemberVO vo, HttpSession session) throws Exception {
-		service.MyPageInfoUpdate(vo);
-		session.invalidate();
+	//마이페이지 예약 내역 출력
+	@RequestMapping(value = "/booking", method = RequestMethod.GET)
+	public String MyPageOrderList(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
 		
-		 return "redirect:/mypage";
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
+			
+		int totalCount = service.OrderTotalCount(sessioninfo);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		if (sessioninfo != null) {
+			map.put("UserID", sessioninfo.getUserID());
+		}
+		
+		List<OrderVO> MyPageOrderList = service.MyPageOrderList(map);
+		
+		model.addAttribute("MyPageOrderList", MyPageOrderList);
+		model.addAttribute("Paging", paging);
+		
+		return "mypage/booking";
 	}
 	
-	// 회원 탈퇴 
-	@RequestMapping(value= "/withdrawal", method = RequestMethod.POST)
-	public void MyPageDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
+	//마이페이지 마일리지 내역 출력
+	@RequestMapping(value = "/mileage", method = RequestMethod.GET)
+	public String MyPageMileageList(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 		
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
+		
+		int totalCount = service.MileageTotalCount(sessioninfo);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		if (sessioninfo != null) {
+			map.put("UserID", sessioninfo.getUserID());
+		}
+		
+		List<MileageVO> MyPageMileageList = service.MyPageMileageList(map);
+		
+		model.addAttribute("MyPageMileageList", MyPageMileageList);
+		model.addAttribute("Paging", paging);
+		
+		return "mypage/mileage";
+	}
+	
+	//마이페이지 회원 정보 수정
+	@RequestMapping(value = "/MyPageInfoUpdate", method = RequestMethod.POST)
+	public String MyPageInfoUpdate(MemberVO vo, HttpSession session) throws Exception {
+		
+		int result = service.MyPageInfoUpdate(vo);
+
+		if (result != 0) {
+			session.setAttribute("member", vo);
+			session.setAttribute("auth", vo.getGrade());
+		}
+		
+		return "mypage/info";
+	}
+	
+	//마이페이지 1:1 문의 내역 출력
+	@RequestMapping(value = "/inquirylist", method = RequestMethod.GET)
+	public String MyPageInquiryList(HttpServletRequest request, Model model, MemberVO vo,HttpSession session) throws Exception {
+		
+		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
+		
+		int totalCount = service.MyPageInquiryTotalCount(sessioninfo);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		if (sessioninfo != null) {
+			map.put("UserID", sessioninfo.getUserID());
+		}
+		
+		List<InquiryVO> List = service.MyPageInquiryList(map);
+		
+		model.addAttribute("MyPageInquiryList", List);
+		model.addAttribute("Paging", paging);
+		
+		return "mypage/inquirylist";
+	}
+	
+	//마이페이지 1:1 문의 내역 조회
+	@RequestMapping(value = "/inquirydetails", method = {RequestMethod.GET})
+	public String MyPageInquiryRead(InquiryVO vo, Model model) throws Exception {
+		
+		model.addAttribute("MyPageInquiryQuestion", service.MyPageInquiryQuestion(vo.getiId()));
+		model.addAttribute("MyPageInquiryAnswer", service.MyPageInquiryAnswer(vo.getiId()));
+		
+		return "mypage/inquirydetails";
+	}
+	
+	//마이페이지 회원 탈퇴
+	@RequestMapping(value = "/withdrawal", method = RequestMethod.POST)
+	public void MyPageDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
 		
 		MemberVO sessionInfo = (MemberVO)session.getAttribute("member");
 		
@@ -58,110 +168,10 @@ public class MyPageController {
 		}
 	}
 	
-	// 패스워드 체크
-	@ResponseBody
-	@RequestMapping(value="/MyPagePassChk", method = RequestMethod.POST)
-	public int MyPagePassChk(MemberVO vo) throws Exception {
-		int result = service.MyPagePassChk(vo);
-		return result;		
+	//마이페이지 회원 탈퇴 패스워드 확인
+	@RequestMapping(value = "/MyPagePassChk", method = RequestMethod.POST)
+	public @ResponseBody int MyPagePassChk(MemberVO vo) throws Exception {
+		
+		return service.MyPagePassChk(vo);
 	}
-	
-	//마이페이지 1:1 문의 구매 내역 출력
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String MyPageOrderList(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
-		
-		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
-		System.out.println("Session : " + sessioninfo.getUserID());
-		
-		int totalCount = service.OrderTotalCount(sessioninfo);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		
-		List<OrderVO> List = service.MyPageOrderList(map);
-		
-		model.addAttribute("MyPageOrderList", List);
-		model.addAttribute("Paging", paging);
-		
-		return "mypage/mypage";
-	}
-	
-	//마이페이지 1:1 문의 예약 내역 출력
-	@RequestMapping(value = "/booking", method = RequestMethod.GET)
-	public String MyPageOrderList2(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
-		
-		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
-		System.out.println("Session : " + sessioninfo.getUserID());
-			
-		int totalCount = service.OrderTotalCount(sessioninfo);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		
-		List<OrderVO> List = service.MyPageOrderList(map);
-		
-		model.addAttribute("MyPageOrderList", List);
-		model.addAttribute("Paging", paging);
-		
-		return "mypage/booking";
-	}
-	
-	//마이페이지 1:1 문의 출력
-	@RequestMapping(value = "/inquirylist", method = RequestMethod.GET)
-	public String MyPageInquiryList(HttpServletRequest request, Model model, MemberVO vo,HttpSession session) throws Exception {
-		
-		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
-		System.out.println("Session : " + sessioninfo.getUserID());
-		
-		int totalCount = service.MyPageInquiryTotalCount(sessioninfo);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		
-		List<InquiryVO> List = service.MyPageInquiryList(map);
-		
-		model.addAttribute("MyPageInquiryList", List);
-		model.addAttribute("Paging", paging);
-		
-		
-		return "mypage/inquirylist";
-	}
-	
-	//게시물 조회
-	@RequestMapping(value = "/inquirydetails", method = {RequestMethod.GET, RequestMethod.POST})
-	public String MyPageInquiryRead(InquiryVO vo, Model model) throws Exception {
-		
-		model.addAttribute("MyPageInquiryRead", service.MyPageInquiryRead(vo.getiId()));
-		
-		return "mypage/inquirydetails";
-	}
-
 }
