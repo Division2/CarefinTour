@@ -71,6 +71,7 @@ public class PackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "admin/site/packageproduct";
+		
 	}
 	
 	//여행패키지 상세페이지 출력
