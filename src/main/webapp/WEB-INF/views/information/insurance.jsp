@@ -24,7 +24,11 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
+<<<<<<< HEAD
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
+=======
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/sky.png"/>);">
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
 			<div class="container">
 				<h2>여행자 보험</h2>
 			</div>

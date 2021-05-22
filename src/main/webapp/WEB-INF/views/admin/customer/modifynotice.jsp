@@ -30,7 +30,6 @@
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
 				<script src='<c:url value="/resources/js/Board.js"/>'></script>
-				<script src='<c:url value="/resources/js/Authority.js"/>'></script>
 				
 				<!-- 상단 헤더 부분 -->
 				<!-- 본문 -->

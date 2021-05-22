@@ -20,6 +20,11 @@
 		SELECT COUNT(*) FROM packageproduct
 	</select>
 	
+	<!-- 여행패키지 상세페이지 출력 -->
+	<select id="ProductPackageDetail" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE PID = #{pid};
+	</select>
+	
 	<!-- 여행패키지 삭제 -->
 	<delete id="ProductPackageDelete">
 		DELETE FROM packageproduct WHERE PID = #{pid}

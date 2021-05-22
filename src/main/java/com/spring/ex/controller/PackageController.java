@@ -76,7 +76,10 @@ public class PackageController {
 	
 	//여행패키지 상세페이지 출력
 	@RequestMapping(value = "/admin/packageProductDetail", method = RequestMethod.GET)
-	public String getPackageProductDetail()  throws Exception {
+	public String getPackageProductDetail(Model model, HttpServletRequest request)  throws Exception {
+		int pid = Integer.parseInt(request.getParameter("PID"));
+		PackageVO pdtail =  service.ProductPackageDetail(pid);
+		model.addAttribute("pdtail", pdtail);
 		return "admin/site/packageProductDetail";
 	}
 	

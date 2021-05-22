@@ -15,34 +15,10 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	
-	var formObj = $("form[name='add']");
-
-	$(document).on("click","#fileDel", function() {
-		$(this).parent().remove();
-	})
-	fn_addFile();
-	
-})
-	
-function fn_addFile() {
-	var fileIndex = 1;
-	
-	$("#fileAdd_btn").on("click", function() {
-		$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-	});
-	
-	$(document).on("click","#fileDelBtn", function() {
-		$(this).parent().remove();
-	});
-}
-</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
-    <div id="wrapper">
+    <div id="wrapper" style="width:80%; max-width:1100px;">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>
 		<!-- 좌측 배너 부분 -->
@@ -54,130 +30,206 @@ function fn_addFile() {
 				
 				<!-- 본문 -->
 				<div class="container-fluid">
-					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Package Management</h1>
-					</div>
-					<hr>
-					<div class="row">
-					<form action="PackageWrite" role="form" method="POST" name="add" enctype="multipart/form-data">   
-					        <div class="form-group row" style="width:900px;">
-					            <label for="title" class="form-label col-sm-2"><strong>상품명</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="productname" name="productname" required>
-					            </div>
-					        </div>
-					        <div class="form-group row">
-					            <label for="author" class="form-label col-sm-2"><strong>상품코드</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="productcode" name="productcode" required>
-					            </div>
-					        </div>
-					        <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>출발일</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="startravelperiod" name="startravelperiod" required>
-					            </div>
-					        </div>
-					         <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>도착일</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="arrivaltravelperiod" name="arrivaltravelperiod" required>
-					            </div>
-					        </div>
-					         <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>테마</strong></label>
-					            <div class="col-sm-10">
-									<select class="form-control" id="theme" name="theme">
-										<option>허니문</option>
-										<option>낚시</option>
-										<option>골프</option>
-										<option>없음</option>
-									</select>
-								</div>
-				       		</div>
-					        <div class="form-group row">
-					        	<label for="content" class="form-label col-sm-2"><strong>지역</strong></label>
-					            <div class="col-sm-10">
-									<select class="form-control" id="area" name="area">
-										<option>북미/중남미/하와이</option>
-										<option>대만/동남아/서남아</option>
-										<option>중국/홍콩/러시아</option>
-										<option>유럽/아프리카</option>
-										<option>일본</option>
-									</select>
-								</div>
-						    </div>
-						    <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>여행도시</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="travelcity" name="travelcity" required>
-					            </div>
-					        </div>
-						    
-	    					 <div class="form-group row">
-	    					    <label for="content" class="form-label col-sm-2"><strong>최소인원</strong></label>
-					            <div class="col-sm-4">
-					                <input type="text" class="form-control" id="minreservation" name="minreservation" required>
-					            </div>
-					            <label for="content" class="form-label col-sm-2"><strong>최대인원</strong></label>
-					            <div class="col-sm-4">
-					                <input type="text" class="form-control" id="maxreservation" name="maxreservation" required>
-					            </div>
-					        </div>
-					        
-						    <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>성인 가격</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="adultprice" name="adultprice" required>
-					            </div>
-					        </div>
-       					    <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>어린이 가격</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="kidprice" name="kidprice" required>
-					            </div>
-					        </div>
-       					    <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>아동 가격</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="smallkidprice" name="smallkidprice" required>
-					            </div>
-					        </div>
-   					        <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>감독</strong></label>
-					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="director" name="director" required>
-					            </div>
-					        </div>
-					        
-					        <div class="form-group row">
-				            	<label for="file" class="form-label col-sm-2"><strong>사진</strong></label>
-					            <div class="col-sm-10">
-					                <span>파일 목록</span>
-									<div class="form-group" style="border: 1px solid #dbdbdb;">								
-										<div id="fileIndex">
-											<div>
-												<input type="file" name="file">
-												<button id="fileDel" type="button" style='float:right;'>삭제</button><br>
+					<div >
+						<div class="form-title text-center">
+							<h4>여행패키지 상세정보</h4><br>
+						</div>
+						<font size="3">No <%= request.getParameter("PID") %></font>
+						<hr style=background-color:#368AFF;>
+						<div class="d-flex flex-column">
+						
+							<form>
+								<!-- 상품명, PID, 상품코드 -->
+								기본정보
+								<div class="form-group row">
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>상품명</b></span>
 											</div>
+											<input type="text" value="${pdtail.getProductname()}" class="form-control" >
 										</div>
 									</div>
-					          	</div>		  
-					       	</div>
-				        	<div class="row">
-					    	<div class="col-auto mr-auto"></div>
-					            <div class="col-auto">
-					            	<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:90px;">	
-					            			               
-					                <input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
-					                <input class="btn btn-primary" type="submit" value="등록">
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>감독</b></span>
+											</div>
+											<input type="text" value="${pdtail.getDirector()}" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>상품코드</b></span>
+											</div>
+											<input type="text" value=" ${pdtail.getProductcode()}" class="form-control" >
+										</div>
+									</div>
+								</div>
+								<!--기간, 등록일  -->
+								<div class="form-group row">
+									<div class="col-xs-8 col-md-8">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>기간</b></span>
+											</div>
+											<input type="text" value=" ${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
+										</div>
+									</div>
+	
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>등록일</b></span>
+											</div>
+											<input type="text" value=" ${pdtail.getRedate()}" class="form-control">
+										</div>
+									</div>
+								</div>
+								
+								<!--테마, 지역 ,도시  -->
+								여행지 정보
+								<div class="form-group row">
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>테마</b></span>
+											</div>
+											<input type="text" value="${pdtail.getTheme()}" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>지역</b></span>
+											</div>
+											<input type="text" value="${pdtail.getArea()}" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>도시</b></span>
+											</div>
+											<input type="text" value="${pdtail.getTravelcity()}" class="form-control" >
+										</div>
+									</div>
+								</div>
+								
+								패키지 인당 비용
+								<div class="form-group row">
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>성인</b></span>
+											</div>
+											<input type="text" value="${pdtail.getAdultprice()}원" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>아동</b></span>
+											</div>
+											<input type="text" value="${pdtail.getKidprice()}원" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>유아</b></span>
+											</div>
+											<input type="text" value="${pdtail.getSmallkidprice()}원" class="form-control" >
+										</div>
+									</div>
+								</div>
+								<hr>
+								예약상황
+								<div class="form-group row">
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>현재인원</b></span>
+											</div>
+											<input type="text" value="${pdtail.getReservationstatus()}명" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>최소인원</b></span>
+											</div>
+											<input type="text" value="${pdtail.getMinreservation()}명" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>최대인원</b></span>
+											</div>
+											<input type="text" value="${pdtail.getMaxreservation()}명" class="form-control" >
+										</div>
+									</div>
+								</div>
+								
+								연령별 예약자 수
+								<div class="form-group row">
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>성인</b></span>
+											</div>
+											<input type="text" value="${pdtail.getAdultcount()}명" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>아동</b></span>
+											</div>
+											<input type="text" value="${pdtail.getKidcount()}명" class="form-control" >
+										</div>
+									</div>
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>유아</b></span>
+											</div>
+											<input type="text" value="${pdtail.getSmallkidcount()}명" class="form-control" >
+										</div>
+									</div>
+								</div>
+								<hr >
+								<!-- 개요 -->
+								여행소개
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text">개요</span>
+										</div>
+										<textarea rows="5" cols="25" name="comment" id="comment" class="form-control"></textarea>
+									</div>
+								</div>
+								<!-- 사진 -->
+								<h5>사진</h5>
+								<table class="table table-hover table-white">
+									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' alt="PackageProduct Img">
+								</table>
+								<hr style=background-color:#368AFF;>
+								<!-- 이전, 수정 버튼 -->
+								<div align="right">
+									<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:60px;">	
+							        <input class="btn btn-primary" type="submit" value="수정">
 						        </div>
-					       	</div>
-				        </form>
-				        </div>
+							</form>
+						</div>
 					</div>
+				
+				</div>
 				<!-- 본문 -->
 			</div>
+			
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->

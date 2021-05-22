@@ -45,27 +45,43 @@
 		        }
 		    }
 		    if (valueArr.length == 0){
-		    	alert("선택된 글이 없습니다.");
-		    }
-		    else{
-				var chk = confirm("정말 삭제하시겠습니까?");				 
-				$.ajax({
-				    url : url,                    // 전송 URL
-				    type : 'POST',                // GET or POST 방식
-				    traditional : true,
-				    data : {
-				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
-				    },
-	                success: function(jdata){
-	                    if(jdata = 1) {
-	                        alert("삭제 성공");
-	                        location.replace("notice")
-	                    }
-	                    else{
-	                        alert("삭제 실패");
-	                    }
-	                }
-				});
+	    		Swal.fire({
+		  			title: '선택된 공지가 없습니다.',
+			  		text: "삭제하실 공지를 선택해주세요.",
+			  		icon: 'warning',
+			  		confirmButtonColor: '#3085d6',
+			  		confirmButtonText: '확인',
+			  	})
+		    }else{
+		    	Swal.fire({
+		  		  	title: '글을 삭제하시겠습니까?',
+	  		  		text: "삭제하시면 다시 복구시킬 수 없습니다.",
+	  		    	icon: 'warning',
+	  		   		showCancelButton: true,
+	  		   		confirmButtonColor: '#3085d6',
+	  		   		cancelButtonColor: '#d33',
+	  		  	 	confirmButtonText: '삭제',
+	  		  	 	cancelButtonText: '취소'
+		  		}).then((result) => {
+		  		  if (result.value) {
+			  			$.ajax({
+						    url : url,                    // 전송 URL
+						    type : 'POST',                // GET or POST 방식
+						    traditional : true,
+						    data : {
+						    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+						    },
+			                success: function(jdata){
+			                    if(jdata = 1) {
+			                        location.replace("notice")
+			                    }
+			                    else{
+			                        alert("삭제 실패(문의전화 : 010-0000-0000)");
+			                    }
+			                }
+						});
+		  		  }
+		  		})
 			}
 		}
 	</script>

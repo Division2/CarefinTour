@@ -6,15 +6,15 @@
 	<select id="FAQAllView" resultType="FAQVO">
 		SELECT * FROM faq LIMIT #{Page}, #{PageSize}
 	</select>
-	
-	<!-- FAQ 카테고리별 출력 -->
-	<select id="FAQOtherView" resultType="FAQVO">
-		SELECT * FROM faq WHERE Category = #{category} LIMIT #{Page}, #{PageSize}
-	</select>
-	
+
 	<!-- FAQ 총 갯수 -->
 	<select id="getFAQTotalCount" resultType="int">
 		SELECT COUNT(*) FROM faq
+	</select>
+		
+	<!-- FAQ 카테고리별 출력 -->
+	<select id="FAQOtherView" resultType="FAQVO">
+		SELECT * FROM faq WHERE Category = #{category} LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- FAQ 카테고리별 총 갯수 -->

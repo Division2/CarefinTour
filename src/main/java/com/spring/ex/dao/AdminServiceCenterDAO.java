@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.vo.FAQVO;
+import com.spring.ex.vo.InquiryAnswerVO;
+import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Repository
@@ -39,5 +42,65 @@ public interface AdminServiceCenterDAO {
 	
 	//공지사항 검색 게시물 총 갯수
 	public int NoticeSearchTotalCount(String title) throws Exception;
-
+	
+	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
+	
+	//1:1 문의 등록
+	public int InquiryWrite(InquiryVO vo) throws Exception;
+	
+	//1:1 문의 출력
+	public List<InquiryVO> InquiryList(HashMap<String, Integer> map) throws Exception;
+	
+	//1:1 문의 게시물 총 갯수
+	public int InquiryTotalCount() throws Exception;
+	
+	//1:1 문의 게시글 내용
+	public InquiryVO InquiryBoardView(int iId) throws Exception;
+	
+	//1:1 문의 답변 등록
+	public int InquiryAnswerWrite(InquiryAnswerVO vo) throws Exception;
+	
+	//1:1 문의 답변 게시글 내용
+	public InquiryAnswerVO InquiryAnswerBoardView(int iId) throws Exception;
+	
+	//1:1 문의 답변 등록 시 답변완료로 변경
+	public void InquiryStatusUpdate(int iId) throws Exception;
+	
+	//1:1 문의 답변 수정
+	public int InquiryAnswerModify(InquiryAnswerVO vo) throws Exception;
+	
+	//1:1 문의 답변 삭제
+	public int InquiryAnswerDelete(int iId) throws Exception;
+	
+	//1:1 문의 답변 등록 시 답변대기로 변경
+	public void InquiryStatusUpdate2(int iId) throws Exception;
+	
+	//1:1 문의 검색
+	public List<InquiryVO> InquirySearchList(HashMap<String, Object> map) throws Exception;
+	
+	//1:1 문의 검색 게시물 총 갯수
+	public int InquirySearchTotalCount(String name) throws Exception;
+	
+	//1:1 선택삭제
+	public void SelectDelete2 (String iId)throws Exception;
+	
+	//------------------------------------------------------FAQ관리 시작---------------------------------------------
+	
+	//FAQ 등록
+	public int FAQWrite(FAQVO vo) throws Exception;
+	
+	//FAQ 수정
+	public int FAQModify(FAQVO vo) throws Exception;
+	
+	//FAQ 선택삭제
+	public void FAQDelete(String fId) throws Exception;
+	
+	//자주 찾는 질문(전체)
+	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception;
+	
+	//자주 찾는 질문 총 갯수
+	public int FAQTotalCount() throws Exception;
+	
+	//FAQ 내용
+	public FAQVO FAQBoardView(int fId) throws Exception;
 }
