@@ -1371,8 +1371,8 @@ h6 {
 .footer-widget__links,
 .footer-widget__options {
 	-webkit-box-flex: 1;
-	        flex: 1 1 16.666666%;
-	max-width: 16.666666%;
+	        flex: 1 1 20%;
+	max-width: 20%;
 }
 
 .footer-widget__links {

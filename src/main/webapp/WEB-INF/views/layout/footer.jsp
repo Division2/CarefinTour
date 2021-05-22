@@ -18,16 +18,16 @@
 							<img src='<c:url value="/resources/images/logo-dark.png"/>' width="123" alt="">
 						</a>
 						<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
-						<a href="ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
+						<a href="mailto:ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
 						<a href="tel:031-828-7700">031-828-7700</a>
 					</div>
 					<div class="footer-widget__column">
 						<h3 class="footer-widget__title">Company</h3>
 						<ul class="footer-widget__links-list list-unstyled">
-							<li><a href="destinations.html">사업자등록번호 : 123-45-67890</a></li>
-							<li><a href="tour-sidebar.html">관광사업자등록번호 : 제2021-123456호</a></li>
-							<li><a href="contact.html">E-mail : ljpk@gmail.com</a></li>
-							<li><a href="gallery.html">주소 : 경기도 의정부시 서부로 545 효행관 401호</a></li>
+							<li><a href="#">사업자등록번호 : 123-45-67890</a></li>
+							<li><a href="#">관광사업자등록번호 : 제2021-123456호</a></li>
+							<li><a href="#">E-mail : ljpk@gmail.com</a></li>
+							<li><a href="#">주소 : 경기도 의정부시 서부로 545 효행관 401호</a></li>
 						</ul>
 					</div>
 					<div class="footer-widget__column footer-widget__links">
@@ -60,209 +60,209 @@
 		</div>
 		<!-- 하단 Copyright -->
 
-	<!-- 모바일 하단 푸터-->
-	<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-	<div class="side-menu__block">
-		<div class="side-menu__block-overlay custom-cursor__overlay">
-			<div class="cursor"></div>
-			<div class="cursor-follower"></div>
-		</div>
-		<div class="side-menu__block-inner ">
-			<div class="side-menu__top justify-content-end">
-				<a href="#" class="side-menu__toggler side-menu__close-btn">
-					<img src='<c:url value="/resources/images/shapes/close-1-1.png"/>' alt="">
-				</a>
+		<!-- 모바일 하단 푸터-->
+		<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+		<div class="side-menu__block">
+			<div class="side-menu__block-overlay custom-cursor__overlay">
+				<div class="cursor"></div>
+				<div class="cursor-follower"></div>
 			</div>
-			<nav class="mobile-nav__container"></nav>
-			<div class="side-menu__sep"></div>
-			<div class="side-menu__content">
-				<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
-				<p>
-					<a href="ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
-					<a href="tel:031-828-7700">031-828-7700</a>
-				</p>
-				<div class="side-menu__social">
-					<a href="#"><i class="fab fa-facebook-square"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-					<a href="#"><i class="fab fa-instagram"></i></a>
-					<a href="#"><i class="fab fa-pinterest-p"></i></a>
+			<div class="side-menu__block-inner ">
+				<div class="side-menu__top justify-content-end">
+					<a href="#" class="side-menu__toggler side-menu__close-btn">
+						<img src='<c:url value="/resources/images/shapes/close-1-1.png"/>' alt="">
+					</a>
 				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 모바일 하단 푸터 -->
-	<div class="search-popup">
-		<div class="search-popup__overlay custom-cursor__overlay">
-			<div class="cursor"></div>
-			<div class="cursor-follower"></div>
-		</div>
-		<div class="search-popup__inner">
-			<form action="#" class="search-popup__form">
-				<input type="text" name="search" placeholder="검색어를 입력하세요...">
-				<button type="submit">
-					<i class="fa fa-search"></i>
-				</button>
-			</form>
-		</div>
-	</div>
-	
-	<!-- Plugin Script -->
-	<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/owl.carousel.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/waypoints.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/jquery.counterup.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/TweenMax.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/wow.js"/>'></script>
-	<script src='<c:url value="/resources/js/jquery.magnific-popup.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/jquery.ajaxchimp.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/swiper.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/typed-2.0.11.js"/>'></script>
-	<script src='<c:url value="/resources/js/vegas.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/jquery.validate.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/bootstrap-select.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/countdown.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/jquery.mCustomScrollbar.concat.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/bootstrap-datepicker.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/nouislider.min.js"/>'></script>
-	<script src='<c:url value="/resources/js/isotope.js"/>'></script>
-
-	<!-- Template Script -->
-	<script src='<c:url value="/resources/js/theme.js"/>'></script>
-	<script src='<c:url value="/resources/js/Member.js"/>'></script>
-	
-	<!-- 로그인 Modal 부분 -->
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-title text-center">
-						<h4>Login</h4>
+				<nav class="mobile-nav__container"></nav>
+				<div class="side-menu__sep"></div>
+				<div class="side-menu__content">
+					<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
+					<p>
+						<a href="mailto:ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
+						<a href="tel:031-828-7700">031-828-7700</a>
+					</p>
+					<div class="side-menu__social">
+						<a href="#"><i class="fab fa-facebook-square"></i></a>
+						<a href="#"><i class="fab fa-twitter"></i></a>
+						<a href="#"><i class="fab fa-instagram"></i></a>
+						<a href="#"><i class="fab fa-pinterest-p"></i></a>
 					</div>
-					<div class="d-flex flex-column text-center">
-						<div class="form-group">
-							<input type="text" class="form-control" id="UserID" name="LoginUserID" placeholder="아이디를 입력하세요" required autofocus>
+				</div>
+			</div>
+		</div>
+		<!-- 모바일 하단 푸터 -->
+		<div class="search-popup">
+			<div class="search-popup__overlay custom-cursor__overlay">
+				<div class="cursor"></div>
+				<div class="cursor-follower"></div>
+			</div>
+			<div class="search-popup__inner">
+				<form action="#" class="search-popup__form">
+					<input type="text" name="search" placeholder="검색어를 입력하세요...">
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+		<!-- Plugin Script -->
+		<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/owl.carousel.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/waypoints.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/jquery.counterup.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/TweenMax.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/wow.js"/>'></script>
+		<script src='<c:url value="/resources/js/jquery.magnific-popup.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/jquery.ajaxchimp.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/swiper.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/typed-2.0.11.js"/>'></script>
+		<script src='<c:url value="/resources/js/vegas.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/jquery.validate.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/bootstrap-select.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/countdown.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/jquery.mCustomScrollbar.concat.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/bootstrap-datepicker.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/nouislider.min.js"/>'></script>
+		<script src='<c:url value="/resources/js/isotope.js"/>'></script>
+	
+		<!-- Template Script -->
+		<script src='<c:url value="/resources/js/theme.js"/>'></script>
+		<script src='<c:url value="/resources/js/Member.js"/>'></script>
+		
+		<!-- 로그인 Modal 부분 -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header border-bottom-0">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-title text-center">
+							<h4>Login</h4>
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="Password" placeholder="비밀번호를 입력하세요" required>
+						<div class="d-flex flex-column text-center">
+							<div class="form-group">
+								<input type="text" class="form-control" id="UserID" name="LoginUserID" placeholder="아이디를 입력하세요" required autofocus>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" id="Password" placeholder="비밀번호를 입력하세요" required>
+							</div>
+							<input type="hidden" id="lastDate" name="lastDate" value="<%=now%>">
+							<button id="Login" class="thm-btn-psd btn-block btn-round">로그인</button>
 						</div>
-						<input type="hidden" id="lastDate" name="lastDate" value="<%=now%>">
-						<button id="Login" class="thm-btn-psd btn-block btn-round">로그인</button>
 					</div>
-				</div>
-				<div class="modal-footer d-flex justify-content-center">
-					<div class="signup-section">
-						회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- 회원가입 Modal 부분 -->
-	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-title text-center">
-						<h4>Sign in</h4>
-					</div>
-					<div class="d-flex flex-column text-center">
-						<form name="form" id="form" action="SignUp" method="POST">
-							<div class="form-group row">
-								<div class="col-sm-9">
-									<input type="text" class="form-control" id="RegisterUserID" name="UserID" placeholder="아이디" required autofocus>
-								</div>
-								<div class="col-sm-3">
-									<button type="button" id="IDCheck" class="thm-btn-psd2">중복확인</button>
-								</div>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" id="RegisterPassword" name="Password" placeholder="비밀번호" required>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="Name" name="Name" placeholder="이름" required>
-							</div>
-							<div class="form-group">
-								<input type="email" class="form-control" id="Email" name="Email" placeholder="이메일" required>
-							</div>
-							<div class="form-group">
-								<input type="tel" class="form-control" id="Phone" name="Phone" maxlength="11" placeholder="-를 제외한 휴대폰 번호" required>
-							</div>
-							<div class="form-group">
-								<input type="date" class="form-control" id="Birth" name="Birth" placeholder="생일" required>
-							</div>
-							<div class="form-group">
-								<select class="form-control" id="Sex">
-									<option value="1">남자</option>
-									<option value="0">여성</option>
-								</select>
-							</div>
-							<div class="form-group row">
-								<div class="col-sm-9">
-									<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
-								</div>
-								<div class="col-sm-3">
-									<button type="button" class="thm-btn-psd2" onclick="goPopup()">주소찾기</button>
-								</div>
-							</div>
-							<input type="hidden" id="Grade" name="Grade" value="User">
-							<input type="hidden" id="Mileage" name="Mileage" value="0">
-							<button type="button" id="register" class="thm-btn-psd btn-block btn-round" onclick="Register()" disabled>회원가입</button>
-							<button type="reset" id="registerReset" class="thm-btn-psd btn-block btn-round">취소</button>
-						</form>
+					<div class="modal-footer d-flex justify-content-center">
+						<div class="signup-section">
+							회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<!-- 예약확인 비회원 부분-->
-	<div class="modal fade" id="ReservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-title text-center">
-						<h4>check my reservation</h4>
+		
+		<!-- 회원가입 Modal 부분 -->
+		<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header border-bottom-0">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
-					<div class="d-flex flex-column text-center">
-						<form>
-							<div class="form-group">
-								<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="revervationnumber" placeholder="예약번호를 입력하세요">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요">
-							</div>
-							<button type="button" class="btn btn-primary btn-block btn-round">조회하기</button>
-						</form>
+					<div class="modal-body">
+						<div class="form-title text-center">
+							<h4>Sign in</h4>
+						</div>
+						<div class="d-flex flex-column text-center">
+							<form name="form" id="form" action="SignUp" method="POST">
+								<div class="form-group row">
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="RegisterUserID" name="UserID" placeholder="아이디" required autofocus>
+									</div>
+									<div class="col-sm-3">
+										<button type="button" id="IDCheck" class="thm-btn-psd2">중복확인</button>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control" id="RegisterPassword" name="Password" placeholder="비밀번호" required>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="Name" name="Name" placeholder="이름" required>
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" id="Email" name="Email" placeholder="이메일" required>
+								</div>
+								<div class="form-group">
+									<input type="tel" class="form-control" id="Phone" name="Phone" maxlength="11" placeholder="-를 제외한 휴대폰 번호" required>
+								</div>
+								<div class="form-group">
+									<input type="date" class="form-control" id="Birth" name="Birth" placeholder="생일" required>
+								</div>
+								<div class="form-group">
+									<select class="form-control" id="Sex">
+										<option value="1">남자</option>
+										<option value="0">여성</option>
+									</select>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-9">
+										<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
+									</div>
+									<div class="col-sm-3">
+										<button type="button" class="thm-btn-psd2" onclick="goPopup()">주소찾기</button>
+									</div>
+								</div>
+								<input type="hidden" id="Grade" name="Grade" value="User">
+								<input type="hidden" id="Mileage" name="Mileage" value="0">
+								<button type="button" id="register" class="thm-btn-psd btn-block btn-round" onclick="Register()" disabled>회원가입</button>
+								<button type="reset" id="registerReset" class="thm-btn-psd btn-block btn-round">취소</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<!-- 개인정보처리방침 -->
-	<div class="modal fade" id="privacypolicy" tabindex="-1" role="dialog" aria-labelledby="privacypolicy" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 50%; width: 50%;">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="form-title">
-						<h4>개인정보처리방침</h4>
+		
+		<!-- 예약확인 비회원 부분-->
+		<div class="modal fade" id="ReservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header border-bottom-0">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
-					<div class="d-flex flex-column text-left">
-						<textarea class="form-control" style="resize:none;" rows="30">
+					<div class="modal-body">
+						<div class="form-title text-center">
+							<h4>check my reservation</h4>
+						</div>
+						<div class="d-flex flex-column text-center">
+							<form>
+								<div class="form-group">
+									<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="revervationnumber" placeholder="예약번호를 입력하세요">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요">
+								</div>
+								<button type="button" class="btn btn-primary btn-block btn-round">조회하기</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 개인정보처리방침 -->
+		<div class="modal fade" id="privacypolicy" tabindex="-1" role="dialog" aria-labelledby="privacypolicy" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 50%; width: 50%;">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="form-title">
+							<h4>개인정보처리방침</h4>
+						</div>
+						<div class="d-flex flex-column text-left">
+							<textarea class="form-control" style="resize:none;" rows="30">
 (주)케어핀투어(이하 ‘당사’)는 고객님의 개인정보처리방침을 매우 중요시하며, 『정보통신망 이용촉진 및 정보보호"에 관한 법률』상의 개인정보보호 규정 및 행정안전부가 제정한 『개인정보보호법』을 준수하고 있습니다. 당사는 개인정보취급(처리)방침을 통하여 귀하께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다. *개인정보의 수집,제공 및 활용에 동의하지 않을 권리가 있으며, 미동의시 회원가입 및 여행서비스의 제공이 제한됩니다.
 ■ 개인정보의 수집방법 및 항목
 당사는 여행 서비스와 회원 서비스 제공을 위해 아래와 같이 필요한 최소한의 개인정보만을 수집합니다.
@@ -398,24 +398,24 @@ FAX: 02-2021-7800
 당사는 개인정보처리방침을 개정하는 경우 웹사이트 ‘공지사항’을 통해 고지하겠습니다
 공고일자 : 2020년 11월 11일
 시행일자 : 2008년 05월 27일
- 						</textarea>
+	 						</textarea>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- 이용약관 -->
-	
-	<!-- 이용약관 -->
-	<div class="modal fade" id="useservice" tabindex="-1" role="dialog" aria-labelledby="userservice" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 50%; width: 50%;">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="form-title">
-						<h4>이용약관</h4>
-					</div>
-					<div class="d-flex flex-column text-left">
-						<textarea class="form-control" style="resize:none;" rows="30">
+		<!-- 이용약관 -->
+		
+		<!-- 이용약관 -->
+		<div class="modal fade" id="useservice" tabindex="-1" role="dialog" aria-labelledby="userservice" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 50%; width: 50%;">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="form-title">
+							<h4>이용약관</h4>
+						</div>
+						<div class="d-flex flex-column text-left">
+							<textarea class="form-control" style="resize:none;" rows="30">
 제1장 총칙
 제1조(목적)
 이 약관은 (주)케어핀투어가 운영하는 모두투어 닷컴 사이버 몰(이하 "당사"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리•의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -571,10 +571,10 @@ FAX: 02-2021-7800
 [부칙]
 1. 본 약관은 2012년 5월 4일부터 적용됩니다.
 2. 2008년 2월 20일부터 시행된 종전의 약관은 본 약관으로 대체합니다.
- 						</textarea>
+	 						</textarea>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- 이용 약관 -->
+		<!-- 이용 약관 -->
