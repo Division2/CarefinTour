@@ -23,7 +23,6 @@ $(document).ready(function() {
 	$(document).on("click","#fileDel", function() {
 		$(this).parent().remove();
 	})
-	
 	fn_addFile();
 	
 })
@@ -168,9 +167,10 @@ function fn_addFile() {
 				        	<div class="row">
 					    	<div class="col-auto mr-auto"></div>
 					            <div class="col-auto">
+					            	<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:90px;">	
+					            			               
 					                <input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
 					                <input class="btn btn-primary" type="submit" value="등록">
-					                <input class="btn btn-primary" id="list_btn"  onclick="history.back()" value="취소" style="width:90px;">		
 						        </div>
 					       	</div>
 				        </form>

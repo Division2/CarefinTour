@@ -73,4 +73,21 @@ public class PackageController {
 		return "admin/site/packageproduct";
 	}
 	
+	//여행패키지 상세페이지 출력
+	@RequestMapping(value = "/admin/packageproduct", method = RequestMethod.GET)
+	public String getPackageProductDetail()  throws Exception {
+		return "admin/site/packageProductDetail";
+	}
+	
+	//여행패키지 삭제
+	@RequestMapping(value = "/admin/PackageSelectDelete")
+	public String PackageSelectDelete(HttpServletRequest request) throws Exception {
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.ProductPackageDelete(ajaxMsg[i]);
+        }
+		return "admin/site/packageproduct";
+	}
+	
 }

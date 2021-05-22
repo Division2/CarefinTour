@@ -19,4 +19,9 @@
 	<select id="getProductPackageTotalCount" resultType="int">
 		SELECT COUNT(*) FROM packageproduct
 	</select>
+	
+	<!-- 여행패키지 삭제 -->
+	<delete id="ProductPackageDelete">
+		DELETE FROM packageproduct WHERE PID = #{pid}
+	</delete>
 </mapper>

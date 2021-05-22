@@ -24,6 +24,11 @@ $(document).ready(function() {
 		$(this).parent().remove();
 	})
 	
+	$("#list_btn").on("click", function() {
+		event.preventDefault();
+		location.href = "packageproduct"
+	})
+	
 	fn_addFile();
 	
 })
@@ -168,9 +173,10 @@ function fn_addFile() {
 				        	<div class="row">
 					    	<div class="col-auto mr-auto"></div>
 					            <div class="col-auto">
+					            	<input class="btn btn-primary" id="list_btn" value="목록" style="width:90px;">
+					            	<input class="btn btn-primary" id="list_btn" value="이전" onclick="history.back()" style="width:90px;">               
 					                <input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
-					                <input class="btn btn-primary" type="submit" value="등록">
-					                <input class="btn btn-primary" id="list_btn"  onclick="history.back()" value="취소" style="width:90px;">		
+					                <input class="btn btn-primary" type="submit" value="수정">
 						        </div>
 					       	</div>
 				        </form>
