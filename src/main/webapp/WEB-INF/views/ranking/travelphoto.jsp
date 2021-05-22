@@ -38,8 +38,8 @@
 				<div class="d-flex">
 					<div class="ml-auto">
 						<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() ne 'User'}">
-							<button class="btn btn-primary" onclick="location.href='travelphotoWrite'">등록</button>
-							<button class="btn btn-primary" onclick="location.href='myaddphoto'">내 후기</button>
+							<button class="thm-btn-psd" onclick="location.href='travelphotoWrite'">등록</button>
+							<button class="thm-btn-psd" onclick="location.href='myaddphoto'">내 후기</button>
 						</c:if>
 					</div>
 				</div>
