@@ -45,6 +45,11 @@
 		DELETE FROM notice WHERE nId = #{nId}
 	</delete>
 	
+	<!-- 공지사항 선택 삭제 -->
+	<delete id="SelectDelete">
+		DELETE FROM notice WHERE nId = #{nId}
+	</delete>
+	
 	<!-- 공지사항 검색 -->
 	<select id="NoticeSearchView" resultType="NoticeBoardVO">
 		SELECT * FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY nId DESC LIMIT #{Page}, #{PageSize}

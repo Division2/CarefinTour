@@ -30,6 +30,9 @@ public interface AdminServiceCenterService {
 	//공지사항 삭제
 	public int NoticeDelete(int nId) throws Exception;
 	
+	//공지사항 선택삭제
+	public void SelectDelete (String nId)throws Exception;
+	
 	//공지사항 검색
 	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception;
 	

@@ -53,10 +53,10 @@ public class TravelReviewController {
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);
-		paging.setPageSize(8);
+		paging.setPageSize(9);
 		paging.setTotalCount(totalCount);
 		
-		page = (page - 1) * 8;
+		page = (page - 1) * 9;
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("Page", page);

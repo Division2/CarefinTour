@@ -1,260 +1,253 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>케어핀투어 - 여행정보</title>
-<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="apple-touch-icon" sizes="180x180" href='<c:url value="/resources/favicons/apple-touch-icon.png"/>'>
+<link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
+<link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
+<link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
+<title>CarefinTour</title>
+</head>
 <body>
-	<jsp:include page="../layout/header.jsp" />
+<body>
+	<!-- 페이지 로딩 이미지 -->
+	<div class="preloader">
+		<img src='<c:url value="/resources/images/loader.png"/>' class="preloader__image" alt="">
+	</div>
+	<!-- 페이지 로딩 이미지 -->
 	
-	<div class="container">
-		<div class="row">
-			<!-- 여행정보 사이드바 -->
-			<jsp:include page="sidetravelinfo.jsp"/>
-			
-			<!-- 컨텐츠 부분 -->
-		
-				<div class="col-md-8">
-		
-				
-				<h4>여행 준비</h4>
+	<!-- 메인 영역 -->
+	<div class="page-wrapper">
+		<jsp:include page="../layout/header.jsp" />
+	
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/goo.png"/>);">
+			<div class="container">
+				<h2>여행준비물</h2>
+				<ul class="thm-breadcrumb list-unstyled">
+					<li><a href="weatherinfo">날씨</a></li>
+					<li><a href="exchangeinfo">환율</a></li>
+					<li><a href="timedifferenceinfo">시차</a></li>
+					<li><a href="visainfo">비자</a></li>
+					<li><a href="supplies">여행준비</a></li>
+				</ul>
+			</div>
+		</section>
+	
+		<section class="tour-one">
+			<div class="container">
 				<h5>여행 출발하기 전 각종 정보를 꼭 확인하시고</h5>
 				<h5>더욱 편안한 여행되시길 바랍니다.</h5>
 				<hr>
 				<div class="container">
-				<h3>여행준비물 체크리스트</h3>
-
-	    
-                        <li>
-                            <div class="country">
-                                <p>여행용가방</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-2">
-                                    보통 국제선은 1인 20Kg 이 기준이며 이를 초과할 때에는 추가요금이 붙습니다.<br />기내용가방/휴대할수있는
-                                    가벼운 가방 등(휴대가방에는 여권,티켓 등을 넣고다니면 좋습니다.)
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>의류</p>
-                            </div>
-                            <div class="desc">
-                                <p>
-                                    현지 기후를 고려하여 준비하며 입은 빨래를 보관할수 있도록 비닐팩등을 준비하면 좋습니다.<br />더운 지역은 에어콘시설이 잘되어있으니
-                                    얇은 가디건 1개정도 준비하세요.<br />반팔셔츠/반바지/얇은 긴팔 가디건/긴바지/속옷/양말/샌들/운동화 등 우리나라와 기후가 반대되는
-                                    나라<br />(호주, 뉴질랜드 등)로 여행가시는 분들은 그 나라 기후에 맞게 준비 긴팔 상의/긴바지 또는 치마/속옷/양말/샌들/운동화
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>세면도구</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-2">
-                                    환경위생 문제로 인하여 비치되어있지 않습니다.(샴푸/비누 는
-                                    비치)<br />치약/칫솔/바디클렌져/면도기/빗/생리용품
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>스킨케어</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-2">
-                                    동남아 지역은 자외선이 강한 지역이므로 자외선차단제는 필수로 준비하셔야 합니다.<br />기초화장품/선크림 or
-                                    선블럭 or 선오일/피부 진정제/색조화장품/헤어용품
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>해수욕장</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-2">
-                                    해변에서 즐길 것을 준비하자.<br />수영복 / 샌들 or 슬리퍼 / 선탠오일 / 모자 / 썬글라스 / 비치백
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>비상약품</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-2">
-                                    갑자기 기후나 음식이 바뀌면 불편하실수 있기 때문에 간단한 비상약은 준비하셔야
-                                    합니다.<br />감기약/소화제/지사제/진통제/멀미약/밴드/벌레기피제
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="country">
-                                <p>환전</p>
-                            </div>
-                            <div class="desc">
-                                <p>
-                                    현지에선 현지돈을 사용하기 때문에 환전이 필요합니다. 하지만 대부분의 관광지에선 달러를 사용하고 있으니 달러로 환전하시는게
-                                    좋습니다.<br />예외로 유럽(유로), 호주(호주달러), 캐나다(캐나다달러)는 각각의 화폐로 환전 하셔야
-                                    합니다.<br />US달러/VISA카드/현지화폐
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>음식</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-3">
-                                    입맛이 까다로운 분들은 다음 사항을 준비하세요.<br />컵라면/고추장/꼬마김치/김<br />일반 호텔은 취사가
-                                    불가능하니 커피포트를 이용해 컵라면을 드시면 됩니다.
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>기타</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-1">필름카메라일 경우 필름/디지털카메라일 경우 충전기, 메모리칩</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="contury">
-                    <h3 class="has-tip"> 
-                        그 나라의 특산품을 선택하는 것이 쇼핑의 지혜입니다.<br />여행 전에 치밀한 계획을 세워서 과다한 외화 낭비를 삼가해주시는 센스~
-                        
-                    </h3>
-                    <div class ="desc">
-                    <ul class="desc">
-                        <li>출발시간 2시간 전에 공항에 도착하여 직원의 안내에 따라 출국 사열을 받으십시오.</li>
-                        <li>출국전 휴대한 고가품은 세관 통과시 신고를 하여 입국시 문제가 발생하지 않도록 하십시오.</li>
-                        <li>기내에서는 지정된 좌석에 앉으시고, 항공기의 이착륙시에는 반드시 안전벨트를 매십시오.</li>
-                        <li>호텔 객실문은 대부분 닫히기만 하면 저절로 잠기므로 외출시 열쇠를 꼭 소지하십시오.</li>
-                        <li>방안에 있는 냉장고나 미니바에 있는 음료를 드시거나 유료TV를 시청할 경우 체크 아웃시 따로 계산해야 합니다.</li>
-                        <li>욕조 사용시는 커텐을 욕조 안쪽으로 하여 바닥에 물이 떨어지지 않도록 해야 합니다.</li>
-                        <li>외출시 객실 청소부를 위해 US$1를 베게 위에 놓고 나오는 것이 에티켓입니다.</li>
-                        <li>식당에 도착하면 잠깐 기다렸다가 종업원이 안내하는 테이블로 가서 앉습니다.</li>
-                        </li>
-                        <li>관광지 설명시 대열을 이탈하지 않고 안내원의 지시에 따라 주십시오. 단체행동시 집합 및 약속시간을 꼭 지켜주십시오.</li>
-                    </ul>
-                </div>
-</div>
-                <div class="prg_box">
-                    <h3>여행자보험</h3>
-                    <ul class="desc">
-                        <li>해외/국내 여행시 예기치 못했던 뜻밖의 사고를 당할 수 있는데 이같은 사고를 대비하여 드는 보험</li>
-                        <li>여행을 떠나 마치고 돌아오는 일정동안 발생할 수 있는 상해, 질병, 배상책임, 휴대품 손해를 돈으로 보상해주는 보험</li>
-                        <li>사고발생 30일 이내에 구비서류를 갖춰 해당 보험회사에 청구</li>
-                    </ul>
-
-                    <ul class="prepareChk">
-                        <li>
-                            <div class="country">
-                                <p>상해</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-2">
-                                    우연한 사고로 신체상에 입으시게 된 손해에 대한 보상<br />(후유장애는 사망에 준할 정도로 심하게 다치 것으로
-                                    생각하면 됨)
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>질병</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-1">복통, 발열 등으로 인한 병원에서 치료를 받은 병원비에 대한 보상</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>배상책임</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-1">해외에서 제 3자에 대한 법률상의 배상책임이 발생하였을때 받는 보상</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>휴대품 도난</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-1">휴대품을 도난당했을 때 받을 수 있음(면책 비용 1만원 기본으로 고객께서 부담)</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>항공기 납치</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-1">항공기 테러로 인해 입으신 손해에 대한 배상</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="country">
-                                <p>천재상해</p>
-                            </div>
-                            <div class="desc">
-                                <p class="row-3">
-                                    보험은 기본적으로 천재지변으로 인한 손해는 보상하지 않음.<br />하지만 해외생활이라는 특성상 천재지변으로 인한
-                                    상해 사망과 치료에 대한 보상을 해드림<br />(후유장애는 사망에 준할 정도로 심하게 다치 신 것으로 생각하면 됨)
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="prg_box">
-                    <h3>기내 액체류 반입제한</h3>
-                    <p class="prg_desc">
-                        일반적으로 총기류, 칼, 곤봉류, 폭발물 및 탄약, 인화성 물질, 가스 및 화학물질 등 2007년 3월1일부터 대한민국에서
-                        출발<br />또는 환승하는 모든 국제선 승객에 대해 액체 젤류 및 에어로졸에 대한 보안통제지침을 시행하게 됨.
-                    </p>
-
-                    <h4>
-                        <strong class="fc_sky">액체, 젤류 및 에어로젤의 항공기휴대반입 제한</strong>
-                    </h4>
-                    <ul class="desc">
-                        <li>100ml 이하의 용기들이 투명하고 봉인 가능한 1L 이하의 플라스틱 봉투에 담긴 경유 기내 휴대반입 가능</li>
-                        <li>
-                            승객 1인당 휴대 가능한 1L 플라스틱 봉투의 수는 1개이며, 허용량을 초과하여 휴대하는 경우 압류 또는 폐기될수 있으므로<br />반드시 위탁
-                            수하물에 넣어 송부
-                        </li>
-                        <li>예외품목 : 항공 여행 중 필요한 분량의 의약룸(처방전 소지 권장), 유아용 음식(분유,우유 등)은 기내 반입 가능</li>
-                    </ul>
-
-                    <h4><strong class="fc_sky">액체류 면세품(기내면세품 포함)의 항공기휴대반입 제한</strong></h4>
-                    <p class="prg_desc">
-                        특별 제작된 봉투에 구매 영수증이 동봉 또는 부착되어 있고 개봉 흔적이 없는 경우에만 기내 휴대반입이 가능합니다.<br />제 3국에서
-                        환승하는 경우 국가별 규정에 따라 기내 휴대반입이 제한 될 수 있으므로 액체류 면세품 구매 시 면세점 또는 항공사에 문의를 해주십시오.
-                    </p>
-                    <div class="liquidPrepare">
-                        <p>
-                            <span>투명 비닐지퍼팩 총량 1ℓ이하<br />액체, 젤류, 에어로졸 개당 100㎖ 이하</span>
-                        </p>
-                        <p>
-                            <span>총량 1ℓ 초과 / 개당 100㎖ 초과</span>
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-</div>
+					<h3>여행준비물 체크리스트</h3>
+					<ul>
+						<li>
+							<div class="country">
+								<p>여행용가방</p>
+							</div>
+							<div class="desc">
+								<p class="row-2">
+									보통 국제선은 1인 20Kg 이 기준이며 이를 초과할 때에는 추가요금이 붙습니다.<br />기내용가방/휴대할수있는
+									가벼운 가방 등(휴대가방에는 여권,티켓 등을 넣고다니면 좋습니다.)
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>의류</p>
+							</div>
+							<div class="desc">
+								<p>
+									현지 기후를 고려하여 준비하며 입은 빨래를 보관할수 있도록 비닐팩등을 준비하면 좋습니다.<br />더운 지역은
+									에어콘시설이 잘되어있으니 얇은 가디건 1개정도 준비하세요.<br />반팔셔츠/반바지/얇은 긴팔
+									가디건/긴바지/속옷/양말/샌들/운동화 등 우리나라와 기후가 반대되는 나라<br />(호주, 뉴질랜드 등)로
+									여행가시는 분들은 그 나라 기후에 맞게 준비 긴팔 상의/긴바지 또는 치마/속옷/양말/샌들/운동화
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>세면도구</p>
+							</div>
+							<div class="desc">
+								<p class="row-2">
+									환경위생 문제로 인하여 비치되어있지 않습니다.(샴푸/비누 는 비치)<br />치약/칫솔/바디클렌져/면도기/빗/생리용품
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>스킨케어</p>
+							</div>
+							<div class="desc">
+								<p class="row-2">
+									동남아 지역은 자외선이 강한 지역이므로 자외선차단제는 필수로 준비하셔야 합니다.<br />기초화장품/선크림 or
+									선블럭 or 선오일/피부 진정제/색조화장품/헤어용품
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>해수욕장</p>
+							</div>
+							<div class="desc">
+								<p class="row-2">
+									해변에서 즐길 것을 준비하자.<br />수영복 / 샌들 or 슬리퍼 / 선탠오일 / 모자 / 썬글라스 / 비치백
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>비상약품</p>
+							</div>
+							<div class="desc">
+								<p class="row-2">
+									갑자기 기후나 음식이 바뀌면 불편하실수 있기 때문에 간단한 비상약은 준비하셔야 합니다.<br />감기약/소화제/지사제/진통제/멀미약/밴드/벌레기피제
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>환전</p>
+							</div>
+							<div class="desc">
+								<p>
+									현지에선 현지돈을 사용하기 때문에 환전이 필요합니다. 하지만 대부분의 관광지에선 달러를 사용하고 있으니 달러로
+									환전하시는게 좋습니다.<br />예외로 유럽(유로), 호주(호주달러), 캐나다(캐나다달러)는 각각의 화폐로 환전
+									하셔야 합니다.<br />US달러/VISA카드/현지화폐
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>음식</p>
+							</div>
+							<div class="desc">
+								<p class="row-3">
+									입맛이 까다로운 분들은 다음 사항을 준비하세요.<br />컵라면/고추장/꼬마김치/김<br />일반 호텔은 취사가
+									불가능하니 커피포트를 이용해 컵라면을 드시면 됩니다.
+								</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>기타</p>
+							</div>
+							<div class="desc">
+								<p class="row-1">필름카메라일 경우 필름/디지털카메라일 경우 충전기, 메모리칩</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="contury">
+					<h3 class="has-tip">
+						그 나라의 특산품을 선택하는 것이 쇼핑의 지혜입니다.<br />여행 전에 치밀한 계획을 세워서 과다한 외화 낭비를 삼가해주시는 센스~
+					</h3>
+					<div class="desc">
+						<ul class="desc">
+							<li>출발시간 2시간 전에 공항에 도착하여 직원의 안내에 따라 출국 사열을 받으십시오.</li>
+							<li>출국전 휴대한 고가품은 세관 통과시 신고를 하여 입국시 문제가 발생하지 않도록 하십시오.</li>
+							<li>기내에서는 지정된 좌석에 앉으시고, 항공기의 이착륙시에는 반드시 안전벨트를 매십시오.</li>
+							<li>호텔 객실문은 대부분 닫히기만 하면 저절로 잠기므로 외출시 열쇠를 꼭 소지하십시오.</li>
+							<li>방안에 있는 냉장고나 미니바에 있는 음료를 드시거나 유료TV를 시청할 경우 체크 아웃시 따로 계산해야 합니다.</li>
+							<li>욕조 사용시는 커텐을 욕조 안쪽으로 하여 바닥에 물이 떨어지지 않도록 해야 합니다.</li>
+							<li>외출시 객실 청소부를 위해 US$1를 베게 위에 놓고 나오는 것이 에티켓입니다.</li>
+							<li>식당에 도착하면 잠깐 기다렸다가 종업원이 안내하는 테이블로 가서 앉습니다.</li>
+							<li>관광지 설명시 대열을 이탈하지 않고 안내원의 지시에 따라 주십시오. 단체행동시 집합 및 약속시간을 꼭 지켜주십시오.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="prg_box">
+					<h3>여행자보험</h3>
+					<ul class="desc">
+						<li>해외/국내 여행시 예기치 못했던 뜻밖의 사고를 당할 수 있는데 이같은 사고를 대비하여 드는 보험</li>
+						<li>여행을 떠나 마치고 돌아오는 일정동안 발생할 수 있는 상해, 질병, 배상책임, 휴대품 손해를 돈으로 보상해주는 보험</li>
+						<li>사고발생 30일 이내에 구비서류를 갖춰 해당 보험회사에 청구</li>
+					</ul>
+					<ul class="prepareChk">
+						<li>
+							<div class="country">
+								<p>상해</p>
+							</div>
+							<div class="desc">
+								<p class="row-2">우연한 사고로 신체상에 입으시게 된 손해에 대한 보상<br />(후유장애는 사망에 준할 정도로 심하게 다치 것으로 생각하면 됨)</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>질병</p>
+							</div>
+							<div class="desc">
+								<p class="row-1">복통, 발열 등으로 인한 병원에서 치료를 받은 병원비에 대한 보상</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>배상책임</p>
+							</div>
+							<div class="desc">
+								<p class="row-1">해외에서 제 3자에 대한 법률상의 배상책임이 발생하였을때 받는 보상</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>휴대품 도난</p>
+							</div>
+							<div class="desc">
+								<p class="row-1">휴대품을 도난당했을 때 받을 수 있음(면책 비용 1만원 기본으로 고객께서 부담)</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>항공기 납치</p>
+							</div>
+							<div class="desc">
+								<p class="row-1">항공기 테러로 인해 입으신 손해에 대한 배상</p>
+							</div>
+						</li>
+						<li>
+							<div class="country">
+								<p>천재상해</p>
+							</div>
+							<div class="desc">
+								<p class="row-3">
+									보험은 기본적으로 천재지변으로 인한 손해는 보상하지 않음.<br />
+									하지만 해외생활이라는 특성상 천재지변으로 인한 상해 사망과 치료에 대한 보상을 해드림<br />
+									(후유장애는 사망에 준할 정도로 심하게 다치 신 것으로 생각하면 됨)
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="prg_box">
+					<h3>기내 액체류 반입제한</h3>
+					<p class="prg_desc">
+						일반적으로 총기류, 칼, 곤봉류, 폭발물 및 탄약, 인화성 물질, 가스 및 화학물질 등 2007년 3월1일부터 대한민국에서 출발<br />
+						또는 환승하는 모든 국제선 승객에 대해 액체 젤류 및 에어로졸에 대한 보안통제지침을 시행하게 됨.
+					</p>
+					<h4><strong class="fc_sky">액체, 젤류 및 에어로젤의 항공기휴대반입 제한</strong></h4>
+					<ul class="desc">
+						<li>100ml 이하의 용기들이 투명하고 봉인 가능한 1L 이하의 플라스틱 봉투에 담긴 경유 기내 휴대반입 가능</li>
+						<li>승객 1인당 휴대 가능한 1L 플라스틱 봉투의 수는 1개이며, 허용량을 초과하여 휴대하는 경우 압류 또는 폐기될수 있으므로<br />반드시 위탁 수하물에 넣어 송부</li>
+						<li>예외품목 : 항공 여행 중 필요한 분량의 의약룸(처방전 소지 권장), 유아용 음식(분유,우유 등)은 기내 반입 가능</li>
+					</ul>
+					<h4><strong class="fc_sky">액체류 면세품(기내면세품 포함)의 항공기휴대반입 제한</strong></h4>
+					<p class="prg_desc">
+						특별 제작된 봉투에 구매 영수증이 동봉 또는 부착되어 있고 개봉 흔적이 없는 경우에만 기내 휴대반입이 가능합니다.<br />
+						제3국에서 환승하는 경우 국가별 규정에 따라 기내 휴대반입이 제한 될 수 있으므로 액체류 면세품 구매 시 면세점 또는 항공사에 문의를 해주십시오.
+					</p>
+					<div class="liquidPrepare">
+						<p><span>투명 비닐지퍼팩 총량 1ℓ이하<br />액체, 젤류, 에어로졸 개당 100㎖ 이하</span></p>
+						<p><span>총량 1ℓ 초과 / 개당 100㎖ 초과</span></p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<jsp:include page="../layout/footer.jsp" />
 	</div>
-	
-	<jsp:include page="../layout/footer.jsp"/>
 </body>
 </html>

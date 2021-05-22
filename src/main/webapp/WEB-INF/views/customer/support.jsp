@@ -1,193 +1,161 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>케어핀투어 - 고객센터</title>
-<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-	<style>
-ul.faq {
-	list-style-type: none;
-}
-ul.faq li {
-	float: left;
-	border: 1px solid #bcbcbc;
-	padding: 10px;
-}
-	</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="apple-touch-icon" sizes="180x180" href='<c:url value="/resources/favicons/apple-touch-icon.png"/>'>
+<link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
+<link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
+<link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
+<title>CarefinTour</title>
 </head>
 <body>
-	<jsp:include page="../layout/header.jsp"/>
-	<script src='<c:url value="resources/js/Board.js"/>'></script>
+	<!-- 페이지 로딩 이미지 -->
+	<div class="preloader">
+		<img src='<c:url value="/resources/images/loader.png"/>' class="preloader__image" alt="">
+	</div>
+	<!-- 페이지 로딩 이미지 -->
 	
-	<div class="container">
-		<div class="row">
-			<!-- 고객센터 사이드바 -->
-			<jsp:include page="sidesupport.jsp"/>
-			
-			<div class="col-md-8">
-				<h1>자주 찾는 질문</h1>
-				<hr>
-				<div class="d-flex">
-					<div class="mx-auto">
-						<ul class="faq">
-							<li><a href="support">전체</a></li>
-							<li><a href="supportOther?category=해외여행">해외여행</a></li>
-							<li><a href="supportOther?category=테마여행">테마여행</a></li>
-						</ul>
+	<!-- 메인 영역 -->
+	<div class="page-wrapper">
+		<jsp:include page="../layout/header.jsp"/>
+	
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
+			<div class="container">
+				<h2>자주 찾는 질문</h2>
+				<ul class="thm-breadcrumb list-unstyled">
+					<li><a href="notice">공지사항</a></li>
+					<li><a href="inquiry">1:1문의</a></li>
+					<li><a href="support">자주찾는질문</a></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="faq-one">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+						<c:choose>
+							<c:when test="${param.category eq null }">
+								<c:forEach items="${faqAllList}" var="List">
+								<div class="accrodion">
+									<div class="accrodion-title">
+									<h4><c:out escapeXml="false" value="${List.getTitle()}"/></h4>
+									</div>
+									<div class="accrodion-content">
+										<div class="inner">
+											<p><c:out escapeXml="false" value="${List.getContent()}"/></p>
+										</div>
+									</div>
+								</div>
+								</c:forEach>
+							</c:when>
+							<c:when test="${param.category ne null }">
+								<c:forEach items="${faqOtherList}" var="List">
+								<div class="accrodion">
+									<div class="accrodion-title">
+									<h4><c:out escapeXml="false" value="${List.getTitle()}"/></h4>
+									</div>
+									<div class="accrodion-content">
+										<div class="inner">
+											<p><c:out escapeXml="false" value="${List.getContent()}"/></p>
+										</div>
+									</div>
+								</div>
+								</c:forEach>
+							</c:when>
+						</c:choose>
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<jsp:include page="sidesupport.jsp"/>
+						<div class="sidebar">
+							<div class="offer-sidebar wow fadeInUp" data-wow-duration="1500ms" style="background-image: url(<c:url value="/resources/images/backgrounds/offer-sidebar-bg.jpg"/>);">
+								<h3>
+									<span class="offer-sidebar__price">20%</span>Off <br> On <span>Paris <br> Tour</span>
+								</h3>
+							</div>
+						</div>
 					</div>
 				</div>
-				<br>
-				<c:choose>
-					<c:when test="${param.category eq null }">
-						<div id="accordion">
-							<h4>전체</h4>
-							<hr>
-							<c:forEach items="${faqAllList}" var="List">
-							<div class="card">
-								<!-- FAQ 질문부분 -->
-								<div class="card-header" id="heading${List.getfId()}">
-									<h5 class="mb-0">
-										<button class="btn btn-link" data-toggle="collapse" data-target="#collapse${List.getfId()}" aria-expanded="true" aria-controls="collapse${List.getfId()}">
-											<c:out escapeXml="false" value="${List.getTitle()}"/>
-										</button>
-									</h5>
-								</div>
-								<!-- FAQ 답변부분 -->
-								<div id="collapse${List.getfId()}" class="collapse" aria-labelledby="heading${List.getfId()}" data-parent="#accordion">
-									<div class="card-body">
-										<c:out escapeXml="false" value="${List.getContent()}"/>
-									</div>
-								</div>
-							</div>
-							</c:forEach>
-						</div>
-					</c:when>
-					<c:when test="${param.category ne null }">
-						<div id="accordion">
-							<h4><c:out value="${param.category }"/></h4>
-							<hr>
-							<c:forEach items="${faqOtherList}" var="List">
-							<div class="card">
-								<!-- FAQ 질문부분 -->
-								<div class="card-header" id="heading${List.getfId()}">
-									<h5 class="mb-0">
-										<button class="btn btn-link" data-toggle="collapse" data-target="#collapse${List.getfId()}" aria-expanded="true" aria-controls="collapse${List.getfId()}">
-											<c:out escapeXml="false" value="${List.getTitle()}"/>
-										</button>
-									</h5>
-								</div>
-								<!-- FAQ 답변부분 -->
-								<div id="collapse${List.getfId()}" class="collapse" aria-labelledby="heading${List.getfId()}" data-parent="#accordion">
-									<div class="card-body">
-										<c:out escapeXml="false" value="${List.getContent()}"/>
-									</div>
-								</div>
-							</div>
-							</c:forEach>
-						</div>
-					</c:when>
-				</c:choose>
-				<br>
-				<!-- 게시글 페이징 처리(기준 10개) -->
-				<nav aria-label="Page navigation">
-					<ul class="pagination justify-content-center">
+			</div>
+		</section>
+		
+		<!-- 게시글 페이징 처리(기준 10개) -->
+		<div class="post-pagination">
+			<c:choose>
+				<c:when test="${param.category ne null }">
+					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+							<a class="disabledLink" href="supportOther?category=${param.category }&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="supportOther?category=${param.category }&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:otherwise>
+					</c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 						<c:choose>
-							<c:when test="${param.category ne null }">
-								<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
-								<c:choose>
-									<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-										<li class="page-item disabled">
-											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.prevPageNo}">Previus</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item">
-											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.prevPageNo}">Previus</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-								<!-- 페이지 갯수만큼 버튼 생성 -->
-								<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
-									<c:choose>
-										<c:when test="${i eq Paging.pageNo }">
-											<li class="page-item disabled">
-												<a class="page-link" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
-											</li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item">
-												<a class="page-link" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
-											</li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
-								<c:choose>
-									<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-										<li class="page-item disabled">
-											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.nextPageNo}">Next</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item">
-											<a class="page-link" href="supportOther?category=${param.category }&page=${Paging.nextPageNo}">Next</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
+							<c:when test="${i eq Paging.pageNo }">
+								<a class="active" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
 							</c:when>
 							<c:otherwise>
-								<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
-								<c:choose>
-									<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-										<li class="page-item disabled">
-											<a class="page-link" href="support?page=${Paging.prevPageNo}">Previus</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item">
-											<a class="page-link" href="support?page=${Paging.prevPageNo}">Previus</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-								<!-- 페이지 갯수만큼 버튼 생성 -->
-								<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
-									<c:choose>
-										<c:when test="${i eq Paging.pageNo }">
-											<li class="page-item disabled">
-												<a class="page-link" href="support?page=${i}"><c:out value="${i }"/></a>
-											</li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item">
-												<a class="page-link" href="support?page=${i}"><c:out value="${i }"/></a>
-											</li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
-								<c:choose>
-									<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-										<li class="page-item disabled">
-											<a class="page-link" href="support?page=${Paging.nextPageNo}">Next</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item">
-											<a class="page-link" href="support?page=${Paging.nextPageNo}">Next</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
+								<a href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
 							</c:otherwise>
 						</c:choose>
-					</ul>
-				</nav>
-			</div>
+					</c:forEach>
+					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+							<a class="disabledLink" href="supportOther?category=${param.category }&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="supportOther?category=${param.category }&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
+				<c:otherwise>
+					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+							<a class="disabledLink" href="support?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a class="page-link" href="support?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:otherwise>
+					</c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+						<c:choose>
+							<c:when test="${i eq Paging.pageNo }">
+								<a class="active" href="support?page=${i}"><c:out value="${i }"/></a>
+							</c:when>
+							<c:otherwise>
+								<a href="support?page=${i}"><c:out value="${i }"/></a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+							<a class="disabledLink" href="support?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="support?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 		</div>
+		<br>
+
+		<jsp:include page="../layout/footer.jsp" />
 	</div>
-	
-	<jsp:include page="../layout/footer.jsp"/>
-	
+	<!-- 메인 영역 -->
 </body>
 </html>
