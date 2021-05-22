@@ -46,7 +46,7 @@ public class InquiryBoardController {
 	
 	//1:1 문의 답변 작성
 	@RequestMapping(value = "/inquiryAnswerWrite", method = RequestMethod.POST)
-	public @ResponseBody int AnswerWrite(InquiryAnswerVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public @ResponseBody int AnswerWrite(InquiryAnswerVO vo) throws Exception {
 		
 		int result = service.InquiryAnswerWrite(vo);
 		service.InquiryStatusUpdate(vo.getiId());

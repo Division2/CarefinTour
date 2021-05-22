@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
 			<div class="container">
 				<h2>여행자 보험</h2>
 			</div>

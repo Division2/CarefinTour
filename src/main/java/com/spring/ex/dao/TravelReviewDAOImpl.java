@@ -14,7 +14,6 @@ import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
-
 @Repository
 public class TravelReviewDAOImpl implements TravelReviewDAO {
 	
@@ -72,8 +71,26 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 	
 	//여행 포토 댓글 조회
 	@Override
-	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception {
-		return sqlSession.selectList(namespace + ".TravelPhotoReplyView", prid);
+	public List<ReplyVO> TravelPhotoReplyView(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".TravelPhotoReplyView", map);
+	}
+	
+	//여행 포토 댓글 총 갯수
+	@Override
+	public int TravelPhotoReplyTotalCount(int prid) throws Exception {
+		return sqlSession.selectOne(namespace + ".getTravelPhotoReplyTotalCount", prid);
+	}
+	
+	//여행 포토 댓글 작성
+	@Override
+	public int TravelPhotoReplyWrite(ReplyVO vo) throws Exception {
+		return sqlSession.insert(namespace + ".TravelPhotoReplyWrite", vo);
+	}
+	
+	//여행 포토 댓글 삭제
+	@Override
+	public int TravelPhotoReplyDelete(int prrid) throws Exception {
+		return sqlSession.delete(namespace + ".TravelPhotoReplyDelete", prrid);
 	}
 	
 	//파일 조회

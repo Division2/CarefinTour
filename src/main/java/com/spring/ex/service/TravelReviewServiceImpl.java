@@ -90,8 +90,26 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	
 	//여행 포토 댓글 조회
 	@Override
-	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception {
-		return dao.TravelPhotoReplyView(prid);
+	public List<ReplyVO> TravelPhotoReplyView(HashMap<String, Integer> map) throws Exception {
+		return dao.TravelPhotoReplyView(map);
+	}
+	
+	//여행 포토 댓글 총 갯수
+	@Override
+	public int TravelPhotoReplyTotalCount(int prid) throws Exception {
+		return dao.TravelPhotoReplyTotalCount(prid);
+	}
+	
+	//여행 포토 댓글 작성
+	@Override
+	public int TravelPhotoReplyWrite(ReplyVO vo) throws Exception {
+		return dao.TravelPhotoReplyWrite(vo);
+	}
+	
+	//여행 포토 댓글 삭제
+	@Override
+	public int TravelPhotoReplyDelete(int prrid) throws Exception {
+		return dao.TravelPhotoReplyDelete(prrid);
 	}
 
 	//파일 조회
