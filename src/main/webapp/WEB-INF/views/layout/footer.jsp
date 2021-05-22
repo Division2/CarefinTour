@@ -150,7 +150,7 @@
 							<input type="password" class="form-control" id="Password" placeholder="비밀번호를 입력하세요" required>
 						</div>
 						<input type="hidden" id="lastDate" name="lastDate" value="<%=now%>">
-						<button id="Login" class="btn btn-primary btn-block btn-round">로그인</button>
+						<button id="Login" class="thm-btn-psd btn-block btn-round">로그인</button>
 					</div>
 				</div>
 				<div class="modal-footer d-flex justify-content-center">
@@ -180,7 +180,7 @@
 									<input type="text" class="form-control" id="RegisterUserID" name="UserID" placeholder="아이디" required autofocus>
 								</div>
 								<div class="col-sm-3">
-									<button type="button" id="IDCheck" class="btn btn-primary">중복확인</button>
+									<button type="button" id="IDCheck" class="thm-btn-psd2">중복확인</button>
 								</div>
 							</div>
 							<div class="form-group">
@@ -209,13 +209,13 @@
 									<input type="text" id="Address" name="Address" class="form-control" placeholder="주소" required readonly>
 								</div>
 								<div class="col-sm-3">
-									<button type="button" class="btn btn-warning" onclick="goPopup()">주소찾기</button>
+									<button type="button" class="thm-btn-psd2" onclick="goPopup()">주소찾기</button>
 								</div>
 							</div>
 							<input type="hidden" id="Grade" name="Grade" value="User">
 							<input type="hidden" id="Mileage" name="Mileage" value="0">
-							<button type="button" id="register" class="btn btn-primary btn-block btn-round" onclick="Register()" disabled>회원가입</button>
-							<button type="reset" id="registerReset" class="btn btn-danger btn-block btn-round">취소</button>
+							<button type="button" id="register" class="thm-btn-psd btn-block btn-round" onclick="Register()" disabled>회원가입</button>
+							<button type="reset" id="registerReset" class="thm-btn-psd btn-block btn-round">취소</button>
 						</form>
 					</div>
 				</div>

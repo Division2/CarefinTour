@@ -162,6 +162,26 @@ h6 {
 	color: #ffffff;
 }
 
+.thm-btn-psd2 {
+	display: inline-block;
+	vertical-align: middle;
+	border: none;
+	outline: none;
+	background-color: var(--thm-base);
+	font-size: 18px;
+	color: var(--thm-black);
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 5px 10px;
+	-webkit-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+.thm-btn-psd2:hover {
+	background-color: var(--thm-primary);
+	color: #ffffff;
+}
+
 .bootstrap-select .btn-light:not(:disabled):not(.disabled).active,
 .bootstrap-select .btn-light:not(:disabled):not(.disabled):active,
 .bootstrap-select .show>.btn-light.dropdown-toggle {

@@ -50,6 +50,7 @@
 								<li><a href="#"><i class="fas fa-coins"></i> ${member.getMileage() }M</a></li>
 								<li><a href="#"><i class="fas fa-mobile"></i> ${member.getPhone() }</a></li>
 								<li><a href="#"><i class="far fa-envelope"></i> ${member.getEmail() }</a></li>
+								<li><a href="#"><i class="fas fa-birthday-cake"></i> ${member.getBirth() }</a></li>
 							</ul>
 							<p>${member.getName() }님의 회원 정보를 간략하게 보여주는 페이지입니다.<br>
 								자세한 정보를 보고 싶으시다면 <a href='info' class="">정보 수정</a>으로 이동해 주세요.

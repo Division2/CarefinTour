@@ -49,7 +49,7 @@
 						<div class="d-flex">
 							<h1>정보 수정</h1>
 							<div class="ml-auto">
-								<button type="button" class="btn btn-primary" onclick="MyInfoUpdate()">수정하기</button>
+								<button type="button" class="thm-btn-psd" onclick="MyInfoUpdate()">수정하기</button>
 							</div>
 						</div>
 						<hr>
@@ -61,9 +61,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										
 										<input type="text" id="MyInfoUserID" name="UserID" value="${member.getUserID()}" class="form-control" required readonly>
-									
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -125,7 +123,7 @@
 								</div>
 								<div class="col-xs-2 col-md-2">
 									<div class="input-group my-2 mb-1">
-										<button type="button" class="btn btn-info" onclick="goPopup2()">주소 찾기</button>
+										<button type="button" class="thm-btn-psd2" onclick="goPopup2()">주소 찾기</button>
 									</div>
 								</div>
 							</div>
