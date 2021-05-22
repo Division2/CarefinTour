@@ -74,7 +74,7 @@ public class PackageController {
 	}
 	
 	//여행패키지 상세페이지 출력
-	@RequestMapping(value = "/admin/packageproduct", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/packageProductDetail", method = RequestMethod.GET)
 	public String getPackageProductDetail()  throws Exception {
 		return "admin/site/packageProductDetail";
 	}
