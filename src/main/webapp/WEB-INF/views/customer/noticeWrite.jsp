@@ -44,34 +44,33 @@
 			<div class="container">
 				<h1>공지사항</h1>
 				<hr>
-				<form id="NoticeBoardWrite" name="NoticeBoardWrite" action="noticeWrite" method="POST">
-					<div class="form-group row">
-						<label class="form-label col-sm-2" for="important">중요</label>
-						<div class="col-sm-1">
-							<input class="form-control" type="checkbox" id="Important_CheckBox" name="Important_CheckBox">
-							<input type="hidden" id="Important" name="Important">
+				<div class="comment-form">
+					<form id="NoticeBoardWrite" name="NoticeBoardWrite" action="noticeWrite" method="POST" class="contact-one__form">
+						<div class="row low-gutters">
+							<div class="form-group">
+								<label class="form-label" for="important"><strong>중요</strong></label>
+								<input type="checkbox" id="Important_CheckBox" name="Important_CheckBox" class="form-control">
+								<input type="hidden" id="Important" name="Important">
+							</div>
+							<div class="input-group">
+								<label class="form-label" for="Title"><strong>제목</strong></label>
+								<input type="text" id="Title" name="Title">
+							</div>
+							<div class="input-group">
+								<label class="form-label" for="Content"><strong>내용</strong></label>
+								<textarea id="Content" name="Content" rows="10"></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<label class="form-label col-sm-2" for="Title">제목</label>
-						<div class="col-sm-10">
-							<input class="form-control" type="text" id="Title" name="Title">
+			        	<div class="row">
+				    		<div class="col-auto mr-auto"></div>
+							<div class="col-auto">
+								<button type="button" class="thm-btn-psd" onclick="NoticeWrite()">등록</button>
+								<button type="button" class="thm-btn-psd" onclick="location.href='notice'">이전</button>
+								<button type="reset" class="thm-btn-psd">취소</button>
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<label class="form-label col-sm-2" for="Content">내용</label>
-						<div class="col-sm-10">
-							<textarea class="form-control" rows="10" id="Content" name="Content"></textarea>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm-2"></div>
-						<div class="col-sm-10">
-							<button type="button" class="btn btn-primary" onclick="NoticeWrite()">등록</button>
-							<button type="reset" class="btn btn-primary">취소</button>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</section>
 		

@@ -102,7 +102,7 @@
 				<h5>더욱 편안한 여행되시길 바랍니다.</h5>
 				<hr>
 				<label for="city">세계 날씨</label>
-				<select class="form-control" name="city" id="city" onchange="weather()">
+				<select name="city" id="city" class="selectpicker" onchange="weather()" data-width="100%">
 					<option>도시를 선택해주세요</option>
 					<option value="Seoul">서울</option>
 					<option value="Busan">부산</option>
@@ -112,9 +112,11 @@
 					<tbody>
 						<tr>
 							<td align="center">
+								<br>
 								<div class="CurrIcon"></div>
 							</td>
 							<td>
+								<br>
 								<h1 class="CurrTemp"></h1>
 								<h6 class="minTemp"></h6>
 								<h6 class="maxTemp"></h6>
