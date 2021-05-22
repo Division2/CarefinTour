@@ -43,7 +43,7 @@
 							<option>제목</option>
 						</select>
 						<input type="text" name="title" id="title" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
-						<button type="submit" class="btn px-3 btn-primary">
+						<button type="submit" class="btn px-3 thm-btn-psd">
 							<i class="fas fa-search"></i>
 						</button>
 					</form>
@@ -71,9 +71,9 @@
 							<td>${NoticeBoardVO.reDate }</td>
 						</c:when>
 						<c:otherwise>
-							<td style="background: rgb(245,245,245);"><i class="fas fa-bullhorn"></i></td>
-							<td style="background: rgb(245,245,245);"><a href="noticeView?nId=${NoticeBoardVO.nId }"><font style="color:#ff4f5a;"><c:out escapeXml="false" value="${NoticeBoardVO.title }"/></font></a></td>
-							<td style="background: rgb(245,245,245);">${NoticeBoardVO.reDate }</td>
+							<td id="stresstable"><i class="fas fa-bullhorn"></i></td>
+							<td id="stresstable"><a href="noticeView?nId=${NoticeBoardVO.nId }"><font style="color:#ff4f5a;"><c:out escapeXml="false" value="${NoticeBoardVO.title }"/></font></a></td>
+							<td id="stresstable">${NoticeBoardVO.reDate }</td>
 						</c:otherwise>
 					</c:choose>
 						</tr>
@@ -83,7 +83,7 @@
 				<c:if test="${sessionScope.member.getUserID() ne null && sessionScope.member.getGrade() eq 'Admin'}">
 				<div class="d-flex">
 					<div class="ml-auto">
-						<button class="btn btn-primary" onclick="javascript:location='noticeWrite'">등록</button>
+						<button class="thm-btn-psd" onclick="javascript:location='noticeWrite'">등록</button>
 					</div>
 				</div>
 				<br>

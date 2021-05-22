@@ -55,6 +55,7 @@ font-family: 'Satisfy', cursive;*/
 }
 
 .disabledLink { pointer-events: none; cursor: default; }
+#stresstable { background: rgb(245,245,245); }
 
 body {
 	font-family: var(--thm-font);

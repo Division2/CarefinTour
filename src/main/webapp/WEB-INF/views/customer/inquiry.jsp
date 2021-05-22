@@ -44,22 +44,17 @@
 							<option>제목</option>
 						</select> <input type="text" name="title" id="title"
 							class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
-						<button type="submit" class="btn px-3 btn-primary">
+						<button type="submit" class="btn px-3 thm-btn-psd">
 							<i class="fas fa-search"></i>
 						</button>
 					</form>
 				</div>
 				<table class="table table-white">
-					<colgroup>
-						<col width="10%">
-						<col width="10%">
-						<col width="50%">
-					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>카테고리</th>
-							<th>제목</th>
+							<th width="60%">제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
 							<th>답변상태</th>
@@ -70,7 +65,7 @@
 						<tr>
 							<td>${InquiryBoardVO.iId }</td>
 							<td>${InquiryBoardVO.category }</td>
-							<td><a href="inquiryView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
+							<td width="60%"><a href="inquiryView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
 							<td>${InquiryBoardVO.name}</td>
 							<td>${InquiryBoardVO.reDate }</td>
 						<c:choose>
@@ -91,7 +86,7 @@
 				<c:if test="${sessionScope.member ne null}">
 				<div class="d-flex">
 					<div class="ml-auto">
-						<button class="btn btn-primary" onclick="javascript:location='inquiryWrite'">문의하기</button>
+						<button class="thm-btn-psd" onclick="javascript:location='inquiryWrite'">문의하기</button>
 					</div>
 				</div>
 				<br>

@@ -49,7 +49,7 @@
 							<div class="col-md-12">
 								<div class="input-group">
 									<label for="userId" class="form-label"><strong>작성자</strong></label>
-									<input type="text" class="form-control" id="userId" name="userId" value="${sessionScope.member.getUserID()}" required readonly>
+									<input type="text" id="userId" name="userId" value="${sessionScope.member.getUserID()}" required readonly>
 								</div>
 							</div>
 							<div class="col-md-12">

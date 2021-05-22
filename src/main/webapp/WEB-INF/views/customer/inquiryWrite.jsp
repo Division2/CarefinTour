@@ -44,44 +44,46 @@
 			<div class="container">
 				<h1>1:1 문의 작성</h1>
 				<hr>
-				<form id="InquiryBoardWrite" name="InquiryBoardWrite" action="inquiryWrite" method="POST">
-				<div class="form-group row">
-					<label class="col-sm-2" for="Category">문의유형</label>
-					<div class="col-sm-10">
-						<select class="form-control" id="Category" name="Category">
-							<option value="null">문의 유형 선택</option>
-							<option value="패키지문의">패키지 문의</option>
-							<option value="여행문의">여행 문의</option>
-							<option value="결제문의">결제 문의</option>
-							<option value="호텔문의">호텔 문의</option>
-							<option value="예약문의">예약 문의</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2" for="Title">문의제목</label>
-					<div class="col-sm-10">
-						<input class="form-control" type="text" id="Title" name="Title">
-					</div>
-				</div>
-				<div class="form-group row">
-					<label class="form-label col-sm-2" for="Content">문의내용</label>
-					<div class="col-sm-10">
-						<textarea class="form-control" rows="10" id="Content" name="Content"></textarea>
-					</div>
-				</div>
-				<input type="hidden" id="UserID" name="UserID" value="${member.getUserID()}">
-				<input type="hidden" id="UserName" name="Name" value="${member.getName()}">
-				<input type="hidden" id="UserPhone" name="Phone" value="${member.getPhone()}">
-					<div class="form-group row">
-						<div class="col-sm-2"></div>
-						<div class="col-sm-10">
-							<button type="button" class="btn btn-primary" onclick="InquiryWrite()">등록</button>
-							<button type="button" class="btn btn-primary" onclick="location.href='inquiry'">이전</button>
-							<button type="reset" class="btn btn-primary">취소</button>
+				<div class="comment-form">
+					<form id="InquiryBoardWrite" name="InquiryBoardWrite" action="inquiryWrite" method="POST" class="contact-one__form">
+						<div class="row low-gutters">
+							<div class="col-md-12">
+								<label for="Category" class="form-label"><strong>문의 유형</strong></label>
+								<div class="input-group">
+									<select class="selectpicker" id="Category" name="Category" data-width="100%">
+										<option>문의 유형 선택</option>
+										<option value="패키지문의">패키지 문의</option>
+										<option value="여행문의">여행 문의</option>
+										<option value="결제문의">결제 문의</option>
+										<option value="호텔문의">호텔 문의</option>
+										<option value="예약문의">예약 문의</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="input-group">
+									<label for="title" class="form-label"><strong>문의 제목</strong></label>
+									<input type="text" id="Title" name="Title">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="input-group">
+									<label for="content" class="form-label"><strong>문의 내용</strong></label>
+									<textarea id="Content" name="Content" rows="5"></textarea>
+								</div>
+							</div>
+							<input type="hidden" id="UserID" name="UserID" value="${member.getUserID()}">
+							<input type="hidden" id="UserName" name="Name" value="${member.getName()}">
+							<input type="hidden" id="UserPhone" name="Phone" value="${member.getPhone()}">
+				    		<div class="col-auto mr-auto"></div>
+							<div class="col-auto">
+								<button type="button" class="thm-btn-psd" onclick="InquiryWrite()">등록</button>
+								<button type="button" class="thm-btn-psd" onclick="location.href='inquiry'">이전</button>
+								<button type="reset" class="thm-btn-psd">취소</button>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</section>
 		

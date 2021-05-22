@@ -5,14 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>호텔예약 - 블루핀투어</title>
-<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
-
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/d9cab3f7fe.js" crossorigin="anonymous"></script>
-<!-- 제이쿼리 스크립트 위로 부트스트랩 올리면 메뉴바가 작동안해요 -->
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <style>

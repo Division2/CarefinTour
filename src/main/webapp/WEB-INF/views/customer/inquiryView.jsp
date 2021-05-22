@@ -25,7 +25,6 @@
 		<!-- 메인 영역 -->
 	<div class="page-wrapper">
 	<jsp:include page="../layout/header.jsp"/>
-	<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
 			<div class="container">
@@ -48,15 +47,15 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">이름</td>
+									<td id="stresstable">이름</td>
 									<td>${content.getName() }</td>
-									<td style="background: rgb(198, 198, 198);">등록일</td>
+									<td id="stresstable">등록일</td>
 									<td>${content.getReDate() }</td>
 								</tr>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">카테고리</td>
+									<td id="stresstable">카테고리</td>
 									<td>${content.getCategory() }</td>
-									<td style="background: rgb(198, 198, 198);">답변여부</td>
+									<td id="stresstable">답변여부</td>
 							<c:choose>
 								<c:when test="${content.getStatus() eq 0}">
 									<td><span class="inquiry-status status-0">답변대기</span></td>
@@ -70,11 +69,11 @@
 							</c:choose>
 								</tr>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">제목</td>
+									<td id="stresstable">제목</td>
 									<td colspan="3"><c:out escapeXml="false" value="${content.getTitle() }"/></td>
 								</tr>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">내용</td>
+									<td id="stresstable">내용</td>
 									<td colspan="3">
 										<div style="width:500px; height: 300px;">
 											<c:out escapeXml="false" value="${fn:replace(content.getContent(), crlf, '<br>')}"/>
@@ -100,7 +99,7 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">내용</td>
+									<td id="stresstable">내용</td>
 									<td colspan="3">
 										<div style="width:500px; height: 300px;">
 											<c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), crlf, '<br>')}"/>
@@ -117,11 +116,11 @@
 				<div class="d-flex">
 					<div class="ml-auto">
 					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
-						<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
-						<button class="btn btn-danger" type="button"  onclick="answerInquiryDelete()">삭제</button>
+						<button class="thm-btn-psd" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
+						<button class="thm-btn-psd" type="button"  onclick="answerInquiryDelete()">삭제</button>
 					</c:if>
 					<c:if test="${answerContent ne null}">
-						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
 					</c:if>
 					</div>
 				</div>
@@ -129,19 +128,25 @@
 				<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin' && answerContent eq null }">
 				<h6 class="border-bottom pb-2 mb-0"></h6>
 				<br>
-				<form name="inquiryAnswerWrite" action="inquiryAnswerWrite" method="POST">
-					<div class="bg-white rounded shadow-sm">
-						<textarea id="answerContent" name="answerContent" class="form-control" rows="3" placeholder="답글을 입력해 주세요" required></textarea>
-						<input type="hidden" id="iId" name="iId" value="${param.iId }">
-						<button type="button" class="btn btn-primary" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
-					</div>
-				</form>
+				<div class="comment-form">
+					<form name="inquiryAnswerWrite" action="inquiryAnswerWrite" method="POST" class="contact-one__form">
+						<div class="row low-gutters">
+							<div class="col-md-12">
+								<div class="input-group">
+									<textarea id="answerContent" name="answerContent" class="form-control" rows="3" placeholder="답글을 입력해 주세요" required></textarea>
+									<input type="hidden" id="iId" name="iId" value="${param.iId }">
+									<button type="button" class="thm-btn-psd" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 				</c:if>
 				<br>
 				<div class="d-flex">
 					<div class="ml-auto">
 					<c:if test="${answerContent eq null}">
-						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
 					</c:if>
 					</div>
 				</div>
@@ -150,6 +155,7 @@
 		</section>
 	
 		<jsp:include page="../layout/footer.jsp"/>
+		<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 		<!-- 답변 수정 Modal -->
 		<div class="modal fade" id="AnswerEditModal" tabindex="-1" role="dialog" aria-labelledby="AnswerEditModalLabel" aria-hidden="true">
@@ -168,7 +174,7 @@
 									<textarea id="answerEditContent" name="answerContent" class="form-control" rows="3"><c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), '<br>', crlf)}"/></textarea>
 								</div>
 								<input type="hidden" id="iId" name="iId" value="<%=request.getParameter("iId")%>">
-								<button type="submit" class="btn btn-primary btn-block btn-round">수정하기</button>
+								<button type="submit" class="thm-btn-psd btn-block btn-round">수정하기</button>
 							</form>
 						</div>
 					</div>

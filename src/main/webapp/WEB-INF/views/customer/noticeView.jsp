@@ -41,27 +41,23 @@
 			<div class="container">
 				<h1>공지사항</h1>
 				<hr>
-				<br>
-				<h3 id="title"><c:out escapeXml="false" value="${content.title }"/></h3>
-				<hr>
-				<div class="d-flex">
-					<small class="text-muted">작성자 : 블루핀투어</small>
-					<div class="ml-auto">
-						<p class="card-text"><small class="text-muted">작성일 : ${content.reDate }</small></p>
-					</div>
+				<div class="blog-details__content">
+					<ul class="list-unstyled blog-one__meta">
+						<li><a href="#"><i class="far fa-user-circle"></i> 케어핀투어</a></li>
+						<li class="ml-auto"><a href="#"><i class="far fa-clock"></i> ${content.reDate }</a></li>
+					</ul>
+					<h3 id="title"><c:out escapeXml="false" value="${content.title }"/></h3>
+					<br>
+					<p><c:out escapeXml="false" value="${fn:replace(content.content, crlf, '<br>')}"/></p>
 				</div>
-				<div class="jumbotron">
-					<p id="content"><c:out escapeXml="false" value="${fn:replace(content.getContent(), crlf, '<br>')}"/></p>
-				</div>
-				<hr>
 				<div class="row mt-3">
 					<div class="col-auto mr-auto"></div>
 					<div class="col-auto">
 					<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
-						<button type="button" class="btn btn-primary" onclick="location.href='noticeModifyView?nId=<%=request.getParameter("nId")%>'">수정</button>
-						<button type="button" class="btn btn-danger" onclick="NoticeDelete()">삭제</button>
+						<button type="button" class="thm-btn-psd" onclick="location.href='noticeModifyView?nId=<%=request.getParameter("nId")%>'">수정</button>
+						<button type="button" class="thm-btn-psd" onclick="NoticeDelete()">삭제</button>
 					</c:if>
-						<button type="button" class="btn btn-primary" onclick="location.href='notice'">목록</button>
+						<button type="button" class="thm-btn-psd" onclick="location.href='notice'">목록</button>
 					</div>
 				</div>
 			</div>
