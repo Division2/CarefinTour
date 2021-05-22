@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/daeman.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/tai.png"/>);">
 			<div class="container">
 				<h2>대만/동남아/서남아</h2>
 				<ul class="thm-breadcrumb list-unstyled">

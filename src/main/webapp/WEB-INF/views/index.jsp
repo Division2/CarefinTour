@@ -24,7 +24,7 @@
 		<jsp:include page="layout/header.jsp"/>
 		
 		<!-- 여행 검색 -->
-		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner.jpg"/>);">
+		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner2.jpg"/>);">
 			<div class="container">
 				<h2>
 					Find your <span>next tour</span>

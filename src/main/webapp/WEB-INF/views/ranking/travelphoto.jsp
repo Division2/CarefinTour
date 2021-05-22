@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/photo.png"/>);">
 			<div class="container">
 				<h2>여행 포토</h2>
 				<ul class="thm-breadcrumb list-unstyled">
