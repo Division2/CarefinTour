@@ -19,6 +19,9 @@ public interface PackageService {
 	//여행패키지 총 갯수
 	public int AdminPackageTotalCount() throws Exception;
 	
+	//여행패키지 상세페이지 출력
+	public PackageVO ProductPackageDetail(int pid) throws Exception;
+	
 	//여행패키지 삭제
 	public void ProductPackageDelete(String pid) throws Exception;
 }

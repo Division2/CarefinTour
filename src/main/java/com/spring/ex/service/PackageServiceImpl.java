@@ -46,10 +46,18 @@ public class PackageServiceImpl implements PackageService {
 	public int AdminPackageTotalCount() throws Exception {
 		return dao.AdminPackageTotalCount();
 	}
-
+	
+	//여행패키지 상세페이지 출력
+	@Override
+	public PackageVO ProductPackageDetail(int pid) throws Exception {
+		return dao.ProductPackageDetail(pid);
+	}
+	
 	//여행패키지 삭제
 	@Override
 	public void ProductPackageDelete(String pid) throws Exception {
 		dao.ProductPackageDelete(pid);
 	}
+
+
 }

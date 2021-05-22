@@ -133,13 +133,13 @@ function fn_addFile() {
 					            </div>
 					        </div>
        					    <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>어린이 가격</strong></label>
+					            <label for="content" class="form-label col-sm-2"><strong>아동 가격</strong></label>
 					            <div class="col-sm-10">
 					                <input type="text" class="form-control" id="kidprice" name="kidprice" required>
 					            </div>
 					        </div>
        					    <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>아동 가격</strong></label>
+					            <label for="content" class="form-label col-sm-2"><strong>유아 가격</strong></label>
 					            <div class="col-sm-10">
 					                <input type="text" class="form-control" id="smallkidprice" name="smallkidprice" required>
 					            </div>
