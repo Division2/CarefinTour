@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="footer-widget__column footer-widget__about">
 						<a href="main" class="footer-widget__logo">
-							<img src='<c:url value="/resources/images/logo-dark.png"/>' width="123" alt="">
+							<img src='<c:url value="/resources/images/Logo.png"/>' width="123" alt="">
 						</a>
 						<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
 						<a href="mailto:ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
@@ -70,7 +70,7 @@
 			<div class="side-menu__block-inner ">
 				<div class="side-menu__top justify-content-end">
 					<a href="#" class="side-menu__toggler side-menu__close-btn">
-						<img src='<c:url value="/resources/images/shapes/close-1-1.png"/>' alt="">
+						<img src='<c:url value="/resources/images/Logo.png"/>' alt="">
 					</a>
 				</div>
 				<nav class="mobile-nav__container"></nav>
