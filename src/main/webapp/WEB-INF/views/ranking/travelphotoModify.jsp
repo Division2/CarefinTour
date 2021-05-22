@@ -25,8 +25,6 @@
 	<!-- 메인 영역 -->
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
-		<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
-		<script src='<c:url value="resources/js/photomodify.js"/>'></script>
 		
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.jpg"/>);">
 			<div class="container">
@@ -39,60 +37,64 @@
 		
 		<section class="tour-one">
 			<div class="container">
-				<form name="travelphotoUpdate" method="POST" id="modify" action="travelphotoModify" enctype="multipart/form-data">
-					<input type="hidden" id="prid" name="prid" value="${update.prid}" />
-					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
-					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
-					<div class="form-group row">
-			            <label for="title" class="form-label col-sm-2"><strong>제목</strong></label>
-			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="Title" name="title" value="${update.title}" required>
-			            </div>
-					</div>
-			        <div class="form-group row">
-			            <label for="author" class="form-label col-sm-2"><strong>작성자</strong></label>
-			            <div class="col-sm-10">
-			                <input type="text" class="form-control" id="author" name="UserID" required readonly value="${update.userId}">
-			            </div>
-			        </div>
-			        <div class="form-group row">
-			            <label for="content" class="form-label col-sm-2"><strong>내용</strong></label>
-			            <div class="col-sm-10">
-			                <textarea class="form-control" id="Content" name="Content" rows="10"><c:out escapeXml="false" value="${fn:replace(update.content, '<br>', crlf)}"/></textarea>
-			            </div>
-			        </div>
-					<div class="form-group row">
-			           <label for="file" class="form-label col-sm-2"><strong>첨부 파일</strong></label>
-						<div class="col-sm-10">
-			                <span>파일 목록</span>
-								<div class="form-group" style="border: 1px solid #dbdbdb;">
-									<div id="fileIndex">
-								<c:forEach var="file" items="${file}" varStatus="var">
-									<div>
-										<input type="hidden" id="prid" name="prid_${var.index}" value="${file.prid}">
-										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="prid_${var.index}">
-										<a href="#" id="fileName" onclick="return false;">${file.o_file_name}</a>(${file.file_size}kb)
-										<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button" style="float:right;">삭제</button><br>
-									</div>
-								</c:forEach>
+				<div class="comment-form">
+					<form action="travelphotoModify" role="form" method="POST" name="travelphotoUpdate" id="modify" enctype="multipart/form-data" class="contact-one__form">
+						<div class="row low-gutters">
+							<input type="hidden" id="prid" name="prid" value="${update.prid}" />
+							<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+							<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+							
+							<div class="col-md-12">
+								<div class="input-group">
+									<label for="title" class="form-label"><strong>제목</strong></label>
+									<input type="text" id="Title" name="Title" value="${update.title}">
 								</div>
 							</div>
-            			</div>
-					</div>
-					<div class="row">
-						<div class="col-auto mr-auto"></div>
-		            		<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
-						<div class="col-auto">
-		            		<input class="btn btn-primary" type="button" value="수정" onclick="modify()">
-		            		<input class="btn btn-primary" type="button" value="이전" onclick="location.href='travelphotoView?prid=${param.prid}'">
-		            		<input class="btn btn-primary" type="button" value="목록" onclick="location.href='travelphoto'">
+							<div class="col-md-12">
+								<div class="input-group">
+									<label for="userId" class="form-label"><strong>작성자</strong></label>
+									<input type="text" class="form-control" id="author" name="UserID" value="${update.userId}" required readonly>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="input-group">
+									<label for="content" class="form-label"><strong>내용</strong></label>
+									<textarea id="Content" name="Content" rows="5"><c:out escapeXml="false" value="${fn:replace(update.content, '<br>', crlf)}"/></textarea>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="file" class="form-label"><strong>첨부 파일</strong></label>
+								<div class="form-group" style="border: 1px solid #dbdbdb;">								
+									<div id="fileIndex">
+									<c:forEach var="file" items="${file}" varStatus="var">
+										<div>
+											<input type="hidden" id="prid" name="prid_${var.index}" value="${file.prid}">
+											<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="prid_${var.index}">
+											<a href="#" id="fileName" onclick="return false;">${file.o_file_name}</a>(${file.file_size}kb)
+											<button id="fileDel" onclick="fn_del('${file.prid}','prid_${var.index}');" type="button" style="float:right;">삭제</button><br>
+										</div>
+									</c:forEach>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-				</form>
+						<div class="row">
+							<div class="col-auto mr-auto"></div>
+			            		<input class="thm-btn-psd" id="fileAdd_btn" value="파일추가" style="width:135px;">
+							<div class="col-auto">
+			            		<input class="thm-btn-psd" type="button" value="수정" onclick="Modify()">
+			            		<input class="thm-btn-psd" type="button" value="이전" onclick="location.href='travelphotoView?prid=${param.prid}'">
+			            		<input class="thm-btn-psd" type="button" value="목록" onclick="location.href='travelphoto'">
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</section>
 
 		<jsp:include page="../layout/footer.jsp" />
+		<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
+		<script src='<c:url value="resources/js/TravelPhoto.js"/>'></script>
 	</div>
 	<!-- 메인 영역 -->
 </body>
