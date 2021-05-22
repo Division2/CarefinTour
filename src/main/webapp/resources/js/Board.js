@@ -338,6 +338,40 @@ function answerInquiryDelete() {
 	})
 }
 
+/* 관리자 1:1문의 삭제 comfirm */
+function answerInquiryDelete2() {
+	Swal.fire({
+		title: '1:1 문의',
+		text: "정말 삭제하시겠습니까?",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			swal({
+				title: "1:1 문의",
+				text: "답변이 성공적으로 삭제되었습니다.",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					var iId = getParameterByName('iId');
+					
+					location.href='inquireDelete?iId=' + iId;
+					location.href='inquireView?iId=' + iId;
+				}
+			});
+		}
+	})
+}
+
 /* 여행 포토 게시글 삭제 */
 function TravelPhotoDelete() {
 	Swal.fire({
@@ -371,3 +405,85 @@ function TravelPhotoDelete() {
 		}
 	})
 }
+
+
+/* FAQ 등록 유효성 검사 */
+function FAQWrite() {
+	var Title = $("#Title").val();
+	var Content = $("#Content").val();
+	
+	if(!Title) {
+		swal({
+			title: "FAQ",
+			text: "질문이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Content) {
+		swal({
+			title: "FAQ",
+			text: "내용이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	
+	$("#FAQBoardWrite").submit();
+}
+
+/* FAQ 수정 유효성 검사 */
+function FAQModify() {
+	var Title = $("#Title").val();
+	var Content = $("#Content").val();
+	
+	if(!Title) {
+		swal({
+			title: "FAQ",
+			text: "질문이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Content) {
+		swal({
+			title: "FAQ",
+			text: "내용이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else {
+		Swal.fire({
+			title: 'FAQ',
+			text: "정말 수정하시겠습니까?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '확인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				swal({
+					title: "FAQ",
+					text: "FAQ가 수정되었습니다.",
+					icon: "success",
+					buttons : {
+						confirm : {
+							value : true
+						}
+					}
+				}).then((result) => {
+					if(result) {
+						$("#FAQBoardModify").submit();
+					}
+				});
+			}
+		})
+	}
+}
+	
