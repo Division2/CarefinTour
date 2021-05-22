@@ -34,6 +34,12 @@ public class PackageDAOImpl implements PackageDAO {
 	public int AdminPackageTotalCount() throws Exception {
 		return sql.selectOne(namespace + ".getProductPackageTotalCount");
 	}
+
+	//여행패키지 삭제
+	@Override
+	public void ProductPackageDelete(String pid) throws Exception {
+		sql.selectOne(namespace + ".ProductPackageDelete", pid);
+	}
 	
 	
 }
