@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/companypic.png"/>);">
 			<div class="container">
 				<h2>회사 개요</h2>
 			</div>
