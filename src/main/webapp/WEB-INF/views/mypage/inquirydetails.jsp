@@ -12,7 +12,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
-<link href='<c:url value="/resources/css/my_table.css"/>' rel="stylesheet">
 <link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 <title>CarefinTour</title>
 </head>
@@ -56,15 +55,15 @@
 								<table class="table">
 									<tbody>
 										<tr>
-											<td style="background: rgb(198, 198, 198);">이름</td>
+											<td id="stresstable">이름</td>
 											<td>${MyPageInquiryQuestion.getName() }</td>
-											<td style="background: rgb(198, 198, 198);">등록일</td>
+											<td id="stresstable">등록일</td>
 											<td>${MyPageInquiryQuestion.getReDate() }</td>
 										</tr>
 										<tr>
-											<td style="background: rgb(198, 198, 198);">카테고리</td>
+											<td id="stresstable">카테고리</td>
 											<td>${MyPageInquiryQuestion.getCategory() }</td>
-											<td style="background: rgb(198, 198, 198);">답변여부</td>
+											<td id="stresstable">답변여부</td>
 									<c:choose>
 										<c:when test="${MyPageInquiryQuestion.getStatus() eq 0}">
 											<td><span class="inquiry-status status-0">답변대기</span></td>
@@ -78,11 +77,11 @@
 									</c:choose>
 										</tr>
 										<tr>
-											<td style="background: rgb(198, 198, 198);">제목</td>
+											<td id="stresstable">제목</td>
 											<td colspan="3"><c:out escapeXml="false" value="${MyPageInquiryQuestion.getTitle() }"/></td>
 										</tr>
 										<tr>
-											<td style="background: rgb(198, 198, 198);">내용</td>
+											<td id="stresstable">내용</td>
 											<td colspan="3">
 												<div style="width:500px; height: 300px;">
 													<c:out escapeXml="false" value="${fn:replace(MyPageInquiryQuestion.getContent(), crlf, '<br>')}"/>
@@ -108,7 +107,7 @@
 								<table class="table">
 									<tbody>
 										<tr>
-											<td style="background: rgb(198, 198, 198);">내용</td>
+											<td id="stresstable">내용</td>
 											<td colspan="3">
 												<div style="width:500px; height: 300px;">
 													<c:out escapeXml="false" value="${fn:replace(MyPageInquiryAnswer.getAnswerContent(), crlf, '<br>')}"/>

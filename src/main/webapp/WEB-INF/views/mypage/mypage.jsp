@@ -44,23 +44,16 @@
 					<jsp:include page="sidemypage.jsp"/>
 					
 					<div class="col-md-8">
-						<div class="jumbotron mx-4">
-							<div class="d-flex">
-								<div class="mx-auto">
-									<p>${member.getName() }님 안녕하세요!</p>
-								</div>
-								<div class="mx-auto">
-									<p>마일리지 : ${member.getMileage() }M</p>
-								</div>
-							</div>
-							<div class="d-flex">
-								<div class="mx-auto">
-									<p>연락처 : ${member.getPhone() }</p>
-								</div>
-								<div class="mx-auto">
-									<p>이메일 : ${member.getEmail() }</p>
-								</div>
-							</div>
+						<div class="blog-details__content">
+							<ul class="list-unstyled blog-one__meta">
+								<li><a href="#"><i class="far fa-user-circle"></i> ${member.getName() }</a></li>
+								<li><a href="#"><i class="fas fa-coins"></i> ${member.getMileage() }M</a></li>
+								<li><a href="#"><i class="fas fa-mobile"></i> ${member.getPhone() }</a></li>
+								<li><a href="#"><i class="far fa-envelope"></i> ${member.getEmail() }</a></li>
+							</ul>
+							<p>${member.getName() }님의 회원 정보를 간략하게 보여주는 페이지입니다.<br>
+								자세한 정보를 보고 싶으시다면 <a href='info' class="">정보 수정</a>으로 이동해 주세요.
+							</p>
 						</div>
 					</div>
 				</div>
