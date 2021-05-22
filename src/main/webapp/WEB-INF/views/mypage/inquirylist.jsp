@@ -90,30 +90,30 @@
 			<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 			<c:choose>
 				<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-						<a class="disabledLink" href="inquirylist?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+					<a class="disabledLink" href="inquirylist?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
 				</c:when>
 				<c:otherwise>
-						<a href="inquirylist?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+					<a href="inquirylist?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
 				</c:otherwise>
 			</c:choose>
 			<!-- 페이지 갯수만큼 버튼 생성 -->
 			<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 				<c:choose>
 					<c:when test="${i eq Paging.pageNo }">
-							<a class="active" href="inquirylist?page=${i}"><c:out value="${i}"/></a>
+						<a class="active disabledLink" href="inquirylist?page=${i}"><c:out value="${i}"/></a>
 					</c:when>
 					<c:otherwise>
-							<a href="inquirylist?page=${i}"><c:out value="${i}"/></a>
+						<a href="inquirylist?page=${i}"><c:out value="${i}"/></a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
 			<c:choose>
 				<c:when test="${Paging.pageNo eq Paging.finalPageNo}">
-						<a class="disabledLink" href="inquirylist?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+					<a class="disabledLink" href="inquirylist?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
 				</c:when>
 				<c:otherwise>
-						<a href="inquirylist?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+					<a href="inquirylist?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
 				</c:otherwise>
 			</c:choose>
 		</div>

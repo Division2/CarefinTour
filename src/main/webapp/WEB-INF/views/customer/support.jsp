@@ -102,7 +102,7 @@
 					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
-								<a class="active" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+								<a class="active disabledLink" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
 							</c:when>
 							<c:otherwise>
 								<a href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
@@ -133,7 +133,7 @@
 					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
-								<a class="active" href="support?page=${i}"><c:out value="${i }"/></a>
+								<a class="active disabledLink" href="support?page=${i}"><c:out value="${i }"/></a>
 							</c:when>
 							<c:otherwise>
 								<a href="support?page=${i}"><c:out value="${i }"/></a>

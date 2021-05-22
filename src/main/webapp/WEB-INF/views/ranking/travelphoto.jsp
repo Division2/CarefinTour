@@ -90,7 +90,7 @@
 			<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 				<c:choose>
 					<c:when test="${i eq Paging.pageNo }">
-						<a class="active" href="travelphoto?page=${i}"><c:out value="${i }"/></a>
+						<a class="active disabledLink" href="travelphoto?page=${i}"><c:out value="${i }"/></a>
 					</c:when>
 					<c:otherwise>
 						<a href="travelphoto?page=${i}"><c:out value="${i }"/></a>

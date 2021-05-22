@@ -111,7 +111,7 @@
 					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
-								<a class="active" href="inquirySearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
+								<a class="active disabledLink" href="inquirySearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
 							</c:when>
 							<c:otherwise>
 								<a href="inquirySearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
@@ -142,7 +142,7 @@
 					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 						<c:choose>
 							<c:when test="${i eq Paging.pageNo }">
-								<a class="active" href="inquiry?page=${i}"><c:out value="${i }"/></a>
+								<a class="active disabledLink" href="inquiry?page=${i}"><c:out value="${i }"/></a>
 							</c:when>
 							<c:otherwise>
 								<a href="inquiry?page=${i}"><c:out value="${i }"/></a>
