@@ -20,7 +20,23 @@ body {
 	transform: scale(1.05);
 }
 .leaderboard-card.leaderboard-card--first .leaderboard-card__top {
-	background: linear-gradient(45deg, #7e57c2, #ab47bc);
+	background: linear-gradient(45deg, #6EEBE7, #2E699E);
+	color: #fff;
+}
+
+.leaderboard-card.leaderboard-card--second {
+	transform: scale(1.05);
+}
+.leaderboard-card.leaderboard-card--second .leaderboard-card__top {
+	background: linear-gradient(45deg, #4F8AEF, #7D89F5);
+	color: #fff;
+}
+
+.leaderboard-card.leaderboard-card--third {
+	transform: scale(1.05);
+}
+.leaderboard-card.leaderboard-card--third .leaderboard-card__top {
+	background: linear-gradient(45deg, #4478D1, #85CDFA);
 	color: #fff;
 }
 .leaderboard-card__top {

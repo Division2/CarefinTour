@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.spring.ex.dto.MemberDTO;
+import com.spring.ex.vo.MemberVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -18,43 +18,31 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	//전체 멤버 출력
 	@Override
-	public List<MemberDTO> memberList() throws Exception {
+	public List<MemberVO> memberList() throws Exception {
 		return null;
 	}
 
 	//회원 로그인
 	@Override
-	public MemberDTO Login(MemberDTO dto) throws Exception {
-		return sqlSession.selectOne(namespace + ".MemberLogin", dto);
+	public MemberVO Login(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".MemberLogin", vo);
 	}
 	
 	//회원 로그인 시 lastDate 갱신
 	@Override
-	public int LoginDateRenewal(MemberDTO dto) throws Exception {
-		return sqlSession.update(namespace + ".MemberLoginDateLog", dto);
+	public int LoginDateRenewal(MemberVO vo) throws Exception {
+		return sqlSession.update(namespace + ".MemberLoginDateLog", vo);
 	}
 	
 	//회원가입
 	@Override
-	public int SignUp(MemberDTO dto) throws Exception {
-		return sqlSession.insert(namespace + ".MemberSignUp", dto);
+	public int SignUp(MemberVO vo) throws Exception {
+		return sqlSession.insert(namespace + ".MemberSignUp", vo);
 	}
 	
 	//회원가입 시 아이디 중복확인
 	@Override
-	public MemberDTO IDCheck(MemberDTO dto) throws Exception {
-		return sqlSession.selectOne(namespace + ".IDCheck", dto);
+	public MemberVO IDCheck(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".IDCheck", vo);
 	}
-	
-	//회원정보 수정
-	@Override
-	public void MemberInfoUpdate(MemberDTO dto) throws Exception {
-		sqlSession.update(namespace+".MemberInfoUpdate", dto); 
-		System.out.println(sqlSession);
-	}
-	//회원탈퇴
-	@Override
-	public void memberDelete(MemberDTO dto) throws Exception {
-		sqlSession.delete(namespace+".memberDelete", dto);
-	}	
 }

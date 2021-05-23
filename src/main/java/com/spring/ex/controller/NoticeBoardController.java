@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +32,10 @@ public class NoticeBoardController {
 	//공지사항 작성
 	@RequestMapping(value = "/noticeWrite", method = RequestMethod.POST)
 	public void Write(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
-		int result = 0;
 		
 		logger.info("Checked : " + vo.getImportant());
 		
-		result = service.NoticeWrite(vo);
+		int result = service.NoticeWrite(vo);
 		
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
@@ -89,13 +89,16 @@ public class NoticeBoardController {
 		page = (page - 1) * 10;
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("paging", paging);
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
 		map.put("title", title);
 		
 		List<NoticeBoardVO> List = service.NoticeSearchList(map);
 		
+		//페이지를 담아줘야행
 		model.addAttribute("NoticeList", List);
-		model.addAttribute("Paging1", paging);
+		model.addAttribute("Paging", paging);
+		model.addAttribute("Title", title);
 		
 		return "customer/notice";
 	}
@@ -126,9 +129,8 @@ public class NoticeBoardController {
 	//공지사항 수정
 	@RequestMapping(value = "/noticeModify", method = RequestMethod.POST)
 	public void Modify(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
-		int result = 0;
 		
-		result = service.NoticeModify(vo);
+		int result = service.NoticeModify(vo);
 		
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
@@ -165,16 +167,15 @@ public class NoticeBoardController {
 	//공지사항 삭제
 	@RequestMapping(value = "/noticeDelete", method = RequestMethod.GET)
 	public void NoticeDelete(HttpServletRequest request) throws Exception {
-		int result = 0;
 		
+		HttpSession session = request.getSession();
 		int nId = Integer.parseInt(request.getParameter("nId"));
-		String auth = request.getParameter("auth");
 		
-		if (auth != "Admin") {
-			result = service.NoticeDelete(nId);
+		if (session.getAttribute("auth").equals("Admin")) {
+			int result = service.NoticeDelete(nId);
+			
+			logger.info("nId : " + nId);
+			logger.info("게시물 삭제 : " + result);
 		}
-		
-		logger.info("nId : " + nId);
-		logger.info("게시물 삭제 : " + result);
 	}
 }

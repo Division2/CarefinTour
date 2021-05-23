@@ -1,211 +1,434 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
-<!--현재 날짜 받아서 대입시킬떄 필요한건  -->
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%
-	Date nowTime = new Date();
-	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-	SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd");
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>호텔예약 - 케어핀투어</title>
-<link href="css/section.css" rel="stylesheet">
-<link href="css/component.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/layout.css"/>' rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <style>
-ul{
-   list-style:none;
-
-   }
+ul {
+	list-style: none;
+}
 </style>
 </head>
 <body>
+	<script>
+		//url로 넘어온 코드값을 반환
+		$.urlParam = function(name) {
+			var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)')
+					.exec(window.location.href);
+			return results[1] || 0;
+		}
+		var searchDetailId = $.urlParam('cId');
+		var hContent; //비교해서 값이 다르면 화면 새로고침
 
-<script type="text/javascript">
+		//공통정보 api - 1번탭 시작
+		function detail1() {
+			$
+					.ajax({
+						url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId='
+								+ searchDetailId
+								+ '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y',
 
-/* function sta(x) {
-    $.ajax({
-	       url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D'+ accommodationType +'&areaCode='  + ga +'&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
-	       dataType : 'json',
-	       type : 'GET',
-	       success : function(data) {
-	    	   var count =  data.response.body.totalCount;
-	    	   fCount = data.response.body.items.item;
-	    	   //console.log(fCount);
-	    	     
-	    	   for(var c=0; c<fCount.length; c++){
-	    		   fr.push( data.response.body.items.item[c].firstimage);
-	    		   fName.push( data.response.body.items.item[c].title);
-	    	   }
-	    	   
- 	    	   try {
- 	    		   localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
- 	    		   
-				   localStorage.setItem("img1", fr[0]); // key-value 형식으로 저장
-				   localStorage.setItem("img2", fr[1]); // 숙박업소 이미지
-				   localStorage.setItem("img3", fr[2]);
-				   localStorage.setItem("img4", fr[3]);
-				   localStorage.setItem("img5", fr[4]);
-				   localStorage.setItem("img6", fr[5]);
-				   localStorage.setItem("img7", fr[6]);
-				   localStorage.setItem("img8", fr[7]);
-				   localStorage.setItem("img9", fr[8]);
-				   localStorage.setItem("img10", fr[9]);
-				   localStorage.setItem("img11", fr[10]);
-				   localStorage.setItem("img12", fr[11]);
-				   
-				   localStorage.setItem("title1", fName[0]); //숙박업소 이름
-				   localStorage.setItem("title2", fName[1]);
-				   localStorage.setItem("title3", fName[2]);
-				   localStorage.setItem("title4", fName[3]);
-				   localStorage.setItem("title5", fName[4]);
-				   localStorage.setItem("title6", fName[5]);
-				   localStorage.setItem("title7", fName[6]);
-				   localStorage.setItem("title8", fName[7]);
-				   localStorage.setItem("title9", fName[8]);
-				   localStorage.setItem("title10", fName[9]);
-				   localStorage.setItem("title11", fName[10]);
-				   localStorage.setItem("title12", fName[11]);
-				   
-		           location.reload();
-				} catch (e) {
-				   if (e == QUOTA_EXCEEDED_ERR) {
-				     alert('할당량 초과!'); // 할당량 초과로 인하여 데이터를 저장할 수 없음
-				  }
-				}  
-	       }
-	    })
-} */
-console.log(localStorage.getItem("searchDetail"));
-</script>
-	<jsp:include page="../layout/header.jsp"/>
+						dataType : 'json',
+						type : 'GET',
+						success : function(data) {
+							//var count =  data.response.body.totalCount;
+							hContent = data.response.body.items.item;
+							//console.log(data);
+							try {
+								//새로고침
+								if (hContent.title != sessionStorage
+										.getItem("dTitle")) {
+									location.reload();
+								}
+								//공통정보 값 설정
+								sessionStorage.setItem("dImg",
+										hContent.firstimage);
+								sessionStorage
+										.setItem("dTitle", hContent.title);
+								sessionStorage.setItem("dHomepage",
+										hContent.homepage);
+								sessionStorage
+										.setItem("daddr1", hContent.addr1);
+								sessionStorage.setItem("dZipcode",
+										hContent.zipcode);
+								sessionStorage.setItem("dTelname",
+										hContent.telname);
+								sessionStorage.setItem("dTel", hContent.tel);
+								sessionStorage.setItem("dOverview",
+										hContent.overview);
+								sessionStorage.setItem("dMapx", hContent.mapx);
+								sessionStorage.setItem("dMapy", hContent.mapy);
+							} catch (e) {
+							}
+						}
+					})
+		}
+
+		//숙박업소명 보여주기
+		function showTitle() {
+			document.write(sessionStorage.getItem("dTitle"));
+		}
+
+		//공통정보 보여주기
+		function showDetail1() {
+			document.write("<table>");
+			document.write("<tr><br>");
+			document.write("<td width='430'>");
+			if (sessionStorage.getItem("dImg") == "undefined") {
+				document
+						.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='400' height='250'> ");
+			} else {
+				document.write("<img src='" + sessionStorage.getItem("dImg")
+						+ "' width='400' height='250' /> ");
+			}
+			document.write("</td>");
+			document.write("<td width='770'>");
+
+			if (sessionStorage.getItem("dZipcode") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> 우편번호 : </font></b> <font size='2' color='#878787'>"
+								+ sessionStorage.getItem("dZipcode")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("dTelname") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> 전화명 : </font></b> <font size='2' color='#878787'>"
+								+ sessionStorage.getItem("dTelname")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("dTel") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> 전화번호 : </font></b> <font size='2' color='#878787'>"
+								+ sessionStorage.getItem("dTel")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("dHomepage") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> 홈페이지 : </font></b> <font size='2'>"
+								+ sessionStorage.getItem("dHomepage")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("daddr1") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> 주소 : </font></b> <font size='2' color='#878787'>"
+								+ sessionStorage.getItem("daddr1") + "</font>");
+			}
+			document.write("</td></tr> ");
+			document.write("<tr> <td  colspan='2' width='1200'><hr>");
+
+			if (sessionStorage.getItem("dOverview") != "undefined") {
+				document
+						.write("<font size='4' color='#368AFF'><b> 개요 </b></font><br> <font size='2' color='#515151'>"
+								+ sessionStorage.getItem("dOverview")
+								+ "</font>");
+			} else {
+				document.write("<h5><b> 개요 </b></h5><font>없음</font>");
+			}
+			document.write("</td></tr>");
+			document.write("</table> <hr>");
+
+			if (sessionStorage.getItem("dMapx") != "undefined") {
+				document
+						.write("<font size='4' color='#368AFF'><b>&nbsp;지도</b></font><br>");
+				document
+						.write("<div id='map' style='width:100%;height:400px;'></div>");
+			}
+
+		}
+
+		//소개정보 api - 2번탭 시작
+		function detail2() {
+			$
+					.ajax({
+						url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId='
+								+ searchDetailId
+								+ '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y',
+						dataType : 'json',
+						type : 'GET',
+						success : function(data2) {
+							hContent2 = data2.response.body.items.item;
+							sessionStorage.setItem("infocenterlodging",
+									hContent2.infocenterlodging); //문의 및 안내
+							sessionStorage.setItem("scalelodging",
+									hContent2.scalelodging); //규 모
+							sessionStorage.setItem("accomcountlodging",
+									hContent2.accomcountlodging);//수용가능인원
+							sessionStorage.setItem("roomcount",
+									hContent2.roomcount); //객실 수
+							sessionStorage.setItem("roomtype",
+									hContent2.roomtype); //객실유형
+							sessionStorage.setItem("parkinglodging",
+									hContent2.parkinglodging); //주차가능
+							sessionStorage.setItem("chkcooking",
+									hContent2.chkcooking); //조리가능
+							sessionStorage.setItem("checkintime",
+									hContent2.checkintime); //체크인
+							sessionStorage.setItem("checkouttime",
+									hContent2.checkouttime); //체크아웃
+
+							sessionStorage.setItem("reservationlodging",
+									hContent2.reservationlodging); //예약 안내
+							sessionStorage.setItem("reservationurl",
+									hContent2.reservationurl); //예약홈페이지
+							sessionStorage.setItem("pickup", hContent2.pickup); //픽업서비스
+							sessionStorage.setItem("foodplace",
+									hContent2.foodplace); //식음료장
+							sessionStorage.setItem("subfacility",
+									hContent2.subfacility);//부대시설
+							sessionStorage.setItem("refundregulation",
+									hContent2.refundregulation);//환불규정?
+						}
+					})
+		}
+
+		//소개정보 보여주기 
+		function showDetail2() {
+			if (sessionStorage.getItem("infocenterlodging") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 문의 및 안내 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("infocenterlodging")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("scalelodging") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 규 모 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("scalelodging")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("accomcountlodging") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 수용 가능 인원 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("accomcountlodging")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("roomcount") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 객실 수 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("roomcount")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("roomtype") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 객실 유형 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("roomtype")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("parkinglodging") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 주차 가능 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("parkinglodging")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("chkcooking") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 조리 가능 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("chkcooking")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("checkintime") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 체크인 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("checkintime")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("checkouttime") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 체크아웃 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("checkouttime")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("reservationlodging") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 예약 안내 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("reservationlodging")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("reservationurl") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 예약안내 홈페이지 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("reservationurl")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("pickup") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 픽업서비스 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("pickup")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("foodplace") != "undefined"
+					&& sessionStorage.getItem("foodplace") != null
+					&& sessionStorage.getItem("foodplace") != "") {
+				document
+						.write("<font size='2' color='#515151'><b> · 식음료장 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("foodplace")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("subfacility") != "undefined"
+					&& sessionStorage.getItem("subfacility") != null
+					&& sessionStorage.getItem("subfacility") != "") {
+				document
+						.write("<font size='2' color='#515151'><b> · 부대시설 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("subfacility")
+								+ "</font><br>");
+			}
+			if (sessionStorage.getItem("refundregulation") != "undefined") {
+				document
+						.write("<font size='2' color='#515151'><b> · 환불규정 : </font></b><font size='2' color='#878787'>"
+								+ sessionStorage.getItem("refundregulation")
+								+ "</font><br>");
+			}
+		}
+
+		//추가이미지 -3번 탭
+		hContent3 = [];
+		function detail3() {
+			$
+					.ajax({
+						url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId='
+								+ searchDetailId + '&imageYN=Y',
+						dataType : 'json',
+						type : 'GET',
+						success : function(data3) {
+							var t3count = data3.response.body.totalCount;
+							console.log("3번탭 데이터 수 : " + t3count); //확인용
+							if (t3count > 9) {
+								sessionStorage.setItem("deitilt3Count", 9); // 9개까지만
+							} else if (t3count == 0) {
+								sessionStorage.setItem("deitilt3Count", 0); // 추가이미지 없으면 탭 안나오게 하기 위해서
+							} else {
+								sessionStorage
+										.setItem("deitilt3Count", t3count);
+							}
+							console.log("3번 탭 저장된 갯수 : "
+									+ sessionStorage.getItem("deitilt3Count")); //확인용
+
+							for (var i = 0; i < t3count; i++) { //이미지 각각 저장
+								hContent3
+										.push(data3.response.body.items.item[i].originimgurl);
+								sessionStorage.setItem("addImg" + i,
+										hContent3[i]);
+							}
+						}
+					})
+		}
+
+		//추가이미지 3번 탭 내용 보여주기 
+		function showDetail3() {
+			document
+					.write("<ul id='imagegallery'><div class='row' style='center'>");
+			for (var i = 0; i < sessionStorage.getItem("deitilt3Count"); i++) {
+				if (sessionStorage.getItem("addImg" + i) != null) {
+					document.write("&nbsp;<li><a href='"
+							+ sessionStorage.getItem("addImg" + i) + "'>");
+					document.write("<img src='"
+							+ sessionStorage.getItem("addImg" + i)
+							+ "' width='109' height='70' /> ");
+					document.write("</a></li> &nbsp;");
+				}
+			}
+			document.write("</div></ul><img id='placeholder' src='"
+					+ sessionStorage.getItem("addImg0")
+					+ "' width='95%' height='500' /> ");
+			document.write("</div>");
+
+			$(document).ready(function() {
+				$("#imagegallery li").on("click", function() {
+					var boximages = $(this).find("a").attr("href");
+					$("#placeholder").attr("src", boximages);
+					return false;
+				});
+			});
+		}
+	</script>
+	<jsp:include page="../layout/header.jsp" />
 	
-	<div class="container">
-		<div class="row">
-		<div class="nav-control">				
-				
-					  <h3><strong>해외호텔</strong></h3><hr style="background:#1E90FF;border:solid 2px #96CDFA; width:1150px;">							
-						
-			<table class="table" style="background:#f1f3f5;height:150px;border:solid 1px #e2e2e2;">
-						<tr>
-							<th>
-								  <h3>호텔 메트로폴리탄 도쿄 이케부쿠로 (Hotel Metropolitan Tokyo Ikebukuro)</h3>
-                        			<p>1-6-1 Nishi-Ikebukuro, 도쿄, JP &nbsp;TEL.81-3-3980-1111 &nbsp;FAX.81-3-3980-5600</p>
-					                    <div class="nav-control">				
-											<p><ul class="nav nav-tabs">
-												<li class="nav-item">
-													<a class="nav-link active" data-toggle="tab" href="#hotelinfo">
-														<strong>호텔상세정보</strong>
-															</a>
-																</li>
-												<li class="nav-item">
-													<a class="nav-link" data-toggle="tab" href="#location">
-														<strong>위치</strong>
-															</a>
-																</li>
-																
-												 <li>
-												 <div class="col-md-4">
-												 </div>
-										<button type="button" class="form-control" style="background:#96CDFA;color:white;"><strong>도쿄 호텔 전체보기</strong></button>
-																</li>
-													</ul>
-													
-													<div class="tab-content" style="background:white;">
-													  <div class="tab-pane fade show active" id="hotelinfo">
-													  <br>
-													   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="https://i.travelapi.com/hotels/1000000/20000/13400/13386/b669367c_b.jpg" alt="호텔 메트로폴리탄 도쿄 .." width="330" height="250" />
-													  
-													 
-													 
-													  <ul style="float:right">
-				                                        <li>
-				                                        <form class="form-inline">
-				                                            <div class="title">주소 &emsp;&emsp;&emsp;</div>
-				                                            <div class="con_tx">1-6-1 Nishi-Ikebukuro, 도쿄, JP &nbsp;TEL.81-3-3980-1111 &nbsp;FAX.81-3-3980-5600</div><hr style="color:black;">
-				                                            </form>
-				                                        </li>
-				                                        <li>
-				                                        <form class="form-inline">
-				                                            <div class="title">전화 &emsp;&emsp;&emsp;</div>
-				                                            <div class="con_tx">TEL : 81-3-3980-1111&nbsp;&nbsp;TEL : 81-3-3980-5600</div><hr>
-				                                            </form>
-				                                        </li>
-				                                        <li>
-				                                        <form class="form-inline">
-				                                            <div class="title">객실수 &emsp;&emsp;</div>
-				                                            <div class="con_tx">807개</div><hr>
-				                                            </form>
-				                                        </li>
-				                                        <li>
-				                                         <form class="form-inline">
-				                                            <div class="title">등급 &emsp;&emsp;&emsp;</div>
-				                                            <div class="con_tx"><img src="/images/2013/Hotel/hg_star0.0.gif" alt="0.0성" width="85" height="16"/></div><hr>
-				                                             </form>
-				                                        </li>
-				                                        <li>
-				                                         <form class="form-inline">
-				                                            <div class="title">체크인 &emsp;&emsp;</div>
-				                                            <div class="con_tx">15:00</div><hr>
-				                                            </form>
-				                                        </li>
-				                                        <li>
-				                                        <form class="form-inline">
-				                                            <div class="title">체크아웃&emsp;&nbsp;</div>
-				                                            <div class="con_tx">정오</div><hr>
-				                                            </form>
-				                                        </li>
-				                                        <li>
-				                                        <form class="form-inline">
-				                                            <div class="title">지역 &emsp;&emsp;&emsp;</div>
-				                                            <div class="con_tx">
-				                                                	이케부쿠로 / 릿쿄대학교 부근에 위치
-				                                            </div><hr>
-				                                            </form>
-				                                        </li>
-				                                        <li class="li0">
-				                                        <form class="form-inline">
-				                                            <div class="title">평점&emsp;&emsp;&emsp;</div>
-				                                            <div class="con_tx">
-				                                                <img src="/images/2013/Hotel/hg_grade4.0.gif" alt="4.0점" width="118" height="20" /> Good <span class="green_tx">평점 4.0/5.0</span>
-				                                                <a class="view_bt" href="#Review"><span>1,797</span>건의 이용후기 보기</a>
-																
-				                                            </div>
-				                                            </form>
-				                                        </li>
-				                                    </ul><p>
-				                                   
-				                                    <p><small style="float:right;"><b style="color:blue;float:left;">숙박 시설 위치</b> <br>이 4성급 호텔 가까이에는 성 마리아 성당 및 와세다대학교도 있습니다. 도쿄 중심에 자리한 호텔 메트로폴리탄 도<br>쿄  이케부쿠로에 머무실경우제이월드 도쿄 및 도쿄 도청사에 쉽게 가실 수 있습니다.</small></p>
-				                                    <p><small style="float:right;"><b style="color:blue;float:left;">객실</b> <br>에어컨이 설치된 807개의 객실에는 LCD TV도 갖추어져 있어 편하게 머무실 수 있습니다. 무료 무선인터넷도 지원 <br>되며 위성 프로그램을 시청하실 수 있습니다. 욕실에는 무료 세면용품 및 헤어드라이어도 마련되어 있 <br>습니다. 편의 시설/서비스로는 전화 외에 책상 및 무료 신문도 있습니다.</small></p>
-				                                    <p><small style="float:right;"><b style="color:blue;float:left;">편의 시설</b> <br>헬스클럽, 실내 수영장 등의 레크리에이션 시설을 잊지 말고 모두 즐기세요. 이 호텔에는 무료 무선 인터넷, 콘시어 <br>지서비스, 선물 가게/신문 가판대 등도 마련되어 있습니다.</small></p>
-				                                    <p><small style="float:right;"><b style="color:blue;float:left;">식당</b> <br>호텔에 있는 6 개의 레스토랑 및 커피숍/카페 등에서 식사를 즐기실수 있습니다. 또는 편안하게 객실에서 룸서비<br>스(이용 시간 제한) 이용도 가능합니다. 바/라운지에서 좋아하는 음료를 마시며 갈증을 해소하실 수 있습니다. 매일 <br>뷔페 아침 식사가 별도 요금으로 제공됩니다.</small></p>
-											        <p><small style="float:right;"><b style="color:blue;float:left;">비즈니스, 기타 편의시설</b> <br>대표적 편의 시설/서비스로는 무료 초고속 유선 인터넷, 리무진/타운카 서비스, 드라이클리닝/세탁 서비스 등이있 <br>습니다. 이 호텔에는 행사를 위한 15개의 회의실이 마련되어 있습니다. 별도 요금으로 왕복 공항 셔틀을 이용 <br>하실 수 있고 셀프 주차(요금 별도)도 시설 내에서 이용 가능합니다.</small></p>
-										
-												</div>
-													  <div class="tab-pane fade" id="location">
-													   
-													  </div>		  
-												</div>		
-						             	</th>
-				               		 </tr>
-			                   </table>                                
-			                 <p>    
-   			</div>
-   		</div>
-   		</div>
-	<jsp:include page="../layout/footer.jsp"/>
+	<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
+		<div class="container">
+			<h2>상세정보</h2>
+			<ul class="thm-breadcrumb list-unstyled">
+				<li><a>CarefinTour</a></li>
+			</ul>
+		</div>
+	</section>
+	
+	<section class="tour-one">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h3><strong><script>showTitle();</script></strong></h3>
+					<hr style="background: #1E90FF; border: solid 2px #96CDFA;">
+					<ul class="nav nav-tabs">
+						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#htab1">공통정보</a></li>
+						<li class="nav-item" id="targetTab3"><a class="nav-link" data-toggle="tab" href="#htab2">소개정보</a></li>
+						<script>
+							if (sessionStorage.getItem("deitilt3Count") != 0) { // 결과 없으면 탭 x
+								document.write(" <li class='nav-item'> <a class='nav-link' data-toggle='tab' href='#htab3' >추가이미지</a></li>");
+							}
+							else {}
+						</script>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="htab1">
+							<script>showDetail1();</script>
+						</div>
+						<div class="tab-pane fade" id="htab2">
+							<br> <font size="4" color="#368AFF"><b>&nbsp;소개</b></font><br>
+							<script>showDetail2();</script>
+						</div>
+						<div class='tab-pane fade' id='htab3' align='center'>
+							<script>showDetail3();</script>
+						</div>
+						<div class='tab-pane fade' id='htab4' align='center'>
+							<script>
+								//showDetail4();
+							</script>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<br>
+	<script defer>detail1();</script>
+	<script>
+		//detail4();
+		detail3();
+		detail2();
+	</script>
+
+	<!--지도보기  -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51b48d7e64099981156514cbd0f41107"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(sessionStorage.getItem("dMapy"),
+					sessionStorage.getItem("dMapx")), // 지도의 중심좌표
+			level : 3
+		// 지도의 확대 레벨
+		};
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+
+		// 마커가 표시될 위치입니다 
+		var markerPosition = new kakao.maps.LatLng(sessionStorage
+				.getItem("dMapy"), sessionStorage.getItem("dMapx"));
+		var marker = new kakao.maps.Marker({// 마커 생성
+			position : markerPosition
+		});
+
+		marker.setMap(map); // 마커가 지도 위에 표시되도록 설정합니다
+	</script>
+
+	<jsp:include page="../layout/footer.jsp" />
 </body>
 </html>

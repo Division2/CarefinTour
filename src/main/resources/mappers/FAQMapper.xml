@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.FAQMapper">
+	<!-- FAQ 전체 출력 -->
+	<select id="FAQAllView" resultType="FAQVO">
+		SELECT * FROM faq LIMIT #{Page}, #{PageSize}
+	</select>
+
+	<!-- FAQ 총 갯수 -->
+	<select id="getFAQTotalCount" resultType="int">
+		SELECT COUNT(*) FROM faq
+	</select>
+		
+	<!-- FAQ 카테고리별 출력 -->
+	<select id="FAQOtherView" resultType="FAQVO">
+		SELECT * FROM faq WHERE Category = #{category} LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- FAQ 카테고리별 총 갯수 -->
+	<select id="getFAQOtherTotalCount" resultType="int">
+		SELECT COUNT(*) FROM faq WHERE Category = #{category}
+	</select>
+</mapper>

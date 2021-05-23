@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.ex.NoticeBoardMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<mapper namespace="com.spring.ex.NoticeBoardMapper">
 	<!-- 공지사항 등록 -->
 	<insert id="NoticeWrite">
 		INSERT INTO notice(Title, Content, Important) VALUES (#{title}, #{content}, #{important})
@@ -12,9 +10,13 @@
 	<!-- 공지사항 출력 -->
 	<select id="NoticeView" resultType="NoticeBoardVO">
 	<!--SELECT * FROM notice order BY nId DESC LIMIT #{Page}, #{PageSize}
-		SELECT * FROM notice WHERE Important = 'Y' ORDER by nId DESC LIMIT #{Page}, #{PageSize}
-		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
-		SELECT * FROM notice WHERE Important = 'Y' UNION SELECT * FROM notice ORDER BY Important='Y' DESC, nId DESC  LIMIT #{Page}, #{PageSize} -->
+		(SELECT * FROM notice WHERE Important = 'Y') UNION (SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize})
+	
+		SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
+		
+		SELECT * FROM(SELECT * FROM notice UNION SELECT * FROM notice LIMIT #{Page}, #{PageSize}) AS a order BY Important = 'Y' DESC, nId DESC
+		(SELECT * FROM notice UNION SELECT * FROM notice order BY Important = 'Y' DESC, nId DESC LIMIT #{Page}, #{PageSize}) -->
+		
 		(SELECT * FROM notice WHERE Important = 'Y') UNION (SELECT * FROM notice ORDER BY nId DESC LIMIT #{Page}, #{PageSize})
 	</select>
 	
@@ -45,11 +47,11 @@
 	
 	<!-- 공지사항 검색 -->
 	<select id="NoticeSearchView" resultType="NoticeBoardVO">
-		SELECT * FROM notice WHERE Title LIKE '%${title}%' LIMIT #{paging.pageNo}, #{paging.pageSize}
+		SELECT * FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 공지사항 검색 게시물 총 갯수 -->
 	<select id="getNoticeSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM notice WHERE Title LIKE '%${title}%'
+		SELECT COUNT(*) FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%')
 	</select>
 </mapper>

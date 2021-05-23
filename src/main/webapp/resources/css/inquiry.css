@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* 답변대기, 보류, 완료 */
+.inquiry-status {
+	display: inline-block;
+	padding: 2px 5px;
+	min-width: 70px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: normal;
+	color: white;
+	background-color: #959595;
+}
+.inquiry-status.status-0 { background-color: #959595; }
+.inquiry-status.status-1 { background-color: #12529A; }
+.inquiry-status.status-2 { background-color: #46C9CE; }

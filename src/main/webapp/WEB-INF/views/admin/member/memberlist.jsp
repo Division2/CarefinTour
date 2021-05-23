@@ -69,100 +69,48 @@
 								<th>
 									<input type="checkbox">
 								</th>
-								<th>
-									AID
-								</th>
-								<th>
-									계정
-								</th>
-								<th>
-									비밀번호
-								</th>
-								<th>
-									이름
-								</th>
-								<th>
-									권한
-								</th>
-								<th>
-									이메일
-								</th>
-								<th>
-									휴대전화
-								</th>
-								<th>
-									생년월일
-								</th>
-								<th>
-									성별
-								</th>
-								<th>
-									주소
-								</th>
-								<th>
-									마일리지
-								</th>
-								<th>
-									특이사항
-								</th>
-								<th>
-									가입일자
-								</th>
-								<th>
-									최근 접속일자
-								</th>
+								<th>AID</th>
+								<th>계정</th>
+								<th>비밀번호</th>
+								<th>이름</th>
+								<th>권한</th>
+								<th>이메일</th>
+								<th>휴대전화</th>
+								<th>생년월일</th>
+								<th>성별</th>
+								<th>주소</th>
+								<th>마일리지</th>
+								<th>특이사항</th>
+								<th>가입일자</th>
+								<th>최근 접속일자</th>
 							</tr>
 						</thead>
 						<tbody>
+								<c:forEach items="${memberList}" var="MemberVO">
 							<tr>
 								<td>
 									<input type="checkbox">
 								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
+								<td>1</td>
+								<td><c:out value="${MemberVO.userID}"></c:out></td>
+								<td><c:out value="${MemberVO.password}"></c:out></td>
+								<td><c:out value="${MemberVO.name}"></c:out></td>
 								<td>
 									<select class="form-control">
 										<option>일반</option>
 									</select>
 								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
+								<td><c:out value="${MemberVO.email}"></c:out></td>
+								<td><c:out value="${MemberVO.phone}"></c:out></td>
+								<td><c:out value="${MemberVO.birth}"></c:out></td>
+								<td><c:out value="${MemberVO.sex}"></c:out></td>
+								<td><c:out value="${MemberVO.address}"></c:out></td>
+								<td><c:out value="${MemberVO.mileage}"></c:out></td>
+								<td><c:out value="${MemberVO.comment}"></c:out></td>
+								<td><c:out value="${MemberVO.regDate}"></c:out></td>
+								<td><c:out value="${MemberVO.lastDate}"></c:out></td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

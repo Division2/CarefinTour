@@ -1,105 +1,161 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>케어핀투어 - 고객센터</title>
-<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="apple-touch-icon" sizes="180x180" href='<c:url value="/resources/favicons/apple-touch-icon.png"/>'>
+<link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
+<link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
+<link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
+<title>CarefinTour</title>
 </head>
 <body>
-	<jsp:include page="../layout/header.jsp"/>
+	<!-- 페이지 로딩 이미지 -->
+	<div class="preloader">
+		<img src='<c:url value="/resources/images/loader.png"/>' class="preloader__image" alt="">
+	</div>
+	<!-- 페이지 로딩 이미지 -->
+	
+	<!-- 메인 영역 -->
+	<div class="page-wrapper">
+		<jsp:include page="../layout/header.jsp"/>
+	
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
+			<div class="container">
+				<h2>자주 찾는 질문</h2>
+				<ul class="thm-breadcrumb list-unstyled">
+					<li><a href="notice">공지사항</a></li>
+					<li><a href="inquiry">1:1문의</a></li>
+					<li><a href="support">자주찾는질문</a></li>
+				</ul>
+			</div>
+		</section>
 
-	<div class="container">
-		<div class="row">
-			<!-- 고객센터 사이드바 -->
-			<jsp:include page="sidesupport.jsp"/>
-			
-			<div class="col-md-8">
-				<h1>자주 찾는 질문</h1>
-				<hr>
-				<div class="col">
-					<!-- 질문별 카테고리 -->
-					<ul class="nav nav-tabs">
-						<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#all">전체</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#overseas">해외여행</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#theme">테마여행</a>
-						</li>
-					</ul>
-					<!-- 질문별 카테고리 내용부분 -->
-					<div class="tab-content">
-						<div class="tab-pane fade show active" id="all">
-							<div id="accordion">
-								<div class="card">
-									<!-- FAQ 질문부분 -->
-									<div class="card-header" id="headingOne">
-										<h5 class="mb-0">
-											<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-												호텔 요금 방금 봤는데 다시 검색하니까 요금이 확인되지를 않습니다?
-											</button>
-										</h5>
+		<section class="faq-one">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+						<c:choose>
+							<c:when test="${param.category eq null }">
+								<c:forEach items="${faqAllList}" var="List">
+								<div class="accrodion">
+									<div class="accrodion-title">
+									<h4><c:out escapeXml="false" value="${List.getTitle()}"/></h4>
 									</div>
-									<!-- FAQ 답변부분 -->
-									<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-										<div class="card-body">
-											객실 요금 및 보유 상황은 실시간으로 변동되므로, 다른 고객님께 준비된 객실이 판매된 경우 동일 요금 조회가 불가능할 수 있습니다.
+									<div class="accrodion-content">
+										<div class="inner">
+											<p><c:out escapeXml="false" value="${List.getContent()}"/></p>
 										</div>
 									</div>
 								</div>
-							</div>
+								</c:forEach>
+							</c:when>
+							<c:when test="${param.category ne null }">
+								<c:forEach items="${faqOtherList}" var="List">
+								<div class="accrodion">
+									<div class="accrodion-title">
+									<h4><c:out escapeXml="false" value="${List.getTitle()}"/></h4>
+									</div>
+									<div class="accrodion-content">
+										<div class="inner">
+											<p><c:out escapeXml="false" value="${List.getContent()}"/></p>
+										</div>
+									</div>
+								</div>
+								</c:forEach>
+							</c:when>
+						</c:choose>
 						</div>
-						<div class="tab-pane fade" id="overseas">
-							<div id="accordion">
-								<div class="card">
-									<!-- FAQ 질문부분 -->
-									<div class="card-header" id="headingOne">
-										<h5 class="mb-0">
-											<button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-												케어핀투어 사이트외에 해외박람회 상품을 이용하고 싶은데요
-											</button>
-										</h5>
-									</div>
-									<!-- FAQ 답변부분 -->
-									<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-										<div class="card-body">
-											케어핀투어 해외박람회 견적문을 통해서 문의를 주시면 가능합니다.
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="theme">
-							<div id="accordion">
-								<div class="card">
-									<!-- FAQ 질문부분 -->
-									<div class="card-header" id="headingOne">
-										<h5 class="mb-0">
-											<button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
-												24시간이내 회신이 무슨 뜻인가요? 
-											</button>
-										</h5>
-									</div>
-									<!-- FAQ 답변부분 -->
-									<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-										<div class="card-body">
-											해당 요금으로 확보된 객실이 소진된 상태로, 예약 요청하실 경우 영업일 기준으로 24시간 이내에 객실 확정 여부를 알려드릴 수 있으며, 주말 및 공휴일 예약시 다음 영업일로부터 24시간 이내 처리되고 있습니다.
-										</div>
-									</div>
-								</div>
+					</div>
+					<div class="col-lg-4">
+						<jsp:include page="sidesupport.jsp"/>
+						<div class="sidebar">
+							<div class="offer-sidebar wow fadeInUp" data-wow-duration="1500ms" style="background-image: url(<c:url value="/resources/images/backgrounds/offer-sidebar-bg.jpg"/>);">
+								<h3>
+									<span class="offer-sidebar__price">20%</span>Off <br> On <span>Paris <br> Tour</span>
+								</h3>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</section>
+		
+		<!-- 게시글 페이징 처리(기준 10개) -->
+		<div class="post-pagination">
+			<c:choose>
+				<c:when test="${param.category ne null }">
+					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+							<a class="disabledLink" href="supportOther?category=${param.category }&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="supportOther?category=${param.category }&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:otherwise>
+					</c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+						<c:choose>
+							<c:when test="${i eq Paging.pageNo }">
+								<a class="active disabledLink" href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+							</c:when>
+							<c:otherwise>
+								<a href="supportOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+							<a class="disabledLink" href="supportOther?category=${param.category }&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="supportOther?category=${param.category }&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
+				<c:otherwise>
+					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+							<a class="disabledLink" href="support?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a class="page-link" href="support?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+						</c:otherwise>
+					</c:choose>
+					<!-- 페이지 갯수만큼 버튼 생성 -->
+					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+						<c:choose>
+							<c:when test="${i eq Paging.pageNo }">
+								<a class="active disabledLink" href="support?page=${i}"><c:out value="${i }"/></a>
+							</c:when>
+							<c:otherwise>
+								<a href="support?page=${i}"><c:out value="${i }"/></a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+					<c:choose>
+						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+							<a class="disabledLink" href="support?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:when>
+						<c:otherwise>
+							<a href="support?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+						</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 		</div>
+		<br>
+
+		<jsp:include page="../layout/footer.jsp" />
 	</div>
-	<jsp:include page="../layout/footer.jsp"/>
+	<!-- 메인 영역 -->
 </body>
 </html>

@@ -2,7 +2,6 @@ package com.spring.ex.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class CareController {
@@ -73,14 +72,31 @@ public class CareController {
 	public String topangler() {
 		return "ranking/topangler";
 	}
+	@RequestMapping("topanglerWrite")
+	public String topanglerWrite() {
+		return "ranking/topanglerWrite";
+	}
 	@RequestMapping("travelphoto")
 	public String travelphoto() {
 		return "ranking/travelphoto";
 	}
-	@RequestMapping("addphoto")
-	public String addphoto() {
-		return "ranking/addphoto";
+	@RequestMapping("travelphotoWrite")
+	public String travelphotoWrite() {
+		return "ranking/travelphotoWrite";
 	}
+	@RequestMapping("travelphotoView")
+	public String travelphotoView() {
+		return "ranking/travelphotoView";
+	}
+	@RequestMapping("travelphotoModify")
+	public String travelphotoModify() {
+		return "ranking/travelphotoModify";
+	}
+	@RequestMapping("myaddphoto")
+	public String myaddphoto() {
+		return "ranking/myaddphoto";
+	}
+
 	//여행정보
 	@RequestMapping("exchangeinfo")
 	public String exchangeinfo() {
@@ -123,18 +139,27 @@ public class CareController {
 	public String noticemodify() {
 		return "customer/noticeModify";
 	}
-	@RequestMapping("inquire")
-	public String inquire() {
-		return "customer/inquire";
+	@RequestMapping("inquiry")
+	public String inquiry() {
+		return "customer/inquiry";
 	}
-	@RequestMapping("addinquire")
-	public String addinquire() {
-		return "customer/addinquire";
+	@RequestMapping("inquiryWrite")
+	public String inquirywrite() {
+		return "customer/inquiryWrite";
 	}
-	//도로명주소 API
+	@RequestMapping("inquiryView")
+	public String inquiryview() {
+		return "customer/inquiryView";
+	}
+	//회원가입 도로명주소 API
 	@RequestMapping("jusoPopup")
 	public String findJuso() {
 		return "layout/jusoPopup";
+	}
+	//마이페이지 도로명주소 API
+	@RequestMapping("jusoPopup2")
+	public String findJuso2() {
+		return "mypage/jusoPopup";
 	}
 	//하단 Information(회사 개요, 여행 약관(국내, 해외) 여행자 보험)
 	@RequestMapping("company")
@@ -156,31 +181,31 @@ public class CareController {
 	//마이페이지(마이페이지, 예약내역, 마일리지, 정보수정, 1:1문의, 회원 탈퇴)
 	@RequestMapping("mypage")
 	public String mypage() {
-		return "member/mypage";
+		return "mypage/mypage";
 	}
 	@RequestMapping("booking")
 	public String booking() {
-		return "member/booking";
+		return "mypage/booking";
 	}
 	@RequestMapping("mileage")
 	public String mileage() {
-		return "member/mileage";
+		return "mypage/mileage";
 	}
 	@RequestMapping("/info")
 	public String info() {
-		return "member/info";
+		return "mypage/info";
 	}
 	@RequestMapping("inquirylist")
 	public String inquirylist() {
-		return "member/inquirylist";
+		return "mypage/inquirylist";
 	}
 	@RequestMapping("inquirydetails")
 	public String inquirydetails() {
-		return "member/inquirydetails";
+		return "mypage/inquirydetails";
 	}
 	@RequestMapping("/withdrawal")
-	public String withdrawal() throws Exception {
-		return "member/withdrawal";
+	public String withdrawal() {
+		return "mypage/withdrawal";
 	}
 	
 	//---------------- Admin Section ----------------
@@ -198,9 +223,13 @@ public class CareController {
 	public String admin_hotel() {
 		return "admin/site/hotelproduct";
 	}
-	@RequestMapping("admin/package")
+	@RequestMapping("admin/packageproduct")
 	public String admin_package() {
 		return "admin/site/packageproduct";
+	}
+	@RequestMapping("admin/insertpackage")
+	public String admin_insertpackage() {
+		return "admin/site/insertpackage";
 	}
 	@RequestMapping("admin/theme")
 	public String admin_theme() {

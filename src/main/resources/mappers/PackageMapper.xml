@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.PackageMapper">
+
+<!-- 여행패키지 등록  -->
+	<insert id="PackageWrite" parameterType="hashMap">
+			INSERT INTO packageproduct(ProductName, Theme, Area, TravelCity,s_file_name, o_file_name, StarTravelPeriod, ArrivalTravelPeriod, ReservationStatus, MaxReservation, MinReservation, AdultCount, KidCount, SmallKidCount, AdultPrice, KidPrice, SmallKidPrice, Director, Productcode, Price) 
+			VALUES (#{productname}, #{theme}, #{area}, #{travelcity}, #{s_file_name}, #{o_file_name}, #{startravelperiod}, #{arrivaltravelperiod}, 0 , #{maxreservation}, #{minreservation}, 0, 0, 0, #{adultprice}, #{kidprice}, #{smallkidprice}, #{director}, #{productcode}, #{price})			
+ 
+ 	</insert>
+	
+	<!-- 여행패키지 출력 -->
+	<select id="ProductPackageView" resultType="PackageVO">
+		SELECT * FROM packageproduct LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 여행패키지 총 갯수 -->
+	<select id="getProductPackageTotalCount" resultType="int">
+		SELECT COUNT(*) FROM packageproduct
+	</select>
+	
+	<!-- 여행패키지 상세페이지 출력 -->
+	<select id="ProductPackageDetail" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE PID = #{pid};
+	</select>
+	
+	<!-- 여행패키지 삭제 -->
+	<delete id="ProductPackageDelete">
+		DELETE FROM packageproduct WHERE PID = #{pid}
+	</delete>
+</mapper>
