@@ -45,6 +45,9 @@ public interface TravelReviewService {
 	//여행 포토 댓글 작성
 	public int TravelPhotoReplyWrite(ReplyVO vo) throws Exception;
 	
+	//여행 포토 댓글 수정
+	public int TravelPhotoReplyModify(ReplyVO vo) throws Exception;
+	
 	//여행 포토 댓글 삭제
 	public int TravelPhotoReplyDelete(int prrid) throws Exception;
 	

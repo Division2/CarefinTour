@@ -271,9 +271,9 @@ public class CareController {
 	public String admin_notice() {
 		return "admin/customer/notice";
 	}
-	@RequestMapping("admin/inquire")
-	public String admin_inquire() {
-		return "admin/customer/inquire";
+	@RequestMapping("admin/inquiry")
+	public String admin_inquiry() {
+		return "admin/customer/inquiry";
 	}
 	@RequestMapping("admin/faq")
 	public String admin_faq() {

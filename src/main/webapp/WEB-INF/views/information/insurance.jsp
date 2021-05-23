@@ -24,11 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-<<<<<<< HEAD
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
-=======
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/sky.png"/>);">
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
 			<div class="container">
 				<h2>여행자 보험</h2>
 			</div>
@@ -90,7 +86,7 @@
 									</h5>
 									<table class="table">
 										<tr>
-											<th bgcolor="white" height="80px" border="black">
+											<th bgcolor="white" height="80px">
 												<p><strong>[ 보험나이 계산 예시 ]</strong></p>
 												<p style="color: #4A4F5A; font-size: 17px;">
 													생년월일: 1988년 10월 2일, 현재(계약일): 2018년 4월 13일 ⇒ 2018년 4월 13일 -

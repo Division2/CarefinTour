@@ -166,7 +166,7 @@ public class NoticeBoardController {
 	
 	//공지사항 삭제
 	@RequestMapping(value = "/noticeDelete", method = RequestMethod.GET)
-	public void NoticeDelete(HttpServletRequest request) throws Exception {
+	public String NoticeDelete(HttpServletRequest request) throws Exception {
 		
 		HttpSession session = request.getSession();
 		int nId = Integer.parseInt(request.getParameter("nId"));
@@ -177,5 +177,6 @@ public class NoticeBoardController {
 			logger.info("nId : " + nId);
 			logger.info("게시물 삭제 : " + result);
 		}
+		return "redirect:notice";
 	}
 }

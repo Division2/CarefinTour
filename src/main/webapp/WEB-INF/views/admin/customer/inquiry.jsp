@@ -73,7 +73,7 @@
 						    },
 			                success: function(jdata){
 			                    if(jdata = 1) {
-			                        location.replace("inquire")
+			                        location.replace("inquiry")
 			                    }
 			                    else{
 			                        alert("삭제 실패(문의전화 : 010-0000-0000)");
@@ -101,7 +101,7 @@
 				<!-- 본문 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Inquire Management</h1>
+						<h1 class="h3 mb-0 text-gray-800">Inquiry Management</h1>
 					</div>
 					<hr>
 					<div class="row">
@@ -119,7 +119,7 @@
 						</div>	
 						<div class="col-sm-4">
 						<form class="form-inline"  style="margin-left:320px;">
-						<button type="button" class="btn btn-primary" onclick="location.href='inquire'">목록</button>&nbsp
+						<button type="button" class="btn btn-primary" onclick="location.href='inquiry'">목록</button>&nbsp
 						<button type="button"  class="btn btn-danger" onclick="deleteValue()">삭제</button>
 						</form>
 						</div>
@@ -145,7 +145,7 @@
 							<th><input type="checkbox"name="RowCheck" value="${InquiryBoardVO.iId }"></th>
 							<td>${InquiryBoardVO.iId }</td>
 							<td>${InquiryBoardVO.category }</td>
-							<td><a href="inquireView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
+							<td><a href="inquiryView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
 							<td>${InquiryBoardVO.name}</td>
 							<td>${InquiryBoardVO.userId}</td>
 							<td>${InquiryBoardVO.reDate }</td>
@@ -202,30 +202,30 @@
 						<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 						<c:choose>
 							<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-								<a class="disabledLink" href="inquire?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+								<a class="disabledLink" href="inquiry?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
 							</c:when>
 							<c:otherwise>
-								<a class="page-link" href="inquire?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+								<a class="page-link" href="inquiry?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
 							</c:otherwise>
 						</c:choose>
 						<!-- 페이지 갯수만큼 버튼 생성 -->
 						<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 							<c:choose>
 								<c:when test="${i eq Paging.pageNo }">
-									<a class="active" href="inquire?page=${i}"><c:out value="${i }"/></a>
+									<a class="active" href="inquiry?page=${i}"><c:out value="${i }"/></a>
 								</c:when>
 								<c:otherwise>
-									<a href="inquire?page=${i}"><c:out value="${i }"/></a>
+									<a href="inquiry?page=${i}"><c:out value="${i }"/></a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
 						<c:choose>
 							<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-								<a class="disabledLink" href="inquire?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+								<a class="disabledLink" href="inquiry?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
 							</c:when>
 							<c:otherwise>
-								<a href="inquire?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+								<a href="inquiry?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>

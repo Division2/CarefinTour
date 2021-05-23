@@ -173,19 +173,13 @@ public class AdminServiceCenterController {
 	
 	//공지사항 삭제
 	@RequestMapping(value = "/admin/noticeDelete", method = RequestMethod.GET)
-	public void NoticeDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String NoticeDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
-		int result = service.NoticeDelete(nId);
+		service.NoticeDelete(nId);
 		
-		if (result == 1) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			out.println("<script>location.href='notice'</script>");
-			out.close();
-		}
+		return "redirect:notice";
 	}
 	
 	//게시물 선택삭제
@@ -253,7 +247,7 @@ public class AdminServiceCenterController {
   	}
   	
   	//1:1 문의 출력
-  	@RequestMapping(value = "/admin/inquire", method = RequestMethod.GET)
+  	@RequestMapping(value = "/admin/inquiry", method = RequestMethod.GET)
   	public String InquiryView(HttpServletRequest request, Model model) throws Exception {
   		
   		int totalCount = service.InquiryTotalCount();
@@ -275,7 +269,7 @@ public class AdminServiceCenterController {
   		model.addAttribute("InquiryList", List);
   		model.addAttribute("Paging", paging);
   		
-  		return "admin/customer/inquire";
+  		return "admin/customer/inquiry";
   	}
   	
   	
@@ -305,11 +299,11 @@ public class AdminServiceCenterController {
   		model.addAttribute("Paging", paging);
   		model.addAttribute("name", name);
   		
-  		return "admin/customer/inquire";
+  		return "admin/customer/inquiry";
   	}
   	
   	//1:1 문의 게시글, 답변 문의 게시글 내용
-  	@RequestMapping(value = "/admin/inquireView", method = RequestMethod.GET)
+  	@RequestMapping(value = "/admin/inquiryView", method = RequestMethod.GET)
   	public String InquiryBoardView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		
   		int iId = Integer.parseInt(request.getParameter("iId"));
@@ -329,7 +323,7 @@ public class AdminServiceCenterController {
   		model.addAttribute("content", content);
   		model.addAttribute("answerContent", answerContent);
   		
-  		return "admin/customer/inquireView";
+  		return "admin/customer/inquiryView";
   	}
   	
   	//1:1 문의 답변 수정
@@ -342,14 +336,14 @@ public class AdminServiceCenterController {
   			response.setContentType("text/html;charset=utf-8");
   			PrintWriter out = response.getWriter();
   			
-  			out.println("<script>location.href='inquireView?iId=" + vo.getiId() + "'</script>");
+  			out.println("<script>location.href='inquiryView?iId=" + vo.getiId() + "'</script>");
   			out.close();
   		}
   	}
   	
   	//1:1 문의 답변 삭제
-  	@RequestMapping(value = "/admin/inquireDelete", method = RequestMethod.GET)
-  	public void AnswerDelete(HttpServletRequest request) throws Exception {
+  	@RequestMapping(value = "/admin/inquiryDelete", method = RequestMethod.GET)
+  	public String AnswerDelete(HttpServletRequest request) throws Exception {
   		
   		HttpSession session = request.getSession();
   		int iId = Integer.parseInt(request.getParameter("iId"));
@@ -360,6 +354,8 @@ public class AdminServiceCenterController {
   			
   			System.out.println("답변 삭제" + result);
   		}
+  		
+  		return "redirect:inquiryView?iId=" + iId;
   	}
   	
 	//1:1 선택삭제
@@ -371,7 +367,7 @@ public class AdminServiceCenterController {
         for(int i=0; i<size; i++) {
         	service.SelectDelete2(ajaxMsg[i]);
         }
-        return "redirect:inquire";
+        return "redirect:inquiry";
     }
     
     //-----------------------------------------------FAQ시작--------------------------------------------------

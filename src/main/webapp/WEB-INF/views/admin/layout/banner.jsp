@@ -90,7 +90,7 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="inquire">
+		<a class="nav-link" href="inquiry">
 			<i class="fas fa-fw fa-table"></i>
 			<span>1:1 문의</span>
 		</a>
