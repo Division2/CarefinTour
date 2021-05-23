@@ -123,7 +123,7 @@ public class TravelReviewController {
 	}
 
 	//여행 포토 삭제
-	@RequestMapping(value = "/travelphotoDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/travelphotoDelete", method = RequestMethod.GET)
 	public String TravelPhotoDelete(HttpServletRequest request) throws Exception {
 		
 		int prid = Integer.parseInt(request.getParameter("prid"));
@@ -131,7 +131,7 @@ public class TravelReviewController {
 		int result = service.TravelPhotoDelete(prid);
 		System.out.println("게시글 삭제" + result);
 		
-		return "ranking/travelphoto";
+		return "redirect:travelphoto";
 	}
 	
 	//여행 포토 댓글 작성

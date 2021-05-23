@@ -68,7 +68,7 @@
 							</p>
 							<ul class="list-unstyled blog-one__meta">
 							<c:if test="${sessionScope.member.getUserID() eq reply.getUserID() }">
-								<li><a href="javascript:void(0)" onclick="test(${reply.getPrrId() }, '${reply.getContent() }')"><i class="far fa-edit"></i> 수정</a></li>
+								<li><a href="javascript:void(0)" onclick="replyEdit(${reply.getPrrId() }, '${reply.getContent() }')"><i class="far fa-edit"></i> 수정</a></li>
 								<li><a href="javascript:void(0)" onclick="TravelPhotoReplyDelete(${param.prid }, ${reply.getPrrId()})"><i class="fas fa-trash-alt"></i> 삭제</a></li>
 							</c:if>
 							</ul>

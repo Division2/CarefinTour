@@ -504,7 +504,6 @@ function TravelPhotoDelete() {
 					var prid = getParameterByName('prid');
 					
 					location.href='travelphotoDelete?prid=' + prid;
-					location.href='travelphoto';
 				}
 			});
 		}
@@ -576,14 +575,14 @@ $(document).ready(function() {
 })
 
 /* 여행 포토 댓글 수정 */
-function test(prrid, reply) {
+function replyEdit(prrid, reply) {
 	var htmls = "";
 	
 	htmls += '<form action="travelreplyModify" method="POST" class="contact-one__form">';
 	htmls += '<div class="input-group">';
 	htmls += '<textarea id="replyEditContent" name="Content" placeholder="댓글을 입력하세요..." cols="100">'+reply+'</textarea>';
-	htmls += '<button id="btnReplyModify" name="btnReplyModify" class="thm-btn-psd2" type="button" onclick="test3('+prrid+')">등록</button>';
-	htmls += '<button class="thm-btn-psd2" type="button" onclick="test2(' + prrid + ', \'' + reply + '\')">취소</button>';
+	htmls += '<button id="btnReplyModify" name="btnReplyModify" class="thm-btn-psd2" type="button" onclick="replySave('+prrid+')">등록</button>';
+	htmls += '<button class="thm-btn-psd2" type="button" onclick="replyCancel(' + prrid + ', \'' + reply + '\')">취소</button>';
 	htmls += '</div>';
 	htmls += '</form>';
 	
@@ -591,7 +590,7 @@ function test(prrid, reply) {
 	$('#replyEditContent').focus();
 }
 /* 여행 포토 댓글 수정 취소 */
-function test2(prrid, reply) {
+function replyCancel(prrid, reply) {
 	var htmls = "";
 	
 	htmls += reply;
@@ -599,8 +598,8 @@ function test2(prrid, reply) {
 	$("#replyContentSection"+prrid).html(htmls);
 }
 
-/* 여행 포토 댓글 수정 적용 */
-function test3(prrid) {
+/* 여행 포토 댓글 수정 등록 */
+function replySave(prrid) {
 	var Content = $("#replyEditContent").val();
 	var param = {'Content': Content, 'prrId': prrid};
 	
