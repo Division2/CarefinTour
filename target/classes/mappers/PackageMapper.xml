@@ -3,7 +3,7 @@
 
 <mapper namespace="com.spring.ex.PackageMapper">
 
-<!-- 여행패키지 등록  -->
+	<!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
 			INSERT INTO packageproduct(ProductName, Theme, Area, TravelCity,s_file_name, o_file_name, StarTravelPeriod, ArrivalTravelPeriod, ReservationStatus, MaxReservation, MinReservation, AdultCount, KidCount, SmallKidCount, AdultPrice, KidPrice, SmallKidPrice, Director, Productcode, Price) 
 			VALUES (#{productname}, #{theme}, #{area}, #{travelcity}, #{s_file_name}, #{o_file_name}, #{startravelperiod}, #{arrivaltravelperiod}, 0 , #{maxreservation}, #{minreservation}, 0, 0, 0, #{adultprice}, #{kidprice}, #{smallkidprice}, #{director}, #{productcode}, #{price})			

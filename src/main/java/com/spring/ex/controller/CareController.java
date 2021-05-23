@@ -249,6 +249,10 @@ public class CareController {
 	public String admin_order() {
 		return "admin/order/orderlist";
 	}
+	@RequestMapping("admin/addorder")
+	public String admin_addorder() {
+		return "admin/order/addorder";
+	}
 	//통계(방문자, 게시글 작성 수, 기간별 매출)
 	@RequestMapping("admin/board")
 	public String admin_boardstatistics() {

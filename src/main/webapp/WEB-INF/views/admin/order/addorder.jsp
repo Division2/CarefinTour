@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%pageContext.setAttribute("crlf", "\r\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,44 +25,70 @@
 			<div id="content">
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
+				<script src='<c:url value="/resources/js/Board.js"/>'></script>
 				<!-- 상단 헤더 부분 -->
-				<script src='<c:url value="/resources/js/Board.js"/>'></script>	
+				
 				<!-- 본문 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Modify FAQ</h1>
+						<h1 class="h3 mb-0 text-gray-800">Add Order</h1>
 					</div>
 					<hr>
-					<form id="FAQBoardModify" name="FAQBoardModify" action="modifyfaq" method="POST">
+					<form id="OrderWrite" name="OrderWrite" action="addorder" method="POST">
 						<div class="form-group row">
-							<label class="form-label col-sm-1" for="category">카테고리</label>
-							<div class="col-sm-10">
-								<select class="form-control" name="Category" id="Category">
-									<option>${content.getCategory() }</option>
-									<option value="해외여행">해외여행</option>
-									<option value="테마여행">테마여행</option>
-								</select>
+							<label class="form-label col-sm-1" for="productname">상품명</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="productname" id="productname">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-1" for="title">제목</label>
-							<div class="col-sm-10">
-								<input class="form-control" type="text" id="Title" name="Title" value='<c:out escapeXml="false" value="${content.getTitle() }"/>'>
+							<label class="form-label col-sm-1" for="userId">아이디</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="userId" id="userId">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="form-label col-sm-1">내용</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" rows="20" id="Content" name="Content"><c:out escapeXml="false" value="${fn:replace(content.getContent(), '<br>', crlf)}"/></textarea>
+							<label class="form-label col-sm-1" for="name">주문자</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="name" id="name">
 							</div>
 						</div>
 						<div class="form-group row">
-						<input type="hidden" id="fId" name="fId" value="<%=request.getParameter("fId")%>">
+							<label class="form-label col-sm-1" for="startdate">출발일</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="startdate" id="startdate">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-1" for="payment">결제금액</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="payment" id="payment">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-1" for="paymentdate">결제일자</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="paymentdate" id="paymentdate">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-1" for="status">결제상태</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="status" id="status" placeholder="0은대기 1은보류 2는완료 입니다.">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-1" for="phonenum">연락처</label>
+							<div class="col-sm-6">
+								<input class="form-control" type="text" name="phonenum" id="phonenum">
+							</div>
+						</div>
+						<div class="form-group row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-10">
-								<button type="button" class="btn btn-primary" onclick="FAQModify()">수정</button>
+								<button type="button" class="btn btn-primary" onclick="location.href='order'">목록</button>
+								<button type="button" class="btn btn-primary" onclick="orderWrite()">등록</button>
 								<button type="reset" class="btn btn-primary">취소</button>
-								<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
 							</div>
 						</div>
 					</form>

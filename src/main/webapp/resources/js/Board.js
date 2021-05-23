@@ -594,3 +594,93 @@ function FAQModify() {
 		})
 	}
 }
+
+
+/* 예약내역 등록 유효성 검사 */
+function orderWrite() {
+	var ProductName = $("#productname").val();
+	var Name = $("#name").val();
+	var PhoneNum = $("#phonenum").val();
+	var StartDate = $("#startdate").val();
+	var Payment = $("#payment").val();
+	var Status = $("#status").val();
+	var check2 = /^[0-9]*$/.test(Payment);
+	var check3 =/^[0-9]*$/.test(Status);
+	
+	if(!ProductName) {
+		swal({
+			title: "Order",
+			text: "상품명이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Name) {
+		swal({
+			title: "Order",
+			text: "작성자 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!StartDate) {
+		swal({
+			title: "Order",
+			text: "출발일이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Payment) {
+		swal({
+			title: "Order",
+			text: "결제금액이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!PhoneNum) {
+		swal({
+			title: "Order",
+			text: "전화번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Status) {
+		swal({
+			title: "Order",
+			text: "결제상태가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}	
+	 
+	else if(!(check2)) {
+		swal({
+			title: "숫자 확인",
+			text: "결제금액/결제상태 확인해주세요",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!(check3)) {
+		swal({
+			title: "숫자 확인",
+			text: "결제금액/결제상태 확인해주세요",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	
+	
+	$("#OrderWrite").submit();
+}

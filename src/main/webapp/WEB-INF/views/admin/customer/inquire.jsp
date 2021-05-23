@@ -110,7 +110,7 @@
 							<select class="form-control">
 								<option>작성자</option>
 							</select> <input type="text" name="name" id="name"
-								class="form-control ml-1 mr-1" placeholder="작성자를 입력해주세요" required>
+								class="form-control ml-1 mr-1" placeholder="작성자 아이디를 입력" required>
 							<button type="submit" class="btn px-3 thm-btn-psd">
 								<i class="fas fa-search"></i>
 							</button>
@@ -118,8 +118,12 @@
 							</form>
 						</div>	
 						<div class="col-sm-4">
-						<button type="button"  class="btn btn-danger" onclick="deleteValue()" style="margin-left:320px;">삭제</button>
+						<form class="form-inline"  style="margin-left:320px;">
+						<button type="button" class="btn btn-primary" onclick="location.href='inquire'">목록</button>&nbsp
+						<button type="button"  class="btn btn-danger" onclick="deleteValue()">삭제</button>
+						</form>
 						</div>
+						
                     </div>
                     <br>
 					<table class="table table-hover table-white">
@@ -130,6 +134,7 @@
 								<th>카테고리</th>
 								<th>제목</th>
 								<th>작성자</th>
+								<th>아이디</th>
 								<th>작성일</th>								
 								<th>답변상태</th>
 							</tr>
@@ -142,6 +147,7 @@
 							<td>${InquiryBoardVO.category }</td>
 							<td><a href="inquireView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
 							<td>${InquiryBoardVO.name}</td>
+							<td>${InquiryBoardVO.userId}</td>
 							<td>${InquiryBoardVO.reDate }</td>
 						<c:choose>
 							<c:when test="${InquiryBoardVO.status eq 0}">
@@ -161,7 +167,7 @@
 					<nav aria-label="Page navigation">
 					<ul class="pagination justify-content-center">	
 				<c:choose>
-					<c:when test="${Title ne null }">
+					<c:when test="${userId ne null }">
 						<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 						<c:choose>
 							<c:when test="${Paging.pageNo eq Paging.firstPageNo }">

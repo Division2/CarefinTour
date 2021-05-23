@@ -157,6 +157,7 @@
 											</div>
 											<input type="hidden" id="iId" name="iId" value="<%=request.getParameter("iId")%>">
 											<button type="submit" class="btn btn-primary btn-block btn-round">수정하기</button>
+											<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
 										</form>
 									</div>
 								</div>
