@@ -362,8 +362,7 @@ function answerInquiryDelete2() {
 				if(result) {
 					var iId = getParameterByName('iId');
 					
-					location.href='inquireDelete?iId=' + iId;
-					location.href='inquireView?iId=' + iId;
+					location.href='inquiryDelete?iId=' + iId;
 				}
 			});
 		}

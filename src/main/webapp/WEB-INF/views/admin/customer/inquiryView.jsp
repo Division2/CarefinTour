@@ -110,7 +110,7 @@
 									<button class="btn btn-danger" type="button"  onclick="answerInquiryDelete2()">삭제</button>
 								</c:if>
 								<c:if test="${answerContent ne null}">
-									<button class="btn btn-primary" type="button" onclick="location.href='inquire'">목록</button>
+									<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
 								</c:if>
 								</div>
 							</div>
@@ -130,7 +130,7 @@
 							<div class="d-flex">
 								<div class="ml-auto">
 								<c:if test="${answerContent eq null}">
-									<button class="btn btn-primary" type="button" onclick="location.href='inquire'">목록</button>
+									<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
 								</c:if>
 								</div>
 							</div>
