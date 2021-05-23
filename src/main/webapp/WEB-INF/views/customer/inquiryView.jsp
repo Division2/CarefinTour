@@ -25,7 +25,6 @@
 		<!-- 메인 영역 -->
 	<div class="page-wrapper">
 	<jsp:include page="../layout/header.jsp"/>
-	<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
 			<div class="container">
@@ -133,7 +132,7 @@
 					<div class="bg-white rounded shadow-sm">
 						<textarea id="answerContent" name="answerContent" class="form-control" rows="3" placeholder="답글을 입력해 주세요" required></textarea>
 						<input type="hidden" id="iId" name="iId" value="${param.iId }">
-						<button type="button" class="btn btn-primary" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
+						<button type="button" class="thm-btn-psd" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
 					</div>
 				</form>
 				</c:if>
@@ -141,7 +140,7 @@
 				<div class="d-flex">
 					<div class="ml-auto">
 					<c:if test="${answerContent eq null}">
-						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
 					</c:if>
 					</div>
 				</div>
@@ -150,6 +149,7 @@
 		</section>
 	
 		<jsp:include page="../layout/footer.jsp"/>
+		<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 		<!-- 답변 수정 Modal -->
 		<div class="modal fade" id="AnswerEditModal" tabindex="-1" role="dialog" aria-labelledby="AnswerEditModalLabel" aria-hidden="true">

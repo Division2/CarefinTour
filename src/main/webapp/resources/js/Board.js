@@ -125,7 +125,6 @@ function NoticeDelete() {
 					var nId = getParameterByName('nId');
 					
 					location.href='noticeDelete?nId=' + nId;
-					location.href='notice'
 				}
 			});
 		}
@@ -331,7 +330,6 @@ function answerInquiryDelete() {
 					var iId = getParameterByName('iId');
 					
 					location.href='inquiryDelete?iId=' + iId;
-					location.href='inquiryView?iId=' + iId;
 				}
 			});
 		}
