@@ -17,11 +17,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	//테마 지역 값에 따라서 콤보박스 선택되게
 	$("#theme").val("${pdtail.getTheme()}").prop("selected", true);
-	
 	$("#area").val("${pdtail.getArea()}").prop("selected", true);
-	});
 
+	var formObj = $("form[name='add']");
+	$(document).on("click","#fileDel", function() {
+		$(this).parent().remove();
+	})
+	fn_addFile();
+	
+})
+//파일추가	
+function fn_addFile() {
+	var fileIndex = 1;
+	
+	$("#fileAdd_btn").on("click", function() {
+		$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+	});
+	
+	$(document).on("click","#fileDelBtn", function() {
+		$(this).parent().remove();
+	});
+}
 	
 </script>
 <title>케어핀투어 관리자</title>
@@ -209,10 +227,25 @@ $(document).ready(function(){
 								<h5>사진</h5>
 								<table class="table table-hover table-white">
 									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' alt="PackageProduct Img">
+					                <span>파일 목록</span>
+									<div class="form-group" style="border: 1px solid #dbdbdb;">								
+										<div id="fileIndex">
+											<div>
+												<input type="file" name="file">
+												<button id="fileDel" type="button" style='float:right;'>삭제</button><br>
+											</div>
+										</div>
+									</div>
+									
+									<c:forEach var="row" items="${list }"> 
+									<input type="hidden" id="IDX" value="${row.IDX }"> 
+									</c:forEach>
+
 								</table>
 								<hr style=background-color:#368AFF;>
 								<!-- 이전, 수정 버튼 -->
 								<div align="right">
+									<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
 									<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:60px;">
 									<input class="btn btn-primary" value="목록" onclick="location.href='packageproduct'" style="width:60px;">		
 							        <input class="btn btn-primary" type="submit" value="확인">
