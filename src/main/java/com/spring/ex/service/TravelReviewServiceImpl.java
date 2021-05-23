@@ -106,6 +106,12 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 		return dao.TravelPhotoReplyWrite(vo);
 	}
 	
+	//여행 포토 댓글 수정
+	@Override
+	public int TravelPhotoReplyModify(ReplyVO vo) throws Exception {
+		return dao.TravelPhotoReplyModify(vo);
+	}
+	
 	//여행 포토 댓글 삭제
 	@Override
 	public int TravelPhotoReplyDelete(int prrid) throws Exception {

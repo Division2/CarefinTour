@@ -56,10 +56,15 @@
 	<insert id="TravelPhotoReplyWrite">
 		INSERT INTO photoreviewreply(PRID, UserID, Content) VALUES (#{prId}, #{UserID}, #{Content})
 	</insert>
+
+	<!-- 여행 포토 댓글 수정 -->
+	<update id="TravelPhotoReplyModify">
+		UPDATE photoreviewreply SET Content = #{Content} WHERE prrid = #{prrId}
+	</update>
 	
 	<!-- 여행 포토 댓글 삭제 -->
 	<delete id="TravelPhotoReplyDelete">
-		DELETE FROM photoreviewreply WHERE prrid = #{prrid};
+		DELETE FROM photoreviewreply WHERE prrid = #{prrid}
 	</delete>
 	
     <!-- 파일 조회 -->

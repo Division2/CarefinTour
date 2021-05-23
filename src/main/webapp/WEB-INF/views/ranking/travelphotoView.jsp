@@ -64,7 +64,7 @@
 							<p><i class="far fa-clock"></i> ${reply.getRegDate() }</p>
 							<h3>${reply.getUserID() }</h3>
 							<p id="replyContentSection${reply.getPrrId() }">
-								<c:out escapeXml="false" value="${reply.getContent() }"/>
+								<c:out escapeXml="false" value="${fn:replace(reply.getContent(), crlf, '<br>')}"/>
 							</p>
 							<ul class="list-unstyled blog-one__meta">
 							<c:if test="${sessionScope.member.getUserID() eq reply.getUserID() }">
