@@ -12,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.PackageService;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
+import com.spring.ex.vo.TravelPhotoVO;
 
 @Controller
 public class PackageController {
@@ -34,7 +36,6 @@ public class PackageController {
 		if (result == 1) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			System.out.println("ㅅㅅ");
 			
 			out.println("<script>location.href='package'</script>");
 			out.close();
@@ -43,7 +44,6 @@ public class PackageController {
 			PrintWriter out = response.getWriter();
 			out.println("<script>location.href='insertpackage'</script>");
 			out.close();
-			System.out.println("ㄴ");
 		}
 	}
 	
@@ -94,4 +94,27 @@ public class PackageController {
 		return "admin/site/packageproduct";
 	}
 	
+	//여행패키지 수정페이지 출력
+	@RequestMapping(value = "/admin/packageProductModify", method = RequestMethod.GET)
+	public String getPackageProductModify(Model model, HttpServletRequest request)  throws Exception {
+		int pid = Integer.parseInt(request.getParameter("PID"));
+		PackageVO pdtail =  service.ProductPackageDetail(pid);
+		model.addAttribute("pdtail", pdtail);
+		return "admin/site/packageProductModify";
+	}
+	
+	/*
+	 * //여행패키지 수정
+	 * 
+	 * @RequestMapping(value = "/travelphotoModify", method = {RequestMethod.GET,
+	 * RequestMethod.POST}) public String TravelPhotoModify(TravelPhotoVO
+	 * travelPhotoVO, MultipartHttpServletRequest
+	 * mpRequest, @RequestParam(value="fileNoDel[]") String[]
+	 * files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws
+	 * Exception {
+	 * 
+	 * //service.TravelPhotoModify(travelPhotoVO, files, fileNames, mpRequest);
+	 * 
+	 * return "ranking/travelphoto"; }
+	 */
 }
