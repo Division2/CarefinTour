@@ -124,7 +124,7 @@
 								</li>
 							</ul>
 						</div>
-						<img src='<c:url value="/resources/images/shapes/sun-1-1.png"/>' alt="" class="banner-four__sun">
+						<img src='<c:url value="/resources/images/shapes/sun-1-1.jpg"/>' alt="" class="banner-four__sun">
 					</div>
 				</div>
 			</nav>

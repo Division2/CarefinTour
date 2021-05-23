@@ -49,41 +49,35 @@
 						<h1>회원 탈퇴</h1>
 						<hr>
 						<div class="container" style="border: 1px solid #C1BBBB;">
-							<strong>
-								<i class="fas fa-check"></i> 아이디 재사용 및 복구 불가 안내
-							</strong>
+							<strong><i class="fas fa-check"></i> 아이디 재사용 및 복구 불가 안내</strong>
 							<p>회원탈퇴 진행 시 본인을 포함한 타인 모두 아이디 재사용이나 복구가 불가능합니다.<br>신중히 결정하시고 선택해주세요.</p>
-							<strong>
-								<i class="fas fa-check"></i> 내정보 및 서비스 이용 기록 삭제 안내
-							</strong>
+							<strong><i class="fas fa-check"></i> 내정보 및 서비스 이용 기록 삭제 안내</strong>
 							<p>내정보 및 서비스 이용기록이 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다.<br>마일리지 등 회원등급이 유지되지 않으며 탈퇴 후 복구가 불가능합니다.</p>
-							<strong>
-								<i class="fas fa-check"></i> 서비스에 등록한 게시글 삭제 불가 안내
-							</strong>
+							<strong><i class="fas fa-check"></i> 서비스에 등록한 게시글 삭제 불가 안내</strong>
 							<p>삭제를 원하시는 게시글이나 댓글이 있다면 반드시 회원탈퇴 전 삭제하시기 바랍니다.<br>탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어,<br>게시글 및 댓글을 임의로 삭제해드릴 수 없습니다.</p>
 							<input type="checkbox" id="agree" name="agree" required>
 							<label for="agree">내용을 모두 확인하였습니다.</label>
 						</div>
 						<br>
 						<section id="container">
-							<form action="withdrawal" id="MemberWithdrawal" name="MemberWithdrawal" method="POST">
-								<div class="form-group has-feedback">
+							<form action="withdrawal" id="MemberWithdrawal" name="MemberWithdrawal" method="POST" class="contact-one__form">
+								<div class="input-group">
 									<label class="control-label" for="UserID">아이디</label>
-									<input class="form-control" type="text" id="UserID" name="UserID" value="${member.getUserID() }" readonly />
+									<input type="text" id="UserID" name="UserID" value="${member.getUserID() }" readonly />
 								</div>
-								<div class="form-group has-feedback">
+								<div class="input-group">
 									<label class="control-label" for="Password">패스워드</label>
-									<input class="form-control" type="password" id="WithdrawalPassword" name="Password" />
+									<input type="password" id="WithdrawalPassword" name="Password" />
 								</div>
-								<div class="form-group has-feedback">
+								<div class="input-group">
 									<label class="control-label" for="Name">성명</label>
-									<input class="form-control" type="text" id="Name" name="Name" value="${member.getName() }" readonly />
+									<input type="text" id="Name" name="Name" value="${member.getName() }" readonly />
 								</div>
 							</form>
 							<div class="d-flex">
 								<div class="mx-auto">
 									<div class="form-group has-feedback">
-										<button type="button" class="btn btn-primary" id="btnWithdrawal" name="btnWithdrawal">회원탈퇴</button>
+										<button type="button" class="thm-btn-psd" id="btnWithdrawal" name="btnWithdrawal">회원탈퇴</button>
 									</div>
 								</div>
 							</div>
