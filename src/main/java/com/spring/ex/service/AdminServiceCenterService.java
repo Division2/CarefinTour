@@ -92,6 +92,9 @@ public interface AdminServiceCenterService {
 	//FAQ 등록
 	public int FAQWrite(FAQVO vo) throws Exception;
 	
+	//FAQ 카테고리 등록
+	public int CategoryWrite(FAQVO vo) throws Exception;
+	
 	//FAQ 수정
 	public int FAQModify(FAQVO vo) throws Exception;
 	
@@ -106,4 +109,7 @@ public interface AdminServiceCenterService {
 
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;
+	
+	//FAQ 카테고리 내용
+	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
 }

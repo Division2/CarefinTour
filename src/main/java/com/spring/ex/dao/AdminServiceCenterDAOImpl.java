@@ -173,6 +173,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 		return sqlSession.insert(namespace + ".FAQWrite", vo);
 	}
 	
+	//FAQ 카테고리 등록
+	@Override
+	public int CategoryWrite(FAQVO vo) throws Exception {
+		return sqlSession.insert(namespace + ".CategoryWrite", vo);
+	}
+	
 	//FAQ 수정
 	@Override
 	public int FAQModify(FAQVO vo) throws Exception {
@@ -202,5 +208,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	public FAQVO FAQBoardView(int fId) throws Exception {
 		return sqlSession.selectOne(namespace + ".FAQBoardView", fId);
 	}
+
+	//자주 찾는 질문(전체)
+	@Override
+	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQCategory", map);
+	}
+	
 
 }

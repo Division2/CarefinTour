@@ -114,6 +114,7 @@
 						<div class="col-sm-4">
 							<div class="d-flex">
 								<div class="ml-auto">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#CategoryModal">카테고리추가</button>
 									<button class="btn btn-primary" onclick="location.href='addfaq'">등록</button>
 									<button class="btn btn-primary" onclick="location.href='modifyfaq'">수정</button>
 									<button class="btn btn-danger" type="button" onclick="deleteValue()">삭제</button>
@@ -212,6 +213,31 @@
 					</c:choose>
 					</ul>
 					</nav>
+						<!-- 답변 수정 Modal -->
+					<div class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="AnswerEditModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header border-bottom-0">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-title text-center">
+										<h4>카테고리 추가</h4>
+									</div>
+									<div class="d-flex flex-column text-center">
+										<form id="addcategory" name="addcategory" action="addcategory" method="POST">
+											<div class="form-group">
+												<input class="form-control" type="text" name="category" id="category">
+											</div>
+											<button type="submit" class="btn btn-primary btn-block btn-round">입력하기</button>
+											<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>		
+					
 				</div>
 				<!-- 본문 -->
 			</div>

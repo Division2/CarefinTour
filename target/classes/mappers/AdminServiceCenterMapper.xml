@@ -134,6 +134,11 @@
 	<insert id="FAQWrite">
 		INSERT INTO faq(FID, Category, Title, Content) VALUES (#{fId}, #{category}, #{title},#{content})
 	</insert>
+	
+	<!-- FAQ 등록 -->
+	<insert id="CategoryWrite">
+		INSERT INTO faq_category(Category) VALUES (#{category})
+	</insert>
 
 	<!-- FAQ 수정 -->
 	<update id="FAQModify">
@@ -158,6 +163,11 @@
 	<!-- FAQ 내용 -->
 	<select id="FAQBoardView" resultType="FAQVO">
 		SELECT * FROM faq WHERE fId = #{fId}
+	</select>
+	
+	<!-- FAQ 내용 -->
+	<select id="FAQCategory" resultType="FAQVO">
+		SELECT * FROM faq_category
 	</select>
 
 

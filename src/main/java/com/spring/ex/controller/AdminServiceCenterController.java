@@ -385,6 +385,36 @@ public class AdminServiceCenterController {
   			out.close();
   		}
   	}
+  	
+  	 //FAQ 카테고리 작성
+  	@RequestMapping(value = "/admin/addcategory", method = RequestMethod.POST)
+  	public void CategoryWrite(FAQVO vo, HttpServletResponse response) throws Exception {
+
+  		int result = service.CategoryWrite(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='faq'</script>");
+  			out.close();
+  		}
+  	}
+  	
+    //FAQ 카테고리 보여주기 내용
+  	@RequestMapping(value = "/admin/addfaq", method = RequestMethod.GET)
+	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+		List<FAQVO> Category =  service.FAQCategory(map);
+		
+		model.addAttribute("category", Category);
+		
+		return "admin/customer/addfaq";
+	}
+
+
 	
   	//FAQ 내용
   	@RequestMapping(value = "/admin/modifyfaq", method = RequestMethod.GET)

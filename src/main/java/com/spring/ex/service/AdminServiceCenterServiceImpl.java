@@ -172,6 +172,12 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.FAQWrite(vo);
 	}
 	
+	//FAQ 등록
+	@Override
+	public int CategoryWrite(FAQVO vo) throws Exception {
+		return dao.CategoryWrite(vo);
+	}
+	
 	//FAQ 수정
 	@Override
 	public int FAQModify(FAQVO vo) throws Exception {
@@ -200,6 +206,12 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	@Override
 	public FAQVO FAQBoardView(int fId) throws Exception {
 		return dao.FAQBoardView(fId);
+	}
+	
+	//FAQ 카테고리 내용
+	@Override
+	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
+		return dao.FAQCategory(map);
 	}
 	
 }
