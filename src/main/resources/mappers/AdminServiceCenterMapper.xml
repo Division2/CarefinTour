@@ -60,6 +60,11 @@
 		SELECT COUNT(*) FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%')
 	</select>
 	
+	<!-- 회원목록 -->
+	<select id="memberList" resultType="MemberVO">
+		SELECT * FROM account;
+	</select>
+	
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
 		INSERT INTO inquiry(Category, UserID, Name, Phone, Title, Content, Status) VALUES (#{category}, #{userId}, #{name}, #{phone}, #{title}, #{content}, 0)

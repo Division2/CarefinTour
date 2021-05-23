@@ -11,6 +11,7 @@ import com.spring.ex.dao.AdminServiceCenterDAO;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Service
@@ -76,6 +77,12 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	@Override
 	public int NoticeSearchTotalCount(String title) throws Exception {
 		return dao.NoticeSearchTotalCount(title);
+	}
+	
+	//관리자용 회원목록
+	@Override
+	public List<MemberVO> getMemberList() throws Exception {
+		return dao.getMemberList();
 	}
 	
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------

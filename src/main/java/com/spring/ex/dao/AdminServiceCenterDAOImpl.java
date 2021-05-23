@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Repository
@@ -77,6 +78,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	@Override
 	public int NoticeSearchTotalCount(String title) throws Exception {
 		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", title);
+	}
+	
+	//관리자용 회원목록
+	@Override
+	public List<MemberVO> getMemberList() throws Exception {
+		return sqlSession.selectList(namespace+".memberList");
 	}
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	

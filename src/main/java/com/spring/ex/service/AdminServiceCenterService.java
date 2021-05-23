@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Service
@@ -41,6 +42,9 @@ public interface AdminServiceCenterService {
 	
 	//공지사항 검색 게시물 총 갯수
 	public int NoticeSearchTotalCount(String title) throws Exception;
+	
+	//관리자용 회원목록
+	public List<MemberVO> getMemberList() throws Exception;
 	
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	

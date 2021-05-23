@@ -86,29 +86,31 @@
 							</tr>
 						</thead>
 						<tbody>
+								<c:forEach items="${memberList}" var="MemberVO">
 							<tr>
 								<td>
 									<input type="checkbox">
 								</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
+								<td>1</td>
+								<td><c:out value="${MemberVO.userID}"></c:out></td>
+								<td><c:out value="${MemberVO.password}"></c:out></td>
+								<td><c:out value="${MemberVO.name}"></c:out></td>
 								<td>
 									<select class="form-control">
 										<option>일반</option>
 									</select>
 								</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
-								<td>Test</td>
+								<td><c:out value="${MemberVO.email}"></c:out></td>
+								<td><c:out value="${MemberVO.phone}"></c:out></td>
+								<td><c:out value="${MemberVO.birth}"></c:out></td>
+								<td><c:out value="${MemberVO.sex}"></c:out></td>
+								<td><c:out value="${MemberVO.address}"></c:out></td>
+								<td><c:out value="${MemberVO.mileage}"></c:out></td>
+								<td><c:out value="${MemberVO.comment}"></c:out></td>
+								<td><c:out value="${MemberVO.regDate}"></c:out></td>
+								<td><c:out value="${MemberVO.lastDate}"></c:out></td>
 							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

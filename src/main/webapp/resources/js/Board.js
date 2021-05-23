@@ -406,7 +406,6 @@ function TravelPhotoDelete() {
 	})
 }
 
-<<<<<<< HEAD
 /* 여행 포토 댓글 작성 */
 $(document).ready(function() {
 	$('#btnReplyWrite').click(function() {
@@ -515,7 +514,6 @@ function TravelPhotoReplyDelete(prid, prrid) {
 		}
 	})
 }
-=======
 
 /* FAQ 등록 유효성 검사 */
 function FAQWrite() {
@@ -596,5 +594,3 @@ function FAQModify() {
 		})
 	}
 }
-	
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git

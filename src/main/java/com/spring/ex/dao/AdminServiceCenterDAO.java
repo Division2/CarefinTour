@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Repository
@@ -42,6 +43,9 @@ public interface AdminServiceCenterDAO {
 	
 	//공지사항 검색 게시물 총 갯수
 	public int NoticeSearchTotalCount(String title) throws Exception;
+	
+	//회원정보리스트 출력
+	public List<MemberVO> getMemberList() throws Exception;
 	
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	

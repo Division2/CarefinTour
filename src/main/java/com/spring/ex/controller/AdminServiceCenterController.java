@@ -1,7 +1,6 @@
 package com.spring.ex.controller;
 
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,6 +22,7 @@ import com.spring.ex.service.AdminServiceCenterService;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.PagingVO;
 
@@ -199,6 +199,28 @@ public class AdminServiceCenterController {
         }
         return "redirect:notice";
     }
+    
+  //관리자용 회원 목록
+  	@RequestMapping(value = "admin/member", method = RequestMethod.GET)
+  	public String listGET(HttpSession session, Model model) throws Exception {
+  		// 1. 관리자 세션 제어
+  		
+  		MemberVO vo = (MemberVO) session.getAttribute("member");
+  		String id = vo.getUserID();
+  		if (id == null || !(id.equals("1234"))) {
+  			logger.info("C: 관리자아닌 접근 ID - " + id);
+  			return "redirect:/main";
+  		}
+
+  		// 2. 서비스 - 회원 목록 가져오는 동작
+  		//List<MemberVO> memberList = service.getMemberList();
+
+  		// 3. 정보 저장 -> 뷰(/member/memberlist.jsp) -> (Model 객체 )
+  		model.addAttribute("memberList", service.getMemberList());
+
+  		// 4. 페이지이동
+  		return "admin/member/memberlist";
+  	}
     
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
     
