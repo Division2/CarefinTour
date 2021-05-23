@@ -117,11 +117,11 @@
 				<div class="d-flex">
 					<div class="ml-auto">
 					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
-						<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
-						<button class="btn btn-danger" type="button"  onclick="answerInquiryDelete()">삭제</button>
+						<button class="thm-btn-psd" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
+						<button class="thm-btn-psd" type="button"  onclick="answerInquiryDelete()">삭제</button>
 					</c:if>
 					<c:if test="${answerContent ne null}">
-						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
 					</c:if>
 					</div>
 				</div>
@@ -168,7 +168,7 @@
 									<textarea id="answerEditContent" name="answerContent" class="form-control" rows="3"><c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), '<br>', crlf)}"/></textarea>
 								</div>
 								<input type="hidden" id="iId" name="iId" value="<%=request.getParameter("iId")%>">
-								<button type="submit" class="btn btn-primary btn-block btn-round">수정하기</button>
+								<button type="submit" class="thm-btn-psd btn-block btn-round">수정하기</button>
 							</form>
 						</div>
 					</div>
