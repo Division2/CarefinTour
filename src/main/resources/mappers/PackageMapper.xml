@@ -29,4 +29,9 @@
 	<delete id="ProductPackageDelete">
 		DELETE FROM packageproduct WHERE PID = #{pid}
 	</delete>
+	
+	<!-- 여행패키지 PID해당하는 파일검색 -->
+ 	<select id="ProductPackageFileName" resultType="PackageVO">
+		SELECT s_file_name FROM packageproduct WHERE PID = #{pid};
+	</select>
 </mapper>

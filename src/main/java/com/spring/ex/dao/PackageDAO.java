@@ -27,6 +27,7 @@ public interface PackageDAO {
 	
 	//여행패키지 삭제
 	public void ProductPackageDelete(String pid) throws Exception;
-	
-	
+
+	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
+	public PackageVO ProductPackageFileName(int pid) throws Exception;
 }

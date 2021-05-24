@@ -1,6 +1,8 @@
  package com.spring.ex.controller;
 
+import java.io.File;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,10 +39,9 @@ public class PackageController {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			
-			out.println("<script>location.href='package'</script>");
+			out.println("<script>location.href='packageproduct'</script>");
 			out.close();
 		}else {
-			System.out.println(result);
 			PrintWriter out = response.getWriter();
 			out.println("<script>location.href='insertpackage'</script>");
 			out.close();
@@ -79,6 +80,10 @@ public class PackageController {
 	public String getPackageProductDetail(Model model, HttpServletRequest request)  throws Exception {
 		int pid = Integer.parseInt(request.getParameter("PID"));
 		PackageVO pdtail =  service.ProductPackageDetail(pid);
+		
+		PackageVO pfileName = service.ProductPackageFileName(62);
+		System.out.println("되나 ? "+ pfileName.getS_file_name()); //되네?
+		
 		model.addAttribute("pdtail", pdtail);
 		return "admin/site/packageProductDetail";
 	}
@@ -86,10 +91,23 @@ public class PackageController {
 	//여행패키지 삭제
 	@RequestMapping(value = "/admin/PackageSelectDelete")
 	public String PackageSelectDelete(HttpServletRequest request) throws Exception {
-        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int[] ajaxMsg = Arrays.stream(request.getParameterValues("valueArr")).mapToInt(Integer::parseInt).toArray();
         int size = ajaxMsg.length;
         for(int i=0; i<size; i++) {
-        	service.ProductPackageDelete(ajaxMsg[i]);
+        	//service.ProductPackageDelete(ajaxMsg[i]); //DB에서 삭제 - 학교에서 바꾸기
+        	PackageVO pfileName = service.ProductPackageFileName(ajaxMsg[i]);
+        	System.out.println(ajaxMsg[i]);
+        	System.out.println(pfileName.getS_file_name());
+        	//System.out.println(pfileName);
+        	
+        	final String filePath2 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\product_package\\"+pfileName.getS_file_name();
+        	System.out.println(" 2번 "+filePath2);
+    		File file = new File(filePath2);
+    			if(file.exists() == true){
+    				
+    				file.delete();
+    				System.out.println("삭제 : " + pfileName.getS_file_name());
+    		}
         }
 		return "admin/site/packageproduct";
 	}
