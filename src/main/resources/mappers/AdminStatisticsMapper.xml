@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.AdminStatisticsMapper">
+
+	<!-- 방문자 카운터 -->
+	<insert id="VisitorCounter" parameterType="VisitVO">
+		INSERT INTO visitor(visitor_ip, <if test="visitor_refer != null and visitor_refer != ''">visitor_refer, </if> visitor_browser) VALUES (#{visitor_ip}, <if test="visitor_refer != null and visitor_refer != ''">#{visitor_refer}, </if>#{visitor_browser});
+	</insert>
+	
+	<!-- 방문자 전체 출력 -->
+	<select id="VisitorAllView" resultType="VisitVO">
+		SELECT * FROM visitor ORDER BY visitor_id, visit_time DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 방문자 총 갯수 -->
+	<select id="getVisitTotalCount" resultType="int">
+		SELECT COUNT(*) FROM visitor
+	</select>
+	
+	<!-- 방문자 검색 출력 -->
+	<select id="VisitorSearchView" resultType="VisitVO">
+		SELECT * FROM visitor WHERE visit_time <![CDATA[>= #{start_date} AND visit_time <= #{end_date}]]> ORDER BY visitor_id, visit_time DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 방문자 검색 총 갯수 -->
+	<select id="getVisitSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM visitor WHERE visit_time <![CDATA[>= #{start_date} AND visit_time <= #{end_date}]]>
+	</select>
+</mapper>
