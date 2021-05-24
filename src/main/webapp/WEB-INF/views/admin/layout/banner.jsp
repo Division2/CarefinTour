@@ -3,7 +3,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
 		<div class="sidebar-brand-icon">
-			<img src='<c:url value="/resources/image/MainLogo.png"/>' width="100" height="100" style="float:left;">
+			<img src='<c:url value="/resources/images/Logo.png"/>' width="100" height="100" style="float:left;">
 		</div>
 		<div class="sidebar-brand-text mx-1">케어핀투어</div>
 	</a>

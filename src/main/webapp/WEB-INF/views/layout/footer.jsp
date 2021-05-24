@@ -70,7 +70,7 @@
 			<div class="side-menu__block-inner ">
 				<div class="side-menu__top justify-content-end">
 					<a href="#" class="side-menu__toggler side-menu__close-btn">
-						<img src='<c:url value="/resources/images/Logo.png"/>' alt="">
+						<img src='<c:url value="/resources/images/Logo.png"/>' width="123" alt="">
 					</a>
 				</div>
 				<nav class="mobile-nav__container"></nav>
