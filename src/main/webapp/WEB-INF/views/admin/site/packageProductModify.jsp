@@ -239,7 +239,7 @@ function fn_addFile() {
 									
 									<c:forEach var="row" items="${list }"> 
 									<input type="hidden" id="IDX" value="${row.IDX }"> 
-									</c:forEach>
+zz									</c:forEach>
 
 								</table>
 								<hr style=background-color:#368AFF;>
