@@ -69,20 +69,20 @@
 								<th>
 									<input type="checkbox">
 								</th>
-								<th>AID</th>
-								<th>계정</th>
-								<th>비밀번호</th>
-								<th>이름</th>
-								<th>권한</th>
-								<th>이메일</th>
-								<th>휴대전화</th>
-								<th>생년월일</th>
-								<th>성별</th>
-								<th>주소</th>
-								<th>마일리지</th>
-								<th>특이사항</th>
-								<th>가입일자</th>
-								<th>최근 접속일자</th>
+								<th><font size="2">AID</font></th>
+								<th><font size="2">계정</font></th>
+								<th><font size="2">비밀번호</font></th>
+								<th><font size="2">이름</font></th>
+								<th><font size="2">권한</font></th>
+								<th><font size="2">이메일</font></th>
+								<th><font size="2">휴대전화</font></th>
+								<th><font size="2">생년월일</font></th>
+								<th><font size="2">성별</font></th>
+								<th><font size="2">주소</font></th>
+								<th><font size="2">마일리지</font></th>
+								<th><font size="2">특이사항</font></th>
+								<th><font size="2">가입일자</font></th>
+								<th><font size="2">최근 접속일자</font></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,7 +92,7 @@
 									<input type="checkbox">
 								</td>
 								<td>1</td>
-								<td><c:out value="${MemberVO.userID}"></c:out></td>
+								<td  data-target="#memberModal" data-toggle="modal"><c:out value="${MemberVO.userID}"></c:out></td>
 								<td><c:out value="${MemberVO.password}"></c:out></td>
 								<td><c:out value="${MemberVO.name}"></c:out></td>
 								<td>
@@ -135,7 +135,7 @@
 						<hr>
 					</div>
 					<div class="d-flex flex-column">
-						<form>
+						<form name="form" id="form" action="MemberUpdate" method="POST">
 							<!-- 아이디 & 비밀번호 -->
 							<div class="form-group row">
 								<div class="col-xs-6 col-md-6">
@@ -143,7 +143,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<input type="text" name="account" id="account" class="form-control" required>
+										<input type="text" name="account" id="account" class="form-control" value="${MemberVO.userID}" required readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -162,7 +162,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" required>
+										<input type="text" name="name" id="name" class="form-control" required readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -195,8 +195,8 @@
 											<span class="input-group-text">성별</span>
 										</div>
 										<select class="form-control">
-											<option value="남성">남성</option>
-											<option value="여성">여성</option>
+											<option value="남성" >남성</option>
+											<option value="여성" >여성</option>
 										</select>
 									</div>
 								</div>
@@ -208,7 +208,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이메일</span>
 										</div>
-										<input type="email" name="email" id="email" class="form-control" required>
+										<input type="email" name="email" id="email" class="form-control" required readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -216,7 +216,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">휴대전화</span>
 										</div>
-										<input type="tel" name="phone" id="phone" class="form-control" required>
+										<input type="tel" name="phone" id="phone" class="form-control" required readonly>
 									</div>
 								</div>
 							</div>
@@ -275,12 +275,14 @@
 									</tr>
 								</tbody>
 							</table>
-							<button type="submit" class="btn btn-primary btn-block btn-round">등록</button>
+							<button type="submit" class="btn btn-primary btn-block btn-round">수정</button>
 						</form>
+				
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
