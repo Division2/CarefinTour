@@ -81,8 +81,8 @@ public class PackageController {
 		int pid = Integer.parseInt(request.getParameter("PID"));
 		PackageVO pdtail =  service.ProductPackageDetail(pid);
 		
-		PackageVO pfileName = service.ProductPackageFileName(62);
-		System.out.println("되나 ? "+ pfileName.getS_file_name()); //되네?
+	//	PackageVO pfileName = service.ProductPackageFileName(62);
+	//	System.out.println("되나 ? "+ pfileName.getS_file_name()); //되네?
 		
 		model.addAttribute("pdtail", pdtail);
 		return "admin/site/packageProductDetail";
