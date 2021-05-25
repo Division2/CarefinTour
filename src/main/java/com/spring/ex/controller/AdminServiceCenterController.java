@@ -223,12 +223,12 @@ public class AdminServiceCenterController {
 	    	int aid = Integer.parseInt(request.getParameter("AID"));
 	    	System.out.println(aid);
 	    	MemberVO memberVO = service.ViewMember(aid);
-
+	    	
 	        model.addAttribute("mDetail", memberVO);
 	        //System.out.println("클릭한 아이디 확인 : "+userId);
 	        //logger.info("클릭한 아이디 : "+UserID);
 	        // member_view.jsp로 포워드
-	        return "admin/member/memverView";
+	        return "admin/member/memberView";
 	    }
   
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------

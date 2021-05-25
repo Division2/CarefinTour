@@ -43,7 +43,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<input type="text" name="account" id="account" class="form-control" value="${mDetail.getUserID()}" readonly>
+										<input type="text" name="account" id="account" class="form-control" value="${mDetail.getUserID()}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -51,7 +51,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">비밀번호</span>
 										</div>
-										<input type="password" name="password" id="password" value="${mDetail.getPassword()}" class="form-control">
+										<input type="password" name="password" id="password" value="${mDetail.getPassword()}">
 									</div>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" value="${mDetail.getName()}" readonly>
+										<input type="text" name="name" id="name" class="form-control" value="${mDetail.getName()}">
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
