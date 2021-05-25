@@ -235,7 +235,8 @@ public class FileUtils {
 		Date redate = packageVO.getRedate();
 		String productcode = packageVO.getProductcode();
 		int price = packageVO.getPrice();
-		
+		String overview = packageVO.getOverview();
+		int hit = packageVO.getHit();
 		File file = new File(filePath2);
 		
 		while(iterator.hasNext()) {
@@ -272,6 +273,8 @@ public class FileUtils {
 				listMap.put("redate", redate);
 				listMap.put("productcode", productcode);
 				listMap.put("price", price);
+				listMap.put("overview", overview);
+				listMap.put("hit", hit);
 				
 				list.add(listMap);
 			}
@@ -299,6 +302,8 @@ public class FileUtils {
 				listMap.put("redate", redate);
 				listMap.put("productcode", productcode);
 				listMap.put("price", price);
+				listMap.put("overview", overview);
+				listMap.put("hit", hit);
 				
 				list.add(listMap);
 			}
@@ -306,7 +311,7 @@ public class FileUtils {
 		return list;
 	}
 
-	//탑앵글러 사진 값 넣어주는 부분
+	//배너
 	public List<Map<String, Object>> parseInsertFishFileInfo(BannerVO bannerVO, MultipartHttpServletRequest mpRequest) throws Exception {
 		Iterator<String> iterator = mpRequest.getFileNames();
 		

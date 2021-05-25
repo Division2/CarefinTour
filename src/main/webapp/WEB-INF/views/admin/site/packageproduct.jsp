@@ -155,7 +155,8 @@
 								<th>지역</th>
 								<th>출발 및 도착일</th>
 								<th>등록일</th>
-								<th>가격</th>
+								<th>조회수</th>
+								<th>총 결제금액</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -169,6 +170,7 @@
 									<td><font size="2">${plist.getArea()}</font></td>
 									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
 									<td><font size="2">${plist.getRedate()}</font></td>
+									<td><font size="2">${plist.getHit()}</font></td>
 									<td><font size="2">${plist.getPrice()}원</font></td>
 								</tr>
 							</c:forEach>
