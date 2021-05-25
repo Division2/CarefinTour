@@ -60,7 +60,7 @@ function NoticeDeleteSelection() {
 						valueArr: valueArr
 					},
 					success: function(jdata) {
-						if (jdata = 1) {
+						if (jdata == 1) {
 							location.replace("notice")
 						}
 						else {
@@ -113,7 +113,7 @@ function InquiryDeleteSelection() {
 						valueArr: valueArr
 					},
 					success: function(jdata) {
-						if (jdata = 1) {
+						if (jdata == 1) {
 							location.replace("inquiry")
 						}
 						else {
@@ -166,7 +166,7 @@ function FAQDeleteSelection() {
 						valueArr: valueArr
 					},
 					success: function(jdata) {
-						if (jdata = 1) {
+						if (jdata == 1) {
 							location.replace("faq")
 						}
 						else {
@@ -219,7 +219,7 @@ function noticeStatisticsDeleteSelection() {
 						valueArr: valueArr
 					},
 					success: function(jdata) {
-						if (jdata = 1) {
+						if (jdata == 1) {
 							location.replace("noticedetail")
 						}
 						else {
@@ -272,7 +272,7 @@ function inquiryStatisticsDeleteSelection() {
 						valueArr: valueArr
 					},
 					success: function(jdata) {
-						if (jdata = 1) {
+						if (jdata == 1) {
 							location.replace("inquirydetail")
 						}
 						else {
@@ -325,7 +325,7 @@ function travelphotoStatisticsDeleteSelection() {
 						valueArr: valueArr
 					},
 					success: function(jdata) {
-						if (jdata = 1) {
+						if (jdata == 1) {
 							location.replace("travelphotodetail")
 						}
 						else {
