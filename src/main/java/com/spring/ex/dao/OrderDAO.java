@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.OrderVO;
 
 @Repository

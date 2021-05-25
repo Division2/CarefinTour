@@ -8,8 +8,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.spring.ex.vo.FAQVO;
-import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.OrderVO;
 
 @Repository

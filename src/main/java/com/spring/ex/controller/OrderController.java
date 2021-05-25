@@ -7,25 +7,19 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.service.OrderService;
-import com.spring.ex.vo.InquiryVO;
-import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PagingVO;
 
 @Controller
 public class OrderController {
-	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
-	
+
 	@Inject OrderService service;
 	
 	//관리자 예약 내역 출력

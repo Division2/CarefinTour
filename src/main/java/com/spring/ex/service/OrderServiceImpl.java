@@ -8,8 +8,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.OrderDAO;
-import com.spring.ex.vo.FAQVO;
-import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.OrderVO;
 
 @Service

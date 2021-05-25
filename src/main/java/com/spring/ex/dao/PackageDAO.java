@@ -6,9 +6,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PackageVO;
-import com.spring.ex.vo.TopAnlgerVO;
 
 @Repository
 public interface PackageDAO {
