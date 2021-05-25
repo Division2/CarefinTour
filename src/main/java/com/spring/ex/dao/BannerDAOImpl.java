@@ -23,7 +23,7 @@ public class BannerDAOImpl implements BannerDAO {
 		return sql.update(namespace + ".BannerModify", map);
 	}
 
-	//배너 출력
+	//관리자화면 배너 출력
 	@Override
 	public List<BannerVO> BannerView() throws Exception {
 		return sql.selectList(namespace + ".BannerView");

@@ -26,7 +26,7 @@ public class BannerServiceImpl implements BannerService{
 		return 0;
 	}
 	
-	//배너 출력
+	//관리자화면 배너 출력
 	public List<BannerVO> BannerView() throws Exception {
 		return dao.BannerView();
 	}

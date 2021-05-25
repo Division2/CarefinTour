@@ -18,7 +18,7 @@ public class BannerController {
 	@Inject
 	BannerService service;
 	
-	//여행패키지 출력
+	//관리자화면 배너 출력
 	@RequestMapping(value = "/admin/banner", method = RequestMethod.GET)
 	public String  AdminPackageView(Model model ,HttpServletRequest request) throws Exception {
 		List<BannerVO> bannerList = service.BannerView();
