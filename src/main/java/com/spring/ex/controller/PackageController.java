@@ -80,6 +80,13 @@ public class PackageController {
 	public String getPackageProductDetail(Model model, HttpServletRequest request)  throws Exception {
 		int pid = Integer.parseInt(request.getParameter("PID"));
 		PackageVO pdtail =  service.ProductPackageDetail(pid);
+<<<<<<< HEAD
+=======
+		
+	//	PackageVO pfileName = service.ProductPackageFileName(62);
+	//	System.out.println("되나 ? "+ pfileName.getS_file_name()); //되네?
+		
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 		model.addAttribute("pdtail", pdtail);
 		return "admin/site/packageProductDetail";
 	}

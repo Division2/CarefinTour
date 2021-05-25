@@ -244,6 +244,11 @@ public class CareController {
 	public String admin_member() {
 		return "admin/member/memberlist";
 	}
+	//회원 관리
+	@RequestMapping("admin/memberView")
+	public String admin_memberView() {
+		return "admin/member/memberView";
+	}
 	//주문 관리
 	@RequestMapping("admin/order")
 	public String admin_order() {
@@ -257,6 +262,18 @@ public class CareController {
 	@RequestMapping("admin/board")
 	public String admin_boardstatistics() {
 		return "admin/statistics/boardstatistics";
+	}
+	@RequestMapping("admin/noticedetail")
+	public String admin_noticedetail() {
+		return "admin/statistics/noticestatistics";
+	}
+	@RequestMapping("admin/inquirydetail")
+	public String admin_inquirydetail() {
+		return "admin/statistics/inquirystatistics";
+	}
+	@RequestMapping("admin/travelphotodetail")
+	public String admin_travelphotodetail() {
+		return "admin/statistics/travelphotostatistics";
 	}
 	@RequestMapping("admin/period")
 	public String admin_periodstatistics() {

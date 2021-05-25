@@ -32,89 +32,96 @@
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Post Management</h1>
 					</div>
+					<small>케어핀투어 전체 게시물 총 갯수 : <c:out value="${NoticeTotalCount + InquiryTotalCount + TravelPhotoTotalCount}"/> </small>
 					<hr>
-					<div class="row">
-						<div class="col-sm-2">
-							<select class="form-control">
-								<option>전체</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<div class="input-group input-daterange">
-								<input type="text" class="form-control" value="시작">
-								<div class="input-group-addon">&nbsp;~&nbsp;</div>
-								<input type="text" class="form-control" value="종료">
-								<button type="button" class="btn px-3 btn-primary">
-								<i class="fas fa-search"></i>
-							</button>
-							</div>
-						</div>
-						<div class="col-sm-4"></div>
-						<div class="col-sm-2">
-							<div class="d-flex">
-								<div class="ml-auto">
-									<button class="btn btn-primary">삭제</button>
-								</div>
-							</div>
-						</div>
-                    </div>
-                    <br>
 					<table class="table table-hover table-white">
+						<caption style="caption-side: top;">공지사항 게시글 총 갯수 : ${NoticeTotalCount }</caption>
+						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="noticedetail">더보기</a></caption>
+						<colgroup>
+							<col width="5%">
+							<col width="30%">
+							<col width="5%">
+						</colgroup>
 						<thead>
 							<tr>
-								<th>
-									<input type="checkbox">
-								</th>
-								<th>
-									PRID
-								</th>
-								<th>
-									카테고리
-								</th>
-								<th>
-									게시글 제목
-								</th>
-								<th>
-									작성자
-								</th>
-								<th>
-									작성일자
-								</th>
-								<th>
-									조회수
-								</th>
-								<th>
-									댓글
-								</th>
+								<th>NID</th>
+								<th>제목</th>
+								<th>작성일</th>
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach items="${NoticeList }" var="NoticeList">
 							<tr>
-								<td>
-									<input type="checkbox">
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
+								<td>${NoticeList.getnId() }</td>
+								<td><a href="/ex/noticeView?nId=${NoticeList.getnId() }" target="_blank">${NoticeList.getTitle() }</a></td>
+								<td>${NoticeList.getReDate() }</td>
 							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<table class="table table-hover table-white">
+						<caption style="caption-side: top;">1:1 문의 게시글 총 갯수 : ${InquiryTotalCount }</caption>
+						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="inquirydetail">더보기</a></caption>
+						<colgroup>
+							<col width="5%">
+							<col width="10%">
+							<col width="30%">
+							<col width="5%">
+							<col width="5%">
+							<col width="5%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>IID</th>
+								<th>카테고리</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>답변상태</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${InquiryList }" var="InquiryList">
+							<tr>
+								<td>${InquiryList.getiId() }</td>
+								<td>${InquiryList.getCategory() }</td>
+								<td><a href="/ex/inquiryView?iId=${InquiryList.getiId() }" target="_blank">${InquiryList.getTitle() }</a></td>
+								<td>${InquiryList.getUserId() }</td>
+								<td>${InquiryList.getReDate() }</td>
+								<td>${InquiryList.getStatus() }</td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+					<table class="table table-hover table-white">
+						<caption style="caption-side: top;">여행 포토 게시글 총 갯수 : ${TravelPhotoTotalCount }</caption>
+						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="travelphotodetail">더보기</a></caption>
+						<colgroup>
+							<col width="5%">
+							<col width="30%">
+							<col width="5%">
+							<col width="5%">
+							<col width="5%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>PRID</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+								<th>조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach items="${TravelPhotoList }" var="TravelPhotoList">
+							<tr>
+								<td>${TravelPhotoList.getPrid() }</td>
+								<td><a href="/ex/travelphotoView?prid=${TravelPhotoList.getPrid() }" target="_blank">${TravelPhotoList.getTitle() }</a></td>
+								<td>${TravelPhotoList.getUserId() }</td>
+								<td>${TravelPhotoList.getRedate() }</td>
+								<td>${TravelPhotoList.getHit() }</td>
+							</tr>
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>
