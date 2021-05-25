@@ -297,21 +297,21 @@ public class CareController {
 		return "admin/customer/faq";
 	}
 	//고객센터 등록 & 수정 (공지사항, FAQ 목록)
-	@RequestMapping("admin/addnotice")
-	public String admin_addnotice() {
-		return "admin/customer/addnotice";
+	@RequestMapping("admin/noticeWrite")
+	public String admin_noticeWrite() {
+		return "admin/customer/noticeWrite";
 	}
-	@RequestMapping("admin/modifynotice")
-	public String admin_modifynotice() {
-		return "admin/customer/modifynotice";
+	@RequestMapping("admin/noticeModify")
+	public String admin_noticeModify() {
+		return "admin/customer/noticeModify";
 	}
-	@RequestMapping("admin/addfaq")
-	public String admin_addfaq() {
-		return "admin/customer/addfaq";
+	@RequestMapping("admin/faqWrite")
+	public String admin_faqWrite() {
+		return "admin/customer/faqWrite";
 	}
-	@RequestMapping("admin/modifyfaq")
-	public String admin_modifyfaq() {
-		return "admin/customer/modifyfaq";
+	@RequestMapping("admin/faqModify")
+	public String admin_faqModify() {
+		return "admin/customer/faqModify";
 	}
 	//호텔예약
 	@RequestMapping("detailresvation")

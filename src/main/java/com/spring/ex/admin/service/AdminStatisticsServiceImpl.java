@@ -132,18 +132,21 @@ public class AdminStatisticsServiceImpl implements AdminStatisticsService {
 		return dao.TravelPhotoBoardStatisticsSearchTotalCount(totalMap);
 	}
 
+	//공지사항 상세 선택 삭제
 	@Override
 	public void NoticeSelectDelete(String nId) throws Exception {
-		
+		dao.NoticeSelectDelete(nId);
 	}
 
+	//1:1 문의 상세 선택 삭제
 	@Override
 	public void InquirySelectDelete(String iId) throws Exception {
-		
+		dao.InquirySelectDelete(iId);
 	}
 
+	//여행 포토 상세 선택 삭제
 	@Override
 	public void TravelPhotoSelectDelete(String prId) throws Exception {
-		
+		dao.TravelPhotoSelectDelete(prId);
 	}
 }

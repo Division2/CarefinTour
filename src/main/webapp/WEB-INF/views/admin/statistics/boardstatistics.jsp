@@ -38,7 +38,7 @@
 						<caption style="caption-side: top;">공지사항 게시글 총 갯수 : ${NoticeTotalCount }</caption>
 						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="noticedetail">더보기</a></caption>
 						<colgroup>
-							<col width="5%">
+							<col width="1%">
 							<col width="30%">
 							<col width="5%">
 						</colgroup>
@@ -63,8 +63,8 @@
 						<caption style="caption-side: top;">1:1 문의 게시글 총 갯수 : ${InquiryTotalCount }</caption>
 						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="inquirydetail">더보기</a></caption>
 						<colgroup>
+							<col width="1%">
 							<col width="5%">
-							<col width="10%">
 							<col width="30%">
 							<col width="5%">
 							<col width="5%">
@@ -97,7 +97,7 @@
 						<caption style="caption-side: top;">여행 포토 게시글 총 갯수 : ${TravelPhotoTotalCount }</caption>
 						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="travelphotodetail">더보기</a></caption>
 						<colgroup>
-							<col width="5%">
+							<col width="1%">
 							<col width="30%">
 							<col width="5%">
 							<col width="5%">

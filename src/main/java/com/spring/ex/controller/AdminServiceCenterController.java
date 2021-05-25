@@ -36,7 +36,7 @@ public class AdminServiceCenterController {
 	@Inject AdminServiceCenterService service;
 	
 	//공지사항 작성
-	@RequestMapping(value = "/admin/addnotice", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/noticeWrite", method = RequestMethod.POST)
 	public void Write(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
 		
 		logger.info("Checked : " + vo.getImportant());
@@ -134,7 +134,7 @@ public class AdminServiceCenterController {
 	}
 	
 	//공지사항 수정
-	@RequestMapping(value = "/admin/modifynotice", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/noticeModify", method = RequestMethod.POST)
 	public void Modify(NoticeBoardVO vo, HttpServletResponse response) throws Exception {
 		
 		int result = service.NoticeModify(vo);
@@ -168,7 +168,7 @@ public class AdminServiceCenterController {
 		
 		model.addAttribute("content", content);
 		
-		return "admin/customer/modifynotice";
+		return "admin/customer/noticeModify";
 	}
 	
 	//공지사항 삭제
@@ -387,7 +387,7 @@ public class AdminServiceCenterController {
     
     //-----------------------------------------------FAQ시작--------------------------------------------------
     //FAQ 작성
-  	@RequestMapping(value = "/admin/addfaq", method = RequestMethod.POST)
+  	@RequestMapping(value = "/admin/faqWrite", method = RequestMethod.POST)
   	public void FAQWrite(FAQVO vo, HttpServletResponse response) throws Exception {
 
   		int result = service.FAQWrite(vo);
@@ -417,7 +417,7 @@ public class AdminServiceCenterController {
   	}
   	
     //FAQ 카테고리 보여주기 내용
-  	@RequestMapping(value = "/admin/addfaq", method = RequestMethod.GET)
+  	@RequestMapping(value = "/admin/faqWrite", method = RequestMethod.GET)
 	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -426,13 +426,13 @@ public class AdminServiceCenterController {
 		
 		model.addAttribute("category", Category);
 		
-		return "admin/customer/addfaq";
+		return "admin/customer/faqWrite";
 	}
 
 
 	
   	//FAQ 내용
-  	@RequestMapping(value = "/admin/modifyfaq", method = RequestMethod.GET)
+  	@RequestMapping(value = "/admin/faqModify", method = RequestMethod.GET)
   	public String FAQBoardView(FAQVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		
   		int fId = Integer.parseInt(request.getParameter("fId"));
@@ -450,12 +450,12 @@ public class AdminServiceCenterController {
   		}
   		model.addAttribute("content", content);
   		
-  		return "admin/customer/modifyfaq";
+  		return "admin/customer/faqModify";
   	}
   	
   	
     //FAQ 수정
-  	@RequestMapping(value = "/admin/modifyfaq", method = RequestMethod.POST)
+  	@RequestMapping(value = "/admin/faqModify", method = RequestMethod.POST)
   	public void FAQModify(FAQVO vo, HttpServletResponse response) throws Exception {
   		
   		int result = service.FAQModify(vo);

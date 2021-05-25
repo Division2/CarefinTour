@@ -25,6 +25,7 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -61,7 +62,7 @@
 						<div class="col-sm-2">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary">삭제</button>
+									<button class="btn btn-primary" onclick="inquiryStatisticsDeleteSelection()">삭제</button>
 								</div>
 							</div>
 						</div>
@@ -80,7 +81,7 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th><input type="checkbox"></th>
+								<th><input type="checkbox" name="allCheck"></th>
 								<th>IID</th>
 								<th>카테고리</th>
 								<th>제목</th>
@@ -92,7 +93,7 @@
 						<tbody>
 						<c:forEach items="${InquiryList }" var="InquiryList">
 							<tr>
-								<td><input type="checkbox"></td>
+								<td><input type="checkbox" name="RowCheck" value="${InquiryList.getiId() }"></td>
 								<td>${InquiryList.getiId() }</td>
 								<td>${InquiryList.getCategory() }</td>
 								<td><a href="/ex/inquiryView?iId=${InquiryList.getiId() }" target="_blank">${InquiryList.getTitle() }</a></td>

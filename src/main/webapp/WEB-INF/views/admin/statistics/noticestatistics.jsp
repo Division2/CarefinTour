@@ -25,78 +25,7 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-<script type="text/javascript">
-	$(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt = chkObj.length;
-		
-		$("input[name='allCheck']").click(function(){
-			var chk_listArr = $("input[name='RowCheck']");
-			for (var i=0; i<chk_listArr.length; i++){
-				chk_listArr[i].checked = this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt){
-				$("input[name='allCheck']")[0].checked = true;
-			}
-			else{
-				$("input[name='allCheck']")[0].checked = false;
-			}
-		});
-	});
-	function deleteValue(){
-		var url = "SelectDelete2";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
-		var valueArr = new Array();
-		var list = $("input[name='RowCheck']");
-		
-		for(var i = 0; i < list.length; i++) {
-			if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
-				valueArr.push(list[i].value);
-			}
-		}
-		if (valueArr.length == 0) {
-				Swal.fire({
-				title: '선택된 게시글이 없습니다.',
-				text: "삭제하실 게시글을 선택해주세요.",
-				icon: 'warning',
-				confirmButtonColor: '#3085d6',
-				confirmButtonText: '확인',
-			})
-		}
-		else {
-			Swal.fire({
-				title: '글을 삭제하시겠습니까?',
-				text: "삭제하시면 다시 복구시킬 수 없습니다.",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: '삭제',
-				cancelButtonText: '취소'
-			}).then((result) => {
-				if (result.value) {
-					$.ajax({
-						url : url,                    // 전송 URL
-						type : 'POST',                // GET or POST 방식
-						traditional : true,
-						data : {
-							valueArr : valueArr        // 보내고자 하는 data 변수 설정
-						},
-						success: function(jdata) {
-							if(jdata = 1) {
-								location.replace("inquiry")
-							}
-							else {
-								alert("삭제 실패(문의전화 : 010-0000-0000)");
-							}
-						}
-					});
-				}
-			})
-		}
-	}
-</script>
+<script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -133,7 +62,7 @@
 						<div class="col-sm-2">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary" onclick="deleteValue()">삭제</button>
+									<button class="btn btn-primary" onclick="noticeStatisticsDeleteSelection()">삭제</button>
 								</div>
 							</div>
 						</div>
@@ -158,7 +87,7 @@
 						<tbody>
 						<c:forEach items="${NoticeList }" var="NoticeList">
 							<tr>
-								<td><input type="checkbox" name="RowCheck"></td>
+								<td><input type="checkbox" name="RowCheck" value="${NoticeList.getnId() }"></td>
 								<td>${NoticeList.getnId() }</td>
 								<td><a href="/ex/noticeView?nId=${NoticeList.getnId() }" target="_blank">${NoticeList.getTitle() }</a></td>
 								<td>${NoticeList.getReDate() }</td>

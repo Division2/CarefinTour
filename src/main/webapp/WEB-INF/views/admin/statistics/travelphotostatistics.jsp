@@ -25,6 +25,7 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -61,7 +62,7 @@
 						<div class="col-sm-2">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary">삭제</button>
+									<button class="btn btn-primary" onclick="travelphotoStatisticsDeleteSelection()">삭제</button>
 								</div>
 							</div>
 						</div>
@@ -79,7 +80,7 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th><input type="checkbox"></th>
+								<th><input type="checkbox" name="allCheck"></th>
 								<th>PRID</th>
 								<th>제목</th>
 								<th>작성자</th>
@@ -90,7 +91,7 @@
 						<tbody>
 						<c:forEach items="${TravelPhotoList }" var="TravelPhotoList">
 							<tr>
-								<td><input type="checkbox"></td>
+								<td><input type="checkbox" name="RowCheck" value="${TravelPhotoList.getPrid() }"></td>
 								<td>${TravelPhotoList.getPrid() }</td>
 								<td>${TravelPhotoList.getTitle() }</td>
 								<td>${TravelPhotoList.getUserId() }</td>

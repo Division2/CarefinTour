@@ -295,16 +295,42 @@ public class AdminStatisticsController {
 		return "admin/statistics/travelphotostatistics";
 	}
 	
-	//공지사항 선택 삭제
-	@RequestMapping(value = "/admin/noticeSelectDelete")
+	//공지사항 상세 선택 삭제
+	@RequestMapping(value = "/admin/noticeSelectDelete", method = RequestMethod.POST)
 	public String NoticeDelete(HttpServletRequest request) throws Exception {
 		
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		
 		int size = ajaxMsg.length;
-		for(int i=0; i < size; i++) {
-			//	service.SelectDelete(ajaxMsg[i]);
+		for(int i = 0; i < size; i++) {
+			service.NoticeSelectDelete(ajaxMsg[i]);
 		}
 		return "redirect:noticedetail";
+	}
+	
+	//1:1 문의 상세 선택 삭제
+	@RequestMapping(value = "/admin/inquirySelectDelete", method = RequestMethod.POST)
+	public String InquiryDelete(HttpServletRequest request) throws Exception {
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		
+		int size = ajaxMsg.length;
+		for(int i = 0; i < size; i++) {
+			service.InquirySelectDelete(ajaxMsg[i]);
+		}
+		return "redirect:inquirydetail";
+	}
+	
+	//여행 포토 상세 선택 삭제
+	@RequestMapping(value = "/admin/travelphotoSelectDelete", method = RequestMethod.POST)
+	public String TravelPhotoDelete(HttpServletRequest request) throws Exception {
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		
+		int size = ajaxMsg.length;
+		for(int i = 0; i < size; i++) {
+			service.TravelPhotoSelectDelete(ajaxMsg[i]);
+		}
+		return "redirect:travelphotodetail";
 	}
 }

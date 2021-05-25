@@ -102,4 +102,19 @@
 	<select id="getTravelPhotoBoardStatisticsSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM photoreview WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]>
 	</select>
+	
+	<!-- 공지사항 상세 선택 삭제 -->
+	<delete id="NoticeBoardStatisticsDetailSelectDelete">
+		DELETE FROM notice WHERE nId = #{nId}
+	</delete>
+	
+	<!-- 1:1 문의 상세 선택 삭제 -->
+	<delete id="InquiryBoardStatisticsDetailSelectDelete">
+		DELETE FROM inquiry WHERE iId = #{iId}
+	</delete>
+	
+	<!-- 여행 포토 상세 선택 삭제 -->
+	<delete id="TravelPhotoBoardStatisticsDetailSelectDelete">
+		DELETE FROM photoreview WHERE prId = #{prId}
+	</delete>
 </mapper>
