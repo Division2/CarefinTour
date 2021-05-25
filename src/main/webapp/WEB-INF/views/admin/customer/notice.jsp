@@ -136,15 +136,15 @@
 									<c:choose>
 										<c:when test="${NoticeBoardVO.important ne 'Y' }">
 											<td><input type="checkbox" name="RowCheck" value="${NoticeBoardVO.nId }"></td>
-											<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.nId }</a></td>
-											<td>${NoticeBoardVO.title }</td>
+											<td>${NoticeBoardVO.nId }</td>
+											<td><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
 											<td>${NoticeBoardVO.reDate }</td>
 											<td>${NoticeBoardVO.important}</td>
 										</c:when>
 										<c:otherwise>
 											<td style="background: rgb(120,215,255);"><input type="checkbox" name="RowCheck" value="${NoticeBoardVO.nId }"></td>
-											<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.nId }</a></td>
-											<td style="background: rgb(120,215,255);">${NoticeBoardVO.title }</td>
+											<td style="background: rgb(120,215,255);">${NoticeBoardVO.nId }</td>
+											<td style="background: rgb(120,215,255);"><a href="noticeView?nId=${NoticeBoardVO.nId }">${NoticeBoardVO.title }</a></td>
 											<td style="background: rgb(120,215,255);">${NoticeBoardVO.reDate }</td>
 											<td style="background: rgb(120,215,255);">${NoticeBoardVO.important }</td>
 										</c:otherwise>

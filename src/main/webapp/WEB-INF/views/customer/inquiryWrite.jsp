@@ -78,8 +78,8 @@
 				    		<div class="col-auto mr-auto"></div>
 							<div class="col-auto">
 								<button type="button" class="thm-btn-psd" onclick="InquiryWrite()">등록</button>
-								<button type="button" class="thm-btn-psd" onclick="location.href='inquiry'">이전</button>
 								<button type="reset" class="thm-btn-psd">취소</button>
+								<button type="button" class="thm-btn-psd" onclick="location.href='inquiry'">목록</button>
 							</div>
 						</div>
 					</form>

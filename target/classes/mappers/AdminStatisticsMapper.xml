@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.AdminStatisticsMapper">
+
+	<!-- 방문자 카운터 -->
+	<insert id="VisitorCounter" parameterType="VisitVO">
+		INSERT INTO visitor(visitor_ip, <if test="visitor_refer != null and visitor_refer != ''">visitor_refer, </if> visitor_browser) VALUES (#{visitor_ip}, <if test="visitor_refer != null and visitor_refer != ''">#{visitor_refer}, </if>#{visitor_browser});
+	</insert>
+	
+	<!-- 방문자 전체 출력 -->
+	<select id="VisitorAllView" resultType="VisitVO">
+		SELECT * FROM visitor ORDER BY visitor_id, visit_time DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 방문자 총 갯수 -->
+	<select id="getVisitTotalCount" resultType="int">
+		SELECT COUNT(*) FROM visitor
+	</select>
+	
+	<!-- 방문자 검색 출력 -->
+	<select id="VisitorSearchView" resultType="VisitVO">
+		SELECT * FROM visitor WHERE visit_time <![CDATA[>= #{start_date} AND visit_time <= #{end_date}]]> ORDER BY visitor_id, visit_time DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 방문자 검색 총 갯수 -->
+	<select id="getVisitSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM visitor WHERE visit_time <![CDATA[>= #{start_date} AND visit_time <= #{end_date}]]>
+	</select>
+	
+	<!-- 게시글 작성 수(공지사항 기본 출력) -->
+	<select id="NoticeBoardStatisticsView" resultType="NoticeBoardVO">
+		SELECT * FROM notice ORDER BY NID DESC LIMIT 5
+	</select>
+	
+	<!-- 게시글 작성 수(1:1 문의 기본 출력) -->
+	<select id="InquiryBoardStatisticsView" resultType="InquiryVO">
+		SELECT * FROM inquiry ORDER BY IID DESC LIMIT 5
+	</select>
+	
+	<!-- 게시글 작성 수(여행 포토 기본 출력) -->
+	<select id="TravelPhotoBoardStatisticsView" resultType="TravelPhotoVO">
+		SELECT * FROM photoreview ORDER BY PRID DESC LIMIT 5
+	</select>
+	
+	<!-- 게시글 작성 수(공지사항 상세 출력) -->
+	<select id="NoticeBoardStatisticsDetailView" resultType="NoticeBoardVO">
+		SELECT * FROM notice ORDER BY NID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 게시글 작성 수(1:1 문의 상세 출력) -->
+	<select id="InquiryBoardStatisticsDetailView" resultType="InquiryVO">
+		SELECT * FROM inquiry ORDER BY IID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 게시글 작성 수(여행 포토 상세 출력) -->
+	<select id="TravelPhotoBoardStatisticsDetailView" resultType="TravelPhotoVO">
+		SELECT * FROM photoreview ORDER BY PRID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 게시글 작성 수 (공지사항 상세 총 갯수) -->
+	<select id="getNoticeBoardStatisticsTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
+	<!-- 게시글 작성 수 (1:1 문의 상세 총 갯수) -->
+	<select id="getInquiryBoardStatisticsTotalCount" resultType="int">
+		SELECT COUNT(*) FROM inquiry
+	</select>
+	
+	<!-- 게시글 작성 수 (여행 포토 상세 총 갯수) -->
+	<select id="getTravelPhotoBoardStatisticsTotalCount" resultType="int">
+		SELECT COUNT(*) FROM photoreview
+	</select>
+	
+	<!-- 게시글 작성 수(공지사항 상세 검색 출력) -->
+	<select id="NoticeBoardStatisticsSearchDetailView" resultType="NoticeBoardVO">
+		SELECT * FROM notice WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]> ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 게시글 작성 수(1:1 문의 상세 검색 출력) -->
+	<select id="InquiryBoardStatisticsSearchDetailView" resultType="InquiryVO">
+		SELECT * FROM inquiry WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]> ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 게시글 작성 수(여행 포토 상세 검색 출력) -->
+	<select id="TravelPhotoBoardStatisticsSearchDetailView" resultType="TravelPhotoVO">
+		SELECT * FROM photoreview WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]> ORDER BY prId DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 게시글 작성 수 (공지사항 상세 검색 총 갯수) -->
+	<select id="getNoticeBoardStatisticsSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]>
+	</select>
+	
+	<!-- 게시글 작성 수 (1:1 문의 상세 검색 총 갯수) -->
+	<select id="getInquiryBoardStatisticsSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM inquiry WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]>
+	</select>
+	
+	<!-- 게시글 작성 수 (여행 포토 상세 검색 총 갯수) -->
+	<select id="getTravelPhotoBoardStatisticsSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM photoreview WHERE reDate <![CDATA[>= #{start_date} AND reDate <= #{end_date}]]>
+	</select>
+</mapper>

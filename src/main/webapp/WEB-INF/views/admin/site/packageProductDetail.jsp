@@ -200,6 +200,17 @@
 										</div>
 									</div>
 								</div>
+								총 액
+								<div class="form-group row">
+									<div class="col-xs-12 col-md-12">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>총액</b></span>
+											</div>
+											<input type="text" value="${pdtail.getPrice()}원" class="form-control" >
+										</div>
+									</div>
+								</div>
 								<hr >
 								<!-- 개요 -->
 								여행소개
@@ -220,7 +231,7 @@
 								<!-- 이전, 수정 버튼 -->
 								<div align="right">
 									<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:60px;">	
-							        <input class="btn btn-primary" type="submit" value="수정">
+							        <input class="btn btn-primary" type="button" onclick="location.href='packageProductModify?PID=<%=request.getParameter("PID")%>'" value="수정">
 						        </div>
 							</form>
 						</div>

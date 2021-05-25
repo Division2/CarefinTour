@@ -65,7 +65,6 @@
 								<button type="button" class="btn btn-primary" onclick="FAQModify()">수정</button>
 								<button type="reset" class="btn btn-primary">취소</button>
 								<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
-								<button type="button" class="btn btn-primary" onclick="location.href='faq'">목록</button>
 							</div>
 						</div>
 					</form>

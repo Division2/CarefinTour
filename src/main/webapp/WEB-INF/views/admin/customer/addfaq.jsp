@@ -39,8 +39,9 @@
 							<label class="form-label col-sm-1" for="category">카테고리</label>
 							<div class="col-sm-10">
 								<select class="form-control" name="Category" id="Category">
-									<option value="해외여행">해외여행</option>
-									<option value="테마여행">테마여행</option>
+								<c:forEach items="${category}" var="List">
+									<option value="${List.category}">${List.category}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>

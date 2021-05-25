@@ -2324,8 +2324,8 @@ h6 {
 }
 
 .banner-four__sun {
-	-webkit-animation: sunMove 10s linear infinite;
-	        animation: sunMove 10s linear infinite;
+	-webkit-animation: sunMove2 10s linear infinite;
+	        animation: sunMove2 10s linear infinite;
 }
 
 @-webkit-keyframes sunMove {
@@ -2379,6 +2379,18 @@ h6 {
 	100% {
 		-webkit-transform: rotate(0deg);
 		        transform: rotate(0deg);
+	}
+}
+
+@keyframes sunMove2 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
 	}
 }
 

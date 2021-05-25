@@ -85,6 +85,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	public List<MemberVO> getMemberList() throws Exception {
 		return sqlSession.selectList(namespace+".memberList");
 	}
+	
+	//관리자용 회원상세정보
+    @Override
+    public MemberVO ViewMember(int aid) throws Exception {
+        return sqlSession.selectOne(namespace+ ".viewMember", aid);
+    }
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	
 	//1:1 문의 등록
@@ -173,6 +179,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 		return sqlSession.insert(namespace + ".FAQWrite", vo);
 	}
 	
+	//FAQ 카테고리 등록
+	@Override
+	public int CategoryWrite(FAQVO vo) throws Exception {
+		return sqlSession.insert(namespace + ".CategoryWrite", vo);
+	}
+	
 	//FAQ 수정
 	@Override
 	public int FAQModify(FAQVO vo) throws Exception {
@@ -202,5 +214,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	public FAQVO FAQBoardView(int fId) throws Exception {
 		return sqlSession.selectOne(namespace + ".FAQBoardView", fId);
 	}
+
+	//자주 찾는 질문(전체)
+	@Override
+	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQCategory", map);
+	}
+	
 
 }

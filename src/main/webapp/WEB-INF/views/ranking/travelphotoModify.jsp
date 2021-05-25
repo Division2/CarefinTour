@@ -94,7 +94,7 @@
 
 		<jsp:include page="../layout/footer.jsp" />
 		<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
-		<script src='<c:url value="resources/js/TravelPhoto.js"/>'></script>
+		<script src='<c:url value="resources/js/Board.js"/>'></script>
 	</div>
 	<!-- 메인 영역 -->
 </body>

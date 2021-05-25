@@ -70,7 +70,7 @@
 			<div class="side-menu__block-inner ">
 				<div class="side-menu__top justify-content-end">
 					<a href="#" class="side-menu__toggler side-menu__close-btn">
-						<img src='<c:url value="/resources/images/Logo.png"/>' alt="">
+						<img src='<c:url value="/resources/images/Logo.png"/>' width="123" alt="">
 					</a>
 				</div>
 				<nav class="mobile-nav__container"></nav>
@@ -155,7 +155,8 @@
 					</div>
 					<div class="modal-footer d-flex justify-content-center">
 						<div class="signup-section">
-							회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a>
+							회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a> <br>							
+			                   <a href="#">	아이디 찾기 </a> | <a href="#"> 비밀번호 찾기 </a>
 						</div>
 					</div>
 				</div>

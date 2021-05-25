@@ -47,6 +47,12 @@ public class PackageDAOImpl implements PackageDAO {
 		sql.selectOne(namespace + ".ProductPackageDelete", pid);
 	}
 
+	//여행패키지 파일 이름 검색 - 파일 삭제하려고 사용
+	@Override
+	public PackageVO ProductPackageFileName(int pid) throws Exception {
+		return sql.selectOne(namespace + ".ProductPackageFileName", pid);
+	}
+
 
 	
 	

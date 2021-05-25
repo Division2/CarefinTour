@@ -4,10 +4,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src='<c:url value="/resources/js/Authority.js"/>'></script>
-<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
+<%-- <c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
 		<script>AuthCheck();</script>
 </c:if>
-
+ --%>
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 	<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 		<i class="fa fa-bars"></i>

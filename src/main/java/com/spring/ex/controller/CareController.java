@@ -244,15 +244,36 @@ public class CareController {
 	public String admin_member() {
 		return "admin/member/memberlist";
 	}
+	//회원 관리
+	@RequestMapping("admin/memberView")
+	public String admin_memberView() {
+		return "admin/member/memberView";
+	}
 	//주문 관리
 	@RequestMapping("admin/order")
 	public String admin_order() {
 		return "admin/order/orderlist";
 	}
+	@RequestMapping("admin/addorder")
+	public String admin_addorder() {
+		return "admin/order/addorder";
+	}
 	//통계(방문자, 게시글 작성 수, 기간별 매출)
 	@RequestMapping("admin/board")
 	public String admin_boardstatistics() {
 		return "admin/statistics/boardstatistics";
+	}
+	@RequestMapping("admin/noticedetail")
+	public String admin_noticedetail() {
+		return "admin/statistics/noticestatistics";
+	}
+	@RequestMapping("admin/inquirydetail")
+	public String admin_inquirydetail() {
+		return "admin/statistics/inquirystatistics";
+	}
+	@RequestMapping("admin/travelphotodetail")
+	public String admin_travelphotodetail() {
+		return "admin/statistics/travelphotostatistics";
 	}
 	@RequestMapping("admin/period")
 	public String admin_periodstatistics() {
@@ -267,9 +288,9 @@ public class CareController {
 	public String admin_notice() {
 		return "admin/customer/notice";
 	}
-	@RequestMapping("admin/inquire")
-	public String admin_inquire() {
-		return "admin/customer/inquire";
+	@RequestMapping("admin/inquiry")
+	public String admin_inquiry() {
+		return "admin/customer/inquiry";
 	}
 	@RequestMapping("admin/faq")
 	public String admin_faq() {

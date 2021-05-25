@@ -25,7 +25,6 @@
 		<!-- 메인 영역 -->
 	<div class="page-wrapper">
 	<jsp:include page="../layout/header.jsp"/>
-	<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
 			<div class="container">
@@ -117,11 +116,11 @@
 				<div class="d-flex">
 					<div class="ml-auto">
 					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
-						<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
-						<button class="btn btn-danger" type="button"  onclick="answerInquiryDelete()">삭제</button>
+						<button class="thm-btn-psd" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
+						<button class="thm-btn-psd" type="button"  onclick="answerInquiryDelete()">삭제</button>
 					</c:if>
 					<c:if test="${answerContent ne null}">
-						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
 					</c:if>
 					</div>
 				</div>
@@ -133,7 +132,7 @@
 					<div class="bg-white rounded shadow-sm">
 						<textarea id="answerContent" name="answerContent" class="form-control" rows="3" placeholder="답글을 입력해 주세요" required></textarea>
 						<input type="hidden" id="iId" name="iId" value="${param.iId }">
-						<button type="button" class="btn btn-primary" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
+						<button type="button" class="thm-btn-psd" id="btnInquiryAnswerWrite" name="btnInquiryAnswerWrite" style="width: 100%;">등 록</button>
 					</div>
 				</form>
 				</c:if>
@@ -141,7 +140,7 @@
 				<div class="d-flex">
 					<div class="ml-auto">
 					<c:if test="${answerContent eq null}">
-						<button class="btn btn-primary" type="button" onclick="location.href='inquiry'">목록</button>
+						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
 					</c:if>
 					</div>
 				</div>
@@ -150,6 +149,7 @@
 		</section>
 	
 		<jsp:include page="../layout/footer.jsp"/>
+		<script src='<c:url value="resources/js/Board.js"/>'></script>
 	
 		<!-- 답변 수정 Modal -->
 		<div class="modal fade" id="AnswerEditModal" tabindex="-1" role="dialog" aria-labelledby="AnswerEditModalLabel" aria-hidden="true">
@@ -168,7 +168,7 @@
 									<textarea id="answerEditContent" name="answerContent" class="form-control" rows="3"><c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), '<br>', crlf)}"/></textarea>
 								</div>
 								<input type="hidden" id="iId" name="iId" value="<%=request.getParameter("iId")%>">
-								<button type="submit" class="btn btn-primary btn-block btn-round">수정하기</button>
+								<button type="submit" class="thm-btn-psd btn-block btn-round">수정하기</button>
 							</form>
 						</div>
 					</div>

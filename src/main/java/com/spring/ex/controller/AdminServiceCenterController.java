@@ -173,19 +173,13 @@ public class AdminServiceCenterController {
 	
 	//공지사항 삭제
 	@RequestMapping(value = "/admin/noticeDelete", method = RequestMethod.GET)
-	public void NoticeDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String NoticeDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
-		int result = service.NoticeDelete(nId);
+		service.NoticeDelete(nId);
 		
-		if (result == 1) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			
-			out.println("<script>location.href='notice'</script>");
-			out.close();
-		}
+		return "redirect:notice";
 	}
 	
 	//게시물 선택삭제
@@ -221,7 +215,22 @@ public class AdminServiceCenterController {
   		// 4. 페이지이동
   		return "admin/member/memberlist";
   	}
-    
+  	
+	 //회원 상세정보 조회
+	    @RequestMapping(value = "/admin/memberView", method = RequestMethod.GET)
+	    public String memberView(Model model, HttpServletRequest request) throws Exception{
+	        // 회원 정보를 model에 저장
+	    	int aid = Integer.parseInt(request.getParameter("AID"));
+	    	System.out.println(aid);
+	    	MemberVO memberVO = service.ViewMember(aid);
+	    	
+	        model.addAttribute("mDetail", memberVO);
+	        //System.out.println("클릭한 아이디 확인 : "+userId);
+	        //logger.info("클릭한 아이디 : "+UserID);
+	        // member_view.jsp로 포워드
+	        return "admin/member/memberView";
+	    }
+  
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
     
   //1:1 문의 작성
@@ -253,7 +262,7 @@ public class AdminServiceCenterController {
   	}
   	
   	//1:1 문의 출력
-  	@RequestMapping(value = "/admin/inquire", method = RequestMethod.GET)
+  	@RequestMapping(value = "/admin/inquiry", method = RequestMethod.GET)
   	public String InquiryView(HttpServletRequest request, Model model) throws Exception {
   		
   		int totalCount = service.InquiryTotalCount();
@@ -275,7 +284,7 @@ public class AdminServiceCenterController {
   		model.addAttribute("InquiryList", List);
   		model.addAttribute("Paging", paging);
   		
-  		return "admin/customer/inquire";
+  		return "admin/customer/inquiry";
   	}
   	
   	
@@ -305,11 +314,11 @@ public class AdminServiceCenterController {
   		model.addAttribute("Paging", paging);
   		model.addAttribute("name", name);
   		
-  		return "admin/customer/inquire";
+  		return "admin/customer/inquiry";
   	}
   	
   	//1:1 문의 게시글, 답변 문의 게시글 내용
-  	@RequestMapping(value = "/admin/inquireView", method = RequestMethod.GET)
+  	@RequestMapping(value = "/admin/inquiryView", method = RequestMethod.GET)
   	public String InquiryBoardView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		
   		int iId = Integer.parseInt(request.getParameter("iId"));
@@ -329,7 +338,7 @@ public class AdminServiceCenterController {
   		model.addAttribute("content", content);
   		model.addAttribute("answerContent", answerContent);
   		
-  		return "admin/customer/inquireView";
+  		return "admin/customer/inquiryView";
   	}
   	
   	//1:1 문의 답변 수정
@@ -342,14 +351,14 @@ public class AdminServiceCenterController {
   			response.setContentType("text/html;charset=utf-8");
   			PrintWriter out = response.getWriter();
   			
-  			out.println("<script>location.href='inquireView?iId=" + vo.getiId() + "'</script>");
+  			out.println("<script>location.href='inquiryView?iId=" + vo.getiId() + "'</script>");
   			out.close();
   		}
   	}
   	
   	//1:1 문의 답변 삭제
-  	@RequestMapping(value = "/admin/inquireDelete", method = RequestMethod.GET)
-  	public void AnswerDelete(HttpServletRequest request) throws Exception {
+  	@RequestMapping(value = "/admin/inquiryDelete", method = RequestMethod.GET)
+  	public String AnswerDelete(HttpServletRequest request) throws Exception {
   		
   		HttpSession session = request.getSession();
   		int iId = Integer.parseInt(request.getParameter("iId"));
@@ -360,6 +369,8 @@ public class AdminServiceCenterController {
   			
   			System.out.println("답변 삭제" + result);
   		}
+  		
+  		return "redirect:inquiryView?iId=" + iId;
   	}
   	
 	//1:1 선택삭제
@@ -371,7 +382,7 @@ public class AdminServiceCenterController {
         for(int i=0; i<size; i++) {
         	service.SelectDelete2(ajaxMsg[i]);
         }
-        return "redirect:inquire";
+        return "redirect:inquiry";
     }
     
     //-----------------------------------------------FAQ시작--------------------------------------------------
@@ -389,6 +400,36 @@ public class AdminServiceCenterController {
   			out.close();
   		}
   	}
+  	
+  	 //FAQ 카테고리 작성
+  	@RequestMapping(value = "/admin/addcategory", method = RequestMethod.POST)
+  	public void CategoryWrite(FAQVO vo, HttpServletResponse response) throws Exception {
+
+  		int result = service.CategoryWrite(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='faq'</script>");
+  			out.close();
+  		}
+  	}
+  	
+    //FAQ 카테고리 보여주기 내용
+  	@RequestMapping(value = "/admin/addfaq", method = RequestMethod.GET)
+	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+		List<FAQVO> Category =  service.FAQCategory(map);
+		
+		model.addAttribute("category", Category);
+		
+		return "admin/customer/addfaq";
+	}
+
+
 	
   	//FAQ 내용
   	@RequestMapping(value = "/admin/modifyfaq", method = RequestMethod.GET)

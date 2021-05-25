@@ -84,7 +84,11 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	public List<MemberVO> getMemberList() throws Exception {
 		return dao.getMemberList();
 	}
-	
+	//회원 정보 상세 조회 
+    @Override
+    public MemberVO ViewMember(int aid) throws Exception {
+        return dao.ViewMember(aid);
+    }
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
 	//1:1 문의 등록
@@ -172,6 +176,12 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.FAQWrite(vo);
 	}
 	
+	//FAQ 등록
+	@Override
+	public int CategoryWrite(FAQVO vo) throws Exception {
+		return dao.CategoryWrite(vo);
+	}
+	
 	//FAQ 수정
 	@Override
 	public int FAQModify(FAQVO vo) throws Exception {
@@ -200,6 +210,12 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	@Override
 	public FAQVO FAQBoardView(int fId) throws Exception {
 		return dao.FAQBoardView(fId);
+	}
+	
+	//FAQ 카테고리 내용
+	@Override
+	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
+		return dao.FAQCategory(map);
 	}
 	
 }

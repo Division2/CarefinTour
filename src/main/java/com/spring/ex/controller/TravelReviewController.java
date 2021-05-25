@@ -114,16 +114,16 @@ public class TravelReviewController {
 	}
 	
 	//여행 포토 수정(사진 & 내용)
-	@RequestMapping(value = "/travelphotoModify", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/travelphotoModify", method = RequestMethod.POST)
 	public String TravelPhotoModify(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
 		
 		service.TravelPhotoModify(travelPhotoVO, files, fileNames, mpRequest);
 		
-		return "ranking/travelphoto";
+		return "redirect:travelphotoView?prid=" + travelPhotoVO.getPrid();
 	}
 
 	//여행 포토 삭제
-	@RequestMapping(value = "/travelphotoDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/travelphotoDelete", method = RequestMethod.GET)
 	public String TravelPhotoDelete(HttpServletRequest request) throws Exception {
 		
 		int prid = Integer.parseInt(request.getParameter("prid"));
@@ -131,7 +131,7 @@ public class TravelReviewController {
 		int result = service.TravelPhotoDelete(prid);
 		System.out.println("게시글 삭제" + result);
 		
-		return "ranking/travelphoto";
+		return "redirect:travelphoto";
 	}
 	
 	//여행 포토 댓글 작성
@@ -142,19 +142,21 @@ public class TravelReviewController {
 	}
 	
 	//여행 포토 댓글 수정
-	@RequestMapping(value = "travelreplyModify", method = RequestMethod.GET)
-	public String TravelPhotoReplyModify(ReplyVO vo) throws Exception {
+	@RequestMapping(value = "travelreplyModify", method = RequestMethod.POST)
+	public @ResponseBody int TravelPhotoReplyModify(ReplyVO vo) throws Exception {
 		
-		return "redirect:travelphotoView?prid" + vo.getPrId();
+		return service.TravelPhotoReplyModify(vo);
 	}
 	
 	//여행 포토 댓글 삭제
 	@RequestMapping(value = "/travelreplyDelete", method = RequestMethod.GET)
-	public @ResponseBody int TravelPhotoReplyDelete(HttpServletRequest request) throws Exception {
+	public String TravelPhotoReplyDelete(HttpServletRequest request) throws Exception {
 		
+		int prid = Integer.parseInt(request.getParameter("prid"));
 		int prrid = Integer.parseInt(request.getParameter("prrid"));
+		service.TravelPhotoReplyDelete(prrid);
 		
-		return service.TravelPhotoReplyDelete(prrid);
+		return "redirect:travelphotoView?prid=" + prid;
 	}
 	
 	//여행 포토 내 게시글 리스트
