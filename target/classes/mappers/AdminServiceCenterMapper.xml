@@ -62,9 +62,14 @@
 	
 	<!-- 회원목록 -->
 	<select id="memberList" resultType="MemberVO">
-		SELECT * FROM account;
+		SELECT * FROM account
 	</select>
 	
+	<!-- 회원정보 상세조회 -->
+    <select id="viewMember" resultType="MemberVO">
+        SELECT * FROM account WHERE AID = #{aid}
+    </select>
+    
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
 		INSERT INTO inquiry(Category, UserID, Name, Phone, Title, Content, Status) VALUES (#{category}, #{userId}, #{name}, #{phone}, #{title}, #{content}, 0)

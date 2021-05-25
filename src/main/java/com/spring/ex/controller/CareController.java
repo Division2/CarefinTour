@@ -244,6 +244,11 @@ public class CareController {
 	public String admin_member() {
 		return "admin/member/memberlist";
 	}
+	//회원 관리
+	@RequestMapping("admin/memberView")
+	public String admin_memberView() {
+		return "admin/member/memberView";
+	}
 	//주문 관리
 	@RequestMapping("admin/order")
 	public String admin_order() {

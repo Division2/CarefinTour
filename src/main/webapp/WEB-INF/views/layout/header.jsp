@@ -33,6 +33,9 @@
 		    font-style: normal;
 		}
 		#twayFont{ font-family: 'twayfly'; } 
+		#container{
+         max-width: 2000px;
+     	 }
 	</style>
 	
 	<!-- 상단 헤더 -->
@@ -48,7 +51,7 @@
 		</div>
 		<header class="main-nav__header-one ">
 			<nav class="header-navigation stricky">
-				<div class="container">
+				<div class="container" id="container">
 					<div class="main-nav__logo-box">
 						<a href="main" class="main-nav__logo">
 							<img src='<c:url value="/resources/images/Logo.png"/>' class="main-logo" width="100" height="auto" alt="Awesome Image" />

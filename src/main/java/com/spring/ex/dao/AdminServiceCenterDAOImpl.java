@@ -85,6 +85,12 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	public List<MemberVO> getMemberList() throws Exception {
 		return sqlSession.selectList(namespace+".memberList");
 	}
+	
+	//관리자용 회원상세정보
+    @Override
+    public MemberVO ViewMember(int aid) throws Exception {
+        return sqlSession.selectOne(namespace+ ".viewMember", aid);
+    }
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	
 	//1:1 문의 등록
