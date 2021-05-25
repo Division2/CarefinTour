@@ -15,7 +15,7 @@ public interface BannerDAO {
 	public int BannerModify(Map<String, Object> map) throws Exception;
 	
 	//배너 출력
-	public List<BannerVO> BannerView(HashMap<String, Integer> map) throws Exception;
+	public List<BannerVO> BannerView() throws Exception;
 
 	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
 	public BannerVO BannerFileName(int bid) throws Exception;

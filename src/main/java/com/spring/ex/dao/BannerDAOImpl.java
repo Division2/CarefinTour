@@ -7,9 +7,11 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.BannerVO;
 
+@Repository
 public class BannerDAOImpl implements BannerDAO {
 	@Inject
 	private SqlSession sql;
@@ -23,8 +25,8 @@ public class BannerDAOImpl implements BannerDAO {
 
 	//배너 출력
 	@Override
-	public List<BannerVO> BannerView(HashMap<String, Integer> map) throws Exception {
-		return sql.selectList(namespace + ".BannerView", map);
+	public List<BannerVO> BannerView() throws Exception {
+		return sql.selectList(namespace + ".BannerView");
 	}
 
 	@Override
