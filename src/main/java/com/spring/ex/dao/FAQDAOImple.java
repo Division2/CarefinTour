@@ -21,17 +21,17 @@ public class FAQDAOImple implements FAQDAO {
 	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception {
 		return sqlSession.selectList(namespace + ".FAQAllView", map);
 	}
-
-	//자주 찾는 질문(카테고리별)
-	@Override
-	public List<FAQVO> FAQOtherView(HashMap<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQOtherView", map);
-	}
 	
 	//자주 찾는 질문 총 갯수
 	@Override
 	public int FAQTotalCount() throws Exception {
 		return sqlSession.selectOne(namespace + ".getFAQTotalCount");
+	}
+	
+	//자주 찾는 질문(카테고리별)
+	@Override
+	public List<FAQVO> FAQOtherView(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQOtherView", map);
 	}
 	
 	//자주 찾는 질문(카테고리별) 총 갯수

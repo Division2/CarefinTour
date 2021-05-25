@@ -1,29 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>케어핀투어 - 여행 약관</title>
-<link href='<c:url value="/resources/css/section.css"/>' rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="apple-touch-icon" sizes="180x180" href='<c:url value="/resources/favicons/apple-touch-icon.png"/>'>
+<link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
+<link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
+<link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d6c0ae7305fb9210dc71640a373972b"></script>
+<title>CarefinTour</title>
 </head>
 <body>
-	<jsp:include page="../layout/header.jsp" />
-
-	<div class="container">
-		<div class="row">
-			<!-- 여행약관 사이드바 -->
-			<jsp:include page="sidetripservice.jsp"/>
-
-			<div class="col-md-8">
-				<h1>국내 여행</h1>
-				<div class="tab-content">
-					<div class="tab-pane fade show active" id="all">
-						<div id="accordion">
-							<div class="card"></div>
-							<textarea class="form-control" style="resize: none;" cols="30" rows="20">
+	<!-- 페이지 로딩 이미지 -->
+	<div class="preloader">
+		<img src='<c:url value="/resources/images/loader.png"/>' class="preloader__image" alt="">
+	</div>
+	<!-- 페이지 로딩 이미지 -->
+	
+	<!-- 메인 영역 -->
+	<div class="page-wrapper">
+		<jsp:include page="../layout/header.jsp"/>
+		
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/sky.png"/>);">
+			<div class="container">
+				<h2>여행 약관(국내 &#38; 해외)</h2>
+			</div>
+		</section>
+		
+		<!-- 여행 약관 -->
+		<section class="tour-one">
+			<div class="container">
+				<div class="row">
+					<!-- 여행약관 사이드바 -->
+					<jsp:include page="sidetripservice.jsp"/>   
+					<div class="col-md-8">
+						<h1>국내 여행</h1>
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="all">
+								<div id="accordion">
+									<div class="card"></div>
+									<textarea class="form-control" style="resize: none;" cols="30" rows="20">
 제1조(목적)
 이 약관은 ㈜케어핀 투어(이하 “여행사”라 합니다)와 여행자가 체결한 국내여행계약의 세부이행 및 준수사항을 정함을 목적으로 합니다.
 제2조(여행의 종류 및 정의)
@@ -166,14 +185,18 @@
 4) 여행 중 위탁수하물의 분실, 도난, 기타사고로 인한 피해 - 여행자가 입은 손해배상
 5) 여행사의 고의‧과실로 인해 여행일정의 지연 또는 운송 미완수- 여행자가 입은 손해배상
 * 운송수단의 고장, 교통사고 등 운수업체의 고의 과실에 의한 경우도 포함함.	
-							</textarea>
+									</textarea>
+								</div>
+							</div>
 						</div>
 					</div>
-					<br/><br/>
 				</div>
 			</div>
-		</div>
+		</section>
+		<!-- 여행 약관 -->
+		
+		<jsp:include page="../layout/footer.jsp"/>
 	</div>
-	<jsp:include page="../layout/footer.jsp" />
+	<!-- 메인 영역 -->
 </body>
 </html>

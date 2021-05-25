@@ -15,11 +15,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.TravelReviewService;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PagingVO;
+import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
@@ -53,10 +55,10 @@ public class TravelReviewController {
 		
 		PagingVO paging = new PagingVO();
 		paging.setPageNo(page);
-		paging.setPageSize(8);
+		paging.setPageSize(9);
 		paging.setTotalCount(totalCount);
 		
-		page = (page - 1) * 8;
+		page = (page - 1) * 9;
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("Page", page);
@@ -72,14 +74,29 @@ public class TravelReviewController {
 	
 	//여행 포토 조회
 	@RequestMapping(value = "/travelphotoView", method = RequestMethod.GET)
-	public String TravelPhotoView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
+	public String TravelPhotoView(TravelPhotoVO travelPhotoVO, HttpServletRequest request, Model model) throws Exception {
+		
+		int totalCount = service.TravelPhotoReplyTotalCount(travelPhotoVO.getPrid());
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(5);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 5;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		map.put("prid", travelPhotoVO.getPrid());
 		
 		service.TravelPhotoBoardHit(travelPhotoVO.getPrid());
 
 		model.addAttribute("content", service.TravelPhotoView(travelPhotoVO.getPrid()));
-		
-		  model.addAttribute("reply",service.TravelPhotoReplyView(travelPhotoVO.getPrid()));
-		 
+		model.addAttribute("reply", service.TravelPhotoReplyView(map));
+		model.addAttribute("replyPaging", paging);
+		model.addAttribute("replyCount", service.TravelPhotoReplyTotalCount(travelPhotoVO.getPrid()));
 		
 		return "ranking/travelphotoView";
 	}
@@ -97,24 +114,49 @@ public class TravelReviewController {
 	}
 	
 	//여행 포토 수정(사진 & 내용)
-	@RequestMapping(value = "/travelphotoModify", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/travelphotoModify", method = RequestMethod.POST)
 	public String TravelPhotoModify(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
 		
 		service.TravelPhotoModify(travelPhotoVO, files, fileNames, mpRequest);
 		
-		return "redirect:/travelphoto";
+		return "redirect:travelphotoView?prid=" + travelPhotoVO.getPrid();
 	}
 
 	//여행 포토 삭제
-	@RequestMapping(value = "/travelphotoDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/travelphotoDelete", method = RequestMethod.GET)
 	public String TravelPhotoDelete(HttpServletRequest request) throws Exception {
 		
 		int prid = Integer.parseInt(request.getParameter("prid"));
 		
 		int result = service.TravelPhotoDelete(prid);
 		System.out.println("게시글 삭제" + result);
-		return "redirect:/travelphoto";
 		
+		return "redirect:travelphoto";
+	}
+	
+	//여행 포토 댓글 작성
+	@RequestMapping(value = "/travelreplyWrite", method = RequestMethod.POST)
+	public @ResponseBody int TravelPhotoReplyWrite(ReplyVO vo) throws Exception {
+		
+		return service.TravelPhotoReplyWrite(vo);
+	}
+	
+	//여행 포토 댓글 수정
+	@RequestMapping(value = "travelreplyModify", method = RequestMethod.POST)
+	public @ResponseBody int TravelPhotoReplyModify(ReplyVO vo) throws Exception {
+		
+		return service.TravelPhotoReplyModify(vo);
+	}
+	
+	//여행 포토 댓글 삭제
+	@RequestMapping(value = "/travelreplyDelete", method = RequestMethod.GET)
+	public String TravelPhotoReplyDelete(HttpServletRequest request) throws Exception {
+		
+		int prid = Integer.parseInt(request.getParameter("prid"));
+		int prrid = Integer.parseInt(request.getParameter("prrid"));
+		service.TravelPhotoReplyDelete(prrid);
+		
+		return "redirect:travelphotoView?prid=" + prid;
 	}
 	
 	//여행 포토 내 게시글 리스트

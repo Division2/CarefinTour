@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src='<c:url value="/resources/js/Authority.js"/>'></script>
+<%-- <c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
+		<script>AuthCheck();</script>
+</c:if>
+ --%>
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 	<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 		<i class="fa fa-bars"></i>

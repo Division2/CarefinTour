@@ -3,7 +3,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
 		<div class="sidebar-brand-icon">
-			<img src='<c:url value="/resources/image/MainLogo.png"/>' width="100" height="100" style="float:left;">
+			<img src='<c:url value="/resources/images/Logo.png"/>' width="100" height="100" style="float:left;">
 		</div>
 		<div class="sidebar-brand-text mx-1">케어핀투어</div>
 	</a>
@@ -29,7 +29,7 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="package">
+		<a class="nav-link" href="packageproduct">
 			<i class="fas fa-fw fa-table"></i>
 			<span>패키지 상품</span>
 		</a>
@@ -90,7 +90,7 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="inquire">
+		<a class="nav-link" href="inquiry">
 			<i class="fas fa-fw fa-table"></i>
 			<span>1:1 문의</span>
 		</a>

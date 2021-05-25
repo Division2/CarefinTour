@@ -223,7 +223,7 @@ public class CareController {
 	public String admin_hotel() {
 		return "admin/site/hotelproduct";
 	}
-	@RequestMapping("admin/package")
+	@RequestMapping("admin/packageproduct")
 	public String admin_package() {
 		return "admin/site/packageproduct";
 	}
@@ -249,6 +249,10 @@ public class CareController {
 	public String admin_order() {
 		return "admin/order/orderlist";
 	}
+	@RequestMapping("admin/addorder")
+	public String admin_addorder() {
+		return "admin/order/addorder";
+	}
 	//통계(방문자, 게시글 작성 수, 기간별 매출)
 	@RequestMapping("admin/board")
 	public String admin_boardstatistics() {
@@ -267,9 +271,9 @@ public class CareController {
 	public String admin_notice() {
 		return "admin/customer/notice";
 	}
-	@RequestMapping("admin/inquire")
-	public String admin_inquire() {
-		return "admin/customer/inquire";
+	@RequestMapping("admin/inquiry")
+	public String admin_inquiry() {
+		return "admin/customer/inquiry";
 	}
 	@RequestMapping("admin/faq")
 	public String admin_faq() {

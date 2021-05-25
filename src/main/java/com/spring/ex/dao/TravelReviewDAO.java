@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
@@ -37,7 +36,19 @@ public interface TravelReviewDAO {
 	public void TravelPhotoBoardHit(int prid) throws Exception;
 	
 	//여행 포토 댓글 조회
-	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception;
+	public List<ReplyVO> TravelPhotoReplyView(HashMap<String, Integer> map) throws Exception;
+	
+	//여행 포토 댓글 총 갯수
+	public int TravelPhotoReplyTotalCount(int prid) throws Exception;
+	
+	//여행 포토 댓글 작성
+	public int TravelPhotoReplyWrite(ReplyVO vo) throws Exception;
+	
+	//여행 포토 댓글 수정
+	public int TravelPhotoReplyModify(ReplyVO vo) throws Exception;
+	
+	//여행 포토 댓글 삭제
+	public int TravelPhotoReplyDelete(int prrid) throws Exception;
 	
 	//첨부 파일 조회
 	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;

@@ -20,6 +20,7 @@
     <div id="wrapper">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>
+		<script src='<c:url value="/resources/js/Board.js"/>'></script>
 		<!-- 좌측 배너 부분 -->
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
@@ -33,33 +34,34 @@
 						<h1 class="h3 mb-0 text-gray-800">Add FAQ</h1>
 					</div>
 					<hr>
-					<form action="" method="POST">
+					<form id="FAQBoardWrite" name="FAQBoardWrite" action="addfaq" method="POST">
 						<div class="form-group row">
 							<label class="form-label col-sm-1" for="category">카테고리</label>
 							<div class="col-sm-10">
-								<select class="form-control">
-									<option value="oversea">해외여행</option>
-									<option value="theme">테마여행</option>
+								<select class="form-control" name="Category" id="Category">
+								<c:forEach items="${category}" var="List">
+									<option value="${List.category}">${List.category}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-1" for="title">제목</label>
 							<div class="col-sm-10">
-								<input class="form-control" type="text" name="title" id="title">
+								<input class="form-control" type="text" name="Title" id="Title">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="form-label col-sm-1">내용</label>
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="20"></textarea>
+								<textarea class="form-control" rows="20" name="Content" id="Content"></textarea>
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-1"></div>
 							<div class="col-sm-10">
-								<button class="btn btn-primary">등록</button>
-								<button class="btn btn-primary">취소</button>
+								<button type="button" class="btn btn-primary" onclick="FAQWrite()">등록</button>
+								<button type="reset" class="btn btn-primary">취소</button>
 							</div>
 						</div>
 					</form>

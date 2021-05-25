@@ -46,7 +46,7 @@ public class InquiryBoardController {
 	
 	//1:1 문의 답변 작성
 	@RequestMapping(value = "/inquiryAnswerWrite", method = RequestMethod.POST)
-	public @ResponseBody int AnswerWrite(InquiryAnswerVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public @ResponseBody int AnswerWrite(InquiryAnswerVO vo) throws Exception {
 		
 		int result = service.InquiryAnswerWrite(vo);
 		service.InquiryStatusUpdate(vo.getiId());
@@ -151,7 +151,7 @@ public class InquiryBoardController {
 	
 	//1:1 문의 답변 삭제
 	@RequestMapping(value = "/inquiryDelete", method = RequestMethod.GET)
-	public void AnswerDelete(HttpServletRequest request) throws Exception {
+	public String AnswerDelete(HttpServletRequest request) throws Exception {
 		
 		HttpSession session = request.getSession();
 		int iId = Integer.parseInt(request.getParameter("iId"));
@@ -162,5 +162,7 @@ public class InquiryBoardController {
 			
 			System.out.println("답변 삭제" + result);
 		}
+		
+		return "redirect:inquiryView?iId=" + iId;
 	}
 }

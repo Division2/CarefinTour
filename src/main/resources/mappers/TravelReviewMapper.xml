@@ -44,8 +44,28 @@
     
 	 <!-- 여행 포토 댓글 조회 -->	 
 	<select id="TravelPhotoReplyView" resultType="ReplyVO">
-		SELECT * FROM photoreviewreply WHERE PRRID = #{prid} ORDER BY reDate
+		SELECT * FROM photoreviewreply WHERE PRID = #{prid} ORDER BY PRRID DESC LIMIT #{Page}, #{PageSize}
 	</select>
+	
+	<!-- 여행 포토 댓글 총 갯수 -->
+	<select id="getTravelPhotoReplyTotalCount" resultType="int">
+		SELECT COUNT(*) FROM photoreviewreply WHERE prid = #{prid}
+	</select>
+	
+	<!-- 여행 포토 댓글 작성 -->
+	<insert id="TravelPhotoReplyWrite">
+		INSERT INTO photoreviewreply(PRID, UserID, Content) VALUES (#{prId}, #{UserID}, #{Content})
+	</insert>
+
+	<!-- 여행 포토 댓글 수정 -->
+	<update id="TravelPhotoReplyModify">
+		UPDATE photoreviewreply SET Content = #{Content} WHERE prrid = #{prrId}
+	</update>
+	
+	<!-- 여행 포토 댓글 삭제 -->
+	<delete id="TravelPhotoReplyDelete">
+		DELETE FROM photoreviewreply WHERE prrid = #{prrid}
+	</delete>
 	
     <!-- 파일 조회 -->
     <select id="TravelPhotoSelectFileList" parameterType="int" resultType="hashMap">
@@ -54,7 +74,7 @@
 	
 	<!-- 여행 포토 내 게시글 리스트 -->
 	<select id="TravelPhotoMyList" resultType="TravelPhotoVO">
-		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page},#{PageSize}
+		SELECT  * FROM photoreview order BY prid DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 여행 포토 내 게시글 총 갯수 -->

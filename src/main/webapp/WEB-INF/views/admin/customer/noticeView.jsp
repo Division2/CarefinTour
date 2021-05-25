@@ -16,10 +16,12 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
-<script src='<c:url value="/resources/js/Board2.js"/>'></script>
+
     <div id="wrapper">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>
@@ -29,7 +31,7 @@
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
 				<!-- 상단 헤더 부분 -->
-				
+				<script src='<c:url value="/resources/js/Board.js"/>'></script>
 				<!-- 본문 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -56,8 +58,8 @@
 							<div class="row mt-3">
 								<div class="col-auto mr-auto"></div>
 								<div class="col-auto">
-									<button type="button" type="button" class="btn btn-primary" onclick="location.href='noticeModifyView?nId=<%=request.getParameter("nId")%>'">수정</button>
-									<button type="button" class="btn btn-danger" onclick="NoticeDelete()">삭제</button>
+									<button type="button"  class="btn btn-primary" onclick="location.href='noticeModifyView?nId=<%=request.getParameter("nId")%>'">수정</button>
+									<button type="button"  class="btn btn-danger" onclick="NoticeDelete2()">삭제</button>
 									<button type="button" class="btn btn-primary" onclick="location.href='notice'">목록</button>
 								</div>
 							</div>

@@ -24,11 +24,6 @@ $(document).ready(function() {
 		$(this).parent().remove();
 	})
 	
-	$("#list_btn").on("click", function() {
-		event.preventDefault();
-		location.href = "package"
-	})
-	
 	fn_addFile();
 	
 })
@@ -81,44 +76,81 @@ function fn_addFile() {
 					        <div class="form-group row">
 					            <label for="content" class="form-label col-sm-2"><strong>출발일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="starTravelPeriod" name="starTravelPeriod" required>
+					                <input type="text" class="form-control" id="startravelperiod" name="startravelperiod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">
 					            <label for="content" class="form-label col-sm-2"><strong>도착일</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="arrivalTravelPeriod" name="arrivalTravelPeriod" required>
+					                <input type="text" class="form-control" id="arrivaltravelperiod" name="arrivaltravelperiod" required>
 					            </div>
 					        </div>
 					         <div class="form-group row">
 					            <label for="content" class="form-label col-sm-2"><strong>테마</strong></label>
-						            <div class="col-sm-10">
-											<select class="form-control" id="theme" name="theme">
-												<option>허니문</option>
-												<option>낚시</option>
-												<option>골프</option>
-												<option>없음</option>
-											</select>
-										</div>
-					       			 </div>
-					         <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>지역</strong></label>
-						            <div class="col-sm-10">
-										<select class="form-control" id="area" name="area">
-											<option>북미/중남미/하와이</option>
-											<option>대만/동남아/서남아</option>
-											<option>중국/홍콩/러시아</option>
-											<option>유럽/아프리카</option>
-											<option>일본</option>
-										</select>
-									</div>
-						        </div>
-					        <div class="form-group row">
-					            <label for="content" class="form-label col-sm-2"><strong>가격</strong></label>
 					            <div class="col-sm-10">
-					                <input type="text" class="form-control" id="price" name="price" required>
+									<select class="form-control" id="theme" name="theme">
+										<option>허니문</option>
+										<option>낚시</option>
+										<option>골프</option>
+										<option>없음</option>
+									</select>
+								</div>
+				       		</div>
+					        <div class="form-group row">
+					        	<label for="content" class="form-label col-sm-2"><strong>지역</strong></label>
+					            <div class="col-sm-10">
+									<select class="form-control" id="area" name="area">
+										<option>북미/중남미/하와이</option>
+										<option>대만/동남아/서남아</option>
+										<option>중국/홍콩/러시아</option>
+										<option>유럽/아프리카</option>
+										<option>일본</option>
+									</select>
+								</div>
+						    </div>
+						    <div class="form-group row">
+					            <label for="content" class="form-label col-sm-2"><strong>여행도시</strong></label>
+					            <div class="col-sm-10">
+					                <input type="text" class="form-control" id="travelcity" name="travelcity" required>
 					            </div>
 					        </div>
+						    
+	    					 <div class="form-group row">
+	    					    <label for="content" class="form-label col-sm-2"><strong>최소인원</strong></label>
+					            <div class="col-sm-4">
+					                <input type="text" class="form-control" id="minreservation" name="minreservation" required>
+					            </div>
+					            <label for="content" class="form-label col-sm-2"><strong>최대인원</strong></label>
+					            <div class="col-sm-4">
+					                <input type="text" class="form-control" id="maxreservation" name="maxreservation" required>
+					            </div>
+					        </div>
+					        
+						    <div class="form-group row">
+					            <label for="content" class="form-label col-sm-2"><strong>성인 가격</strong></label>
+					            <div class="col-sm-10">
+					                <input type="text" class="form-control" id="adultprice" name="adultprice" required>
+					            </div>
+					        </div>
+       					    <div class="form-group row">
+					            <label for="content" class="form-label col-sm-2"><strong>아동 가격</strong></label>
+					            <div class="col-sm-10">
+					                <input type="text" class="form-control" id="kidprice" name="kidprice" required>
+					            </div>
+					        </div>
+       					    <div class="form-group row">
+					            <label for="content" class="form-label col-sm-2"><strong>유아 가격</strong></label>
+					            <div class="col-sm-10">
+					                <input type="text" class="form-control" id="smallkidprice" name="smallkidprice" required>
+					            </div>
+					        </div>
+   					        <div class="form-group row">
+					            <label for="content" class="form-label col-sm-2"><strong>감독</strong></label>
+					            <div class="col-sm-10">
+					                <input type="text" class="form-control" id="director" name="director" required>
+					            </div>
+					        </div>
+					        
 					        <div class="form-group row">
 				            	<label for="file" class="form-label col-sm-2"><strong>사진</strong></label>
 					            <div class="col-sm-10">
@@ -136,9 +168,9 @@ function fn_addFile() {
 				        	<div class="row">
 					    	<div class="col-auto mr-auto"></div>
 					            <div class="col-auto">
-					            	<input class="btn btn-primary" id="list_btn" value="목록" style="width:90px;">			               
 					                <input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
 					                <input class="btn btn-primary" type="submit" value="등록">
+					                <input class="btn btn-primary" id="list_btn"  onclick="history.back()" value="취소" style="width:90px;">		
 						        </div>
 					       	</div>
 				        </form>

@@ -5,6 +5,7 @@ public class FAQVO {
 	private String category;
 	private String title;
 	private String content;
+	private int fcid;
 	
 	public int getfId() {
 		return fId;
@@ -29,5 +30,11 @@ public class FAQVO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getFcid() {
+		return fcid;
+	}
+	public void setFcid(int fcid) {
+		this.fcid = fcid;
 	}
 }

@@ -15,8 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.ex.service.AdminServiceCenterService;
+import com.spring.ex.vo.FAQVO;
+import com.spring.ex.vo.InquiryAnswerVO;
+import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.PagingVO;
 
@@ -46,7 +52,8 @@ public class AdminServiceCenterController {
 		}
 	}
 	
-	//공지사항 출력
+
+	//공지사항 출력	
 	@RequestMapping(value = "/admin/notice", method = RequestMethod.GET)
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
 
@@ -141,10 +148,10 @@ public class AdminServiceCenterController {
 		}
 	}
 	
+	
 	//공지사항 수정 내용
 	@RequestMapping(value = "/admin/noticeModifyView", method = RequestMethod.GET)
 	public String ModifyView(NoticeBoardVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
 		NoticeBoardVO content = service.NoticeBoardView(nId);
@@ -166,17 +173,327 @@ public class AdminServiceCenterController {
 	
 	//공지사항 삭제
 	@RequestMapping(value = "/admin/noticeDelete", method = RequestMethod.GET)
-	public void NoticeDelete(HttpServletRequest request) throws Exception {
+	public String NoticeDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		HttpSession session = request.getSession();
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
-		if (session.getAttribute("auth").equals("Admin")) {
-			int result = service.NoticeDelete(nId);
-			
-			logger.info("nId : " + nId);
-			logger.info("게시물 삭제 : " + result);
-		}
+		service.NoticeDelete(nId);
+		
+		return "redirect:notice";
+	}
+	
+	//게시물 선택삭제
+    @RequestMapping(value = "/admin/SelectDelete")
+    public String SelectDelete(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.SelectDelete(ajaxMsg[i]);
+        }
+        return "redirect:notice";
+    }
+    
+  //관리자용 회원 목록
+  	@RequestMapping(value = "admin/member", method = RequestMethod.GET)
+  	public String listGET(HttpSession session, Model model) throws Exception {
+  		// 1. 관리자 세션 제어
+  		
+  		MemberVO vo = (MemberVO) session.getAttribute("member");
+  		String id = vo.getUserID();
+  		if (id == null || !(id.equals("1234"))) {
+  			logger.info("C: 관리자아닌 접근 ID - " + id);
+  			return "redirect:/main";
+  		}
+
+  		// 2. 서비스 - 회원 목록 가져오는 동작
+  		//List<MemberVO> memberList = service.getMemberList();
+
+  		// 3. 정보 저장 -> 뷰(/member/memberlist.jsp) -> (Model 객체 )
+  		model.addAttribute("memberList", service.getMemberList());
+
+  		// 4. 페이지이동
+  		return "admin/member/memberlist";
+  	}
+    //관리자용 회원 정보 수정
+  
+
+
+    //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
+    
+  //1:1 문의 작성
+  	@RequestMapping(value = "/admin/inquiryWrite", method = RequestMethod.POST)
+  	public void Write(InquiryVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+  		vo.setCategory(request.getParameter("Category"));
+  		vo.setUserId(request.getParameter("UserID"));
+  		
+  		int result = service.InquiryWrite(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='inquiry'</script>");
+  			out.close();
+  		}
+  	}
+  	
+  	//1:1 문의 답변 작성
+  	@RequestMapping(value = "/admin/inquiryAnswerWrite", method = RequestMethod.POST)
+  	public @ResponseBody int AnswerWrite(InquiryAnswerVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		
+  		int result = service.InquiryAnswerWrite(vo);
+  		service.InquiryStatusUpdate(vo.getiId()); 		
+
+		return result;
+  	}
+  	
+  	//1:1 문의 출력
+  	@RequestMapping(value = "/admin/inquiry", method = RequestMethod.GET)
+  	public String InquiryView(HttpServletRequest request, Model model) throws Exception {
+  		
+  		int totalCount = service.InquiryTotalCount();
+  		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+  		
+  		PagingVO paging = new PagingVO();
+  		paging.setPageNo(page);
+  		paging.setPageSize(10);
+  		paging.setTotalCount(totalCount);
+  		
+  		page = (page - 1) * 10;
+  		
+  		HashMap<String, Integer> map = new HashMap<String, Integer>();
+  		map.put("Page", page);
+  		map.put("PageSize", paging.getPageSize());
+  		
+  		List<InquiryVO> List = service.InquiryList(map);
+  		
+  		model.addAttribute("InquiryList", List);
+  		model.addAttribute("Paging", paging);
+  		
+  		return "admin/customer/inquiry";
+  	}
+  	
+  	
+  	//1:1 문의 검색
+  	@RequestMapping(value = "/admin/inquirySearch", method = RequestMethod.GET)
+  	public String NoticeSearchView(InquiryVO vo, HttpServletRequest request, Model model) throws Exception {
+  		
+  		String name = request.getParameter("name");
+  		int totalCount = service.InquirySearchTotalCount(name);
+  		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+  		
+  		PagingVO paging = new PagingVO();
+  		paging.setPageNo(page);
+  		paging.setPageSize(10);
+  		paging.setTotalCount(totalCount);
+  		
+  		page = (page - 1) * 10;
+  		
+  		HashMap<String, Object> map = new HashMap<String, Object>();
+  		map.put("Page", page);
+  		map.put("PageSize", paging.getPageSize());
+  		map.put("name", name);
+  		
+  		List<InquiryVO> List = service.InquirySearchList(map);
+  		
+  		model.addAttribute("InquiryList", List);
+  		model.addAttribute("Paging", paging);
+  		model.addAttribute("name", name);
+  		
+  		return "admin/customer/inquiry";
+  	}
+  	
+  	//1:1 문의 게시글, 답변 문의 게시글 내용
+  	@RequestMapping(value = "/admin/inquiryView", method = RequestMethod.GET)
+  	public String InquiryBoardView(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		
+  		int iId = Integer.parseInt(request.getParameter("iId"));
+  		
+  		InquiryVO content = service.InquiryBoardView(iId);
+  		InquiryAnswerVO answerContent = service.InquiryAnswerBoardView(iId);
+  		
+  		if (content == null && answerContent == null) {
+  			response.setContentType("text/html;charset=UTF-8");
+  			PrintWriter out = response.getWriter();
+  			out.println("<script>");
+  			out.println("alert('존재하지 않는 게시글입니다!');");
+  			out.println("history.back();");
+  			out.println("</script>");
+  			out.close();
+  		}
+  		model.addAttribute("content", content);
+  		model.addAttribute("answerContent", answerContent);
+  		
+  		return "admin/customer/inquiryView";
+  	}
+  	
+  	//1:1 문의 답변 수정
+  	@RequestMapping(value = "/admin/inquiryModify", method = RequestMethod.POST)
+  	public void AnswerModify(InquiryAnswerVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		
+  		int result = service.InquiryAnswerModify(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='inquiryView?iId=" + vo.getiId() + "'</script>");
+  			out.close();
+  		}
+  	}
+  	
+  	//1:1 문의 답변 삭제
+  	@RequestMapping(value = "/admin/inquiryDelete", method = RequestMethod.GET)
+  	public String AnswerDelete(HttpServletRequest request) throws Exception {
+  		
+  		HttpSession session = request.getSession();
+  		int iId = Integer.parseInt(request.getParameter("iId"));
+  		
+  		if (session.getAttribute("auth").equals("Admin")) {
+  			int result = service.InquiryAnswerDelete(iId);
+  			service.InquiryStatusUpdate2(iId);
+  			
+  			System.out.println("답변 삭제" + result);
+  		}
+  		
+  		return "redirect:inquiryView?iId=" + iId;
+  	}
+  	
+	//1:1 선택삭제
+    @RequestMapping(value = "/admin/SelectDelete2")
+    public String SelectDelete2(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.SelectDelete2(ajaxMsg[i]);
+        }
+        return "redirect:inquiry";
+    }
+    
+    //-----------------------------------------------FAQ시작--------------------------------------------------
+    //FAQ 작성
+  	@RequestMapping(value = "/admin/addfaq", method = RequestMethod.POST)
+  	public void FAQWrite(FAQVO vo, HttpServletResponse response) throws Exception {
+
+  		int result = service.FAQWrite(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='faq'</script>");
+  			out.close();
+  		}
+  	}
+  	
+  	 //FAQ 카테고리 작성
+  	@RequestMapping(value = "/admin/addcategory", method = RequestMethod.POST)
+  	public void CategoryWrite(FAQVO vo, HttpServletResponse response) throws Exception {
+
+  		int result = service.CategoryWrite(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='faq'</script>");
+  			out.close();
+  		}
+  	}
+  	
+    //FAQ 카테고리 보여주기 내용
+  	@RequestMapping(value = "/admin/addfaq", method = RequestMethod.GET)
+	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+		List<FAQVO> Category =  service.FAQCategory(map);
+		
+		model.addAttribute("category", Category);
+		
+		return "admin/customer/addfaq";
+	}
+
+
+	
+  	//FAQ 내용
+  	@RequestMapping(value = "/admin/modifyfaq", method = RequestMethod.GET)
+  	public String FAQBoardView(FAQVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		
+  		int fId = Integer.parseInt(request.getParameter("fId"));
+  		
+  		FAQVO content = service.FAQBoardView(fId);
+  		
+  		if (content == null) {
+  			response.setContentType("text/html;charset=UTF-8");
+  			PrintWriter out = response.getWriter();
+  			out.println("<script>");
+  			out.println("alert('존재하지 않는 게시글입니다!');");
+  			out.println("history.back();");
+  			out.println("</script>");
+  			out.close();
+  		}
+  		model.addAttribute("content", content);
+  		
+  		return "admin/customer/modifyfaq";
+  	}
+  	
+  	
+    //FAQ 수정
+  	@RequestMapping(value = "/admin/modifyfaq", method = RequestMethod.POST)
+  	public void FAQModify(FAQVO vo, HttpServletResponse response) throws Exception {
+  		
+  		int result = service.FAQModify(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='faq'</script>");
+  			out.close();
+  		}
+  	}
+  	
+    //FAQ 선택삭제
+    @RequestMapping(value = "/admin/FAQDelete")
+    public String FAQDelete(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.FAQDelete(ajaxMsg[i]);
+        }
+        return "redirect:faq";
+    }
+    
+    //FAQ 자주 찾는 질문
+	@RequestMapping(value = "/admin/faq", method = RequestMethod.GET)
+	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+		
+		int totalCount = service.FAQTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		List<FAQVO> faqAllList =  service.FAQAllView(map);
+		
+		model.addAttribute("faqAllList", faqAllList);
+		model.addAttribute("Paging", paging);
+		
+		return "admin/customer/faq";
 	}
 
 }

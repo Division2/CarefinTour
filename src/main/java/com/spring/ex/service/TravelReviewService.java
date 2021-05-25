@@ -37,7 +37,19 @@ public interface TravelReviewService {
 	public void TravelPhotoBoardHit(int prid) throws Exception;
 	
 	//여행 포토 댓글 조회
-	public List<ReplyVO> TravelPhotoReplyView(int prid) throws Exception;
+	public List<ReplyVO> TravelPhotoReplyView(HashMap<String, Integer> map) throws Exception;
+	
+	//여행 포토 댓글 총 갯수
+	public int TravelPhotoReplyTotalCount(int prid) throws Exception;
+	
+	//여행 포토 댓글 작성
+	public int TravelPhotoReplyWrite(ReplyVO vo) throws Exception;
+	
+	//여행 포토 댓글 수정
+	public int TravelPhotoReplyModify(ReplyVO vo) throws Exception;
+	
+	//여행 포토 댓글 삭제
+	public int TravelPhotoReplyDelete(int prrid) throws Exception;
 	
 	//첨부파일 조회
 	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;

@@ -3,20 +3,17 @@ package com.spring.ex.vo;
 import java.sql.Date;
 
 public class PackageVO {
-	
 	private int pid;
 	private String productname;
 	private String theme;
-	private String country;
 	private String area;
-	private String tarvelcity;
+	private String travelcity;
 	private String s_file_name;
 	private String o_file_name;
-	private double fishsize;
 	private Date startravelperiod;
 	private Date arrivaltravelperiod;
-	private int resrvationstatus;
-	private int maxresrvationstatus;
+	private int reservationstatus;
+	private int maxreservation;
 	private int minreservation;
 	private int adultcount;
 	private int kidcount;
@@ -28,7 +25,6 @@ public class PackageVO {
 	private Date redate;
 	private String productcode;
 	private int price;
-	
 	public int getPid() {
 		return pid;
 	}
@@ -41,29 +37,17 @@ public class PackageVO {
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
-	public String getTheme(){
+	public String getTheme() {
 		return theme;
 	}
 	public void setTheme(String theme) {
 		this.theme = theme;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
 	}
 	public String getArea() {
 		return area;
 	}
 	public void setArea(String area) {
 		this.area = area;
-	}
-	public String getTarvelcity() {
-		return tarvelcity;
-	}
-	public void setTarvelcity(String tarvelcity) {
-		this.tarvelcity = tarvelcity;
 	}
 	public String getS_file_name() {
 		return s_file_name;
@@ -89,17 +73,17 @@ public class PackageVO {
 	public void setArrivaltravelperiod(Date arrivaltravelperiod) {
 		this.arrivaltravelperiod = arrivaltravelperiod;
 	}
-	public int getResrvationstatus() {
-		return resrvationstatus;
+	public int getReservationstatus() {
+		return reservationstatus;
 	}
-	public void setResrvationstatus(int resrvationstatus) {
-		this.resrvationstatus = resrvationstatus;
+	public void setReservationstatus(int reservationstatus) {
+		this.reservationstatus = reservationstatus;
 	}
-	public int getMaxresrvationstatus() {
-		return maxresrvationstatus;
+	public int getMaxreservation() {
+		return maxreservation;
 	}
-	public void setMaxresrvationstatus(int maxresrvationstatus) {
-		this.maxresrvationstatus = maxresrvationstatus;
+	public void setMaxreservation(int maxreservation) {
+		this.maxreservation = maxreservation;
 	}
 	public int getMinreservation() {
 		return minreservation;
@@ -149,6 +133,12 @@ public class PackageVO {
 	public void setDirector(String director) {
 		this.director = director;
 	}
+	public Date getRedate() {
+		return redate;
+	}
+	public void setRedate(Date redate) {
+		this.redate = redate;
+	}
 	public String getProductcode() {
 		return productcode;
 	}
@@ -161,17 +151,10 @@ public class PackageVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public Date getRedate() {
-		return redate;
+	public String getTravelcity() {
+		return travelcity;
 	}
-	public void setRedate(Date redate) {
-		this.redate = redate;
+	public void setTravelcity(String travelcity) {
+		this.travelcity = travelcity;
 	}
-	public double getFishsize() {
-		return fishsize;
-	}
-	public void setFishsize(double fishsize) {
-		this.fishsize = fishsize;
-	}
-	
 }
