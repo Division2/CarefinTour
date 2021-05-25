@@ -46,6 +46,8 @@ public interface AdminServiceCenterService {
 	//관리자용 회원목록
 	public List<MemberVO> getMemberList() throws Exception;
 	
+	//관리자용 회원상세보기
+	public MemberVO ViewMember(int aid) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -112,4 +114,6 @@ public interface AdminServiceCenterService {
 	
 	//FAQ 카테고리 내용
 	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
+
+	
 }

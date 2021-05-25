@@ -25,110 +25,10 @@
 			<div id="content">
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
+				<script src='<c:url value="/resources/js/Board.js"/>'></script>
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
-				<div class="container-fluid">
-					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Member Management</h1>
-					</div>
-					<hr>
-					<div class="row">
-						<div class="col-sm-2">
-							<select class="form-control">
-								<option>회원아이디</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<div class="input-group input-daterange">
-								<input type="text" class="form-control" value="시작">
-								<div class="input-group-addon">~</div>
-								<input type="text" class="form-control" value="종료">
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<input type="text" placeholder="회원 아이디를 입력하세요.">
-							<button type="button" class="btn px-3 btn-primary">
-								<i class="fas fa-search"></i>
-							</button>
-						</div>
-						<div class="col-sm-2">
-							<div class="d-flex">
-								<div class="ml-auto">
-									<button class="btn btn-primary" data-toggle="modal" data-target="#memberModal">회원</button>
-									<button class="btn btn-primary">등록</button>
-									<button class="btn btn-primary">삭제</button>
-								</div>
-							</div>
-						</div>
-                    </div>
-                    <br>
-					<table class="table table-hover table-white">
-						<thead>
-							<tr>
-								<th>
-									<input type="checkbox">
-								</th>
-								<th><font size="2">AID</font></th>
-								<th><font size="2">계정</font></th>
-								<th><font size="2">비밀번호</font></th>
-								<th><font size="2">이름</font></th>
-								<th><font size="2">권한</font></th>
-								<th><font size="2">이메일</font></th>
-								<th><font size="2">휴대전화</font></th>
-								<th><font size="2">생년월일</font></th>
-								<th><font size="2">성별</font></th>
-								<th><font size="2">주소</font></th>
-								<th><font size="2">마일리지</font></th>
-								<th><font size="2">특이사항</font></th>
-								<th><font size="2">가입일자</font></th>
-								<th><font size="2">최근 접속일자</font></th>
-							</tr>
-						</thead>
-						<tbody>
-								<c:forEach items="${memberList}" var="MemberVO">
-							<tr>
-								<td>
-									<input type="checkbox">
-								</td>
-								<td><a href="memberView?AID=${MemberVO.getAid()}"> ${MemberVO.getAid()}</a></td>
-								<td><c:out value="${MemberVO.userID}"></c:out></td>
-								<td><c:out value="${MemberVO.password}"></c:out></td>
-								<td><c:out value="${MemberVO.name}"></c:out></td>
-								<td>
-									<select class="form-control">
-										<option>일반</option>
-									</select>
-								</td>
-								<td><c:out value="${MemberVO.email}"></c:out></td>
-								<td><c:out value="${MemberVO.phone}"></c:out></td>
-								<td><c:out value="${MemberVO.birth}"></c:out></td>
-								<td><c:out value="${MemberVO.sex}"></c:out></td>
-								<td><c:out value="${MemberVO.address}"></c:out></td>
-								<td><c:out value="${MemberVO.mileage}"></c:out></td>
-								<td><c:out value="${MemberVO.comment}"></c:out></td>
-								<td><c:out value="${MemberVO.regDate}"></c:out></td>
-								<td><c:out value="${MemberVO.lastDate}"></c:out></td>
-							</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-				<!-- 본문 -->
-			</div>
-			<!-- 하단 푸터 부분 -->
-			<jsp:include page="../layout/footer.jsp"/>
-    		<!-- 하단 푸터 부분 -->
-		</div>
-	</div>
-    
-	<!-- 회원 상세정보 Modal 부분 -->
-	<div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
 				<div class="modal-body">
 					<div class="form-title text-center">
 						<h4>회원 상세정보</h4>
@@ -143,7 +43,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<input type="text" name="account" id="account" class="form-control" required readonly>
+										<input type="text" name="account" id="account" class="form-control" value="${mDetail.getUserID()}" readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -151,7 +51,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">비밀번호</span>
 										</div>
-										<input type="password" name="password" id="password" class="form-control">
+										<input type="password" name="password" id="password" value="${mDetail.getPassword()}" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -162,7 +62,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" required readonly>
+										<input type="text" name="name" id="name" class="form-control" value="${mDetail.getName()}" readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -170,7 +70,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">마일리지</span>
 										</div>
-										<input type="text" name="mileage" id="mileage" class="form-control" required>
+										<input type="text" name="mileage" id="mileage" class="form-control" value="${mDetail.getMileage()}" >
 									</div>
 								</div>
 							</div>
@@ -208,7 +108,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이메일</span>
 										</div>
-										<input type="email" name="email" id="email" class="form-control" required readonly>
+										<input type="email" name="email" id="email" class="form-control" value="${mDetail.getEmail()}" readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -216,7 +116,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">휴대전화</span>
 										</div>
-										<input type="tel" name="phone" id="phone" class="form-control" required readonly>
+										<input type="tel" name="phone" id="phone" class="form-control" value="${mDetail.getPhone()}" readonly>
 									</div>
 								</div>
 							</div>
@@ -226,7 +126,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text">특이사항</span>
 									</div>
-									<textarea rows="5" cols="25" name="comment" id="comment" class="form-control"></textarea>
+									<textarea rows="5" cols="25" name="comment" id="comment" class="form-control" >${mDetail.getComment()}</textarea>
 								</div>
 							</div>
 							<!-- 회원 주문내역 Table -->
@@ -277,12 +177,14 @@
 							</table>
 							<button type="submit" class="btn btn-primary btn-block btn-round">수정</button>
 						</form>
-				
 					</div>
 				</div>
+				<!-- 본문 -->
 			</div>
+			<!-- 하단 푸터 부분 -->
+			<jsp:include page="../layout/footer.jsp"/>
+    		<!-- 하단 푸터 부분 -->
 		</div>
 	</div>
-
 </body>
 </html>

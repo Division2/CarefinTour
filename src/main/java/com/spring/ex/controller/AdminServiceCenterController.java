@@ -215,10 +215,22 @@ public class AdminServiceCenterController {
   		// 4. 페이지이동
   		return "admin/member/memberlist";
   	}
-    //관리자용 회원 정보 수정
+  	
+	 //회원 상세정보 조회
+	    @RequestMapping(value = "/admin/memberView", method = RequestMethod.GET)
+	    public String memberView(Model model, HttpServletRequest request) throws Exception{
+	        // 회원 정보를 model에 저장
+	    	int aid = Integer.parseInt(request.getParameter("AID"));
+	    	System.out.println(aid);
+	    	MemberVO memberVO = service.ViewMember(aid);
+
+	        model.addAttribute("mDetail", memberVO);
+	        //System.out.println("클릭한 아이디 확인 : "+userId);
+	        //logger.info("클릭한 아이디 : "+UserID);
+	        // member_view.jsp로 포워드
+	        return "admin/member/memverView";
+	    }
   
-
-
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
     
   //1:1 문의 작성
