@@ -34,36 +34,6 @@ $(document).ready(function() {
 		$("#TravelContent").attr("name","suppliesContent");
 	})
 })
-
-function test(zz) {
-	var htmls = "";
-	
-	
-	htmls += '<button class="btn btn-primary" onclick="">취소</button>';
-	htmls += '<form action="visaInfoWrite" method="POST" id="TravelInfo" name="TravelInfo">';
-	htmls += '<div class="form-group">';
-	htmls += '<textarea id="TravelContent" name="visaContent">'+zz+'</textarea>';
-	htmls += '</div>';
-	htmls += '<div class="form-group">';
-	htmls += '<div class="d-flex">';
-	htmls += '<div class="ml-auto">';
-	htmls += '<button class="btn btn-primary" type="submit">등록</button>';
-	htmls += '</div>';
-	htmls += '</div>';
-	htmls += '</div>';
-	htmls += '</form>';
-	
-	$("#edit").html(htmls);
-	
-	ClassicEditor.create(document.querySelector('#TravelContent'))
-	.then(editor => {
-		console.log(editor);
-	})
-	.catch(error => {
-		console.error(error);
-	});
-	
-}
 </script>
 <title>케어핀투어 관리자</title>
 </head>
@@ -136,7 +106,6 @@ function test(zz) {
 										<summary>비자정보 더보기</summary>
 										<div class="infoSection">
 											<div id="edit">
-												<button class="btn btn-primary" onclick="test('${VisaInfo.getVisaContent()}')">수정</button>
 												<c:out escapeXml="false" value="${fn:replace(fn:replace(VisaInfo.getVisaContent(), '&lt;', '<'), '&gt;', '>')}"/>
 											</div>
 										</div>
@@ -161,7 +130,8 @@ function test(zz) {
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
-    		<script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script>
+    		
+    		<script src='<c:url value="resources/js/ckeditor.js"/>'></script>
 		</div>
 	</div>
 </body>
