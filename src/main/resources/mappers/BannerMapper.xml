@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.PackageMapper">
+
+	<!-- 배너 수정  -->
+	<update id="BannereModify" parameterType="hashMap">
+		UPDATE banner SET s_file_name = #{s_file_name}, o_file_name = #{o_file_name) WHERE BID = #{bid}	
+	</update>
+	
+	
+	<!-- 여행패키지 PID해당하는 파일검색 -->
+ 	<select id="BannerFileName" resultType="BannerVO">
+		SELECT s_file_name FROM banner WHERE BID = #{bid};
+	</select>
+	
+	 <select id="BannerView" resultType="BannerVO">
+		SELECT s_file_name FROM banner WHERE BID = #{bid};
+	</select>
+</mapper>
