@@ -32,7 +32,7 @@
 		</li>
 		<li class="nav-item dropdown no-arrow">
 			<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<span class="mr-2 d-none d-lg-inline text-gray-600 small">관리자 닉넴</span>
+				<span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.member.getUserID() }</span>
 				<img class="img-profile rounded-circle" src='<c:url value="/resources/image/profile.svg"/>'>
 			 </a>
 			<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

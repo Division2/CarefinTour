@@ -38,8 +38,8 @@
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">방문자 수</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">여긴 갯수~</div>
+											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">오늘의 방문자 수</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">${TodayVisitorTotalCount }명</div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -53,8 +53,8 @@
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
-											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">게시글 작성 수</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">여긴 갯수~</div>
+											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">오늘의 게시글 작성 수</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">${TodayBoardTotalCount }개</div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -68,10 +68,10 @@
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
-										<div class="text-xs font-weight-bold text-info text-uppercase mb-1">가입 회원 수</div>
+										<div class="text-xs font-weight-bold text-info text-uppercase mb-1">오늘의 가입 회원 수</div>
 											<div class="row no-gutters align-items-center">
 												<div class="col-auto">
-													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">여긴 수~</div>
+													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${TodayRegisterMemberTotalCount }명</div>
 												</div>
 												<div class="col">
 													<div class="progress progress-sm mr-2">

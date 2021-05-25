@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.AdminDashBoardMapper">
+
+	<!-- 오늘의 방문자 수 -->
+	<select id="getTodayVisitorTotalCount" resultType="int">
+		SELECT COUNT(*) FROM visitor WHERE DATE_FORMAT(visit_time, "%Y-%m-%d") = CURDATE()
+	</select>
+	
+	<!-- 오늘의 공지사항 작성 수 -->
+	<select id="getTodayNoticeTotalCount" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE DATE_FORMAT(reDate, "%Y-%m-%d") = CURDATE()
+	</select>
+	
+	<!-- 오늘의 1:1문의 작성 수 -->
+	<select id="getTodayInquiryTotalCount" resultType="int">
+		SELECT COUNT(*) FROM inquiry WHERE DATE_FORMAT(reDate, "%Y-%m-%d") = CURDATE()
+	</select>
+	
+	<!-- 오늘의 여행 포토 작성 수 -->
+	<select id="getTodayTravelPhotoTotalCount" resultType="int">
+		SELECT COUNT(*) FROM photoreview WHERE DATE_FORMAT(reDate, "%Y-%m-%d") = CURDATE()
+	</select>
+	
+	<!-- 오늘의 가입 회원 수 -->
+	<select id="getTodayRegisterMemberTotalCount" resultType="int">
+		SELECT COUNT(*) FROM account WHERE DATE_FORMAT(regDate, "%Y-%m-%d") = CURDATE()
+	</select>
+</mapper>
