@@ -15,5 +15,6 @@
 		<typeAlias type="com.spring.ex.vo.PackageVO" alias="PackageVO"/>
 		<typeAlias type="com.spring.ex.vo.ReplyVO" alias="ReplyVO"/>
 		<typeAlias type="com.spring.ex.vo.VisitVO" alias="VisitVO"/>
+		<typeAlias type="com.spring.ex.vo.BannerVO" alias="BannerVO"/>
 	</typeAliases>
 </configuration>
