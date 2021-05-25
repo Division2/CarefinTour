@@ -14,8 +14,5 @@ public interface BannerService {
 	//public void TravelPhotoModify(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
 	
 	//배너 출력
-	@Override
-	public List<BannerVO> (HashMap<String, Integer> map) throws Exception {
-		return dao.AdminPackageView(map);
-	}
+	public List<BannerVO> asd (HashMap<String, Integer> map) throws Exception;
 }
