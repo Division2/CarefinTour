@@ -25,11 +25,10 @@ public class AdminBannerController {
 	@RequestMapping(value = "/admin/banner", method = RequestMethod.GET)
 	public String  AdminPackageView(Model model ,HttpServletRequest request) throws Exception {
 		List<BannerVO> bannerList = service.BannerView();
-		System.out.println(bannerList);
+		
 		model.addAttribute("blist", bannerList);
 		
 		return "admin/site/banner";
-		
 	}
 	
 	//관리자 배너 수정페이지 출력
@@ -47,12 +46,9 @@ public class AdminBannerController {
 	public String BannerModify(BannerVO vo, MultipartFile file, HttpServletRequest request) throws Exception {
 		String Path = request.getSession().getServletContext().getRealPath("resources/images/banner_main/");
 		
-		System.out.println("dd "+ file.getOriginalFilename());
-		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			new File(Path + request.getParameter("imgFile")).delete();
 			String fileName = UploadFileUtils.fileUpload(Path, file.getOriginalFilename(), file.getBytes());
-			System.out.println(fileName);
 	  
 			vo.setS_file_name(fileName);
 		}
