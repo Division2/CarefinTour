@@ -1,51 +1,19 @@
 package com.spring.ex.util;
 
 import java.io.File;
-import java.text.DecimalFormat;
-import java.util.Calendar;
 import java.util.UUID;
 
 import org.springframework.util.FileCopyUtils;
-import net.coobird.thumbnailator.Thumbnails;
 
 public class UploadFileUtils {
-  
+	public static String fileUpload(String uploadPath, String fileName, byte[] fileData) throws Exception {
 
- 
- public static String fileUpload(String uploadPath,
-         String fileName,
-         byte[] fileData) throws Exception {
- 
-	 
-  UUID uid = UUID.randomUUID();
-  
-  String newFileName = uid + "_" + fileName;
-  String imgPath = uploadPath;
+		UUID uid = UUID.randomUUID();
+		String newFileName = uid + "_" + fileName;
 
-  File target = new File(imgPath, newFileName);
-  FileCopyUtils.copy(fileData, target);
-  
-  String thumbFileName = newFileName;
-  File image = new File(imgPath + File.separator + newFileName);
+		File target = new File(uploadPath, newFileName);
+		FileCopyUtils.copy(fileData, target);
 
-  File thumbnail = new File(imgPath  + File.separator + thumbFileName);
-  
-  
-   thumbnail.getParentFile().mkdirs();
-
-  return newFileName;
- }
-
- private static void makeDir(String uploadPath, String... paths) {
-
-  if (new File(paths[paths.length - 1]).exists()) { return; }
-
-  for (String path : paths) {
-   File dirPath = new File(uploadPath + path);
-
-   if (!dirPath.exists()) {
-    dirPath.mkdir();
-   }
-  }
- }
+		return newFileName;
+	}
 }

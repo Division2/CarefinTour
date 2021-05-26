@@ -39,7 +39,7 @@
 			<div class="container">
 				<div class="blog-details__image">
 				<c:if test="${content.s_file_name ne null}">
-					<img src='<c:url value="/resources/imgUpload/${content.s_file_name}"/>' style="width:1200px;height:500px;"alt="" class="img-fluid">
+					<img src='<c:url value="/resources/images/UploadImages/${content.s_file_name}"/>' alt="" class="img-fluid">
 				</c:if>
 				</div>
 				<div class="blog-details__content">
@@ -58,7 +58,7 @@
 				<div class="comment-one">
 					<div class="comment-one__single">
 						<div class="comment-one__image">
-							<img src='<c:url value="/resources/image/ranking/user1.jpg"/>' alt="">
+							<img src='<c:url value="/resources/images/ranking/user1.jpg"/>' alt="">
 						</div>
 						<div class="comment-one__content">
 							<p><i class="far fa-clock"></i> ${reply.getRegDate() }</p>

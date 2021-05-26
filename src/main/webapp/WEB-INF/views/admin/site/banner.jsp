@@ -44,7 +44,7 @@
 								<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
 							</div>
 						</div>
-							<img src='<c:url value="/resources/image/banner_main/${blist.s_file_name}" />' width="100%" height="400px"  alt="banner Img">
+							<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' width="100%" height="400px"  alt="banner Img">
 						<div class="card-body">
 						 </div>
 					</div>

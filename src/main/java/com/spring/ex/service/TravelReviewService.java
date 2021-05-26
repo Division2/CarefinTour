@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.ReplyVO;
@@ -19,7 +18,7 @@ public interface TravelReviewService {
 	public void TravelPhotoWrite(TravelPhotoVO vo) throws Exception;
 	
 	// 여행 포토 수정
-		public void TravelPhotoModify(TravelPhotoVO vo) throws Exception;
+	public void TravelPhotoModify(TravelPhotoVO vo) throws Exception;
 		
 	//여행 포토 출력
 	public List<TravelPhotoVO> TravelPhotoList(HashMap<String, Integer> map) throws Exception;
@@ -29,8 +28,6 @@ public interface TravelReviewService {
 	
 	//첨부파일 조회
 	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;
-	
-	
 	
 	//여행 포토 총 갯수
 	public int TravelPhotoTotalCount() throws Exception;

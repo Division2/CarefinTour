@@ -4,16 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.dao.TravelReviewDAO;
-import com.spring.ex.util.FileUtils;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
@@ -30,15 +27,12 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	public void TravelPhotoWrite(TravelPhotoVO vo) throws Exception {
 		dao.TravelPhotoWrite(vo);		
 	}
-	
 
 	// 상품 수정
 	@Override
 	public void TravelPhotoModify(TravelPhotoVO vo) throws Exception {
 		dao.TravelPhotoModify(vo);
 	}
-
-
 
 	//여행 포토 출력
 	@Override

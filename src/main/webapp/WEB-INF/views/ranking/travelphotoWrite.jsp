@@ -13,7 +13,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 <title>CarefinTour</title>
 </head>
 <body>
@@ -61,22 +60,9 @@
 							</div>
 							<div class="col-md-12">
 								<div class="inputArea">
-										<label for="gdsImg">이미지</label><br>
-										<input type="file" id="gdsImg" name="file" />
-										<div class="select_img"><img src="" /></div>
-										
-										<script>
-											$("#gdsImg").change(function(){
-												if(this.files && this.files[0]) {
-													var reader = new FileReader;
-													reader.onload = function(data) {
-														$(".select_img img").attr("src", data.target.result).width(500);								
-													}
-													reader.readAsDataURL(this.files[0]);
-												}
-											});
-										</script>										
-										<%=request.getRealPath("/") %>				
+										<label for="imgLabel">이미지</label><br>
+										<input type="file" id="imgFile" name="file" />
+										<div class="select_img"><img src=""/></div>
 								</div>
 							</div>
 				   	 	  	<input type="hidden" id="good" name="good" value="0">
@@ -85,7 +71,6 @@
 			        	<div class="row">
 				    		<div class="col-auto mr-auto"></div>
 							<div class="col-auto">
-								<input class="thm-btn-psd" id="fileAdd_btn" value="파일추가" style="width:135px;">
 								<input class="thm-btn-psd" type="button" onclick="Write()" value="등록">
 								<input class="thm-btn-psd" type="button" value="목록" onclick="location.href='travelphoto'">
 							</div>
@@ -96,8 +81,18 @@
 		</section>
 		
 	<jsp:include page="../layout/footer.jsp" />
-	<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
-	<script src='<c:url value="resources/js/Board.js"/>'></script>	
+	<script src='<c:url value="resources/js/Board.js"/>'></script>
+	<script>
+		$("#imgFile").change(function(){
+			if(this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function(data) {
+					$(".select_img img").attr("src", data.target.result).width(500);								
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		});
+	</script>
 	</div>
 	<!-- 메인 영역 -->
 </body>
