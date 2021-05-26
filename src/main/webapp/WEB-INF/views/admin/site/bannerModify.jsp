@@ -1,0 +1,111 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%pageContext.setAttribute("crlf", "\r\n"); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
+<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
+<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
+<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="apple-touch-icon" sizes="180x180" href='<c:url value="/resources/favicons/apple-touch-icon.png"/>'>
+<link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
+<link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
+<link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
+<style>
+	.inputArea { margin:10px 0; }
+	select { width:100px; }
+	label { display:inline-block; width:70px; padding:5px; }
+	label[for='gdsDes'] { display:block; }
+	input { width:150px; }
+	textarea#gdsDes { width:400px; height:180px; }
+	
+	.select_img img {margin:20px 0;}
+	
+</style>
+<title>CarefinTour</title>
+</head>
+<body>
+    <div id="wrapper">
+   	<!-- 좌측 배너 부분 -->
+	<jsp:include page="../layout/banner.jsp"/>
+	<!-- 좌측 배너 부분 -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content">
+				<!-- 상단 헤더 부분 -->
+				<jsp:include page="../layout/header.jsp"/>
+				<!-- 상단 헤더 부분 -->
+				
+				<!-- 본문 -->
+				<section class="tour-one">
+					<div class="container">
+						<div class="comment-form">
+							<form action="bannerModify" role="form" method="POST">
+								<div class="row low-gutters">
+									<input type="hidden" id="prid" name="prid" value="" />
+									<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+									<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+									
+									<div class="col-md-12">
+										<div class="input-group">
+											<label for="title" class="form-label"><strong> </strong></label>
+										</div>
+									</div>
+									<div class="col-md-12">				
+										<div class="inputArea">
+											 <label for="gdsImg">이미지</label><br>
+											 <input type="file" id="gdsImg" name="file" />
+											 <div class="select_img">
+											 <img src='<c:url value="/resources/image/banner_main"/>' alt="" class="img-fluid">
+											 <input type="hidden" name="gdsImg" value="" />
+											 </div>
+										  <script>
+											 $("#gdsImg").change(function(){
+											  if(this.files && this.files[0]) {
+											   var reader = new FileReader;
+											   reader.onload = function(data) {
+											    $(".select_img img").attr("src", data.target.result).width(500);        
+											   }
+											   reader.readAsDataURL(this.files[0]);
+											  }
+											 });
+											</script>
+											 <%=request.getRealPath("/") %>
+											</div>
+									</div>
+								</div>
+								<div class="row">
+									<div align="right">
+					            		<input class="thm-btn-psd" type="submit" value="수정">
+					            		<input class="thm-btn-psd" type="button" value="취소" onclick="location.href='banner'">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+				<!-- 본문 -->
+			</div>
+			<!-- 하단 푸터 부분 -->
+			<jsp:include page="../layout/footer.jsp"/>
+			<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
+			<script src='<c:url value="resources/js/Board.js"/>'></script>
+		  		<!-- 하단 푸터 부분 -->
+		</div>
+	</div>
+	
+	<!-- 메인 영역 -->
+</body>
+</html>

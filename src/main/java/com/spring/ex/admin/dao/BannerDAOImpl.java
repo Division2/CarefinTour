@@ -1,4 +1,4 @@
-package com.spring.ex.dao;
+package com.spring.ex.admin.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,9 +29,10 @@ public class BannerDAOImpl implements BannerDAO {
 		return sql.selectList(namespace + ".BannerView");
 	}
 
+	//관리자 배너 수정페이지 출력
 	@Override
-	public BannerVO BannerFileName(int bid) throws Exception {
-		return null;
+	public BannerVO BannerModifyView(int bid) throws Exception {
+		return sql.selectOne(namespace + ".BannerModifyView", bid);
 	}
 
 }

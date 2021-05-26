@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.spring.ex.service.BannerService;
+import com.spring.ex.admin.service.BannerService;
 import com.spring.ex.vo.BannerVO;
 
 @Controller
@@ -29,6 +29,16 @@ public class BannerController {
 		
 	}
 	
-	
+	//관리자 배너 수정페이지 출력
+	@RequestMapping(value = "/admin/bannerModifyView", method = RequestMethod.GET)
+	public String BannerModifyView( Model model) throws Exception {
+		
+		//List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
+		
+		//model.addAttribute("update", service.TravelPhotoView(travelPhotoVO.getPrid()));
+		//model.addAttribute("file", fileList);
+		
+		return "admin/site/bannerModify";
+	}
 	
 }

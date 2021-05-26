@@ -1,4 +1,4 @@
-package com.spring.ex.service;
+package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +17,6 @@ public interface BannerService {
 	//관리자화면 배너 출력
 	public List<BannerVO> BannerView() throws Exception;
 
-	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
-	public BannerVO BannerFileName(int bid) throws Exception;
+	//관리자 배너 수정페이지 출력
+	public BannerVO BannerModifyView(int bid) throws Exception;
 }

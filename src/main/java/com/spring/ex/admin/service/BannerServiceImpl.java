@@ -1,4 +1,4 @@
-package com.spring.ex.service;
+package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.ex.dao.BannerDAO;
+import com.spring.ex.admin.dao.BannerDAO;
 import com.spring.ex.util.FileUtils;
 import com.spring.ex.vo.BannerVO;
 
@@ -31,9 +31,9 @@ public class BannerServiceImpl implements BannerService{
 		return dao.BannerView();
 	}
 
-	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
-	public BannerVO BannerFileName(int bid) throws Exception {
-		return null;
+	//관리자 배너 수정페이지 출력
+	public BannerVO BannerModifyView(int bid) throws Exception {
+		return dao.BannerModifyView(bid);
 	}
 
 }
