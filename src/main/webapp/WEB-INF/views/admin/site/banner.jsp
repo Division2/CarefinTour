@@ -15,8 +15,13 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <title>케어핀투어 관리자</title>
+<style type="text/css">
+	#wrapper{
+		max-width: 1200px;
+	}
+</style>
 </head>
-<body id="page-top">
+<body>
     <div id="wrapper">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>
@@ -28,50 +33,22 @@
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
-				<div class="container-fluid">
+				<div class="container-fluid" align="left">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Banner Management</h1>
 					</div>
-					<table class="table table-hover table-white">
-						<thead>
-							<tr>
-								<th>
-									<input type="checkbox">
-								</th>
-								<th>
-									카테고리
-								</th>
-								<th>
-									상품명
-								</th>
-								<th>
-									이미지
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<input type="checkbox">
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-								<td>
-									Test
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="d-flex">
-						<div class="ml-auto">
-							<button class="btn btn-primary" data-toggle="modal" data-target="#bannerAddModal">등록</button>
-							<button class="btn btn-primary">삭제</button>
+					<c:forEach items="${blist}" var="blist">		
+					<div class="card mb-3">
+						<div class="card-header"><font style="vertical-align: inherit;" size="7"> ${blist.BannerCategory}</font>
+							<div align="right">
+								<button class="btn btn-primary" data-toggle="modal" data-target="#bannerAddModal" onclick="">변경</button>
+							</div>
 						</div>
+							<img src='<c:url value="/resources/image/banner_main/${blist.s_file_name}" />' width="100%" height="400px"  alt="banner Img">
+						<div class="card-body">
+						 </div>
 					</div>
+					</c:forEach>
 				</div>
 				<!-- 본문 -->
 			</div>
@@ -80,54 +57,5 @@
     		<!-- 하단 푸터 부분 -->
 		</div>
 	</div>
-    
-    <!-- 배너 등록 Modal 부분 -->
-	<div class="modal fade" id="bannerAddModal" tabindex="-1" role="dialog" aria-labelledby="bannerAddModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header border-bottom-0">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-title text-center">
-						<h4>배너 관리</h4>
-						<hr>
-					</div>
-					<div class="d-flex flex-column">
-						<form>
-							<div class="form-group">
-								<select class="form-control" id="category">
-									<option>카테고리 선택</option>
-									<option value="1">슬라이드</option>
-									<option value="2">추천</option>
-									<option value="3">테마</option>
-									<option value="4">시즌</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="product" placeholder="상품명을 입력하세요" required>
-							</div>
-							<div class="form-group">
-								<div class="input-group">
-									<div class="custom-file">
-										<input type="file" class="custom-file-input" id="upImage" aria-describedby="upImage">
-										<label class="custom-file-label" for="upImage">이미지를 선택하세요</label>
-									</div>
-								</div>
-							</div>
-							<button type="submit" class="btn btn-primary btn-block btn-round">등록</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
-	document.querySelector('.custom-file-input').addEventListener('change',function(e) {
-		var fileName = document.getElementById("upImage").files[0].name;
-		var nextSibling = e.target.nextElementSibling
-		nextSibling.innerText = fileName
-	})
-	</script>
 </body>
 </html>

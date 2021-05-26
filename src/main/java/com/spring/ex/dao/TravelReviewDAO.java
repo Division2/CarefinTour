@@ -12,22 +12,24 @@ import com.spring.ex.vo.TravelPhotoVO;
 public interface TravelReviewDAO {
 	
 	//여행 포토 작성
-	public int TravelPhotoWrite(Map<String, Object> map) throws Exception;
+	public void TravelPhotoWrite(TravelPhotoVO vo) throws Exception;
 	
+	//여행 수정
+	public void TravelPhotoModify(TravelPhotoVO vo) throws Exception;
+		
 	//여행 포토 출력
 	public List<TravelPhotoVO> TravelPhotoList(HashMap<String, Integer> map) throws Exception;
 	
 	//여행 포토 조회
 	public TravelPhotoVO TravelPhotoView(int prid) throws Exception;
 	
+
+	
 	//여행 포토 총 갯수
 	public int TravelPhotoTotalCount() throws Exception;
 	
-	//여행 포토 수정(사진)
-	public int TravelPhotoUpdateFile(Map<String, Object> map) throws Exception;
-
-	//여행 포토 수정(내용)
-	public void TravelPhotoModify(TravelPhotoVO travelPhotoVO) throws Exception;
+	//첨부 파일 조회
+	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;
 	
 	//여행 포토 삭제
 	public int TravelPhotoDelete(int prid) throws Exception;
@@ -49,9 +51,6 @@ public interface TravelReviewDAO {
 	
 	//여행 포토 댓글 삭제
 	public int TravelPhotoReplyDelete(int prrid) throws Exception;
-	
-	//첨부 파일 조회
-	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception;
 	
 	//여행 포토 내 게시글 리스트
 	public List<TravelPhotoVO> TravelPhotoMyList(HashMap<String, Integer> map) throws Exception;

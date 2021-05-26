@@ -23,8 +23,15 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 	
 	//여행 포토 작성
 	@Override
-	public int TravelPhotoWrite(Map<String, Object> map) throws Exception {
-		return sqlSession.insert(namespace + ".TravelPhotoWrite", map);
+	public void TravelPhotoWrite(TravelPhotoVO vo) throws Exception {
+		sqlSession.insert(namespace + ".TravelPhotoWrite", vo);
+	}
+	
+
+	//여행 포토 수정
+	@Override
+	public void TravelPhotoModify(TravelPhotoVO vo) throws Exception {
+		sqlSession.update(namespace + ".TravelPhotoModify", vo);
 	}
 	
 	//여행 포토 출력
@@ -39,22 +46,18 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 		return sqlSession.selectOne(namespace + ".TravelPhotoView", prid);
 	}
 	
+	//파일 조회
+	@Override
+	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
+		return sqlSession.selectList(namespace + ".TravelPhotoSelectFileList", prid);
+	}
+	
+
+	
 	//여행 포토 총 갯수
 	@Override
 	public int TravelPhotoTotalCount() throws Exception {
 		return sqlSession.selectOne(namespace + ".getTravelPhotoTotalCount");
-	}
-	
-	//여행 포토 수정(사진)
-	@Override
-	public int TravelPhotoUpdateFile(Map<String, Object> map) throws Exception {
-		return sqlSession.update(namespace + ".TravelPhotoUpdateFile", map);
-	}
-	
-	//여행 포토 수정(내용)
-	@Override
-	public void TravelPhotoModify(TravelPhotoVO travelPhotoVO) throws Exception {
-		sqlSession.update(namespace + ".TravelPhotoUpdate", travelPhotoVO);
 	}
 	
 	//여행 포토 삭제
@@ -99,11 +102,6 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 		return sqlSession.delete(namespace + ".TravelPhotoReplyDelete", prrid);
 	}
 	
-	//파일 조회
-	@Override
-	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
-		return sqlSession.selectList(namespace + ".TravelPhotoSelectFileList", prid);
-	}
 	
 	//여행 포토 내 게시글 리스트
 	@Override

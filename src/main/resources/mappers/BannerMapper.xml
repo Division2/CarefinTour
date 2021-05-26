@@ -14,7 +14,8 @@
 		SELECT s_file_name FROM banner WHERE BID = #{bid};
 	</select>
 	
-	 <select id="BannerView" resultType="BannerVO">
-		SELECT s_file_name FROM banner WHERE BID = #{bid};
+	<!--관리자화면 배너 출력 -->
+	 <select id="BannerView" resultType="hashmap">
+		SELECT * FROM banner;
 	</select>
 </mapper>

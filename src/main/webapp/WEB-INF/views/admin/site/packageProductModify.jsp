@@ -61,6 +61,7 @@ function fn_addFile() {
 						<div class="form-title text-center">
 							<h4>여행패키지 정보수정</h4><br>
 						</div>
+						<p align="right"><font size="2">조회수 : ${pdtail.getHit() }</font></p>
 						<font size="3">No <%= request.getParameter("PID") %></font>
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
@@ -220,13 +221,13 @@ function fn_addFile() {
 										<div class="input-group-prepend">
 											<span class="input-group-text">개요</span>
 										</div>
-										<textarea rows="5" cols="25" name="comment" id="comment" class="form-control"></textarea>
+										<textarea rows="15" cols="25" name="comment" id="comment" class="form-control">${pdtail.getOverview()}</textarea>
 									</div>
 								</div>
 								<!-- 사진 -->
 								<h5>사진</h5>
 								<table class="table table-hover table-white">
-									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' alt="PackageProduct Img">
+									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' width="100%" height="400px" alt="PackageProduct Img">
 					                <span>파일 목록</span>
 									<div class="form-group" style="border: 1px solid #dbdbdb;">								
 										<div id="fileIndex">

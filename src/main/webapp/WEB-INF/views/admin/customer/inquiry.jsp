@@ -82,7 +82,7 @@
 						<tr>
 							<th><input type="checkbox"name="RowCheck" value="${InquiryBoardVO.iId }"></th>
 							<td>${InquiryBoardVO.iId }</td>
-							<td>${InquiryBoardVO.category }</td>
+							<td><span class="inquiry-category">${InquiryBoardVO.category }</span></td>
 							<td><a href="inquiryView?iId=${InquiryBoardVO.iId }">${InquiryBoardVO.title }</a></td>
 							<td>${InquiryBoardVO.name}</td>
 							<td>${InquiryBoardVO.userId}</td>

@@ -25,6 +25,20 @@ public class PackageVO {
 	private Date redate;
 	private String productcode;
 	private int price;
+	private String overview;
+	private int hit;
+	public String getOverview() {
+		return overview;
+	}
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
 	public int getPid() {
 		return pid;
 	}

@@ -1,10 +1,15 @@
 package com.spring.ex.controller;
 
+import java.io.File;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.service.TravelReviewService;
+import com.spring.ex.util.UploadFileUtils;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.ReplyVO;
@@ -29,23 +36,72 @@ import com.spring.ex.vo.TravelPhotoVO;
 
 public class TravelReviewController {
 	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
 	@Inject
 	TravelReviewService service;
 	
 	//여행 포토 작성
-	@RequestMapping(value = "/TravelPhotoWrite", method = RequestMethod.POST)
-	public void TravelPhotoWrite(TravelPhotoVO travelPhotoVO , MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/travelphotoWrite", method = RequestMethod.POST)
+	public String TravelPhotoWrite(TravelPhotoVO vo ,MultipartFile file, HttpServletRequest req) throws Exception {
+		  String Path = req.getSession().getServletContext().getRealPath("resources/imgUpload/");
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String fileName = null;
 		
-		int result = service.TravelPhotoWrite(travelPhotoVO, mpRequest);
-		
-		if (result == 1) {
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>location.href='travelphoto'</script>");
-			out.close();
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			fileName =  UploadFileUtils.fileUpload(Path, file.getOriginalFilename(), file.getBytes());	
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
+		
+		vo.setS_file_name(fileName);
+				
+		service.TravelPhotoWrite(vo);
+		
+		return "redirect:travelphoto";
 	}
 	
+	// 상품 수정
+	@RequestMapping(value = "/travelphotoModify", method = RequestMethod.POST)
+	public String TravelPhotoModify(TravelPhotoVO vo, MultipartFile file, HttpServletRequest req) throws Exception {
+		String Path = req.getSession().getServletContext().getRealPath("resources/imgUpload/");
+	// 새로운 파일이 등록되었는지 확인
+	 if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+	  // 기존 파일을 삭제
+	  new File(Path + req.getParameter("s_file_name")).delete();
+	  
+	  // 새로 첨부한 파일을 등록
+	  String fileName = UploadFileUtils.fileUpload(Path, file.getOriginalFilename(), file.getBytes());
+	  
+	  vo.setS_file_name(fileName);
+	  
+	 } else {  // 새로운 파일이 등록되지 않았다면
+	  // 기존 이미지를 그대로 사용
+	  vo.setS_file_name(req.getParameter("s_file_name"));
+	  
+	 }
+	 
+	 service.TravelPhotoModify(vo);
+	 
+	 return "redirect:/travelphotoModify";
+	}
+	
+	
+	//여행 포토 수정 화면
+	@RequestMapping(value = "/travelphotoModifyView", method = {RequestMethod.GET, RequestMethod.POST})
+	public String TravelPhotoModifyView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
+		
+		List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
+		
+		model.addAttribute("update", service.TravelPhotoView(travelPhotoVO.getPrid()));
+		model.addAttribute("file", fileList);
+		
+		return "ranking/travelphotoModify";
+	}
+	
+	
+
 	//여행 포토 출력
 	@RequestMapping(value = "/travelphoto", method = RequestMethod.GET)
 	public String TravelPhotoList(HttpServletRequest request, Model model) throws Exception {
@@ -101,26 +157,8 @@ public class TravelReviewController {
 		return "ranking/travelphotoView";
 	}
 	
-	//여행 포토 수정 화면
-	@RequestMapping(value = "/travelphotoModifyView", method = {RequestMethod.GET, RequestMethod.POST})
-	public String TravelPhotoModifyView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
-		
-		List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
-		
-		model.addAttribute("update", service.TravelPhotoView(travelPhotoVO.getPrid()));
-		model.addAttribute("file", fileList);
-		
-		return "ranking/travelphotoModify";
-	}
+
 	
-	//여행 포토 수정(사진 & 내용)
-	@RequestMapping(value = "/travelphotoModify", method = RequestMethod.POST)
-	public String TravelPhotoModify(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest, @RequestParam(value="fileNoDel[]") String[] files, @RequestParam(value="fileNameDel[]") String[] fileNames) throws Exception {
-		
-		service.TravelPhotoModify(travelPhotoVO, files, fileNames, mpRequest);
-		
-		return "redirect:travelphotoView?prid=" + travelPhotoVO.getPrid();
-	}
 
 	//여행 포토 삭제
 	@RequestMapping(value = "/travelphotoDelete", method = RequestMethod.GET)
