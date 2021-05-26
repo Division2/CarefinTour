@@ -25,11 +25,29 @@ public class AdminTravelInfoController {
 		return "redirect:info";
 	}
 	
+	//비자 정보 수정
+	@RequestMapping(value = "/admin/visaInfoModify", method = RequestMethod.POST)
+	public String visaInfoModify(VisaInfoVO vo) throws Exception {
+		
+		service.visaInfoModify(vo);
+		
+		return "redirect:info";
+	}
+	
 	//여행준비물 등록
 	@RequestMapping(value = "/admin/travelSuppliesWrite", method = RequestMethod.POST)
 	public String travelSuppliesInfoWrite(SuppliesInfoVO vo) throws Exception {
 		
 		service.suppliesInfoWrite(vo);
+		
+		return "redirect:info";
+	}
+	
+	//여행준비물 수정
+	@RequestMapping(value = "/admin/travelSuppliesModify", method = RequestMethod.POST)
+	public String travelSuppliesInfoModify(SuppliesInfoVO vo) throws Exception {
+		
+		service.suppliesInfoModify(vo);
 		
 		return "redirect:info";
 	}

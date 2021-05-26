@@ -19,6 +19,12 @@ public class AdminTravelInfoDAOImpl implements AdminTravelInfoDAO {
 	public int visaInfoWrite(VisaInfoVO vo) throws Exception {
 		return sqlSession.insert(namespace + ".VisaInfoWrite", vo);
 	}
+	
+	//비자 정보 수정
+	@Override
+	public int visaInfoModify(VisaInfoVO vo) throws Exception {
+		return sqlSession.update(namespace + ".VisaInfoModify", vo);
+	}
 
 	//비자 정보 조회
 	@Override
@@ -30,6 +36,12 @@ public class AdminTravelInfoDAOImpl implements AdminTravelInfoDAO {
 	@Override
 	public int suppliesInfoWrite(SuppliesInfoVO vo) throws Exception {
 		return sqlSession.insert(namespace + ".SuppliesInfoWrite", vo);
+	}
+	
+	//여행준비물 수정
+	@Override
+	public int suppliesInfoModify(SuppliesInfoVO vo) throws Exception {
+		return sqlSession.update(namespace + ".SuppliesInfoModify", vo);
 	}
 
 	//여행준비물 조회

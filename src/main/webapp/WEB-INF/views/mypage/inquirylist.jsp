@@ -61,7 +61,7 @@
 							<c:forEach items="${MyPageInquiryList}" var="MyPageInquiryList">
 								<tr>
 									<td>${MyPageInquiryList.iId }</td>
-									<td>${MyPageInquiryList.category }</td>
+									<td><span class="inquiry-category">${MyPageInquiryList.category }</span></td>
 									<td><a href="inquirydetails?iId=${MyPageInquiryList.iId }">${MyPageInquiryList.title }</a></td>
 									<td>${MyPageInquiryList.name}</td>
 									<td>${MyPageInquiryList.reDate }</td>

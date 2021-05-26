@@ -8,6 +8,11 @@
 		INSERT INTO visainfo(visaContent) VALUES (#{visaContent})
 	</insert>
 	
+	<!-- 비자 정보 수정 -->
+	<insert id="VisaInfoModify">
+		UPDATE visainfo SET visaContent = #{visaContent} WHERE VID = #{VID}
+	</insert>
+	
 	<!-- 비자 정보 조회 -->
 	<select id="VisaInfoView" resultType="VisaInfoVO">
 		SELECT * FROM visaInfo
@@ -16,6 +21,11 @@
 	<!-- 여행준비물 등록 -->
 	<insert id="SuppliesInfoWrite">
 		INSERT INTO suppliesinfo(suppliesContent) VALUES (#{suppliesContent})
+	</insert>
+	
+	<!-- 여행준비물 수정 -->
+	<insert id="SuppliesInfoModify">
+		UPDATE suppliesinfo SET suppliesContent = #{suppliesContent} WHERE SID = #{SID}
 	</insert>
 	
 	<!-- 여행준비물 조회 -->
