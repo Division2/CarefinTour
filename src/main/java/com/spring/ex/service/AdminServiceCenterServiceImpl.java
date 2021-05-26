@@ -89,6 +89,17 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
     public MemberVO ViewMember(int aid) throws Exception {
         return dao.ViewMember(aid);
     }
+    //회원 정보 수정
+    @Override
+    public void memberUpdate(MemberVO vo) throws Exception {
+    	dao.memberUpdate(vo);
+    }
+    //회원 정보 선택삭제
+    @Override
+    public void delete(String aid) throws Exception {
+    	dao.delete(aid);
+    }
+    
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
 	//1:1 문의 등록

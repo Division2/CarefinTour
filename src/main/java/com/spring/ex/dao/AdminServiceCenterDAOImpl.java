@@ -91,6 +91,18 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
     public MemberVO ViewMember(int aid) throws Exception {
         return sqlSession.selectOne(namespace+ ".viewMember", aid);
     }
+    
+    //관리자용 회원정보수정
+    @Override
+    public void memberUpdate(MemberVO vo) throws Exception {
+    	sqlSession.update(namespace+".updateMember", vo);
+    }
+    
+    //회원정보 선택삭제
+    @Override
+    public void delete(String aid) throws Exception {
+    	sqlSession.delete(namespace +".delete" , aid);
+    }
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	
 	//1:1 문의 등록

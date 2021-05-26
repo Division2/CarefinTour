@@ -49,6 +49,12 @@ public interface AdminServiceCenterDAO {
 	
 	//회원정보 상세보기
 	public MemberVO ViewMember(int aid) throws Exception;
+	
+	//회원정보 수정
+	public void memberUpdate(MemberVO vo) throws Exception;
+	
+	//회원정보 선택삭제
+	public void delete(String aid) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -115,5 +121,6 @@ public interface AdminServiceCenterDAO {
 	
 	//FAQ 카테고리 내용
 	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
+
 
 }
