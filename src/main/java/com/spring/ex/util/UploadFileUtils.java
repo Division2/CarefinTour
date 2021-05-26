@@ -10,8 +10,7 @@ import net.coobird.thumbnailator.Thumbnails;
 
 public class UploadFileUtils {
   
- static final int THUMB_WIDTH = 320;
- static final int THUMB_HEIGHT = 320;
+
  
  public static String fileUpload(String uploadPath,
          String fileName,
@@ -33,7 +32,6 @@ public class UploadFileUtils {
   
   
    thumbnail.getParentFile().mkdirs();
-   Thumbnails.of(image).size(THUMB_WIDTH, THUMB_HEIGHT).toFile(thumbnail);
 
   return newFileName;
  }

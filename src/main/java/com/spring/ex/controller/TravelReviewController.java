@@ -84,7 +84,7 @@ public class TravelReviewController {
 	 
 	 service.TravelPhotoModify(vo);
 	 
-	 return "redirect:/travelphotoModify";
+	 return "redirect:travelphoto";
 	}
 	
 	
