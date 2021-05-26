@@ -85,7 +85,7 @@ ul {
 			document.write("<td width='430'>");
 			if (sessionStorage.getItem("dImg") == "undefined") {
 				document
-						.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='400' height='250'> ");
+						.write("<ul><li><img src='<c:url value='/resources/images/noImage.png'/>' width='400' height='250'> ");
 			} else {
 				document.write("<img src='" + sessionStorage.getItem("dImg")
 						+ "' width='400' height='250' /> ");

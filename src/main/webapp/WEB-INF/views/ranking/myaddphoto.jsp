@@ -22,7 +22,7 @@
 						<c:choose>
 							<c:when test = "${sessionScope.member.getName() eq TravelPhotoMyList.name}">
 								<a href="/ex/travelphotoModifyView?prid=${TravelPhotoMyList.prid}">
-									<img src='<c:url value="/resources/image/photoreview_folder/${TravelPhotoMyList.s_file_name}"/>' width=200, height=200, alt="로고">
+									<img src='<c:url value="/resources/images/photoreview_folder/${TravelPhotoMyList.s_file_name}"/>' width=200, height=200, alt="로고">
 								</a>
 								<h6>
 									<a href="/ex/updateView?prid=${TravelPhotoMyList.prid}"><c:out value="${TravelPhotoMyList.title}"/></a>

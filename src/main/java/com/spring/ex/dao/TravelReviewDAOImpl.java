@@ -26,7 +26,6 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 	public void TravelPhotoWrite(TravelPhotoVO vo) throws Exception {
 		sqlSession.insert(namespace + ".TravelPhotoWrite", vo);
 	}
-	
 
 	//여행 포토 수정
 	@Override
@@ -51,8 +50,6 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
 		return sqlSession.selectList(namespace + ".TravelPhotoSelectFileList", prid);
 	}
-	
-
 	
 	//여행 포토 총 갯수
 	@Override
@@ -101,7 +98,6 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 	public int TravelPhotoReplyDelete(int prrid) throws Exception {
 		return sqlSession.delete(namespace + ".TravelPhotoReplyDelete", prrid);
 	}
-	
 	
 	//여행 포토 내 게시글 리스트
 	@Override
