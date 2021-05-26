@@ -73,8 +73,7 @@
 									<textarea id="Content" name="Content" rows="5"><c:out escapeXml="false" value="${fn:replace(update.content, '<br>', crlf)}"/></textarea>
 								</div>
 							</div>
-							<div class="col-md-12">
-								<label for="file" class="form-label"><strong>첨부 파일</strong></label>				
+							<div class="col-md-12">				
 								<div class="inputArea">
 									 <label for="gdsImg">이미지</label><br>
 									 <input type="file" id="gdsImg" name="file" />

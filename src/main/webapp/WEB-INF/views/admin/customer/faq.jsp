@@ -38,7 +38,8 @@
 					<div class="row">
 						<div class="col-sm-2">
 							<select class="form-control">
-								<option>전체</option>
+								<option>카테고리</option>
+								<option>제목</option>
 							</select>
 						</div>
 						<div class="col-sm-6"></div>
