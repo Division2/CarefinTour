@@ -13,6 +13,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href='<c:url value="/resources/images/favicons/favicon-32x32.png"/>'>
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
+<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 <title>CarefinTour</title>
 </head>
 <body>
@@ -38,7 +39,7 @@
 		<section class="tour-one">
 			<div class="container">
 				<div class="comment-form">
-					<form action="TravelPhotoWrite" role="form" method="POST" name="add" id="add" enctype="multipart/form-data" class="contact-one__form">
+					<form action="travelphotoWrite" role="form" method="POST" name="add" id="add" enctype="multipart/form-data" class="contact-one__form">
 						<div class="row low-gutters">
 							<div class="col-md-12">
 								<div class="input-group">
@@ -59,14 +60,25 @@
 								</div>
 							</div>
 							<div class="col-md-12">
-								<label for="file" class="form-label"><strong>첨부 파일</strong></label>
-								<div class="form-group" style="border: 1px solid #dbdbdb;">								
-									<div id="fileIndex">
-										<div>
-											<input type="file" name="file">
-											<button id="fileDel" type="button" style='float:right;'>삭제</button>
-										</div>
-									</div>
+								<div class="inputArea">
+										<label for="gdsImg">이미지</label><br>
+										<input type="file" id="gdsImg" name="file" />
+										<div class="select_img"><img src="" /></div>
+										
+										<script>
+											$("#gdsImg").change(function(){
+												if(this.files && this.files[0]) {
+													var reader = new FileReader;
+													reader.onload = function(data) {
+														$(".select_img img").attr("src", data.target.result).width(500);								
+													}
+													reader.readAsDataURL(this.files[0]);
+												}
+											});
+										</script>
+										
+										<%=request.getRealPath("/") %>
+										
 								</div>
 							</div>
 				   	 	  	<input type="hidden" id="good" name="good" value="0">

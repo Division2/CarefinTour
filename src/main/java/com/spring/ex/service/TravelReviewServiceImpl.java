@@ -22,23 +22,23 @@ import com.spring.ex.vo.TravelPhotoVO;
 @Service
 public class TravelReviewServiceImpl implements TravelReviewService {
 	
-	@Resource(name = "fileUtils")
-	private FileUtils fileUtils;
-	
 	@Inject
 	private TravelReviewDAO dao;
 
 	//여행 포토 작성
 	@Override
-	public int TravelPhotoWrite(TravelPhotoVO travelPhotoVO, MultipartHttpServletRequest mpRequest) throws Exception {
-		List<Map<String,Object>> fileList = fileUtils.parseInsertFileInfo(travelPhotoVO, mpRequest); 
-		
-		int size = fileList.size();
-		for(int i = 0; i < size; i++){ 
-			dao.TravelPhotoWrite(fileList.get(i)); 
-		}
-		return size;
+	public void TravelPhotoWrite(TravelPhotoVO vo) throws Exception {
+		dao.TravelPhotoWrite(vo);		
 	}
+	
+
+	// 상품 수정
+	@Override
+	public void TravelPhotoModify(TravelPhotoVO vo) throws Exception {
+		dao.TravelPhotoModify(vo);
+	}
+
+
 
 	//여행 포토 출력
 	@Override
@@ -51,30 +51,20 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	public TravelPhotoVO TravelPhotoView(int prid) throws Exception {
 		return dao.TravelPhotoView(prid);
 	}
-
+	
+	//파일 조회
+	@Override
+	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
+		return dao.TravelPhotoSelectFileList(prid);
+	}
+	
 	//여행 포토 총 갯수
 	@Override
 	public int TravelPhotoTotalCount() throws Exception {
 		return dao.TravelPhotoTotalCount();
 	}
 
-	//여행 포토 수정(사진 & 내용)
-	@Override
-	public void TravelPhotoModify(TravelPhotoVO travelPhotoVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
-
-		dao.TravelPhotoModify(travelPhotoVO);
-		
-		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(travelPhotoVO, files, fileNames, mpRequest);
-		
-		Map<String, Object> tempMap = null;
-		
-		int size = list.size();
-		for(int i = 0; i < size; i++) {
-			tempMap = list.get(i);		
-			dao.TravelPhotoUpdateFile(tempMap);
-		}
-	}
-
+	
 	//여행 포토 삭제
 	@Override
 	public int TravelPhotoDelete(int prid) throws Exception {
@@ -118,11 +108,6 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 		return dao.TravelPhotoReplyDelete(prrid);
 	}
 
-	//파일 조회
-	@Override
-	public List<Map<String, Object>> TravelPhotoSelectFileList(int prid) throws Exception {
-		return dao.TravelPhotoSelectFileList(prid);
-	}
 
 	//여행 포토 내 게시글 리스트
 	@Override

@@ -39,7 +39,7 @@
 			<div class="container">
 				<div class="blog-details__image">
 				<c:if test="${content.s_file_name ne null}">
-					<img src='<c:url value="/resources/image/photoreview_folder/${content.s_file_name}"/>' alt="" class="img-fluid">
+					<img src='<c:url value="/resources/imgUpload/${content.s_file_name}"/>' alt="" class="img-fluid">
 				</c:if>
 				</div>
 				<div class="blog-details__content">
