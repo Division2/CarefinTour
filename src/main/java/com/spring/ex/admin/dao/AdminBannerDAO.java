@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.BannerVO;
 
 @Repository
-public interface BannerDAO {
+public interface AdminBannerDAO {
 	
 	//배너수정	
 	public void BannerModify(BannerVO vo) throws Exception;

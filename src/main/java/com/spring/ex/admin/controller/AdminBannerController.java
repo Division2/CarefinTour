@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.spring.ex.admin.service.BannerService;
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.util.UploadFileUtils;
 import com.spring.ex.vo.BannerVO;
 
 @Controller
-public class BannerController {
+public class AdminBannerController {
 	@Inject
-	BannerService service;
+	AdminBannerService service;
 	
 	//관리자화면 배너 출력
 	@RequestMapping(value = "/admin/banner", method = RequestMethod.GET)

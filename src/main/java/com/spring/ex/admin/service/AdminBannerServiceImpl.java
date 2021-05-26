@@ -2,22 +2,18 @@ package com.spring.ex.admin.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.ex.admin.dao.BannerDAO;
-import com.spring.ex.util.FileUtils;
+import com.spring.ex.admin.dao.AdminBannerDAO;
 import com.spring.ex.vo.BannerVO;
 
 @Service
-public class BannerServiceImpl implements BannerService{
-	@Resource(name = "fileUtils")
-	private FileUtils fileUtils;
+public class AdminBannerServiceImpl implements AdminBannerService{
 	
 	@Inject
-	private BannerDAO dao;
+	private AdminBannerDAO dao;
 	
 	//배너수정	
 	public void BannerModify(BannerVO vo) throws Exception {
@@ -33,5 +29,4 @@ public class BannerServiceImpl implements BannerService{
 	public BannerVO BannerModifyView(int bid) throws Exception {
 		return dao.BannerModifyView(bid);
 	}
-
 }

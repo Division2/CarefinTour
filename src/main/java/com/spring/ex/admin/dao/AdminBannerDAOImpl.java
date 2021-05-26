@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.BannerVO;
 
 @Repository
-public class BannerDAOImpl implements BannerDAO {
+public class AdminBannerDAOImpl implements AdminBannerDAO {
+	
 	@Inject
 	private SqlSession sql;
 	private static final String namespace = "com.spring.ex.BannerMapper";
@@ -32,5 +33,4 @@ public class BannerDAOImpl implements BannerDAO {
 	public BannerVO BannerModifyView(int bid) throws Exception {
 		return sql.selectOne(namespace + ".BannerModifyView", bid);
 	}
-
 }

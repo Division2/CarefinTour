@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.spring.ex.vo.BannerVO;
 
 @Service
-public interface BannerService {
+public interface AdminBannerService {
 	
 	//배너수정	
 	public void BannerModify(BannerVO vo) throws Exception;
