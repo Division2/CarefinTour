@@ -1,8 +1,6 @@
 package com.spring.ex.admin.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,7 @@ import com.spring.ex.vo.BannerVO;
 public interface BannerService {
 	
 	//배너수정	
-	public int BannerModify(Map<String, Object> map) throws Exception;
+	public void BannerModify(BannerVO vo) throws Exception;
 	
 	//관리자화면 배너 출력
 	public List<BannerVO> BannerView() throws Exception;

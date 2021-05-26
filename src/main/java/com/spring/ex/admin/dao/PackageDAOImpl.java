@@ -1,4 +1,4 @@
-package com.spring.ex.dao;
+package com.spring.ex.admin.dao;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,8 +1,6 @@
 package com.spring.ex.admin.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -19,8 +17,8 @@ public class BannerDAOImpl implements BannerDAO {
 	
 	//배너 수정
 	@Override
-	public int BannerModify(Map<String, Object> map) throws Exception {
-		return sql.update(namespace + ".BannerModify", map);
+	public void BannerModify(BannerVO vo) throws Exception {
+		sql.update(namespace + ".BannerModify", vo);
 	}
 
 	//관리자화면 배너 출력

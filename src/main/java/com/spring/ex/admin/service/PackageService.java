@@ -1,4 +1,4 @@
-package com.spring.ex.service;
+package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;

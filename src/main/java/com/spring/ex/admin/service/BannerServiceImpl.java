@@ -1,8 +1,6 @@
 package com.spring.ex.admin.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -22,8 +20,8 @@ public class BannerServiceImpl implements BannerService{
 	private BannerDAO dao;
 	
 	//배너수정	
-	public int BannerModify(Map<String, Object> map) throws Exception {
-		return 0;
+	public void BannerModify(BannerVO vo) throws Exception {
+		dao.BannerModify(vo);
 	}
 	
 	//관리자화면 배너 출력

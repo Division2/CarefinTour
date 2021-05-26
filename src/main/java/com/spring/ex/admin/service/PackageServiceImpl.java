@@ -1,4 +1,4 @@
-package com.spring.ex.service;
+package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.spring.ex.dao.PackageDAO;
+import com.spring.ex.admin.dao.PackageDAO;
 import com.spring.ex.util.FileUtils;
 import com.spring.ex.vo.PackageVO;
 
