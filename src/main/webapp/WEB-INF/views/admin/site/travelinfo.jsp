@@ -16,7 +16,7 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
-<style type="text/css">.ck-content{height:300px;}</style>
+<style type="text/css">.ck-content{height:600px;}</style>
 <style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 29px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
 <script>
 $(document).ready(function() {
@@ -135,7 +135,7 @@ $(document).ready(function() {
     		
 			<!-- 비자정보 수정 Modal 부분 -->
 			<div class="modal fade" id="visaInfoModal" tabindex="-1" role="dialog" aria-labelledby="visaInfoModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 					<div class="modal-content">
 						<div class="modal-header border-bottom-0">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -166,7 +166,7 @@ $(document).ready(function() {
 			
 			<!-- 여행준비물 수정 Modal 부분 -->
 			<div class="modal fade" id="suppliesInfoModal" tabindex="-1" role="dialog" aria-labelledby="suppliesInfoModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
 					<div class="modal-content">
 						<div class="modal-header border-bottom-0">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
