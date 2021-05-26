@@ -4,8 +4,14 @@
 <mapper namespace="com.spring.ex.TravelReviewMapper">
 	<!-- 여행 포토 작성  -->
 	<insert id="TravelPhotoWrite" parameterType="hashMap">
-			INSERT INTO photoreview(UserID, Title, Content, Good, Bad, s_file_name, o_file_name, file_size) VALUES (#{userId}, #{title}, #{content}, #{good}, #{bad}, #{s_file_name}, #{o_file_name}, #{file_size})
+			INSERT INTO photoreview(UserID, Title, Content, Good, Bad, s_file_name) VALUES (#{userId}, #{title}, #{content}, #{good}, #{bad}, #{s_file_name})
 	</insert>
+	
+	
+	<!-- 여행 포토 수정(사진) -->
+   <update id="TravelPhotoUpdateFile" parameterType="hashMap">
+    	UPDATE photoreview SET s_file_name = #{s_file_name} WHERE prid = #{prid}
+    </update>
 	
 	<!-- 여행 포토 출력 -->
 	<select id="TravelPhotoList" resultType="TravelPhotoVO">
@@ -22,10 +28,6 @@
 		SELECT COUNT(*) FROM photoreview
 	</select>
 	
-	<!-- 여행 포토 수정(사진) -->
-   <update id="TravelPhotoUpdateFile" parameterType="hashMap">
-    	UPDATE photoreview SET s_file_name = #{s_file_name}, o_file_name = #{o_file_name}, file_size = #{file_size} WHERE prid = #{prid}
-    </update>
     
     <!-- 여행 포토 수정(내용) -->
     <update id="TravelPhotoUpdate" parameterType="TravelPhotoVO">
@@ -69,8 +71,13 @@
 	
     <!-- 파일 조회 -->
     <select id="TravelPhotoSelectFileList" parameterType="int" resultType="hashMap">
-		SELECT o_file_name, ROUND(file_size/1024,1) AS file_size FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
+		SELECT s_file_name FROM photoreview WHERE prid = #{prid} ORDER BY prid ASC
 	</select>
+	
+	<!-- 여행 포토 수정(내용) -->
+    <update id="TravelPhotoModify" parameterType="TravelPhotoVO">
+    	UPDATE photoreview SET Title=#{title}, content=#{content}, s_file_name = #{s_file_name} WHERE prid = #{prid}
+    </update>
 	
 	<!-- 여행 포토 내 게시글 리스트 -->
 	<select id="TravelPhotoMyList" resultType="TravelPhotoVO">

@@ -24,6 +24,7 @@ import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
+import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 
 
@@ -231,6 +232,24 @@ public class AdminServiceCenterController {
 	        return "admin/member/memberView";
 	    }
   
+	 //회원 정보 수정
+	    @RequestMapping(value = "/admin/memberUpdate", method = RequestMethod.POST)
+		public String memberUpdate(MemberVO vo) throws Exception {
+			service.memberUpdate(vo);
+			return "redirect:member";
+		}
+	    
+	//회원 정보 선택삭제
+	    @RequestMapping(value="/admin/delete")
+	    public String memberdelete(HttpServletRequest request) throws Exception{
+	    	String[] ajaxMsg = request.getParameterValues("valueArr");
+	    	int size = ajaxMsg.length;
+	    	for(int i=0; i<size; i++) {
+	    		service.delete(ajaxMsg[i]);
+	    	}
+	    	return "redirect:member";
+	    }
+	   
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
     
   //1:1 문의 작성

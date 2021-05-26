@@ -14,6 +14,61 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript">
+	//회원 선택삭제
+		$(function(){
+			var chkObj = document.getElementsByName("RowCheck");
+			var rowCnt = chkObj.length;
+			$("input[name='allCheck']").click(function(){
+				var chk_listArr = $("input[name='RowCheck']");
+				for (var i=0; i<chk_listArr.length; i++){
+					chk_listArr[i].checked = this.checked;
+				}
+			});
+			$("input[name='RowCheck']").click(function(){
+				if($("input[name='RowCheck']:checked").length == rowCnt){
+					$("input[name='allCheck']")[0].checked = true;
+				}
+				else{
+					$("input[name='allCheck']")[0].checked = false;
+				}
+			});
+		});
+		function deleteValue(){
+			var url = "delete";    // Controller로 보내고자 하는 URL
+			var valueArr = new Array();
+		    var list = $("input[name='RowCheck']");
+		    for(var i = 0; i < list.length; i++){
+		        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+		            valueArr.push(list[i].value);
+		        }
+		    }
+		    if (valueArr.length == 0){
+		    	alert("선택된 회원이 없습니다.");
+		    }
+		    else{
+				var chk = confirm("정말 삭제하시겠습니까?");				 
+				$.ajax({
+				    url : url,                    // 전송 URL
+				    type : 'POST',                // POST 방식
+				    traditional : true,
+				    data : {
+				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+				    },
+	                success: function(jdata){
+	                    if(jdata = 1) {
+	                        alert("삭제 성공");
+	                        location.replace("member") //list 로 페이지 새로고침
+	                    }
+	                    else{
+	                        alert("삭제 실패");
+	                    }
+	                }
+				});
+			}
+		}
+	</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -57,7 +112,7 @@
 								<div class="ml-auto">
 									<button class="btn btn-primary" data-toggle="modal" data-target="#memberModal">회원</button>
 									<button class="btn btn-primary">등록</button>
-									<button class="btn btn-primary">삭제</button>
+									<input type="button" class="btn btn-primary" value="선택삭제" onclick="deleteValue();">
 								</div>
 							</div>
 						</div>
@@ -67,7 +122,7 @@
 						<thead>
 							<tr>
 								<th>
-									<input type="checkbox">
+									<input id="allCheck" type="checkbox" name="allCheck">
 								</th>
 								<th><font size="2">AID</font></th>
 								<th><font size="2">계정</font></th>
@@ -89,7 +144,7 @@
 								<c:forEach items="${memberList}" var="MemberVO">
 							<tr>
 								<td>
-									<input type="checkbox">
+									<input name="RowCheck" type="checkbox" value="${MemberVO.getAid()}">			
 								</td>
 								<td><a href="memberView?AID=${MemberVO.getAid()}"> ${MemberVO.getAid()}</a></td>
 								<td><c:out value="${MemberVO.userID}"></c:out></td>

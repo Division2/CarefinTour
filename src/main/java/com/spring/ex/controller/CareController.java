@@ -244,7 +244,7 @@ public class CareController {
 	public String admin_member() {
 		return "admin/member/memberlist";
 	}
-	//회원 관리
+	//회원 상세정보 관리
 	@RequestMapping("admin/memberView")
 	public String admin_memberView() {
 		return "admin/member/memberView";
@@ -318,4 +318,5 @@ public class CareController {
 	public String detailresvation() {
 		return "product/detailresvation";
 	}
+	
 }

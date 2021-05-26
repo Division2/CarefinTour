@@ -29,13 +29,12 @@
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
-				<div class="modal-body">
 					<div class="form-title text-center">
 						<h4>회원 상세정보</h4>
 						<hr>
 					</div>
 					<div class="d-flex flex-column">
-						<form name="form" id="form" action="MemberUpdate" method="POST">
+						<form role="form" name="memberUpdate" id="memberUpdate" action="memberUpdate" method="POST">
 							<!-- 아이디 & 비밀번호 -->
 							<div class="form-group row">
 								<div class="col-xs-6 col-md-6">
@@ -43,7 +42,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<input type="text" name="account" id="account" class="form-control" value="${mDetail.getUserID()}">
+										<input type="text" name="userID" id="userID" class="form-control" value="${mDetail.getUserID()}" readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -62,7 +61,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" value="${mDetail.getName()}">
+										<input type="text" name="name" id="name" class="form-control" value="${mDetail.getName()}" readonly>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -185,6 +184,5 @@
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
 		</div>
-	</div>
 </body>
 </html>
