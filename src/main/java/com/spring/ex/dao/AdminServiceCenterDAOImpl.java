@@ -173,8 +173,8 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//1:1 문의 검색 게시물 총 갯수
 	@Override
-	public int InquirySearchTotalCount(String name) throws Exception {
-		return sqlSession.selectOne(namespace + ".getInquirySearchTotalCount", name);
+	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return sqlSession.selectOne(namespace + ".getInquirySearchTotalCount", searchMap);
 	}
 	
 	//1:1 선택삭제 하기
@@ -211,7 +211,7 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception {
+	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
 		return sqlSession.selectList(namespace + ".FAQAllView", map);
 	}
 	
@@ -232,6 +232,8 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
 		return sqlSession.selectList(namespace + ".FAQCategory", map);
 	}
+	
+	
 	
 
 }

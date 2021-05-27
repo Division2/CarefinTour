@@ -38,11 +38,13 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-8">
-							<form action="inquirySearch" method="GET" class="form-inline">
-								<select class="form-control">
-									<option>작성자</option>
-								</select> <input type="text" name="name" id="name"
-									class="form-control ml-1 mr-1" placeholder="작성자 아이디를 입력" required>
+							<form action="inquirySearch" role="form" method="GET" class="form-inline">
+								<select class="form-control" id="search" name="search">
+									<option value="name" >작성자</option>
+									<option value="category">카테고리</option>
+									<option value="title">제목</option>
+								</select>
+								<input type="text"  id="keyword" name="keyword"class="form-control ml-1 mr-1" required>
 								<button type="submit" class="btn px-3 thm-btn-psd">
 									<i class="fas fa-search"></i>
 								</button>
@@ -106,17 +108,17 @@
 					<nav aria-label="Page navigation">
 						<ul class="pagination justify-content-center">
 							<c:choose>
-								<c:when test="${param.category ne null }">
+								<c:when test="${Title ne null}">
 									<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 									<c:choose>
 										<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 											<li class="page-item disabled">
-												<a class="page-link" href="inquirySearch?name=${name }&page=${Paging.prevPageNo}">Previus</a>
+												<a class="page-link" href="inquirySearch?title=${Title}&page=${Paging.prevPageNo}">Previus</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item">
-												<a class="page-link" href="inquirySearch?name=${name }&page=${Paging.prevPageNo}">Previus</a>
+												<a class="page-link" href="inquirySearch?title=${Title}&page=${Paging.prevPageNo}">Previus</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -125,12 +127,12 @@
 										<c:choose>
 											<c:when test="${i eq Paging.pageNo }">
 												<li class="page-item disabled">
-													<a class="page-link" href="inquirySearch?name=${name }&page=${i}"><c:out value="${i }"/></a>
+													<a class="page-link" href="inquirySearch?title=${Title}&page=${i}"><c:out value="${i }"/></a>
 												</li>
 											</c:when>
 											<c:otherwise>
 												<li class="page-item">
-													<a class="page-link" href="inquirySearch?name=${name }&page=${i}"><c:out value="${i }"/></a>
+													<a class="page-link" href="inquirySearch?title=${Title}&page=${i}"><c:out value="${i }"/></a>
 												</li>
 											</c:otherwise>
 										</c:choose>
@@ -139,12 +141,12 @@
 									<c:choose>
 										<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 											<li class="page-item disabled">
-												<a class="page-link" href="inquirySearch?name=${name }&page=${Paging.nextPageNo}">Next</a>
+												<a class="page-link" href="inquirySearch?title=${Title}&page=${Paging.nextPageNo}">Next</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item">
-												<a class="page-link" href="inquirySearch?name=${name }&page=${Paging.nextPageNo}">Next</a>
+												<a class="page-link" href="inquirySearch?title=${Title}&page=${Paging.nextPageNo}">Next</a>
 											</li>
 										</c:otherwise>
 									</c:choose>

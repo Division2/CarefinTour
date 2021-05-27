@@ -170,8 +170,8 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//1:1 문의 검색 게시물 총 갯수
 	@Override
-	public int InquirySearchTotalCount(String name) throws Exception {
-		return dao.InquirySearchTotalCount(name);
+	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.InquirySearchTotalCount(searchMap);
 	}
 	
 	//1:1 선택삭제
@@ -187,7 +187,7 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.FAQWrite(vo);
 	}
 	
-	//FAQ 등록
+	//FAQ 카테고리 등록
 	@Override
 	public int CategoryWrite(FAQVO vo) throws Exception {
 		return dao.CategoryWrite(vo);
@@ -207,7 +207,7 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception {
+	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
 		return dao.FAQAllView(map);
 	}
 		
@@ -228,5 +228,6 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
 		return dao.FAQCategory(map);
 	}
+	
 	
 }
