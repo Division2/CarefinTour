@@ -64,7 +64,6 @@ public class PackageController {
 		
 		
 		List<PackageVO> packageList = service.AdminPackageView(map);
-		System.out.println(packageList);
 		model.addAttribute("plist", packageList);
 		model.addAttribute("Paging", paging);
 		
@@ -107,7 +106,7 @@ public class PackageController {
 	}
 	
 	//여행패키지 수정페이지 출력
-	@RequestMapping(value = "/admin/packageProductModifyView", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/packageProductModifyView", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getPackageProductModify(Model model, HttpServletRequest request)  throws Exception {
 		int pid = Integer.parseInt(request.getParameter("PID"));
 		PackageVO pdtail =  service.ProductPackageDetail(pid);
@@ -116,13 +115,17 @@ public class PackageController {
 	}
 	
 	//여행패키지 수정
-	@RequestMapping(value = "/admin/packageProductModify", method = RequestMethod.POST)
-	public String packageProductModify(PackageVO vo, MultipartFile file, HttpServletRequest request) throws Exception {
+	@RequestMapping(value = "/admin/ProductPackageModify", method = RequestMethod.POST)
+	public String ProductPackageModify(PackageVO vo, MultipartFile file, HttpServletRequest request) throws Exception {
 		String Path = request.getSession().getServletContext().getRealPath("resources/images/product_package/");
 		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			new File(Path + request.getParameter("imgFile")).delete();
 			String fileName = UploadFileUtils.fileUpload(Path, file.getOriginalFilename(), file.getBytes());
+			
+			File fileModifyDelete = new File(Path + vo.getS_file_name()); //기존 파일 삭제
+			fileModifyDelete.delete();
+			
 			vo.setS_file_name(fileName);
 		}
 		else {

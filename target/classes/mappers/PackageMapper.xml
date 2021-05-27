@@ -38,6 +38,6 @@
 	<update id="ProductPackageModify" parameterType="PackageVO">
 		UPDATE packageproduct 
 		SET ProductName = #{productname}, Theme = #{theme} , Area = #{area}, TravelCity = #{travelcity}, s_file_name = #{s_file_name}, StarTravelPeriod = #{startravelperiod}, ArrivalTravelPeriod = #{arrivaltravelperiod}, MaxReservation = #{maxreservation}, MinReservation = #{minreservation}, AdultPrice = #{adultprice}, KidPrice = #{kidprice}, SmallKidPrice = #{smallkidprice}, Director = #{director}, Productcode = #{productcode}, OverView = #{overview}
-		WHERE prid = #{prid}
+		WHERE pid = #{pid}
  	</update>
 </mapper>

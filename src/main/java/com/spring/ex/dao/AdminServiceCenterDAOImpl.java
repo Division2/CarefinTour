@@ -211,7 +211,7 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Integer> map) throws Exception {
+	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
 		return sqlSession.selectList(namespace + ".FAQAllView", map);
 	}
 	

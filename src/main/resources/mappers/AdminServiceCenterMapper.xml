@@ -175,8 +175,16 @@
 	
 	<!-- FAQ 전체 출력 -->
 	<select id="FAQAllView" resultType="FAQVO">
-		SELECT * FROM faq LIMIT #{Page}, #{PageSize}
+		SELECT * FROM faq <include refid="gogo"></include> LIMIT #{Page}, #{PageSize}
 	</select>
+	
+	<sql id="gogo">
+		<choose>
+			<when test="search != null">
+				WHERE Category = #{search}
+			</when>
+		</choose>
+	</sql>
 
 	<!-- FAQ 총 갯수 -->
 	<select id="getFAQTotalCount" resultType="int">

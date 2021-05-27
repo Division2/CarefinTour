@@ -18,6 +18,24 @@
 <script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
 <script>
 
+$('#search').on('change', function() {
+    $.ajax(
+            {
+               type : "post",
+               url  : "faq",
+               data : "sid="+this.value,
+               success : function(rdata){
+                    
+            	   if (rdata == 1) {
+						location.replace("faq")
+					}else{
+						alert("실패")
+					}
+
+                   } 
+                }
+               );
+            }).trigger("change"); 
 </script>
 <title>케어핀투어 관리자</title>
 </head>
@@ -40,11 +58,14 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-2">
+						<form action="faq" role="form" method="GET" class="form-inline">
 							<select class="form-control" name="search" id="search">
 								<c:forEach items="${category}" var="List">
 									<option value="${List.category}">${List.category}</option>
 									</c:forEach>	
-							</select>	
+							</select>
+							<button class="btn btn-primary" type="submit">등록</button>
+							</form>	
 						</div>
 						
 						<div class="col-sm-6"></div>
