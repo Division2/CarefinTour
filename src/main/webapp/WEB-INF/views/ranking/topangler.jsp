@@ -48,7 +48,7 @@
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
-								<img src='<c:url value="/resources/image/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+								<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
 								<h5 class="mb-0">${topangler.getName() }</h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
@@ -65,7 +65,7 @@
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
-								<img src='<c:url value="/resources/image/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+								<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
 								<h5 class="mb-0">${topangler.getName() }</h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
@@ -82,7 +82,7 @@
 						</div>
 						<div class="leaderboard-card__body">
 							<div class="text-center">
-								<img src='<c:url value="/resources/image/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+								<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
 								<h5 class="mb-0">${topangler.getName() }</h5>
 								<hr>
 								<div class="d-flex justify-content-between align-items-center">
@@ -117,7 +117,7 @@
 								</td>
 								<td>
 									<div class="d-flex align-items-center">
-										<img src='<c:url value="/resources/image/topangler/${topangler.s_file_fish }"/>' class="circle-img circle-img--small mr-2" alt="User Img">
+										<img src='<c:url value="/resources/images/topangler/${topangler.s_file_fish }"/>' class="circle-img circle-img--small mr-2" alt="User Img">
 										<div class="user-info__basic">
 											<h5 class="mb-0">${topangler.getName() }</h5>
 										</div>
