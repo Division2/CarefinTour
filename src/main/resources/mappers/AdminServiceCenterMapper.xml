@@ -132,13 +132,21 @@
 	
 	<!-- 1:1 문의 검색 -->
 	<select id="InquirySearchView" resultType="InquiryVO">
-		SELECT * FROM inquiry WHERE Name LIKE CONCAT('%', #{name}, '%') ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM inquiry  WHERE Category LIKE CONCAT('%', #{keyword}, '%') OR Name LIKE CONCAT('%', #{keyword} , '%') OR Title LIKE CONCAT('%', #{keyword} , '%') ORDER BY iId DESC  LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 1:1 문의 검색 게시물 총 갯수 -->
 	<select id="getInquirySearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM inquiry WHERE Name LIKE CONCAT('%', #{name}, '%')
+		SELECT COUNT(*) FROM inquiry <include refid="Search"></include>
 	</select>
+	
+	<sql id="Search">
+		<choose>
+			<when test="search != null">
+				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</sql>
 	
 	<!-- 1:1 선택 삭제 -->
 	<delete id="SelectDelete2">
@@ -183,8 +191,7 @@
 	<!-- FAQ 내용 -->
 	<select id="FAQCategory" resultType="FAQVO">
 		SELECT * FROM faq_category
-	</select>
-
+	</select>	
 
 	
 </mapper>

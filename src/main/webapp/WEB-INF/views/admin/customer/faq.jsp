@@ -16,6 +16,9 @@
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
+<script>
+
+</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -37,11 +40,13 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-2">
-							<select class="form-control">
-								<option>카테고리</option>
-								<option>제목</option>
-							</select>
+							<select class="form-control" name="search" id="search">
+								<c:forEach items="${category}" var="List">
+									<option value="${List.category}">${List.category}</option>
+									</c:forEach>	
+							</select>	
 						</div>
+						
 						<div class="col-sm-6"></div>
 						<div class="col-sm-4">
 							<div class="d-flex">
@@ -72,7 +77,7 @@
 								<th>답변</th>
 							</tr>
 						</thead>
-							<tbody>
+							<tbody id="sex">
 							<c:forEach items="${faqAllList}" var="List">
 								<tr>
 									<th><input type="checkbox"name="RowCheck" value="${List.fId }"></th>

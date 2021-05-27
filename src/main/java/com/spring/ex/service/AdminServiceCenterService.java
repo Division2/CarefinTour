@@ -90,7 +90,7 @@ public interface AdminServiceCenterService {
 	public List<InquiryVO> InquirySearchList(HashMap<String, Object> map) throws Exception;
 	
 	//1:1 문의 검색 게시물 총 갯수
-	public int InquirySearchTotalCount(String name) throws Exception;
+	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 
 	//1:1 선택삭제
 	public void SelectDelete2 (String iId)throws Exception;
