@@ -85,7 +85,7 @@ public class InquiryBoardServiceImpl implements InquiryBoardService {
 	
 	//1:1 문의 검색 게시물 총 갯수
 	@Override
-	public int InquirySearchTotalCount(String title) throws Exception {
-		return dao.InquirySearchTotalCount(title);
+	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.InquirySearchTotalCount(searchMap);
 	}
 }

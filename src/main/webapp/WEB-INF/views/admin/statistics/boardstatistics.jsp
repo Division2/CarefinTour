@@ -14,6 +14,7 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -64,7 +65,7 @@
 						<caption style="caption-side: top; margin-top:-50px; text-align:right;"><a href="inquirydetail">더보기</a></caption>
 						<colgroup>
 							<col width="1%">
-							<col width="5%">
+							<col width="8%">
 							<col width="30%">
 							<col width="5%">
 							<col width="5%">
@@ -84,11 +85,21 @@
 						<c:forEach items="${InquiryList }" var="InquiryList">
 							<tr>
 								<td>${InquiryList.getiId() }</td>
-								<td>${InquiryList.getCategory() }</td>
+								<td><span class="inquiry-category">${InquiryList.getCategory() }</span></td>
 								<td><a href="/ex/inquiryView?iId=${InquiryList.getiId() }" target="_blank">${InquiryList.getTitle() }</a></td>
 								<td>${InquiryList.getUserId() }</td>
 								<td>${InquiryList.getReDate() }</td>
-								<td>${InquiryList.getStatus() }</td>
+						<c:choose>
+							<c:when test="${InquiryBoardVO.status eq 0}">
+								<td><span class="inquiry-status status-0">답변대기</span></td>
+							</c:when>
+							<c:when test="${InquiryBoardVO.status eq 1}">
+								<td><span class="inquiry-status status-1">답변보류</span></td>
+							</c:when>
+							<c:otherwise>
+								<td><span class="inquiry-status status-2">답변완료</span></td>
+							</c:otherwise>
+						</c:choose>
 							</tr>
 						</c:forEach>
 						</tbody>

@@ -85,7 +85,8 @@
 			</div>
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
-			<script src='<c:url value="resources/js/Board.js"/>'></script>
+	  		<!-- 하단 푸터 부분 -->
+			<script src='<c:url value="/resources/js/Board.js"/>'></script>
 			<script>
 				$("#imgFile").change(function(){
 					if(this.files && this.files[0]) {
@@ -97,7 +98,6 @@
 					}
 				});
 			</script>
-		  		<!-- 하단 푸터 부분 -->
 		</div>
 	</div>
 	

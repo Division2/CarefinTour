@@ -54,11 +54,19 @@
 	
 	<!-- 1:1 문의 검색 -->
 	<select id="InquirySearchView" resultType="InquiryVO">
-		SELECT * FROM inquiry WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM inquiry <include refid="Search"></include> ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 1:1 문의 검색 게시물 총 갯수 -->
 	<select id="getInquirySearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM inquiry WHERE Title LIKE CONCAT('%', #{title}, '%')
+		SELECT COUNT(*) FROM inquiry <include refid="Search"></include>
 	</select>
+	
+	<sql id="Search">
+		<choose>
+			<when test="SearchType != null">
+				WHERE ${SearchType} LIKE CONCAT('%', #{Keyword}, '%')
+			</when>
+		</choose>
+	</sql>
 </mapper>

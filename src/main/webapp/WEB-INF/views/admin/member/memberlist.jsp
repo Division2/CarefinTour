@@ -124,20 +124,20 @@
 								<th>
 									<input id="allCheck" type="checkbox" name="allCheck">
 								</th>
-								<th><font size="2">AID</font></th>
-								<th><font size="2">계정</font></th>
-								<th><font size="2">비밀번호</font></th>
-								<th><font size="2">이름</font></th>
-								<th><font size="2">권한</font></th>
-								<th><font size="2">이메일</font></th>
-								<th><font size="2">휴대전화</font></th>
-								<th><font size="2">생년월일</font></th>
-								<th><font size="2">성별</font></th>
-								<th><font size="2">주소</font></th>
-								<th><font size="2">마일리지</font></th>
-								<th><font size="2">특이사항</font></th>
-								<th><font size="2">가입일자</font></th>
-								<th><font size="2">최근 접속일자</font></th>
+								<th>AID</th>
+								<th>계정</th>
+								<th>비밀번호</th>
+								<th>이름</th>
+								<th>권한</th>
+								<th>이메일</th>
+								<th>휴대전화</th>
+								<th>생년월일</th>
+								<th>성별</th>
+								<th>주소</th>
+								<th>마일리지</th>
+								<th>특이사항</th>
+								<th>가입일자</th>
+								<th>최근 접속일자</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -146,8 +146,8 @@
 								<td>
 									<input name="RowCheck" type="checkbox" value="${MemberVO.getAid()}">			
 								</td>
-								<td><a href="memberView?AID=${MemberVO.getAid()}"> ${MemberVO.getAid()}</a></td>
-								<td><c:out value="${MemberVO.userID}"></c:out></td>
+								<td>${MemberVO.getAid()}</td>
+								<td><a href="memberView?AID=${MemberVO.getAid()}"> <c:out value="${MemberVO.userID}"></c:out></a></td>
 								<td><c:out value="${MemberVO.password}"></c:out></td>
 								<td><c:out value="${MemberVO.name}"></c:out></td>
 								<td>
