@@ -80,8 +80,7 @@
 			<div id="content">
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
-				<!-- 상단 헤더 부분 -->
-				
+				<!-- 상단 헤더 부분 -->			
 				<!-- 본문 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -91,16 +90,10 @@
 					<div class="row">
 						<div class="col-sm-2">
 							<select class="form-control">
-								<option>회원아이디</option>
+								<option>아이디</option>
+								<option>이름</option>
 							</select>
-						</div>
-						<div class="col-sm-4">
-							<div class="input-group input-daterange">
-								<input type="text" class="form-control" value="시작">
-								<div class="input-group-addon">~</div>
-								<input type="text" class="form-control" value="종료">
-							</div>
-						</div>
+						</div>					
 						<div class="col-sm-4">
 							<input type="text" placeholder="회원 아이디를 입력하세요.">
 							<button type="button" class="btn px-3 btn-primary">
@@ -110,8 +103,7 @@
 						<div class="col-sm-2">
 							<div class="d-flex">
 								<div class="ml-auto">
-									<button class="btn btn-primary" data-toggle="modal" data-target="#memberModal">회원</button>
-									<button class="btn btn-primary">등록</button>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#memberModal">등록</button>
 									<input type="button" class="btn btn-primary" value="선택삭제" onclick="deleteValue();">
 								</div>
 							</div>
@@ -198,7 +190,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">아이디</span>
 										</div>
-										<input type="text" name="account" id="account" class="form-control" required readonly>
+										<input type="text" name="account" id="account" class="form-control" required>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -217,7 +209,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이름</span>
 										</div>
-										<input type="text" name="name" id="name" class="form-control" required readonly>
+										<input type="text" name="name" id="name" class="form-control" required>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -263,7 +255,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">이메일</span>
 										</div>
-										<input type="email" name="email" id="email" class="form-control" required readonly>
+										<input type="email" name="email" id="email" class="form-control" required>
 									</div>
 								</div>
 								<div class="col-xs-6 col-md-6">
@@ -271,7 +263,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">휴대전화</span>
 										</div>
-										<input type="tel" name="phone" id="phone" class="form-control" required readonly>
+										<input type="tel" name="phone" id="phone" class="form-control" required>
 									</div>
 								</div>
 							</div>
