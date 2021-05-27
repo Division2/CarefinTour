@@ -511,6 +511,7 @@ public class AdminServiceCenterController {
 	@RequestMapping(value = "/admin/faq", method = RequestMethod.GET)
 	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
 		
+		String search = request.getParameter("search");
 		int totalCount = service.FAQTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
@@ -525,15 +526,17 @@ public class AdminServiceCenterController {
 		HashMap<String, Integer> maps = new HashMap<String, Integer>();
 		List<FAQVO> Category =  service.FAQCategory(maps);
 		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
+		map.put("search", search);
 		
 		List<FAQVO> faqAllList =  service.FAQAllView(map);
 		
 		model.addAttribute("faqAllList", faqAllList);
 		model.addAttribute("Paging", paging);
 		model.addAttribute("category", Category);
+		model.addAttribute("search", search);
 		
 		return "admin/customer/faq";
 	}
