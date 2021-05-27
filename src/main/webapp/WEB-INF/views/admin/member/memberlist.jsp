@@ -146,8 +146,8 @@
 								<td>
 									<input name="RowCheck" type="checkbox" value="${MemberVO.getAid()}">			
 								</td>
-								<td>${MemberVO.getAid()}</td>
-								<td><a href="memberView?AID=${MemberVO.getAid()}"> <c:out value="${MemberVO.userID}"></c:out></a></td>
+								<td><a href="memberView?AID=${MemberVO.getAid()}">${MemberVO.getAid()}</a></td>
+								<td><c:out value="${MemberVO.userID}"></c:out></td>
 								<td><c:out value="${MemberVO.password}"></c:out></td>
 								<td><c:out value="${MemberVO.name}"></c:out></td>
 								<td>
@@ -169,7 +169,7 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- 본문 -->
+				
 			</div>
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
