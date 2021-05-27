@@ -40,7 +40,7 @@
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
 						
-							<form>
+							<form method="POST" enctype="multipart/form-data" class="contact-one__form">
 								<!-- 상품명, PID, 상품코드 -->
 								기본정보
 								<div class="form-group row">
@@ -228,13 +228,13 @@
 								<!-- 사진 -->
 								<h5>사진</h5>
 								<table class="table table-hover table-white">
-									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' width="100%" height="400px"  alt="PackageProduct Img">
+									<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' width="100%" height="400px"  alt="PackageProduct Img">
 								</table>
 								<hr style=background-color:#368AFF;>
 								<!-- 이전, 수정 버튼 -->
 								<div align="right">
 									<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:60px;">	
-							        <input class="btn btn-primary" type="button" onclick="location.href='packageProductModify?PID=<%=request.getParameter("PID")%>'" value="수정">
+							        <input class="btn btn-primary" type="button" onclick="location.href='packageProductModifyView?PID=<%=request.getParameter("PID")%>'" value="수정">
 						        </div>
 							</form>
 						</div>

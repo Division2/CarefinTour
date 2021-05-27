@@ -25,14 +25,8 @@ public class PackageServiceImpl implements PackageService {
 	
 	//게시물 작성
 	@Override
-	public int PackageWrite(PackageVO packageVo, MultipartHttpServletRequest mpRequest) throws Exception {
-		
-		List<Map<String,Object>> list = fileUtils.parseInsertPackageInfo(packageVo, mpRequest); 
-		int size = list.size();
-		for(int i=0; i<size; i++){ 
-			dao.PackageWrite(list.get(i)); 
-		}
-		return size;
+	public void PackageWrite(PackageVO packageVo) throws Exception {
+		dao.PackageWrite(packageVo); 
 	}
 
 	//여행패키지 출력
@@ -64,6 +58,12 @@ public class PackageServiceImpl implements PackageService {
 	@Override
 	public PackageVO ProductPackageFileName(int pid) throws Exception {
 		return dao.ProductPackageFileName(pid);
+	}
+
+	//여행패키지 수정
+	@Override
+	public void ProductPackageModify(PackageVO vo) throws Exception {
+		dao.ProductPackageModify(vo);
 	}
 
 

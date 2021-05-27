@@ -40,6 +40,14 @@ function fn_addFile() {
 	});
 }
 </script>
+<style type="text/css">
+	.inputArea { margin:10px 0; }
+	select { width:100px; }
+	label { display:inline-block; width:70px; padding:5px; }
+	
+	.select_img img {margin:10px 0; width: 100%; height: auto; max-height: 400px;}
+</style>
+
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -151,24 +159,24 @@ function fn_addFile() {
 					            </div>
 					        </div>
 					        
-					        <div class="form-group row">
-				            	<label for="file" class="form-label col-sm-2"><strong>사진</strong></label>
-					            <div class="col-sm-10">
-					                <span>파일 목록</span>
-									<div class="form-group" style="border: 1px solid #dbdbdb;">								
-										<div id="fileIndex">
-											<div>
-												<input type="file" name="file">
-												<button id="fileDel" type="button" style='float:right;'>삭제</button><br>
-											</div>
-										</div>
+			            	<label for="file" class="form-label col-sm-2"><strong>사진</strong></label>
+							<div class="col-sm-10">
+								<input type="hidden" id="bid" name="bid" value="" />
+								<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+								<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+								
+								<div class="inputArea" > 
+									<div class="select_img"> 
+									<img src='<c:url value="/resources/images/product_package/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
+									<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
+									
+									<input type="file" id="imgFile" name="file" /><br>
 									</div>
-					          	</div>		  
-					       	</div>
+								</div>
+							</div>
 				        	<div class="row">
 					    	<div class="col-auto mr-auto"></div>
 					            <div class="col-auto">
-					                <input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
 					                <input class="btn btn-primary" type="submit" value="등록">
 					                <input class="btn btn-primary" id="list_btn"  onclick="history.back()" value="취소" style="width:90px;">		
 						        </div>
@@ -180,6 +188,18 @@ function fn_addFile() {
 			</div>
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
+			<script src='<c:url value="/resources/js/Board.js"/>'></script>
+			<script>
+				$("#imgFile").change(function(){
+					if(this.files && this.files[0]) {
+						var reader = new FileReader;
+						reader.onload = function(data) {
+							$(".select_img img").attr("src", data.target.result).width(1000);								
+						}
+						reader.readAsDataURL(this.files[0]);
+					}
+				});
+			</script>
     		<!-- 하단 푸터 부분 -->
 		</div>
 	</div>

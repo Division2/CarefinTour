@@ -66,7 +66,10 @@ function fn_addFile() {
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
 						
-							<form>
+							<form action="ProductPackageModify" role="form" method="POST" enctype="multipart/form-data" class="contact-one__form">
+								<input type="hidden" id="pid" name="pid" value="${pdtail.getPid()}" />
+								<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+								<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 								<!-- 상품명, PID, 상품코드 -->
 								기본정보
 								<div class="form-group row">
@@ -226,27 +229,24 @@ function fn_addFile() {
 								</div>
 								<!-- 사진 -->
 								<h5>사진</h5>
-								<table class="table table-hover table-white">
-									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' width="100%" height="400px" alt="PackageProduct Img">
-					                <span>파일 목록</span>
-									<div class="form-group" style="border: 1px solid #dbdbdb;">								
-										<div id="fileIndex">
-											<div>
-												<input type="file" name="file">
-												<button id="fileDel" type="button" style='float:right;'>삭제</button><br>
-											</div>
+								<div class="col-xs-12 col-md-12">
+									<input type="hidden" id="bid" name="bid" value="" />
+									<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+									<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+									
+									<div class="inputArea" > 
+										<div class="select_img"> 
+										<img src='<c:url value="/resources/images/product_package/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
+										<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
+										
+										<input type="file" id="imgFile" name="file" /><br>
 										</div>
 									</div>
-									
-									<c:forEach var="row" items="${list }"> 
-									<input type="hidden" id="IDX" value="${row.IDX }"> 
-									</c:forEach>
+								</div>
 
-								</table>
 								<hr style=background-color:#368AFF;>
 								<!-- 이전, 수정 버튼 -->
 								<div align="right">
-									<input class="btn btn-primary" id="fileAdd_btn" value="파일추가" style="width:90px;">
 									<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:60px;">
 									<input class="btn btn-primary" value="목록" onclick="location.href='packageproduct'" style="width:60px;">		
 							        <input class="btn btn-primary" type="submit" value="확인">
@@ -261,6 +261,18 @@ function fn_addFile() {
 			
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
+			<script src='<c:url value="/resources/js/Board.js"/>'></script>
+			<script>
+				$("#imgFile").change(function(){
+					if(this.files && this.files[0]) {
+						var reader = new FileReader;
+						reader.onload = function(data) {
+							$(".select_img img").attr("src", data.target.result).width(1000);								
+						}
+						reader.readAsDataURL(this.files[0]);
+					}
+				});
+			</script>
     		<!-- 하단 푸터 부분 -->
 		</div>
 	</div>
