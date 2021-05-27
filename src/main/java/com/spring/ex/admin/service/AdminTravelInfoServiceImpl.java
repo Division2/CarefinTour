@@ -18,6 +18,12 @@ public class AdminTravelInfoServiceImpl implements AdminTravelInfoService {
 	public int visaInfoWrite(VisaInfoVO vo) throws Exception {
 		return dao.visaInfoWrite(vo);
 	}
+	
+	//비자 정보 수정
+	@Override
+	public int visaInfoModify(VisaInfoVO vo) throws Exception {
+		return dao.visaInfoModify(vo);
+	}
 
 	//비자 정보 조회
 	@Override
@@ -29,6 +35,12 @@ public class AdminTravelInfoServiceImpl implements AdminTravelInfoService {
 	@Override
 	public int suppliesInfoWrite(SuppliesInfoVO vo) throws Exception {
 		return dao.suppliesInfoWrite(vo);
+	}
+
+	//여행준비물 수정
+	@Override
+	public int suppliesInfoModify(SuppliesInfoVO vo) throws Exception {
+		return dao.suppliesInfoModify(vo);
 	}
 
 	//여행준비물 조회

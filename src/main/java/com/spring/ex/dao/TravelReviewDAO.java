@@ -23,8 +23,6 @@ public interface TravelReviewDAO {
 	//여행 포토 조회
 	public TravelPhotoVO TravelPhotoView(int prid) throws Exception;
 	
-
-	
 	//여행 포토 총 갯수
 	public int TravelPhotoTotalCount() throws Exception;
 	

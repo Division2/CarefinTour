@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.spring.ex.service.PackageService;
+import com.spring.ex.admin.service.PackageService;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 
@@ -78,9 +78,6 @@ public class PackageController {
 	public String getPackageProductDetail(Model model, HttpServletRequest request)  throws Exception {
 		int pid = Integer.parseInt(request.getParameter("PID"));
 		PackageVO pdtail =  service.ProductPackageDetail(pid);
-		
-	//	PackageVO pfileName = service.ProductPackageFileName(62);
-	//	System.out.println("되나 ? "+ pfileName.getS_file_name()); //되네?
 		
 		model.addAttribute("pdtail", pdtail);
 		return "admin/site/packageProductDetail";

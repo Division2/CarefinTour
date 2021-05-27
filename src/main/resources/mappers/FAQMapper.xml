@@ -21,4 +21,9 @@
 	<select id="getFAQOtherTotalCount" resultType="int">
 		SELECT COUNT(*) FROM faq WHERE Category = #{category}
 	</select>
+
+	<!-- FAQ 카테고리 조회 -->
+	<select id="getFAQCategory" resultType="hashmap">
+		SELECT * FROM faq_category
+	</select>
 </mapper>

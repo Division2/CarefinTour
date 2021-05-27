@@ -2,6 +2,7 @@ package com.spring.ex.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -38,5 +39,11 @@ public class FAQServiceImpl implements FAQService {
 	@Override
 	public int FAQOtherTotalCount(String category) throws Exception {
 		return dao.FAQOtherTotalCount(category);
+	}
+
+	//자주 찾는 질문(카테고리 조회)
+	@Override
+	public List<Map<String, Object>> FAQCategory() throws Exception {
+		return dao.FAQCategory();
 	}
 }

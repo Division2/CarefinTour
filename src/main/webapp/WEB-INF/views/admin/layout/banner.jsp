@@ -23,12 +23,6 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="hotel">
-			<i class="fas fa-fw fa-table"></i>
-			<span>호텔 상품</span>
-		</a>
-	</li>
-	<li class="nav-item">
 		<a class="nav-link" href="packageproduct">
 			<i class="fas fa-fw fa-table"></i>
 			<span>패키지 상품</span>

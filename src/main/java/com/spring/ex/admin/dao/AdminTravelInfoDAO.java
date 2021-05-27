@@ -11,11 +11,17 @@ public interface AdminTravelInfoDAO {
 	//비자 정보 등록
 	public int visaInfoWrite(VisaInfoVO vo) throws Exception;
 	
+	//비자 정보 수정
+	public int visaInfoModify(VisaInfoVO vo) throws Exception;
+	
 	//비자 정보 조회
 	public VisaInfoVO visaInfoView() throws Exception;
 	
 	//여행준비물 등록
 	public int suppliesInfoWrite(SuppliesInfoVO vo) throws Exception;
+	
+	//여행준비물 수정
+	public int suppliesInfoModify(SuppliesInfoVO vo) throws Exception;
 	
 	//여행준비물 조회
 	public SuppliesInfoVO suppliesInfoView() throws Exception;

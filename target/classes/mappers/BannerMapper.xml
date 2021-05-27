@@ -4,14 +4,14 @@
 <mapper namespace="com.spring.ex.BannerMapper">
 
 	<!-- 배너 수정  -->
-	<update id="BannereModify" parameterType="hashMap">
-		UPDATE banner SET s_file_name = #{s_file_name}, o_file_name = #{o_file_name) WHERE BID = #{bid}	
+	<update id="BannerModify" parameterType="hashMap">
+		UPDATE banner SET s_file_name = #{s_file_name} WHERE BID = #{bid};	
 	</update>
 	
 	
-	<!-- 여행패키지 PID해당하는 파일검색 -->
- 	<select id="BannerFileName" resultType="BannerVO">
-		SELECT s_file_name FROM banner WHERE BID = #{bid};
+	<!-- 관리자 배너 수정페이지 출력 -->
+ 	<select id="BannerModifyView" resultType="BannerVO">
+		SELECT * FROM banner WHERE BID = #{bid};
 	</select>
 	
 	<!--관리자화면 배너 출력 -->

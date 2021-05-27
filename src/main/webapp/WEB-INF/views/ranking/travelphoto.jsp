@@ -48,13 +48,13 @@
 					<c:forEach var="TravelPhotoList" items="${TravelPhotoList}">
 					<div class="col-lg-4 col-md-6">
 						<div class="tour-one__single">
-							<div class="tour-one__image" style="width:370px;height:190px;">
+							<div class="tour-one__image">
 								<c:choose>
 									<c:when test="${TravelPhotoList.s_file_name eq null}">
-										<img src='<c:url value="/resources/image/noImage.png"/>' >
+										<img src='<c:url value="/resources/images/noImage.png"/>' width="200" height="200">
 									</c:when>
 									<c:otherwise>
-										<img src='<c:url value="/resources/imgUpload/${TravelPhotoList.s_file_name}"/>' alt="">
+										<img src='<c:url value="/resources/images/UploadImages/${TravelPhotoList.s_file_name}"/>' alt="" width="200" height="200">
 									</c:otherwise>
 								</c:choose>
 							</div>

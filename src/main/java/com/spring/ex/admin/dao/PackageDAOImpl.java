@@ -1,0 +1,59 @@
+package com.spring.ex.admin.dao;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+import com.spring.ex.vo.PackageVO;
+
+@Repository
+public class PackageDAOImpl implements PackageDAO {
+	@Inject
+	private SqlSession sql;
+	private static final String namespace = "com.spring.ex.PackageMapper";
+	
+	// 패키지 작성
+	@Override
+	public int PackageWrite(Map<String, Object> map) throws Exception {
+		return sql.insert(namespace + ".PackageWrite", map);
+	}
+
+	//여행패키지 출력
+	@Override
+	public List<PackageVO> AdminPackageView(HashMap<String, Integer> map) throws Exception {
+		return sql.selectList(namespace + ".ProductPackageView", map);
+	}
+	
+	//여행패키지 총 갯수
+	@Override
+	public int AdminPackageTotalCount() throws Exception {
+		return sql.selectOne(namespace + ".getProductPackageTotalCount");
+	}
+	
+	//여행패키지 상세페이지 출력
+	@Override
+	public PackageVO ProductPackageDetail(int pid) throws Exception {
+		return sql.selectOne(namespace + ".ProductPackageDetail", pid);
+	}
+	
+	//여행패키지 삭제
+	@Override
+	public void ProductPackageDelete(String pid) throws Exception {
+		sql.selectOne(namespace + ".ProductPackageDelete", pid);
+	}
+
+	//여행패키지 파일 이름 검색 - 파일 삭제하려고 사용
+	@Override
+	public PackageVO ProductPackageFileName(int pid) throws Exception {
+		return sql.selectOne(namespace + ".ProductPackageFileName", pid);
+	}
+
+
+	
+	
+}

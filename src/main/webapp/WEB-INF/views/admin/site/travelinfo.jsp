@@ -16,7 +16,7 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
-<style type="text/css">.ck-content{height:300px;}</style>
+<style type="text/css">.ck-content{height:600px;}</style>
 <style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 29px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
 <script>
 $(document).ready(function() {
@@ -102,6 +102,7 @@ $(document).ready(function() {
 						<div class="row">
 							<div class="col-md-6">
 								<c:if test="${VisaInfo ne null }">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#visaInfoModal">수정</button>
 									<details>
 										<summary>비자정보 더보기</summary>
 										<div class="infoSection">
@@ -114,6 +115,7 @@ $(document).ready(function() {
 							</div>
 							<div class="col-md-6">
 								<c:if test="${SuppliesInfo ne null }">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#suppliesInfoModal">수정</button>
 									<details>
 										<summary>여행준비물 더보기</summary>
 										<div class="infoSection">
@@ -131,7 +133,69 @@ $(document).ready(function() {
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
     		
-    		<script src='<c:url value="resources/js/ckeditor.js"/>'></script>
+			<!-- 비자정보 수정 Modal 부분 -->
+			<div class="modal fade" id="visaInfoModal" tabindex="-1" role="dialog" aria-labelledby="visaInfoModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+					<div class="modal-content">
+						<div class="modal-header border-bottom-0">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-title text-center">
+								<h4>비자 정보</h4>
+							</div>
+							<div class="d-flex flex-column text-center">
+								<form action="visaInfoModify" method="POST" id="TravelInfo" name="TravelInfo">
+									<div class="form-group">
+										<textarea id="TravelContent" name="visaContent"><c:out escapeXml="false" value="${fn:replace(fn:replace(VisaInfo.getVisaContent(), '&lt;', '<'), '&gt;', '>')}"/></textarea>
+									</div>
+									<input type="hidden" id="VID" name="VID" value="${VisaInfo.getVID() }">
+									<div class="form-group">
+										<div class="d-flex">
+											<div class="ml-auto">
+												<button class="btn btn-primary" type="submit">수정</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 여행준비물 수정 Modal 부분 -->
+			<div class="modal fade" id="suppliesInfoModal" tabindex="-1" role="dialog" aria-labelledby="suppliesInfoModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+					<div class="modal-content">
+						<div class="modal-header border-bottom-0">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-title text-center">
+								<h4>여행준비물</h4>
+							</div>
+							<div class="d-flex flex-column text-center">
+								<form action="suppliesInfoModify" method="POST" id="TravelInfo" name="TravelInfo">
+									<div class="form-group">
+										<textarea id="TravelContent1" name="suppliesContent"><c:out escapeXml="false" value="${fn:replace(fn:replace(SuppliesInfo.getSuppliesContent(), '&lt;', '<'), '&gt;', '>')}"/></textarea>
+									</div>
+									<input type="hidden" id="SID" name="SID" value="${SuppliesInfo.getSID() }">
+									<div class="form-group">
+										<div class="d-flex">
+											<div class="ml-auto">
+												<button class="btn btn-primary" type="submit">수정</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    		
+    		<script src='<c:url value="/resources/js/ckeditor.js"/>'></script>
 		</div>
 	</div>
 </body>

@@ -1,14 +1,14 @@
 package com.spring.ex.vo;
 
 public class VisaInfoVO {
-	private int vId;
+	private int VID;
 	private String visaContent;
 	
-	public int getvId() {
-		return vId;
+	public int getVID() {
+		return VID;
 	}
-	public void setvId(int vId) {
-		this.vId = vId;
+	public void setVID(int vID) {
+		this.VID = vID;
 	}
 	public String getVisaContent() {
 		return visaContent;

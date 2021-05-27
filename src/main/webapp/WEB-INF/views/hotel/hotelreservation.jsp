@@ -202,7 +202,7 @@ ul {
 		if((localStorage.getItem("fCount").length+1)/16 == 1) { // 결과 값이 1이면 값이 들어가지 않아서 여기서 처리
 				document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cidSearchResultsOne") +"'>");
 			if(localStorage.getItem("img0")=="undefined") {
-				document.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='220' height='168'> ");
+				document.write("<ul><li><img src='<c:url value='/resources/images/noImage.png'/>' width='220' height='168'> ");
 			}
 			else {
 				document.write("<ul><li><img src='" + localStorage.getItem("imgSearchResultsOne") + "' width='220' height='168' /> ");
@@ -216,7 +216,7 @@ ul {
 				else {
 					document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
 					if(localStorage.getItem("img"+i)=="undefined") {
-						document.write("<ul><li><img src='<c:url value='/resources/image/noImage.png'/>' width='220' height='168'> ");
+						document.write("<ul><li><img src='<c:url value='/resources/images/noImage.png'/>' width='220' height='168'> ");
 					}
 					else{
 						document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");

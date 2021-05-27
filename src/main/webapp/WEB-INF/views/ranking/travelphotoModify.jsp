@@ -14,15 +14,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <style>
-	.inputArea { margin:10px 0; }
-	select { width:100px; }
-	label { display:inline-block; width:70px; padding:5px; }
-	label[for='gdsDes'] { display:block; }
-	input { width:150px; }
-	textarea#gdsDes { width:400px; height:180px; }
-	
-	.select_img img {margin:20px 0;}
-	
 </style>
 <title>CarefinTour</title>
 </head>
@@ -73,33 +64,19 @@
 									<textarea id="Content" name="Content" rows="5"><c:out escapeXml="false" value="${fn:replace(update.content, '<br>', crlf)}"/></textarea>
 								</div>
 							</div>
-							<div class="col-md-12">
-								<label for="file" class="form-label"><strong>첨부 파일</strong></label>				
+							<div class="col-md-12">				
 								<div class="inputArea">
-									 <label for="gdsImg">이미지</label><br>
-									 <input type="file" id="gdsImg" name="file" />
+									 <label for="imgLabel">이미지</label><br>
+									 <input type="file" id="imgFile" name="file" />
 									 <div class="select_img">
-									 <img src='<c:url value="/resources/imgUpload/${update.s_file_name}"/>' alt="" class="img-fluid">
-									 <input type="hidden" name="gdsImg" value="${update.s_file_name}" />
+									 <img src='<c:url value="/resources/images/UploadImages/${update.s_file_name}"/>' alt="" class="img-fluid" width="500" height="500">
+									 <input type="hidden" name="imgFile" value="${update.s_file_name}" />
 									 </div>
-								  <script>
-									 $("#gdsImg").change(function(){
-									  if(this.files && this.files[0]) {
-									   var reader = new FileReader;
-									   reader.onload = function(data) {
-									    $(".select_img img").attr("src", data.target.result).width(500);        
-									   }
-									   reader.readAsDataURL(this.files[0]);
-									  }
-									 });
-									</script>
-									 <%=request.getRealPath("/") %>
 									</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-auto mr-auto"></div>
-			            		<input class="thm-btn-psd" id="fileAdd_btn" value="파일추가" style="width:135px;">
 							<div class="col-auto">
 			            		<input class="thm-btn-psd" type="submit" value="수정">
 			            		<input class="thm-btn-psd" type="button" value="이전" onclick="location.href='travelphotoView?prid=${param.prid}'">
@@ -112,8 +89,18 @@
 		</section>
 
 		<jsp:include page="../layout/footer.jsp" />
-		<script src='<c:url value="resources/js/file-add-delete.js"/>'></script>
 		<script src='<c:url value="resources/js/Board.js"/>'></script>
+		<script>
+			$("#imgFile").change(function(){
+				if(this.files && this.files[0]) {
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$(".select_img img").attr("src", data.target.result).width(500);								
+					}
+					reader.readAsDataURL(this.files[0]);
+				}
+			});
+		</script>
 	</div>
 	<!-- 메인 영역 -->
 </body>

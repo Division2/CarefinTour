@@ -2,6 +2,7 @@ package com.spring.ex.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +22,7 @@ public interface FAQDAO {
 	
 	//자주 찾는 질문(카테고리별) 총 갯수
 	public int FAQOtherTotalCount(String category) throws Exception;
+	
+	//자주 찾는 질문(카테고리 조회)
+	public List<Map<String, Object>> FAQCategory() throws Exception;
 }
