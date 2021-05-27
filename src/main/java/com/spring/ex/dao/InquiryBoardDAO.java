@@ -45,5 +45,5 @@ public interface InquiryBoardDAO {
 	public List<InquiryVO> InquirySearchList(HashMap<String, Object> map) throws Exception;
 	
 	//1:1 문의 검색 게시물 총 갯수
-	public int InquirySearchTotalCount(String title) throws Exception;
+	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 }
