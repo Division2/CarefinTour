@@ -45,4 +45,17 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO IDCheck(MemberVO vo) throws Exception {
 		return sqlSession.selectOne(namespace + ".IDCheck", vo);
 	}
+	
+	// 아이디 찾기
+	@Override
+	public MemberVO UserID(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".memberId",vo);
+		}
+		
+	// 비번 찾기
+	@Override
+	public MemberVO Password(MemberVO vo) throws Exception{
+		return sqlSession.selectOne(namespace + ".memberPw",vo);
+		}
+	
 }

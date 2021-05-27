@@ -56,4 +56,16 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO IDCheck(MemberVO vo) throws Exception {
 		return dao.IDCheck(vo);
 	}
+	
+	//아이디찾기		
+	@Override
+	public MemberVO UserID(MemberVO vo) throws Exception {
+		return dao.UserID(vo);
+		}
+		
+	//비밀번호찾기
+	@Override
+	public MemberVO Password(MemberVO vo) throws Exception {
+			return dao.Password(vo);
+		}
 }
