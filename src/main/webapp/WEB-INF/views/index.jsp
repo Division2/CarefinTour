@@ -27,25 +27,25 @@
 		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner2.jpg"/>);">
 			<div class="container">
 				<h2>
-					Find your <span>next tour</span>
+					Carefin <span>Tour</span>
 				</h2>
-				<p>Where would you like to go?</p>
+				<p>여행지를 선택 해보세요</p>
 				<form class="tour-search-one" action="tour-sidebar.html">
 					<div class="tour-search-one__inner">
 						<div class="tour-search-one__inputs">
 							<div class="tour-search-one__input-box">
-								<label for="place">Where to</label>
-								<input type="text"placeholder="Enter keywords" name="place" id="place">
+								<label for="place">여행지</label>
+								<input type="text"placeholder="나라" name="place" id="place">
 							</div>
 							<div class="tour-search-one__input-box">
-								<label for="when">When</label>
-								<input type="text" placeholder="September" name="when" id="when">
+								<label for="when">날짜</label>
+								<input type="text" placeholder="날짜" name="when" id="when">
 							</div>
 							<div class="tour-search-one__input-box">
-								<label for="type">Type</label> <select class="selectpicker" id="type">
-									<option value="Adventure">Adventure</option>
-									<option value="Wildlife">Wildlife</option>
-									<option value="Sightseeing">Sightseeing</option>
+								<label for="type">여행 테마</label> <select class="selectpicker" id="type">
+									<option value="fishing">낚시</option>
+									<option value="golf">골프</option>
+									<option value="honey">허니문</option>
 								</select>
 							</div>
 						</div>
@@ -62,9 +62,9 @@
 		<section class="features-one__title">
 			<div class="container">
 				<div class="block-title text-center">
-					<p>Call our agents to book!</p>
+					<p>높은 퀄리티에 만족도 높은 여행!</p>
 					<h3>
-						Tripo Award Winning and Top <br> Rated Tour Operator
+						업계최고 여행사 <br> 원하시는 여행패키지를 골라보세요!
 					</h3>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-tour-guide"></i>
 							<h3>
-								8000+ Our Local <br> Guides
+								8000명 이상에 현지 가이드 
 							</h3>
 						</div>
 					</div>
@@ -87,7 +87,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-reliability"></i>
 							<h3>
-								100% Trusted Tour <br> Agency
+								100% 믿을수 있는 여행사
 							</h3>
 						</div>
 					</div>
@@ -95,7 +95,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-user-experience"></i>
 							<h3>
-								28+ Years of Travel <br> Experience
+								오래된 경험에서 나온 여행사 
 							</h3>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-feedback"></i>
 							<h3>
-								98% Our Travelers <br> are Happy
+								98%이상에 만족도 
 							</h3>
 						</div>
 					</div>
@@ -116,8 +116,8 @@
 		<section class="tour-one">
 			<div class="container">
 				<div class="block-title text-center">
-					<p>Featured tours</p>
-					<h3>Most Popular Tours</h3>
+					<p>패키지 여행</p>
+					<h3>추천하는 패키지 여행</h3>
 				</div>
 				<!-- /.block-title -->
 				<div class="row">
@@ -128,19 +128,17 @@
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								<div class="tour-one__stars">
-									<i class="fa fa-star"></i> 8.0 Superb
-								</div>
+						
 								<h3>
-									<a href="tour-details.html">National Park 2 Days Tour</a>
+									<a href="tour-details.html">미국 자유 여행 패키지</a>
 								</h3>
 								<p>
-									<span>$1870</span> / Per Person
+									<span>3,200,000~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3 Days</a></li>
+									<li><a href="tour-details.html"><i class="far fa-clock"></i> 5박 6일 </a></li>
 									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> Los Angeles</a></li>
+									<li><a href="tour-details.html"><i class="far fa-map"></i> 미국 </a></li>
 								</ul>
 							</div>
 						</div>
@@ -152,19 +150,16 @@
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								<div class="tour-one__stars">
-									<i class="fa fa-star"></i> 8.0 Superb
-								</div>
 								<h3>
-									<a href="tour-details.html">The Dark Forest Adventure</a>
+									<a href="tour-details.html">중국 명소 관광 패키지</a>
 								</h3>
 								<p>
-									<span>$2600</span> / Per Person
+									<span>1,500,000~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3 Days</a></li>
+									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3박 4일</a></li>
 									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> Los Angeles</a></li>
+									<li><a href="tour-details.html"><i class="far fa-map"></i> 중국 </a></li>
 								</ul>
 							</div>
 						</div>
@@ -176,19 +171,16 @@
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								<div class="tour-one__stars">
-									<i class="fa fa-star"></i> 7.0 Superb
-								</div>
 								<h3>
-									<a href="tour-details.html">Discover Depth of Beach</a>
+									<a href="tour-details.html">말레이시아 낚시 패키지</a>
 								</h3>
 								<p>
-									<span>$1399</span> / Per Person
+									<span>1,800,000~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3 Days</a></li>
+									<li><a href="tour-details.html"><i class="far fa-clock"></i> 4박 5일</a></li>
 									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> Los Angeles</a></li>
+									<li><a href="tour-details.html"><i class="far fa-map"></i> 말레이시아</a></li>
 								</ul>
 							</div>
 						</div>
@@ -200,19 +192,17 @@
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								<div class="tour-one__stars">
-									<i class="fa fa-star"></i> 8.8 Superb
-								</div>
+								
 								<h3>
-									<a href="tour-details.html">Moscow Red City Land</a>
+									<a href="tour-details.html">일본 벚꽃 패키지</a>
 								</h3>
 								<p>
-									<span>$1870</span> / Per Person
+									<span>1,300,000~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3 Days</a></li>
+									<li><a href="tour-details.html"><i class="far fa-clock"></i> 2박 3일</a></li>
 									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> Los Angeles</a></li>
+									<li><a href="tour-details.html"><i class="far fa-map"></i> 일본</a></li>
 								</ul>
 							</div>
 						</div>
@@ -224,19 +214,17 @@
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								<div class="tour-one__stars">
-									<i class="fa fa-star"></i> 8.0 Superb
-								</div>
+								
 								<h3>
-									<a href="tour-details.html">Magic of Italy Tours</a>
+									<a href="tour-details.html">하와이 서핑 패키지</a>
 								</h3>
 								<p>
-									<span>$1478</span> / Per Person
+									<span>3,800,000~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3 Days</a></li>
+									<li><a href="tour-details.html"><i class="far fa-clock"></i> 6박 7일</a></li>
 									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> Los Angeles</a></li>
+									<li><a href="tour-details.html"><i class="far fa-map"></i> 미국</a></li>
 								</ul>
 							</div>
 						</div>
@@ -248,19 +236,17 @@
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								<div class="tour-one__stars">
-									<i class="fa fa-star"></i> 8.0 Superb
-								</div>
+								
 								<h3>
-									<a href="tour-details.html">Discover Depth of Beach</a>
+									<a href="tour-details.html">이탈리아 자유 여행 패키지</a>
 								</h3>
 								<p>
-									<span>$1399</span> / Per Person
+									<span>3,300,000~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3 Days</a></li>
+									<li><a href="tour-details.html"><i class="far fa-clock"></i> 6박 7일</a></li>
 									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> Los Angeles</a></li>
+									<li><a href="tour-details.html"><i class="far fa-map"></i> 이탈리아</a></li>
 								</ul>
 							</div>
 						</div>
@@ -273,8 +259,8 @@
 				<a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
 				<p>Love where you're going</p>
 				<h3>
-					<span>Tripo</span> is a World Leading <br> Online
-					<span>Tour Booking Platform</span>
+					<span>케어핀투어</span>는 세계적인  <br> 
+					<span>낚시 전문 여행사 입니다.</span>
 				</h3>
 			</div>
 		</section>
@@ -284,187 +270,107 @@
 		<section class="testimonials-one">
 			<div class="container">
 				<div class="block-title text-center">
-					<p>checkout our</p>
-					<h3>Top Tour Reviews</h3>
+					<p>여행 리뷰</p>
+					<h3>소중한 여행 리뷰</h3>
 				</div>
 				<div class="testimonials-one__carousel thm__owl-carousel light-dots owl-carousel owl-theme" data-options='{"nav": false, "autoplay": true, "autoplayTimeout": 5000, "smartSpeed": 700, "dots": true, "margin": 30, "loop": true, "responsive": { "0": { "items": 1, "nav": true, "navText": ["Prev", "Next"], "dots": false }, "767": { "items": 1, "nav": true, "navText": ["Prev", "Next"], "dots": false }, "991": { "items": 2 }, "1199": { "items": 2 }, "1200": { "items": 3 } }}'>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>저희 아이들이 너무 좋아해서 좋았어요 다음에도 또 예약할게요.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-1.jpg"/>' alt="">
-								<h3>Kevin Smith</h3>
+								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+								<h3>진용진</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">							
+								<p>날씨가 안좋아서 걱정했는데 그 상황에 맞는 패키지도 구성이 되어있어서 안심이였습니다.</p>
 							</div>
 							<div class="testimonials-one__info">
-							<img src='<c:url value="/resources/images/testimonials/testimonials-1-2.jpg"/>' alt="">
-								<h3>Christine Eve</h3>
+							<img src='<c:url value="/resources/images/testimonials/2.png"/>' alt="">
+								<h3>박성동</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>현지 치안이 걱정이 많이 됬는데 현지 가이드분께서 케어를 잘 해주셔서 안전 여행 했어요 좋은 추억
+								많이 남기고 갑니다.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-3.jpg"/>' alt="">
-								<h3>Mike Hardson</h3>
+								<img src='<c:url value="/resources/images/testimonials/3.png"/>' alt="">
+								<h3>김요한</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>음식이 입맛에 맞지 않을까 걱정했는데, 현지가이드분께서 세심한것 까지 체크 해주셔서 별 탈없이 맛있는 여행 했습니다.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-1.jpg"/>' alt="">
-								<h3>Kevin Smith</h3>
+								<img src='<c:url value="/resources/images/testimonials/5.png"/>' alt="">
+								<h3>이인호</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>이번에 결혼을 하게되서 허니문 패키지 이용했는데 너무 잘 다녀왔어요 와이프가 좋아해서 다행입니다.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-2.jpg"/>' alt="">
-								<h3>Christine Eve</h3>
+								<img src='<c:url value="/resources/images/testimonials/8.png"/>' alt="">
+								<h3>김규헌</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>첫 서핑이라 너무 걱정했는데 가이드분께서 잘 알려주셔서 많은거 배워갑니다 다음에 또 올게요.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-3.jpg"/>' alt="">
-								<h3>Mike Hardson</h3>
+								<img src='<c:url value="/resources/images/testimonials/6.png"/>' alt="">
+								<h3>이동진</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>가격도 합리적이고, 날씨가 좋아서 여행하는동안 기분이 너무 좋았어요!.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-1.jpg"/>' alt="">
-								<h3>Kevin Smith</h3>
+								<img src='<c:url value="/resources/images/testimonials/4w.png"/>' alt="">
+								<h3>박현지</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>입이 즐거워지는 여행이였습니다.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-2.jpg"/>' alt="">
-								<h3>Christine Eve</h3>
+								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+								<h3>박남일</h3>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">
-								<div class="testimonials-one__stars">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<p>There are many variations of passages of lorem ipsum but
-									the majority have alteration in some form, by randomised words
-									look. Aene an commodo ligula eget dolorm sociis.</p>
+							<div class="testimonials-one__content">								
+								<p>이렇게 큰 물고기를 잡아본적이 없는데 소중한 경험 하고 가요.</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/testimonials-1-3.jpg"/>' alt="">
-								<h3>Mike Hardson</h3>
+								<img src='<c:url value="/resources/images/testimonials/3.png"/>' alt="">
+								<h3>원태연</h3>
 							</div>
 						</div>
 					</div>
@@ -477,24 +383,24 @@
 		<section class="blog-one">
 			<div class="container">
 				<div class="block-title text-center">
-					<p>Check out Our</p>
-					<h3>Latest News &#38; Articles</h3>
+					<p>포토 리뷰</p>
+					<h3>여행 포토 리뷰</h3>
 				</div>
 				<div class="row">
 					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms"
 						data-wow-delay="000ms">
 						<div class="blog-one__single">
 							<div class="blog-one__image">
-								<img src='<c:url value="/resources/images/blog/blog-1-1.jpg"/>' alt="">
+								<img src='<c:url value="/resources/images/blog/fish1.png"/>' alt="">
 								<a href="news-details.html"><i class="fa fa-long-arrow-alt-right"></i></a>
 							</div>
 							<div class="blog-one__content">
 								<ul class="list-unstyled blog-one__meta">
-									<li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
-									<li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a></li>
+									<li><a href="news-details.html"><i class="far fa-user-circle"></i>김요한</a></li>
+									<li><a href="news-details.html"><i class="far fa-comments"></i>2 </a></li>
 								</ul>
 								<h3>
-									<a href="news-details.html">14 Things to see and do when visiting japan</a>
+									<a href="news-details.html">이렇게 큰 물고기는 처음 잡아 봐요!</a>
 								</h3>
 							</div>
 						</div>
@@ -502,16 +408,16 @@
 					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms">
 						<div class="blog-one__single">
 							<div class="blog-one__image">
-								<img src='<c:url value="/resources/images/blog/blog-1-2.jpg"/>' alt="">
+								<img src='<c:url value="/resources/images/blog/pic.png"/>' alt="">
 								<a href="news-details.html"><i class="fa fa-long-arrow-alt-right"></i></a>
 							</div>
 							<div class="blog-one__content">
 								<ul class="list-unstyled blog-one__meta">
-									<li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
-									<li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a></li>
+									<li><a href="news-details.html"><i class="far fa-user-circle"></i>박성동</a></li>
+									<li><a href="news-details.html"><i class="far fa-comments"></i> 2</a></li>
 								</ul>
 								<h3>
-									<a href="news-details.html">Journeys are best measured in new friends</a>
+									<a href="news-details.html">좋은 추억 많이 만들고 가요!</a>
 								</h3>
 							</div>
 						</div>
@@ -519,16 +425,16 @@
 					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
 						<div class="blog-one__single">
 							<div class="blog-one__image">
-								<img src='<c:url value="/resources/images/blog/blog-1-3.jpg"/>' alt="">
+								<img src='<c:url value="/resources/images/blog/pic2.png"/>' alt="">
 								<a href="news-details.html"><i class="fa fa-long-arrow-alt-right"></i></a>
 							</div>
 							<div class="blog-one__content">
 								<ul class="list-unstyled blog-one__meta">
-									<li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a></li>
-									<li><a href="news-details.html"><i class="far fa-comments"></i> 2 Comments</a></li>
+									<li><a href="news-details.html"><i class="far fa-user-circle"></i> 이인호</a></li>
+									<li><a href="news-details.html"><i class="far fa-comments"></i> 2 </a></li>
 								</ul>
 								<h3>
-									<a href="news-details.html">Travel the most beautiful places in the world</a>
+									<a href="news-details.html">여운이 많이 남는 여행이였어요..</a>
 								</h3>
 							</div>
 						</div>

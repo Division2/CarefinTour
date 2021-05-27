@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.admin.service.AdminDashBoardService;
 
-@Controller
+@Controller 
 public class AdminDashBoardController {
 	
 	@Inject AdminDashBoardService service;
