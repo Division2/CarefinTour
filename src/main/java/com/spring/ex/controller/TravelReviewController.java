@@ -34,7 +34,7 @@ public class TravelReviewController {
 	//여행 포토 작성
 	@RequestMapping(value = "/travelphotoWrite", method = RequestMethod.POST)
 	public String TravelPhotoWrite(TravelPhotoVO vo ,MultipartFile file, HttpServletRequest request) throws Exception {
-		String Path = request.getSession().getServletContext().getRealPath("resources/images/UploadImages/");
+		String Path = request.getSession().getServletContext().getRealPath("resources/images/TravelPhotoReview/");
 		String fileName = null;
 		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
@@ -51,7 +51,7 @@ public class TravelReviewController {
 	//여행 포토 수정
 	@RequestMapping(value = "/travelphotoModify", method = RequestMethod.POST)
 	public String TravelPhotoModify(TravelPhotoVO vo, MultipartFile file, HttpServletRequest request) throws Exception {
-		String Path = request.getSession().getServletContext().getRealPath("resources/images/UploadImages/");
+		String Path = request.getSession().getServletContext().getRealPath("resources/images/TravelPhotoReview/");
 		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 			new File(Path + request.getParameter("imgFile")).delete();
