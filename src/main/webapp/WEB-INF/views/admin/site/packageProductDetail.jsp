@@ -40,7 +40,7 @@
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
 						
-							<form method="POST" enctype="multipart/form-data" class="contact-one__form">
+							<form>
 								<!-- 상품명, PID, 상품코드 -->
 								기본정보
 								<div class="form-group row">
@@ -65,7 +65,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>상품코드</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getProductcode()}" class="form-control" >
+											<input type="text" value="${pdtail.getProductcode()}" class="form-control" >
 										</div>
 									</div>
 								</div>
@@ -76,7 +76,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>기간</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
+											<input type="text" value="${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
 										</div>
 									</div>
 	
@@ -85,7 +85,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>등록일</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getRedate()}" class="form-control">
+											<input type="text" value="${pdtail.getRedate()}" class="form-control">
 										</div>
 									</div>
 								</div>

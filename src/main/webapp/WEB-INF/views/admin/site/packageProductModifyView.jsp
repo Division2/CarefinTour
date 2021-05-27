@@ -20,26 +20,8 @@ $(document).ready(function(){
 	//테마 지역 값에 따라서 콤보박스 선택되게
 	$("#theme").val("${pdtail.getTheme()}").prop("selected", true);
 	$("#area").val("${pdtail.getArea()}").prop("selected", true);
-
-	var formObj = $("form[name='add']");
-	$(document).on("click","#fileDel", function() {
-		$(this).parent().remove();
-	})
-	fn_addFile();
-	
 })
-//파일추가	
-function fn_addFile() {
-	var fileIndex = 1;
-	
-	$("#fileAdd_btn").on("click", function() {
-		$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-	});
-	
-	$(document).on("click","#fileDelBtn", function() {
-		$(this).parent().remove();
-	});
-}
+
 	
 </script>
 <title>케어핀투어 관리자</title>
@@ -67,9 +49,6 @@ function fn_addFile() {
 						<div class="d-flex flex-column">
 						
 							<form action="ProductPackageModify" role="form" method="POST" enctype="multipart/form-data" class="contact-one__form">
-								<input type="hidden" id="pid" name="pid" value="${pdtail.getPid()}" />
-								<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
-								<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 								<!-- 상품명, PID, 상품코드 -->
 								기본정보
 								<div class="form-group row">
@@ -78,7 +57,8 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>상품명</b></span>
 											</div>
-											<input type="text" value="${pdtail.getProductname()}" class="form-control" >
+											
+											<input type="text" value="${pdtail.getProductname()}" id="productname" name="productname" class="form-control" required>
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
@@ -86,7 +66,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>감독</b></span>
 											</div>
-											<input type="text" value="${pdtail.getDirector()}" class="form-control" >
+											<input type="text" value="${pdtail.getDirector()}" id="director" name="director" class="form-control" required>
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
@@ -94,7 +74,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>상품코드</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getProductcode()}" class="form-control" >
+											<input type="text" value="${pdtail.getProductcode()}" id="productcode" name="productcode" class="form-control" required>
 										</div>
 									</div>
 								</div>
@@ -105,7 +85,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>출발일</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getStartravelperiod()}" class="form-control">
+											<input type="text" value="${pdtail.getStartravelperiod()}" id="startravelperiod" name="startravelperiod" class="form-control" required>
 										</div>
 									</div>
 									
@@ -114,7 +94,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>도착일</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getArrivaltravelperiod()}" class="form-control">
+											<input type="text" value="${pdtail.getArrivaltravelperiod()}" id="arrivaltravelperiod" name="arrivaltravelperiod" class="form-control" required>
 										</div>
 									</div>
 	
@@ -123,7 +103,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>등록일</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getRedate()}" class="form-control">
+											<input type="text" value="${pdtail.getRedate()}" class="form-control" >
 										</div>
 									</div>
 								</div>
@@ -163,7 +143,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>도시</b></span>
 											</div>
-											<input type="text" value="${pdtail.getTravelcity()}" class="form-control" >
+											<input type="text" value="${pdtail.getTravelcity()}" id="travelcity" name="travelcity" class="form-control" required>
 										</div>
 									</div>
 								</div>
@@ -175,7 +155,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>성인</b></span>
 											</div>
-											<input type="text" value="${pdtail.getAdultprice()}" class="form-control" >
+											<input type="text" value="${pdtail.getAdultprice()}"  id="adultprice" name="adultprice" class="form-control" required>
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
@@ -183,7 +163,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>아동</b></span>
 											</div>
-											<input type="text" value="${pdtail.getKidprice()}" class="form-control" >
+											<input type="text" value="${pdtail.getKidprice()}" id="kidprice" name="kidprice" class="form-control" required>
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
@@ -191,7 +171,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>유아</b></span>
 											</div>
-											<input type="text" value="${pdtail.getSmallkidprice()}" class="form-control" >
+											<input type="text" value="${pdtail.getSmallkidprice()}" id="smallkidprice" name="smallkidprice"  class="form-control" required>
 										</div>
 									</div>
 								</div>
@@ -203,7 +183,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>최소인원</b></span>
 											</div>
-											<input type="text" value="${pdtail.getMinreservation()}" class="form-control" >
+											<input type="text" value="${pdtail.getMinreservation()}" id="minreservation" name="minreservation" class="form-control" required>
 										</div>
 									</div>
 									<div class="col-xs-6 col-md-6">
@@ -211,7 +191,7 @@ function fn_addFile() {
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>최대인원</b></span>
 											</div>
-											<input type="text" value="${pdtail.getMaxreservation()}" class="form-control" >
+											<input type="text" value="${pdtail.getMaxreservation()}" id="maxreservation" name="maxreservation" class="form-control" required >
 										</div>
 									</div>
 								</div>
@@ -224,20 +204,20 @@ function fn_addFile() {
 										<div class="input-group-prepend">
 											<span class="input-group-text">개요</span>
 										</div>
-										<textarea rows="15" cols="25" name="comment" id="comment" class="form-control">${pdtail.getOverview()}</textarea>
+										<textarea rows="15" cols="25" name="overview" id="overview" class="form-control">${pdtail.getOverview()}</textarea>
 									</div>
 								</div>
 								<!-- 사진 -->
 								<h5>사진</h5>
 								<div class="col-xs-12 col-md-12">
-									<input type="hidden" id="bid" name="bid" value="" />
+									<input type="hidden" id="pid" name="pid" value="${pdtail.getPid() }" />
 									<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
 									<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 									
 									<div class="inputArea" > 
 										<div class="select_img"> 
-										<img src='<c:url value="/resources/images/product_package/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
-										<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
+										<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' alt="" class="img-fluid" >
+										<input type="hidden" name="imgFile" value="${pdtail.getS_file_name() }" />
 										
 										<input type="file" id="imgFile" name="file" /><br>
 										</div>
