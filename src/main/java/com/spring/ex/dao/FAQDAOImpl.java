@@ -2,6 +2,7 @@ package com.spring.ex.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.FAQVO;
 
 @Repository
-public class FAQDAOImple implements FAQDAO {
+public class FAQDAOImpl implements FAQDAO {
 	
 	@Inject SqlSession sqlSession;
 	private static final String namespace = "com.spring.ex.FAQMapper";
@@ -38,5 +39,11 @@ public class FAQDAOImple implements FAQDAO {
 	@Override
 	public int FAQOtherTotalCount(String category) throws Exception {
 		return sqlSession.selectOne(namespace + ".getFAQOtherTotalCount", category);
+	}
+
+	//자주 찾는 질문(카테고리 조회)
+	@Override
+	public List<Map<String, Object>> FAQCategory() throws Exception {
+		return sqlSession.selectList(namespace + ".getFAQCategory");
 	}
 }

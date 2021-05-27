@@ -4,7 +4,8 @@
 	<h3 class="sidebar__title">FAQ 카테고리</h3>
 	<ul class="sidebar__category-list list-unstyled">
 		<li><a href="support">전체</a></li>
-		<li><a href="supportOther?category=해외여행">해외여행</a></li>
-		<li><a href="supportOther?category=테마여행">테마여행</a></li>
+	<c:forEach items="${Category }" var="category">
+		<li><a href="supportOther?category=${category.Category }">${category.Category }</a></li>
+	</c:forEach>
 	</ul>
 </div>

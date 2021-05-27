@@ -2,6 +2,7 @@ package com.spring.ex.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -40,10 +41,12 @@ public class FAQController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<FAQVO> faqAllList =  service.FAQAllView(map);
+		List<FAQVO> faqAllList = service.FAQAllView(map);
+		List<Map<String, Object>> Category = service.FAQCategory();
 		
 		model.addAttribute("faqAllList", faqAllList);
 		model.addAttribute("Paging", paging);
+		model.addAttribute("Category", Category);
 		
 		return "customer/support";
 	}
@@ -69,9 +72,11 @@ public class FAQController {
 		map.put("category", category);
 		
 		List<FAQVO> faqOtherList =  service.FAQOtherView(map);
+		List<Map<String, Object>> Category = service.FAQCategory();
 		
 		model.addAttribute("faqOtherList", faqOtherList);
 		model.addAttribute("Paging", paging);
+		model.addAttribute("Category", Category);
 		
 		return "customer/support";
 	}

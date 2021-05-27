@@ -39,10 +39,10 @@
 				<div class="d-flex">
 					<div class="mr-auto"></div>
 					<form action="noticeSearch" method="GET" class="form-inline">
-						<select class="form-control">
-							<option>제목</option>
+						<select class="form-control" id="searchBox" name="searchBox">
+							<option value="title">제목</option>
 						</select>
-						<input type="text" name="title" id="title" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
+						<input type="text" id="keyword" name="keyword" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
 						<button type="submit" class="btn px-3 thm-btn-psd">
 							<i class="fas fa-search"></i>
 						</button>
