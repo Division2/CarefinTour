@@ -81,9 +81,16 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//관리자용 회원목록
 	@Override
-	public List<MemberVO> getMemberList() throws Exception {
-		return dao.getMemberList();
+	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception {
+		return dao.getMemberList(map);
 	}
+	
+	//공지사항 게시물 총 갯수
+		@Override
+		public int MemberTotalCount() throws Exception {
+			return dao.MemberTotalCount();
+		}
+	
 	//회원 정보 상세 조회 
     @Override
     public MemberVO ViewMember(int aid) throws Exception {
@@ -99,6 +106,11 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
     public void delete(String aid) throws Exception {
     	dao.delete(aid);
     }
+    //관리자 회원 등록
+  	@Override
+  	public int AdminSignUp(MemberVO vo) throws Exception {
+  		return dao.AdminSignUp(vo);
+  	}
     
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
