@@ -60,9 +60,6 @@
 		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
 	
-<<<<<<< HEAD
-
-=======
 	<sql id="SearchNotice">
 		<choose>
 			<when test="SearchType != null">
@@ -131,6 +128,7 @@
 	<select id="getmemberSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
 	</select>
+	
 	<sql id="Searchs">
 		<choose>
 			<when test="search != null">
@@ -138,7 +136,6 @@
 			</when>
 		</choose>
 	</sql>
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
     
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
