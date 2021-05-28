@@ -5,8 +5,8 @@
 
 	<!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
-			INSERT INTO packageproduct(ProductName, Theme, Area, TravelCity,s_file_name, StarTravelPeriod, ArrivalTravelPeriod, ReservationStatus, MaxReservation, MinReservation, AdultCount, KidCount, SmallKidCount, AdultPrice, KidPrice, SmallKidPrice, Director, Productcode, Price, OverView, Hit) 
-			VALUES (#{productname}, #{theme}, #{area}, #{travelcity}, #{s_file_name}, #{startravelperiod}, #{arrivaltravelperiod}, 0 , #{maxreservation}, #{minreservation}, 0, 0, 0, #{adultprice}, #{kidprice}, #{smallkidprice}, #{director}, #{productcode}, #{price}, #{overview}, 0)			
+			INSERT INTO packageproduct(ProductName, OverView, Supplies, TravelPlan, StarTravelPeriod, ArrivalTravelPeriod, Hit, Theme, Area, ReservationStatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, s_file_name, Director, flag) 
+			VALUES (#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, 1)
  	</insert>
 	
 	<!-- 여행패키지 출력 -->
@@ -37,7 +37,7 @@
 	<!-- 여행패키지 수정 -->
 	<update id="ProductPackageModify" parameterType="PackageVO">
 		UPDATE packageproduct 
-		SET ProductName = #{productname}, Theme = #{theme} , Area = #{area}, TravelCity = #{travelcity}, s_file_name = #{s_file_name}, StarTravelPeriod = #{startravelperiod}, ArrivalTravelPeriod = #{arrivaltravelperiod}, MaxReservation = #{maxreservation}, MinReservation = #{minreservation}, AdultPrice = #{adultprice}, KidPrice = #{kidprice}, SmallKidPrice = #{smallkidprice}, Director = #{director}, Productcode = #{productcode}, OverView = #{overview}
+		SET ProductName = #{productname}, OverView = #{overview}, Supplies = #{supplies}, TravelPlan = #{travelplan}, StarTravelPeriod = #{startravelperiod}, ArrivalTravelPeriod = #{arrivaltravelperiod}, Theme = #{theme} , Area = #{area}, s_file_name = #{s_file_name}, Director = #{director}
 		WHERE pid = #{pid}
  	</update>
 </mapper>

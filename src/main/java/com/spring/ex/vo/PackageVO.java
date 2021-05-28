@@ -5,40 +5,24 @@ import java.sql.Date;
 public class PackageVO {
 	private int pid;
 	private String productname;
-	private String theme;
-	private String area;
-	private String travelcity;
-	private String s_file_name;
-	private String o_file_name;
+	private String overview;
+	private String supplies;
+	private String travelplan;
 	private Date startravelperiod;
 	private Date arrivaltravelperiod;
+	private int hit;
+	private String theme;
+	private String area;
 	private int reservationstatus;
-	private int maxreservation;
 	private int minreservation;
-	private int adultcount;
-	private int kidcount;
-	private int smallkidcount;
 	private int adultprice;
 	private int kidprice;
 	private int smallkidprice;
+	private String s_file_name;
 	private String director;
 	private Date redate;
-	private String productcode;
-	private int price;
-	private String overview;
-	private int hit;
-	public String getOverview() {
-		return overview;
-	}
-	public void setOverview(String overview) {
-		this.overview = overview;
-	}
-	public int getHit() {
-		return hit;
-	}
-	public void setHit(int hit) {
-		this.hit = hit;
-	}
+	private int flag;
+	
 	public int getPid() {
 		return pid;
 	}
@@ -51,29 +35,23 @@ public class PackageVO {
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
-	public String getTheme() {
-		return theme;
+	public String getOverview() {
+		return overview;
 	}
-	public void setTheme(String theme) {
-		this.theme = theme;
+	public void setOverview(String overview) {
+		this.overview = overview;
 	}
-	public String getArea() {
-		return area;
+	public String getSupplies() {
+		return supplies;
 	}
-	public void setArea(String area) {
-		this.area = area;
+	public void setSupplies(String supplies) {
+		this.supplies = supplies;
 	}
-	public String getS_file_name() {
-		return s_file_name;
+	public String getTravelplan() {
+		return travelplan;
 	}
-	public void setS_file_name(String s_file_name) {
-		this.s_file_name = s_file_name;
-	}
-	public String getO_file_name() {
-		return o_file_name;
-	}
-	public void setO_file_name(String o_file_name) {
-		this.o_file_name = o_file_name;
+	public void setTravelplan(String travelplan) {
+		this.travelplan = travelplan;
 	}
 	public Date getStartravelperiod() {
 		return startravelperiod;
@@ -87,41 +65,35 @@ public class PackageVO {
 	public void setArrivaltravelperiod(Date arrivaltravelperiod) {
 		this.arrivaltravelperiod = arrivaltravelperiod;
 	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public String getTheme() {
+		return theme;
+	}
+	public void setTheme(String theme) {
+		this.theme = theme;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
 	public int getReservationstatus() {
 		return reservationstatus;
 	}
 	public void setReservationstatus(int reservationstatus) {
 		this.reservationstatus = reservationstatus;
 	}
-	public int getMaxreservation() {
-		return maxreservation;
-	}
-	public void setMaxreservation(int maxreservation) {
-		this.maxreservation = maxreservation;
-	}
 	public int getMinreservation() {
 		return minreservation;
 	}
 	public void setMinreservation(int minreservation) {
 		this.minreservation = minreservation;
-	}
-	public int getAdultcount() {
-		return adultcount;
-	}
-	public void setAdultcount(int adultcount) {
-		this.adultcount = adultcount;
-	}
-	public int getKidcount() {
-		return kidcount;
-	}
-	public void setKidcount(int kidcount) {
-		this.kidcount = kidcount;
-	}
-	public int getSmallkidcount() {
-		return smallkidcount;
-	}
-	public void setSmallkidcount(int smallkidcount) {
-		this.smallkidcount = smallkidcount;
 	}
 	public int getAdultprice() {
 		return adultprice;
@@ -141,6 +113,12 @@ public class PackageVO {
 	public void setSmallkidprice(int smallkidprice) {
 		this.smallkidprice = smallkidprice;
 	}
+	public String getS_file_name() {
+		return s_file_name;
+	}
+	public void setS_file_name(String s_file_name) {
+		this.s_file_name = s_file_name;
+	}
 	public String getDirector() {
 		return director;
 	}
@@ -153,22 +131,11 @@ public class PackageVO {
 	public void setRedate(Date redate) {
 		this.redate = redate;
 	}
-	public String getProductcode() {
-		return productcode;
+	public int getFlag() {
+		return flag;
 	}
-	public void setProductcode(String productcode) {
-		this.productcode = productcode;
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	public String getTravelcity() {
-		return travelcity;
-	}
-	public void setTravelcity(String travelcity) {
-		this.travelcity = travelcity;
-	}
+	
 }
