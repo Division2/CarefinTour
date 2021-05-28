@@ -44,30 +44,7 @@ public interface AdminServiceCenterService {
 	//공지사항 검색 게시물 총 갯수
 	public int NoticeSearchTotalCount(String title) throws Exception;
 	
-	//관리자용 회원목록
-	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception;
-	
-	//공지사항 게시물 총 갯수
-	public int MemberTotalCount() throws Exception;
 
-	
-	//관리자용 회원상세보기
-	public MemberVO ViewMember(int aid) throws Exception;
-	
-	//관리자용 회원정보수정
-	public void memberUpdate(MemberVO vo) throws Exception;
-	
-	//관리자용 회원정보 선택삭제
-	public void delete(String aid) throws Exception;
-	
-	//관리자용 회원등록
-	public int AdminSignUp(MemberVO vo) throws Exception;
-	
-	//관리자 회원 검색
-	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception;
-	
-	//1:1 문의 검색 게시물 총 갯수
-	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -132,19 +109,9 @@ public interface AdminServiceCenterService {
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;
 	
-<<<<<<< HEAD
-	//FAQ 카테고리 내용
-
-=======
-	//FAQ 카테고리 조회
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
-	public List<Map<String, Object>> FAQCategory() throws Exception;
-<<<<<<< HEAD
-
 	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
 	
 }
 
-=======
-}
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
+
+
