@@ -279,6 +279,42 @@ public class AdminServiceCenterController {
 
 			}
 	
+	//회원 검색
+	  @RequestMapping(value = "/admin/memberSearch", method = RequestMethod.GET)
+	  	public String memberSearchView(MemberVO vo, HttpServletRequest request, Model model) throws Exception {
+	  		
+	  		String search = request.getParameter("search");
+	  		String keyword = request.getParameter("keyword");
+	  		
+	  		HashMap<String, String> searchMap = new HashMap<String, String>();
+			searchMap.put("search", search);
+			searchMap.put("keyword", keyword);
+			
+	  		int totalCount = service.memberSearchTotalCount(searchMap);
+	  		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	  		
+	  		PagingVO paging = new PagingVO();
+	  		paging.setPageNo(page);
+	  		paging.setPageSize(10);
+	  		paging.setTotalCount(totalCount);
+	  		
+	  		page = (page - 1) * 10;
+	  		
+	  		HashMap<String, Object> map = new HashMap<String, Object>();
+	  		map.put("Page", page);
+	  		map.put("PageSize", paging.getPageSize());
+	  		map.put("search", search);
+	  		map.put("keyword", keyword);
+	  		
+	  		List<MemberVO> List = service.memberSearchList(map);
+	  		
+	  		model.addAttribute("memberList", List);
+	  		model.addAttribute("Paging", paging);
+	  		model.addAttribute("search", search);
+	  		model.addAttribute("keyword", keyword);
+	  		
+	  		return "admin/member/memberlist";
+	  	}	
 		
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
     

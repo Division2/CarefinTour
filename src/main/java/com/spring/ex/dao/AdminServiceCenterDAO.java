@@ -62,6 +62,12 @@ public interface AdminServiceCenterDAO {
 	
 	//회원 등록
 	public int AdminSignUp(MemberVO vo) throws Exception;
+	
+	//회원 검색
+	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception;
+	
+	//회원 검색 게시물 총 갯수
+	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록

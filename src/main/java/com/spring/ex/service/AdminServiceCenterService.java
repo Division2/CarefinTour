@@ -62,6 +62,12 @@ public interface AdminServiceCenterService {
 	
 	//관리자용 회원등록
 	public int AdminSignUp(MemberVO vo) throws Exception;
+	
+	//관리자 회원 검색
+	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception;
+	
+	//1:1 문의 검색 게시물 총 갯수
+	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -127,18 +133,10 @@ public interface AdminServiceCenterService {
 	public FAQVO FAQBoardView(int fId) throws Exception;
 	
 	//FAQ 카테고리 내용
-<<<<<<< HEAD
+
 	public List<Map<String, Object>> FAQCategory() throws Exception;
-}
-=======
+
 	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
-
-	
-
-	
-
-	
-
 	
 }
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
+

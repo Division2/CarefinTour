@@ -113,6 +113,17 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
   		return dao.AdminSignUp(vo);
   	}
     
+  	//관리자 회원 검색
+  	@Override
+  	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception {
+  		return dao.memberSearchList(map);
+  	}
+  	
+  //1:1 문의 검색 게시물 총 갯수
+  	@Override
+  	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+  		return dao.memberSearchTotalCount(searchMap);
+  	}
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
 	//1:1 문의 등록
