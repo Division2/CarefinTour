@@ -60,9 +60,8 @@
 		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
 	
-<<<<<<< HEAD
 
-=======
+
 	<sql id="SearchNotice">
 		<choose>
 			<when test="SearchType != null">
