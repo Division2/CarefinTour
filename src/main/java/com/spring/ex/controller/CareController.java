@@ -58,6 +58,7 @@ public class CareController {
 	public String honeymoon() {
 		return "theme/honeymoon";
 	}
+	
 	//호텔 예약
 	@RequestMapping("hotelreservation")
 	public String hotelreservation() {
@@ -67,6 +68,7 @@ public class CareController {
 	public String hoteldetail() {
 		return "hotel/hoteldetail";
 	}
+	
 	//여행 후기(탑앵글러, 여행포토)
 	@RequestMapping("topangler")
 	public String topangler() {
@@ -118,6 +120,7 @@ public class CareController {
 	public String weatherinfo() {
 		return "travelinfo/weatherinfo";
 	}
+	
 	//고객센터(공지사항, 문의하기, 자주 찾는 질문(FAQ)
 	@RequestMapping("support")
 	public String support() {
@@ -151,6 +154,7 @@ public class CareController {
 	public String inquiryview() {
 		return "customer/inquiryView";
 	}
+	
 	//회원가입 도로명주소 API
 	@RequestMapping("jusoPopup")
 	public String findJuso() {
@@ -161,6 +165,7 @@ public class CareController {
 	public String findJuso2() {
 		return "mypage/jusoPopup";
 	}
+	
 	//하단 Information(회사 개요, 여행 약관(국내, 해외) 여행자 보험)
 	@RequestMapping("company")
 	public String company() {
@@ -178,6 +183,7 @@ public class CareController {
 	public String insurance() {
 		return "information/insurance";
 	}
+	
 	//마이페이지(마이페이지, 예약내역, 마일리지, 정보수정, 1:1문의, 회원 탈퇴)
 	@RequestMapping("mypage")
 	public String mypage() {
@@ -214,6 +220,7 @@ public class CareController {
 	public String admin_main() {
 		return "admin/index";
 	}
+	
 	//사이트 관리(배너 관리, 호텔, 패키지, 테마 패키지, 여행 정보)
 	@RequestMapping("admin/banner")
 	public String admin_banner() {
@@ -231,14 +238,11 @@ public class CareController {
 	public String admin_insertpackage() {
 		return "admin/site/insertpackage";
 	}
-	@RequestMapping("admin/theme")
-	public String admin_theme() {
-		return "admin/site/themeproduct";
-	}
 	@RequestMapping("admin/info")
 	public String admin_info() {
 		return "admin/site/travelinfo";
 	}
+	
 	//회원 관리
 	@RequestMapping("admin/member")
 	public String admin_member() {
@@ -249,6 +253,7 @@ public class CareController {
 	public String admin_memberView() {
 		return "admin/member/memberView";
 	}
+	
 	//주문 관리
 	@RequestMapping("admin/order")
 	public String admin_order() {
@@ -258,6 +263,7 @@ public class CareController {
 	public String admin_addorder() {
 		return "admin/order/addorder";
 	}
+	
 	//통계(방문자, 게시글 작성 수, 기간별 매출)
 	@RequestMapping("admin/board")
 	public String admin_boardstatistics() {
@@ -283,6 +289,7 @@ public class CareController {
 	public String admin_visitstatistics() {
 		return "admin/statistics/visitstatistics";
 	}
+	
 	//고객센터(공지사항, 1:1문의, FAQ 목록)
 	@RequestMapping("admin/notice")
 	public String admin_notice() {
@@ -296,6 +303,7 @@ public class CareController {
 	public String admin_faq() {
 		return "admin/customer/faq";
 	}
+	
 	//고객센터 등록 & 수정 (공지사항, FAQ 목록)
 	@RequestMapping("admin/noticeWrite")
 	public String admin_noticeWrite() {
@@ -313,10 +321,4 @@ public class CareController {
 	public String admin_faqModify() {
 		return "admin/customer/faqModify";
 	}
-	//호텔예약
-	@RequestMapping("detailresvation")
-	public String detailresvation() {
-		return "product/detailresvation";
-	}
-	
 }

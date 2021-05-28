@@ -73,10 +73,12 @@
 						    },
 			                success: function(jdata){
 			                    if(jdata = 1) {
-			                        location.replace("order")
+			                    	 location.replace("order")
+			                    	  
 			                    }
 			                    else{
-			                        alert("삭제 실패(문의전화 : 010-0000-0000)");
+			                      
+			                    	alert("삭제 실패(문의전화 : 010-0000-0000)");
 			                    }
 			                }
 						});
@@ -160,10 +162,10 @@
 								<td>${AdminOrderList.getStartdate()}</td>
 								<td>${AdminOrderList.getPayment()}</td>
 								<c:choose>
-									<c:when test="${AdminOrderList.status eq 0}">
+									<c:when test="${AdminOrderList.paymentstatus eq 0}">
 										<td><span>결제대기</span></td>
 									</c:when>
-									<c:when test="${AdminOrderList.status eq 1}">
+									<c:when test="${AdminOrderList.paymentstatus eq 1}">
 										<td><span>결제보류</span></td>
 									</c:when>
 									<c:otherwise>

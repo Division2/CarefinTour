@@ -52,13 +52,21 @@
 	
 	<!-- 공지사항 검색 -->
 	<select id="NoticeSearchView" resultType="NoticeBoardVO">
-		SELECT * FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM notice <include refid="SearchNotice"></include> ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 공지사항 검색 게시물 총 갯수 -->
 	<select id="getNoticeSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%')
+		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
+	
+	<sql id="SearchNotice">
+		<choose>
+			<when test="search != null">
+				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</sql>
 	
 	<!-- 회원목록 -->
 	<select id="memberList" resultType="MemberVO">
@@ -120,6 +128,7 @@
 	<select id="getmemberSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
 	</select>
+	
 	<sql id="Searchs">
 		<choose>
 			<when test="search != null">
@@ -226,17 +235,9 @@
 		SELECT * FROM faq <include refid="faqCategory"></include> LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<sql id="faqCategory">
-		<choose>
-			<when test="Category != All">
-				WHERE Category = #{Category}
-			</when>
-		</choose>
-	</sql>
-
 	<!-- FAQ 총 갯수 -->
 	<select id="getFAQTotalCount" resultType="int">
-		SELECT COUNT(*) FROM faq
+		SELECT COUNT(*) FROM faq <include refid="faqCategory"></include>
 	</select>
 	
 	<!-- FAQ 내용 -->
@@ -248,4 +249,10 @@
 	<select id="getFAQCategory" resultType="hashmap">
 		SELECT * FROM faq_category
 	</select>
+	
+	<sql id="faqCategory">
+		<if test="Category != null and Category != '' and Category != 'All'">
+			WHERE Category = #{Category}
+		</if>
+	</sql>
 </mapper>

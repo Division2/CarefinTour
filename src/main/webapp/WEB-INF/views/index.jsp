@@ -383,62 +383,36 @@
 		<section class="blog-one">
 			<div class="container">
 				<div class="block-title text-center">
-					<p>포토 리뷰</p>
-					<h3>여행 포토 리뷰</h3>
+					<p>TRAVEL PHOTO REVIEW</p>
+					<h3>최신 인기 여행 사진</h3>
 				</div>
 				<div class="row">
-					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms"
-						data-wow-delay="000ms">
+					<c:forEach items="${NewTravelPhotoList }" var="NewTravelPhotoList">
+					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
 						<div class="blog-one__single">
 							<div class="blog-one__image">
-								<img src='<c:url value="/resources/images/blog/fish1.png"/>' alt="">
-								<a href="news-details.html"><i class="fa fa-long-arrow-alt-right"></i></a>
+								<c:choose>
+									<c:when test="${NewTravelPhotoList.s_file_name eq null}">
+										<img src='<c:url value="/resources/images/noImage.png"/>' width="200" height="200">
+									</c:when>
+									<c:otherwise>
+										<img src='<c:url value="/resources/images/TravelPhotoReview/${NewTravelPhotoList.s_file_name}"/>' alt="" width="200" height="200">
+									</c:otherwise>
+								</c:choose>
+								<a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="fa fa-long-arrow-alt-right"></i></a>
 							</div>
 							<div class="blog-one__content">
 								<ul class="list-unstyled blog-one__meta">
-									<li><a href="news-details.html"><i class="far fa-user-circle"></i>김요한</a></li>
-									<li><a href="news-details.html"><i class="far fa-comments"></i>2 </a></li>
+									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-user-circle"></i>${NewTravelPhotoList.userId }</a></li>
+									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-eye"></i><c:out value="${NewTravelPhotoList.hit}" /></a></li>
 								</ul>
 								<h3>
-									<a href="news-details.html">이렇게 큰 물고기는 처음 잡아 봐요!</a>
+									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${NewTravelPhotoList.content }</a>
 								</h3>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms">
-						<div class="blog-one__single">
-							<div class="blog-one__image">
-								<img src='<c:url value="/resources/images/blog/pic.png"/>' alt="">
-								<a href="news-details.html"><i class="fa fa-long-arrow-alt-right"></i></a>
-							</div>
-							<div class="blog-one__content">
-								<ul class="list-unstyled blog-one__meta">
-									<li><a href="news-details.html"><i class="far fa-user-circle"></i>박성동</a></li>
-									<li><a href="news-details.html"><i class="far fa-comments"></i> 2</a></li>
-								</ul>
-								<h3>
-									<a href="news-details.html">좋은 추억 많이 만들고 가요!</a>
-								</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
-						<div class="blog-one__single">
-							<div class="blog-one__image">
-								<img src='<c:url value="/resources/images/blog/pic2.png"/>' alt="">
-								<a href="news-details.html"><i class="fa fa-long-arrow-alt-right"></i></a>
-							</div>
-							<div class="blog-one__content">
-								<ul class="list-unstyled blog-one__meta">
-									<li><a href="news-details.html"><i class="far fa-user-circle"></i> 이인호</a></li>
-									<li><a href="news-details.html"><i class="far fa-comments"></i> 2 </a></li>
-								</ul>
-								<h3>
-									<a href="news-details.html">여운이 많이 남는 여행이였어요..</a>
-								</h3>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</section>

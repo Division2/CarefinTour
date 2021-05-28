@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.AdminServiceCenterService;
 import com.spring.ex.vo.FAQVO;
@@ -26,10 +25,7 @@ import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
-import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
-
-
 
 @Controller
 public class AdminServiceCenterController {
@@ -55,7 +51,6 @@ public class AdminServiceCenterController {
 		}
 	}
 	
-
 	//공지사항 출력	
 	@RequestMapping(value = "/admin/notice", method = RequestMethod.GET)
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
@@ -84,34 +79,42 @@ public class AdminServiceCenterController {
 	}
 	
 	//공지사항 검색
-	@RequestMapping(value = "/admin/noticeSearch", method = RequestMethod.GET)
-	public String NoticeSearchView(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
-		
-		String title = request.getParameter("title");
-		int totalCount = service.NoticeSearchTotalCount(title);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		map.put("title", title);
-		
-		List<NoticeBoardVO> List = service.NoticeSearchList(map);
-		
-		//페이지를 담아줘야행
-		model.addAttribute("NoticeList", List);
-		model.addAttribute("Paging", paging);
-		model.addAttribute("Title", title);
-		
-		return "admin/customer/notice";
-	}
+		@RequestMapping(value = "/admin/noticeSearch", method = RequestMethod.GET)
+		public String NoticeSearchView(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
+			
+			String search = request.getParameter("search");
+			String keyword = request.getParameter("keyword");
+			
+			HashMap<String, String> searchMap = new HashMap<String, String>();
+			searchMap.put("search", search);
+			searchMap.put("keyword", keyword);
+			
+			int totalCount = service.NoticeSearchTotalCount(searchMap);
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			page = (page - 1) * 10;
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());
+			map.put("search", search);
+			map.put("keyword", keyword);
+			
+			List<NoticeBoardVO> List = service.NoticeSearchList(map);
+			
+			//페이지를 담아줘야행
+			model.addAttribute("NoticeList", List);
+			model.addAttribute("Paging", paging);
+			model.addAttribute("search", search);
+			model.addAttribute("keyword", keyword);
+			
+			return "admin/customer/notice";
+		}
 	
 	//공지사항 게시글 내용
 	@RequestMapping(value = "/admin/noticeView", method = RequestMethod.GET)
@@ -150,7 +153,6 @@ public class AdminServiceCenterController {
 			out.close();
 		}
 	}
-	
 	
 	//공지사항 수정 내용
 	@RequestMapping(value = "/admin/noticeModifyView", method = RequestMethod.GET)
@@ -196,126 +198,7 @@ public class AdminServiceCenterController {
         }
         return "redirect:notice";
     }
-    
-  //관리자용 회원 목록
-  	@RequestMapping(value = "admin/member", method = RequestMethod.GET)
-  	public String listGET(HttpSession session, Model model, HttpServletRequest request) throws Exception {
-  		// 1. 관리자 세션 제어
-  		int totalCount = service.MemberTotalCount();
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-  		MemberVO vo = (MemberVO) session.getAttribute("member");
-  		String id = vo.getUserID();
-  		if (id == null || !(id.equals("1234"))) {
-  			logger.info("C: 관리자아닌 접근 ID - " + id);
-  			return "redirect:/main";
-  		}
-
-  		List<MemberVO> List = service.getMemberList(map);
-
-  		model.addAttribute("memberList",List);
-		model.addAttribute("Paging", paging);
-		
-  		// 4. 페이지이동
-  		return "admin/member/memberlist";
-  	}
-  	
-	 //회원 상세정보 조회
-	    @RequestMapping(value = "/admin/memberView", method = RequestMethod.GET)
-	    public String memberView(Model model, HttpServletRequest request) throws Exception{
-	        // 회원 정보를 model에 저장
-	    	int aid = Integer.parseInt(request.getParameter("AID"));
-	    	System.out.println(aid);
-	    	MemberVO memberVO = service.ViewMember(aid);
-	    	
-	        model.addAttribute("mDetail", memberVO);
-	        //System.out.println("클릭한 아이디 확인 : "+userId);
-	        //logger.info("클릭한 아이디 : "+UserID);
-	        // member_view.jsp로 포워드
-	        return "admin/member/memberView";
-	    }
   
-	 //회원 정보 수정
-	    @RequestMapping(value = "/admin/memberUpdate", method = RequestMethod.POST)
-		public String memberUpdate(MemberVO vo) throws Exception {
-			service.memberUpdate(vo);
-			return "redirect:member";
-		}
-	    
-	//회원 정보 선택삭제
-	    @RequestMapping(value="/admin/delete")
-	    public String memberdelete(HttpServletRequest request) throws Exception{
-	    	String[] ajaxMsg = request.getParameterValues("valueArr");
-	    	int size = ajaxMsg.length;
-	    	for(int i=0; i<size; i++) {
-	    		service.delete(ajaxMsg[i]);
-	    	}
-	    	return "redirect:member";
-	    }
-	   
-	//회원 등록
-		@RequestMapping(value = "/admin/AdminSignUp", method = RequestMethod.POST)
-		public void postSignUp(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-	
-			int result = service.AdminSignUp(vo);
-			
-			if (result == 1) 
-
-				response.setContentType("text/html;charset=utf-8");
-				PrintWriter out = response.getWriter();
-				
-				out.println("<script>location.href='main';</script>");
-
-			}
-	
-	//회원 검색
-	  @RequestMapping(value = "/admin/memberSearch", method = RequestMethod.GET)
-	  	public String memberSearchView(MemberVO vo, HttpServletRequest request, Model model) throws Exception {
-	  		
-	  		String search = request.getParameter("search");
-	  		String keyword = request.getParameter("keyword");
-	  		
-	  		HashMap<String, String> searchMap = new HashMap<String, String>();
-			searchMap.put("search", search);
-			searchMap.put("keyword", keyword);
-			
-	  		int totalCount = service.memberSearchTotalCount(searchMap);
-	  		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-	  		
-	  		PagingVO paging = new PagingVO();
-	  		paging.setPageNo(page);
-	  		paging.setPageSize(10);
-	  		paging.setTotalCount(totalCount);
-	  		
-	  		page = (page - 1) * 10;
-	  		
-	  		HashMap<String, Object> map = new HashMap<String, Object>();
-	  		map.put("Page", page);
-	  		map.put("PageSize", paging.getPageSize());
-	  		map.put("search", search);
-	  		map.put("keyword", keyword);
-	  		
-	  		List<MemberVO> List = service.memberSearchList(map);
-	  		
-	  		model.addAttribute("memberList", List);
-	  		model.addAttribute("Paging", paging);
-	  		model.addAttribute("search", search);
-	  		model.addAttribute("keyword", keyword);
-	  		
-	  		return "admin/member/memberlist";
-	  	}	
-		
     //---------------------------------------------------------1:1문의 시작------------------------------------------------------------
     
   //1:1 문의 작성
@@ -575,7 +458,8 @@ public class AdminServiceCenterController {
 	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
 		
 		String faqCategory = request.getParameter("Category");
-		int totalCount = service.FAQTotalCount();
+		System.out.println(faqCategory);
+		int totalCount = service.FAQTotalCount(faqCategory);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -591,7 +475,7 @@ public class AdminServiceCenterController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
-		map.put("faqCategory", faqCategory);
+		map.put("Category", faqCategory);
 		
 		List<FAQVO> faqList =  service.FAQView(map);
 		

@@ -43,31 +43,9 @@ public interface AdminServiceCenterDAO {
 	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception;
 	
 	//공지사항 검색 게시물 총 갯수
-	public int NoticeSearchTotalCount(String title) throws Exception;
+	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
+
 	
-	//회원정보리스트 출력
-	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception;
-	
-	//공지사항 게시물 총 갯수
-	public int MemberTotalCount() throws Exception;
-	
-	//회원정보 상세보기
-	public MemberVO ViewMember(int aid) throws Exception;
-	
-	//회원정보 수정
-	public void memberUpdate(MemberVO vo) throws Exception;
-	
-	//회원정보 선택삭제
-	public void delete(String aid) throws Exception;
-	
-	//회원 등록
-	public int AdminSignUp(MemberVO vo) throws Exception;
-	
-	//회원 검색
-	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception;
-	
-	//회원 검색 게시물 총 갯수
-	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -127,7 +105,7 @@ public interface AdminServiceCenterDAO {
 	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception;
 	
 	//자주 찾는 질문 총 갯수
-	public int FAQTotalCount() throws Exception;
+	public int FAQTotalCount(String Category) throws Exception;
 	
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;

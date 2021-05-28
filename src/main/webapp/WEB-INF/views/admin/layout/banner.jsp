@@ -25,13 +25,7 @@
 	<li class="nav-item">
 		<a class="nav-link" href="packageproduct">
 			<i class="fas fa-fw fa-table"></i>
-			<span>패키지 상품</span>
-		</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="theme">
-			<i class="fas fa-fw fa-table"></i>
-			<span>테마별 상품</span>
+			<span>패키지 &#38; 테마</span>
 		</a>
 	</li>
 	<li class="nav-item">

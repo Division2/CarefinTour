@@ -54,7 +54,7 @@
 										<img src='<c:url value="/resources/images/noImage.png"/>' width="200" height="200">
 									</c:when>
 									<c:otherwise>
-										<img src='<c:url value="/resources/images/UploadImages/${TravelPhotoList.s_file_name}"/>' alt="" width="200" height="200">
+										<img src='<c:url value="/resources/images/TravelPhotoReview/${TravelPhotoList.s_file_name}"/>' alt="" width="200" height="200">
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -62,10 +62,10 @@
 								<h3>
 									<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${TravelPhotoList.title}" /></a>
 								</h3>
-								<p><c:out value="${TravelPhotoList.userId}" /></p>
+								<p><c:out value="${TravelPhotoList.content}" /></p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> <c:out value="${TravelPhotoList.hit}" /></a></li>
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> <fmt:formatDate value="${TravelPhotoList.redate}" pattern="yyyy-MM-dd" /></a></li>
+									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-user-circle"></i> <c:out value="${TravelPhotoList.userId}" /></a></li>
+									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-clock"></i> <fmt:formatDate value="${TravelPhotoList.redate}" pattern="yyyy-MM-dd" /></a></li>
 								</ul>
 							</div>
 						</div>

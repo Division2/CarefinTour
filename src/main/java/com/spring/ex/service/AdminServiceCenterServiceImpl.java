@@ -76,54 +76,11 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//공지사항 검색 게시물 총 갯수
 	@Override
-	public int NoticeSearchTotalCount(String title) throws Exception {
-		return dao.NoticeSearchTotalCount(title);
+	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.NoticeSearchTotalCount(searchMap);
 	}
 	
-	//관리자용 회원목록
-	@Override
-	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception {
-		return dao.getMemberList(map);
-	}
-	
-	//공지사항 게시물 총 갯수
-		@Override
-		public int MemberTotalCount() throws Exception {
-			return dao.MemberTotalCount();
-		}
-	
-	//회원 정보 상세 조회 
-    @Override
-    public MemberVO ViewMember(int aid) throws Exception {
-        return dao.ViewMember(aid);
-    }
-    //회원 정보 수정
-    @Override
-    public void memberUpdate(MemberVO vo) throws Exception {
-    	dao.memberUpdate(vo);
-    }
-    //회원 정보 선택삭제
-    @Override
-    public void delete(String aid) throws Exception {
-    	dao.delete(aid);
-    }
-    //관리자 회원 등록
-  	@Override
-  	public int AdminSignUp(MemberVO vo) throws Exception {
-  		return dao.AdminSignUp(vo);
-  	}
-    
-  	//관리자 회원 검색
-  	@Override
-  	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception {
-  		return dao.memberSearchList(map);
-  	}
-  	
-  //1:1 문의 검색 게시물 총 갯수
-  	@Override
-  	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
-  		return dao.memberSearchTotalCount(searchMap);
-  	}
+
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
 	//1:1 문의 등록
@@ -237,8 +194,8 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		
 	//자주 찾는 질문 총 갯수
 	@Override
-	public int FAQTotalCount() throws Exception {
-		return dao.FAQTotalCount();
+	public int FAQTotalCount(String Category) throws Exception {
+		return dao.FAQTotalCount(Category);
 	}	
 	
 	//FAQ 내용

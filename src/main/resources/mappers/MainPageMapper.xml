@@ -3,7 +3,7 @@
 
 <mapper namespace="com.spring.ex.MainPageMapper">
 
-	<select id="">
+	<select id="NewTravelPhotoList" resultType="TravelPhotoVO">
 		SELECT * FROM photoreview WHERE reDate BETWEEN CURDATE()-7 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 3
 	</select>
 </mapper>
