@@ -116,6 +116,18 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
   	public int AdminSignUp(MemberVO vo) throws Exception {
   		return sqlSession.insert(namespace + ".AdminMemberSignUp", vo);
   	}
+  	
+	//회원 검색
+	@Override
+	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".memberSearchView", map);
+	}
+	
+	//1:1 문의 검색 게시물 총 갯수
+	@Override
+	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return sqlSession.selectOne(namespace + ".getmemberSearchTotalCount", searchMap);
+		}
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	
 	//1:1 문의 등록

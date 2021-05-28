@@ -111,6 +111,23 @@
 			#{Mileage})
     </insert>
     
+    <!-- 회원 검색 -->
+	<select id="memberSearchView" resultType="MemberVO">
+		SELECT * FROM account  WHERE UserID LIKE CONCAT('%', #{keyword}, '%') OR Name LIKE CONCAT('%', #{keyword} , '%') OR ORDER BY AID DESC  LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 회원 검색 게시물 총 갯수 -->
+	<select id="getmemberSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
+	</select>
+	<sql id="Searchs">
+		<choose>
+			<when test="search != null">
+				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</sql>
+    
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
 		INSERT INTO inquiry(Category, UserID, Name, Phone, Title, Content, Status) VALUES (#{category}, #{userId}, #{name}, #{phone}, #{title}, #{content}, 0)

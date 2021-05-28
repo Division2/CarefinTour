@@ -81,6 +81,7 @@
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
 				<!-- 상단 헤더 부분 -->			
+				
 				<!-- 본문 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -88,19 +89,22 @@
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col-sm-2">
-							<select class="form-control">
-								<option>아이디</option>
-								<option>이름</option>
+						<div class="col-sm-8">
+						<form action="memberSearch" role="form" method="GET" class="form-inline">
+							<select class="form-control" id="search" name="search">
+								<option value="UserID">아이디</option>
+								<option value="Name">이름</option>
 							</select>
-						</div>					
-						<div class="col-sm-4">
-							<input type="text" placeholder="회원 아이디를 입력하세요.">
-							<button type="button" class="btn px-3 btn-primary">
+							<div class="col-sm-4">
+							<input type="text" id="keyword" name="keyword" placeholder="회원 아이디를 입력하세요.">
+							<button type="submit" class="btn px-3 btn-primary">
 								<i class="fas fa-search"></i>
 							</button>
+							</div>
+						</form>
 						</div>
-						<div class="col-sm-2">
+						
+						<div class="col-sm-4">
 							<div class="d-flex">
 								<div class="ml-auto">
 									<button class="btn btn-primary" data-toggle="modal" data-target="#AdminSignUp">회원등록</button>
