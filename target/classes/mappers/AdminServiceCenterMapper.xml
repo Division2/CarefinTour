@@ -209,17 +209,9 @@
 		SELECT * FROM faq <include refid="faqCategory"></include> LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<sql id="faqCategory">
-		<choose>
-			<when test="Category != All">
-				WHERE Category = #{Category}
-			</when>
-		</choose>
-	</sql>
-
 	<!-- FAQ 총 갯수 -->
 	<select id="getFAQTotalCount" resultType="int">
-		SELECT COUNT(*) FROM faq
+		SELECT COUNT(*) FROM faq <include refid="faqCategory"></include>
 	</select>
 	
 	<!-- FAQ 내용 -->
@@ -231,4 +223,10 @@
 	<select id="getFAQCategory" resultType="hashmap">
 		SELECT * FROM faq_category
 	</select>
+	
+	<sql id="faqCategory">
+		<if test="Category != null and Category != '' and Category != 'All'">
+			WHERE Category = #{Category}
+		</if>
+	</sql>
 </mapper>

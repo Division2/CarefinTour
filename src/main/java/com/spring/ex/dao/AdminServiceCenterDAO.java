@@ -121,7 +121,7 @@ public interface AdminServiceCenterDAO {
 	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception;
 	
 	//자주 찾는 질문 총 갯수
-	public int FAQTotalCount() throws Exception;
+	public int FAQTotalCount(String Category) throws Exception;
 	
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;

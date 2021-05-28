@@ -230,8 +230,8 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//자주 찾는 질문 총 갯수
 	@Override
-	public int FAQTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace + ".getFAQTotalCount");
+	public int FAQTotalCount(String Category) throws Exception {
+		return sqlSession.selectOne(namespace + ".getFAQTotalCount", Category);
 	}
 	
 	//FAQ 내용

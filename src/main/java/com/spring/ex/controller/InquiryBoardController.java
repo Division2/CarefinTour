@@ -80,7 +80,6 @@ public class InquiryBoardController {
 		return "customer/inquiry";
 	}
 	
-	
 	//1:1 문의 검색
 	@RequestMapping(value = "/inquirySearch", method = RequestMethod.GET)
 	public String NoticeSearchView(InquiryVO vo, HttpServletRequest request, Model model) throws Exception {

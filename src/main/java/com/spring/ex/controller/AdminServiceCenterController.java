@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.AdminServiceCenterService;
 import com.spring.ex.vo.FAQVO;
@@ -26,10 +25,7 @@ import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
-import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
-
-
 
 @Controller
 public class AdminServiceCenterController {
@@ -55,7 +51,6 @@ public class AdminServiceCenterController {
 		}
 	}
 	
-
 	//공지사항 출력	
 	@RequestMapping(value = "/admin/notice", method = RequestMethod.GET)
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
@@ -150,7 +145,6 @@ public class AdminServiceCenterController {
 			out.close();
 		}
 	}
-	
 	
 	//공지사항 수정 내용
 	@RequestMapping(value = "/admin/noticeModifyView", method = RequestMethod.GET)
@@ -539,7 +533,8 @@ public class AdminServiceCenterController {
 	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
 		
 		String faqCategory = request.getParameter("Category");
-		int totalCount = service.FAQTotalCount();
+		System.out.println(faqCategory);
+		int totalCount = service.FAQTotalCount(faqCategory);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -555,7 +550,7 @@ public class AdminServiceCenterController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
-		map.put("faqCategory", faqCategory);
+		map.put("Category", faqCategory);
 		
 		List<FAQVO> faqList =  service.FAQView(map);
 		

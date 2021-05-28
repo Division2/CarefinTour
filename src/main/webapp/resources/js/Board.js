@@ -858,7 +858,7 @@ function orderWrite() {
 
 /* 관리자 FAQ 카테고리별 게시글 출력 */
 function AdminFaqCategory() {
-	var param = {"Category":$("#faqCategory option:selected").val()};
+	var param = {"Category":$("#Category option:selected").val()};
 	
 	$.ajax({
 		url: "faq",
@@ -866,7 +866,7 @@ function AdminFaqCategory() {
 		data: param,
 		success: function(data) {
 			if (data != 1) {
-				location.href="Category=?";
+				$('#CategoryChanged').submit();
 			}
 		},
 		error: function() {

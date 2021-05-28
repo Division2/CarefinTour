@@ -38,16 +38,15 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-2">
-						<form action="faq" role="form" method="GET" class="form-inline">
-							<select class="form-control" id="faqCategory" name="faqCategory" onchange="AdminFaqCategory()">
+						<form action="faq" role="form" method="GET" id="CategoryChanged" name="CategoryChanged" class="form-inline">
+							<select class="form-control" id="Category" name="Category" onchange="AdminFaqCategory()">
 								<option value="All">전체</option>
 								<c:forEach items="${Category}" var="Category">
-									<option value="${Category.Category}">${Category.Category}</option>
+									<option value="${Category.Category}" <c:if test="${param.Category == Category.Category}">selected</c:if>>${Category.Category}</option>
 								</c:forEach>
 							</select>
 							</form>	
 						</div>
-						
 						<div class="col-sm-6"></div>
 						<div class="col-sm-4">
 							<div class="d-flex">
@@ -78,7 +77,7 @@
 								<th>답변</th>
 							</tr>
 						</thead>
-							<tbody id="sex">
+							<tbody>
 							<c:forEach items="${faqList}" var="faqList">
 								<tr>
 									<th><input type="checkbox"name="RowCheck" value="${faqList.fId }"></th>
@@ -94,17 +93,17 @@
 					<nav aria-label="Page navigation">
 						<ul class="pagination justify-content-center">
 							<c:choose>
-								<c:when test="${Title ne null }">
+								<c:when test="${Category ne null && param.Category ne null}">
 									<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 									<c:choose>
 										<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 											<li class="page-item disabled">
-												<a class="page-link" href="faqOther?category=${param.category }&page=${Paging.prevPageNo}">Previus</a>
+												<a class="page-link" href="faq?Category=${param.Category }&page=${Paging.prevPageNo}">Previus</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item">
-												<a class="page-link" href="faqOther?category=${param.category }&page=${Paging.prevPageNo}">Previus</a>
+												<a class="page-link" href="faq?Category=${param.Category }&page=${Paging.prevPageNo}">Previus</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -113,12 +112,12 @@
 										<c:choose>
 											<c:when test="${i eq Paging.pageNo }">
 												<li class="page-item disabled">
-													<a class="page-link" href="faqOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+													<a class="page-link" href="faq?Category=${param.Category }&page=${i}"><c:out value="${i }"/></a>
 												</li>
 											</c:when>
 											<c:otherwise>
 												<li class="page-item">
-													<a class="page-link" href="faqOther?category=${param.category }&page=${i}"><c:out value="${i }"/></a>
+													<a class="page-link" href="faq?Category=${param.Category }&page=${i}"><c:out value="${i }"/></a>
 												</li>
 											</c:otherwise>
 										</c:choose>
@@ -127,12 +126,12 @@
 									<c:choose>
 										<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 											<li class="page-item disabled">
-												<a class="page-link" href="faqOther?category=${param.category }&page=${Paging.nextPageNo}">Next</a>
+												<a class="page-link" href="faq?Category=${param.Category }&page=${Paging.nextPageNo}">Next</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item">
-												<a class="page-link" href="faqOther?category=${param.category }&page=${Paging.nextPageNo}">Next</a>
+												<a class="page-link" href="faq?Category=${param.Category }&page=${Paging.nextPageNo}">Next</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
