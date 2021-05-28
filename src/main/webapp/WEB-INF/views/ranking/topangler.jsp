@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="features-one__title" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner.jpg"/>);">
+		<section class="features-one__title" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner.png"/>);">
 			<div class="container">
 				<div class="block-title text-center">
 					<p>TopAngler TOP 100</p>
