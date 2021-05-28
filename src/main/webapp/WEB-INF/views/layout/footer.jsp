@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="footer-widget__column footer-widget__about">
 						<a href="main" class="footer-widget__logo">
-							<img src='<c:url value="/resources/images/Logo.png"/>' width="123" alt="">
+							<img src='<c:url value="/resources/images/bottom_Logo.png"/>' width="100" alt="">
 						</a>
 						<p>대한민국 최고의 여행사!<br>당신의 여행 지킴이 케어핀투어</p>
 						<a href="mailto:ljpk@kyungmin.ac.kr">ljpk@kyungmin.ac.kr</a><br>
@@ -24,10 +24,10 @@
 					<div class="footer-widget__column">
 						<h3 class="footer-widget__title">Company</h3>
 						<ul class="footer-widget__links-list list-unstyled">
-							<li><a href="#">사업자등록번호 : 123-45-67890</a></li>
-							<li><a href="#">관광사업자등록번호 : 제2021-123456호</a></li>
-							<li><a href="#">E-mail : ljpk@gmail.com</a></li>
-							<li><a href="#">주소 : 경기도 의정부시 서부로 545 효행관 401호</a></li>
+							<li><a href="javascript:void(0)">사업자등록번호 : 123-45-67890</a></li>
+							<li><a href="javascript:void(0)">관광사업자등록번호 : 제2021-123456호</a></li>
+							<li><a href="javascript:void(0)">E-mail : ljpk@gmail.com</a></li>
+							<li><a href="javascript:void(0)">주소 : 경기도 의정부시 서부로 545 효행관 401호</a></li>
 						</ul>
 					</div>
 					<div class="footer-widget__column footer-widget__links">
