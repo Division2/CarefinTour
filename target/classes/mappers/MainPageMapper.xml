@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.MainPageMapper">
+
+	<select id="">
+		SELECT * FROM photoreview WHERE reDate BETWEEN CURDATE()-7 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 3
+	</select>
+</mapper>

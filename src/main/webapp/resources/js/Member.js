@@ -205,6 +205,112 @@ function Register() {
 	$( "#form" ).submit();
 }
 
+/* 회원가입 유효성 검사 */
+function adminsubmit() {
+	var UserID = $("#UserID").val();
+	var Password = $("#Password").val();
+	var Name = $("#Name").val();
+	var Email = $("#Email").val();
+	var Phone = $("#Phone").val();
+	var Birth = $("#Birth").val();
+	var Address = $("#Address").val();
+	var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,20}$/.test(Password);			//영문, 숫자
+	var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,20}$/.test(Password);	//영문, 특수문자
+	var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,20}$/.test(Password);		//특수문자, 숫자
+	
+	if(!UserID) {
+		swal({
+			title: "회원가입",
+			text: "아이디가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Password) {
+		swal({
+			title: "회원가입",
+			text: "비밀번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!(check1 || check2 || check3)) {
+		swal({
+			title: "비밀번호 확인",
+			text: "사용할 수 없는 비밀번호입니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(/(\w)\1\1/.test(Password)) {
+		swal({
+			title: "비밀번호 확인",
+			text: "같은 문자를 3회 이상 사용하실 수 없습니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(Password.search(UserID)>-1) {
+		swal({
+			title: "비밀번호 확인",
+			text: "비밀번호에 아이디가 포함되어 있습니다.",
+			icon: "error",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Name) {
+		swal({
+			title: "회원가입",
+			text: "이름이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Email) {
+		swal({
+			title: "회원가입",
+			text: "이메일이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Phone) {
+		swal({
+			title: "회원가입",
+			text: "휴대폰 번호가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Birth) {
+		swal({
+			title: "회원가입",
+			text: "생년월일이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!Address) {
+		swal({
+			title: "회원가입",
+			text: "주소가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	$( "#form" ).submit();
+}
+
 /* 휴대폰 번호 입력 */
 $(document).ready(function() {
 	$("#Phone").keyup(function() {
@@ -336,6 +442,8 @@ function MyInfoUpdate() {
 		})
 	}
 }
+
+
 
 /* 회원 탈퇴 */
 $(document).ready(function() {

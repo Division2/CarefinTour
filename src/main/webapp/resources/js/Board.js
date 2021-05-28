@@ -855,3 +855,27 @@ function orderWrite() {
 	
 	$("#OrderWrite").submit();
 }
+
+/* 관리자 FAQ 카테고리별 게시글 출력 */
+function AdminFaqCategory() {
+	var param = {"Category":$("#faqCategory option:selected").val()};
+	
+	$.ajax({
+		url: "faq",
+		type: "POST",
+		data: param,
+		success: function(data) {
+			if (data != 1) {
+				location.href="Category=?";
+			}
+		},
+		error: function() {
+			swal({
+				title: "케어핀투어",
+				text: "문제가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
+				icon: "error",
+				timer: 3000
+			});
+		}
+	});
+}

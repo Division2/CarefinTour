@@ -2,6 +2,7 @@ package com.spring.ex.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -45,7 +46,10 @@ public interface AdminServiceCenterDAO {
 	public int NoticeSearchTotalCount(String title) throws Exception;
 	
 	//회원정보리스트 출력
-	public List<MemberVO> getMemberList() throws Exception;
+	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception;
+	
+	//공지사항 게시물 총 갯수
+	public int MemberTotalCount() throws Exception;
 	
 	//회원정보 상세보기
 	public MemberVO ViewMember(int aid) throws Exception;
@@ -55,6 +59,9 @@ public interface AdminServiceCenterDAO {
 	
 	//회원정보 선택삭제
 	public void delete(String aid) throws Exception;
+	
+	//회원 등록
+	public int AdminSignUp(MemberVO vo) throws Exception;
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -111,7 +118,7 @@ public interface AdminServiceCenterDAO {
 	public void FAQDelete(String fId) throws Exception;
 	
 	//자주 찾는 질문(전체)
-	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception;
+	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception;
 	
 	//자주 찾는 질문 총 갯수
 	public int FAQTotalCount() throws Exception;
@@ -119,8 +126,6 @@ public interface AdminServiceCenterDAO {
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;
 	
-	//FAQ 카테고리 내용
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
-	
-
+	//FAQ 카테고리 조회
+	public List<Map<String, Object>> FAQCategory() throws Exception;
 }
