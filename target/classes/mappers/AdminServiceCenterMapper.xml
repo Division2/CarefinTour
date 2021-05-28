@@ -62,7 +62,12 @@
 	
 	<!-- 회원목록 -->
 	<select id="memberList" resultType="MemberVO">
-		SELECT * FROM account
+		SELECT * FROM account ORDER BY aid DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 공지사항 게시물 총 갯수 -->
+	<select id="getMemberTotalCount" resultType="int">
+		SELECT COUNT(*) FROM account
 	</select>
 	
 	<!-- 회원정보 상세조회 -->
@@ -79,6 +84,49 @@
 	<delete id="delete">
 		DELETE FROM account WHERE AID = #{aid}
 	</delete>
+    
+    <!-- 회원 등록 -->
+    <insert id="AdminMemberSignUp">
+		INSERT INTO account(
+			UserID,
+			Password,
+			Name,
+			Grade,
+			Email,
+			Phone,
+			Birth,
+			Sex,
+			Address,
+			Mileage)
+		VALUES(
+			#{UserID},
+			#{Password},
+			#{Name},
+			#{Grade},
+			#{Email},
+			#{Phone},
+			#{Birth},
+			#{Sex},
+			#{Address},
+			#{Mileage})
+    </insert>
+    
+    <!-- 회원 검색 -->
+	<select id="memberSearchView" resultType="MemberVO">
+		SELECT * FROM account  WHERE UserID LIKE CONCAT('%', #{keyword}, '%') OR Name LIKE CONCAT('%', #{keyword} , '%') OR ORDER BY AID DESC  LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 회원 검색 게시물 총 갯수 -->
+	<select id="getmemberSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
+	</select>
+	<sql id="Searchs">
+		<choose>
+			<when test="search != null">
+				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+		</choose>
+	</sql>
     
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
@@ -174,14 +222,14 @@
 	</delete>
 	
 	<!-- FAQ 전체 출력 -->
-	<select id="FAQAllView" resultType="FAQVO">
-		SELECT * FROM faq <include refid="gogo"></include> LIMIT #{Page}, #{PageSize}
+	<select id="FAQView" resultType="FAQVO">
+		SELECT * FROM faq <include refid="faqCategory"></include> LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<sql id="gogo">
+	<sql id="faqCategory">
 		<choose>
-			<when test="search != null">
-				WHERE Category = #{search}
+			<when test="Category != All">
+				WHERE Category = #{Category}
 			</when>
 		</choose>
 	</sql>
@@ -196,10 +244,8 @@
 		SELECT * FROM faq WHERE fId = #{fId}
 	</select>
 	
-	<!-- FAQ 내용 -->
-	<select id="FAQCategory" resultType="FAQVO">
+	<!-- FAQ 카테고리 조회 -->
+	<select id="getFAQCategory" resultType="hashmap">
 		SELECT * FROM faq_category
-	</select>	
-
-	
+	</select>
 </mapper>

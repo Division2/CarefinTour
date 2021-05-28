@@ -2,6 +2,7 @@ package com.spring.ex.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -82,9 +83,15 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//관리자용 회원목록
 	@Override
-	public List<MemberVO> getMemberList() throws Exception {
-		return sqlSession.selectList(namespace+".memberList");
+	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace+".memberList",map);
 	}
+	
+	//공지사항 게시물 총 갯수
+		@Override
+		public int MemberTotalCount() throws Exception {
+			return sqlSession.selectOne(namespace + ".getMemberTotalCount");
+		}
 	
 	//관리자용 회원상세정보
     @Override
@@ -103,6 +110,24 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
     public void delete(String aid) throws Exception {
     	sqlSession.delete(namespace +".delete" , aid);
     }
+    
+    //관리자용 회원 등록
+  	@Override
+  	public int AdminSignUp(MemberVO vo) throws Exception {
+  		return sqlSession.insert(namespace + ".AdminMemberSignUp", vo);
+  	}
+  	
+	//회원 검색
+	@Override
+	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".memberSearchView", map);
+	}
+	
+	//1:1 문의 검색 게시물 총 갯수
+	@Override
+	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return sqlSession.selectOne(namespace + ".getmemberSearchTotalCount", searchMap);
+		}
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	
 	//1:1 문의 등록
@@ -211,8 +236,8 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQAllView", map);
+	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQView", map);
 	}
 	
 	//자주 찾는 질문 총 갯수
@@ -227,13 +252,9 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 		return sqlSession.selectOne(namespace + ".FAQBoardView", fId);
 	}
 
-	//자주 찾는 질문(전체)
+	//FAQ 카테고리 조회
 	@Override
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQCategory", map);
+	public List<Map<String, Object>> FAQCategory() throws Exception {
+		return sqlSession.selectList(namespace + ".getFAQCategory");
 	}
-	
-	
-	
-
 }

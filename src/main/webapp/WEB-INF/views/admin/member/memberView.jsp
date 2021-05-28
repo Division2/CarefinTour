@@ -181,8 +181,10 @@
 				<!-- 본문 -->
 			</div>
 			<!-- 하단 푸터 부분 -->
+				</div>
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
-		</div>
+	
+		
 </body>
 </html>

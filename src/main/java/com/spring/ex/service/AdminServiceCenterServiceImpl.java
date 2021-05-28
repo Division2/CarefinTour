@@ -2,6 +2,7 @@ package com.spring.ex.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -81,9 +82,16 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//관리자용 회원목록
 	@Override
-	public List<MemberVO> getMemberList() throws Exception {
-		return dao.getMemberList();
+	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception {
+		return dao.getMemberList(map);
 	}
+	
+	//공지사항 게시물 총 갯수
+		@Override
+		public int MemberTotalCount() throws Exception {
+			return dao.MemberTotalCount();
+		}
+	
 	//회원 정보 상세 조회 
     @Override
     public MemberVO ViewMember(int aid) throws Exception {
@@ -99,7 +107,23 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
     public void delete(String aid) throws Exception {
     	dao.delete(aid);
     }
+    //관리자 회원 등록
+  	@Override
+  	public int AdminSignUp(MemberVO vo) throws Exception {
+  		return dao.AdminSignUp(vo);
+  	}
     
+  	//관리자 회원 검색
+  	@Override
+  	public List<MemberVO> memberSearchList(HashMap<String, Object> map) throws Exception {
+  		return dao.memberSearchList(map);
+  	}
+  	
+  //1:1 문의 검색 게시물 총 갯수
+  	@Override
+  	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+  		return dao.memberSearchTotalCount(searchMap);
+  	}
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
 	//1:1 문의 등록
@@ -207,8 +231,8 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
-		return dao.FAQAllView(map);
+	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception {
+		return dao.FAQView(map);
 	}
 		
 	//자주 찾는 질문 총 갯수
@@ -223,11 +247,9 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.FAQBoardView(fId);
 	}
 	
-	//FAQ 카테고리 내용
+	//FAQ 카테고리 조회
 	@Override
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
-		return dao.FAQCategory(map);
+	public List<Map<String, Object>> FAQCategory() throws Exception {
+		return dao.FAQCategory();
 	}
-	
-	
 }

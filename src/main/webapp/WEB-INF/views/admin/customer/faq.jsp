@@ -16,27 +16,7 @@
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
-<script>
-
-$('#search').on('change', function() {
-    $.ajax(
-            {
-               type : "post",
-               url  : "faq",
-               data : "sid="+this.value,
-               success : function(rdata){
-                    
-            	   if (rdata == 1) {
-						location.replace("faq")
-					}else{
-						alert("실패")
-					}
-
-                   } 
-                }
-               );
-            }).trigger("change"); 
-</script>
+<script src='<c:url value="/resources/js/Board.js"/>'></script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -59,12 +39,12 @@ $('#search').on('change', function() {
 					<div class="row">
 						<div class="col-sm-2">
 						<form action="faq" role="form" method="GET" class="form-inline">
-							<select class="form-control" name="search" id="search">
-								<c:forEach items="${category}" var="List">
-									<option value="${List.category}">${List.category}</option>
-									</c:forEach>	
+							<select class="form-control" id="faqCategory" name="faqCategory" onchange="AdminFaqCategory()">
+								<option value="All">전체</option>
+								<c:forEach items="${Category}" var="Category">
+									<option value="${Category.Category}">${Category.Category}</option>
+								</c:forEach>
 							</select>
-							<button class="btn btn-primary" type="submit">등록</button>
 							</form>	
 						</div>
 						
@@ -99,13 +79,13 @@ $('#search').on('change', function() {
 							</tr>
 						</thead>
 							<tbody id="sex">
-							<c:forEach items="${faqAllList}" var="List">
+							<c:forEach items="${faqList}" var="faqList">
 								<tr>
-									<th><input type="checkbox"name="RowCheck" value="${List.fId }"></th>
-									<td>${List.fId}</td>
-									<td>${List.category}</td>
-									<td><a href="faqModify?fId=${List.fId}">${List.title }</a></td>
-									<td>${List.content}</td>
+									<th><input type="checkbox"name="RowCheck" value="${faqList.fId }"></th>
+									<td>${faqList.fId}</td>
+									<td>${faqList.category}</td>
+									<td><a href="faqModify?fId=${faqList.fId}">${faqList.title }</a></td>
+									<td>${faqList.content}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
