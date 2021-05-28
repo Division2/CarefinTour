@@ -50,6 +50,9 @@ public class AdminBannerController {
 			new File(Path + request.getParameter("imgFile")).delete();
 			String fileName = UploadFileUtils.fileUpload(Path, file.getOriginalFilename(), file.getBytes());
 	  
+			File fileModifyDelete = new File(Path + vo.getS_file_name()); //기존 파일 삭제
+			fileModifyDelete.delete();
+			
 			vo.setS_file_name(fileName);
 		}
 		else {

@@ -11,7 +11,7 @@ import com.spring.ex.vo.PackageVO;
 @Service
 public interface PackageService {
 	//패키지 작성
-	public int PackageWrite(PackageVO packageVo, MultipartHttpServletRequest mpRequest) throws Exception;
+	public void PackageWrite(PackageVO packageVo) throws Exception;
 	
 	//여행패키지 출력
 	public List<PackageVO> AdminPackageView(HashMap<String, Integer> map) throws Exception;
@@ -27,4 +27,7 @@ public interface PackageService {
 	
 	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
 	public PackageVO ProductPackageFileName(int pid) throws Exception;
+	
+	//여행패키지 수정
+	public void ProductPackageModify(PackageVO vo) throws Exception;
 }

@@ -65,7 +65,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>상품코드</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getProductcode()}" class="form-control" >
+											<input type="text" value="${pdtail.getProductcode()}" class="form-control" >
 										</div>
 									</div>
 								</div>
@@ -76,7 +76,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>기간</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
+											<input type="text" value="${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
 										</div>
 									</div>
 	
@@ -85,7 +85,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>등록일</b></span>
 											</div>
-											<input type="text" value=" ${pdtail.getRedate()}" class="form-control">
+											<input type="text" value="${pdtail.getRedate()}" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -228,13 +228,13 @@
 								<!-- 사진 -->
 								<h5>사진</h5>
 								<table class="table table-hover table-white">
-									<img src='<c:url value="/resources/image/product_package/${pdtail.getS_file_name()}"/>' width="100%" height="400px"  alt="PackageProduct Img">
+									<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' width="100%" height="400px"  alt="PackageProduct Img">
 								</table>
 								<hr style=background-color:#368AFF;>
 								<!-- 이전, 수정 버튼 -->
 								<div align="right">
 									<input class="btn btn-primary" value="이전" onclick="history.back()" style="width:60px;">	
-							        <input class="btn btn-primary" type="button" onclick="location.href='packageProductModify?PID=<%=request.getParameter("PID")%>'" value="수정">
+							        <input class="btn btn-primary" type="button" onclick="location.href='packageProductModifyView?PID=<%=request.getParameter("PID")%>'" value="수정">
 						        </div>
 							</form>
 						</div>

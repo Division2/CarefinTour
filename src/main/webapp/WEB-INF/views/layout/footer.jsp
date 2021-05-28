@@ -156,7 +156,7 @@
 					<div class="modal-footer d-flex justify-content-center">
 						<div class="signup-section">
 							회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a> <br>							
-			                   <a href="#">	아이디 찾기 </a> | <a href="#"> 비밀번호 찾기 </a>
+			                   <a href="idSearch">	아이디 찾기 | 비밀번호 찾기 </a>
 						</div>
 					</div>
 				</div>

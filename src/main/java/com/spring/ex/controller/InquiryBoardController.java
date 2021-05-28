@@ -85,8 +85,14 @@ public class InquiryBoardController {
 	@RequestMapping(value = "/inquirySearch", method = RequestMethod.GET)
 	public String NoticeSearchView(InquiryVO vo, HttpServletRequest request, Model model) throws Exception {
 		
-		String title = request.getParameter("title");
-		int totalCount = service.InquirySearchTotalCount(title);
+		String searchType = request.getParameter("searchType");
+		String keyword = request.getParameter("keyword");
+		
+		HashMap<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("SearchType", searchType);
+		searchMap.put("Keyword", keyword);
+		
+		int totalCount = service.InquirySearchTotalCount(searchMap);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -99,13 +105,13 @@ public class InquiryBoardController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
-		map.put("title", title);
+		map.put("SearchType", searchType);
+		map.put("Keyword", keyword);
 		
 		List<InquiryVO> List = service.InquirySearchList(map);
 		
 		model.addAttribute("InquiryList", List);
 		model.addAttribute("Paging", paging);
-		model.addAttribute("Title", title);
 		
 		return "customer/inquiry";
 	}

@@ -19,8 +19,8 @@ public class PackageDAOImpl implements PackageDAO {
 	
 	// 패키지 작성
 	@Override
-	public int PackageWrite(Map<String, Object> map) throws Exception {
-		return sql.insert(namespace + ".PackageWrite", map);
+	public void PackageWrite(PackageVO vo) throws Exception {
+		sql.insert(namespace + ".PackageWrite", vo);
 	}
 
 	//여행패키지 출력
@@ -53,7 +53,12 @@ public class PackageDAOImpl implements PackageDAO {
 		return sql.selectOne(namespace + ".ProductPackageFileName", pid);
 	}
 
+	@Override
+	public void ProductPackageModify(PackageVO vo) throws Exception {
+		sql.update(namespace + ".ProductPackageModify", vo);
+	}
 
+	
 	
 	
 }

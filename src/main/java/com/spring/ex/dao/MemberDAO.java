@@ -22,4 +22,10 @@ public interface MemberDAO {
 	
 	//회원가입 시 아이디 중복확인
 	public MemberVO IDCheck(MemberVO vo) throws Exception;
+	
+	// 아이디 찾기
+	public MemberVO UserID(MemberVO vo) throws Exception;
+		
+	// 비밀번호 찾기
+	public MemberVO Password(MemberVO vo) throws Exception;
 }

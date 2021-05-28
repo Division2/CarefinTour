@@ -86,7 +86,7 @@ public class InquiryBoardDAOImpl implements InquiryBoardDAO {
 	
 	//1:1 문의 검색 게시물 총 갯수
 	@Override
-	public int InquirySearchTotalCount(String title) throws Exception {
-		return sqlSession.selectOne(namespace + ".getInquirySearchTotalCount", title);
+	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return sqlSession.selectOne(namespace + ".getInquirySearchTotalCount", searchMap);
 	}
 }

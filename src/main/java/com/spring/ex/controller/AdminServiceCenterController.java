@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.AdminServiceCenterService;
 import com.spring.ex.vo.FAQVO;
@@ -311,8 +312,14 @@ public class AdminServiceCenterController {
   	@RequestMapping(value = "/admin/inquirySearch", method = RequestMethod.GET)
   	public String NoticeSearchView(InquiryVO vo, HttpServletRequest request, Model model) throws Exception {
   		
-  		String name = request.getParameter("name");
-  		int totalCount = service.InquirySearchTotalCount(name);
+  		String search = request.getParameter("search");
+  		String keyword = request.getParameter("keyword");
+  		
+  		HashMap<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("search", search);
+		searchMap.put("keyword", keyword);
+		
+  		int totalCount = service.InquirySearchTotalCount(searchMap);
   		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
   		
   		PagingVO paging = new PagingVO();
@@ -325,13 +332,15 @@ public class AdminServiceCenterController {
   		HashMap<String, Object> map = new HashMap<String, Object>();
   		map.put("Page", page);
   		map.put("PageSize", paging.getPageSize());
-  		map.put("name", name);
+  		map.put("search", search);
+  		map.put("keyword", keyword);
   		
   		List<InquiryVO> List = service.InquirySearchList(map);
   		
   		model.addAttribute("InquiryList", List);
   		model.addAttribute("Paging", paging);
-  		model.addAttribute("name", name);
+  		model.addAttribute("search", search);
+  		model.addAttribute("keyword", keyword);
   		
   		return "admin/customer/inquiry";
   	}
@@ -437,7 +446,7 @@ public class AdminServiceCenterController {
   	
     //FAQ 카테고리 보여주기 내용
   	@RequestMapping(value = "/admin/faqWrite", method = RequestMethod.GET)
-	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model,HttpSession session) throws Exception {
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 
@@ -447,9 +456,7 @@ public class AdminServiceCenterController {
 		
 		return "admin/customer/faqWrite";
 	}
-
-
-	
+  
   	//FAQ 내용
   	@RequestMapping(value = "/admin/faqModify", method = RequestMethod.GET)
   	public String FAQBoardView(FAQVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -504,6 +511,7 @@ public class AdminServiceCenterController {
 	@RequestMapping(value = "/admin/faq", method = RequestMethod.GET)
 	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
 		
+		String search = request.getParameter("search");
 		int totalCount = service.FAQTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
@@ -515,14 +523,20 @@ public class AdminServiceCenterController {
 		
 		page = (page - 1) * 10;
 		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		HashMap<String, Integer> maps = new HashMap<String, Integer>();
+		List<FAQVO> Category =  service.FAQCategory(maps);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
+		map.put("search", search);
 		
 		List<FAQVO> faqAllList =  service.FAQAllView(map);
 		
 		model.addAttribute("faqAllList", faqAllList);
 		model.addAttribute("Paging", paging);
+		model.addAttribute("category", Category);
+		model.addAttribute("search", search);
 		
 		return "admin/customer/faq";
 	}

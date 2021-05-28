@@ -67,7 +67,7 @@ public class NoticeBoardDAOImpl implements NoticeBoardDAO {
 
 	//공지사항 검색 게시물 총 갯수
 	@Override
-	public int NoticeSearchTotalCount(String title) throws Exception {
-		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", title);
+	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", searchMap);
 	}
 }
