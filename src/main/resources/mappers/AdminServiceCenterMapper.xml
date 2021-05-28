@@ -62,8 +62,8 @@
 	
 	<sql id="SearchNotice">
 		<choose>
-			<when test="SearchType != null">
-				WHERE ${SearchType} LIKE CONCAT('%', #{Keyword}, '%')
+			<when test="search != null">
+				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
 			</when>
 		</choose>
 	</sql>
