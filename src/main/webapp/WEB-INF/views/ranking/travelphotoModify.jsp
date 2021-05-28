@@ -69,7 +69,7 @@
 									 <label for="imgLabel">이미지</label><br>
 									 <input type="file" id="imgFile" name="file" />
 									 <div class="select_img">
-									 <img src='<c:url value="/resources/images/UploadImages/${update.s_file_name}"/>' alt="" class="img-fluid" width="500" height="500">
+									 <img src='<c:url value="/resources/images/TravelPhotoReview/${update.s_file_name}"/>' alt="" class="img-fluid" width="500" height="500">
 									 <input type="hidden" name="imgFile" value="${update.s_file_name}" />
 									 </div>
 									</div>

@@ -194,8 +194,8 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		
 	//자주 찾는 질문 총 갯수
 	@Override
-	public int FAQTotalCount() throws Exception {
-		return dao.FAQTotalCount();
+	public int FAQTotalCount(String Category) throws Exception {
+		return dao.FAQTotalCount(Category);
 	}	
 	
 	//FAQ 내용

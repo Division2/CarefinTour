@@ -37,8 +37,17 @@
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col-sm-4"></div>
-						<div class="col-sm-4"></div>
+						<div class="col-sm-8">
+								<form action="noticeSearch" method="GET" class="form-inline">
+							<select class="form-control" id="searchType" name="searchType">
+								<option value="title">제목</option>
+							</select>
+							<input type="text" id="keyword" name="keyword" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
+							<button type="submit" class="btn px-3 thm-btn-psd">
+								<i class="fas fa-search"></i>
+							</button>
+						</form>
+							</div>	
 						<div class="col-sm-4">
 							<div class="d-flex">
 								<div class="ml-auto">
