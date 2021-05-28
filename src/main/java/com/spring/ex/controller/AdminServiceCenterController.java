@@ -3,6 +3,7 @@ package com.spring.ex.controller;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -448,11 +449,9 @@ public class AdminServiceCenterController {
   	@RequestMapping(value = "/admin/faqWrite", method = RequestMethod.GET)
 	public String CategoryView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model,HttpSession session) throws Exception {
 		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-
-		List<FAQVO> Category =  service.FAQCategory(map);
+		List<Map<String, Object>> Category =  service.FAQCategory();
 		
-		model.addAttribute("category", Category);
+		model.addAttribute("Category", Category);
 		
 		return "admin/customer/faqWrite";
 	}
@@ -511,7 +510,7 @@ public class AdminServiceCenterController {
 	@RequestMapping(value = "/admin/faq", method = RequestMethod.GET)
 	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
 		
-		String search = request.getParameter("search");
+		String faqCategory = request.getParameter("Category");
 		int totalCount = service.FAQTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
@@ -523,20 +522,18 @@ public class AdminServiceCenterController {
 		
 		page = (page - 1) * 10;
 		
-		HashMap<String, Integer> maps = new HashMap<String, Integer>();
-		List<FAQVO> Category =  service.FAQCategory(maps);
+		List<Map<String, Object>> Category =  service.FAQCategory();
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
-		map.put("search", search);
+		map.put("faqCategory", faqCategory);
 		
-		List<FAQVO> faqAllList =  service.FAQAllView(map);
+		List<FAQVO> faqList =  service.FAQView(map);
 		
-		model.addAttribute("faqAllList", faqAllList);
+		model.addAttribute("faqList", faqList);
 		model.addAttribute("Paging", paging);
-		model.addAttribute("category", Category);
-		model.addAttribute("search", search);
+		model.addAttribute("Category", Category);
 		
 		return "admin/customer/faq";
 	}

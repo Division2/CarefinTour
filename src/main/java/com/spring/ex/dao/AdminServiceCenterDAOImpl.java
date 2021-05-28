@@ -2,6 +2,7 @@ package com.spring.ex.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -211,8 +212,8 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQAllView", map);
+	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".FAQView", map);
 	}
 	
 	//자주 찾는 질문 총 갯수
@@ -229,11 +230,7 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQCategory", map);
+	public List<Map<String, Object>> FAQCategory() throws Exception {
+		return sqlSession.selectList(namespace + ".getFAQCategory");
 	}
-	
-	
-	
-
 }

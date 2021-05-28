@@ -2,6 +2,7 @@ package com.spring.ex.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -207,8 +208,8 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//자주 찾는 질문(전체)
 	@Override
-	public List<FAQVO> FAQAllView(HashMap<String, Object> map) throws Exception {
-		return dao.FAQAllView(map);
+	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception {
+		return dao.FAQView(map);
 	}
 		
 	//자주 찾는 질문 총 갯수
@@ -223,11 +224,9 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.FAQBoardView(fId);
 	}
 	
-	//FAQ 카테고리 내용
+	//FAQ 카테고리 조회
 	@Override
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception {
-		return dao.FAQCategory(map);
+	public List<Map<String, Object>> FAQCategory() throws Exception {
+		return dao.FAQCategory();
 	}
-	
-	
 }
