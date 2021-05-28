@@ -1,4 +1,4 @@
- package com.spring.ex.controller;
+ package com.spring.ex.admin.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
