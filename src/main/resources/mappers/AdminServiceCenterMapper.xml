@@ -62,7 +62,12 @@
 	
 	<!-- 회원목록 -->
 	<select id="memberList" resultType="MemberVO">
-		SELECT * FROM account
+		SELECT * FROM account ORDER BY aid DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 공지사항 게시물 총 갯수 -->
+	<select id="getMemberTotalCount" resultType="int">
+		SELECT COUNT(*) FROM account
 	</select>
 	
 	<!-- 회원정보 상세조회 -->
@@ -79,6 +84,32 @@
 	<delete id="delete">
 		DELETE FROM account WHERE AID = #{aid}
 	</delete>
+    
+    <!-- 회원 등록 -->
+    <insert id="AdminMemberSignUp">
+		INSERT INTO account(
+			UserID,
+			Password,
+			Name,
+			Grade,
+			Email,
+			Phone,
+			Birth,
+			Sex,
+			Address,
+			Mileage)
+		VALUES(
+			#{UserID},
+			#{Password},
+			#{Name},
+			#{Grade},
+			#{Email},
+			#{Phone},
+			#{Birth},
+			#{Sex},
+			#{Address},
+			#{Mileage})
+    </insert>
     
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
