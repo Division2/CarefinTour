@@ -74,7 +74,7 @@
 						<div class="form-group row">
 							<label class="col-sm-1" for="status">결제상태</label>
 							<div class="col-sm-6">
-								<input class="form-control" type="text" name="status" id="status" placeholder="0은대기 1은보류 2는완료 입니다.">
+								<input class="form-control" type="text" name="paymentstatus" id="paymentstatus" placeholder="0은대기 1은보류 2는완료 입니다.">
 							</div>
 						</div>
 						<div class="form-group row">

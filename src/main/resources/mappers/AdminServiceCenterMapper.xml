@@ -52,13 +52,21 @@
 	
 	<!-- 공지사항 검색 -->
 	<select id="NoticeSearchView" resultType="NoticeBoardVO">
-		SELECT * FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%') ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM notice <include refid="SearchNotice"></include> ORDER BY nId DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 공지사항 검색 게시물 총 갯수 -->
 	<select id="getNoticeSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM notice WHERE Title LIKE CONCAT('%', #{title}, '%')
+		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
+	
+	<sql id="SearchNotice">
+		<choose>
+			<when test="SearchType != null">
+				WHERE ${SearchType} LIKE CONCAT('%', #{Keyword}, '%')
+			</when>
+		</choose>
+	</sql>
 	
 	<!-- 회원목록 -->
 	<select id="memberList" resultType="MemberVO">

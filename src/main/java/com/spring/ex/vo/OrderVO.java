@@ -11,7 +11,7 @@ public class OrderVO {
 	private int payment;
 	private Date paymentdate;
 	private Date startdate;
-	private int status;
+	private int paymentstatus;
 	private Date orderdate;
 	private String phonenum;
 	private String name;
@@ -64,11 +64,11 @@ public class OrderVO {
 	public void setStartdate(Date startdate) {
 		this.startdate = startdate;
 	}
-	public int getStatus() {
-		return status;
+	public int getPaymentstatus() {
+		return paymentstatus;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setPaymentstatus(int paymentstatus) {
+		this.paymentstatus = paymentstatus;
 	}
 	public Date getOrderdate() {
 		return orderdate;
