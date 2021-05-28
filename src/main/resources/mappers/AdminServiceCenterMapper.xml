@@ -60,12 +60,15 @@
 		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
 	
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 	<sql id="SearchNotice">
 		<choose>
-			<when test="SearchType != null">
-				WHERE ${SearchType} LIKE CONCAT('%', #{Keyword}, '%')
+			<when test="search != null">
+				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
 			</when>
 		</choose>
 	</sql>
@@ -130,6 +133,7 @@
 	<select id="getmemberSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
 	</select>
+	
 	<sql id="Searchs">
 		<choose>
 			<when test="search != null">
@@ -137,7 +141,6 @@
 			</when>
 		</choose>
 	</sql>
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
     
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">

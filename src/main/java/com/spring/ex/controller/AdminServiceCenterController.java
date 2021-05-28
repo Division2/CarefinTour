@@ -79,40 +79,42 @@ public class AdminServiceCenterController {
 	}
 	
 	//공지사항 검색
-	@RequestMapping(value = "/admin/noticeSearch", method = RequestMethod.GET)
-	public String NoticeSearchView(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
-		
-		String searchType = request.getParameter("searchType");
-		String keyword = request.getParameter("keyword");
-		
-		HashMap<String, String> searchMap = new HashMap<String, String>();
-		searchMap.put("SearchType", searchType);
-		searchMap.put("Keyword", keyword);
-		
-		int totalCount = service.NoticeSearchTotalCount(searchType);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(10);
-		paging.setTotalCount(totalCount);
-		
-		page = (page - 1) * 10;
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		map.put("SearchType", searchType);
-		map.put("Keyword", keyword);
-		
-		List<NoticeBoardVO> List = service.NoticeSearchList(map);
-		
-		//페이지를 담아줘야행
-		model.addAttribute("NoticeList", List);
-		model.addAttribute("Paging", paging);
-		
-		return "admin/customer/notice";
-	}
+		@RequestMapping(value = "/admin/noticeSearch", method = RequestMethod.GET)
+		public String NoticeSearchView(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
+			
+			String search = request.getParameter("search");
+			String keyword = request.getParameter("keyword");
+			
+			HashMap<String, String> searchMap = new HashMap<String, String>();
+			searchMap.put("search", search);
+			searchMap.put("keyword", keyword);
+			
+			int totalCount = service.NoticeSearchTotalCount(searchMap);
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			page = (page - 1) * 10;
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());
+			map.put("search", search);
+			map.put("keyword", keyword);
+			
+			List<NoticeBoardVO> List = service.NoticeSearchList(map);
+			
+			//페이지를 담아줘야행
+			model.addAttribute("NoticeList", List);
+			model.addAttribute("Paging", paging);
+			model.addAttribute("search", search);
+			model.addAttribute("keyword", keyword);
+			
+			return "admin/customer/notice";
+		}
 	
 	//공지사항 게시글 내용
 	@RequestMapping(value = "/admin/noticeView", method = RequestMethod.GET)

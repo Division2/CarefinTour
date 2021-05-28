@@ -43,7 +43,7 @@ public interface AdminServiceCenterDAO {
 	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception;
 	
 	//공지사항 검색 게시물 총 갯수
-	public int NoticeSearchTotalCount(String title) throws Exception;
+	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 
 	
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------

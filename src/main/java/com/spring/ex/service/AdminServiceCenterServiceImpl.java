@@ -76,8 +76,8 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 	
 	//공지사항 검색 게시물 총 갯수
 	@Override
-	public int NoticeSearchTotalCount(String title) throws Exception {
-		return dao.NoticeSearchTotalCount(title);
+	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.NoticeSearchTotalCount(searchMap);
 	}
 	
 

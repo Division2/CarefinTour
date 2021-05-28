@@ -39,7 +39,7 @@
 					<div class="row">
 						<div class="col-sm-8">
 								<form action="noticeSearch" method="GET" class="form-inline">
-							<select class="form-control" id="searchType" name="searchType">
+							<select class="form-control" id="search" name="search">
 								<option value="title">제목</option>
 							</select>
 							<input type="text" id="keyword" name="keyword" class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
@@ -99,17 +99,17 @@
 					<nav aria-label="Page navigation">
 						<ul class="pagination justify-content-center">
 							<c:choose>
-								<c:when test="${Title ne null }">
+								<c:when test="${search ne null && keyword ne null }">
 									<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 									<c:choose>
 										<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 											<li class="page-item disabled">
-												<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.prevPageNo}">Previus</a>
+												<a class="page-link" href="noticeSearch?search=${search}&keyword=${keyword}&page=${Paging.prevPageNo}">Previus</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item">
-												<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.prevPageNo}">Previus</a>
+												<a class="page-link" href="noticeSearch?search=${search}&keyword=${keyword}&page=${Paging.prevPageNo}">Previus</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -118,12 +118,12 @@
 										<c:choose>
 											<c:when test="${i eq Paging.pageNo }">
 												<li class="page-item disabled">
-													<a class="page-link" href="noticeSearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
+													<a class="page-link" href="noticeSearch?search=${search}&keyword=${keyword}&page=${i}"><c:out value="${i }"/></a>
 												</li>
 											</c:when>
 											<c:otherwise>
 												<li class="page-item">
-													<a class="page-link" href="noticeSearch?title=${Title }&page=${i}"><c:out value="${i }"/></a>
+													<a class="page-link" href="noticeSearch?search=${search}&keyword=${keyword}&page=${i}"><c:out value="${i }"/></a>
 												</li>
 											</c:otherwise>
 										</c:choose>
@@ -132,12 +132,12 @@
 									<c:choose>
 										<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 											<li class="page-item disabled">
-												<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.nextPageNo}">Next</a>
+												<a class="page-link" href="noticeSearch?search=${search}&keyword=${keyword}&page=${Paging.nextPageNo}">Next</a>
 											</li>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item">
-												<a class="page-link" href="noticeSearch?title=${Title }&page=${Paging.nextPageNo}">Next</a>
+												<a class="page-link" href="noticeSearch?search=${search}&keyword=${keyword}&page=${Paging.nextPageNo}">Next</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
