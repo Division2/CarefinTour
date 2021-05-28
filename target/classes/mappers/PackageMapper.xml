@@ -30,7 +30,7 @@
 	</delete>
 	
 	<!-- 여행패키지 PID해당하는 파일검색 -->
- 	<select id="ProductPackageFileName" resultType="PackageVO">
+ 	<select id="ProductPackageFileName" resultType="String">
 		SELECT s_file_name FROM packageproduct WHERE PID = #{pid};
 	</select>
 	
