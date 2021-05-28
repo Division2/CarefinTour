@@ -252,7 +252,7 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 		return sqlSession.selectOne(namespace + ".FAQBoardView", fId);
 	}
 
-	//자주 찾는 질문(전체)
+	//FAQ 카테고리 조회
 	@Override
 	public List<Map<String, Object>> FAQCategory() throws Exception {
 		return sqlSession.selectList(namespace + ".getFAQCategory");
