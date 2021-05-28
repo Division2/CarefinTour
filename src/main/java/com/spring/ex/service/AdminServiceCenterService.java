@@ -132,19 +132,6 @@ public interface AdminServiceCenterService {
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;
 	
-<<<<<<< HEAD
-	//FAQ 카테고리 내용
-
-=======
 	//FAQ 카테고리 조회
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 	public List<Map<String, Object>> FAQCategory() throws Exception;
-<<<<<<< HEAD
-
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
-	
 }
-
-=======
-}
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
