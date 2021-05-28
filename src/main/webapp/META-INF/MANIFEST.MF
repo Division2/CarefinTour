@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: wjsrl
-=======
 Built-By: runda
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 Build-Jdk: 14.0.2
 Created-By: Maven Integration for Eclipse
 

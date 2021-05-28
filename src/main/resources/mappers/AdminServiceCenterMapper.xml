@@ -60,11 +60,6 @@
 		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
 	
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 	<sql id="SearchNotice">
 		<choose>
 			<when test="search != null">
