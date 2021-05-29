@@ -102,6 +102,7 @@
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
+				<!-- 검색 부분 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Package Management</h1>
@@ -109,8 +110,8 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-2">
-							<select class="form-control">
-								<option>지역</option>
+							<select class="form-control" id="">
+								<option value="">지역</option>
 								<option>미주/중남미/하와이</option>
 								<option>대만/동남아/서남아</option>
 								<option>중국/홍콩/러시아</option>
@@ -119,8 +120,8 @@
 							</select>
 						</div>
 						<div class="col-sm-2">
-							<select class="form-control">
-								<option>테마</option>
+							<select class="form-control" id="">
+								<option value="">테마</option>
 								<option>낚시</option>
 								<option>허니문</option>
 								<option>골프</option>
@@ -128,11 +129,12 @@
 							</select>
 						</div>
 						<div class="col-sm-5">
-							<input type="text" placeholder="상품명을 입력하세요.">
+							<input type="text" id="keyword" name="keyword" placeholder="상품명을 입력하세요.">
 							<button type="button" class="btn px-3 btn-primary">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>
+						
 						<div class="col-sm-3">
 							<div class="d-flex">
 								<div class="ml-auto">
@@ -143,17 +145,18 @@
 						</div>
                     </div>
                     <br>
-							
+					<!-- 게시판 시작 -->	
 					<table class="table table-hover table-white">
 						<thead>
 							<tr align="center">
 								<th><input type="checkbox" id="allCheck" name="allCheck"/></th>
-								<th>PID</th>
+								<th>상품코드</th>
 								<th>상품명</th>
-								<th>예약인원/최소인원</th>
+								<th>테마</th>
 								<th>지역</th>
 								<th>출발 및 도착일</th>
 								<th>등록일</th>
+								<th>현재인원</th>
 								<th>조회수</th>
 							</tr>
 						</thead>
@@ -163,10 +166,12 @@
 									<td><input type="checkbox" name="RowCheck" value="${plist.getPid()}"></td>
 									<td><font size="3"><a href="packageProductDetail?PID=${plist.getPid()}">${plist.getPid()}</a></font></td>
 									<td><font size="2">${plist.getProductname()}</font></td>
-									<td><font size="2">${plist.getReservationstatus() } / ${plist.getMinreservation()}</font></td>
+									
+									<td><font size="2">${plist.getTheme()}</font></td>
 									<td><font size="2">${plist.getArea()}</font></td>
 									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
 									<td><font size="2">${plist.getRedate()}</font></td>
+									<td><font size="2">${plist.getReservationstatus() }</font></td>
 									<td><font size="2">${plist.getHit()}</font></td>
 								</tr>
 							</c:forEach>

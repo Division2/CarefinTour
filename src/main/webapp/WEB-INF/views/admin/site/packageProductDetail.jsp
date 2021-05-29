@@ -16,7 +16,9 @@
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
+<style type="text/css">
 
+</style>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -79,7 +81,7 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>기간</b></span>
 											</div>
-											<input type="text" value="${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
+											<input type="text" id="period" style="font-size:13px;height:40px;" value="${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
