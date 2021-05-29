@@ -24,7 +24,7 @@
 	
 	.select_img img {margin:10px 0; width: 100%; height: auto; max-height: 400px;}
 	
-	.ck-content{height:200px;}
+	.ck-content{width:750px; height:300px; }
 </style>
 
 <title>케어핀투어 관리자</title>
@@ -98,7 +98,36 @@
 
 							</div>
 							
-							<!--테마, 지역 ,도시  -->
+							패키지 인당 비용
+							<div class="form-group row">
+								<div class="col-xs-4 col-md-4">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>성인</b></span>
+										</div>
+										<input type="text" class="form-control" id="adultprice" name="adultprice" required>
+									</div>
+								</div>
+								<div class="col-xs-4 col-md-4">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>아동</b></span>
+										</div>
+										<input type="text" class="form-control" id="kidprice" name="kidprice" required>
+									</div>
+								</div>
+								<div class="col-xs-4 col-md-4">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><b>유아</b></span>
+										</div>
+										<input type="text" class="form-control" id="smallkidprice" name="smallkidprice" required>
+									</div>
+								</div>
+							</div>		
+							<hr>
+							
+							<!--테마, 지역  -->
 							여행지 정보
 							<div class="form-group row">
 								<div class="col-xs-6 col-md-6">
@@ -129,34 +158,6 @@
 									</div>
 								</div>
 							</div>
-							
-							패키지 인당 비용
-							<div class="form-group row">
-								<div class="col-xs-4 col-md-4">
-									<div class="input-group my-2 mb-1">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>성인</b></span>
-										</div>
-										<input type="text" class="form-control" id="adultprice" name="adultprice" required>
-									</div>
-								</div>
-								<div class="col-xs-4 col-md-4">
-									<div class="input-group my-2 mb-1">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>아동</b></span>
-										</div>
-										<input type="text" class="form-control" id="kidprice" name="kidprice" required>
-									</div>
-								</div>
-								<div class="col-xs-4 col-md-4">
-									<div class="input-group my-2 mb-1">
-										<div class="input-group-prepend">
-											<span class="input-group-text"><b>유아</b></span>
-										</div>
-										<input type="text" class="form-control" id="smallkidprice" name="smallkidprice" required>
-									</div>
-								</div>
-							</div>
 		
 							<hr >
 							<!-- 상품설명 소개? -->
@@ -183,18 +184,23 @@
 							</div>
 							<!-- 사진 -->
 							<div class="form-group row">
-				            	<label for="file"><strong>사진</strong></label><br>
-								<div>
-									<input type="hidden" id="bid" name="bid" value="" />
-									<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
-									<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+								<div class="col-xs-12 col-md-12">
+									<div class="input-group-prepend">
+										<label for="file"><strong>사진</strong></label><br>
+									</div>
 									
-									<div class="inputArea"> 
-										<div class="select_img"> 
-										<img src='<c:url value="/resources/images/product_package/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
-										<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
+									<div>
+										<input type="hidden" id="bid" name="bid" value="" />
+										<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+										<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 										
-										<input type="file" id="imgFile" name="file" /><br><br>
+										<div class="inputArea"> 
+											<div class="select_img"> 
+											<img src='<c:url value="/resources/images/product_package/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
+											<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
+											
+											<input type="file" id="imgFile" name="file" /><br><br>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -218,7 +224,7 @@
 						if(this.files && this.files[0]) {
 							var reader = new FileReader;
 							reader.onload = function(data) {
-								$(".select_img img").attr("src", data.target.result).width(700);								
+								$(".select_img img").attr("src", data.target.result).width(1000);								
 							}
 							reader.readAsDataURL(this.files[0]);
 						}
@@ -226,8 +232,8 @@
 	
 					//텍스트area부분 에디터 사용
 					ClassicEditor.create( document.querySelector( '#overview' ) )
-				  	 	ClassicEditor.create( document.querySelector( '#supplies' ) )
-				   		ClassicEditor.create( document.querySelector( '#travelplan' ) )
+			  	 	ClassicEditor.create( document.querySelector( '#supplies' ) )
+			   		ClassicEditor.create( document.querySelector( '#travelplan' ) )
 				</script>
 			
 			</div>

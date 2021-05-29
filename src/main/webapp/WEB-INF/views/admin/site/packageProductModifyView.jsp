@@ -15,19 +15,21 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	//테마 지역 값에 따라서 콤보박스 선택되게
 	$("#theme").val("${pdtail.getTheme()}").prop("selected", true);
 	$("#area").val("${pdtail.getArea()}").prop("selected", true);
 })
-
-	
 </script>
+<style type="text/css">
+	.ck-content{width:750px; height:300px; }
+</style>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
-    <div id="wrapper" style="width:80%; max-width:1100px;">
+    <div id="wrapper" style="width:80%; max-width:1100px;" align="left">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>
 		<!-- 좌측 배너 부분 -->
@@ -64,7 +66,7 @@ $(document).ready(function(){
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>감독</b></span>
+												<span class="input-group-text"><b>가이드</b></span>
 											</div>
 											<input type="text" value="${pdtail.getDirector()}" id="director" name="director" class="form-control" required>
 										</div>
@@ -72,15 +74,15 @@ $(document).ready(function(){
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>상품코드</b></span>
+												<span class="input-group-text"><b>최소인원</b></span>
 											</div>
-											<input type="text" value="${pdtail.getProductcode()}" id="productcode" name="productcode" class="form-control" required>
+											<input type="text" value="${pdtail.getMinreservation()}" id="minreservation" name="minreservation" class="form-control" required>
 										</div>
 									</div>
 								</div>
 								<!--기간, 등록일  -->
 								<div class="form-group row">
-									<div class="col-xs-4 col-md-4">
+									<div class="col-xs-6 col-md-6">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>출발일</b></span>
@@ -89,7 +91,7 @@ $(document).ready(function(){
 										</div>
 									</div>
 									
-									<div class="col-xs-4 col-md-4">
+									<div class="col-xs-6 col-md-6">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>도착일</b></span>
@@ -98,54 +100,6 @@ $(document).ready(function(){
 										</div>
 									</div>
 	
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>등록일</b></span>
-											</div>
-											<input type="text" value="${pdtail.getRedate()}" class="form-control" >
-										</div>
-									</div>
-								</div>
-								
-								<!--테마, 지역 ,도시  -->
-								여행지 정보
-								<div class="form-group row">
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>테마</b></span>
-											</div>
-											<select class="form-control" id="theme" name="theme">
-												<option value="허니문">허니문</option>
-												<option value="낚시">낚시</option>
-												<option value="골프">골프</option>
-												<option value="없음">없음</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>지역</b></span>
-											</div>
-											<select class="form-control" id="area" name="area">
-												<option>북미/중남미/하와이</option>
-												<option>대만/동남아/서남아</option>
-												<option>중국/홍콩/러시아</option>
-												<option>유럽/아프리카</option>
-												<option>일본</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>도시</b></span>
-											</div>
-											<input type="text" value="${pdtail.getTravelcity()}" id="travelcity" name="travelcity" class="form-control" required>
-										</div>
-									</div>
 								</div>
 								
 								패키지 인당 비용
@@ -175,36 +129,57 @@ $(document).ready(function(){
 										</div>
 									</div>
 								</div>
+								
 								<hr>
-								출발 최소 인원 / 최대 예약인원 
+								<!--테마, 지역  -->
+								여행지 정보
 								<div class="form-group row">
 									<div class="col-xs-6 col-md-6">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>최소인원</b></span>
+												<span class="input-group-text"><b>테마</b></span>
 											</div>
-											<input type="text" value="${pdtail.getMinreservation()}" id="minreservation" name="minreservation" class="form-control" required>
+											<select class="form-control" id="theme" name="theme">
+												<option value="허니문">허니문</option>
+												<option value="낚시">낚시</option>
+												<option value="골프">골프</option>
+												<option value="해외">해외</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-xs-6 col-md-6">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>최대인원</b></span>
+												<span class="input-group-text"><b>지역</b></span>
 											</div>
-											<input type="text" value="${pdtail.getMaxreservation()}" id="maxreservation" name="maxreservation" class="form-control" required >
+											<select class="form-control" id="area" name="area">
+												<option>북미/중남미/하와이</option>
+												<option>대만/동남아/서남아</option>
+												<option>중국/홍콩/러시아</option>
+												<option>유럽/아프리카</option>
+												<option>일본</option>
+											</select>
 										</div>
 									</div>
 								</div>
-								
 								<hr >
 								<!-- 개요 -->
 								여행소개
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<div class="input-group-prepend">
-											<span class="input-group-text">개요</span>
-										</div>
-										<textarea rows="15" cols="25" name="overview" id="overview" class="form-control">${pdtail.getOverview()}</textarea>
+										<textarea name="overview" id="overview" class="form-control" > ${pdtail.getOverview()} </textarea>
+									</div>
+								</div>
+								여행준비물
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<textarea  name="supplies" id="supplies" class="form-control"> ${pdtail.getSupplies()} </textarea>
+									</div>
+								</div>
+								여행일정
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<textarea name="travelplan" id="travelplan" class="form-control"> ${pdtail.getTravelplan()} </textarea>
 									</div>
 								</div>
 								<!-- 사진 -->
@@ -243,6 +218,7 @@ $(document).ready(function(){
 			<jsp:include page="../layout/footer.jsp"/>
 			<script src='<c:url value="/resources/js/Board.js"/>'></script>
 			<script>
+				//이미지 파일 업로드 관련
 				$("#imgFile").change(function(){
 					if(this.files && this.files[0]) {
 						var reader = new FileReader;
@@ -252,6 +228,11 @@ $(document).ready(function(){
 						reader.readAsDataURL(this.files[0]);
 					}
 				});
+				
+				//텍스트area부분 에디터 사용
+				ClassicEditor.create( document.querySelector( '#overview' ) )
+		  	 	ClassicEditor.create( document.querySelector( '#supplies' ) )
+		   		ClassicEditor.create( document.querySelector( '#travelplan' ) )
 			</script>
     		<!-- 하단 푸터 부분 -->
 		</div>
