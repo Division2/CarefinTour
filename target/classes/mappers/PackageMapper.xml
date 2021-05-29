@@ -40,4 +40,18 @@
 		SET ProductName = #{productname}, OverView = #{overview}, Supplies = #{supplies}, TravelPlan = #{travelplan}, StarTravelPeriod = #{startravelperiod}, ArrivalTravelPeriod = #{arrivaltravelperiod}, Theme = #{theme} , Area = #{area}, MinReservation = #{minreservation}, AdultPrice = #{adultprice}, KidPrice = #{kidprice}, SmallKidPrice = #{smallkidprice}, s_file_name = #{s_file_name}, Director = #{director}
 		WHERE pid = #{pid}
  	</update>
+ 	
+ 	<!-- 여행패키지 테마로 검색 -->
+	<select id="ProductPackageSearch" resultType="PackageVO">
+		SELECT * FROM packageproduct 
+		<where>
+			<if test="theme != null">
+				WHERE Theme = #{SearchTheme}
+			</if>
+			<if  test="area != null">
+				WHERE Area = #{SearchArea}
+			</if>
+		</where>
+		LIMIT #{Page}, #{PageSize}
+	</select>
 </mapper>

@@ -102,6 +102,7 @@
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
+				<!-- 검색 부분 -->
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Package Management</h1>
@@ -109,8 +110,8 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-2">
-							<select class="form-control">
-								<option>지역</option>
+							<select class="form-control" id="">
+								<option value="">지역</option>
 								<option>미주/중남미/하와이</option>
 								<option>대만/동남아/서남아</option>
 								<option>중국/홍콩/러시아</option>
@@ -119,8 +120,8 @@
 							</select>
 						</div>
 						<div class="col-sm-2">
-							<select class="form-control">
-								<option>테마</option>
+							<select class="form-control" id="">
+								<option value="">테마</option>
 								<option>낚시</option>
 								<option>허니문</option>
 								<option>골프</option>
@@ -128,11 +129,12 @@
 							</select>
 						</div>
 						<div class="col-sm-5">
-							<input type="text" placeholder="상품명을 입력하세요.">
+							<input type="text" id="keyword" name="keyword" placeholder="상품명을 입력하세요.">
 							<button type="button" class="btn px-3 btn-primary">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>
+						
 						<div class="col-sm-3">
 							<div class="d-flex">
 								<div class="ml-auto">
@@ -143,7 +145,7 @@
 						</div>
                     </div>
                     <br>
-							
+					<!-- 게시판 시작 -->	
 					<table class="table table-hover table-white">
 						<thead>
 							<tr align="center">
