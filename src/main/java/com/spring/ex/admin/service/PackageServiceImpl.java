@@ -42,14 +42,14 @@ public class PackageServiceImpl implements PackageService {
 	
 	//여행패키지 삭제
 	@Override
-	public void ProductPackageDelete(String pid) throws Exception {
+	public void ProductPackageDelete(int pid) throws Exception {
 		dao.ProductPackageDelete(pid);
 	}
 
 	
 	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
 	@Override
-	public PackageVO ProductPackageFileName(int pid) throws Exception {
+	public String ProductPackageFileName(int pid) throws Exception {
 		return dao.ProductPackageFileName(pid);
 	}
 

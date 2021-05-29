@@ -6,7 +6,7 @@
 	<!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
 			INSERT INTO packageproduct(ProductName, OverView, Supplies, TravelPlan, StarTravelPeriod, ArrivalTravelPeriod, Hit, Theme, Area, ReservationStatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, s_file_name, Director, flag) 
-			VALUES (#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, 1)
+			VALUES(#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, 1)
  	</insert>
 	
 	<!-- 여행패키지 출력 -->
@@ -30,7 +30,7 @@
 	</delete>
 	
 	<!-- 여행패키지 PID해당하는 파일검색 -->
- 	<select id="ProductPackageFileName" resultType="PackageVO">
+ 	<select id="ProductPackageFileName" resultType="String">
 		SELECT s_file_name FROM packageproduct WHERE PID = #{pid};
 	</select>
 	

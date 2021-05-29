@@ -149,14 +149,12 @@
 							<tr align="center">
 								<th><input type="checkbox" id="allCheck" name="allCheck"/></th>
 								<th>PID</th>
-								<th>상품코드</th>
 								<th>상품명</th>
-								<th>예약인원</th>
+								<th>예약인원/최소인원</th>
 								<th>지역</th>
 								<th>출발 및 도착일</th>
 								<th>등록일</th>
 								<th>조회수</th>
-								<th>총 결제금액</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -164,14 +162,12 @@
 								<tr align="center">
 									<td><input type="checkbox" name="RowCheck" value="${plist.getPid()}"></td>
 									<td><font size="3"><a href="packageProductDetail?PID=${plist.getPid()}">${plist.getPid()}</a></font></td>
-									<td><font size="2">${plist.getProductcode()}</font></td>
 									<td><font size="2">${plist.getProductname()}</font></td>
-									<td><font size="2">${plist.getReservationstatus() } / ${plist.getMaxreservation()}</font></td>
+									<td><font size="2">${plist.getReservationstatus() } / ${plist.getMinreservation()}</font></td>
 									<td><font size="2">${plist.getArea()}</font></td>
 									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
 									<td><font size="2">${plist.getRedate()}</font></td>
 									<td><font size="2">${plist.getHit()}</font></td>
-									<td><font size="2">${plist.getPrice()}원</font></td>
 								</tr>
 							</c:forEach>
 						</tbody>

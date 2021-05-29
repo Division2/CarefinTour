@@ -15,6 +15,8 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -35,7 +37,7 @@
 							<h4>여행패키지 상세정보</h4><br>
 						</div>
 						<p align="right"><font size="2">조회수 : ${pdtail.getHit() }</font></p>
-						<font size="3">No <%= request.getParameter("PID") %></font>
+						<font size="3">상품코드 <%= request.getParameter("PID") %></font>
 						
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
@@ -55,31 +57,12 @@
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>감독</b></span>
+												<span class="input-group-text"><b>가이드</b></span>
 											</div>
 											<input type="text" value="${pdtail.getDirector()}" class="form-control" >
 										</div>
 									</div>
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>상품코드</b></span>
-											</div>
-											<input type="text" value="${pdtail.getProductcode()}" class="form-control" >
-										</div>
-									</div>
-								</div>
-								<!--기간, 등록일  -->
-								<div class="form-group row">
-									<div class="col-xs-8 col-md-8">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>기간</b></span>
-											</div>
-											<input type="text" value="${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
-										</div>
-									</div>
-	
+									
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
@@ -89,32 +72,30 @@
 										</div>
 									</div>
 								</div>
-								
-								<!--테마, 지역 ,도시  -->
-								여행지 정보
+								여행기간 및 인원
 								<div class="form-group row">
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>테마</b></span>
+												<span class="input-group-text"><b>기간</b></span>
 											</div>
-											<input type="text" value="${pdtail.getTheme()}" class="form-control" >
+											<input type="text" value="${pdtail.getStartravelperiod()} ~ ${pdtail.getArrivaltravelperiod()}" class="form-control">
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>지역</b></span>
+												<span class="input-group-text"><b>현재인원</b></span>
 											</div>
-											<input type="text" value="${pdtail.getArea()}" class="form-control" >
+											<input type="text" value="${pdtail.getReservationstatus()}명" class="form-control" >
 										</div>
 									</div>
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>도시</b></span>
+												<span class="input-group-text"><b>최소인원</b></span>
 											</div>
-											<input type="text" value="${pdtail.getTravelcity()}" class="form-control" >
+											<input type="text" value="${pdtail.getMinreservation()}명" class="form-control" >
 										</div>
 									</div>
 								</div>
@@ -147,82 +128,45 @@
 									</div>
 								</div>
 								<hr>
-								예약상황
+								
+								<!--테마, 지역 ,도시  -->
+								여행지 정보
 								<div class="form-group row">
-									<div class="col-xs-4 col-md-4">
+									<div class="col-xs-6 col-md-6">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>현재인원</b></span>
+												<span class="input-group-text"><b>테마</b></span>
 											</div>
-											<input type="text" value="${pdtail.getReservationstatus()}명" class="form-control" >
+											<input type="text" value="${pdtail.getTheme()}" class="form-control" >
 										</div>
 									</div>
-									<div class="col-xs-4 col-md-4">
+									<div class="col-xs-6 col-md-6">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>최소인원</b></span>
+												<span class="input-group-text"><b>지역</b></span>
 											</div>
-											<input type="text" value="${pdtail.getMinreservation()}명" class="form-control" >
-										</div>
-									</div>
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>최대인원</b></span>
-											</div>
-											<input type="text" value="${pdtail.getMaxreservation()}명" class="form-control" >
+											<input type="text" value="${pdtail.getArea()}" class="form-control" >
 										</div>
 									</div>
 								</div>
 								
-								연령별 예약자 수
-								<div class="form-group row">
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>성인</b></span>
-											</div>
-											<input type="text" value="${pdtail.getAdultcount()}명" class="form-control" >
-										</div>
-									</div>
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>아동</b></span>
-											</div>
-											<input type="text" value="${pdtail.getKidcount()}명" class="form-control" >
-										</div>
-									</div>
-									<div class="col-xs-4 col-md-4">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>유아</b></span>
-											</div>
-											<input type="text" value="${pdtail.getSmallkidcount()}명" class="form-control" >
-										</div>
-									</div>
-								</div>
-								총 액
-								<div class="form-group row">
-									<div class="col-xs-12 col-md-12">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><b>총액</b></span>
-											</div>
-											<input type="text" value="${pdtail.getPrice()}원" class="form-control" >
-										</div>
-									</div>
-								</div>
-								<hr >
 								<!-- 개요 -->
 								여행소개
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<div class="input-group-prepend">
-											<span class="input-group-text">개요</span>
-										</div>
-										<textarea rows="10" cols="25" name="comment" id="comment" class="form-control"> ${pdtail.getOverview()} </textarea>
-										
+										<textarea rows="10" cols="25" class="form-control" > ${pdtail.getOverview()} </textarea>
+									</div>
+								</div>
+								여행준비물
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<textarea rows="10" cols="25" class="form-control"> ${pdtail.getSupplies()} </textarea>
+									</div>
+								</div>
+								여행일정
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<textarea rows="10" cols="25" class="form-control"> ${pdtail.getTravelplan()} </textarea>
 									</div>
 								</div>
 								<!-- 사진 -->

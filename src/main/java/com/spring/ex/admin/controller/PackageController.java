@@ -1,4 +1,4 @@
- package com.spring.ex.controller;
+ package com.spring.ex.admin.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -84,23 +84,17 @@ public class PackageController {
 	//여행패키지 삭제
 	@RequestMapping(value = "/admin/PackageSelectDelete")
 	public String PackageSelectDelete(HttpServletRequest request) throws Exception {
+		String Path = request.getSession().getServletContext().getRealPath("resources/images/product_package/");
+		
         int[] ajaxMsg = Arrays.stream(request.getParameterValues("valueArr")).mapToInt(Integer::parseInt).toArray();
+        
         int size = ajaxMsg.length;
         for(int i=0; i<size; i++) {
-        	//service.ProductPackageDelete(ajaxMsg[i]); //DB에서 삭제 - 학교에서 바꾸기
-        	PackageVO pfileName = service.ProductPackageFileName(ajaxMsg[i]);
-        	System.out.println(ajaxMsg[i]);
-        	System.out.println(pfileName.getS_file_name());
-        	//System.out.println(pfileName);
-        	
-        	final String filePath2 = "C:\\Users\\choum\\git\\CarefinTour\\src\\main\\webapp\\resources\\image\\product_package\\"+pfileName.getS_file_name();
-        	System.out.println(" 2번 "+filePath2);
-    		File file = new File(filePath2);
-    			if(file.exists() == true){
-    				
-    				file.delete();
-    				System.out.println("삭제 : " + pfileName.getS_file_name());
-    		}
+        	String pfileName = service.ProductPackageFileName(ajaxMsg[i]); // 삭제할 파일 이름 가져오기
+			File fileModifyDelete = new File(Path + pfileName); //삭제할 파일 경로
+			fileModifyDelete.delete();
+			
+			service.ProductPackageDelete(ajaxMsg[i]); //DB에서 삭제
         }
 		return "admin/site/packageproduct";
 	}
