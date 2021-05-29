@@ -60,11 +60,6 @@
 		SELECT COUNT(*) FROM notice <include refid="SearchNotice"></include>
 	</select>
 	
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 	<sql id="SearchNotice">
 		<choose>
 			<when test="search != null">
@@ -73,74 +68,7 @@
 		</choose>
 	</sql>
 	
-	<!-- 회원목록 -->
-	<select id="memberList" resultType="MemberVO">
-		SELECT * FROM account ORDER BY aid DESC LIMIT #{Page}, #{PageSize}
-	</select>
-	
-	<!-- 공지사항 게시물 총 갯수 -->
-	<select id="getMemberTotalCount" resultType="int">
-		SELECT COUNT(*) FROM account
-	</select>
-	
-	<!-- 회원정보 상세조회 -->
-    <select id="viewMember" resultType="MemberVO">
-        SELECT * FROM account WHERE AID = #{aid}
-    </select>
-    
-    <!-- 회원정보 수정 -->
-    <update id="updateMember">
-    	UPDATE account SET Password = #{password}, Grade= '일반', Mileage = #{mileage}, Comment = #{comment} WHERE UserID = #{userID}
-    </update>
-    
-    <!-- 회원정보 선택 삭제 -->
-	<delete id="delete">
-		DELETE FROM account WHERE AID = #{aid}
-	</delete>
-    
-    <!-- 회원 등록 -->
-    <insert id="AdminMemberSignUp">
-		INSERT INTO account(
-			UserID,
-			Password,
-			Name,
-			Grade,
-			Email,
-			Phone,
-			Birth,
-			Sex,
-			Address,
-			Mileage)
-		VALUES(
-			#{UserID},
-			#{Password},
-			#{Name},
-			#{Grade},
-			#{Email},
-			#{Phone},
-			#{Birth},
-			#{Sex},
-			#{Address},
-			#{Mileage})
-    </insert>
-    
-    <!-- 회원 검색 -->
-	<select id="memberSearchView" resultType="MemberVO">
-		SELECT * FROM account  WHERE UserID LIKE CONCAT('%', #{keyword}, '%') OR Name LIKE CONCAT('%', #{keyword} , '%') OR ORDER BY AID DESC  LIMIT #{Page}, #{PageSize}
-	</select>
-	
-	<!-- 회원 검색 게시물 총 갯수 -->
-	<select id="getmemberSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
-	</select>
-	
-	<sql id="Searchs">
-		<choose>
-			<when test="search != null">
-				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')
-			</when>
-		</choose>
-	</sql>
+
     
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
