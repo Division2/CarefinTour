@@ -1,4 +1,4 @@
-package com.spring.ex.controller;
+package com.spring.ex.admin.controller;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.ex.service.AdminServiceCenterService;
+import com.spring.ex.admin.service.AdminServiceCenterService;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;

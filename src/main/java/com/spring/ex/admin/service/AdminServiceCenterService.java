@@ -1,4 +1,4 @@
-package com.spring.ex.service;
+package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -108,19 +108,8 @@ public interface AdminServiceCenterService {
 
 	//FAQ 내용
 	public FAQVO FAQBoardView(int fId) throws Exception;
-<<<<<<< HEAD
 
-
-	public List<FAQVO> FAQCategory(HashMap<String, Integer> map) throws Exception;
-	
-
-=======
-	
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 	//FAQ 카테고리 조회
 	public List<Map<String, Object>> FAQCategory() throws Exception;
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour

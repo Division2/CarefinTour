@@ -1,4 +1,4 @@
-package com.spring.ex.dao;
+package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,210 +6,207 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import com.spring.ex.admin.dao.AdminServiceCenterDAO;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
-@Repository
-public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
-	
-	@Inject SqlSession sqlSession;
-	private static final String namespace = "com.spring.ex.AdminServiceCenterMapper";
+@Service
+public class AdminServiceCenterServiceImpl implements AdminServiceCenterService {
+	@Inject
+	private AdminServiceCenterDAO dao;
 	
 	//공지사항 등록
 	@Override
-	public int NoticeWrite(NoticeBoardVO vo) throws Exception{
-		return sqlSession.insert(namespace + ".NoticeWrite", vo);
+	public int NoticeWrite(NoticeBoardVO vo) throws Exception {
+		return dao.NoticeWrite(vo);
 	}
 
 	//공지사항 출력
 	@Override
 	public List<NoticeBoardVO> NoticeList(HashMap<String, Integer> map) throws Exception {
-		return sqlSession.selectList(namespace + ".NoticeView", map);
+		return dao.NoticeList(map);
 	}
 	
 	//공지사항 중요 게시물 총 갯수
 	@Override
 	public int ImportantNoticeTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace + ".getImportantNoticeTotalCount");
+		return dao.ImportantNoticeTotalCount();
 	}
-	
+
 	//공지사항 게시물 총 갯수
 	@Override
 	public int NoticeTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace + ".getNoticeTotalCount");
+		return dao.NoticeTotalCount();
 	}
 
 	//공지사항 게시글 내용
 	@Override
 	public NoticeBoardVO NoticeBoardView(int nId) throws Exception {
-		return sqlSession.selectOne(namespace + ".NoticeBoardView", nId);
+		return dao.NoticeBoardView(nId);
 	}
 
 	//공지사항 수정
 	@Override
 	public int NoticeModify(NoticeBoardVO vo) throws Exception {
-		return sqlSession.update(namespace + ".NoticeModify", vo);
+		return dao.NoticeModify(vo);
 	}
 
 	//공지사항 삭제
 	@Override
 	public int NoticeDelete(int nId) throws Exception {
-		return sqlSession.delete(namespace + ".NoticeDelete", nId);
+		return dao.NoticeDelete(nId);
 	}
 	
-	//공지사항 선택삭제 하기
+	//공지사항 선택삭제
 	@Override
 	public void SelectDelete(String nId) throws Exception{
-	    sqlSession.delete(namespace + ".SelectDelete", nId); 
-		}
+		dao.SelectDelete(nId);
+	}
 	
 	//공지사항 검색
 	@Override
 	public List<NoticeBoardVO> NoticeSearchList(HashMap<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace + ".NoticeSearchView", map);
+		return dao.NoticeSearchList(map);
 	}
-
+	
 	//공지사항 검색 게시물 총 갯수
 	@Override
 	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
-		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", searchMap);
+		return dao.NoticeSearchTotalCount(searchMap);
 	}
 	
-	
 
-//---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
-	
+	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
+
 	//1:1 문의 등록
 	@Override
 	public int InquiryWrite(InquiryVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".InquiryWrite", vo);
+		return dao.InquiryWrite(vo);
 	}
-	
+
 	//1:1 문의 출력
 	@Override
 	public List<InquiryVO> InquiryList(HashMap<String, Integer> map) throws Exception {
-		return sqlSession.selectList(namespace + ".InquiryView", map);
+		return dao.InquiryList(map);
 	}
-
+	
 	//1:1 문의 게시물 총 갯수
 	@Override
 	public int InquiryTotalCount() throws Exception {
-		return sqlSession.selectOne(namespace + ".getInquiryTotalCount");
+		return dao.InquiryTotalCount();
 	}
 	
 	//1:1 문의 게시글 내용
 	@Override
 	public InquiryVO InquiryBoardView(int iId) throws Exception {
-		return sqlSession.selectOne(namespace + ".InquiryBoardView", iId);
+		return dao.InquiryBoardView(iId);
 	}
-	
+
 	//1:1 문의 답변 등록
 	@Override
 	public int InquiryAnswerWrite(InquiryAnswerVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".InquiryAnswerWrite", vo);
+		return dao.InquiryAnswerWrite(vo);
 	}
-	
+
 	//1:1 문의 답변 게시글 내용
 	@Override
 	public InquiryAnswerVO InquiryAnswerBoardView(int iId) throws Exception {
-		return sqlSession.selectOne(namespace + ".InquiryAnswerBoardView", iId);
+		return dao.InquiryAnswerBoardView(iId);
 	}
-	
+
 	//1:1 문의 답변 등록 시 답변완료로 변경
 	@Override
 	public void InquiryStatusUpdate(int iId) throws Exception {
-		sqlSession.update(namespace + ".InquiryStatusUpdate", iId);
+		dao.InquiryStatusUpdate(iId);
 	}
 	
 	//1:1 문의 답변 수정
 	@Override
 	public int InquiryAnswerModify(InquiryAnswerVO vo) throws Exception {
-		return sqlSession.update(namespace + ".InquiryAnswerModify", vo);
+		return dao.InquiryAnswerModify(vo);
 	}
-	
+
 	//1:1 문의 답변 삭제
 	@Override
 	public int InquiryAnswerDelete(int iId) throws Exception {
-		return sqlSession.delete(namespace + ".InquiryAnswerDelete", iId);
+		return dao.InquiryAnswerDelete(iId);
 	}
 	
 	//1:1 문의 답변 등록 시 답변완료로 변경
 	@Override
 	public void InquiryStatusUpdate2(int iId) throws Exception {
-		sqlSession.update(namespace + ".InquiryStatusUpdate2", iId);
+		dao.InquiryStatusUpdate2(iId);
 	}
-
+	
 	//1:1 문의 검색
 	@Override
 	public List<InquiryVO> InquirySearchList(HashMap<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace + ".InquirySearchView", map);
+		return dao.InquirySearchList(map);
 	}
 	
 	//1:1 문의 검색 게시물 총 갯수
 	@Override
 	public int InquirySearchTotalCount(HashMap<String, String> searchMap) throws Exception {
-		return sqlSession.selectOne(namespace + ".getInquirySearchTotalCount", searchMap);
+		return dao.InquirySearchTotalCount(searchMap);
 	}
 	
-	//1:1 선택삭제 하기
+	//1:1 선택삭제
 	@Override
 	public void SelectDelete2(String iId) throws Exception{
-	    sqlSession.delete(namespace + ".SelectDelete2", iId); 
-		}
-	
-	//-----------------------------------------------------FAQ관리 시작------------------------------------------------------
-	
+		dao.SelectDelete2(iId);
+	}
+
+	//----------------------------------------------FAQ관리시작--------------------------------------------------	
 	//FAQ 등록
 	@Override
 	public int FAQWrite(FAQVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".FAQWrite", vo);
+		return dao.FAQWrite(vo);
 	}
 	
 	//FAQ 카테고리 등록
 	@Override
 	public int CategoryWrite(FAQVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".CategoryWrite", vo);
+		return dao.CategoryWrite(vo);
 	}
 	
 	//FAQ 수정
 	@Override
 	public int FAQModify(FAQVO vo) throws Exception {
-		return sqlSession.update(namespace + ".FAQModify", vo);
+		return dao.FAQModify(vo);
 	}
-	
-	//FAQ선택 삭제
+
+	//FAQ 선택삭제
 	@Override
 	public void FAQDelete(String fId) throws Exception {
-		sqlSession.delete(namespace + ".FAQDelete", fId);
+		dao.FAQDelete(fId);
 	}
 	
 	//자주 찾는 질문(전체)
 	@Override
 	public List<FAQVO> FAQView(HashMap<String, Object> map) throws Exception {
-		return sqlSession.selectList(namespace + ".FAQView", map);
+		return dao.FAQView(map);
 	}
-	
+		
 	//자주 찾는 질문 총 갯수
 	@Override
 	public int FAQTotalCount(String Category) throws Exception {
-		return sqlSession.selectOne(namespace + ".getFAQTotalCount", Category);
-	}
+		return dao.FAQTotalCount(Category);
+	}	
 	
 	//FAQ 내용
 	@Override
 	public FAQVO FAQBoardView(int fId) throws Exception {
-		return sqlSession.selectOne(namespace + ".FAQBoardView", fId);
+		return dao.FAQBoardView(fId);
 	}
-
+	
 	//FAQ 카테고리 조회
 	@Override
 	public List<Map<String, Object>> FAQCategory() throws Exception {
-		return sqlSession.selectList(namespace + ".getFAQCategory");
+		return dao.FAQCategory();
 	}
 }

@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.admin.service.AdminMemberService;
-import com.spring.ex.controller.AdminServiceCenterController;
-import com.spring.ex.service.AdminServiceCenterService;
+import com.spring.ex.admin.service.AdminServiceCenterService;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PagingVO;
 

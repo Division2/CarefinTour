@@ -38,7 +38,7 @@
 						<h1 class="h3 mb-0 text-gray-800">Modify Notice</h1>
 					</div>
 					<hr>
-				<form id="NoticeBoardModify" name="NoticeBoardModify" action="modifynotice" method="POST">
+				<form id="NoticeBoardModify" name="NoticeBoardModify" action="noticeModify" method="POST">
 						<div class="form-group row">
 							<label class="form-label col-sm-1" for="important">중요</label>
 							<div class="col-sm-1">

@@ -52,7 +52,7 @@
 							<div class="d-flex">
 								<div class="ml-auto">
 									<button class="btn btn-primary" onclick="location.href='noticeWrite'">등록</button>
-									<button type="button" class="btn btn-primary" onclick="updateValue()">수정</button>
+									<button type="button" class="btn btn-primary" onclick="location.href='notice'">목록</button>
 									<button type="button"  class="btn btn-danger" onclick="NoticeDeleteSelection()">삭제</button>
 								</div>
 							</div>
