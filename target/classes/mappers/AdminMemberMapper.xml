@@ -56,14 +56,14 @@
     
     <!-- 회원 검색 -->
 	<select id="memberSearchView" resultType="MemberVO">
-		SELECT * FROM account WHERE UserID LIKE CONCAT('%', #{keyword}, '%') OR Name LIKE CONCAT('%', #{keyword} , '%') OR ORDER BY AID DESC  LIMIT #{Page}, #{PageSize}
+		SELECT * FROM account <include refid="Search"></include>  ORDER BY AID DESC  LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 회원 검색 게시물 총 갯수 -->
 	<select id="getmemberSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM account <include refid="Searchs"></include>
+		SELECT COUNT(*) FROM account <include refid="Search"></include>
 	</select>
-	<sql id="Searchs">
+	<sql id="Search">
 		<choose>
 			<when test="search != null">
 				WHERE ${search} LIKE CONCAT('%', #{keyword}, '%')

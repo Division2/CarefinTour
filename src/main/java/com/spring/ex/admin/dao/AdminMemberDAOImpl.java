@@ -58,7 +58,6 @@ public class AdminMemberDAOImpl implements AdminMemberDAO {
 		return sqlSession.selectList(namespace+".memberList",map);
 	}
 		
-	//공지사항 게시물 총 갯수
 	@Override
 	public int MemberTotalCount() throws Exception {
 		return sqlSession.selectOne(namespace + ".getMemberTotalCount");

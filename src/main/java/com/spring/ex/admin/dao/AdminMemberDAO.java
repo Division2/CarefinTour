@@ -30,6 +30,6 @@ public interface AdminMemberDAO {
 	//회원정보리스트 출력
 	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception;
 	
-	//공지사항 게시물 총 갯수
+	//회원정보
 	public int MemberTotalCount() throws Exception;
 }
