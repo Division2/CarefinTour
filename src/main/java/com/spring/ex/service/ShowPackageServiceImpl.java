@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.ShowPackageDAO;
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 
 @Service
@@ -79,5 +80,11 @@ public class ShowPackageServiceImpl implements ShowPackageService {
 	@Override
 	public PackageVO ProductPackageDetail(int pid) throws Exception {
 		return dao.ProductPackageDetail(pid);
+	}
+	
+	//여행패키지 예약내역 등록
+	@Override
+	public int OrderWrite(OrderVO vo) throws Exception {
+		return dao.OrderWrite(vo);
 	}
 }

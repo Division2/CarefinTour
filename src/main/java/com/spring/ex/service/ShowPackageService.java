@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 
 @Service
@@ -42,5 +43,8 @@ public interface ShowPackageService {
 	
 	//여행패키지 상세페이지 출력
 	public PackageVO ProductPackageDetail(int pid) throws Exception;
+	
+	//여행패키지 예약 문의 등록
+	public int OrderWrite(OrderVO vo) throws Exception;
 
 }

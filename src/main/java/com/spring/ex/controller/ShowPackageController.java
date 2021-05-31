@@ -1,17 +1,22 @@
 package com.spring.ex.controller;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.ex.service.ShowPackageService;
+import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 
@@ -155,7 +160,7 @@ public class ShowPackageController {
 		return "product/detailedinformation";
 	}
 	
-	//여행패키지 상세페이지 출력
+	//여행패키지 예약페이지 출력
 	@RequestMapping(value = "/detailResvation", method = RequestMethod.GET)
 	public String getPackageProductDetail2(Model model, HttpServletRequest request)  throws Exception {
 		int pid = Integer.parseInt(request.getParameter("PID"));
@@ -164,5 +169,21 @@ public class ShowPackageController {
 		model.addAttribute("pdtail", pdtail);
 		return "product/detailresvation";
 	}
+	
+	 //관리자 예약내역 작성
+  	@RequestMapping(value = "/detailResvationAdd", method = RequestMethod.POST)
+  	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		vo.setProductname(request.getParameter("productname"));
+  		vo.setPhonenum(request.getParameter("phonenum"));
+  		vo.setId(request.getParameter("id"));
+  		vo.setName(request.getParameter("name"));
+  		String pId = request.getParameter("pId");
+  		service.OrderWrite(vo);
+  		
+  		return "redirect:detailResvation?PID=" + pId;
+  		
+  	}
+	
+	
 
 }
