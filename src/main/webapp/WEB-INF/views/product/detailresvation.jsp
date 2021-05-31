@@ -44,8 +44,7 @@
 						</tr>								      
 						<tr>
 							<th bgcolor="#f1f3f5">상품코드</th>	
-							<td><span style="color: #1E90FF;float:left;">APP118-210901LJ</span>
-								<div id="btn2" style ="float:left; margin-left:10px;">상품보기</div>
+							<td><span style="color: #1E90FF;float:left;">${pdtail.getPid()}</span>
 							</td>			     
 						</tr>
 							 								 	
@@ -54,7 +53,7 @@
 						  </tr>
 							 
 						  <tr>
-							 <td><div style ="float:left; ">한국출발<strong>2021.09.01 수 09:40</strong><p><small>인천 출발</small></p></div>
+							 <td><div style ="float:left; ">한국출발<strong>${pdtail.getStartravelperiod()} 09:40</strong><p><small>인천 출발</small></p></div>
 							 	<div style ="float:left; margin-left:20px; ">한국도착<strong>2021.09.04 토 12:30</strong>
 							  	<p><small>현지 출발</small></p></div>
 							 </td>							  								 
@@ -74,21 +73,15 @@
 										  <tbody>
 											   <tr>
 											      <td>기본상품가</td>	
-											      <td><span style="float:center;">가격</span></td>		
-											      <td><span style="float:center;">가격</span></td>		
-											      <td><span style="float:center;">가격</span></td>										     
-											   </tr>
-											   <tr>
-											      <td>유류할증료</td>	
-											      <td><span style="float:center;">가격</span></td>		
-											      <td><span style="float:center;">가격</span></td>		
-											      <td><span style="float:center;">가격</span></td>										     
+											      <td><span style="float:center;">${pdtail.getAdultprice()}</span></td>		
+											      <td><span style="float:center;">${pdtail.getKidprice()}</span></td>		
+											      <td><span style="float:center;">${pdtail.getSmallkidprice()}</span></td>										     
 											   </tr>
 											   <tr>
 											      <td>총상품가격</td>	
-											      <td><span style="color: red;float:center;">100000</span></td>		
-											      <td><span style="color: red;float:center;">10000000</span></td>		
-											      <td><span style="color: red;float:center;">100000</span></td>										     
+											      <td><span style="color: red;float:center;"></span></td>		
+											      <td><span style="color: red;float:center;"></span></td>		
+											      <td><span style="color: red;float:center;"></span></td>										     
 											   </tr>								  
 										</tbody> 
 										   </tr>
@@ -111,20 +104,18 @@
 						<table class="table">
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*한글이름</th>
-							<td>이인호</td>
-							<th bgcolor="#f1f3f5" width="150">*생년월일/성별</th>
-							<td>1998-09-07 남</td>
+							<td>${member.getName()}</td>
+							<th bgcolor="#f1f3f5" width="150">*생년월일</th>
+							<td>${member.getBirth()}</td>
 						</tr>			
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*휴대폰번호</th>
-							<td>010-5409-8729</td>
-							<th bgcolor="#f1f3f5" width="150">*일반전화</th>
-							<td><input type =text class="form-control"></td>
+							<td>${member.getPhone()}</td>
 						</tr>
 						
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*이메일주소</th>
-							<td><input type=text class="form-control" placeholder="17831049@kyungmin.ac.kr"></td>
+							<td>${member.getEmail()}</td>
 						</tr>					
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >요청사항</th>

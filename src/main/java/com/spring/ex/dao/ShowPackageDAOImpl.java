@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 
 @Repository
@@ -82,6 +83,12 @@ public class ShowPackageDAOImpl implements ShowPackageDAO {
 	@Override
 	public PackageVO ProductPackageDetail(int pid) throws Exception {
 		return sql.selectOne(namespace + ".ProductPackageDetail", pid);
+	}
+	
+	//패키지 예약 내역 등록
+	@Override
+	public int OrderWrite(OrderVO vo) throws Exception {
+		return sql.insert(namespace + ".OrderWrite", vo);
 	}
 
 }

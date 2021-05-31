@@ -15,6 +15,7 @@ public class OrderVO {
 	private Date orderdate;
 	private String phonenum;
 	private String name;
+	private String id;
 	
 	public int getoId() {
 		return oId;
@@ -87,6 +88,12 @@ public class OrderVO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	

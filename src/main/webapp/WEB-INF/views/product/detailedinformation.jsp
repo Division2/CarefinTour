@@ -13,15 +13,38 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1d6c0ae7305fb9210dc71640a373972b"></script>
 <script>
 function cal() {
-	var num = $("#num option:selected").val();
-	var num2 = $("#num2 option:selected").val();
-	var num3 = $("#num3 option:selected").val()
-	var adult = $("#adult").val();
-	var kid = $("#kid").val();
-	var baby = $("#baby").val();
-	var amount = $("#amount").val();
+	var num = (new Function ('return '+ document.calcul.num.value))();   // eval 보안 취약점으로  대체
+	var num2 = eval(document.calcul.num2.value);
+	var num3 = eval(document.calcul.num3.value);
+
+	var adult = document.getElementById("adult").innerText;
+	var kid = document.getElementById("kid").innerText;
+	var baby = document.getElementById("baby").innerText;
+	
+	
+	adult = parseInt(adult);
+	kid = parseInt(kid);
+	baby = parseInt(baby);
+	
+	document.calcul.payment.value = num* adult + num2 *kid + num3*baby;
+	
+	
+	
 	
 }
+function cal2(){
+	if(document.calcul.payment.value == 0) {
+		swal({
+			title: "인원설정",
+			text: "인원이 체크되지 않았습니다",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+		$("#calcul").submit();
+}
+	
 </script>
 <title>CarefinTour</title>
 </head>
@@ -117,7 +140,13 @@ function cal() {
 						<div class="tour-sidebar">
 							<div class="tour-sidebar__search tour-sidebar__single">
 								<h3><strong>예약하기</strong></h3>
-								<form action="detailResvation" name="cal" onchange="cal()" class="tour-sidebar__search-form">
+								<form action="detailResvationAdd" id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
+									<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
+									<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
+									<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
+									<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
+									<input type="hidden" value="${member.getUserID()}" id="id" name="id"></input>
+									<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
 									<div class="input-group">
 									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" onchange="cal()">
@@ -135,7 +164,7 @@ function cal() {
 									<div class="input-group">
 									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
 										<select class="selectpicker" id="num2" onchange="cal()">
-												<option value=0>0</option>
+											<option value=0>0</option>
 											<option value=1>1</option>
 											<option value=2>2</option>
 											<option value=3>3</option>
@@ -162,13 +191,14 @@ function cal() {
 									</div>
 									<div class="input-group">
 									<p style="color:red;">총 금액</p>
-										<input type="text" id="amount" name="amount" onchange="cal()" style="color:red;"readonly></input>
+										<input type="text" id="payment" name="payment" style="color:red;"readonly></input>
+									</div>
+									<div class="input-group">
+										<button type="button" class="thm-btn" onclick="cal2()">예약하기</button>
 									</div>
 								</form>
 								<br>
-									<div class="input-group">
-										<button type="submit" class="thm-btn" onclick="location.href='detailResvation?PID=${pdtail.getPid()}'">Book Now</button>
-									</div>
+									
 								</div>
 							<div class="tour-sidebar__organizer">
 								<h3>Organized by</h3>
