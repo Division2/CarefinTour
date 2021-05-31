@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 
 import com.spring.ex.admin.dao.AdminMemberDAO;
+import com.spring.ex.dao.InquiryBoardDAO;
+import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 
 @Service
 public class AdminMemberServiceImpl implements AdminMemberService{
+	
 	@Inject
 	private AdminMemberDAO dao;
 	
@@ -55,5 +58,10 @@ public class AdminMemberServiceImpl implements AdminMemberService{
   	@Override
   	public int memberSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
   		return dao.memberSearchTotalCount(searchMap);
+  	}
+  	//회원 문의내역 리스트
+  	@Override
+  	public List<InquiryVO> viewInquiry(String userId) throws Exception {
+  		return dao.viewInquiry(userId);
   	}
 }

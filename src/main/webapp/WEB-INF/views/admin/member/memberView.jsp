@@ -173,12 +173,14 @@ $(document).ready(function(){
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach items="${minquiry}" var="InquiryVO">
 									<tr>
-										<td>test</td>
-										<td>test</td>
-										<td>test</td>
-										<td>test</td>
+										<td>${InquiryVO.iId }</td>
+										<td>${InquiryVO.title }</td>
+										<td>${InquiryVO.reDate }</td>
+										<td>${InquiryVO.status }</td>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 							<button type="submit" class="btn btn-primary btn-block btn-round">수정</button>

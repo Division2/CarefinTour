@@ -73,5 +73,9 @@
 		</choose>
 	</sql>
 
+	<!-- 회원1:1문의 출력 -->
+	<select id="viewInquiry" parameterType="String" resultType="InquiryVO">
+			SELECT * FROM inquiry WHERE UserID=#{userID} ORDER BY IID
+	</select>
 
 </mapper>
