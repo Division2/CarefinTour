@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.admin.service.PackageService;
 import com.spring.ex.util.UploadFileUtils;
+import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.TravelPhotoVO;
@@ -131,5 +132,48 @@ public class PackageController {
 		return "redirect:packageproduct";
 	}
 	
+	//공지사항 검색
+	@RequestMapping(value = "/admin/ProductPackageSearch", method = RequestMethod.GET)
+	public String ProductPackageSearch(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
+		
+		//받아오기
+		String searchArea = request.getParameter("searchArea");
+		String searchTheme = request.getParameter("searchTheme");
+		String searchKeyword = request.getParameter("searchKeyword");
+		 
+		HashMap<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("searchArea", searchArea);
+		searchMap.put("searchTheme", searchTheme);
+		searchMap.put("searchKeyword", searchKeyword);
+		
+		//페이징
+		int totalCount = service.getProductPackageSearchTotalCount(searchMap);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		map.put("searchArea", searchArea);
+		map.put("searchTheme", searchTheme);
+		map.put("searchKeyword", searchKeyword);
+		
+		//검색 및 결과값 담기
+		List<PackageVO> packageList = service.ProductPackageSearch(map);
+		
+		model.addAttribute("plist", packageList);
+		model.addAttribute("Paging", paging);
+		model.addAttribute("searchArea", searchArea);
+		model.addAttribute("searchTheme", searchTheme);
+		model.addAttribute("searchKeyword", searchKeyword);
+		
+		return "admin/site/packageproduct";
+	}
 	
 }

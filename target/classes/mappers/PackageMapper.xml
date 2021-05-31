@@ -37,21 +37,48 @@
 	<!-- 여행패키지 수정 -->
 	<update id="ProductPackageModify" parameterType="PackageVO">
 		UPDATE packageproduct 
-		SET ProductName = #{productname}, OverView = #{overview}, Supplies = #{supplies}, TravelPlan = #{travelplan}, StarTravelPeriod = #{startravelperiod}, ArrivalTravelPeriod = #{arrivaltravelperiod}, Theme = #{theme} , Area = #{area}, MinReservation = #{minreservation}, AdultPrice = #{adultprice}, KidPrice = #{kidprice}, SmallKidPrice = #{smallkidprice}, s_file_name = #{s_file_name}, Director = #{director}
+		SET ProductName = #{productname}, 
+			OverView = #{overview}, 
+			Supplies = #{supplies}, 
+			TravelPlan = #{travelplan}, 
+			StarTravelPeriod = #{startravelperiod}, 
+			ArrivalTravelPeriod = #{arrivaltravelperiod}, 
+			Theme = #{theme}, 
+			Area = #{area}, 
+			MinReservation = #{minreservation}, 
+			AdultPrice = #{adultprice}, 
+			KidPrice = #{kidprice}, 
+			SmallKidPrice = #{smallkidprice}, 
+			s_file_name = #{s_file_name}, 
+			Director = #{director}
 		WHERE pid = #{pid}
  	</update>
  	
- 	<!-- 여행패키지 테마로 검색 -->
+    <!-- 여행패키지 검색 -->
 	<select id="ProductPackageSearch" resultType="PackageVO">
-		SELECT * FROM packageproduct 
-		<where>
-			<if test="theme != null">
-				WHERE Theme = #{SearchTheme}
-			</if>
-			<if  test="area != null">
-				WHERE Area = #{SearchArea}
-			</if>
-		</where>
-		LIMIT #{Page}, #{PageSize}
+		SELECT * FROM packageproduct <include refid="Search"></include> LIMIT #{Page}, #{PageSize}
 	</select>
+	
+	<!-- 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
+	<select id="getProductPackageSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM packageproduct <include refid="Search"></include>
+	</select>
+	
+	<sql id="Search">
+		<choose>
+			<when test="searchTheme != Null and searchArea == Null">
+				WHERE Theme = "${searchTheme}" AND ProductName LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchTheme == Null and searchArea != Null">
+				WHERE Area = "${searchArea}" AND  ProductName LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchTheme != Null and searchArea != Null">
+				WHERE Theme = "${searchTheme}" AND Area = "${searchArea}" AND ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+			<when test="searchTheme == Null and searchArea == Null">
+				WHERE ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
+			</when>
+		</choose>
+	</sql>
+	
 </mapper>

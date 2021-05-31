@@ -53,12 +53,21 @@ public class PackageDAOImpl implements PackageDAO {
 		return sql.selectOne(namespace + ".ProductPackageFileName", pid);
 	}
 
+	//여행패키지 수정
 	@Override
 	public void ProductPackageModify(PackageVO vo) throws Exception {
 		sql.update(namespace + ".ProductPackageModify", vo);
 	}
 
+	//여행패키지 상품 검색
+	public List<PackageVO> ProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return sql.selectList(namespace + ".ProductPackageSearch", map);
+	}
 	
+	//여행패키지 상품 검색 총 갯수
+	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return sql.selectOne(namespace + ".getProductPackageSearchTotalCount", searchMap);
+	}
 	
 	
 }

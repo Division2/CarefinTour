@@ -45,7 +45,6 @@ public class PackageServiceImpl implements PackageService {
 	public void ProductPackageDelete(int pid) throws Exception {
 		dao.ProductPackageDelete(pid);
 	}
-
 	
 	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
 	@Override
@@ -59,5 +58,13 @@ public class PackageServiceImpl implements PackageService {
 		dao.ProductPackageModify(vo);
 	}
 
-
+	//여행패키지 상품 검색
+	public List<PackageVO> ProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return dao.ProductPackageSearch(map);
+	}
+	
+	//여행패키지 상품 검색 총 갯수
+	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.getProductPackageSearchTotalCount(searchMap);
+	}
 }

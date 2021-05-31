@@ -30,4 +30,10 @@ public interface PackageService {
 	
 	//여행패키지 수정
 	public void ProductPackageModify(PackageVO vo) throws Exception;
+	
+	//여행패키지 상품 검색
+	public List<PackageVO> ProductPackageSearch(HashMap<String, Object> map) throws Exception;
+	
+	//여행패키지 상품 검색 총 갯수
+	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 }

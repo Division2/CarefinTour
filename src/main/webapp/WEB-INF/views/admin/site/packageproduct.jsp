@@ -107,43 +107,49 @@
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Package Management</h1>
 					</div>
-					<hr>
-					<div class="row">
-						<div class="col-sm-2">
-							<select class="form-control" id="">
-								<option value="">지역</option>
-								<option>미주/중남미/하와이</option>
-								<option>대만/동남아/서남아</option>
-								<option>중국/홍콩/러시아</option>
-								<option>유럽/아프리카</option>
-								<option>일본</option>
-							</select>
-						</div>
-						<div class="col-sm-2">
-							<select class="form-control" id="">
-								<option value="">테마</option>
-								<option>낚시</option>
-								<option>허니문</option>
-								<option>골프</option>
-								<option>해외</option>
-							</select>
-						</div>
-						<div class="col-sm-5">
-							<input type="text" id="keyword" name="keyword" placeholder="상품명을 입력하세요.">
-							<button type="button" class="btn px-3 btn-primary">
-								<i class="fas fa-search"></i>
-							</button>
-						</div>
-						
-						<div class="col-sm-3">
-							<div class="d-flex">
-								<div class="ml-auto">
-									<button class="btn btn-primary"  onclick="location.href='insertpackage'">등록</button>
-									<button class="btn btn-primary" onclick="deleteValue();">삭제</button>
+					<hr>	
+					
+						<div class="row" align="left">
+							<div class="col-sm-9">
+								<form action="ProductPackageSearch" role="form" method="GET">
+									<table>
+										<tr>
+											<td><select class="form-control" id="searchArea" name="searchArea">
+												<option value="NULL">지역</option>
+												<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+												<option value="대만/동남아/서남아">대만/동남아/서남아</option>
+												<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
+												<option value="유럽/아프리카">유럽/아프리카</option>
+												<option value="일본">일본</option>
+											</select></td>
+											<td><select class="form-control" id="searchTheme" name="searchTheme">
+												<option value="NULL">테마</option>
+												<option value="낚시">낚시</option>
+												<option value="허니문">허니문</option>
+												<option value="골프">골프</option>
+												<option value="해외">해외</option>
+											</select></td>
+											<td>
+												<input type="text" id="searchKeyword" name="searchKeyword" placeholder="상품명을 입력하세요." style="height:38px;">
+												<button type="submit" class="btn px-3 btn-primary">
+													<i class="fas fa-search"></i>
+												</button>
+											</td>
+										</tr>
+									</table>
+								</form>	
+							</div>
+							
+							<div class="col-sm-3">
+								<div class="d-flex">
+									<div class="ml-auto">
+										<button class="btn btn-primary"  onclick="location.href='insertpackage'">등록</button>
+										<button class="btn btn-primary" onclick="deleteValue();">삭제</button>
+									</div>
 								</div>
 							</div>
-						</div>
-                    </div>
+	                    </div>
+                   
                     <br>
 					<!-- 게시판 시작 -->	
 					<table class="table table-hover table-white">
@@ -185,45 +191,91 @@
 				<ul class="pagination justify-content-center">
 					<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-							<li class="page-item disabled">
-								<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
-							</li>
+						<c:when test="${searchTheme ne null && searchArea ne null && searchKeyword ne null}">
+							<c:choose>
+								<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+									<li class="page-item disabled">
+										<a class="page-link" href="ProductPackageSearch?searchTheme=${searchTheme}&searchArea=${searchArea}&searchKeyword=${searchKeyword}&page=${Paging.prevPageNo }">Previus</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="ProductPackageSearch?searchTheme=${searchTheme}&searchArea=${searchArea}&searchKeyword=${searchKeyword}&page=${Paging.prevPageNo }">Previus</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							<!-- 페이지 갯수만큼 버튼 생성 -->
+							<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+								<c:choose>
+									<c:when test="${i eq Paging.pageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="ProductPackageSearch?searchTheme=${searchTheme}&searchArea=${searchArea}&searchKeyword=${searchKeyword}&page=${i}"><c:out value="${i}"/></a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="ProductPackageSearch?searchTheme=${searchTheme}&searchArea=${searchArea}&searchKeyword=${searchKeyword}&page=${i}"><c:out value="${i}"/></a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+							<c:choose>
+								<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+									<li class="page-item disabled">
+										<a class="page-link" href="ProductPackageSearch?searchTheme=${searchTheme}&searchArea=${searchArea}&searchKeyword=${searchKeyword}&page=${Paging.nextPageNo }">Next</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="ProductPackageSearch?searchTheme=${searchTheme}&searchArea=${searchArea}&searchKeyword=${searchKeyword}&page=${Paging.nextPageNo }">Next</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
-					<!-- 페이지 갯수만큼 버튼 생성 -->
-					<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
-						<c:choose>
-							<c:when test="${i eq Paging.pageNo }">
-								<li class="page-item disabled">
-									<a class="page-link" href="packageproduct?page=${i}"><c:out value="${i}"/></a>
-								</li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item">
-									<a class="page-link" href="packageproduct?page=${i}"><c:out value="${i}"/></a>
-								</li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
-					<c:choose>
-						<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-							<li class="page-item disabled">
-								<a class="page-link" href="packageproduct?page=${Paging.nextPageNo }">Next</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="packageproduct?page=${Paging.nextPageNo }">Next</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
+							<c:choose>
+								<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+									<li class="page-item disabled">
+										<a class="page-link" href="ProductPackageSearch?page=${Paging.prevPageNo }">Previus</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="ProductPackageSearch?page=${Paging.prevPageNo }">Previus</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							<!-- 페이지 갯수만큼 버튼 생성 -->
+							<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+								<c:choose>
+									<c:when test="${i eq Paging.pageNo }">
+										<li class="page-item disabled">
+											<a class="page-link" href="packageproduct?page=${i}"><c:out value="${i}"/></a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item">
+											<a class="page-link" href="packageproduct?page=${i}"><c:out value="${i}"/></a>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+							<c:choose>
+								<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+									<li class="page-item disabled">
+										<a class="page-link" href="packageproduct?page=${Paging.nextPageNo }">Next</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="packageproduct?page=${Paging.nextPageNo }">Next</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>	
+					</c:choose>	
 				</ul>
 			</nav>
 			
