@@ -20,7 +20,7 @@
     
     <!-- 회원정보 수정 -->
     <update id="updateMember">
-    	UPDATE account SET Password = #{password}, Grade= '일반', Mileage = #{mileage}, Comment = #{comment} WHERE UserID = #{userID}
+    	UPDATE account SET Password = #{password}, Grade= #{grade}, Mileage = #{mileage},Sex = #{sex}, Comment = #{comment} WHERE UserID = #{userID}
     </update>
     
     <!-- 회원정보 선택 삭제 -->

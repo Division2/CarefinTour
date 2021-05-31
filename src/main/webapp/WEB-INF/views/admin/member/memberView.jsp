@@ -14,6 +14,13 @@
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//테마 지역 값에 따라서 콤보박스 선택되게
+	$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
+	$("#sex").val("${mDetail.getSex()}").prop("selected", true);
+})
+</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -80,11 +87,11 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">권한</span>
 										</div>
-										<select class="form-control">
+										<select id="grade" name="grade" class="form-control">
 											<option value="일반">일반</option>
 											<option value="VIP">VIP</option>
 											<option value="블랙">블랙</option>
-											<option value="관리자">관리자</option>
+											<option value="Admin">관리자</option>
 										</select>
 									</div>
 								</div>
@@ -93,9 +100,9 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">성별</span>
 										</div>
-										<select class="form-control">
-											<option value="남성" >남성</option>
-											<option value="여성" >여성</option>
+										<select class="form-control" id="sex" name="sex">
+											<option value="0" >남성</option>
+											<option value="1" >여성</option>
 										</select>
 									</div>
 								</div>

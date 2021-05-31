@@ -146,11 +146,7 @@
 								<td><c:out value="${MemberVO.userID}"></c:out></td>
 								<td><c:out value="${MemberVO.password}"></c:out></td>
 								<td><c:out value="${MemberVO.name}"></c:out></td>
-								<td>
-									<select class="form-control">
-										<option>일반</option>
-									</select>
-								</td>
+								<td><c:out value="${MemberVO.grade}"></c:out></td>
 								<td><c:out value="${MemberVO.email}"></c:out></td>
 								<td><c:out value="${MemberVO.phone}"></c:out></td>
 								<td><c:out value="${MemberVO.birth}"></c:out></td>
