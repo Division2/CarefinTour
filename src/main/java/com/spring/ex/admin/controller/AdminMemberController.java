@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.admin.service.AdminMemberService;
 import com.spring.ex.admin.service.AdminServiceCenterService;
+import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PagingVO;
 
@@ -72,8 +73,12 @@ private static final Logger logger = LoggerFactory.getLogger(AdminMemberControll
 		    	int aid = Integer.parseInt(request.getParameter("AID"));
 		    	System.out.println(aid);
 		    	MemberVO memberVO = service.ViewMember(aid);
-		    	
+		    	String userId = memberVO.getUserID();
+		    	List<InquiryVO> List = service.viewInquiry(userId);
 		        model.addAttribute("mDetail", memberVO);
+		        model.addAttribute("minquiry", List);
+		        System.out.println(userId);
+		        System.out.println(model);
 		        //System.out.println("클릭한 아이디 확인 : "+userId);
 		        //logger.info("클릭한 아이디 : "+UserID);
 		        // member_view.jsp로 포워드
@@ -150,6 +155,6 @@ private static final Logger logger = LoggerFactory.getLogger(AdminMemberControll
 		  		
 		  		return "admin/member/memberlist";
 		  	}	
-			
+		//회원 개인 문의내역
 	
 }

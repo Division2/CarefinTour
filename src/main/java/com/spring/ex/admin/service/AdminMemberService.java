@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 
 @Service
@@ -33,4 +34,7 @@ public interface AdminMemberService {
 	
 	//회원 게시물 총 갯수
 	public int MemberTotalCount() throws Exception;
+	
+	//회원 문의내역
+	public List<InquiryVO> viewInquiry(String userId) throws Exception;
 }

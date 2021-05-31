@@ -8,7 +8,7 @@
 		SELECT * FROM account ORDER BY aid DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<!-- 공지사항 게시물 총 갯수 -->
+	<!-- 회원 총 수 -->
 	<select id="getMemberTotalCount" resultType="int">
 		SELECT COUNT(*) FROM account
 	</select>
@@ -18,9 +18,11 @@
         SELECT * FROM account WHERE AID = #{aid}
     </select>
     
+    <!-- 회원정보 상세조회에 문의내역 출력 -->
+    
     <!-- 회원정보 수정 -->
     <update id="updateMember">
-    	UPDATE account SET Password = #{password}, Grade= '일반', Mileage = #{mileage}, Comment = #{comment} WHERE UserID = #{userID}
+    	UPDATE account SET Password = #{password}, Grade= #{grade}, Mileage = #{mileage},Sex = #{sex}, Comment = #{comment} WHERE UserID = #{userID}
     </update>
     
     <!-- 회원정보 선택 삭제 -->
@@ -71,5 +73,9 @@
 		</choose>
 	</sql>
 
+	<!-- 회원1:1문의 출력 -->
+	<select id="viewInquiry" parameterType="String" resultType="InquiryVO">
+			SELECT * FROM inquiry WHERE UserID=#{userID} ORDER BY IID
+	</select>
 
 </mapper>

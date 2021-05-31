@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 
 @Repository
@@ -57,9 +58,14 @@ public class AdminMemberDAOImpl implements AdminMemberDAO {
 	public List<MemberVO> getMemberList(HashMap<String, Integer> map) throws Exception {
 		return sqlSession.selectList(namespace+".memberList",map);
 	}
-		
+	//회원 총명
 	@Override
 	public int MemberTotalCount() throws Exception {
 		return sqlSession.selectOne(namespace + ".getMemberTotalCount");
+	}
+	//회원1:1문의내역
+	@Override
+	public List<InquiryVO> viewInquiry(String userId) throws Exception {
+		return sqlSession.selectList(namespace+".viewInquiry", userId);
 	}
 }

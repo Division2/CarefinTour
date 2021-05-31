@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 
 @Repository
@@ -32,4 +33,7 @@ public interface AdminMemberDAO {
 	
 	//회원정보
 	public int MemberTotalCount() throws Exception;
+	
+	//회원 1:1문의내역 출력
+	public List<InquiryVO> viewInquiry(String userId) throws Exception; 
 }

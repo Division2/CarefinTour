@@ -40,48 +40,37 @@
 				<table class="table">
                      <tr>
 					 <th bgcolor="#f1f3f5">상품명</th>
-						<td>[노쇼핑/1일 자유] 대만/예류/스펀/진과스/지우펀 4일</td>						    								     				
+						<td>${pdtail.getProductname()}</td>						    								     				
 						</tr>								      
 						<tr>
 							<th bgcolor="#f1f3f5">상품코드</th>	
-								<td><span style="color: #1E90FF;float:left;">APP118-210901LJ</span>
-									<div id="btn2" style ="float:left; margin-left:10px;">상품보기</div>
-								</td>			     
+							<td><span style="color: #1E90FF;float:left;">APP118-210901LJ</span>
+								<div id="btn2" style ="float:left; margin-left:10px;">상품보기</div>
+							</td>			     
 						</tr>
 							 								 	
 						  <tr>
 						  	<th bgcolor="#f1f3f5"  rowspan = "3">여행기간</th>
-					      		<td><span style="color: #1E90FF; float:left;">3박 4일</span><div style = "float:left;">| 진에어</div>
-						  			<div id="btn3" style ="float:left; margin-left:20px;">항공여정보기</div>
-						  		</td>
 						  </tr>
 							 
 						  <tr>
 							 <td><div style ="float:left; ">한국출발<strong>2021.09.01 수 09:40</strong><p><small>인천 출발</small></p></div>
 							 	<div style ="float:left; margin-left:20px; ">한국도착<strong>2021.09.04 토 12:30</strong>
-							  		<p><small>타이베이 출발</small></p></div>
+							  	<p><small>현지 출발</small></p></div>
 							 </td>							  								 
-						  </tr>
-							 	
-						   <tr>
-							 <td><div style ="float:left; ">한국출발<strong>2021.09.01 수 09:40</strong><p><small>인천 출발</small></p></div>
-							  	<div style ="float:left; margin-left:20px; ">한국도착<strong>2021.09.04 토 12:30</strong>
-							  		<p><small>타이베이 출발</small></p></div>
-							  </td>							  								 
-							</tr>
-							  	
-							  								 
+						  </tr>						 	
+						   <tr></tr>  								 
 							  <tr>
 								  <th bgcolor="#f1f3f5">상품가격</th>
 								  	<td><table class="table">
 				                        <tr>
 			                                <thead>
-			                                <hr color="black">
-										      <th bgcolor="#f1f3f5"><strong>상품가격</strong></th>
-										      <th bgcolor="#f1f3f5"><strong>성인</strong>(만12세 이상)</th>
-										      <th bgcolor="#f1f3f5"><strong>아동</strong>(만12세 미만)</th>
-										      <th bgcolor="#f1f3f5"><strong>성인</strong>(만2세 미만)</th>											      
-										      </thead>							      
+				                                 <hr color="black">
+											     <th bgcolor="#f1f3f5"><strong>상품가격</strong></th>
+											     <th bgcolor="#f1f3f5"><strong>성인</strong>(만12세 이상)</th>
+											     <th bgcolor="#f1f3f5"><strong>아동</strong>(만12세 미만)</th>
+											     <th bgcolor="#f1f3f5"><strong>성인</strong>(만2세 미만)</th>											      
+										     </thead>							      
 										  <tbody>
 											   <tr>
 											      <td>기본상품가</td>	
@@ -122,26 +111,24 @@
 						<table class="table">
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*한글이름</th>
-								<td>이인호</td>
-									<th bgcolor="#f1f3f5" width="150">*생년월일/성별</th>
-										<td>1998-09-07 남</td>
-						</tr>
-						
+							<td>이인호</td>
+							<th bgcolor="#f1f3f5" width="150">*생년월일/성별</th>
+							<td>1998-09-07 남</td>
+						</tr>			
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*휴대폰번호</th>
-								<td>010-5409-8729</td>
-									<th bgcolor="#f1f3f5" width="150">*일반전화</th>
-										<td><input type =text class="form-control"></td>
+							<td>010-5409-8729</td>
+							<th bgcolor="#f1f3f5" width="150">*일반전화</th>
+							<td><input type =text class="form-control"></td>
 						</tr>
 						
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*이메일주소</th>
-								<td><input type=text class="form-control" placeholder="17831049@kyungmin.ac.kr"></td>
-						</tr>
-											
+							<td><input type=text class="form-control" placeholder="17831049@kyungmin.ac.kr"></td>
+						</tr>					
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >요청사항</th>
-								<td><textarea class="form-control" name="content" placeholder="요청사항을 적어주세요"></textarea></td>
+							<td><textarea class="form-control" name="content" placeholder="요청사항을 적어주세요"></textarea></td>
 						</tr>				
 						</table>
 						
@@ -151,13 +138,13 @@
 						<tr>
 							<th bgcolor="#f1f3f5" height="80px"><h6><strong>*고객님도 여행에 참여하시나요?
 								<label><input type="radio" name="yes"> 네</label>
-									<label><input type="radio" name="yes"> 아니요</label></strong></h6>
+								<label><input type="radio" name="yes"> 아니요</label></strong></h6>
 							</th>
 						</tr>
 						</table>
 						<h6 style="float:left;">총 <span style="color:#1E90FF">1</span>명 |</h6>  <h6 style="float:left;margin-left:20px; "> 성인 <strong>1</strong>명(만 12세 이상)</h6> 
 							<h6 style="float:left;margin-left:20px; ">아동 <strong>0</strong>명(만 2~12세이상)</h6>
-								<h6 style="float:left;margin-left:20px; ">유아 <strong>0</strong>명(만 2세이상)</h6>
+							<h6 style="float:left;margin-left:20px; ">유아 <strong>0</strong>명(만 2세이상)</h6>
 							<div id="btn4" style="float:right;">동반자추가</div><p>
 						<table class="table">
 						<tr>			
