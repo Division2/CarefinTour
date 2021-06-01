@@ -175,7 +175,7 @@ public class ShowPackageController {
   	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
-  		vo.setId(request.getParameter("id"));
+  		vo.setUserId(request.getParameter("id"));
   		vo.setName(request.getParameter("name"));
   		String pId = request.getParameter("pId");
   		service.OrderWrite(vo);

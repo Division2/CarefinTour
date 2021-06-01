@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.ex.admin.service.AdminStatisticsService;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.NoticeBoardVO;
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.VisitVO;
@@ -80,8 +81,6 @@ public class AdminStatisticsController {
 		
 		model.addAttribute("VisitList", List);
 		model.addAttribute("Paging", paging);
-		model.addAttribute("start_date", start_date);
-		model.addAttribute("end_date", end_date);
 		
 		return "admin/statistics/visitstatistics";
 	}
@@ -215,8 +214,6 @@ public class AdminStatisticsController {
 		
 		model.addAttribute("NoticeList", NoticeList);
 		model.addAttribute("Paging", paging);
-		model.addAttribute("start_date", start_date);
-		model.addAttribute("end_date", end_date);
 		
 		return "admin/statistics/noticestatistics";
 	}
@@ -252,8 +249,6 @@ public class AdminStatisticsController {
 		
 		model.addAttribute("InquiryList", InquiryList);
 		model.addAttribute("Paging", paging);
-		model.addAttribute("start_date", start_date);
-		model.addAttribute("end_date", end_date);
 		
 		return "admin/statistics/inquirystatistics";
 	}
@@ -289,8 +284,6 @@ public class AdminStatisticsController {
 		
 		model.addAttribute("TravelPhotoList", TravelPhotoList);
 		model.addAttribute("Paging", paging);
-		model.addAttribute("start_date", start_date);
-		model.addAttribute("end_date", end_date);
 		
 		return "admin/statistics/travelphotostatistics";
 	}
@@ -332,5 +325,62 @@ public class AdminStatisticsController {
 			service.TravelPhotoSelectDelete(ajaxMsg[i]);
 		}
 		return "redirect:travelphotodetail";
+	}
+	
+	//기간별 매출 통계 출력
+	@RequestMapping(value = "/admin/period", method = RequestMethod.GET)
+	public String RevenueByPeriod(HttpServletRequest request, Model model) throws Exception {
+		
+		int totalCount = service.TotalOrderCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(5);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 5;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		model.addAttribute("OrderList", service.RevenueByPeriod(map));
+		model.addAttribute("Paging", paging);
+		
+		return "admin/statistics/periodstatistics";
+	}
+	
+	//기간별 매출 검색 출력
+	@RequestMapping(value = "/admin/periodSearch", method = RequestMethod.GET)
+	public String PeriodSearchView(HttpServletRequest request, Model model) throws Exception {
+		
+		String start_date = request.getParameter("start_date");
+		String end_date = request.getParameter("end_date");
+		
+		HashMap<String, String> totalMap = new HashMap<String, String>();
+		totalMap.put("start_date", start_date);
+		totalMap.put("end_date", end_date);
+		
+		int totalCount = service.getPriodSearchTotalCount(totalMap);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(5);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 5;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		map.put("start_date", start_date);
+		map.put("end_date", end_date);
+		
+		model.addAttribute("OrderList", service.PeriodSearchView(map));
+		model.addAttribute("Paging", paging);
+		
+		return "admin/statistics/periodstatistics";
 	}
 }

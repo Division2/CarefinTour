@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.NoticeBoardVO;
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.VisitVO;
 
@@ -149,5 +150,29 @@ public class AdminStatisticsDAOImpl implements AdminStatisticsDAO {
 	@Override
 	public void TravelPhotoSelectDelete(String prId) throws Exception {
 		sqlSession.delete(namespace + ".TravelPhotoBoardStatisticsDetailSelectDelete", prId);
+	}
+
+	//기간별 매출 통계 출력
+	@Override
+	public List<OrderVO> RevenueByPeriod(HashMap<String, Integer> map) throws Exception {
+		return sqlSession.selectList(namespace + ".RevenueByPeriod", map);
+	}
+
+	//기간별 매출 총 갯수
+	@Override
+	public int TotalOrderCount() throws Exception {
+		return sqlSession.selectOne(namespace + ".TotalOrderCount");
+	}
+
+	//기간별 매출 검색 출력
+	@Override
+	public List<OrderVO> PeriodSearchView(HashMap<String, Object> map) throws Exception {
+		return sqlSession.selectList(namespace + ".PeriodSearchView", map);
+	}
+	
+	//기간별 매출 검색 총 갯수
+	@Override
+	public int getPriodSearchTotalCount(HashMap<String, String> totalMap) throws Exception {
+		return sqlSession.selectOne(namespace + ".getPeriodSearchTotalCount", totalMap);
 	}
 }
