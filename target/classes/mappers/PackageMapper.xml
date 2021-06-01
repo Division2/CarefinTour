@@ -66,16 +66,16 @@
 	
 	<sql id="Search">
 		<choose>
-			<when test="searchTheme != Null and searchArea == Null">
-				WHERE Theme = "${searchTheme}" AND ProductName LIKE CONCAT('%', #{keyword}, '%')
+			<when test="searchTheme != 'noTheme' and searchArea == 'noArea'">
+				WHERE Theme = #{searchTheme} AND ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
 			</when>
-			<when test="searchTheme == Null and searchArea != Null">
-				WHERE Area = "${searchArea}" AND  ProductName LIKE CONCAT('%', #{keyword}, '%')
+			<when test="searchTheme == 'noTheme' and searchArea != 'noArea'">
+				WHERE Area = #{searchArea} AND  ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
 			</when>
-			<when test="searchTheme != Null and searchArea != Null">
-				WHERE Theme = "${searchTheme}" AND Area = "${searchArea}" AND ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
+			<when test="searchTheme != 'noTheme' and searchArea != 'noArea'">
+				WHERE Theme = #{searchTheme} AND Area = #{searchArea} AND ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
 			</when>
-			<when test="searchTheme == Null and searchArea == Null">
+			<when test="searchTheme == 'noTheme' and searchArea == 'noArea'">
 				WHERE ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
 			</when>
 		</choose>

@@ -115,15 +115,15 @@
 									<table>
 										<tr>
 											<td><select class="form-control" id="searchArea" name="searchArea">
-												<option value="NULL">지역</option>
-												<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+												<option value="noArea">지역</option>
+												<option value="북미/중남미/하와이">북미/중남미/하와이</option>
 												<option value="대만/동남아/서남아">대만/동남아/서남아</option>
 												<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
 												<option value="유럽/아프리카">유럽/아프리카</option>
 												<option value="일본">일본</option>
 											</select></td>
 											<td><select class="form-control" id="searchTheme" name="searchTheme">
-												<option value="NULL">테마</option>
+												<option value="noTheme">테마</option>
 												<option value="낚시">낚시</option>
 												<option value="허니문">허니문</option>
 												<option value="골프">골프</option>

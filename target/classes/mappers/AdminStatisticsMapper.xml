@@ -117,4 +117,24 @@
 	<delete id="TravelPhotoBoardStatisticsDetailSelectDelete">
 		DELETE FROM photoreview WHERE prId = #{prId}
 	</delete>
+	
+	<!-- 기간별 매출 통계 출력 -->
+	<select id="RevenueByPeriod" resultType="OrderVO">
+		SELECT * FROM historyorder ORDER BY OID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 기간별 매출 총 갯수 -->
+	<select id="TotalOrderCount" resultType="int">
+		SELECT COUNT(*) FROM historyorder
+	</select>
+	
+	<!-- 기간별 매출 검색 출력 -->
+	<select id="PeriodSearchView" resultType="OrderVO">
+		SELECT * FROM historyorder WHERE OrderDate <![CDATA[>= #{start_date} AND OrderDate <= #{end_date}]]> ORDER BY OID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 기간별 매출 검색 총 갯수 -->
+	<select id="getPeriodSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM historyorder WHERE OrderDate <![CDATA[>= #{start_date} AND OrderDate <= #{end_date}]]>
+	</select>
 </mapper>

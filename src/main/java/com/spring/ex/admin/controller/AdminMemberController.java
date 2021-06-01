@@ -21,6 +21,7 @@ import com.spring.ex.admin.service.AdminMemberService;
 import com.spring.ex.admin.service.AdminServiceCenterService;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PagingVO;
 
 
@@ -75,6 +76,8 @@ private static final Logger logger = LoggerFactory.getLogger(AdminMemberControll
 		    	MemberVO memberVO = service.ViewMember(aid);
 		    	String userId = memberVO.getUserID();
 		    	List<InquiryVO> List = service.viewInquiry(userId);
+		    	List<OrderVO> OList = service.viewOrder(userId);
+		    	model.addAttribute("morder", OList);
 		        model.addAttribute("mDetail", memberVO);
 		        model.addAttribute("minquiry", List);
 		        System.out.println(userId);

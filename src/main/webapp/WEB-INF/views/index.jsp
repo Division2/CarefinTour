@@ -121,138 +121,149 @@
 				</div>
 				<!-- /.block-title -->
 				<div class="row">
+				<c:forEach items="${UsaPackageViewList }" var="UsaPackageViewList">
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/tour-1-1.jpg"/>' alt="">
+								<img src='<c:url value="/resources/images/product_package/${UsaPackageViewList.s_file_name }"/>' alt="" >
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
-							<div class="tour-one__content">
-						
+							<div class="tour-one__content">			
 								<h3>
-									<a href="tour-details.html">미국 자유 여행 패키지</a>
+									<a href="detailInfo?PID=${UsaPackageViewList.pid}">${UsaPackageViewList.productname}</a>
 								</h3>
 								<p>
-									<span>3,200,000~</span> / 1인 기준
+									<span>${UsaPackageViewList.adultprice }~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 5박 6일 </a></li>
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> 미국 </a></li>
+									<li><i class="far fa-clock"> 2박3일 </i></li>
+									<li><i class="far fa-user-circle"><c:out value="${UsaPackageViewList.hit}"/></i> </li>
+									<li><i class="far fa-map"> ${UsaPackageViewList.area}</i> </li>
 								</ul>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
+					<c:forEach items="${ChinaPackageViewList }" var="ChinaPackageViewList">
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/tour-1-2.png"/>' alt="">
+								<img src='<c:url value="/resources/images/tour/${ChinaPackageViewList.s_file_name }"/>' alt="">
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="tour-details.html">중국 명소 관광 패키지</a>
+									<a href="detailInfoPID=${ChinaPackageViewList.pid}">${ChinaPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>1,500,000~</span> / 1인 기준
+									<span>${ChinaPackageViewList.adultprice }~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 3박 4일</a></li>
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> 중국 </a></li>
+									<li><i class="far fa-clock"> 3박 4일</i></li>
+									<li><i class="far fa-user-circle"><c:out value="${ChinaPackageViewList.hit}"/></i></li>
+									<li><i class="far fa-map"> ${ChinaPackageViewList.area}</i></li>
 								</ul>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
+					<c:forEach items="${MylPackageViewList }" var="MylPackageViewList">
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/tour-1-3.png"/>' alt="">
+								<img src='<c:url value="/resources/images/tour/${MylPackageViewList.s_file_name }"/>' alt="">
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="tour-details.html">말레이시아 낚시 패키지</a>
+									<a href="detailInfoPID=${MylPackageViewList.pid}">${MylPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>1,800,000~</span> / 1인 기준
+									<span>${MylPackageViewList.adultprice }~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 4박 5일</a></li>
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> 말레이시아</a></li>
+									<li><i class="far fa-clock">4박 5일</i></li>
+									<li><i class="far fa-user-circle"><c:out value="${MylPackageViewList.hit}"/></i></li>
+									<li><i class="far fa-map">${MylPackageViewList.area}</i></li>
 								</ul>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
+					<c:forEach items="${JapanPackageViewList }" var="JapanPackageViewList">
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/tour-1-4.png"/>' alt="">
+								<img src='<c:url value="/resources/images/tour/${JapanPackageViewList.s_file_name }"/>' alt="">
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
-								
 								<h3>
-									<a href="tour-details.html">일본 벚꽃 패키지</a>
+									<a href="detailInfoPID=${JapanPackageViewList.pid}">${JapanPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>1,300,000~</span> / 1인 기준
+									<span>${JapanPackageViewList.adultprice }~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 2박 3일</a></li>
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> 일본</a></li>
+									<li><i class="far fa-clock">2박 3일</i></li>
+									<li><i class="far fa-user-circle"><c:out value="${JapanPackageViewList.hit}"/></i></li>
+									<li><i class="far fa-map">${JapanPackageViewList.area}</i></li>
 								</ul>
 							</div>
 						</div>
 					</div>
+				</c:forEach>
+				<c:forEach items="${SurfingPackageViewList }" var="SurfingPackageViewList">
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/tour-1-5.png"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
-							</div>
-							<div class="tour-one__content">
-								
-								<h3>
-									<a href="tour-details.html">하와이 서핑 패키지</a>
-								</h3>
-								<p>
-									<span>3,800,000~</span> / 1인 기준
-								</p>
-								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 6박 7일</a></li>
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> 미국</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-4 col-lg-6">
-						<div class="tour-one__single">
-							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/tour-1-6.png"/>' alt="">
+								<img src='<c:url value="/resources/images/tour/${SurfingPackageViewList.s_file_name }"/>' alt="">
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								
 								<h3>
-									<a href="tour-details.html">이탈리아 자유 여행 패키지</a>
+									<a href="detailInfoPID=${SurfingPackageViewList.pid}">${SurfingPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>3,300,000~</span> / 1인 기준
+									<span>${SurfingPackageViewList.adultprice }~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><a href="tour-details.html"><i class="far fa-clock"></i> 6박 7일</a></li>
-									<li><a href="tour-details.html"><i class="far fa-user-circle"></i> 12+</a></li>
-									<li><a href="tour-details.html"><i class="far fa-map"></i> 이탈리아</a></li>
+									<li><i class="far fa-clock"> 6박 7일</i></li>
+									<li><i class="far fa-user-circle"> <c:out value="${SurfingPackageViewList.hit}"/></i></li>
+									<li><i class="far fa-map"> ${SurfingPackageViewList.area}</i></li>
 								</ul>
 							</div>
 						</div>
 					</div>
+					</c:forEach>
+					<c:forEach items="${EuPackageViewList }" var="EuPackageViewList">
+					<div class="col-xl-4 col-lg-6">
+						<div class="tour-one__single">
+							<div class="tour-one__image">
+								<img src='<c:url value="/resources/images/tour/${EuPackageViewList.s_file_name }"/>' alt="">
+								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+							</div>
+							<div class="tour-one__content">
+								<h3>
+									<a href="detailInfoPID=${EuPackageViewList.pid}">${EuPackageViewList.productname }</a>
+								</h3>
+								<p>
+									<span>${EuPackageViewList.adultprice }~</span> / 1인 기준
+								</p>
+								<ul class="tour-one__meta list-unstyled">
+									<li><i class="far fa-clock"> 6박 7일</i></li>
+									<li><i class="far fa-user-circle"> ${EuPackageViewList.hit }</i></li>
+									<li><i class="far fa-map">${EuPackageViewList.area }</i></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					</c:forEach>
 				</div>
+				
 			</div>
+			
 		</section>
 		<section class="video-one" style="background-image: url(<c:url value="/resources/images/backgrounds/video-bg-1-1.png"/>);">
 			<div class="container text-center">
