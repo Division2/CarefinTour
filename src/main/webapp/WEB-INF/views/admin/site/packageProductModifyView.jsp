@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+<%pageContext.setAttribute("crlf", "\r\n"); %>
 <script type="text/javascript">
 $(document).ready(function(){
 	//테마 지역 값에 따라서 콤보박스 선택되게
@@ -167,19 +169,19 @@ $(document).ready(function(){
 								여행소개
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea name="overview" id="overview" class="form-control" > ${pdtail.getOverview()} </textarea>
+										<textarea name="overview" id="overview" class="form-control">${fn:replace(pdtail.getOverview(), '<br>', crlf)}</textarea>
 									</div>
 								</div>
 								여행준비물
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea  name="supplies" id="supplies" class="form-control"> ${pdtail.getSupplies()} </textarea>
+										<textarea  name="supplies" id="supplies" class="form-control">${pdtail.getSupplies()}</textarea>
 									</div>
 								</div>
 								여행일정
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea name="travelplan" id="travelplan" class="form-control"> ${pdtail.getTravelplan()} </textarea>
+										<textarea name="travelplan" id="travelplan" class="form-control">${pdtail.getTravelplan()}</textarea>
 									</div>
 								</div>
 								<!-- 사진 -->

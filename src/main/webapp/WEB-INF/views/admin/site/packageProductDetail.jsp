@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +16,7 @@
 <script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-<style type="text/css">
-
-</style>
+<style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 300px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -156,19 +154,25 @@
 								여행소개
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea rows="10" cols="25" class="form-control" > ${pdtail.getOverview()} </textarea>
+										<div class="infoSection">
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
+										</div>
 									</div>
 								</div>
 								여행준비물
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea rows="10" cols="25" class="form-control"> ${pdtail.getSupplies()} </textarea>
+										<div class="infoSection">
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getSupplies(), '&lt;', '<'), '&gt;', '>')}"/>
+										</div>
 									</div>
 								</div>
 								여행일정
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea rows="10" cols="25" class="form-control"> ${pdtail.getTravelplan()} </textarea>
+										<div class="infoSection">
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getTravelplan(), '&lt;', '<'), '&gt;', '>')}"/>
+										</div>
 									</div>
 								</div>
 								<!-- 사진 -->
