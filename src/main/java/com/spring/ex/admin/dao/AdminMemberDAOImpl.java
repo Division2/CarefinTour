@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Repository
 public class AdminMemberDAOImpl implements AdminMemberDAO {
@@ -67,5 +68,10 @@ public class AdminMemberDAOImpl implements AdminMemberDAO {
 	@Override
 	public List<InquiryVO> viewInquiry(String userId) throws Exception {
 		return sqlSession.selectList(namespace+".viewInquiry", userId);
+	}
+	//회원 구매내역
+	@Override
+	public List<OrderVO> viewOrder(String userId) throws Exception {
+		return sqlSession.selectList(namespace+".viewOrder",userId);
 	}
 }

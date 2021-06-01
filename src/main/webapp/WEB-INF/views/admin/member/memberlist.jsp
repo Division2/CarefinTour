@@ -144,7 +144,7 @@
 								</td>
 								<td><a href="memberView?AID=${MemberVO.getAid()}">${MemberVO.getAid()}</a></td>
 								<td><c:out value="${MemberVO.userID}"></c:out></td>
-								<td><c:out value="${MemberVO.password}"></c:out></td>
+								<td><input type="password" value="<c:out value="${MemberVO.password}"></c:out>" readonly></td>
 								<td><c:out value="${MemberVO.name}"></c:out></td>
 								<td><c:out value="${MemberVO.grade}"></c:out></td>
 								<td><c:out value="${MemberVO.email}"></c:out></td>

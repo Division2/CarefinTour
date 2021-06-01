@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Service
 public interface AdminMemberService {
@@ -37,4 +38,7 @@ public interface AdminMemberService {
 	
 	//회원 문의내역
 	public List<InquiryVO> viewInquiry(String userId) throws Exception;
+	
+	//회원 구매내역
+	public List<OrderVO> viewOrder(String userId) throws Exception;
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Repository
 public interface AdminMemberDAO {
@@ -36,4 +37,7 @@ public interface AdminMemberDAO {
 	
 	//회원 1:1문의내역 출력
 	public List<InquiryVO> viewInquiry(String userId) throws Exception; 
+	
+	//회원 구매내역
+	public List<OrderVO> viewOrder(String userId) throws Exception;
 }

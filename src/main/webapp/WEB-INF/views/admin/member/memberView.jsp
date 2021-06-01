@@ -150,14 +150,16 @@ $(document).ready(function(){
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach items="${morder}" var="OrderVO">
 									<tr>
-										<td>test</td>
-										<td>test</td>
-										<td>test</td>
-										<td>test</td>
-										<td>test</td>
-										<td>test</td>
+										<td>${OrderVO.oId }</td>
+										<td>${OrderVO.pId }</td>
+										<td>${OrderVO.productname }</td>
+										<td>${OrderVO.payment }</td>
+										<td>${OrderVO.accumlatemileage }</td>
+										<td>${OrderVO.paymentdate }</td>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 							<hr>

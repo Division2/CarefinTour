@@ -10,6 +10,7 @@ import com.spring.ex.admin.dao.AdminMemberDAO;
 import com.spring.ex.dao.InquiryBoardDAO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Service
 public class AdminMemberServiceImpl implements AdminMemberService{
@@ -63,5 +64,10 @@ public class AdminMemberServiceImpl implements AdminMemberService{
   	@Override
   	public List<InquiryVO> viewInquiry(String userId) throws Exception {
   		return dao.viewInquiry(userId);
+  	}
+  	//회원 구매내역 리스트
+  	@Override
+  	public List<OrderVO> viewOrder(String userId) throws Exception {
+  		return dao.viewOrder(userId);
   	}
 }
