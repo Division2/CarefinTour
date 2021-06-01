@@ -16,9 +16,12 @@
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <title>케어핀투어 관리자</title>
 <style type="text/css">
-	#wrapper{
-		max-width: 1200px;
-	}
+.container-fluid{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 20px;
+/* 	row-gap: 10px; */
+}
 </style>
 </head>
 <body>
@@ -33,23 +36,164 @@
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
-				<div class="container-fluid" align="left">
-					<div class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Banner Management</h1>
-					</div>
-					<c:forEach items="${blist}" var="blist">		
-					<div class="card mb-3">
-						<div class="card-header"><font style="vertical-align: inherit;" size="7"> ${blist.BannerCategory}</font>
-							<div align="right">
-								<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+				<div class="d-sm-flex align-items-center justify-content-between mb-4">
+					<h1 class="h3 mb-0 text-gray-800">&emsp;Banner Management</h1>
+				</div>
+				<hr class="text-gray-800" ><br>
+				<h5 class="h3 mb-0 text-gray-800">&nbsp;메인 및 호텔검색</h5><br>
+				<div class="container-fluid" align="center"> 			
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 1 or blist.BID == 2 or blist.BID == 11}">
+							<div style="width:100%">
+								<div class="tour-one__single">
+									<div class="tour-one__content">
+										<font style="vertical-align: inherit;" size="4"> ${blist.BannerCategory}</font>
+										<div align="right">
+											<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+										</div>
+									</div>
+									<div class="tour-one__image">
+										<c:choose>
+											<c:when test="${blist.s_file_name eq null}">
+												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+											</c:when>
+											<c:otherwise>
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
 							</div>
-						</div>
-							<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' width="100%" height="400px"  alt="banner Img">
-						<div class="card-body">
-						 </div>
-					</div>
+						</c:when>
+					</c:choose>	
+					</c:forEach>
+				</div><br>	
+				
+				<hr class="text-gray-800" ><br>
+				<h5 class="h3 mb-0 text-gray-800">&emsp;해외여행</h5><br>
+				<div class="container-fluid" align="center">
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 3 or blist.BID == 4 or blist.BID == 5 or blist.BID == 6 or blist.BID == 7}">
+							<div style="width:100%">
+								<div class="tour-one__single">
+									<div class="tour-one__content">
+										<font style="vertical-align: inherit;" size="4"> ${blist.BannerCategory}</font>
+										<div align="right">
+											<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+										</div>
+									</div>
+									<div class="tour-one__image">
+										<c:choose>
+											<c:when test="${blist.s_file_name eq null}">
+												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+											</c:when>
+											<c:otherwise>
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>	
 					</c:forEach>
 				</div>
+				
+				<hr class="text-gray-800" ><br>
+				<h5 class="h3 mb-0 text-gray-800">&emsp;테마여행</h5><br>
+				<div class="container-fluid" align="center">
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 8 or blist.BID == 9 or blist.BID == 10}">
+							<div style="width:100%">
+								<div class="tour-one__single">
+									<div class="tour-one__content">
+										<font style="align-content: center;" size="4"> ${blist.BannerCategory}</font>
+										<div align="right">
+											<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+										</div>
+									</div>
+									<div class="tour-one__image">
+										<c:choose>
+											<c:when test="${blist.s_file_name eq null}">
+												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+											</c:when>
+											<c:otherwise>
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>	
+					</c:forEach>
+				</div>
+				
+				<hr class="text-gray-800" ><br>
+				<h5 class="h3 mb-0 text-gray-800">&emsp;여행정보</h5><br>
+				<div class="container-fluid" align="center">
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 12 or blist.BID == 13 or blist.BID == 14 or blist.BID == 15 or blist.BID == 16}">
+							<div style="width:100%">
+								<div class="tour-one__single">
+									<div class="tour-one__content">
+										<font style="align-content: center;" size="4"> ${blist.BannerCategory}</font>
+										<div align="right">
+											<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+										</div>
+									</div>
+									<div class="tour-one__image">
+										<c:choose>
+											<c:when test="${blist.s_file_name eq null}">
+												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+											</c:when>
+											<c:otherwise>
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>	
+					</c:forEach>
+				</div>
+				
+				<hr class="text-gray-800"><br>
+				<h5 class="h3 mb-0 text-gray-800">&emsp;여행후기</h5><br>
+				<div class="container-fluid" align="center">
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 17 or blist.BID == 18}">
+							<div style="width:100%">
+								<div>
+									<font style="align-content: center;" size="4"> ${blist.BannerCategory}</font>
+									<div align="right">
+										<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+									</div>
+								</div>
+								
+								<div>
+									<c:choose>
+										<c:when test="${blist.s_file_name eq null}">
+											<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+										</c:when>
+										<c:otherwise>
+											<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>	
+					</c:forEach>
+				</div>		
+				<hr class="text-gray-800" >
+				
 				<!-- 본문 -->
 			</div>
 			<!-- 하단 푸터 부분 -->
