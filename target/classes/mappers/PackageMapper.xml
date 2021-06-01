@@ -6,7 +6,7 @@
 	<!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
 			INSERT INTO packageproduct(ProductName, OverView, Supplies, TravelPlan, StarTravelPeriod, ArrivalTravelPeriod, Hit, Theme, Area, ReservationStatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, s_file_name, Director, flag) 
-			VALUES(#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, 1)
+			VALUES(#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, #{flag})
  	</insert>
 	
 	<!-- 여행패키지 출력 -->
@@ -50,7 +50,8 @@
 			KidPrice = #{kidprice}, 
 			SmallKidPrice = #{smallkidprice}, 
 			s_file_name = #{s_file_name}, 
-			Director = #{director}
+			Director = #{director},
+			flag = #{flag}
 		WHERE pid = #{pid}
  	</update>
  	

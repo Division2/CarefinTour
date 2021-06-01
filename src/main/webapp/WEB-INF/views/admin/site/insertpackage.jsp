@@ -78,8 +78,9 @@
 								</div>
 							</div>
 							<!--기간, 등록일  -->
+							기간 및 상태
 							<div class="form-group row">
-								<div class="col-xs-6 col-md-6">
+								<div class="col-xs-4 col-md-4">
 									<div class="input-group my-2 mb-1">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><b>출발일</b></span>
@@ -87,7 +88,7 @@
 										<input type="text" class="form-control" id="startravelperiod" name="startravelperiod" required>
 									</div>
 								</div>
-								<div class="col-xs-6 col-md-6">
+								<div class="col-xs-4 col-md-4">
 									<div class="input-group my-2 mb-1">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><b>도착일</b></span>
@@ -95,6 +96,17 @@
 										<input type="text" class="form-control" id="arrivaltravelperiod" name="arrivaltravelperiod" required>
 									</div>
 								</div>
+								<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>게시상태</b></span>
+											</div>
+											<select class="form-control" id="flag" name="flag">
+												<option value="1">Open</option>
+												<option value="0">Close</option>
+											</select>
+										</div>
+									</div>	
 
 							</div>
 							
@@ -149,7 +161,7 @@
 											<span class="input-group-text"><b>지역</b></span>
 										</div>
 										<select class="form-control" id="area" name="area">
-											<option>북미/중남미/하와이</option>
+											<option>미주/중남미/하와이</option>
 											<option>대만/동남아/서남아</option>
 											<option>중국/홍콩/러시아</option>
 											<option>유럽/아프리카</option>

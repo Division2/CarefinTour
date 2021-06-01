@@ -18,6 +18,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 300px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
 <title>케어핀투어 관리자</title>
+<style type="text/css">
+.containerTop {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end
+}
+</style>
 </head>
 <body id="page-top">
     <div id="wrapper" style="width:80%; max-width:1100px;">
@@ -36,8 +43,12 @@
 						<div class="form-title text-center">
 							<h4>여행패키지 상세정보</h4><br>
 						</div>
-						<p align="right"><font size="2">조회수 : ${pdtail.getHit() }</font></p>
-						<font size="3">상품코드 <%= request.getParameter("PID") %></font>
+						
+						<div class="containerTop">
+							<div><font size="5">No <%= request.getParameter("PID") %></font></div>
+							<div><font size="2">등록일 : ${pdtail.getRedate()} / 조회수 : ${pdtail.getHit() }</font></div>
+						</div>
+						
 						
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
@@ -66,9 +77,14 @@
 									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
-												<span class="input-group-text"><b>등록일</b></span>
+												<span class="input-group-text"><b>게시상태</b></span>
 											</div>
-											<input type="text" value="${pdtail.getRedate()}" class="form-control">
+											<c:if test="${pdtail.getFlag() == 1}">
+												<input type="text" value="Open" class="form-control" >
+											</c:if>
+											<c:if test="${pdtail.getFlag() == 0}">
+												<input type="text" value="Close" class="form-control" >
+											</c:if>
 										</div>
 									</div>
 								</div>
