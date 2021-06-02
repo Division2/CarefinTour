@@ -171,8 +171,8 @@
 							<c:forEach items="${plist}" var="plist">
 								<tr align="center">
 									<td><input type="checkbox" name="RowCheck" value="${plist.getPid()}"></td>
-									<td><font size="3"><a href="packageProductDetail?PID=${plist.getPid()}">${plist.getPid()}</a></font></td>
-									<td><font size="2">${plist.getProductname()}</font></td>
+									<td><font size="3">${plist.getPid()}</font></td>
+									<td><font size="2"><a href="packageProductDetail?PID=${plist.getPid()}">${plist.getProductname()}</a></font></td>
 									<td><font size="2">${plist.getTheme()}</font></td>
 									<td><font size="2">${plist.getArea()}</font></td>
 									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
@@ -243,12 +243,12 @@
 							<c:choose>
 								<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 									<li class="page-item disabled">
-										<a class="page-link" href="ProductPackageSearch?page=${Paging.prevPageNo }">Previus</a>
+										<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item">
-										<a class="page-link" href="ProductPackageSearch?page=${Paging.prevPageNo }">Previus</a>
+										<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
 									</li>
 								</c:otherwise>
 							</c:choose>
