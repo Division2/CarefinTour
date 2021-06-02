@@ -41,7 +41,7 @@
 					Carefin <span>Tour</span>
 				</h2>
 				<p>여행지를 선택 해보세요</p>
-				<form class="tour-search-one" action="tour-sidebar.html">
+				<form class="tour-search-one" action="travelSearch">
 					<div class="tour-search-one__inner">
 						<div class="tour-search-one__inputs">
 							<div class="tour-search-one__input-box">
