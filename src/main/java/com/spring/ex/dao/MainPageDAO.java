@@ -30,4 +30,7 @@ public interface MainPageDAO {
 	
 	//메인 패키지 추천 일본
 	public List<PackageVO> EuPackageViewList() throws Exception;
+	
+	//메인 한줄평 리뷰
+	public List<TravelPhotoVO> LineReview() throws Exception;
 }

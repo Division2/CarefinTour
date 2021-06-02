@@ -51,4 +51,10 @@ public class MainPageDAOImpl implements MainPageDAO {
 	public List<PackageVO> EuPackageViewList() throws Exception {
 		return sqlSession.selectList(namespace + ".EuPackageViewList");
 			}	
+	//메인 한줄평 리뷰
+	@Override
+	public List<TravelPhotoVO> LineReview() throws Exception {
+		return sqlSession.selectList(namespace + ".LineReview");
+			}	
+	
 }

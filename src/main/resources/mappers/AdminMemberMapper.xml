@@ -65,6 +65,7 @@
 	<select id="getmemberSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM account <include refid="Search"></include>
 	</select>
+	
 	<sql id="Search">
 		<choose>
 			<when test="search != null">
