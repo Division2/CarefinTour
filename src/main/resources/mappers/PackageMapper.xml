@@ -55,12 +55,12 @@
 		WHERE pid = #{pid}
  	</update>
  	
-    <!-- 여행패키지 검색 -->
+    <!-- 관리자 여행패키지 검색 -->
 	<select id="ProductPackageSearch" resultType="PackageVO">
 		SELECT * FROM packageproduct <include refid="Search"></include> LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<!-- 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
+	<!-- 관리자 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
 	<select id="getProductPackageSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM packageproduct <include refid="Search"></include>
 	</select>
@@ -81,5 +81,17 @@
 			</when>
 		</choose>
 	</sql>
+	
+	<!-- 메인 검색 관련 부분 -->
+    <!-- 메인 여행패키지 검색 -->
+	<select id="MainProductPackageSearch" resultType="PackageVO">
+		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
+	</select>
+	
+	<!-- 메인 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
+	<select id="getMainProductPackageSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
+	</select>
+	
 	
 </mapper>

@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.time.format.DateTimeFormatter"%>
+<%@ page import="java.time.LocalDateTime"%>
+<%
+	//현재시간 구해서 String으로 formating
+	LocalDateTime nowTime = LocalDateTime.now();
+	
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM");
+	String now = nowTime.format(dateTimeFormatter);
+	String beginMonth = nowTime.format(dateTimeFormatter2);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,17 +46,24 @@
 						<div class="tour-search-one__inputs">
 							<div class="tour-search-one__input-box">
 								<label for="place">여행지</label>
-								<input type="text"placeholder="나라" name="place" id="place">
+								<select class="selectpicker" id="searchArea" name="searchArea">
+									<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+									<option value="대만/동남아/서남아">대만/동남아/서남아</option>
+									<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
+									<option value="유럽/아프리카">유럽/아프리카</option>
+									<option value="일본">일본</option>
+								</select>
 							</div>
 							<div class="tour-search-one__input-box">
-								<label for="when">날짜</label>
-								<input type="text" placeholder="날짜" name="when" id="when">
+								<label for="when">여행시작일</label>
+								<input type="date" class="form-control" value="<%=beginMonth %>" id="searchStartDate" name="searchStartDate" placeholder="여행출발일" >
 							</div>
 							<div class="tour-search-one__input-box">
-								<label for="type">여행 테마</label> <select class="selectpicker" id="type">
-									<option value="fishing">낚시</option>
-									<option value="golf">골프</option>
-									<option value="honey">허니문</option>
+								<label for="type">여행 테마</label> <select class="selectpicker" id="searchTheme" name="searchTheme">
+									<option value="낚시">낚시</option>
+									<option value="허니문">허니문</option>
+									<option value="골프">골프</option>
+									<option value="해외">해외</option>
 								</select>
 							</div>
 						</div>
