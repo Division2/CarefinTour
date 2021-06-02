@@ -229,7 +229,7 @@ function insert2() {
 						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
 						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
 						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
-					<button type="button" name="paydelay" id="paydealy" onclick="insert2()" style="margin-left:10px;">결제보류</button>
+					<button type="button" name="paydelay" id="paydealy" onclick="insert2()" style="margin-left:10px;">결제보류ㄴ</button>
 					</form>
 					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</div>
