@@ -56,6 +56,10 @@ public class CareController {
 	public String detailres() {
 		return "product/detailresvation";
 	}
+	@RequestMapping("detailResvation2")
+	public String detailres2() {
+		return "product/detailresvation2";
+	}
 	@RequestMapping("fishing")
 	public String fishing() {
 		return "theme/fishing";

@@ -171,6 +171,16 @@ public class ShowPackageController {
 		return "product/detailresvation";
 	}
 	
+	//여행패키지 예약페이지 출력
+		@RequestMapping(value = "/detailResvation2", method = RequestMethod.GET)
+		public String getPackageProductDetail3(Model model, HttpServletRequest request)  throws Exception {
+			int pid = Integer.parseInt(request.getParameter("PID"));
+			PackageVO pdtail =  service.ProductPackageDetail(pid);
+			
+			model.addAttribute("pdtail", pdtail);
+			return "product/detailresvation2";
+		}
+	
 	 //여행패키지 예약내역 작성
   	@RequestMapping(value = "/detailResvationAdd", method = RequestMethod.POST)
   	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -42,7 +42,11 @@ function cal2(){
 		});
 		return false;
 	}
-		$("#calcul").submit();
+	var num = $("#num").val();
+	var num2 = $("#num2").val();
+	var num3 = $("#num3").val();
+	var payment = $("#payment").val();
+		$("#calcul").submit(location.href='detailResvation?PID=' + ${pdtail.getPid()} + '&Payment=' + payment + '&num=' + num + '&num2=' + num2 + '&num3=' + num3);
 }
 	
 </script>
@@ -122,9 +126,9 @@ function cal2(){
 										${pdtail.getTravelplan()}
 										</p>
 										<ul class="list-unstyled">
-											<li>Free Drinks</li>
-											<li>Awesome Breakfast</li>
-											<li>5 Star Accommodation</li>
+											<li>무료 음로</li>
+											<li>완벽한 식사</li>
+											<li>좋은 평점</li>
 										</ul>
 									</div>
 								</div>
@@ -143,7 +147,7 @@ function cal2(){
 								<form id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
 									<div class="input-group">
 									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
-									<select class="selectpicker" id="num" onchange="cal()">
+									<select class="selectpicker" id="num" name="num" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
 											<option value=2>2</option>
@@ -157,7 +161,7 @@ function cal2(){
 									</div>
 									<div class="input-group">
 									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
-										<select class="selectpicker" id="num2" onchange="cal()">
+										<select class="selectpicker" id="num2" name="num2" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
 											<option value=2>2</option>
@@ -171,7 +175,7 @@ function cal2(){
 									</div>
 									<div class="input-group">
 									애기 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
-										<select class="selectpicker" id="num3" onchange="cal()">
+										<select class="selectpicker" id="num3" name="num3" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
 											<option value=2>2</option>

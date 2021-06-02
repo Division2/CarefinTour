@@ -26,7 +26,7 @@
 		
 		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/hawaii.jpg"/>);">
 			<div class="container">
-				<h2>북미/중남미/하와이</h2>
+				<h2>미주/중남미/하와이</h2>
 				<ul class="thm-breadcrumb list-unstyled">
 					<li><a>CarefinTour</a></li>
 				</ul>
@@ -114,11 +114,6 @@
 											<option value="Type">허니문</option>
 											<option value="Adventure">골프</option>
 											<option value="Wildlife">낚시</option>
-											<option value="Sightseeing">북미/중남미/하와이</option>
-											<option value="Sightseeing1">대만/동남아/서남아</option>
-											<option value="Sightseeing2">중국/홍콩/러시아</option>
-											<option value="Sightseeing3">유럽/아프리카</option>
-											<option value="Sightseeing4">일본</option>
 										</select>
 									</div>
 									<div class="input-group">

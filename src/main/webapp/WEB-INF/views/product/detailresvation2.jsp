@@ -205,31 +205,9 @@ function insert2() {
 						</tr>
 					</table>
 					<div class="row">
-					<form action="detailResvationAdd" method="POST" name="inserts" id="inserts">
-					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-						<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
-						<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
-						<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
-						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
-						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
-						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
-						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
+					<form action="detailModify" method="POST" name="inserts" id="inserts">
+						<input type="hidden" value="<%= request.getParameter("OID")%>" id="oId" name="oId"></input>
 					<button type="button" name="pay" id="pay" onclick="insert()" style="margin-left:470px;">결제하기</button>
-					</form>
-					<form action="detailResvationAdd2" method="POST" name="inserted" id="inserted">
-					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-						<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
-						<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
-						<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
-						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
-						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
-						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
-						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
-					<button type="button" name="paydelay" id="paydealy" onclick="insert2()" style="margin-left:10px;">결제보류</button>
 					</form>
 					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</div>
