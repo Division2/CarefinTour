@@ -76,7 +76,7 @@
 							<c:forEach items="${OrderList }" var="List">
 							<tr>
 								<td>${List.getoId() }</td>
-								<td>${List.getProductname() }</td>
+								<td><a href="/ex/detailInfo?PID=${List.getpId() }">${List.getProductname() }</a></td>
 								<td>${List.getName() }</td>
 								<td>${List.getPhonenum() }</td>
 								<td>${List.getOrderdate() }</td>
