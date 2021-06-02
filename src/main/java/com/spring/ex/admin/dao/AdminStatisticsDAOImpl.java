@@ -2,6 +2,7 @@ package com.spring.ex.admin.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -152,12 +153,18 @@ public class AdminStatisticsDAOImpl implements AdminStatisticsDAO {
 		sqlSession.delete(namespace + ".TravelPhotoBoardStatisticsDetailSelectDelete", prId);
 	}
 
-	//기간별 매출 통계 출력
+	//기간별 매출 출력
 	@Override
 	public List<OrderVO> RevenueByPeriod(HashMap<String, Integer> map) throws Exception {
 		return sqlSession.selectList(namespace + ".RevenueByPeriod", map);
 	}
-
+	
+	//기간별 매출 통계 출력
+	@Override
+	public List<Map<String, Object>> RevenueByPeriodGraph() throws Exception {
+		return sqlSession.selectList(namespace + ".RevenueByPeriodGraph");
+	}
+	
 	//기간별 매출 총 갯수
 	@Override
 	public int TotalOrderCount() throws Exception {

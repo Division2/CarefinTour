@@ -90,5 +90,17 @@ public class ShowPackageDAOImpl implements ShowPackageDAO {
 	public int OrderWrite(OrderVO vo) throws Exception {
 		return sql.insert(namespace + ".OrderWrite", vo);
 	}
+	
+	//패키지 예약 내역 등록
+	@Override
+	public int OrderWrite2(OrderVO vo) throws Exception {
+		return sql.insert(namespace + ".OrderWrite2", vo);
+	}
+	
+	//여행패키지 예약상태 수정
+	@Override
+	public int detailModify(OrderVO vo) throws Exception {
+		return sql.update(namespace + ".detailModify", vo);
+	}
 
 }

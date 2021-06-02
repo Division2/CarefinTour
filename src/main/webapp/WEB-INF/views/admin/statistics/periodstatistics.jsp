@@ -62,7 +62,6 @@
 					<table class="table table-hover table-white">
 						<thead>
 							<tr>
-								<th><input type="checkbox"></th>
 								<th>예약번호</th>
 								<th>상품명</th>
 								<th>주문자</th>
@@ -76,9 +75,8 @@
 						<tbody>
 							<c:forEach items="${OrderList }" var="List">
 							<tr>
-								<td><input type="checkbox"></td>
 								<td>${List.getoId() }</td>
-								<td>${List.getProductname() }</td>
+								<td><a href="/ex/detailInfo?PID=${List.getpId() }">${List.getProductname() }</a></td>
 								<td>${List.getName() }</td>
 								<td>${List.getPhonenum() }</td>
 								<td>${List.getOrderdate() }</td>
@@ -240,9 +238,9 @@
 		var OrderDate = new Array();
 		var Earnings = new Array();
 	
-		<c:forEach items="${OrderList }" var="List">
-			OrderDate.unshift("${List.getOrderdate()}");
-			Earnings.unshift("${List.getPayment()}");
+		<c:forEach items="${RevenueGraph }" var="List">
+			OrderDate.push("${List.order_date}");
+			Earnings.push("${List.Payment}");
 		</c:forEach>
 		var myLineChart = new Chart(ctx, {
 			type: 'line',

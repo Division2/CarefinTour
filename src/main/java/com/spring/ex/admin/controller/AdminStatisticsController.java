@@ -347,6 +347,7 @@ public class AdminStatisticsController {
 		
 		model.addAttribute("OrderList", service.RevenueByPeriod(map));
 		model.addAttribute("Paging", paging);
+		model.addAttribute("RevenueGraph", service.RevenueByPeriodGraph());
 		
 		return "admin/statistics/periodstatistics";
 	}

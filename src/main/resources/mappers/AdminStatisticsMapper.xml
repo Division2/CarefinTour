@@ -118,9 +118,14 @@
 		DELETE FROM photoreview WHERE prId = #{prId}
 	</delete>
 	
-	<!-- 기간별 매출 통계 출력 -->
+	<!-- 기간별 매출 출력 -->
 	<select id="RevenueByPeriod" resultType="OrderVO">
 		SELECT * FROM historyorder ORDER BY OID DESC LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 기간별 매출 통계 출력 -->
+	<select id="RevenueByPeriodGraph" resultType="hashmap">
+		SELECT DATE_FORMAT(OrderDate, '%Y-%m') order_date, SUM(Payment) AS Payment FROM historyorder GROUP BY order_date
 	</select>
 	
 	<!-- 기간별 매출 총 갯수 -->

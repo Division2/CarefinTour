@@ -9,6 +9,73 @@
 <link href='<c:url value="/resources/css/component.css"/>' rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script>
+function insert() {
+	Swal.fire({
+		title: '결제하기',
+		text: "정말 결제하시겠습니까?",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			swal({
+				title: "결제하기",
+				text: "결제가 성공적으로 이루어졌습니다.",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					location.href='main';
+				}
+				$("#inserts").submit();
+			});
+		
+		}
+	})
+
+}
+
+function insert2() {
+	Swal.fire({
+		title: '결제보류',
+		text: "정말 결제보류하시겠습니까?",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			swal({
+				title: "결제보류",
+				text: "결제보류내역은 마이페이지를 보시면됩니다",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					location.href='main';
+				}
+				$("#inserted").submit();
+			});
+		
+		}
+	})
+
+}
+</script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
@@ -78,9 +145,15 @@
 											      <td><span style="float:center;">${pdtail.getSmallkidprice()}</span></td>										     
 											   </tr>
 											   <tr>
+											      <td>인원</td>	
+											      <td><span style="float:center;"><%= request.getParameter("num")%></span></td>		
+											      <td><span style="float:center;"><%= request.getParameter("num2")%></span></td>		
+											      <td><span style="float:center;"><%= request.getParameter("num3")%></span></td>										     
+											   </tr>
+											   <tr>
 											      <td>총상품가격</td>	
 											      <td><span style="color: red;float:center;"></span></td>		
-											      <td><span style="color: red;float:center;"></span></td>		
+											      <td><span style="color: red;float:center;"><%= request.getParameter("Payment")%></span></td>		
 											      <td><span style="color: red;float:center;"></span></td>										     
 											   </tr>								  
 										</tbody> 
@@ -95,7 +168,7 @@
 							  </tr>	
 								  <tr>
 								  	<th bgcolor="#f1f3f5">상품담당자</th>
-								  		<td>김한나 | 직통전화<strong> 02-9990-9999</strong> | 팩스 <strong>02-9999-9999</strong></td>
+								  		<td>${pdtail.getDirector()} | 직통전화<strong> 02-9990-9999</strong> | 팩스 <strong>02-9999-9999</strong></td>
 								  </tr>							  						  	
 						</table><p>
 
@@ -116,34 +189,50 @@
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*이메일주소</th>
 							<td>${member.getEmail()}</td>
-						</tr>					
-						<tr>
-							<th bgcolor="#f1f3f5" width="150" >요청사항</th>
-							<td><textarea class="form-control" name="content" placeholder="요청사항을 적어주세요"></textarea></td>
-						</tr>				
+						</tr>						
 						</table>
 						
 					<h5><strong>여행자 정보</strong></h5><p>
 						<hr color="black"></hr>
-						<table class="table">
-						<tr>
-							<th bgcolor="#f1f3f5" height="80px"><h6><strong>*고객님도 여행에 참여하시나요?
-								<label><input type="radio" name="yes"> 네</label>
-								<label><input type="radio" name="yes"> 아니요</label></strong></h6>
-							</th>
-						</tr>
-						</table>
-						<h6 style="float:left;">총 <span style="color:#1E90FF">1</span>명 |</h6>  <h6 style="float:left;margin-left:20px; "> 성인 <strong>1</strong>명(만 12세 이상)</h6> 
-							<h6 style="float:left;margin-left:20px; ">아동 <strong>0</strong>명(만 2~12세이상)</h6>
-							<h6 style="float:left;margin-left:20px; ">유아 <strong>0</strong>명(만 2세이상)</h6>
-							<div id="btn4" style="float:right;">동반자추가</div><p>
+						    <h6 style="float:left;margin-left:20px; "> 성인 <strong><%= request.getParameter("num")%></strong>명(만 12세 이상)</h6> 
+							<h6 style="float:left;margin-left:20px; ">아동 <strong><%= request.getParameter("num2")%></strong>명(만 2~12세이상)</h6>
+							<h6 style="float:left;margin-left:20px; ">유아 <strong><%= request.getParameter("num3")%></strong>명(만 2세이상)</h6>
 						<table class="table">
 						<tr>			
 							<th bgcolor="#f1f3f5"><h6 style="float:left;"><strong>성인</strong>     
-								<strong>이름 <input type = "text" placeholder="이인호" disabled></strong></h6>									
+								<strong>이름 <input type = "text" value="${member.getName()}" disabled></strong></h6>									
 							</th>  
 						</tr>
 					</table>
+					<div class="row">
+					<form action="detailResvationAdd" method="POST" name="inserts" id="inserts">
+					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
+						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
+						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
+						<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
+						<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
+						<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
+						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
+						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
+						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
+						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
+					<button type="button" name="pay" id="pay" onclick="insert()" style="margin-left:470px;">결제하기</button>
+					</form>
+					<form action="detailResvationAdd2" method="POST" name="inserted" id="inserted">
+					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
+						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
+						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
+						<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
+						<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
+						<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
+						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
+						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
+						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
+						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
+					<button type="button" name="paydelay" id="paydealy" onclick="insert2()" style="margin-left:10px;">결제보류ㄴ</button>
+					</form>
+					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
+					</div>
 				</div>		
 			</div>
 		</div>

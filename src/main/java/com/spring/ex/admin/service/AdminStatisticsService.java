@@ -2,6 +2,7 @@ package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -80,8 +81,11 @@ public interface AdminStatisticsService {
 	//여행 포토 상세 선택 삭제
 	public void TravelPhotoSelectDelete (String prId) throws Exception;
 	
-	//기간별 매출 통계 출력
+	//기간별 매출 출력
 	public List<OrderVO> RevenueByPeriod(HashMap<String, Integer> map) throws Exception;
+	
+	//기간별 매출 통계 출력
+	public List<Map<String, Object>> RevenueByPeriodGraph() throws Exception;
 	
 	//기간별 매출 총 갯수
 	public int TotalOrderCount() throws Exception;

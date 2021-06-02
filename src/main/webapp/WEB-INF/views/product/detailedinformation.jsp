@@ -140,13 +140,7 @@ function cal2(){
 						<div class="tour-sidebar">
 							<div class="tour-sidebar__search tour-sidebar__single">
 								<h3><strong>예약하기</strong></h3>
-								<form action="detailResvationAdd" id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
-									<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-									<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-									<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-									<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
-									<input type="hidden" value="${member.getUserID()}" id="id" name="id"></input>
-									<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
+								<form id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
 									<div class="input-group">
 									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" onchange="cal()">
