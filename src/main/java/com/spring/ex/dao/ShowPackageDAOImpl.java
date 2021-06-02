@@ -103,6 +103,12 @@ public class ShowPackageDAOImpl implements ShowPackageDAO {
 		return sql.insert(namespace + ".OrderWrite3", vo);
 	}
 	
+	//비회원 패키지 내역 출력
+	@Override
+	public List<OrderVO> NonMemberView(HashMap<String, Object> map) throws Exception {
+		return sql.selectList(namespace + ".NonMemberView", map);
+	}
+	
 	//여행패키지 예약상태 수정
 	@Override
 	public int detailModify(OrderVO vo) throws Exception {

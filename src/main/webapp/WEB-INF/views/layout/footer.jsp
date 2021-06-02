@@ -241,12 +241,12 @@
 									<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control" id="revervationnumber" placeholder="예약번호를 입력하세요">
+									<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요">
 								</div>
 								<div class="form-group">
 									<input type="text" class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요">
 								</div>
-								<button type="button" class="btn btn-primary btn-block btn-round">조회하기</button>
+								<button type="submit" class="btn btn-primary btn-block btn-round">조회하기</button>
 							</form>
 						</div>
 					</div>

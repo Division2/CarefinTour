@@ -114,6 +114,7 @@
 											<option value="Type">허니문</option>
 											<option value="Adventure">골프</option>
 											<option value="Wildlife">낚시</option>
+											<option value="Wild">해외</option>
 										</select>
 									</div>
 									<div class="input-group">

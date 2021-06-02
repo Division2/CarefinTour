@@ -45,6 +45,47 @@ function cal2(){
 	var num = $("#num").val();
 	var num2 = $("#num2").val();
 	var num3 = $("#num3").val();
+	var payment = $("#payment").val();
+		$("#calcul").submit(location.href='detailResvation?PID=' + ${pdtail.getPid()} + '&Payment=' + payment + '&num=' + num + '&num2=' + num2 + '&num3=' + num3);
+}
+
+function cal3(){
+	if(document.calcul.payment.value == 0) {
+		swal({
+			title: "인원설정",
+			text: "인원이 체크되지 않았습니다",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else if(document.calcul.noname.value == 0){
+		swal({
+			title: "이름입력",
+			text: "이름이 입력되지 않았습니다",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else if(document.calcul.noemail.value == 0){
+		swal({
+			title: "이메일입력",
+			text: "이메일이 입력되지 않았습니다",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else if(document.calcul.nophone.value == 0){
+		swal({
+			title: "전화번호입력",
+			text: "전화번호가 입력되지 않았습니다",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	var num = $("#num").val();
+	var num2 = $("#num2").val();
+	var num3 = $("#num3").val();
 	var noname = $("#noname").val();
 	var noemail = $("#noemail").val();
 	var nophone = $("#nophone").val();
@@ -148,6 +189,7 @@ function cal2(){
 							<div class="tour-sidebar__search tour-sidebar__single">
 								<h3><strong>예약하기</strong></h3>
 								<form id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
+								<c:if test="${sessionScope.member ne null}">
 									<div class="input-group">
 									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" name="num" onchange="cal()">
@@ -190,17 +232,6 @@ function cal2(){
 											<option value=8>8</option>
 										</select>
 									</div>
-									<c:if test="${sessionScope.member eq null}">
-									<div class="input-group">
-									이름 :<input type="text" id="noname" name="noname">
-									</div>
-									<div class="input-group">
-									이메일 :<input type="text" id="noemail" name="noemail">
-									</div>
-									<div class="input-group">
-									전화번호 :<input type="text" id="nophone" name="nophone">
-									</div>
-									</c:if>
 									<div class="input-group">
 									<p style="color:red;">총 금액</p>
 										<input type="text" id="payment" name="payment" style="color:red;"readonly></input>
@@ -208,6 +239,69 @@ function cal2(){
 									<div class="input-group">
 										<button type="button" class="thm-btn" onclick="cal2()">예약하기</button>
 									</div>
+									</c:if>
+									
+									<c:if test="${sessionScope.member eq null}">
+									<div class="input-group">
+									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
+									<select class="selectpicker" id="num" name="num" onchange="cal()">
+											<option value=0>0</option>
+											<option value=1>1</option>
+											<option value=2>2</option>
+											<option value=3>3</option>
+											<option value=4>4</option>
+											<option value=5>5</option>
+											<option value=6>6</option>
+											<option value=7>7</option>
+											<option value=8>8</option>
+										</select>
+									</div>
+									<div class="input-group">
+									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
+										<select class="selectpicker" id="num2" name="num2" onchange="cal()">
+											<option value=0>0</option>
+											<option value=1>1</option>
+											<option value=2>2</option>
+											<option value=3>3</option>
+											<option value=4>4</option>
+											<option value=5>5</option>
+											<option value=6>6</option>
+											<option value=7>7</option>
+											<option value=8>8</option>
+										</select>
+									</div>
+									<div class="input-group">
+									애기 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
+										<select class="selectpicker" id="num3" name="num3" onchange="cal()">
+											<option value=0>0</option>
+											<option value=1>1</option>
+											<option value=2>2</option>
+											<option value=3>3</option>
+											<option value=4>4</option>
+											<option value=5>5</option>
+											<option value=6>6</option>
+											<option value=7>7</option>
+											<option value=8>8</option>
+										</select>
+									</div>
+									<div class="input-group">
+									이름 :<input type="text" id="noname" name="noname"/>
+									</div>
+									<div class="input-group">
+									이메일 :<input type="text" id="noemail" name="noemail"/>
+									</div>
+									<div class="input-group">
+									전화번호 :<input type="text" id="nophone" name="nophone"/>
+									</div>
+									
+									<div class="input-group">
+									<p style="color:red;">총 금액</p>
+										<input type="text" id="payment" name="payment" style="color:red;"readonly></input>
+									</div>
+									<div class="input-group">
+										<button type="button" class="thm-btn" onclick="cal3()">예약하기</button>
+									</div>
+									</c:if>
 								</form>
 								<br>
 									

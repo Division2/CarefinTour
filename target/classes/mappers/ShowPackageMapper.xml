@@ -67,10 +67,15 @@
 		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},1,#{num},#{num2},#{num3})
 	</insert>
 	
-	<!-- 여행패키지 예약내역 보류 -->
+	<!-- 비회원 여행패키지 예약내역 -->
 	<insert id="OrderWrite3">
-		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3,nonmember) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3},1)
+		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3,nonmember) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3},#{nonmember})
 	</insert>
+	
+	<!-- 비회원 여행패키지 출력 -->
+	<select id="NonMemberView" resultType="PackageVO">
+		SELECT * FROM historyorder WHERE Name = #{name} AND PhoneNum=#{phone} AND UserID=#{email}
+	</select>
 	
 	<!-- 여행 패키지 예약내용 수정 -->
 	<update id="detailModify">

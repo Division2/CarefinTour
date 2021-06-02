@@ -75,6 +75,39 @@ function insert2() {
 	})
 
 }
+
+function insert3() {
+	Swal.fire({
+		title: '결제하기',
+		text: "정말 결제하시겠습니까?",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: '확인',
+		cancelButtonText: '취소'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			swal({
+				title: "결제하기",
+				text: "비회원은 결제취소할경우 상담원에 전화하세요.",
+				icon: "success",
+				buttons : {
+					confirm : {
+						value : true
+					}
+				}
+			}).then((result) => {
+				if(result) {
+					location.href='main';
+				}
+				$("#inserts").submit();
+			});
+		
+		}
+	})
+
+}
 </script>
 </head>
 <body>
@@ -265,7 +298,8 @@ function insert2() {
 						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
 						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
 						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
-					<button type="button" name="pay" id="pay" onclick="insert()" style="margin-left:470px;">결제하기</button>
+						<input type="hidden" value="1" id="nonmember" name="nonmember"></input>
+					<button type="button" name="pay" id="pay" onclick="insert3()" style="margin-left:470px;">결제하기</button>
 					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</form>
 					</c:if>

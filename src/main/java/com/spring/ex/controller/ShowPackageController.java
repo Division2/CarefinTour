@@ -220,6 +220,20 @@ public class ShowPackageController {
   		
   	}
   	
+  //비회원 예약 패키지 출력
+  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.GET)
+  	public String NonMemberView(Model model, HttpServletRequest request) throws Exception {
+  		
+  		HashMap<String, Object> map = new HashMap<String, Object>();	
+  		
+  		List<OrderVO> nonmember = service.NonMemberView(map);
+  		model.addAttribute("non", nonmember);
+
+  		
+  		return "index";
+  		
+  	}
+  	
   //여행패키지 예약 상태변경
   	@RequestMapping(value = "/detailModify", method = RequestMethod.POST)
   	public void Modify(OrderVO vo, HttpServletResponse response) throws Exception {
