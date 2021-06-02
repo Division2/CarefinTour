@@ -62,7 +62,6 @@
 					<table class="table table-hover table-white">
 						<thead>
 							<tr>
-								<th><input type="checkbox"></th>
 								<th>예약번호</th>
 								<th>상품명</th>
 								<th>주문자</th>
@@ -76,7 +75,6 @@
 						<tbody>
 							<c:forEach items="${OrderList }" var="List">
 							<tr>
-								<td><input type="checkbox"></td>
 								<td>${List.getoId() }</td>
 								<td>${List.getProductname() }</td>
 								<td>${List.getName() }</td>
