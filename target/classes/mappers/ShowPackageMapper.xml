@@ -59,8 +59,18 @@
 	
 	<!-- 여행패키지 예약내역 작성 -->
 	<insert id="OrderWrite">
-		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus) VALUES (#{pId},#{productname}, #{id}, #{name}, #{phonenum}, #{startdate}, #{payment},1)
+		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,Adult,Kid,Smallkid) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3})
 	</insert>
+	
+	<!-- 여행패키지 예약내역 보류 -->
+	<insert id="OrderWrite2">
+		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,Adult,Kid,Smallkid) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},1,#{num},#{num2},#{num3})
+	</insert>
+	
+	<!-- 여행 패키지 예약내용 수정 -->
+	<update id="detailModify">
+		UPDATE historyorder SET PaymentStatus = 2 WHERE UserID = #{userId} AND Payment = #{payment};
+	</update>
 
 
 </mapper>

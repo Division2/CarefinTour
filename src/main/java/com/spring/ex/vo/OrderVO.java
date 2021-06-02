@@ -15,6 +15,9 @@ public class OrderVO {
 	private int paymentstatus;
 	private Date startdate;
 	private Date orderdate;
+	private int num;
+	private int num2;
+	private int num3;
 	
 	public int getoId() {
 		return oId;
@@ -88,4 +91,23 @@ public class OrderVO {
 	public void setOrderdate(Date orderdate) {
 		this.orderdate = orderdate;
 	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public int getNum2() {
+		return num2;
+	}
+	public void setNum2(int num2) {
+		this.num2 = num2;
+	}
+	public int getNum3() {
+		return num3;
+	}
+	public void setNum3(int num3) {
+		this.num3 = num3;
+	}
+
 }

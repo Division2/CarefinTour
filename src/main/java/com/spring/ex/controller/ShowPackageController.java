@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.ex.service.ShowPackageService;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
@@ -170,18 +171,55 @@ public class ShowPackageController {
 		return "product/detailresvation";
 	}
 	
-	 //관리자 예약내역 작성
+	 //여행패키지 예약내역 작성
   	@RequestMapping(value = "/detailResvationAdd", method = RequestMethod.POST)
   	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
-  		vo.setUserId(request.getParameter("id"));
+  		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
   		String pId = request.getParameter("pId");
+  		String payment = request.getParameter("payment");
+  		String num = request.getParameter("num");
+  		String num2 = request.getParameter("num2");
+  		String num3 = request.getParameter("num3");
   		service.OrderWrite(vo);
   		
-  		return "redirect:detailResvation?PID=" + pId;
+  		return "index";
   		
+  	}
+  	
+	 //여행패키지 예약내역 작성
+  	@RequestMapping(value = "/detailResvationAdd2", method = RequestMethod.POST)
+  	public String Write2(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		vo.setProductname(request.getParameter("productname"));
+  		vo.setPhonenum(request.getParameter("phonenum"));
+  		vo.setUserId(request.getParameter("userId"));
+  		vo.setName(request.getParameter("name"));
+  		String pId = request.getParameter("pId");
+  		String payment = request.getParameter("payment");
+  		String num = request.getParameter("num");
+  		String num2 = request.getParameter("num2");
+  		String num3 = request.getParameter("num3");
+  		service.OrderWrite2(vo);
+  		
+  		return "index";
+  		
+  	}
+  	
+  //여행패키지 예약 상태변경
+  	@RequestMapping(value = "/detailModify", method = RequestMethod.POST)
+  	public void Modify(OrderVO vo, HttpServletResponse response) throws Exception {
+  		
+  		int result = service.detailModify(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='main'</script>");
+  			out.close();
+  		}
   	}
 	
 	
