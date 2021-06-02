@@ -188,30 +188,33 @@ public class ShowPackageController {
   		vo.setPhonenum(request.getParameter("phonenum"));
   		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
-  		String pId = request.getParameter("pId");
-  		String payment = request.getParameter("payment");
-  		String num = request.getParameter("num");
-  		String num2 = request.getParameter("num2");
-  		String num3 = request.getParameter("num3");
   		service.OrderWrite(vo);
   		
   		return "index";
   		
   	}
   	
-	 //여행패키지 예약내역 작성
+	 //여행패키지 예약보류 작성
   	@RequestMapping(value = "/detailResvationAdd2", method = RequestMethod.POST)
   	public String Write2(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
   		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
-  		String pId = request.getParameter("pId");
-  		String payment = request.getParameter("payment");
-  		String num = request.getParameter("num");
-  		String num2 = request.getParameter("num2");
-  		String num3 = request.getParameter("num3");
   		service.OrderWrite2(vo);
+  		
+  		return "index";
+  		
+  	}
+  	
+  	 //여행패키지 비회원 예약 작성
+  	@RequestMapping(value = "/detailResvationAdd3", method = RequestMethod.POST)
+  	public String Write3(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		vo.setProductname(request.getParameter("productname"));
+  		vo.setPhonenum(request.getParameter("phonenum"));
+  		vo.setUserId(request.getParameter("userId"));
+  		vo.setName(request.getParameter("name"));
+  		service.OrderWrite3(vo);
   		
   		return "index";
   		

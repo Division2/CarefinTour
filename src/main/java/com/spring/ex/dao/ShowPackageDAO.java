@@ -50,6 +50,9 @@ public interface ShowPackageDAO {
 	//여행패키지 예약 문의 보류
 	public int OrderWrite2(OrderVO vo) throws Exception;
 	
+	//여행패키지 예약 비회원 등록
+	public int OrderWrite3(OrderVO vo) throws Exception;
+	
 	//여행패키지 예약 상태 수정
 	public int detailModify(OrderVO vo) throws Exception;
 

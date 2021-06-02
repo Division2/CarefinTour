@@ -45,8 +45,11 @@ function cal2(){
 	var num = $("#num").val();
 	var num2 = $("#num2").val();
 	var num3 = $("#num3").val();
+	var noname = $("#noname").val();
+	var noemail = $("#noemail").val();
+	var nophone = $("#nophone").val();
 	var payment = $("#payment").val();
-		$("#calcul").submit(location.href='detailResvation?PID=' + ${pdtail.getPid()} + '&Payment=' + payment + '&num=' + num + '&num2=' + num2 + '&num3=' + num3);
+		$("#calcul").submit(location.href='detailResvation?PID=' + ${pdtail.getPid()} + '&Payment=' + payment + '&num=' + num + '&num2=' + num2 + '&num3=' + num3 + '&name=' + noname + '&email=' + noemail + '&phone=' + nophone);
 }
 	
 </script>
@@ -187,6 +190,17 @@ function cal2(){
 											<option value=8>8</option>
 										</select>
 									</div>
+									<c:if test="${sessionScope.member eq null}">
+									<div class="input-group">
+									이름 :<input type="text" id="noname" name="noname">
+									</div>
+									<div class="input-group">
+									이메일 :<input type="text" id="noemail" name="noemail">
+									</div>
+									<div class="input-group">
+									전화번호 :<input type="text" id="nophone" name="nophone">
+									</div>
+									</c:if>
 									<div class="input-group">
 									<p style="color:red;">총 금액</p>
 										<input type="text" id="payment" name="payment" style="color:red;"readonly></input>
