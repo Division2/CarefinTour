@@ -443,8 +443,6 @@ function MyInfoUpdate() {
 	}
 }
 
-
-
 /* 회원 탈퇴 */
 $(document).ready(function() {
 	$('#btnWithdrawal').click(function() {

@@ -2,6 +2,7 @@ package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -151,10 +152,16 @@ public class AdminStatisticsServiceImpl implements AdminStatisticsService {
 		dao.TravelPhotoSelectDelete(prId);
 	}
 
-	//기간별 매출 통계 출력
+	//기간별 매출 출력
 	@Override
 	public List<OrderVO> RevenueByPeriod(HashMap<String, Integer> map) throws Exception {
 		return dao.RevenueByPeriod(map);
+	}
+	
+	//기간별 매출 통계 출력
+	@Override
+	public List<Map<String, Object>> RevenueByPeriodGraph() throws Exception {
+		return dao.RevenueByPeriodGraph();
 	}
 
 	//기간별 매출 총 갯수

@@ -1,6 +1,11 @@
 package com.spring.ex.admin.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
+
+import com.spring.ex.vo.MemberVO;
 
 @Service
 public interface AdminDashBoardService {
@@ -19,4 +24,20 @@ public interface AdminDashBoardService {
 	
 	//오늘의 가입 회원 수
 	public int TodayRegisterMemberTotalCount() throws Exception;
+	
+	//오늘의 매출
+	public int TodayRevenueTotaclCount() throws Exception;
+	
+	//기간별 매출 통계
+	public List<Map<String, Object>> RevenueByPeriod() throws Exception;
+	
+	//회원 성별 비율
+	public int ManRatio() throws Exception;
+	public int WomanRatio() throws Exception;
+	
+	//관리자 정보 출력
+	public MemberVO AdminProfile(String AdminID) throws Exception;
+	
+	//관리자 정보 수정
+	public int AdminProfileEdit(MemberVO vo) throws Exception;
 }

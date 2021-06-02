@@ -240,9 +240,9 @@
 		var OrderDate = new Array();
 		var Earnings = new Array();
 	
-		<c:forEach items="${OrderList }" var="List">
-			OrderDate.unshift("${List.getOrderdate()}");
-			Earnings.unshift("${List.getPayment()}");
+		<c:forEach items="${RevenueGraph }" var="List">
+			OrderDate.push("${List.order_date}");
+			Earnings.push("${List.Payment}");
 		</c:forEach>
 		var myLineChart = new Chart(ctx, {
 			type: 'line',

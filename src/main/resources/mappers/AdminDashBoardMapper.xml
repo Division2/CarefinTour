@@ -27,4 +27,32 @@
 	<select id="getTodayRegisterMemberTotalCount" resultType="int">
 		SELECT COUNT(*) FROM account WHERE DATE_FORMAT(regDate, "%Y-%m-%d") = CURDATE()
 	</select>
+	
+	<!-- 오늘의 매출 -->
+	<select id="getTodayRevenueTotalCount" resultType="int">
+		SELECT IFNULL(SUM(Payment), 0) FROM historyorder WHERE OrderDate = CURDATE()
+	</select>
+	
+	<!-- 기간별 매출 통계 -->
+	<select id="RevenueByPeriod" resultType="hashmap">
+		SELECT DATE_FORMAT(OrderDate, '%Y-%m') order_date, SUM(Payment) AS Payment FROM historyorder GROUP BY order_date
+	</select>
+	
+	<!-- 회원 성별 비율 -->
+	<select id="ManRatio" resultType="int">
+		SELECT COUNT(Sex) AS man FROM account WHERE Sex = 1
+	</select>
+	<select id="WomanRatio" resultType="int">
+		SELECT COUNT(Sex) AS woman FROM account WHERE Sex = 0
+	</select>
+	
+	<!-- 관리자 정보 출력 -->
+	<select id="AdminProfile" resultType="MemberVO">
+		SELECT * FROM Account WHERE UserID = #{AdminID}
+	</select>
+	
+	<!-- 관리자 정보 수정 -->
+	<update id="AdminProfileEdit">
+		UPDATE Account SET Password = #{Password}, Name = #{Name}, Phone = #{Phone} WHERE UserID = #{UserID}
+	</update>
 </mapper>
