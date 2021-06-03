@@ -310,7 +310,7 @@
 								<p>${LineReview.content }</p>
 							</div>
 							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+										<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
 								<h3>${LineReview.userId }</h3>
 							</div>
 						</div>
