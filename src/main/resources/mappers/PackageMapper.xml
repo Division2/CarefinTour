@@ -85,7 +85,7 @@
 	<!-- 메인 검색 관련 부분 -->
     <!-- 메인 여행패키지 검색 -->
 	<select id="MainProductPackageSearch" resultType="PackageVO">
-		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
+		SELECT * FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme} LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 메인 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->

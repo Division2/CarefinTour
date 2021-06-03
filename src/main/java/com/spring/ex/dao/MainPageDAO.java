@@ -1,5 +1,6 @@
 package com.spring.ex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -33,5 +34,15 @@ public interface MainPageDAO {
 	public List<PackageVO> EuPackageViewList() throws Exception;
 	
 	//메인 한줄평 리뷰
+<<<<<<< HEAD
 	public List<SexVO> LineReview() throws Exception;
+=======
+	public List<TravelPhotoVO> LineReview() throws Exception;
+	
+	//메인 여행패키지 상품 검색
+	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception;
+	
+	//메인 여행패키지 상품 검색 총 갯수
+	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 }

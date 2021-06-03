@@ -1,28 +1,23 @@
  package com.spring.ex.admin.controller;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.spring.ex.admin.service.PackageService;
 import com.spring.ex.util.UploadFileUtils;
-import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
-import com.spring.ex.vo.TravelPhotoVO;
 
 @Controller
 public class PackageController {
@@ -134,7 +129,7 @@ public class PackageController {
 	
 	//공지사항 검색
 	@RequestMapping(value = "/admin/ProductPackageSearch", method = RequestMethod.GET)
-	public String ProductPackageSearch(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
+	public String ProductPackageSearch(PackageVO vo, HttpServletRequest request, Model model) throws Exception {
 		
 		//받아오기
 		String searchArea = request.getParameter("searchArea");
@@ -172,6 +167,8 @@ public class PackageController {
 		model.addAttribute("searchArea", searchArea);
 		model.addAttribute("searchTheme", searchTheme);
 		model.addAttribute("searchKeyword", searchKeyword);
+		
+		System.out.println(packageList);
 		
 		return "admin/site/packageproduct";
 	}
