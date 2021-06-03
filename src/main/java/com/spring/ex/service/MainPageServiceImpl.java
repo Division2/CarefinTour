@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MainPageDAO;
 import com.spring.ex.vo.PackageVO;
+import com.spring.ex.vo.SexVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
@@ -52,6 +53,11 @@ public class MainPageServiceImpl implements MainPageService {
 	}
 	
 	//메인 한줄평 리뷰
+<<<<<<< HEAD
+		public List<SexVO> LineReview() throws Exception {
+			return dao.LineReview();
+		}
+=======
 	public List<TravelPhotoVO> LineReview() throws Exception {
 		return dao.LineReview();
 	}
@@ -67,6 +73,7 @@ public class MainPageServiceImpl implements MainPageService {
 	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return dao.getMainProductPackageSearchTotalCount(searchMap);
 	}
+<<<<<<< HEAD
 	
 	//메인 여행패키지 이름으로 상품 검색
 	@Override
@@ -79,4 +86,7 @@ public class MainPageServiceImpl implements MainPageService {
 	public int getMainNameProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return dao.getMainNameProductPackageSearchTotalCount(searchMap);
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
+>>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 }
