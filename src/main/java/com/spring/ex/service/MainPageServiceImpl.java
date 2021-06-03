@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MainPageDAO;
 import com.spring.ex.vo.PackageVO;
+import com.spring.ex.vo.SexVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
@@ -51,7 +52,7 @@ public class MainPageServiceImpl implements MainPageService {
 	}
 	
 	//메인 한줄평 리뷰
-		public List<TravelPhotoVO> LineReview() throws Exception {
+		public List<SexVO> LineReview() throws Exception {
 			return dao.LineReview();
 		}
 }

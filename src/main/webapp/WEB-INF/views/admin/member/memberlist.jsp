@@ -120,20 +120,20 @@
 								<th>
 									<input id="allCheck" type="checkbox" name="allCheck">
 								</th>
-								<th>AID</th>
-								<th>계정</th>
-								<th>비밀번호</th>
-								<th>이름</th>
-								<th>권한</th>
-								<th>이메일</th>
-								<th>휴대전화</th>
-								<th>생년월일</th>
-								<th>성별</th>
-								<th>주소</th>
-								<th>마일리지</th>
-								<th>특이사항</th>
-								<th>가입일자</th>
-								<th>최근 접속일자</th>
+								<th><font size="3">AID</font></th>
+								<th><font size="3">계정</font></th>
+								<th><font size="3">비밀번호</font></th>
+								<th><font size="3">이름</font></th>
+								<th><font size="3">권한</font></th>
+								<th><font size="3">이메일</font></th>
+								<th><font size="3">휴대전화</font></th>
+								<th><font size="3">생년월일</font></th>
+								<th><font size="3">성별</font></th>
+								<th><font size="3">주소</font></th>
+								<th><font size="3">마일리지</font></th>
+								<th><font size="3">특이사항</font></th>
+								<th><font size="3">가입일자</font></th>
+								<th><font size="3">최근 접속일자</font></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -142,20 +142,20 @@
 								<td>
 									<input name="RowCheck" type="checkbox" value="${MemberVO.getAid()}">			
 								</td>
-								<td><a href="memberView?AID=${MemberVO.getAid()}">${MemberVO.getAid()}</a></td>
-								<td><c:out value="${MemberVO.userID}"></c:out></td>
-								<td><input type="password" value="<c:out value="${MemberVO.password}"></c:out>" readonly></td>
-								<td><c:out value="${MemberVO.name}"></c:out></td>
-								<td><c:out value="${MemberVO.grade}"></c:out></td>
-								<td><c:out value="${MemberVO.email}"></c:out></td>
-								<td><c:out value="${MemberVO.phone}"></c:out></td>
-								<td><c:out value="${MemberVO.birth}"></c:out></td>
-								<td><c:out value="${MemberVO.sex}"></c:out></td>
-								<td><c:out value="${MemberVO.address}"></c:out></td>
-								<td><c:out value="${MemberVO.mileage}"></c:out></td>
-								<td><c:out value="${MemberVO.comment}"></c:out></td>
-								<td><c:out value="${MemberVO.regDate}"></c:out></td>
-								<td><c:out value="${MemberVO.lastDate}"></c:out></td>
+								<td><font size="3"><a href="memberView?AID=${MemberVO.getAid()}">${MemberVO.getAid()}</a></font></td>
+								<td><font size="3"><c:out value="${MemberVO.userID}"></c:out></font></td>
+								<td><font size="3"><input type="password" value="<c:out value="${MemberVO.password}"></c:out>" readonly></font></td>
+								<td><font size="3"><c:out value="${MemberVO.name}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.grade}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.email}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.phone}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.birth}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.sex}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.address}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.mileage}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.comment}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.regDate}"></c:out></font></td>
+								<td><font size="3"><c:out value="${MemberVO.lastDate}"></c:out></font></td>
 							</tr>
 							</c:forEach>
 						</tbody>

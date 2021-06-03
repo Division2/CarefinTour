@@ -18,5 +18,6 @@
 		<typeAlias type="com.spring.ex.vo.BannerVO" alias="BannerVO"/>
 		<typeAlias type="com.spring.ex.vo.VisaInfoVO" alias="VisaInfoVO"/>
 		<typeAlias type="com.spring.ex.vo.SuppliesInfoVO" alias="SuppliesInfoVO"/>
+		<typeAlias type="com.spring.ex.vo.SexVO" alias="SexVO"/>
 	</typeAliases>
 </configuration>

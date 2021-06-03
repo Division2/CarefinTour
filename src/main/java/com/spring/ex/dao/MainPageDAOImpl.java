@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.PackageVO;
+import com.spring.ex.vo.SexVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Repository
@@ -53,7 +54,7 @@ public class MainPageDAOImpl implements MainPageDAO {
 			}	
 	//메인 한줄평 리뷰
 	@Override
-	public List<TravelPhotoVO> LineReview() throws Exception {
+	public List<SexVO> LineReview() throws Exception {
 		return sqlSession.selectList(namespace + ".LineReview");
 			}	
 	
