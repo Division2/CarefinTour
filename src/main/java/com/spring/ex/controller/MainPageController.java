@@ -86,4 +86,39 @@ public class MainPageController {
 		
 		return "/product/travelSearch";
 	}
+	
+	//메인에서(정확히는 헤더에 있음) 이름으로 패키지 상품 검색
+	@RequestMapping(value = "/travelNameSearch", method = RequestMethod.GET)
+	public String travelNameSearch(PackageVO vo, HttpServletRequest request, Model model) throws Exception {
+		//받아오기
+		String searchKeyword = request.getParameter("searchKeyword");
+		
+		HashMap<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("searchKeyword", searchKeyword);
+		
+		//페이징
+		int totalCount = service.getMainNameProductPackageSearchTotalCount(searchMap);
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		map.put("searchKeyword", searchKeyword);
+		
+		//검색 및 결과값 담기
+		List<PackageVO> plist = service.MainNameProductPackageSearch(map);
+		
+		model.addAttribute("plist", plist);
+		model.addAttribute("Paging", paging);
+		model.addAttribute("searchKeyword", searchKeyword);
+		
+		return "/product/travelSearch";
+	}
 }

@@ -56,13 +56,27 @@ public class MainPageServiceImpl implements MainPageService {
 		return dao.LineReview();
 	}
 		
-	//메인 여행패키지 상품 검색
+	//메인 여행패키지 지역 날짜 테마로 상품 검색
+	@Override
 	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception {
 		return dao.MainProductPackageSearch(map);
 	}
 	
-	//메인 여행패키지 상품 검색 총 갯수
+	//메인 여행패키지 지역 날짜 테마로 상품 검색 총 갯수
+	@Override
 	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return dao.getMainProductPackageSearchTotalCount(searchMap);
+	}
+	
+	//메인 여행패키지 이름으로 상품 검색
+	@Override
+	public List<PackageVO> MainNameProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return dao.MainNameProductPackageSearch(map);
+	}
+	
+	//메인 여행패키지 이름으로 상품 검색 총 갯수
+	@Override
+	public int getMainNameProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.getMainNameProductPackageSearchTotalCount(searchMap);
 	}
 }

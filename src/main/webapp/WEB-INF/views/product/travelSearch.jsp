@@ -75,40 +75,74 @@
 						<div class="post-pagination">
 							<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 							<c:choose>
-								<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-									<a class="disabledLink" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+								<c:when test="${searchTheme ne null && searchArea ne null && searchKeyword eq null}">
+									<c:choose>
+										<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+											<a class="disabledLink" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+										</c:otherwise>
+									</c:choose>
+									<!-- 페이지 갯수만큼 버튼 생성 -->
+									<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+										<c:choose>
+											<c:when test="${i eq Paging.pageNo }">
+												<a class="active" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${i}"><c:out value="${i }"/></a>
+											</c:when>
+											<c:otherwise>
+												<a href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${i}"><c:out value="${i }"/></a>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+									<c:choose>
+										<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+											<a class="disabledLink" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+										</c:when>
+										<c:otherwise>
+											<a href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
-								<c:otherwise>
-									<a class="page-link" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
-								</c:otherwise>
-							</c:choose>
-							<!-- 페이지 갯수만큼 버튼 생성 -->
-							<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
-								<c:choose>
-									<c:when test="${i eq Paging.pageNo }">
-										<a class="active" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${i}"><c:out value="${i }"/></a>
-									</c:when>
-									<c:otherwise>
-										<a href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${i}"><c:out value="${i }"/></a>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
-							<c:choose>
-								<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-									<a class="disabledLink" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+								<c:when test="${searchTheme eq null && searchArea eq null && searchKeyword ne null}">
+									<c:choose>
+										<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+											<a class="page-link" href="travelNameSearch?searchKeyword=${searchKeyword}&page=${Paging.prevPageNo }"><i class="fa fa-angle-left"></i></a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" href="travelNameSearch?searchKeyword=${searchKeyword}&page=${Paging.prevPageNo }"><i class="fa fa-angle-left"></i></a>
+										</c:otherwise>
+									</c:choose>
+									<!-- 페이지 갯수만큼 버튼 생성 -->
+									<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
+										<c:choose>
+											<c:when test="${i eq Paging.pageNo }">
+												<a class="page-link" href="travelNameSearch?searchKeyword=${searchKeyword}&page=${i}"><c:out value="${i}"/></a>
+											</c:when>
+											<c:otherwise>
+												<a class="page-link" href="travelNameSearch?searchKeyword=${searchKeyword}&page=${i}"><c:out value="${i}"/></a>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+									<c:choose>
+										<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+											<a class="page-link" href="travelNameSearch?searchKeyword=${searchKeyword}&page=${Paging.nextPageNo }"><i class="fa fa-angle-right"></i></a>
+										</c:when>
+										<c:otherwise>
+											<a class="page-link" href="travelNameSearch?searchKeyword=${searchKeyword}&page=${Paging.nextPageNo }"><i class="fa fa-angle-right"></i></a>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
-								<c:otherwise>
-									<a href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
-								</c:otherwise>
-							</c:choose>
+							</c:choose>	
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="tour-sidebar">
 							<div class="tour-sidebar__search tour-sidebar__single">
 								<h3>여행 찾기</h3>
-								<form action="#" class="tour-sidebar__search-form">
+								<form action="travelSearch" class="tour-sidebar__search-form">
 									<div class="input-group">
 										<select class="selectpicker" id="searchArea" name="searchArea">
 											<option value="미주/중남미/하와이">미주/중남미/하와이</option>
