@@ -60,21 +60,37 @@
 							<div class="mx-auto">
 								<table class="table table-hover table-white">
 									<caption class="table_caption">${sessionScope.member.getName() }님의 예약 내역입니다</caption>
-									<colgroup>
-										<col width="300px"/>
-										<col width="300px"/>
-									</colgroup>
 									<thead>
 										<tr>
+											<th>주문번호</th>
+											<th>상품번호</th>
 											<th>상품명</th>
-											<th>결제일</th>
+											<th>어른</th>
+											<th>아이</th>
+											<th>애기</th>
+											<th>금액</th>
+											<th>주문상태</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${MyPageOrderList}" var="MyPageOrderList">
 										<tr>
+											<td>${MyPageOrderList.getoId()}</td>
+											<td>${MyPageOrderList.getpId()}</td>
 											<td>${MyPageOrderList.getProductname()}</td>
-											<td>${MyPageOrderList.getPaymentdate()}</td>
+											<td>${MyPageOrderList.getNum()}</td>
+											<td>${MyPageOrderList.getNum2()}</td>
+											<td>${MyPageOrderList.getNum3()}</td>
+											<td>${MyPageOrderList.getPayment()}</td>
+												<c:choose>
+										<c:when test="${MyPageOrderList.getPaymentstatus() eq 1}">
+											<td><span class="inquiry-status status-0">
+												<a href="detailResvation2?PID=${MyPageOrderList.getpId()}&OID=${MyPageOrderList.getoId()}&Payment=${MyPageOrderList.getPayment()}&num=${MyPageOrderList.getNum()}&num2=${MyPageOrderList.getNum2()}&num3=${MyPageOrderList.getNum3()}">결제보류</a></span></td>
+										</c:when>
+										<c:when test="${MyPageOrderList.getPaymentstatus() eq 2}">
+											<td><span class="inquiry-status status-1">결제완료</span></td>
+										</c:when>
+									</c:choose>
 										</tr>
 										</c:forEach>
 									</tbody>

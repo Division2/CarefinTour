@@ -16,6 +16,7 @@ public class PackageServiceImpl implements PackageService {
 	@Inject
 	private PackageDAO dao;
 	
+	//관리자관련 페이지 시작 
 	//게시물 작성
 	@Override
 	public void PackageWrite(PackageVO packageVo) throws Exception {
@@ -66,5 +67,17 @@ public class PackageServiceImpl implements PackageService {
 	//여행패키지 상품 검색 총 갯수
 	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return dao.getProductPackageSearchTotalCount(searchMap);
+	}
+	
+	
+	//메인관련 페이지 시작
+	//메인 여행패키지 상품 검색
+	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return dao.MainProductPackageSearch(map);
+	}
+	
+	//메인 여행패키지 상품 검색 총 갯수
+	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.getMainProductPackageSearchTotalCount(searchMap);
 	}
 }

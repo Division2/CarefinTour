@@ -75,39 +75,6 @@ function insert2() {
 	})
 
 }
-
-function insert3() {
-	Swal.fire({
-		title: '결제하기',
-		text: "정말 결제하시겠습니까?",
-		icon: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
-		confirmButtonText: '확인',
-		cancelButtonText: '취소'
-	}).then((result) => {
-		if (result.isConfirmed) {
-			swal({
-				title: "결제하기",
-				text: "비회원은 결제취소할경우 상담원에 전화하세요.",
-				icon: "success",
-				buttons : {
-					confirm : {
-						value : true
-					}
-				}
-			}).then((result) => {
-				if(result) {
-					location.href='main';
-				}
-				$("#inserts").submit();
-			});
-		
-		}
-	})
-
-}
 </script>
 </head>
 <body>
@@ -208,24 +175,6 @@ function insert3() {
 					<h5><strong>예약자 정보</strong></h5><p>
 						<hr color="black"></hr>
 						<table class="table">
-						<c:if test="${sessionScope.member eq null}">
-						<tr>
-							<th bgcolor="#f1f3f5" width="150" >*한글이름</th>
-							<td><%= request.getParameter("name")%></td>
-							<th bgcolor="#f1f3f5" width="150">*비회원</th>
-							<td>비회원</td>
-						</tr>			
-						<tr>
-							<th bgcolor="#f1f3f5" width="150" >*휴대폰번호</th>
-							<td><%= request.getParameter("phone")%></td>
-						</tr>
-						
-						<tr>
-							<th bgcolor="#f1f3f5" width="150" >*이메일주소</th>
-							<td><%= request.getParameter("email")%></td>
-						</tr>			
-						</c:if>
-						<c:if test="${sessionScope.member ne null}">
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*한글이름</th>
 							<td>${member.getName()}</td>
@@ -240,8 +189,7 @@ function insert3() {
 						<tr>
 							<th bgcolor="#f1f3f5" width="150" >*이메일주소</th>
 							<td>${member.getEmail()}</td>
-						</tr>	
-						</c:if>					
+						</tr>						
 						</table>
 						
 					<h5><strong>여행자 정보</strong></h5><p>
@@ -257,52 +205,11 @@ function insert3() {
 						</tr>
 					</table>
 					<div class="row">
-					<c:if test="${sessionScope.member ne null}">
-					<form action="detailResvationAdd" method="POST" name="inserts" id="inserts">
-					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-						<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
-						<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
-						<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
-						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
-						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
-						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
-						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
+					<form action="detailModify" method="POST" name="inserts" id="inserts">
+						<input type="hidden" value="<%= request.getParameter("OID")%>" id="oId" name="oId"></input>
 					<button type="button" name="pay" id="pay" onclick="insert()" style="margin-left:470px;">결제하기</button>
 					</form>
-					<form action="detailResvationAdd2" method="POST" name="inserted" id="inserted">
-					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-						<input type="hidden" value="${member.getName()}" id="name" name ="name"></input>
-						<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
-						<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
-						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
-						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
-						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
-						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
-					<button type="button" name="paydelay" id="paydealy" onclick="insert2()" style="margin-left:10px;">결제보류</button>
-					</form>					
 					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
-					</c:if>
-					<c:if test="${sessionScope.member eq null}">
-					<form action="detailResvationAdd3" method="POST" name="inserts" id="inserts">
-					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-						<input type="hidden" value="<%= request.getParameter("name")%>" id="name" name ="name"></input>
-						<input type="hidden" value="<%= request.getParameter("email")%>" id="userId" name="userId"></input>
-						<input type="hidden" value="<%= request.getParameter("phone")%>" id="phonenum" name="phonenum"></input>
-						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
-						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
-						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
-						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
-						<input type="hidden" value="1" id="nonmember" name="nonmember"></input>
-					<button type="button" name="pay" id="pay" onclick="insert3()" style="margin-left:470px;">결제하기</button>
-					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
-					</form>
-					</c:if>
 					</div>
 				</div>		
 			</div>

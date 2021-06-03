@@ -123,7 +123,7 @@
 							<div class="d-flex">
 								<div class="ml-auto">
 									<button type="button" class="btn btn-primary" onclick="location.href='order'">목록</button>
-									<button type="button" class="btn btn-primary" onclick="location.href='addorder'">등록</button>
+								<!-- 	<button type="button" class="btn btn-primary" onclick="location.href='addorder'">등록</button> -->
 								<button type="button"  class="btn btn-danger" onclick="deleteValue()">삭제</button>
 								</div>
 							</div>
@@ -146,6 +146,7 @@
 								<th>출발일</th>
 								<th>결제금액</th>
 								<th>결제상태</th>
+								<th>회원</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -162,14 +163,19 @@
 								<td>${AdminOrderList.getStartdate()}</td>
 								<td>${AdminOrderList.getPayment()}</td>
 								<c:choose>
-									<c:when test="${AdminOrderList.paymentstatus eq 0}">
-										<td><span>결제대기</span></td>
-									</c:when>
 									<c:when test="${AdminOrderList.paymentstatus eq 1}">
 										<td><span>결제보류</span></td>
 									</c:when>
-									<c:otherwise>
+									<c:when test="${AdminOrderList.paymentstatus eq 2}">
 										<td><span>결제완료</span></td>
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${AdminOrderList.paymentstatus eq 1}">
+										<td><span>비회원</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span>회원</span></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>
