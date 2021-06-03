@@ -1,9 +1,6 @@
 package com.spring.ex.controller;
 
-<<<<<<< HEAD
-=======
 import java.util.HashMap;
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,14 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.service.MainPageService;
-<<<<<<< HEAD
-import com.spring.ex.vo.InquiryVO;
-import com.spring.ex.vo.MemberVO;
-import com.spring.ex.vo.OrderVO;
-=======
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 
 @Controller
 public class MainPageController {
@@ -61,9 +52,6 @@ public class MainPageController {
 		return "index";
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	//메인에서 지역, 출발일, 테마로 패키지 상품 검색
 	@RequestMapping(value = "/travelSearch", method = RequestMethod.GET)
 	public String travelSearch(PackageVO vo, HttpServletRequest request, Model model) throws Exception {
@@ -106,7 +94,6 @@ public class MainPageController {
 		
 		return "/product/travelSearch";
 	}
-<<<<<<< HEAD
 	
 	//메인에서(정확히는 헤더에 있음) 이름으로 패키지 상품 검색
 	@RequestMapping(value = "/travelNameSearch", method = RequestMethod.GET)
@@ -142,7 +129,4 @@ public class MainPageController {
 		
 		return "/product/travelSearch";
 	}
-=======
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour
 }
