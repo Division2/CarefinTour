@@ -50,7 +50,7 @@
 									<div class="tour-one__content">
 										<div class="tour-two__top">
 											<div class="tour-two__top-left">
-												<h3><a href="detailInfo?PID=${plist.getPid()}">${plist3.getProductname()}</a></h3>
+												<h3><a href="detailInfo?PID=${plist3.getPid()}">${plist3.getProductname()}</a></h3>
 											</div>
 											<div class="tour-two__right">
 												<p><span>${plist3.getAdultprice()}$</span> <br> 인당 가격</p>
@@ -60,9 +60,9 @@
 											<p>${plist3.getOverview()}</p>
 										</div>
 										<ul class="tour-one__meta list-unstyled">
-											<li><a href="detailInfo?PID=${plist.getPid()}"><i class="far fa-clock"></i>${plist3.getStartravelperiod()}~${plist3.getArrivaltravelperiod()}</a></li>
-											<li><a href="detailInfo?PID=${plist.getPid()}"><i class="far fa-user-circle"></i> ${plist3.getMinreservation()}+이상</a></li>
-											<li><a href="detailInfo?PID=${plist.getPid()}"><i class="far fa-map"></i>${plist3.getTheme()}</a></li>
+											<li><a href="detailInfo?PID=${plist3.getPid()}"><i class="far fa-clock"></i>${plist3.getStartravelperiod()}~${plist3.getArrivaltravelperiod()}</a></li>
+											<li><a href="detailInfo?PID=${plist3.getPid()}"><i class="far fa-user-circle"></i> ${plist3.getMinreservation()}+이상</a></li>
+											<li><a href="detailInfo?PID=${plist3.getPid()}"><i class="far fa-map"></i>${plist3.getTheme()}</a></li>
 										</ul>
 									</div>
 								</div>

@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.time.format.DateTimeFormatter"%>
+<%@ page import="java.time.LocalDateTime"%>
+<%
+	//현재시간 구해서 String으로 formating
+	LocalDateTime nowTime = LocalDateTime.now();
+	
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM");
+	String now = nowTime.format(dateTimeFormatter);
+	String beginMonth = nowTime.format(dateTimeFormatter2);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,22 +41,29 @@
 					Carefin <span>Tour</span>
 				</h2>
 				<p>여행지를 선택 해보세요</p>
-				<form class="tour-search-one" action="tour-sidebar.html">
+				<form class="tour-search-one" action="travelSearch">
 					<div class="tour-search-one__inner">
 						<div class="tour-search-one__inputs">
 							<div class="tour-search-one__input-box">
 								<label for="place">여행지</label>
-								<input type="text"placeholder="나라" name="place" id="place">
+								<select class="selectpicker" id="searchArea" name="searchArea">
+									<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+									<option value="대만/동남아/서남아">대만/동남아/서남아</option>
+									<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
+									<option value="유럽/아프리카">유럽/아프리카</option>
+									<option value="일본">일본</option>
+								</select>
 							</div>
 							<div class="tour-search-one__input-box">
-								<label for="when">날짜</label>
-								<input type="text" placeholder="날짜" name="when" id="when">
+								<label for="when">여행시작일</label>
+								<input type="date" class="form-control" value="<%=beginMonth %>" id="searchStartDate" name="searchStartDate" placeholder="여행출발일" >
 							</div>
 							<div class="tour-search-one__input-box">
-								<label for="type">여행 테마</label> <select class="selectpicker" id="type">
-									<option value="fishing">낚시</option>
-									<option value="golf">골프</option>
-									<option value="honey">허니문</option>
+								<label for="type">여행 테마</label> <select class="selectpicker" id="searchTheme" name="searchTheme">
+									<option value="낚시">낚시</option>
+									<option value="허니문">허니문</option>
+									<option value="골프">골프</option>
+									<option value="해외">해외</option>
 								</select>
 							</div>
 						</div>
@@ -125,7 +143,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/product_package/${UsaPackageViewList.s_file_name }"/>' alt="" >
+								<img src='<c:url value="/resources/images/tour/${UsaPackageViewList.s_file_name }"/>' alt="" >
 								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">			
@@ -285,106 +303,19 @@
 					<h3>소중한 여행 리뷰</h3>
 				</div>
 				<div class="testimonials-one__carousel thm__owl-carousel light-dots owl-carousel owl-theme" data-options='{"nav": false, "autoplay": true, "autoplayTimeout": 5000, "smartSpeed": 700, "dots": true, "margin": 30, "loop": true, "responsive": { "0": { "items": 1, "nav": true, "navText": ["Prev", "Next"], "dots": false }, "767": { "items": 1, "nav": true, "navText": ["Prev", "Next"], "dots": false }, "991": { "items": 2 }, "1199": { "items": 2 }, "1200": { "items": 3 } }}'>
+				<c:forEach items="${LineReview }" var="LineReview">
 					<div class="item">
 						<div class="testimonials-one__single">
 							<div class="testimonials-one__content">								
-								<p>저희 아이들이 너무 좋아해서 좋았어요 다음에도 또 예약할게요.</p>
+								<p>${LineReview.content }</p>
 							</div>
 							<div class="testimonials-one__info">
 								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
-								<h3>진용진</h3>
+								<h3>${LineReview.userId }</h3>
 							</div>
 						</div>
 					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">							
-								<p>날씨가 안좋아서 걱정했는데 그 상황에 맞는 패키지도 구성이 되어있어서 안심이였습니다.</p>
-							</div>
-							<div class="testimonials-one__info">
-							<img src='<c:url value="/resources/images/testimonials/2.png"/>' alt="">
-								<h3>박성동</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>현지 치안이 걱정이 많이 됬는데 현지 가이드분께서 케어를 잘 해주셔서 안전 여행 했어요 좋은 추억
-								많이 남기고 갑니다.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/3.png"/>' alt="">
-								<h3>김요한</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>음식이 입맛에 맞지 않을까 걱정했는데, 현지가이드분께서 세심한것 까지 체크 해주셔서 별 탈없이 맛있는 여행 했습니다.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/5.png"/>' alt="">
-								<h3>이인호</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>이번에 결혼을 하게되서 허니문 패키지 이용했는데 너무 잘 다녀왔어요 와이프가 좋아해서 다행입니다.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/8.png"/>' alt="">
-								<h3>김규헌</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>첫 서핑이라 너무 걱정했는데 가이드분께서 잘 알려주셔서 많은거 배워갑니다 다음에 또 올게요.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/6.png"/>' alt="">
-								<h3>이동진</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>가격도 합리적이고, 날씨가 좋아서 여행하는동안 기분이 너무 좋았어요!.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/4w.png"/>' alt="">
-								<h3>박현지</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>입이 즐거워지는 여행이였습니다.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
-								<h3>박남일</h3>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>이렇게 큰 물고기를 잡아본적이 없는데 소중한 경험 하고 가요.</p>
-							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/3.png"/>' alt="">
-								<h3>원태연</h3>
-							</div>
-						</div>
-					</div>
+							</c:forEach>
 				</div>
 			</div>
 		</section>

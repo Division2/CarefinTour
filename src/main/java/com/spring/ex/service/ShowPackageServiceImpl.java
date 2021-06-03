@@ -87,4 +87,28 @@ public class ShowPackageServiceImpl implements ShowPackageService {
 	public int OrderWrite(OrderVO vo) throws Exception {
 		return dao.OrderWrite(vo);
 	}
+	
+	//여행패키지 예약보류 등록
+	@Override
+	public int OrderWrite2(OrderVO vo) throws Exception {
+		return dao.OrderWrite2(vo);
+	}
+	
+	//여행패키지 예약비회원 등록
+	@Override
+	public int OrderWrite3(OrderVO vo) throws Exception {
+		return dao.OrderWrite3(vo);
+	}
+	
+	//비회원 예약 패키지 출력
+	@Override
+	public List<OrderVO> NonMemberView(HashMap<String, Object> map) throws Exception {
+		return dao.NonMemberView(map);
+	}
+	
+	//여행피키지 예약내역 상태변경
+	@Override
+	public int detailModify(OrderVO vo) throws Exception {
+		return dao.detailModify(vo);
+	}
 }

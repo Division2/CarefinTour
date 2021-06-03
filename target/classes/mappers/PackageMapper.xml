@@ -6,7 +6,7 @@
 	<!-- 여행패키지 등록  -->
 	<insert id="PackageWrite" parameterType="hashMap">
 			INSERT INTO packageproduct(ProductName, OverView, Supplies, TravelPlan, StarTravelPeriod, ArrivalTravelPeriod, Hit, Theme, Area, ReservationStatus, MinReservation, AdultPrice, KidPrice, SmallKidPrice, s_file_name, Director, flag) 
-			VALUES(#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, 1)
+			VALUES(#{productname}, #{overview}, #{supplies}, #{travelplan}, #{startravelperiod}, #{arrivaltravelperiod}, 0, #{theme}, #{area}, 0, #{minreservation}, #{adultprice}, #{kidprice}, #{smallkidprice}, #{s_file_name}, #{director}, #{flag})
  	</insert>
 	
 	<!-- 여행패키지 출력 -->
@@ -50,16 +50,17 @@
 			KidPrice = #{kidprice}, 
 			SmallKidPrice = #{smallkidprice}, 
 			s_file_name = #{s_file_name}, 
-			Director = #{director}
+			Director = #{director},
+			flag = #{flag}
 		WHERE pid = #{pid}
  	</update>
  	
-    <!-- 여행패키지 검색 -->
+    <!-- 관리자 여행패키지 검색 -->
 	<select id="ProductPackageSearch" resultType="PackageVO">
 		SELECT * FROM packageproduct <include refid="Search"></include> LIMIT #{Page}, #{PageSize}
 	</select>
 	
-	<!-- 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
+	<!-- 관리자 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
 	<select id="getProductPackageSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM packageproduct <include refid="Search"></include>
 	</select>
@@ -80,5 +81,17 @@
 			</when>
 		</choose>
 	</sql>
+	
+	<!-- 메인 검색 관련 부분 -->
+    <!-- 메인 여행패키지 검색 -->
+	<select id="MainProductPackageSearch" resultType="PackageVO">
+		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
+	</select>
+	
+	<!-- 메인 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
+	<select id="getMainProductPackageSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
+	</select>
+	
 	
 </mapper>

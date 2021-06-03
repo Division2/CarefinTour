@@ -49,4 +49,9 @@ public class MainPageServiceImpl implements MainPageService {
 	public List<PackageVO> EuPackageViewList() throws Exception {
 		return dao.EuPackageViewList();
 	}
+	
+	//메인 한줄평 리뷰
+		public List<TravelPhotoVO> LineReview() throws Exception {
+			return dao.LineReview();
+		}
 }

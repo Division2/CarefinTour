@@ -116,7 +116,7 @@
 										<tr>
 											<td><select class="form-control" id="searchArea" name="searchArea">
 												<option value="noArea">지역</option>
-												<option value="북미/중남미/하와이">북미/중남미/하와이</option>
+												<option value="미주/중남미/하와이">미주/중남미/하와이</option>
 												<option value="대만/동남아/서남아">대만/동남아/서남아</option>
 												<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
 												<option value="유럽/아프리카">유럽/아프리카</option>
@@ -162,6 +162,7 @@
 								<th>지역</th>
 								<th>출발 및 도착일</th>
 								<th>등록일</th>
+								<th>게시여부</th>
 								<th>현재인원</th>
 								<th>조회수</th>
 							</tr>
@@ -170,13 +171,18 @@
 							<c:forEach items="${plist}" var="plist">
 								<tr align="center">
 									<td><input type="checkbox" name="RowCheck" value="${plist.getPid()}"></td>
-									<td><font size="3"><a href="packageProductDetail?PID=${plist.getPid()}">${plist.getPid()}</a></font></td>
-									<td><font size="2">${plist.getProductname()}</font></td>
-									
+									<td><font size="3">${plist.getPid()}</font></td>
+									<td><font size="2"><a href="packageProductDetail?PID=${plist.getPid()}">${plist.getProductname()}</a></font></td>
 									<td><font size="2">${plist.getTheme()}</font></td>
 									<td><font size="2">${plist.getArea()}</font></td>
 									<td><font size="2">${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</font></td>
 									<td><font size="2">${plist.getRedate()}</font></td>
+									<c:if test="${plist.getFlag() == 1}">
+										<td><font size="2" color="#368AFF">O</font></td>
+									</c:if>
+									<c:if test="${plist.getFlag() == 0}">
+										<td><font size="2" color="#FF5E00">X</font></td>
+									</c:if>
 									<td><font size="2">${plist.getReservationstatus() }</font></td>
 									<td><font size="2">${plist.getHit()}</font></td>
 								</tr>
@@ -237,12 +243,12 @@
 							<c:choose>
 								<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 									<li class="page-item disabled">
-										<a class="page-link" href="ProductPackageSearch?page=${Paging.prevPageNo }">Previus</a>
+										<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item">
-										<a class="page-link" href="ProductPackageSearch?page=${Paging.prevPageNo }">Previus</a>
+										<a class="page-link" href="packageproduct?page=${Paging.prevPageNo }">Previus</a>
 									</li>
 								</c:otherwise>
 							</c:choose>

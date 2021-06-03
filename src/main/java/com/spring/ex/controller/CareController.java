@@ -20,6 +20,8 @@ public class CareController {
 	 * 유럽/아프리카
 	 * 일본
 	 * 
+	 * 검색결과화면
+	 * 
 	 * 낚시/골프/허니문
 	 */
 	@RequestMapping("countrytravel1")
@@ -42,6 +44,10 @@ public class CareController {
 	public String country5() {
 		return "product/countryoftravel5";
 	}
+	@RequestMapping("travelSearch")
+	public String countrysearch() {
+		return "product/travelSearch";
+	}
 	@RequestMapping("detailInfo")
 	public String detailInfo() {
 		return "product/detailedinformation";
@@ -49,6 +55,10 @@ public class CareController {
 	@RequestMapping("detailResvation")
 	public String detailres() {
 		return "product/detailresvation";
+	}
+	@RequestMapping("detailResvation2")
+	public String detailres2() {
+		return "product/detailresvation2";
 	}
 	@RequestMapping("fishing")
 	public String fishing() {

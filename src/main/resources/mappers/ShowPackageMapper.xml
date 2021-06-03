@@ -4,7 +4,7 @@
 
 	<!-- 여행패키지 출력 -->
 	<select id="ProductPackageView" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Area = '북미/중남미/하와이' LIMIT #{Page}, #{PageSize}
+		SELECT * FROM packageproduct WHERE Area = '미주/중남미/하와이' LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 여행패키지 출력 -->
@@ -29,7 +29,7 @@
 	
 	<!-- 여행패키지 총 갯수 -->
 	<select id="getProductPackageTotalCount" resultType="int">
-		SELECT COUNT(*) FROM packageproduct WHERE Area= '북미/중남미/하와이'
+		SELECT COUNT(*) FROM packageproduct WHERE Area= '미주/중남미/하와이'
 	</select>
 	
 	<!-- 여행패키지 총 갯수 -->
@@ -59,8 +59,28 @@
 	
 	<!-- 여행패키지 예약내역 작성 -->
 	<insert id="OrderWrite">
-		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus) VALUES (#{pId},#{productname}, #{id}, #{name}, #{phonenum}, #{startdate}, #{payment},1)
+		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3})
 	</insert>
+	
+	<!-- 여행패키지 예약내역 보류 -->
+	<insert id="OrderWrite2">
+		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},1,#{num},#{num2},#{num3})
+	</insert>
+	
+	<!-- 비회원 여행패키지 예약내역 -->
+	<insert id="OrderWrite3">
+		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3,nonmember) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3},#{nonmember})
+	</insert>
+	
+	<!-- 비회원 여행패키지 출력 -->
+	<select id="NonMemberView" resultType="PackageVO">
+		SELECT * FROM historyorder WHERE Name = #{name} AND PhoneNum=#{phone} AND UserID=#{email}
+	</select>
+	
+	<!-- 여행 패키지 예약내용 수정 -->
+	<update id="detailModify">
+		UPDATE historyorder SET PaymentStatus = 2 WHERE OID = #{oId};
+	</update>
 
 
 </mapper>

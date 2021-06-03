@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.ex.service.ShowPackageService;
 import com.spring.ex.vo.InquiryVO;
+import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
@@ -170,18 +171,82 @@ public class ShowPackageController {
 		return "product/detailresvation";
 	}
 	
-	 //관리자 예약내역 작성
+	//여행패키지 예약페이지 출력
+		@RequestMapping(value = "/detailResvation2", method = RequestMethod.GET)
+		public String getPackageProductDetail3(Model model, HttpServletRequest request)  throws Exception {
+			int pid = Integer.parseInt(request.getParameter("PID"));
+			PackageVO pdtail =  service.ProductPackageDetail(pid);
+			
+			model.addAttribute("pdtail", pdtail);
+			return "product/detailresvation2";
+		}
+	
+	 //여행패키지 예약내역 작성
   	@RequestMapping(value = "/detailResvationAdd", method = RequestMethod.POST)
   	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
-  		vo.setId(request.getParameter("id"));
+  		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
-  		String pId = request.getParameter("pId");
   		service.OrderWrite(vo);
   		
-  		return "redirect:detailResvation?PID=" + pId;
+  		return "index";
   		
+  	}
+  	
+	 //여행패키지 예약보류 작성
+  	@RequestMapping(value = "/detailResvationAdd2", method = RequestMethod.POST)
+  	public String Write2(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		vo.setProductname(request.getParameter("productname"));
+  		vo.setPhonenum(request.getParameter("phonenum"));
+  		vo.setUserId(request.getParameter("userId"));
+  		vo.setName(request.getParameter("name"));
+  		service.OrderWrite2(vo);
+  		
+  		return "index";
+  		
+  	}
+  	
+  	 //여행패키지 비회원 예약 작성
+  	@RequestMapping(value = "/detailResvationAdd3", method = RequestMethod.POST)
+  	public String Write3(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  		vo.setProductname(request.getParameter("productname"));
+  		vo.setPhonenum(request.getParameter("phonenum"));
+  		vo.setUserId(request.getParameter("userId"));
+  		vo.setName(request.getParameter("name"));
+  		service.OrderWrite3(vo);
+  		
+  		return "index";
+  		
+  	}
+  	
+  //비회원 예약 패키지 출력
+  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.GET)
+  	public String NonMemberView(Model model, HttpServletRequest request) throws Exception {
+  		
+  		HashMap<String, Object> map = new HashMap<String, Object>();	
+  		
+  		List<OrderVO> nonmember = service.NonMemberView(map);
+  		model.addAttribute("non", nonmember);
+
+  		
+  		return "index";
+  		
+  	}
+  	
+  //여행패키지 예약 상태변경
+  	@RequestMapping(value = "/detailModify", method = RequestMethod.POST)
+  	public void Modify(OrderVO vo, HttpServletResponse response) throws Exception {
+  		
+  		int result = service.detailModify(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='main'</script>");
+  			out.close();
+  		}
   	}
 	
 	

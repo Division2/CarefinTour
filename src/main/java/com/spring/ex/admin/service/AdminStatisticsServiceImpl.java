@@ -2,6 +2,7 @@ package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.spring.ex.admin.dao.AdminStatisticsDAO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.NoticeBoardVO;
+import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.VisitVO;
 
@@ -148,5 +150,35 @@ public class AdminStatisticsServiceImpl implements AdminStatisticsService {
 	@Override
 	public void TravelPhotoSelectDelete(String prId) throws Exception {
 		dao.TravelPhotoSelectDelete(prId);
+	}
+
+	//기간별 매출 출력
+	@Override
+	public List<OrderVO> RevenueByPeriod(HashMap<String, Integer> map) throws Exception {
+		return dao.RevenueByPeriod(map);
+	}
+	
+	//기간별 매출 통계 출력
+	@Override
+	public List<Map<String, Object>> RevenueByPeriodGraph() throws Exception {
+		return dao.RevenueByPeriodGraph();
+	}
+
+	//기간별 매출 총 갯수
+	@Override
+	public int TotalOrderCount() throws Exception {
+		return dao.TotalOrderCount();
+	}
+
+	//기간별 매출 검색 출력
+	@Override
+	public List<OrderVO> PeriodSearchView(HashMap<String, Object> map) throws Exception {
+		return dao.PeriodSearchView(map);
+	}
+	
+	//기간별 매출 검색 총 갯수
+	@Override
+	public int getPriodSearchTotalCount(HashMap<String, String> totalMap) throws Exception {
+		return dao.getPriodSearchTotalCount(totalMap);
 	}
 }

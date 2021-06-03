@@ -20,13 +20,20 @@
 <%pageContext.setAttribute("crlf", "\r\n"); %>
 <script type="text/javascript">
 $(document).ready(function(){
-	//테마 지역 값에 따라서 콤보박스 선택되게
+	//테마, 지역, flag 값에 따라서 콤보박스 선택되게
 	$("#theme").val("${pdtail.getTheme()}").prop("selected", true);
 	$("#area").val("${pdtail.getArea()}").prop("selected", true);
+	$("#flag").val("${pdtail.getFlag()}").prop("selected", true);
 })
 </script>
 <style type="text/css">
 	.ck-content{width:750px; height:300px; }
+	
+	.containerTop {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end
+	}
 </style>
 <title>케어핀투어 관리자</title>
 </head>
@@ -47,8 +54,10 @@ $(document).ready(function(){
 						<div class="form-title text-center">
 							<h4>여행패키지 정보수정</h4><br>
 						</div>
-						<p align="right"><font size="2">조회수 : ${pdtail.getHit() }</font></p>
-						<font size="3">No <%= request.getParameter("PID") %></font>
+						<div class="containerTop">
+							<div><font size="5">No <%= request.getParameter("PID") %></font></div>
+							<div><font size="2">등록일 : ${pdtail.getRedate()} / 조회수 : ${pdtail.getHit() }</font></div>
+						</div>
 						<hr style=background-color:#368AFF;>
 						<div class="d-flex flex-column">
 						
@@ -83,8 +92,9 @@ $(document).ready(function(){
 									</div>
 								</div>
 								<!--기간, 등록일  -->
+								기간 및 상태
 								<div class="form-group row">
-									<div class="col-xs-6 col-md-6">
+									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>출발일</b></span>
@@ -93,7 +103,7 @@ $(document).ready(function(){
 										</div>
 									</div>
 									
-									<div class="col-xs-6 col-md-6">
+									<div class="col-xs-4 col-md-4">
 										<div class="input-group my-2 mb-1">
 											<div class="input-group-prepend">
 												<span class="input-group-text"><b>도착일</b></span>
@@ -101,7 +111,18 @@ $(document).ready(function(){
 											<input type="text" value="${pdtail.getArrivaltravelperiod()}" id="arrivaltravelperiod" name="arrivaltravelperiod" class="form-control" required>
 										</div>
 									</div>
-	
+
+									<div class="col-xs-4 col-md-4">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><b>게시상태</b></span>
+											</div>
+											<select class="form-control" id="flag" name="flag">
+												<option value="1">Open</option>
+												<option value="0">Close</option>
+											</select>
+										</div>
+									</div>	
 								</div>
 								
 								패키지 인당 비용
@@ -155,7 +176,7 @@ $(document).ready(function(){
 												<span class="input-group-text"><b>지역</b></span>
 											</div>
 											<select class="form-control" id="area" name="area">
-												<option>북미/중남미/하와이</option>
+												<option>미주/중남미/하와이</option>
 												<option>대만/동남아/서남아</option>
 												<option>중국/홍콩/러시아</option>
 												<option>유럽/아프리카</option>
