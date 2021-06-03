@@ -18,6 +18,7 @@ public class OrderVO {
 	private int num;
 	private int num2;
 	private int num3;
+	private int nonmember;
 	
 	public int getoId() {
 		return oId;
@@ -108,6 +109,12 @@ public class OrderVO {
 	}
 	public void setNum3(int num3) {
 		this.num3 = num3;
+	}
+	public int getNonmember() {
+		return nonmember;
+	}
+	public void setNonmember(int nonmember) {
+		this.nonmember = nonmember;
 	}
 
 }

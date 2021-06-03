@@ -14,7 +14,7 @@ public class TravelPhotoVO {
 	private String s_file_name;
 	private String o_file_name;
 	private String name;
-	
+
 	public int getPrid() {
 		return prid;
 	}
