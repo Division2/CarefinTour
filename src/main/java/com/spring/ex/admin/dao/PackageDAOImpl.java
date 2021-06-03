@@ -71,18 +71,4 @@ public class PackageDAOImpl implements PackageDAO {
 	}
 
 	
-	//메인관련 페이지 시작
-	//메인 여행패키지 상품 검색
-	@Override
-	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception {
-		return sql.selectList(namespace + ".MainProductPackageSearch", map);
-	}
-
-	//메인 여행패키지 상품 검색 총 갯수
-	@Override
-	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
-		return sql.selectOne(namespace + ".getMainProductPackageSearchTotalCount", searchMap);
-	}
-	
-	
 }

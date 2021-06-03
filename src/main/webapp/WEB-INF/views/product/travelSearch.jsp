@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String beginMonth = request.getParameter("searchStartDate");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +42,7 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="tour-sorter-one"></div>
-					<c:forEach var="plist" items="${plist}">
+					<c:forEach items="${plist}" var="plist" >
 					
 						<div class="tour-two__single tour-one__single">
 							<div class="tour-two__image-wrap">
@@ -73,36 +76,69 @@
 							<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
 							<c:choose>
 								<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
-									<a class="disabledLink" href="travelSearch?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+									<a class="disabledLink" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
 								</c:when>
 								<c:otherwise>
-									<a class="page-link" href="travelSearch?page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
+									<a class="page-link" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.prevPageNo}"><i class="fa fa-angle-left"></i></a>
 								</c:otherwise>
 							</c:choose>
 							<!-- 페이지 갯수만큼 버튼 생성 -->
 							<c:forEach var="i" begin="${Paging.startPageNo }" end="${Paging.endPageNo }" step="1">
 								<c:choose>
 									<c:when test="${i eq Paging.pageNo }">
-										<a class="active" href="travelSearch?page=${i}"><c:out value="${i }"/></a>
+										<a class="active" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${i}"><c:out value="${i }"/></a>
 									</c:when>
 									<c:otherwise>
-										<a href="travelSearch?page=${i}"><c:out value="${i }"/></a>
+										<a href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${i}"><c:out value="${i }"/></a>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
 							<c:choose>
 								<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
-									<a class="disabledLink" href="travelSearch?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+									<a class="disabledLink" href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
 								</c:when>
 								<c:otherwise>
-									<a href="travelSearch?page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
+									<a href="travelSearch?searchArea=${searchArea}&searchStartDate=${searchStartDate}&searchTheme=${searchTheme}&page=${Paging.nextPageNo}"><i class="fa fa-angle-right"></i></a>
 								</c:otherwise>
 							</c:choose>
 						</div>
 					</div>
+					<div class="col-lg-4">
+						<div class="tour-sidebar">
+							<div class="tour-sidebar__search tour-sidebar__single">
+								<h3>여행 찾기</h3>
+								<form action="#" class="tour-sidebar__search-form">
+									<div class="input-group">
+										<select class="selectpicker" id="searchArea" name="searchArea">
+											<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+											<option value="대만/동남아/서남아">대만/동남아/서남아</option>
+											<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
+											<option value="유럽/아프리카">유럽/아프리카</option>
+											<option value="일본">일본</option>
+										</select>
+									</div>
+									<div class="input-group">
+										<input type="date" class="form-control" value="<%=beginMonth %>" id="searchStartDate" name="searchStartDate" placeholder="여행출발일" >
+									</div>
+									<div class="input-group">
+										<select class="selectpicker" id="searchTheme" name="searchTheme">
+											<option value="낚시">낚시</option>
+											<option value="허니문">허니문</option>
+											<option value="골프">골프</option>
+											<option value="해외">해외</option>
+										</select>
+									</div>
+									<div class="input-group">
+										<button type="submit" class="thm-btn">검색</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+			
 		</section>
 		<!-- 상품 & 사이드바 -->
 		

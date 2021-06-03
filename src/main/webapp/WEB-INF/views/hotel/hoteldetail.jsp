@@ -22,8 +22,7 @@ ul {
 	<script>
 		//url로 넘어온 코드값을 반환
 		$.urlParam = function(name) {
-			var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)')
-					.exec(window.location.href);
+			var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
 			return results[1] || 0;
 		}
 		var searchDetailId = $.urlParam('cId');
@@ -31,8 +30,7 @@ ul {
 
 		//공통정보 api - 1번탭 시작
 		function detail1() {
-			$
-					.ajax({
+			$.ajax({
 						url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&contentTypeId=32&contentId='
 								+ searchDetailId
 								+ '&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y',

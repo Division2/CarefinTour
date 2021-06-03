@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -51,7 +52,17 @@ public class MainPageServiceImpl implements MainPageService {
 	}
 	
 	//메인 한줄평 리뷰
-		public List<TravelPhotoVO> LineReview() throws Exception {
-			return dao.LineReview();
-		}
+	public List<TravelPhotoVO> LineReview() throws Exception {
+		return dao.LineReview();
+	}
+		
+	//메인 여행패키지 상품 검색
+	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return dao.MainProductPackageSearch(map);
+	}
+	
+	//메인 여행패키지 상품 검색 총 갯수
+	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.getMainProductPackageSearchTotalCount(searchMap);
+	}
 }
