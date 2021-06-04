@@ -97,8 +97,8 @@
 				<div class="cursor-follower"></div>
 			</div>
 			<div class="search-popup__inner">
-				<form action="#" class="search-popup__form">
-					<input type="text" name="search" placeholder="검색어를 입력하세요...">
+				<form action="travelNameSearch" class="search-popup__form">
+					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요...">
 					<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>

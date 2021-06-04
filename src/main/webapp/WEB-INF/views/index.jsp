@@ -144,7 +144,7 @@
 						<div class="tour-one__single">
 							<div class="tour-one__image">
 								<img src='<c:url value="/resources/images/tour/${UsaPackageViewList.s_file_name }"/>' alt="" >
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<a href="detailInfo?PID=${UsaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">			
 								<h3>
@@ -167,11 +167,11 @@
 						<div class="tour-one__single">
 							<div class="tour-one__image">
 								<img src='<c:url value="/resources/images/tour/${ChinaPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<a href="detailInfo?PID=${ChinaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${ChinaPackageViewList.pid}">${ChinaPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${ChinaPackageViewList.pid}">${ChinaPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${ChinaPackageViewList.adultprice }~</span> / 1인 기준
@@ -187,14 +187,14 @@
 					</c:forEach>
 					<c:forEach items="${MylPackageViewList }" var="MylPackageViewList">
 					<div class="col-xl-4 col-lg-6">
-						<div class="tour-one__single">
+						<div class="tour-one__single">	
 							<div class="tour-one__image">
 								<img src='<c:url value="/resources/images/tour/${MylPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<a href="detailInfo?PID=${MylPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${MylPackageViewList.pid}">${MylPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${MylPackageViewList.pid}">${MylPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${MylPackageViewList.adultprice }~</span> / 1인 기준
@@ -213,11 +213,11 @@
 						<div class="tour-one__single">
 							<div class="tour-one__image">
 								<img src='<c:url value="/resources/images/tour/${JapanPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<a href="detailInfo?PID=${JapanPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${JapanPackageViewList.pid}">${JapanPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${JapanPackageViewList.pid}">${JapanPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${JapanPackageViewList.adultprice }~</span> / 1인 기준
@@ -236,12 +236,12 @@
 						<div class="tour-one__single">
 							<div class="tour-one__image">
 								<img src='<c:url value="/resources/images/tour/${SurfingPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<a href="detailInfo?PID=${SurfingPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								
 								<h3>
-									<a href="detailInfoPID=${SurfingPackageViewList.pid}">${SurfingPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${SurfingPackageViewList.pid}">${SurfingPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${SurfingPackageViewList.adultprice }~</span> / 1인 기준
@@ -260,11 +260,11 @@
 						<div class="tour-one__single">
 							<div class="tour-one__image">
 								<img src='<c:url value="/resources/images/tour/${EuPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<a href="detailInfo?PID=${EuPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${EuPackageViewList.pid}">${EuPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${EuPackageViewList.pid}">${EuPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${EuPackageViewList.adultprice }~</span> / 1인 기준
@@ -309,13 +309,20 @@
 							<div class="testimonials-one__content">								
 								<p>${LineReview.content }</p>
 							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+							<div class="testimonials-one__info">									
+							<c:choose>
+									<c:when test="${LineReview.sex eq 1}">
+										<img src='<c:url value="/resources/images/testimonials/4w.png"/>' alt="">
+									</c:when>
+									<c:otherwise>
+										<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+									</c:otherwise>
+								</c:choose>				
 								<h3>${LineReview.userId }</h3>
 							</div>
 						</div>
 					</div>
-							</c:forEach>
+			</c:forEach>
 				</div>
 			</div>
 		</section>

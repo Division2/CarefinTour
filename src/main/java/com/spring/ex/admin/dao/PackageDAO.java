@@ -39,11 +39,4 @@ public interface PackageDAO {
 	//관리자 여행패키지 상품 검색 총 갯수
 	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 	
-	//메인관련 페이지 시작
-	//메인 여행패키지 상품 검색
-	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception;
-	
-	//메인 여행패키지 상품 검색 총 갯수
-	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
-	
 }

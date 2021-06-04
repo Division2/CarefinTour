@@ -10,37 +10,38 @@
 	
 	<!-- 미주 패키지 여행추천 -->
 	<select id="UsaPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Area = "북미/중남미/하와이" AND reDate BETWEEN CURDATE()-100 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Area = "미주/중남미/하와이" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
 	<!-- 중국 패키지 여행추천 -->
 	<select id="ChinaPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Area = "중국/홍콩/러시아" AND reDate BETWEEN CURDATE()-100 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Area = "중국/홍콩/러시아" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
 	<!-- 동남아 패키지 여행추천 -->
 	<select id="MylPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Area = "대만/동남아/서남아" AND reDate BETWEEN CURDATE()-100 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Area = "대만/동남아/서남아" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
 	<!-- 일본 패키지 여행추천 -->
 	<select id="JapanPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Area = "일본" AND reDate BETWEEN CURDATE()-100 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Area = "일본" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
-	<!-- 일본 패키지 여행추천 -->
+	<!-- 서핑 패키지 여행추천 -->
 	<select id="SurfingPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Theme = "골프" AND reDate BETWEEN CURDATE()-100 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Theme = "골프" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
-	<!-- 일본 패키지 여행추천 -->
+	<!-- 유럽패키지 여행추천 -->
 	<select id="EuPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Area = "유럽/아프리카" AND reDate BETWEEN CURDATE()-100 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Area = "유럽/아프리카" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
 	<!-- 메인 한 줄 리뷰 -->
-	<select id="LineReview" resultType="TravelPhotoVO">
-		SELECT * FROM photoreview WHERE reDate BETWEEN CURDATE()-30 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 8
+	<select id="LineReview" resultType="SexVO">
+	SELECT p.*, a.Sex FROM account a, photoreview p WHERE a.UserID = p.UserID AND p.reDate BETWEEN CURDATE()-30 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 8
 	</select>
+	
 	
 </mapper>

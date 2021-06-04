@@ -16,7 +16,6 @@
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	//테마 지역 값에 따라서 콤보박스 선택되게
 	$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
 	$("#sex").val("${mDetail.getSex()}").prop("selected", true);
 })

@@ -83,14 +83,24 @@
 	</sql>
 	
 	<!-- 메인 검색 관련 부분 -->
-    <!-- 메인 여행패키지 검색 -->
+    <!-- 메인 여행패키지 지역 날짜 테마로 검색 -->
 	<select id="MainProductPackageSearch" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme} LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 메인 여행패키지 지역 날짜 테마로 검색된 결과 총 갯수, 페이징위해서 사용 -->
+	<select id="getMainProductPackageSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
 	</select>
 	
+	 <!--메인 여행패키지 이름으로 검색 -->
+	<select id="MainNameProductPackageSearch" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE ProductName LIKE CONCAT('%', #{searchKeyword}, '%') LIMIT #{Page}, #{PageSize}
+	</select>
+	
 	<!-- 메인 여행패키지 검색된 결과 총 갯수, 페이징위해서 사용 -->
-	<select id="getMainProductPackageSearchTotalCount" resultType="int">
-		SELECT COUNT(*) FROM packageproduct WHERE Area = #{searchArea} AND StarTravelPeriod = #{searchStartDate} AND Theme = #{searchTheme}
+	<select id="getMainNameProductPackageSearchTotalCount" resultType="int">
+		SELECT COUNT(*) FROM packageproduct WHERE ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
 	</select>
 	
 	
