@@ -47,7 +47,24 @@ public class ShowPackageDAOImpl implements ShowPackageDAO {
 	public List<PackageVO> PackageView5(HashMap<String, Object> map) throws Exception {
 		return sql.selectList(namespace + ".ProductPackageView5", map);
 	}
-		
+	
+	//허니문 패키지 출력
+	@Override
+	public List<PackageVO> PackageView6(HashMap<String, Object> map) throws Exception {
+		return sql.selectList(namespace + ".ProductPackageView6", map);
+	}
+	
+	//낚시 패키지 출력
+	@Override
+	public List<PackageVO> PackageView7(HashMap<String, Object> map) throws Exception {
+		return sql.selectList(namespace + ".ProductPackageView7", map);
+	}
+	//골프 패키지 출력
+	@Override
+	public List<PackageVO> PackageView8(HashMap<String, Object> map) throws Exception {
+		return sql.selectList(namespace + ".ProductPackageView8", map);
+	}
+	
 	//여행패키지 총 갯수
 	@Override
 	public int PackageTotalCount() throws Exception {
@@ -77,7 +94,25 @@ public class ShowPackageDAOImpl implements ShowPackageDAO {
 	public int PackageTotalCount5() throws Exception {
 		return sql.selectOne(namespace + ".getProductPackageTotalCount5");
 	}
-		
+	
+	//여행패키지 총 갯수
+	@Override
+	public int PackageTotalCount6() throws Exception {
+		return sql.selectOne(namespace + ".getProductPackageTotalCount6");
+	}
+
+	//여행패키지 총 갯수
+	@Override
+	public int PackageTotalCount7() throws Exception {
+		return sql.selectOne(namespace + ".getProductPackageTotalCount7");
+	}
+	
+	//여행패키지 총 갯수
+	@Override
+	public int PackageTotalCount8() throws Exception {
+		return sql.selectOne(namespace + ".getProductPackageTotalCount8");
+	}
+	
 	
 	//여행패키지 상세페이지 출력
 	@Override
@@ -105,8 +140,8 @@ public class ShowPackageDAOImpl implements ShowPackageDAO {
 	
 	//비회원 패키지 내역 출력
 	@Override
-	public List<OrderVO> NonMemberView(HashMap<String, Object> map) throws Exception {
-		return sql.selectList(namespace + ".NonMemberView", map);
+	public OrderVO NonMemberView(OrderVO vo) throws Exception {
+		return sql.selectOne(namespace + ".NonMemberView", vo);
 	}
 	
 	//여행패키지 예약상태 수정

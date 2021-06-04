@@ -45,6 +45,24 @@ public class ShowPackageServiceImpl implements ShowPackageService {
 	public List<PackageVO> PackageView5(HashMap<String, Object> map) throws Exception {
 		return dao.PackageView5(map);
 	}
+	
+	//허니문 패키지 출력
+	@Override
+	public List<PackageVO> PackageView6(HashMap<String, Object> map) throws Exception {
+		return dao.PackageView6(map);
+	}
+	
+	//낚시 패키지 출력
+	@Override
+	public List<PackageVO> PackageView7(HashMap<String, Object> map) throws Exception {
+		return dao.PackageView7(map);
+	}
+	
+	//골프 패키지 출력
+	@Override
+	public List<PackageVO> PackageView8(HashMap<String, Object> map) throws Exception {
+		return dao.PackageView8(map);
+	}
 
 	//북미,중남미,하와이 패키지 출력
 	@Override
@@ -75,7 +93,25 @@ public class ShowPackageServiceImpl implements ShowPackageService {
 	public int PackageTotalCount5() throws Exception {
 		return dao.PackageTotalCount5();
 	}
+
+	//허니문 패키지 출력
+	@Override
+	public int PackageTotalCount6() throws Exception {
+		return dao.PackageTotalCount6();
+	}
 	
+	//낚시 패키지 출력
+	@Override
+	public int PackageTotalCount7() throws Exception {
+		return dao.PackageTotalCount7();
+	}
+	
+	//골프 패키지 출력
+	@Override
+	public int PackageTotalCount8() throws Exception {
+		return dao.PackageTotalCount8();
+	}
+
 	//여행패키지 상세페이지 출력
 	@Override
 	public PackageVO ProductPackageDetail(int pid) throws Exception {
@@ -102,8 +138,8 @@ public class ShowPackageServiceImpl implements ShowPackageService {
 	
 	//비회원 예약 패키지 출력
 	@Override
-	public List<OrderVO> NonMemberView(HashMap<String, Object> map) throws Exception {
-		return dao.NonMemberView(map);
+	public OrderVO NonMemberView(OrderVO vo) throws Exception {
+		return dao.NonMemberView(vo);
 	}
 	
 	//여행피키지 예약내역 상태변경

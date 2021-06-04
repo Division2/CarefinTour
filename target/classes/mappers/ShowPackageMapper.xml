@@ -27,6 +27,21 @@
 		SELECT * FROM packageproduct WHERE Area = '일본' LIMIT #{Page}, #{PageSize}
 	</select>
 	
+	<!-- 여행패키지 출력 -->
+	<select id="ProductPackageView6" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE Theme = '허니문' LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 여행패키지 출력 -->
+	<select id="ProductPackageView7" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE Theme = '낚시' LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 여행패키지 출력 -->
+	<select id="ProductPackageView8" resultType="PackageVO">
+		SELECT * FROM packageproduct WHERE Theme = '골프' LIMIT #{Page}, #{PageSize}
+	</select>
+	
 	<!-- 여행패키지 총 갯수 -->
 	<select id="getProductPackageTotalCount" resultType="int">
 		SELECT COUNT(*) FROM packageproduct WHERE Area= '미주/중남미/하와이'
@@ -50,6 +65,21 @@
 	<!-- 여행패키지 총 갯수 -->
 	<select id="getProductPackageTotalCount5" resultType="int">
 		SELECT COUNT(*) FROM packageproduct WHERE Area= '일본'
+	</select>
+	
+	<!-- 여행패키지 총 갯수 -->
+	<select id="getProductPackageTotalCount6" resultType="int">
+		SELECT COUNT(*) FROM packageproduct WHERE Theme = '허니문'
+	</select>
+	
+	<!-- 여행패키지 총 갯수 -->
+	<select id="getProductPackageTotalCount7" resultType="int">
+		SELECT COUNT(*) FROM packageproduct WHERE Theme = '낚시'
+	</select>
+	
+	<!-- 여행패키지 총 갯수 -->
+	<select id="getProductPackageTotalCount8" resultType="int">
+		SELECT COUNT(*) FROM packageproduct WHERE Theme= '골프'
 	</select>
 	
 	<!-- 여행패키지 상세페이지 출력 -->

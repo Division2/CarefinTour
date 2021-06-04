@@ -223,7 +223,84 @@
 				</div>
 			</div>
 		</div>
+	<script>	
+	$(document).ready(function() {
+	$('#nonmembers').click(function() {
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var phone = $("#phone").val();
 		
+		var param = {'name':$("#name").val(), 'email': $("#email").val(),'phone':$("phone")};
+		
+		if(!name) {
+			swal({
+				title: "비회원 문의",
+				text: "이름이 작성되지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}else if(!email){
+			swal({
+				title: "비회원 문의",
+				text: "이메일이 작성되지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}else if(!phone){
+			swal({
+				title: "비회원 문의",
+				text: "전화번호가 작성되지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}
+		else {
+			$.ajax({
+				url: "NonMemberView",
+				type: "POST",
+				data: param,
+				success: function(data) {
+					if (data != 1) {
+						swal({
+							title: "비회원 문의",
+							text: "비회원 예약이 실패.",
+							icon: "error",
+							timer: 3000
+						});
+					}
+					else {
+						swal({
+							title: "비회원 문의",
+							text: "비회원 예약 성공",
+							icon: "success",
+							buttons : {
+								confirm : {
+									value : true
+								}
+							}
+						}).then((result) => {
+							if(result) {
+								location.reload();
+							}
+						});
+					}
+				},
+				error: function() {
+					swal({
+						title: "케어핀투어",
+						text: "문제가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
+						icon: "error",
+						timer: 3000
+					});
+				}
+			});
+		}
+	})
+})
+</script>
 		<!-- 예약확인 비회원 부분-->
 		<div class="modal fade" id="ReservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
@@ -238,15 +315,15 @@
 						<div class="d-flex flex-column text-center">
 							<form>
 								<div class="form-group">
-									<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+									<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요">
+									<input type="text" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요">
+									<input type="text" class="form-control" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요">
 								</div>
-								<button type="submit" class="btn btn-primary btn-block btn-round">조회하기</button>
+								<button type="button" class="btn btn-primary btn-block btn-round" id="nonmembers" name="nonmembers">조회하기</button>
 							</form>
 						</div>
 					</div>

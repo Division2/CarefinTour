@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.ex.service.ShowPackageService;
 import com.spring.ex.vo.InquiryVO;
@@ -151,6 +152,81 @@ public class ShowPackageController {
 		
 	}
 	
+	//허니문패키지 출력
+		@RequestMapping(value = "/honeymoon", method = RequestMethod.GET)
+		public String  PackageView6(Model model, HttpServletRequest request) throws Exception {
+			
+			int totalCount = service.PackageTotalCount6();
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(6);
+			paging.setTotalCount(totalCount);
+			page = (page - 1) * 6;
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());	
+			
+			List<PackageVO> packageList = service.PackageView6(map);
+			model.addAttribute("plist6", packageList);
+			model.addAttribute("Paging", paging);
+			
+			return "theme/honeymoon";
+			
+		}
+		
+		//낚시패키지 출력
+		@RequestMapping(value = "/fishing", method = RequestMethod.GET)
+		public String  PackageView7(Model model, HttpServletRequest request) throws Exception {
+			
+			int totalCount = service.PackageTotalCount7();
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(6);
+			paging.setTotalCount(totalCount);
+			page = (page - 1) * 6;
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());	
+			
+			List<PackageVO> packageList = service.PackageView7(map);
+			model.addAttribute("plist7", packageList);
+			model.addAttribute("Paging", paging);
+			
+			return "theme/fishing";
+			
+		}
+		
+		//골프패키지 출력
+		@RequestMapping(value = "/golf", method = RequestMethod.GET)
+		public String  PackageView8(Model model, HttpServletRequest request) throws Exception {
+			
+			int totalCount = service.PackageTotalCount8();
+			int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			PagingVO paging = new PagingVO();
+			paging.setPageNo(page);
+			paging.setPageSize(6);
+			paging.setTotalCount(totalCount);
+			page = (page - 1) * 6;
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("Page", page);
+			map.put("PageSize", paging.getPageSize());	
+			
+			List<PackageVO> packageList = service.PackageView8(map);
+			model.addAttribute("plist5", packageList);
+			model.addAttribute("Paging", paging);
+			
+			return "theme/golf";
+			
+		}
+	
 	//여행패키지 상세페이지 출력
 	@RequestMapping(value = "/detailInfo", method = RequestMethod.GET)
 	public String getPackageProductDetail(Model model, HttpServletRequest request)  throws Exception {
@@ -221,16 +297,16 @@ public class ShowPackageController {
   	}
   	
   //비회원 예약 패키지 출력
-  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.GET)
-  	public String NonMemberView(Model model, HttpServletRequest request) throws Exception {
-  		
-  		HashMap<String, Object> map = new HashMap<String, Object>();	
-  		
-  		List<OrderVO> nonmember = service.NonMemberView(map);
-  		model.addAttribute("non", nonmember);
+  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.POST)
+  	public @ResponseBody int NonMemberView(OrderVO vo) throws Exception {
+  		int result = 1;
 
+  		OrderVO nonmember = service.NonMemberView(vo);
+  		if (nonmember == null) {
+			result = 0;
+		}
   		
-  		return "index";
+  		return result;
   		
   	}
   	
