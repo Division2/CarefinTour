@@ -154,7 +154,7 @@ function insert3() {
 							 
 						  <tr>
 							 <td><div style ="float:left; ">한국출발<strong>${pdtail.getStartravelperiod()} 09:40</strong><p><small>인천 출발</small></p></div>
-							 	<div style ="float:left; margin-left:20px; ">한국도착<strong>2021.09.04 토 12:30</strong>
+							 	<div style ="float:left; margin-left:20px; ">한국도착<strong>${pdtail.getArrivaltravelperiod()} 12:30</strong>
 							  	<p><small>현지 출발</small></p></div>
 							 </td>							  								 
 						  </tr>						 	
@@ -168,7 +168,7 @@ function insert3() {
 											     <th bgcolor="#f1f3f5"><strong>상품가격</strong></th>
 											     <th bgcolor="#f1f3f5"><strong>성인</strong>(만12세 이상)</th>
 											     <th bgcolor="#f1f3f5"><strong>아동</strong>(만12세 미만)</th>
-											     <th bgcolor="#f1f3f5"><strong>성인</strong>(만2세 미만)</th>											      
+											     <th bgcolor="#f1f3f5"><strong>유아</strong>(만2세 미만)</th>											      
 										     </thead>							      
 										  <tbody>
 											   <tr>
