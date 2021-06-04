@@ -53,7 +53,7 @@
 												<h3><a href="detailInfo?PID=${plist6.getPid()}">${plist6.getProductname()}</a></h3>
 											</div>
 											<div class="tour-two__right">
-												<p><span>${plist6.getAdultprice()}$</span> <br> 인당 가격ㄴ</p>
+												<p><span>${plist6.getAdultprice()}$</span> <br> 인당 가격</p>
 											</div>
 										</div>
 										<div class="tour-two__text">
