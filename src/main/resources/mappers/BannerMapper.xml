@@ -18,4 +18,9 @@
 	 <select id="BannerView" resultType="hashmap">
 		SELECT * FROM banner;
 	</select>
+	
+	<!--사용자 화면에서 배너 출력 -->
+	 <select id="BannerRespectivelyView" resultType="BannerVO">
+		SELECT * FROM banner WHERE BID = #{bid};
+	</select>
 </mapper>

@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.MainPageService;
+import com.spring.ex.vo.BannerVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 
@@ -20,10 +22,15 @@ public class MainPageController {
 
 	@Inject
 	MainPageService service;
+	@Inject
+	AdminBannerService serviceBanner;
 	
 	//메인 하단 여행포토 리뷰
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String NewTravelPhotoList(Model model) throws Exception {
+		//메인 배너(상단 - 1,  하단 - 2) 출력
+		model.addAttribute("BannerRespectivelyView1", serviceBanner.BannerRespectivelyView(1));
+		model.addAttribute("BannerRespectivelyView2", serviceBanner.BannerRespectivelyView(2));
 		
 		//메인 최신 포토리뷰 3개 출력
 		model.addAttribute("NewTravelPhotoList", service.NewTravelPhotoList());
@@ -55,6 +62,9 @@ public class MainPageController {
 	//메인에서 지역, 출발일, 테마로 패키지 상품 검색
 	@RequestMapping(value = "/travelSearch", method = RequestMethod.GET)
 	public String travelSearch(PackageVO vo, HttpServletRequest request, Model model) throws Exception {
+		//검색결과 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(19));
+		
 		//받아오기
 		String searchArea = request.getParameter("searchArea");
 		String searchStartDate = request.getParameter("searchStartDate");
@@ -98,6 +108,9 @@ public class MainPageController {
 	//메인에서(정확히는 헤더에 있음) 이름으로 패키지 상품 검색
 	@RequestMapping(value = "/travelNameSearch", method = RequestMethod.GET)
 	public String travelNameSearch(PackageVO vo, HttpServletRequest request, Model model) throws Exception {
+		//검색결과 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(19));
+		
 		//받아오기
 		String searchKeyword = request.getParameter("searchKeyword");
 		

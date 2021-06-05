@@ -29,4 +29,9 @@ public class AdminBannerServiceImpl implements AdminBannerService{
 	public BannerVO BannerModifyView(int bid) throws Exception {
 		return dao.BannerModifyView(bid);
 	}
+	
+	//사용자 화면에서 배너 출력
+	public BannerVO BannerRespectivelyView(int bid) throws Exception {
+		return dao.BannerRespectivelyView(bid);
+	}
 }

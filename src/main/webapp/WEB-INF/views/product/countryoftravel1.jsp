@@ -35,7 +35,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/hawaii.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView3.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>미주/중남미/하와이</h2>
 				<ul class="thm-breadcrumb list-unstyled">

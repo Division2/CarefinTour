@@ -17,4 +17,7 @@ public interface AdminBannerDAO {
 
 	//관리자 배너 수정페이지 출력
 	public BannerVO BannerModifyView(int bid) throws Exception;
+	
+	//사용자 화면에서 배너 출력
+	public BannerVO BannerRespectivelyView(int bid) throws Exception;
 }

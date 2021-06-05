@@ -35,7 +35,7 @@
 		<jsp:include page="layout/header.jsp"/>
 		
 		<!-- 여행 검색 -->
-		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner2.jpg"/>);">
+		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView1.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>
 					Carefin <span>Tour</span>
@@ -283,7 +283,7 @@
 			</div>
 			
 		</section>
-		<section class="video-one" style="background-image: url(<c:url value="/resources/images/backgrounds/video-bg-1-1.png"/>);">
+		<section class="video-one" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView2.getS_file_name()}"/>);">
 			<div class="container text-center">
 				<a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
 				<p>Love where you're going</p>

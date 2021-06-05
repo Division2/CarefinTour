@@ -127,7 +127,7 @@ public class PackageController {
 		return "redirect:packageproduct";
 	}
 	
-	//공지사항 검색
+	//여행패키지 검색
 	@RequestMapping(value = "/admin/ProductPackageSearch", method = RequestMethod.GET)
 	public String ProductPackageSearch(PackageVO vo, HttpServletRequest request, Model model) throws Exception {
 		
