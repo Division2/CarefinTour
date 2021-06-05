@@ -16,7 +16,7 @@
 	
 	<!--관리자화면 배너 출력 -->
 	 <select id="BannerView" resultType="hashmap">
-		SELECT * FROM banner;
+		SELECT * FROM banner ORDER BY BID ASC;
 	</select>
 	
 	<!--사용자 화면에서 배너 출력 -->

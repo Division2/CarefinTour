@@ -321,7 +321,7 @@ public class ShowPackageController {
   		
   	}
   	
-  //비회원 예약 패키지 출력
+  	//비회원 예약 패키지 출력
   	@RequestMapping(value = "/NonMemberView", method = RequestMethod.POST)
   	public @ResponseBody int NonMemberView(OrderVO vo) throws Exception {
   		int result = 1;
@@ -335,7 +335,7 @@ public class ShowPackageController {
   		
   	}
   	
-  //여행패키지 예약 상태변경
+  	//여행패키지 예약 상태변경
   	@RequestMapping(value = "/detailModify", method = RequestMethod.POST)
   	public void Modify(OrderVO vo, HttpServletResponse response) throws Exception {
   		

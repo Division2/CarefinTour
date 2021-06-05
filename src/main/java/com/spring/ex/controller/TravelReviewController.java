@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.TravelReviewService;
 import com.spring.ex.util.UploadFileUtils;
 import com.spring.ex.vo.MemberVO;
@@ -30,6 +31,17 @@ public class TravelReviewController {
 	
 	@Inject
 	TravelReviewService service;
+	@Inject
+	AdminBannerService serviceBanner;
+	
+	//여행포토 작성페이지 배너 출력
+	@RequestMapping(value = "/travelphotoWrite", method = RequestMethod.GET)
+	public String TravelphotoWriteView(Model model) throws Exception{
+		//배너 출력
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(18));
+		
+		return "ranking/travelphotoWrite";
+	}
 	
 	//여행 포토 작성
 	@RequestMapping(value = "/travelphotoWrite", method = RequestMethod.POST)
@@ -71,6 +83,8 @@ public class TravelReviewController {
 	//여행 포토 수정 화면
 	@RequestMapping(value = "/travelphotoModifyView", method = {RequestMethod.GET, RequestMethod.POST})
 	public String TravelPhotoModifyView(TravelPhotoVO travelPhotoVO, Model model) throws Exception {
+		//배너 출력
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(18));
 		
 		List<Map<String, Object>> fileList = service.TravelPhotoSelectFileList(travelPhotoVO.getPrid());
 		
@@ -83,6 +97,8 @@ public class TravelReviewController {
 	//여행 포토 출력
 	@RequestMapping(value = "/travelphoto", method = RequestMethod.GET)
 	public String TravelPhotoList(HttpServletRequest request, Model model) throws Exception {
+		//배너 출력
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(18));
 		
 		int totalCount = service.TravelPhotoTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -109,6 +125,8 @@ public class TravelReviewController {
 	//여행 포토 조회
 	@RequestMapping(value = "/travelphotoView", method = RequestMethod.GET)
 	public String TravelPhotoView(TravelPhotoVO travelPhotoVO, HttpServletRequest request, Model model) throws Exception {
+		//배너 출력
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(18));
 		
 		int totalCount = service.TravelPhotoReplyTotalCount(travelPhotoVO.getPrid());
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -204,6 +222,8 @@ public class TravelReviewController {
 	//탑앵글러 출력
 	@RequestMapping(value = "/topangler", method = RequestMethod.GET)
 	public String TopAnglerView(Model model, HttpServletRequest request) throws Exception {
+		//배너 출력
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(17));
 		
 		int totalCount = service.TopAnglerTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));

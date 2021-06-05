@@ -40,11 +40,11 @@
 					<h1 class="h3 mb-0 text-gray-800">&emsp;Banner Management</h1>
 				</div>
 				<hr class="text-gray-800" ><br>
-				<h5 class="h3 mb-0 text-gray-800">&nbsp;메인 및 검색</h5><br>
+				<h5 class="h3 mb-0 text-gray-800">&nbsp;메인 및 상품</h5><br>
 				<div class="container-fluid" align="center"> 			
 					<c:forEach items="${blist}" var="blist">
 					<c:choose>	
-						<c:when test="${blist.BID == 1 or blist.BID == 2 or blist.BID == 11 or blist.BID == 19}">
+						<c:when test="${blist.BID == 1 or blist.BID == 2 or blist.BID == 20 or blist.BID == 19}">
 							<div style="width:100%">
 								<div class="tour-one__single">
 									<div class="tour-one__content">
@@ -59,7 +59,7 @@
 												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
 											</c:when>
 											<c:otherwise>
-												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -90,7 +90,7 @@
 												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
 											</c:when>
 											<c:otherwise>
-												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -121,7 +121,38 @@
 												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
 											</c:when>
 											<c:otherwise>
-												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>	
+					</c:forEach>
+				</div>
+				
+				<hr class="text-gray-800" ><br>
+				<h5 class="h3 mb-0 text-gray-800">&emsp;국내호텔</h5><br>
+				<div class="container-fluid" align="center">
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 11 or blist.BID == 21}">
+							<div style="width:100%">
+								<div class="tour-one__single">
+									<div class="tour-one__content">
+										<font style="align-content: center;" size="4"> ${blist.BannerCategory}</font>
+										<div align="right">
+											<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+										</div>
+									</div>
+									<div class="tour-one__image">
+										<c:choose>
+											<c:when test="${blist.s_file_name eq null}">
+												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+											</c:when>
+											<c:otherwise>
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -152,7 +183,7 @@
 												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
 											</c:when>
 											<c:otherwise>
-												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+												<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -183,7 +214,7 @@
 											<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
 										</c:when>
 										<c:otherwise>
-											<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200">
+											<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
 										</c:otherwise>
 									</c:choose>
 								</div>
