@@ -12,6 +12,18 @@ public class CareController {
 		return "index";
 	}
 	
+	//아이디 찾기
+	@RequestMapping("findID")
+	public String findID() {
+		return "customer/findId";
+	}
+
+	//비밀번호 찾기
+	@RequestMapping("findPassword")
+	public String findPassword() {
+		return "customer/findPassword";
+	}
+	
 	/*
 	 * 해외 여행(상품, 테마)
 	 * 미주/중남미/하와이/

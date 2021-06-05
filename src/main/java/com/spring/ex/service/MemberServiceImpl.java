@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDAO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -57,15 +58,21 @@ public class MemberServiceImpl implements MemberService {
 		return dao.IDCheck(vo);
 	}
 	
+	//비회원 예약 패키지 출력
+	@Override
+	public OrderVO NonMemberView(OrderVO vo) throws Exception {
+		return dao.NonMemberView(vo);
+	}
+	
 	//아이디찾기		
 	@Override
 	public MemberVO UserID(MemberVO vo) throws Exception {
 		return dao.UserID(vo);
-		}
+	}
 		
 	//비밀번호찾기
 	@Override
 	public MemberVO Password(MemberVO vo) throws Exception {
-			return dao.Password(vo);
-		}
+		return dao.Password(vo);
+	}
 }

@@ -136,12 +136,6 @@ public class ShowPackageServiceImpl implements ShowPackageService {
 		return dao.OrderWrite3(vo);
 	}
 	
-	//비회원 예약 패키지 출력
-	@Override
-	public OrderVO NonMemberView(OrderVO vo) throws Exception {
-		return dao.NonMemberView(vo);
-	}
-	
 	//여행피키지 예약내역 상태변경
 	@Override
 	public int detailModify(OrderVO vo) throws Exception {

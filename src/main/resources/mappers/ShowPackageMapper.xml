@@ -102,15 +102,8 @@
 		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3,nonmember) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3},#{nonmember})
 	</insert>
 	
-	<!-- 비회원 여행패키지 출력 -->
-	<select id="NonMemberView" resultType="PackageVO">
-		SELECT * FROM historyorder WHERE Name = #{name} AND PhoneNum=#{phone} AND UserID=#{email}
-	</select>
-	
 	<!-- 여행 패키지 예약내용 수정 -->
 	<update id="detailModify">
 		UPDATE historyorder SET PaymentStatus = 2 WHERE OID = #{oId};
 	</update>
-
-
 </mapper>

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.MemberService;
-import com.spring.ex.service.MemberServiceImpl;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Controller
 public class MemberController {
@@ -52,7 +52,7 @@ public class MemberController {
 		service.logout(response);
 	}
 	
-	// 회원가입
+	//회원가입
 	@RequestMapping(value = "/SignUp", method = RequestMethod.POST)
 	public void postSignUp(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
@@ -85,15 +85,17 @@ public class MemberController {
 		return result;
 	}
 	
-	// 아이디, 비밀번호찾기 페이지
-	@RequestMapping(value = "/idSearch", method = RequestMethod.GET)
-	public String idSearch() throws Exception {
-		return "layout/idSearch";
-	}
-		
+  	//비회원 예약 패키지 출력
+  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.POST)
+  	public @ResponseBody OrderVO NonMemberView(OrderVO vo) throws Exception {
+  		
+  		OrderVO nonmember = service.NonMemberView(vo);
+  		
+  		return nonmember;
+  	}
 				
 	// 아이디 찾기 
-	@RequestMapping(value = "/LoginActionId", method = RequestMethod.POST)
+	@RequestMapping(value = "/FindUserID", method = RequestMethod.POST)
 	@ResponseBody
 	public String FindId(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
 		MemberVO login = service.UserID(vo);
@@ -108,17 +110,17 @@ public class MemberController {
 	}
 		
 	 // 비밀번호 찾기 
-		@RequestMapping(value ="/LoginActionPw", method = RequestMethod.POST)
-		@ResponseBody
-		public String FindPw(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
-			MemberVO login = service.Password(vo);
-			String msg = "";
-			if (login == null) {
-				msg = "error";
-			} else {
-				msg = login.getPassword();
-			}
-			System.out.println(login);
-			return msg;
+	@RequestMapping(value ="/FindPassword", method = RequestMethod.POST)
+	@ResponseBody
+	public String FindPw(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
+		MemberVO login = service.Password(vo);
+		String msg = "";
+		if (login == null) {
+			msg = "error";
+		} else {
+			msg = login.getPassword();
 		}
+		System.out.println(login);
+		return msg;
+	}
 }

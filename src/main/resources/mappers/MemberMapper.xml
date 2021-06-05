@@ -43,6 +43,11 @@
     	UPDATE account SET lastDate = #{lastDate} WHERE UserID = #{UserID}
     </update>
     
+	<!-- 비회원 여행패키지 출력 -->
+	<select id="NonMemberView" resultType="OrderVO">
+		SELECT * FROM historyorder WHERE UserID = #{userId} AND Name = #{name} AND PhoneNum = #{phonenum}
+	</select>
+    
     <!-- 회원아이디찾기 select문 -->
 	<select id="memberId" resultType="MemberVO">
 	SELECT * from account where Name = #{Name} and Phone = #{Phone}
@@ -52,5 +57,4 @@
 	<select id="memberPw" resultType="MemberVO">
 	SELECT * from account where UserID = #{UserID} and Name = #{Name} and Email=#{Email}
 	</select>
-    
 </mapper>

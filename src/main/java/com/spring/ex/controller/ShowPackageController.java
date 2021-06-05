@@ -12,13 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.ShowPackageService;
-import com.spring.ex.vo.InquiryVO;
-import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
@@ -55,7 +51,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "product/countryoftravel1";
-		
 	}
 	
 	//대만,동남아,서남아 패키지 출력
@@ -82,7 +77,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "product/countryoftravel2";
-		
 	}
 	
 	//중국,홍콩,러시아 패키지 출력
@@ -109,7 +103,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "product/countryoftravel3";
-		
 	}
 	
 	//이게 유럽이고
@@ -137,7 +130,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "product/countryoftravel4";
-		
 	}
 	
 	//이게 일본
@@ -165,7 +157,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "product/countryoftravel5";
-		
 	}
 	
 	//허니문패키지 출력
@@ -192,7 +183,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "theme/honeymoon";
-		
 	}
 	
 	//낚시패키지 출력
@@ -219,7 +209,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "theme/fishing";
-		
 	}
 		
 	//골프패키지 출력
@@ -246,7 +235,6 @@ public class ShowPackageController {
 		model.addAttribute("Paging", paging);
 		
 		return "theme/golf";
-		
 	}
 	
 	//여행패키지 상세페이지 출력
@@ -273,16 +261,16 @@ public class ShowPackageController {
 	}
 	
 	//여행패키지 예약페이지 출력
-		@RequestMapping(value = "/detailResvation2", method = RequestMethod.GET)
-		public String getPackageProductDetail3(Model model, HttpServletRequest request)  throws Exception {
-			int pid = Integer.parseInt(request.getParameter("PID"));
-			PackageVO pdtail =  service.ProductPackageDetail(pid);
-			
-			model.addAttribute("pdtail", pdtail);
-			return "product/detailresvation2";
-		}
+	@RequestMapping(value = "/detailResvation2", method = RequestMethod.GET)
+	public String getPackageProductDetail3(Model model, HttpServletRequest request)  throws Exception {
+		int pid = Integer.parseInt(request.getParameter("PID"));
+		PackageVO pdtail =  service.ProductPackageDetail(pid);
+		
+		model.addAttribute("pdtail", pdtail);
+		return "product/detailresvation2";
+	}
 	
-	 //여행패키지 예약내역 작성
+	//여행패키지 예약내역 작성
   	@RequestMapping(value = "/detailResvationAdd", method = RequestMethod.POST)
   	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
@@ -292,7 +280,6 @@ public class ShowPackageController {
   		service.OrderWrite(vo);
   		
   		return "index";
-  		
   	}
   	
 	 //여행패키지 예약보류 작성
@@ -305,10 +292,9 @@ public class ShowPackageController {
   		service.OrderWrite2(vo);
   		
   		return "index";
-  		
   	}
   	
-  	 //여행패키지 비회원 예약 작성
+  	//여행패키지 비회원 예약 작성
   	@RequestMapping(value = "/detailResvationAdd3", method = RequestMethod.POST)
   	public String Write3(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
@@ -318,20 +304,6 @@ public class ShowPackageController {
   		service.OrderWrite3(vo);
   		
   		return "index";
-  		
-  	}
-  	
-  	//비회원 예약 패키지 출력
-  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.POST)
-  	public @ResponseBody int NonMemberView(OrderVO vo) throws Exception {
-  		int result = 1;
-
-  		OrderVO nonmember = service.NonMemberView(vo);
-  		if (nonmember == null) {
-			result = 0;
-		}
-  		
-  		return result;
   		
   	}
   	
@@ -349,7 +321,4 @@ public class ShowPackageController {
   			out.close();
   		}
   	}
-	
-	
-
 }
