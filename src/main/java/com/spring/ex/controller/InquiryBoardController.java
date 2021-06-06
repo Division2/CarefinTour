@@ -26,8 +26,6 @@ public class InquiryBoardController {
 
 	@Inject
 	InquiryBoardService service;
-	@Inject
-	AdminBannerService serviceBanner;
 	
 	//1:1 문의 작성
 	@RequestMapping(value = "/inquiryWrite", method = RequestMethod.POST)

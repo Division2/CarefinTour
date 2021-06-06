@@ -23,8 +23,6 @@ import com.spring.ex.vo.PagingVO;
 public class FAQController {
 
 	@Inject FAQService service;
-	@Inject
-	AdminBannerService serviceBanner;
 	
 	//자주 찾는 질문
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
