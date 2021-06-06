@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDAO;
@@ -58,21 +59,71 @@ public class MemberServiceImpl implements MemberService {
 		return dao.IDCheck(vo);
 	}
 	
-	//비회원 예약 패키지 출력
+	//비회원 예약 확인
 	@Override
 	public OrderVO NonMemberView(OrderVO vo) throws Exception {
 		return dao.NonMemberView(vo);
 	}
 	
-	//아이디찾기		
+	//아이디 찾기		
 	@Override
-	public MemberVO UserID(MemberVO vo) throws Exception {
-		return dao.UserID(vo);
+	public MemberVO findID(MemberVO vo) throws Exception {
+		return dao.findID(vo);
 	}
 		
-	//비밀번호찾기
+	//비밀번호 찾기
 	@Override
-	public MemberVO Password(MemberVO vo) throws Exception {
-		return dao.Password(vo);
+	public MemberVO findPassword(MemberVO vo) throws Exception {
+		return dao.findPassword(vo);
+	}
+	
+	//임시 비밀번호 발급
+	@Override
+	public int UpdateTempPassword(MemberVO vo) throws Exception {
+		return dao.UpdateTempPassword(vo);
+	}
+
+	//이메일 발송
+	@Override
+	public void sendMail(MemberVO vo, String div) throws Exception {
+		//Mail Server
+		String charSet = "UTF-8";
+		String hostSMTP = "smtp.gmail.com";
+		String hostSMTPid = "zxcas12121@gmail.com";
+		String hostSMTPpwd = "spdlxmdhs1@";
+		
+		//Send Host Setting
+		String fromEmail = "carefintour@care.fin.tour";
+		String fromName = "케어핀투어";
+		String subject = "";
+		String msg = "";
+		
+		//비밀번호 찾기
+		if(div.equals("findPassword")) {
+			subject = "케어핀투어 임시 비밀번호 입니다.";
+			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+			msg += "<h3 style='color: blue;'>" + vo.getUserID() + "님의 임시 비밀번호 입니다.<br>비밀번호를 변경하여 사용하세요.</h3>";
+			msg += "<p>임시 비밀번호 : " + vo.getPassword() + "</p></div>";
+		}
+		
+		String mail = vo.getEmail();
+		try {
+			HtmlEmail mailSetting = new HtmlEmail();
+			mailSetting.setDebug(true);
+			mailSetting.setCharset(charSet);
+			mailSetting.setSSL(true);
+			mailSetting.setHostName(hostSMTP);
+			mailSetting.setSmtpPort(465);
+
+			mailSetting.setAuthentication(hostSMTPid, hostSMTPpwd);
+			mailSetting.setTLS(true);
+			mailSetting.addTo(mail, charSet);
+			mailSetting.setFrom(fromEmail, fromName, charSet);
+			mailSetting.setSubject(subject);
+			mailSetting.setHtmlMsg(msg);
+			mailSetting.send();
+		} catch (Exception e) {
+			System.out.println("메일 발송 실패 : " + e);
+		}
 	}
 }

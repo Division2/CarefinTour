@@ -12,38 +12,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <title>CarefinTour</title>
-
-<script type="text/javascript">
-	function find_id() {
-		var Name = $("#Name").val();
-		var Phone = $("#Phone").val();
-		
-		$.ajax({
-		    url : 'FindUserID',
-		    type : 'POST',
-		    datatype: 'json',
-		    data : {
-		    	Name : Name,
-		    	Phone : Phone
-		    },
-            success: function(msg){
-            	if(msg == "error") {
-            		alert('아이디를 찾을 수 없습니다.');
-            	} else {
-					swal({
-						title: "아이디 찾기",
-						text: "회원님의 아이디는 " + msg + "입니다.",
-						icon: "success",
-						timer: 3000
-					});
-            	}
-            },
-            error : function() {
-            	alert('아이디 찾기 실패');
-            }
-		});
-	}
-</script>
 </head>
 <body>
 	<!-- 페이지 로딩 이미지 -->
@@ -79,15 +47,15 @@
 						<div class="mx-auto">
 							<div class="input-group my-2 mb-1">
 								<div class="input-group-prepend">
-									<span class="input-group-text">성　　명</span>
+									<span class="input-group-text">성　명</span>
 								</div>
 								<input type="text" name="Name" id="Name" class="form-control" required autofocus>
 							</div>
 							<div class="input-group my-2 mb-1">
 								<div class="input-group-prepend">
-									<span class="input-group-text">전화번호</span>
+									<span class="input-group-text">이메일</span>
 								</div>
-								<input type="text" name="Phone" id="Phone" class="form-control" required>
+								<input type="text" name="Email" id="Email" class="form-control" required>
 							</div>
 							<button id="FindID" class="thm-btn-psd btn-block btn-round" onclick="find_id()">아이디 찾기</button>
 						</div>
@@ -98,6 +66,7 @@
 		</section>
 
 		<jsp:include page="../layout/footer.jsp" />
+		<script src='<c:url value="/resources/js/Member2.js"/>'></script>
 	</div>
 </body>
 </html>

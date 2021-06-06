@@ -47,21 +47,27 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace + ".IDCheck", vo);
 	}
 	
-	//비회원 패키지 내역 출력
+	//비회원 패키지 확인
 	@Override
 	public OrderVO NonMemberView(OrderVO vo) throws Exception {
 		return sqlSession.selectOne(namespace + ".NonMemberView", vo);
 	}
 	
-	// 아이디 찾기
+	//아이디 찾기
 	@Override
-	public MemberVO UserID(MemberVO vo) throws Exception {
-		return sqlSession.selectOne(namespace + ".memberId",vo);
+	public MemberVO findID(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".findID", vo);
 	}
 	
-	// 비번 찾기
+	//비번 찾기
 	@Override
-	public MemberVO Password(MemberVO vo) throws Exception{
-		return sqlSession.selectOne(namespace + ".memberPw",vo);
+	public MemberVO findPassword(MemberVO vo) throws Exception{
+		return sqlSession.selectOne(namespace + ".findPassword", vo);
+	}
+
+	//임시 비밀번호 발급
+	@Override
+	public int UpdateTempPassword(MemberVO vo) throws Exception {
+		return sqlSession.update(namespace + ".UpdateTempPassword", vo);
 	}
 }

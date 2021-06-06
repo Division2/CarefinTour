@@ -56,6 +56,15 @@ $(document).ready(function() {
 				timer: 3000
 			});
 		}
+		else if(!/^[a-z0-9]{6,12}$/.test($("#RegisterUserID").val())) {
+			swal({
+				title: "회원가입",
+				text: "아이디는 영소문자, 숫자 6~12자리로 입력해주세요.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}
 		else {
 			$.ajax({
 				url: "IDCheck",
@@ -108,9 +117,9 @@ function Register() {
 	var Phone = $("#Phone").val();
 	var Birth = $("#Birth").val();
 	var Address = $("#Address").val();
-	var check1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,20}$/.test(Password);			//영문, 숫자
-	var check2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,20}$/.test(Password);	//영문, 특수문자
-	var check3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,20}$/.test(Password);		//특수문자, 숫자
+	var PasswordCheck1 = /^(?=.*[a-zA-Z])(?=.*[0-9]).{10,20}$/.test(Password);			//영문, 숫자
+	var PasswordCheck2 = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{10,20}$/.test(Password);	//영문, 특수문자
+	var PasswordCheck3 = /^(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{10,20}$/.test(Password);		//특수문자, 숫자
 	
 	if(!UserID) {
 		swal({
@@ -130,7 +139,7 @@ function Register() {
 		});
 		return false;
 	}
-	else if(!(check1 || check2 || check3)) {
+	else if(!(PasswordCheck1 || PasswordCheck2 || PasswordCheck3)) {
 		swal({
 			title: "비밀번호 확인",
 			text: "사용할 수 없는 비밀번호입니다.",

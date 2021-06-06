@@ -12,35 +12,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <title>CarefinTour</title>
-
-<script type="text/javascript">
-	function find_pw() {
-		var UserID = $("#UserID").val();
-		var Name = $("#Name").val();
-		var Email = $("#Email").val();
-		
-		$.ajax({
-		    url : 'FindPassword',
-		    type : 'POST',
-		    datatype: 'json',
-		    data : {
-		    	UserID : UserID,
-		    	Name : Name,
-		    	Email : Email
-		    },
-            success: function(msg){
-            	if(msg == "error") {
-            		alert('비밀번호를 찾을 수 없습니다.');
-            	} else {
-					alert('PW : ' + msg);
-            	}
-            },
-            error : function() {
-            	alert('비밀번호 찾기 실패');
-            }
-		});
-	}
-</script>
 </head>
 <body>
 	<!-- 페이지 로딩 이미지 -->
@@ -101,6 +72,7 @@
 		</section>
 
 		<jsp:include page="../layout/footer.jsp" />
+		<script src='<c:url value="/resources/js/Member2.js"/>'></script>
 	</div>
 </body>
 </html>

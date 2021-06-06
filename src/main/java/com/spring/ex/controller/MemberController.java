@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.MemberService;
 import com.spring.ex.vo.MemberVO;
@@ -96,31 +95,50 @@ public class MemberController {
 				
 	// 아이디 찾기 
 	@RequestMapping(value = "/FindUserID", method = RequestMethod.POST)
-	@ResponseBody
-	public String FindId(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
-		MemberVO login = service.UserID(vo);
-		System.out.println(login);
-		String msg = "";
-		if (login == null) {
-			msg = "error";
-		} else {
-			msg = login.getUserID();
+	public @ResponseBody String FindId(MemberVO vo) throws Exception {
+		
+		MemberVO findID = service.findID(vo);
+		
+		StringBuffer buffer = new StringBuffer(findID.getUserID());
+		String msg = null;
+
+		/*
+		 * 아이디는 6~12자리로 제한하기 때문에 아이디 찾기 시
+		 * 해당 회원의 아이디를 버퍼에 담아 뒤에서 3글자를 자른 후 *를 추가하여 리턴
+		 * test1234 일 경우 test1***
+		 */
+		buffer.delete(3, buffer.length());
+		for (int i = 0; i < findID.getUserID().length() - 3; i++) {
+			buffer.append("*");
+		}
+		
+		if (findID != null) {
+			msg = buffer.toString();
 		}
 		return msg;
 	}
 		
 	 // 비밀번호 찾기 
 	@RequestMapping(value ="/FindPassword", method = RequestMethod.POST)
-	@ResponseBody
-	public String FindPw(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
-		MemberVO login = service.Password(vo);
-		String msg = "";
-		if (login == null) {
-			msg = "error";
-		} else {
-			msg = login.getPassword();
+	public @ResponseBody String FindPw(MemberVO vo) throws Exception {
+		
+		MemberVO findPassword = service.findPassword(vo);
+		
+		String msg = null;
+		
+		if (findPassword != null) {
+			String tempPW = "";
+			
+			for (int i = 0; i < 12; i++) {
+				tempPW += (char)((Math.random() * 26) + 97);
+			}
+			vo.setPassword(tempPW);
+			service.UpdateTempPassword(vo);
+			
+			service.sendMail(vo, "findPassword");
+			
+			msg = "Success";
 		}
-		System.out.println(login);
 		return msg;
 	}
 }
