@@ -231,7 +231,7 @@ public class ShowPackageController {
 		map.put("PageSize", paging.getPageSize());	
 		
 		List<PackageVO> packageList = service.PackageView8(map);
-		model.addAttribute("plist5", packageList);
+		model.addAttribute("plist8", packageList);
 		model.addAttribute("Paging", paging);
 		
 		return "theme/golf";
