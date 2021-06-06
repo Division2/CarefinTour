@@ -92,33 +92,34 @@ public class MemberController {
   		
   		return nonmember;
   	}
-				
-	// 아이디 찾기 
+  	
+	//아이디 찾기 
 	@RequestMapping(value = "/FindUserID", method = RequestMethod.POST)
 	public @ResponseBody String FindId(MemberVO vo) throws Exception {
 		
 		MemberVO findID = service.findID(vo);
 		
-		StringBuffer buffer = new StringBuffer(findID.getUserID());
 		String msg = null;
-
-		/*
-		 * 아이디는 6~12자리로 제한하기 때문에 아이디 찾기 시
-		 * 해당 회원의 아이디를 버퍼에 담아 뒤에서 3글자를 자른 후 *를 추가하여 리턴
-		 * test1234 일 경우 test1***
-		 */
-		buffer.delete(3, buffer.length());
-		for (int i = 0; i < findID.getUserID().length() - 3; i++) {
-			buffer.append("*");
-		}
 		
 		if (findID != null) {
+			StringBuffer buffer = new StringBuffer(findID.getUserID());
+
+			/*
+			 * 아이디는 6~12자리로 제한하기 때문에 아이디 찾기 시
+			 * 해당 회원의 아이디를 버퍼에 담아 뒤에서 3글자를 자른 후 *를 추가하여 리턴
+			 * test1234 일 경우 test1***
+			 */
+			buffer.delete(3, buffer.length());
+			for (int i = 0; i < findID.getUserID().length() - 3; i++) {
+				buffer.append("*");
+			}
+			
 			msg = buffer.toString();
 		}
 		return msg;
 	}
-		
-	 // 비밀번호 찾기 
+	
+	//비밀번호 찾기 
 	@RequestMapping(value ="/FindPassword", method = RequestMethod.POST)
 	public @ResponseBody String FindPw(MemberVO vo) throws Exception {
 		
