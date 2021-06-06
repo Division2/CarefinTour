@@ -15,17 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-<script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
+<link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -73,11 +63,11 @@
 						<colgroup>
 							<col width="1%">
 							<col width="1%">
-							<col width="5%">
+							<col width="8%">
 							<col width="30%">
-							<col width="5%">
-							<col width="5%">
-							<col width="5%">
+							<col width="7%">
+							<col width="7%">
+							<col width="7%">
 						</colgroup>
 						<thead>
 							<tr>
@@ -95,11 +85,21 @@
 							<tr>
 								<td><input type="checkbox" name="RowCheck" value="${InquiryList.getiId() }"></td>
 								<td>${InquiryList.getiId() }</td>
-								<td>${InquiryList.getCategory() }</td>
+								<td><span class="inquiry-category">${InquiryList.getCategory() }</span></td>
 								<td><a href="/ex/inquiryView?iId=${InquiryList.getiId() }" target="_blank">${InquiryList.getTitle() }</a></td>
 								<td>${InquiryList.getUserId() }</td>
 								<td>${InquiryList.getReDate() }</td>
-								<td>${InquiryList.getStatus() }</td>
+						<c:choose>
+							<c:when test="${InquiryBoardVO.status eq 0}">
+								<td><span class="inquiry-status status-0">답변대기</span></td>
+							</c:when>
+							<c:when test="${InquiryBoardVO.status eq 1}">
+								<td><span class="inquiry-status status-1">답변보류</span></td>
+							</c:when>
+							<c:otherwise>
+								<td><span class="inquiry-status status-2">답변완료</span></td>
+							</c:otherwise>
+						</c:choose>
 							</tr>
 						</c:forEach>
 						</tbody>

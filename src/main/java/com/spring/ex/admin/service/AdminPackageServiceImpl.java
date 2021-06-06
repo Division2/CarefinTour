@@ -7,14 +7,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.ex.admin.dao.PackageDAO;
+import com.spring.ex.admin.dao.AdminPackageDAO;
 import com.spring.ex.vo.PackageVO;
 
 @Service
-public class PackageServiceImpl implements PackageService {
+public class AdminPackageServiceImpl implements AdminPackageService {
 	
 	@Inject
-	private PackageDAO dao;
+	private AdminPackageDAO dao;
 	
 	//관리자관련 페이지 시작 
 	//게시물 작성
@@ -68,5 +68,4 @@ public class PackageServiceImpl implements PackageService {
 	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return dao.getProductPackageSearchTotalCount(searchMap);
 	}
-	
 }

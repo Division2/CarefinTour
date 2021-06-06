@@ -2,12 +2,10 @@ package com.spring.ex.admin.service;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 
 import com.spring.ex.admin.dao.AdminMemberDAO;
-import com.spring.ex.dao.InquiryBoardDAO;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.OrderVO;

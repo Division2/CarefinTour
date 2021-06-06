@@ -5,7 +5,6 @@ public class BannerVO {
 	private String bannercategory;
 	private String s_file_name;
 	
-	
 	public int getBid() {
 		return bid;
 	}
@@ -24,6 +23,4 @@ public class BannerVO {
 	public void setS_file_name(String s_file_name) {
 		this.s_file_name = s_file_name;
 	}
-
-	
 }

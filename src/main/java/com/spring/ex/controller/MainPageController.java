@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.MainPageService;
-import com.spring.ex.vo.BannerVO;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 

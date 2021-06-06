@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
-import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Service
@@ -44,7 +43,6 @@ public interface AdminServiceCenterService {
 	//공지사항 검색 게시물 총 갯수
 	public int NoticeSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
 	
-
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 	
 	//1:1 문의 등록
@@ -111,5 +109,4 @@ public interface AdminServiceCenterService {
 
 	//FAQ 카테고리 조회
 	public List<Map<String, Object>> FAQCategory() throws Exception;
-
 }

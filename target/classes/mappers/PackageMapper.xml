@@ -102,6 +102,4 @@
 	<select id="getMainNameProductPackageSearchTotalCount" resultType="int">
 		SELECT COUNT(*) FROM packageproduct WHERE ProductName LIKE CONCAT('%', #{searchKeyword}, '%')
 	</select>
-	
-	
 </mapper>

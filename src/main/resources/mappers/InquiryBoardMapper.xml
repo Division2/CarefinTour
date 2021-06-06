@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.ex.InquiryBoardMapper">
+
 	<!-- 1:1 문의 작성 -->
 	<insert id="InquiryWrite">
 		INSERT INTO inquiry(Category, UserID, Name, Phone, Title, Content, Status) VALUES (#{category}, #{userId}, #{name}, #{phone}, #{title}, #{content}, 0)
@@ -11,7 +12,6 @@
 	<select id="InquiryView" resultType="InquiryVO">
 		SELECT * FROM inquiry ORDER BY iId DESC LIMIT #{Page}, #{PageSize}
 	</select>
-	
 	
 	<!-- 1:1 문의 게시물 총 갯수 -->
 	<select id="getInquiryTotalCount" resultType="int">

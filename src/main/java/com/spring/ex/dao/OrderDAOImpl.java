@@ -52,5 +52,4 @@ public class OrderDAOImpl implements OrderDAO {
 	public int OrderSearchTotalCount(String userId) throws Exception {
 		return sqlSession.selectOne(namespace + ".getOrderSearchTotalCount", userId);
 	}
-
 }

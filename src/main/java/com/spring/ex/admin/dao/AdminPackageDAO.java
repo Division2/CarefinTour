@@ -1,19 +1,18 @@
-package com.spring.ex.admin.service;
+package com.spring.ex.admin.dao;
 
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.PackageVO;
 
-@Service
-public interface PackageService {
+@Repository
+public interface AdminPackageDAO {
 	
 	//관리자관련 페이지 시작 
-	//패키지 작성
-	public void PackageWrite(PackageVO packageVo) throws Exception;
+	//패키지 입력	
+	public void PackageWrite(PackageVO vo) throws Exception;
 	
 	//여행패키지 출력
 	public List<PackageVO> AdminPackageView(HashMap<String, Integer> map) throws Exception;
@@ -25,18 +24,17 @@ public interface PackageService {
 	public PackageVO ProductPackageDetail(int pid) throws Exception;
 	
 	//여행패키지 삭제
-	public void ProductPackageDelete(int ajaxMsg) throws Exception;
-	
+	public void ProductPackageDelete(int pid) throws Exception;
+
 	//여행패키지 파일이름 검색 - 파일 삭제하려고 사용
 	public String ProductPackageFileName(int pid) throws Exception;
 	
 	//여행패키지 수정
 	public void ProductPackageModify(PackageVO vo) throws Exception;
 	
-	//여행패키지 상품 검색
+	//관리자 여행패키지 상품 검색
 	public List<PackageVO> ProductPackageSearch(HashMap<String, Object> map) throws Exception;
 	
-	//여행패키지 상품 검색 총 갯수
+	//관리자 여행패키지 상품 검색 총 갯수
 	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception;
-	
 }

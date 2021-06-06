@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.spring.ex.admin.service.PackageService;
+import com.spring.ex.admin.service.AdminPackageService;
 import com.spring.ex.util.UploadFileUtils;
 import com.spring.ex.vo.PackageVO;
 import com.spring.ex.vo.PagingVO;
 
 @Controller
-public class PackageController {
+public class AdminPackageController {
 	
 	
 	@Inject
-	PackageService service;
+	AdminPackageService service;
 	
 	//여행패키지 등록
 	@RequestMapping(value = "/admin/PackageWrite", method = RequestMethod.POST)

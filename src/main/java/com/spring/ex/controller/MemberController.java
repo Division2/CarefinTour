@@ -11,11 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.service.MemberService;
-import com.spring.ex.service.MemberServiceImpl;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Controller
 public class MemberController {
@@ -52,7 +51,7 @@ public class MemberController {
 		service.logout(response);
 	}
 	
-	// 회원가입
+	//회원가입
 	@RequestMapping(value = "/SignUp", method = RequestMethod.POST)
 	public void postSignUp(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
@@ -85,40 +84,62 @@ public class MemberController {
 		return result;
 	}
 	
-	// 아이디, 비밀번호찾기 페이지
-	@RequestMapping(value = "/idSearch", method = RequestMethod.GET)
-	public String idSearch() throws Exception {
-		return "layout/idSearch";
-	}
+  	//비회원 예약 패키지 출력
+  	@RequestMapping(value = "/NonMemberView", method = RequestMethod.POST)
+  	public @ResponseBody OrderVO NonMemberView(OrderVO vo) throws Exception {
+  		
+  		OrderVO nonmember = service.NonMemberView(vo);
+  		
+  		return nonmember;
+  	}
+  	
+	//아이디 찾기 
+	@RequestMapping(value = "/FindUserID", method = RequestMethod.POST)
+	public @ResponseBody String FindId(MemberVO vo) throws Exception {
 		
-				
-	// 아이디 찾기 
-	@RequestMapping(value = "/LoginActionId", method = RequestMethod.POST)
-	@ResponseBody
-	public String FindId(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
-		MemberVO login = service.UserID(vo);
-		System.out.println(login);
-		String msg = "";
-		if (login == null) {
-			msg = "error";
-		} else {
-			msg = login.getUserID();
+		MemberVO findID = service.findID(vo);
+		
+		String msg = null;
+		
+		if (findID != null) {
+			StringBuffer buffer = new StringBuffer(findID.getUserID());
+
+			/*
+			 * 아이디는 6~12자리로 제한하기 때문에 아이디 찾기 시
+			 * 해당 회원의 아이디를 버퍼에 담아 뒤에서 3글자를 자른 후 *를 추가하여 리턴
+			 * test1234 일 경우 test1***
+			 */
+			buffer.delete(3, buffer.length());
+			for (int i = 0; i < findID.getUserID().length() - 3; i++) {
+				buffer.append("*");
+			}
+			
+			msg = buffer.toString();
 		}
 		return msg;
 	}
+	
+	//비밀번호 찾기 
+	@RequestMapping(value ="/FindPassword", method = RequestMethod.POST)
+	public @ResponseBody String FindPw(MemberVO vo) throws Exception {
 		
-	 // 비밀번호 찾기 
-		@RequestMapping(value ="/LoginActionPw", method = RequestMethod.POST)
-		@ResponseBody
-		public String FindPw(MemberVO vo,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
-			MemberVO login = service.Password(vo);
-			String msg = "";
-			if (login == null) {
-				msg = "error";
-			} else {
-				msg = login.getPassword();
+		MemberVO findPassword = service.findPassword(vo);
+		
+		String msg = null;
+		
+		if (findPassword != null) {
+			String tempPW = "";
+			
+			for (int i = 0; i < 12; i++) {
+				tempPW += (char)((Math.random() * 26) + 97);
 			}
-			System.out.println(login);
-			return msg;
+			vo.setPassword(tempPW);
+			service.UpdateTempPassword(vo);
+			
+			service.sendMail(vo, "findPassword");
+			
+			msg = "Success";
 		}
+		return msg;
+	}
 }

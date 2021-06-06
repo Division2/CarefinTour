@@ -62,5 +62,4 @@ public class AdminDashBoardController {
 		
 		return "redirect:/main";
 	}
-		
 }

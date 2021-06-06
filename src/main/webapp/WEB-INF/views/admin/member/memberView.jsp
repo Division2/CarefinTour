@@ -4,22 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
-	$("#sex").val("${mDetail.getSex()}").prop("selected", true);
-})
-</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -56,7 +40,7 @@ $(document).ready(function(){
 										<div class="input-group-prepend">
 											<span class="input-group-text">비밀번호</span>
 										</div>
-										<input type="password" name="password" id="password" value="${mDetail.getPassword()}">
+										<input type="password" name="password" id="password" class="form-control" value="${mDetail.getPassword()}">
 									</div>
 								</div>
 							</div>
@@ -194,7 +178,11 @@ $(document).ready(function(){
 				</div>
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
-	
-		
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
+				$("#sex").val("${mDetail.getSex()}").prop("selected", true);
+			})
+			</script>
 </body>
 </html>

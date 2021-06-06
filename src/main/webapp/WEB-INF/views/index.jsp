@@ -97,7 +97,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-tour-guide"></i>
 							<h3>
-								8000명 이상에 현지 가이드 
+								800명 이상의 현지 가이드
 							</h3>
 						</div>
 					</div>
@@ -113,7 +113,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-user-experience"></i>
 							<h3>
-								오래된 경험에서 나온 여행사 
+								오랜 경험이 있는 여행사
 							</h3>
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-feedback"></i>
 							<h3>
-								98%이상에 만족도 
+								98%이상의 만족도
 							</h3>
 						</div>
 					</div>
