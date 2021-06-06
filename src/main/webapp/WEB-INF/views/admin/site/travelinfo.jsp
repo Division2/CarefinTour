@@ -5,17 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 <style type="text/css">.ck-content{height:600px;}</style>
 <style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 29px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
 <script>

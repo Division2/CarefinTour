@@ -12,7 +12,6 @@ import com.spring.ex.admin.dao.AdminServiceCenterDAO;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
-import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Service
@@ -80,7 +79,6 @@ public class AdminServiceCenterServiceImpl implements AdminServiceCenterService 
 		return dao.NoticeSearchTotalCount(searchMap);
 	}
 	
-
 	//----------------------------------------------------1:1문의 시작----------------------------------------------------------
 
 	//1:1 문의 등록

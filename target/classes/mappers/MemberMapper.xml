@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.ex.MemberMapper">
+
 	<!-- 회원 로그인 -->
 	<select id="MemberLogin" resultType="MemberVO">
 		SELECT * FROM account WHERE UserID = #{UserID} AND Password = #{Password}

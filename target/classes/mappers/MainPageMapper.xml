@@ -42,6 +42,4 @@
 	<select id="LineReview" resultType="SexVO">
 	SELECT p.*, a.Sex FROM account a, photoreview p WHERE a.UserID = p.UserID AND p.reDate BETWEEN CURDATE()-30 AND CURDATE() ORDER BY Hit DESC LIMIT 0, 8
 	</select>
-	
-	
 </mapper>

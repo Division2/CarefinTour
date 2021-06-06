@@ -82,5 +82,4 @@ public class MainPageDAOImpl implements MainPageDAO {
 	public int getMainNameProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return sqlSession.selectOne(namespace2 + ".getMainNameProductPackageSearchTotalCount", searchMap);
 	}
-	
 }

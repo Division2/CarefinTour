@@ -62,5 +62,4 @@ public class TravelInfoController {
 		
 		return "travelinfo/weatherinfo";
 	}
-	
 }

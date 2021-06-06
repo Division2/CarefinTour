@@ -2,7 +2,6 @@ package com.spring.ex.admin.dao;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.PackageVO;
 
 @Repository
-public class PackageDAOImpl implements PackageDAO {
+public class AdminPackageDAOImpl implements AdminPackageDAO {
 	@Inject
 	private SqlSession sql;
 	private static final String namespace = "com.spring.ex.PackageMapper";
@@ -69,6 +68,4 @@ public class PackageDAOImpl implements PackageDAO {
 	public int getProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
 		return sql.selectOne(namespace + ".getProductPackageSearchTotalCount", searchMap);
 	}
-
-	
 }

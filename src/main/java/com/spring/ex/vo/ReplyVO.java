@@ -44,5 +44,4 @@ public class ReplyVO {
 	public void setAnswerContent(String answerContent) {
 		this.answerContent = answerContent;
 	}
-	
 }

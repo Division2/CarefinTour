@@ -116,5 +116,4 @@ public class OrderVO {
 	public void setNonmember(int nonmember) {
 		this.nonmember = nonmember;
 	}
-
 }
