@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,26 +73,20 @@
 						</c:when>
 						<c:when test="${bmodify.getBid() eq 22 }">
 							<hr>
-							
 							<div class="comment-form">
 								<form action="bannerYoutubeModify" role="form" method="POST" name="travelphotoUpdate" id="modify" enctype="multipart/form-data" class="contact-one__form">
 									<div class="row low-gutters">
 										<input type="hidden" id="bid" name="bid" value="${bmodify.getBid()}" />
-										<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
-										<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
-										<div >
-											현재영상	<br>
-											<iframe width="560" height="315" src="${bmodify.getS_file_name()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-											<br>
-											<label >링크</label>
-											<input id="s_file_name" name="s_file_name" type="text" width="500px" value="${bmodify.getS_file_name()}">
-										</div>
+										
+										현재영상	<br>
+										<iframe width="100%" height="500px" src="${fn:replace(bmodify.getS_file_name(), 'watch?v=', 'embed/')}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+										<br>
+										<label >링크</label>
+										<input  type="text" id="s_file_name" name="s_file_name" value="${bmodify.getS_file_name()}">
 										
 										<div class="col-md-12" align="right">
-											<div >
-							            		<input class="btn btn-primary" type="submit" value="변경">
-							            		<input class="btn btn-primary" type="button" value="취소" onclick="location.href='banner'">
-											</div>
+						            		<input class="btn btn-primary" type="submit" value="변경">
+						            		<input class="btn btn-primary" type="button" value="취소" onclick="location.href='banner'">
 										</div>
 									</div>
 								</form>
