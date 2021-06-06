@@ -69,11 +69,11 @@
 		</div>
 	</div>
 </div>
+<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
 <script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
 <script src='<c:url value="/resources/js/DeleteSelection.js"/>'></script>
 <script src='<c:url value="/resources/js/AdminMember.js"/>'></script>

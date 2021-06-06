@@ -5,26 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">.ck-content{height:600px;}</style>
 <style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 29px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
-<script>
-$(document).ready(function() {
-	//비자 정보 버튼 눌렀을 때
-	$('#visaInfoWrite').click(function() {
-		//form의 action과 textarea의 name 속성을 변경
-		$("#TravelInfo").attr("action", "visaInfoWrite");
-		$("#TravelContent").attr("name","visaContent");
-	})
-	
-	//여행준비물 버튼 눌렀을 때
-	$('#travelSuppliesWrite').click(function() {
-		//form의 action과 textarea의 name 속성을 변경
-		$("#TravelInfo").attr("action", "travelSuppliesWrite");
-		$("#TravelContent").attr("name","suppliesContent");
-	})
-})
-</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -122,6 +104,24 @@ $(document).ready(function() {
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
+    		
+			<script>
+			$(document).ready(function() {
+				//비자 정보 버튼 눌렀을 때
+				$('#visaInfoWrite').click(function() {
+					//form의 action과 textarea의 name 속성을 변경
+					$("#TravelInfo").attr("action", "visaInfoWrite");
+					$("#TravelContent").attr("name","visaContent");
+				})
+				
+				//여행준비물 버튼 눌렀을 때
+				$('#travelSuppliesWrite').click(function() {
+					//form의 action과 textarea의 name 속성을 변경
+					$("#TravelInfo").attr("action", "travelSuppliesWrite");
+					$("#TravelContent").attr("name","suppliesContent");
+				})
+			})
+			</script>
     		
 			<!-- 비자정보 수정 Modal 부분 -->
 			<div class="modal fade" id="visaInfoModal" tabindex="-1" role="dialog" aria-labelledby="visaInfoModalLabel" aria-hidden="true">

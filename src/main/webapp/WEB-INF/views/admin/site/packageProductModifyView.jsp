@@ -6,14 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript">
-$(document).ready(function(){
-	//테마, 지역, flag 값에 따라서 콤보박스 선택되게
-	$("#theme").val("${pdtail.getTheme()}").prop("selected", true);
-	$("#area").val("${pdtail.getArea()}").prop("selected", true);
-	$("#flag").val("${pdtail.getFlag()}").prop("selected", true);
-})
-</script>
 <style type="text/css">
 	.ck-content{width:750px; height:300px; }
 	
@@ -246,6 +238,14 @@ $(document).ready(function(){
 		   		ClassicEditor.create( document.querySelector( '#travelplan' ) )
 			</script>
     		<!-- 하단 푸터 부분 -->
+			<script type="text/javascript">
+			$(document).ready(function(){
+				//테마, 지역, flag 값에 따라서 콤보박스 선택되게
+				$("#theme").val("${pdtail.getTheme()}").prop("selected", true);
+				$("#area").val("${pdtail.getArea()}").prop("selected", true);
+				$("#flag").val("${pdtail.getFlag()}").prop("selected", true);
+			})
+			</script>
 		</div>
 	</div>
 </body>

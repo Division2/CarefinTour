@@ -9,7 +9,6 @@
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
-
     <div id="wrapper">
     	<!-- 좌측 배너 부분 -->
 		<jsp:include page="../layout/banner.jsp"/>

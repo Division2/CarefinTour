@@ -4,13 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
-	$("#sex").val("${mDetail.getSex()}").prop("selected", true);
-})
-</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -185,7 +178,11 @@ $(document).ready(function(){
 				</div>
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
-	
-		
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
+				$("#sex").val("${mDetail.getSex()}").prop("selected", true);
+			})
+			</script>
 </body>
 </html>
