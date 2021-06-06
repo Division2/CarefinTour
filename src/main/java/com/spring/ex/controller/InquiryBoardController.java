@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.InquiryBoardService;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
@@ -25,6 +26,8 @@ public class InquiryBoardController {
 
 	@Inject
 	InquiryBoardService service;
+	@Inject
+	AdminBannerService serviceBanner;
 	
 	//1:1 문의 작성
 	@RequestMapping(value = "/inquiryWrite", method = RequestMethod.POST)

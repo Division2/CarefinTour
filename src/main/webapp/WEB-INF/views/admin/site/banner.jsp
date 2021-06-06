@@ -220,7 +220,7 @@
 				<div class="container-fluid" align="center">
 					<c:forEach items="${blist}" var="blist">
 					<c:choose>	
-						<c:when test="${blist.BID == 23 or blist.BID == 24 or blist.BID == 25 or blist.BID == 26}">
+						<c:when test="${blist.BID == 23 or blist.BID == 24 or blist.BID == 25 or blist.BID == 26 or blist.BID == 27}">
 							<div style="width:100%">
 								<div>
 									<font style="align-content: center;" size="4"> ${blist.BannerCategory}</font>

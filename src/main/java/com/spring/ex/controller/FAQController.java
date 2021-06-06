@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.FAQService;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.PagingVO;
@@ -22,6 +23,8 @@ import com.spring.ex.vo.PagingVO;
 public class FAQController {
 
 	@Inject FAQService service;
+	@Inject
+	AdminBannerService serviceBanner;
 	
 	//자주 찾는 질문
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
