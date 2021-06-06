@@ -63,4 +63,13 @@ public class AdminBannerController {
 		
 		return "redirect:banner";
 	}
+	
+	//관리자 배너 파일수정
+	@RequestMapping(value = "/admin/bannerYoutubeModify", method = RequestMethod.POST)
+	public String BannerYoutubeModify(BannerVO vo) throws Exception {
+	  
+		service.BannerModify(vo);
+		
+		return "redirect:banner";
+	}
 }

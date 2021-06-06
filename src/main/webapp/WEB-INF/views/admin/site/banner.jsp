@@ -33,7 +33,7 @@
 				<div class="container-fluid" align="center"> 			
 					<c:forEach items="${blist}" var="blist">
 					<c:choose>	
-						<c:when test="${blist.BID == 1 or blist.BID == 2 or blist.BID == 20 or blist.BID == 19}">
+						<c:when test="${blist.BID == 1 or blist.BID == 2 or blist.BID == 22 or blist.BID == 20 or blist.BID == 19}">
 							<div style="width:100%">
 								<div class="tour-one__single">
 									<div class="tour-one__content">
@@ -44,7 +44,10 @@
 									</div>
 									<div class="tour-one__image">
 										<c:choose>
-											<c:when test="${blist.s_file_name eq null}">
+											<c:when test="${blist.BID == 22}">
+												<img src='<c:url value="/resources/images/play.jpg"/>' width="100%" height="200">
+											</c:when>
+											<c:when test="${blist.s_file_name eq null or blist.BID == 22}">
 												<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
 											</c:when>
 											<c:otherwise>
@@ -196,7 +199,6 @@
 										<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
 									</div>
 								</div>
-								
 								<div>
 									<c:choose>
 										<c:when test="${blist.s_file_name eq null}">
@@ -212,7 +214,35 @@
 					</c:choose>	
 					</c:forEach>
 				</div>		
-				<hr class="text-gray-800" >
+				
+				<hr class="text-gray-800"><br>
+				<h5 class="h3 mb-0 text-gray-800">&emsp;Information</h5><br>
+				<div class="container-fluid" align="center">
+					<c:forEach items="${blist}" var="blist">
+					<c:choose>	
+						<c:when test="${blist.BID == 23 or blist.BID == 24 or blist.BID == 25 or blist.BID == 26}">
+							<div style="width:100%">
+								<div>
+									<font style="align-content: center;" size="4"> ${blist.BannerCategory}</font>
+									<div align="right">
+										<button class="btn btn-primary" onclick="location.href='bannerModifyView?Bid=${blist.BID}'">변경</button>
+									</div>
+								</div>
+								<div>
+									<c:choose>
+										<c:when test="${blist.s_file_name eq null}">
+											<img src='<c:url value="/resources/images/noImage.png"/>' width="100%" height="200">
+										</c:when>
+										<c:otherwise>
+											<img src='<c:url value="/resources/images/banner_main/${blist.s_file_name}" />' alt="" width="100%" height="200px">
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>	
+					</c:forEach>
+				</div>	
 				
 				<!-- 본문 -->
 			</div>

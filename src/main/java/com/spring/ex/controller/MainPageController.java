@@ -27,9 +27,10 @@ public class MainPageController {
 	//메인 하단 여행포토 리뷰
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String NewTravelPhotoList(Model model) throws Exception {
-		//메인 배너(상단 - 1,  하단 - 2) 출력
+		//메인 배너(상단 - 1,  하단 - 2, 유튜브 영상 링크 - 22) 출력
 		model.addAttribute("BannerRespectivelyView1", serviceBanner.BannerRespectivelyView(1));
 		model.addAttribute("BannerRespectivelyView2", serviceBanner.BannerRespectivelyView(2));
+		model.addAttribute("BannerRespectivelyView22", serviceBanner.BannerRespectivelyView(22));
 		
 		//메인 최신 포토리뷰 3개 출력
 		model.addAttribute("NewTravelPhotoList", service.NewTravelPhotoList());

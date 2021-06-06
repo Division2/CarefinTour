@@ -285,7 +285,7 @@
 		</section>
 		<section class="video-one" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView2.getS_file_name()}"/>);">
 			<div class="container text-center">
-				<a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
+				<a href="${BannerRespectivelyView22.getS_file_name()}" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
 				<p>Love where you're going</p>
 				<h3>
 					<span>케어핀투어</span>는 세계적인  <br> 
