@@ -32,7 +32,7 @@
 									<option value="category">카테고리</option>
 									<option value="title">제목</option>
 								</select>
-								<input type="text"  id="keyword" name="keyword"class="form-control ml-1 mr-1" required>
+								<input type="text"  id="keyword" name="keyword"class="form-control ml-1 mr-1" placeholder="검색어를 입력해주세요" required>
 								<button type="submit" class="btn px-3 btn-primary">
 									<i class="fas fa-search"></i>
 								</button>

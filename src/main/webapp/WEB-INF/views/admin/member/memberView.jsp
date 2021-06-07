@@ -71,9 +71,9 @@
 											<span class="input-group-text">권한</span>
 										</div>
 										<select id="grade" name="grade" class="form-control">
-											<option value="일반">일반</option>
+											<option value="User">일반</option>
 											<option value="VIP">VIP</option>
-											<option value="블랙">블랙</option>
+											<option value="BlackConsumer">블랙리스트</option>
 											<option value="Admin">관리자</option>
 										</select>
 									</div>
@@ -84,8 +84,8 @@
 											<span class="input-group-text">성별</span>
 										</div>
 										<select class="form-control" id="sex" name="sex">
-											<option value="0" >남성</option>
-											<option value="1" >여성</option>
+											<option value="0">남성</option>
+											<option value="1">여성</option>
 										</select>
 									</div>
 								</div>
