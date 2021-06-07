@@ -29,7 +29,7 @@
 			<script>AuthCheck();</script>
 		</c:if>
 	
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/page-header-contact.png"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>공지사항</h2>
 				<ul class="thm-breadcrumb list-unstyled">

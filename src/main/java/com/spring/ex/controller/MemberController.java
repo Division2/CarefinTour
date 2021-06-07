@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.MemberService;
 import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.OrderVO;
@@ -20,7 +22,8 @@ import com.spring.ex.vo.OrderVO;
 public class MemberController {
 	@Inject
 	private MemberService service;
-	
+	@Inject AdminBannerService serviceBanner;
+
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
 	public @ResponseBody int Login(MemberVO vo, HttpServletRequest request) throws Exception {
 		
@@ -93,6 +96,13 @@ public class MemberController {
   		return nonmember;
   	}
   	
+	//아이디 찾기 배너 출력
+	@RequestMapping(value = "findID", method = RequestMethod.GET)
+	public String findID(Model model) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
+		return "customer/findId";
+	}
+  	
 	//아이디 찾기 
 	@RequestMapping(value = "/FindUserID", method = RequestMethod.POST)
 	public @ResponseBody String FindId(MemberVO vo) throws Exception {
@@ -117,6 +127,13 @@ public class MemberController {
 			msg = buffer.toString();
 		}
 		return msg;
+	}
+	
+	//비밀번호 찾기 배너 출력
+	@RequestMapping(value = "findPassword", method = RequestMethod.GET)
+	public String findPassword(Model model) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
+		return "customer/findPassword";
 	}
 	
 	//비밀번호 찾기 

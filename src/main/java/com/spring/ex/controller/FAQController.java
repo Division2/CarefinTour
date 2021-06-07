@@ -23,10 +23,12 @@ import com.spring.ex.vo.PagingVO;
 public class FAQController {
 
 	@Inject FAQService service;
+	@Inject AdminBannerService serviceBanner;
 	
 	//자주 찾는 질문
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
 	public String FAQAllView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
 		
 		int totalCount = service.FAQTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -56,6 +58,7 @@ public class FAQController {
 	//자주 찾는 질문(카테고리별)
 	@RequestMapping(value = "/supportOther", method = RequestMethod.GET)
 	public String FAQOtherView(@RequestParam(value="category", required=false) String category, HttpServletRequest request, Model model) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
 		
 		int totalCount = service.FAQOtherTotalCount(category);
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
