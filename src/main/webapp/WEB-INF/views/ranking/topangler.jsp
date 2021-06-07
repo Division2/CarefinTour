@@ -124,7 +124,7 @@
 									</div>
 								</td>
 								<td>${topangler.getFishname() }</td>
-								<td>${topangler.getFishsize() }</td>
+								<td>${topangler.getFishsize() } cm</td>
 							</tr>
 						</c:forEach>
 					</tbody>

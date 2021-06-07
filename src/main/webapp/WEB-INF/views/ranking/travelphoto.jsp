@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,10 +60,10 @@
 								</c:choose>
 							</div>
 							<div class="tour-one__content">
-								<h3>
-									<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${TravelPhotoList.title}" /></a>
-								</h3>
-								<p><c:out value="${TravelPhotoList.content}" /></p>
+								<font color="#212121" size="4"><b>
+									<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${fn:substring(TravelPhotoList.title, 0 ,35)}" /></a>
+								</b></font>
+								<p><c:out value="${fn:substring(TravelPhotoList.content,0,17)}" /></p>
 								<ul class="tour-one__meta list-unstyled">
 									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-user-circle"></i> <c:out value="${TravelPhotoList.userId}" /></a></li>
 									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-clock"></i> <fmt:formatDate value="${TravelPhotoList.redate}" pattern="yyyy-MM-dd" /></a></li>
