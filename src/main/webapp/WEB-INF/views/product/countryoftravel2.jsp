@@ -53,8 +53,8 @@
 							<c:forEach var="plist2" items="${plist2}">
 								<div class="tour-two__single tour-one__single">
 									<div class="tour-two__image-wrap">
-										<div class="tour-one__image">
-											<img src='<c:url value="/resources/images/product_package/${plist2.getS_file_name()}"/>' height=292 width=270 alt=""> 
+										<div class="tour-one__image" style="width:350px;">
+											<img src='<c:url value="/resources/images/product_package/${plist2.getS_file_name()}"/>' height=400 alt=""> 
 											<a><i class="fa fa-heart"></i></a>
 										</div>
 									</div>

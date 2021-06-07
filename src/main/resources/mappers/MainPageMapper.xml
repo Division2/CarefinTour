@@ -30,7 +30,7 @@
 	
 	<!-- 서핑 패키지 여행추천 -->
 	<select id="SurfingPackageViewList" resultType="PackageVO">
-		SELECT * FROM packageproduct WHERE Theme = "골프" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
+		SELECT * FROM packageproduct WHERE Theme = "낚시" AND reDate BETWEEN CURDATE()-100 AND CURDATE() AND flag =  1 ORDER BY Hit DESC LIMIT 0, 1
 	</select>
 	
 	<!-- 유럽패키지 여행추천 -->
