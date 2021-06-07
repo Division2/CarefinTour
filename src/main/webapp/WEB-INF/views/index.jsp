@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	//현재시간 구해서 String으로 formating
 	LocalDateTime nowTime = LocalDateTime.now();
@@ -23,7 +24,7 @@
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <title>CarefinTour</title>
 </head>
-<body>
+<body link="red">
 	<!-- 페이지 로딩 이미지 -->
 	<div class="preloader">
 		<img src='<c:url value="/resources/images/loader.png"/>' class="preloader__image" alt="">
@@ -355,8 +356,8 @@
 									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-user-circle"></i>${NewTravelPhotoList.userId }</a></li>
 									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-eye"></i><c:out value="${NewTravelPhotoList.hit}" /></a></li>
 								</ul>
-								<h3>
-									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${NewTravelPhotoList.content }</a>
+								<h3 style="font-size: 15px;">
+									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${fn:substring(NewTravelPhotoList.content, 0 ,40)}</a>
 								</h3>
 							</div>
 						</div>

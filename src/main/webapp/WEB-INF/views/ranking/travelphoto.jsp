@@ -60,9 +60,9 @@
 								</c:choose>
 							</div>
 							<div class="tour-one__content">
-								<font color="#212121" size="4"><b>
+								<h3 style="font-size: 19px;">
 									<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${fn:substring(TravelPhotoList.title, 0 ,35)}" /></a>
-								</b></font>
+								</h3>
 								<p><c:out value="${fn:substring(TravelPhotoList.content,0,17)}" /></p>
 								<ul class="tour-one__meta list-unstyled">
 									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-user-circle"></i> <c:out value="${TravelPhotoList.userId}" /></a></li>
