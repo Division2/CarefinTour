@@ -307,8 +307,8 @@
 				<c:forEach items="${LineReview }" var="LineReview">
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>${LineReview.content }</p>
+							<div class="testimonials-one__content">	
+								<p>${fn:substring(LineReview.content, 0 ,70)}</p>
 							</div>
 							<div class="testimonials-one__info">									
 							<c:choose>
@@ -357,7 +357,7 @@
 									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-eye"></i><c:out value="${NewTravelPhotoList.hit}" /></a></li>
 								</ul>
 								<h3 style="font-size: 15px;">
-									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${fn:substring(NewTravelPhotoList.content, 0 ,40)}</a>
+									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${fn:substring(NewTravelPhotoList.title, 0 ,40)}</a>
 								</h3>
 							</div>
 						</div>
