@@ -99,6 +99,57 @@ function insert2() {
 	})
 
 }
+
+function card() {
+	 
+	var sh = document.inserts.sh.value;
+	var hd = document.inserts.hd.value;
+	var sm = document.inserts.sm.value;
+	var bc = document.inserts.bc.value;
+	var kb = document.inserts.kb.value;
+	var lt = document.inserts.lt.value;
+	var nh = document.inserts.nh.value;
+	var hn = document.inserts.hn.value;
+	var ct = document.inserts.ct.value;
+	var ui = document.inserts.ui.value;
+	var money = document.inserts.money.value;
+	
+	  	$("#sh").on("click", function(){  
+	    	document.inserts.cards.value = sh;
+	    }); 
+	    $("#hd").on("click", function(){  
+	    	document.inserts.cards.value = hd;
+	    }); 
+	    $("#sm").on("click", function(){  
+	    	document.inserts.cards.value = sm;
+	    }); 
+	    $("#bc").on("click", function(){  
+	    	document.inserts.cards.value = bc;
+	    }); 
+	    $("#kb").on("click", function(){  
+	    	document.inserts.cards.value = kb;
+	    }); 
+	    $("#lt").on("click", function(){  
+	    	document.inserts.cards.value = lt;
+	    }); 
+	    $("#nh").on("click", function(){  
+	    	document.inserts.cards.value = nh;
+	    }); 
+	    $("#hn").on("click", function(){  
+	    	document.inserts.cards.value = hn;
+	    }); 
+	    $("#ct").on("click", function(){  
+	    	document.inserts.cards.value = ct;
+	    }); 
+	    $("#ui").on("click", function(){  
+	    	document.inserts.cards.value = ui;
+	    }); 
+	    $("#money").on("click", function(){  
+	    	document.inserts.cards.value = money;
+	    }); 
+	    
+}
+
 </script>
 </head>
 <body>
@@ -250,26 +301,26 @@ function insert2() {
 									<form action="detailModify" method="POST" name="inserts" id="inserts">
 									<input type="hidden" value="<%= request.getParameter("OID")%>" id="oId" name="oId"></input>
 										<div class="form-group">
-											<span class="form-inline"><h5 style="color:black;">이용약관</h5> <div style="margin-left:450px;"><input type="checkbox">전체동의</div></span><hr style="width:670px;margin-left:-20px;">
+											<span class="form-inline"><h5 style="color:black;">이용약관</h5> <div style="margin-left:450px;"><input type="checkbox" id="agree" name="agree">전체동의</div></span><hr style="width:670px;margin-left:-20px;">
 										</div>
 										<div class="form-group">
 											<small style="margin-left:-84%;">전자금융거래 이용약관</small>
-											<span class="form-inline"><small>개인정보 수집 및 이용안내</small> <div style="margin-left:30px"><input type="checkbox">동의</div>
-												 <small style="margin-left:100px;">개인정보 제공 및 위탁안내</small><input type="checkbox" style="margin-left:50px;">동의</span>
+											<span class="form-inline"><small>개인정보 수집 및 이용안내</small> <div style="margin-left:30px"><input type="checkbox"  id="agree2" name="agree2">동의</div>
+												 <small style="margin-left:100px;">개인정보 제공 및 위탁안내</small><input type="checkbox"  id="agree3" name="agree3" style="margin-left:50px;">동의</span>
 										</div><hr style="width:670px;margin-left:-20px;">
 										<div class="form-group">
 										<span class="form-inline"  style="margin-right:120px;">
-											<input type="button" id="hd" name="hd" value="현대카드" style="width:320px;height:50px;background:white;border-color:#E2E2E2">
-											<input type="button" id="hd" name="sm" value="삼성카드" style="width:320px;height:50px;background:white;border-color:#E2E2E2"><br>
-											<input type="button" id="bc" name="bc" value="BC카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
-											<input type="button" id="nh" name="kb" value="KB국민" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
-											<input type="button" id="sh" name="sh" value="신한카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
-											<input type="button" id="lt" name="lt" value="롯데카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
-											<input type="button" id="nh" name="nh" value="NH채움" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
-											<input type="button" id="hn" name="hn" value="하나카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
-											<input type="button" id="ct" name="ct" value="씨티카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
-											<input type="button" id="ui" name="ui" value="UnionPay" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
-											<input type="button" id="money" name="money" value="무통장입금" style="width:160px;height:50px;background:white;border-color:#E2E2E2">	
+											<input type="button" id="hd" name="hd" value="현대카드" onclick="card()" style="width:320px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="sm" name="sm" value="삼성카드" onclick="card()" style="width:320px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="bc" name="bc" value="BC카드" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="kb" name="kb" value="KB국민" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="sh" name="sh" value="신한카드" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="lt" name="lt" value="롯데카드" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="nh" name="nh" value="NH채움" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="hn" name="hn" value="하나카드" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="ct" name="ct" value="씨티카드" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="ui" name="ui" value="UnionPay" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="money" name="money" value="무통장입금" onclick="card()" style="width:160px;height:50px;background:white;border-color:#E2E2E2">	
 										</span>
 										</div>
 										<div class="form-group"  style="margin-left:600px;margin-top:-470px;">
@@ -278,7 +329,8 @@ function insert2() {
 										상품명 : ${pdtail.getProductname()}<br>
 										<div style="margin-left:-40px;">상품가격 : <%= request.getParameter("Payment")%></div><br>
 										<div style="margin-left:45px;margin-top:-27px;">제공기간 : 별도제공기간X</div><br>
-										<button type="button" class="thm-btn tour-search-one__btn" name="pay" id="pay" onclick="insert()" style="width:200px;height:130px;margin-right:-70px;margin-top:120px;"><div style="margin-top:-10px;">결제하기</div></button>
+										<input type="text" id="cards" name="cards" onchange="card()" style="margin-left:35px;margin-top:-40px;" readonly/>
+										<button type="button" class="thm-btn tour-search-one__btn" name="pay" id="pay" onclick="insert()" style="width:200px;height:130px;margin-right:-70px;margin-top:100px;"><div style="margin-top:-10px;">결제하기</div></button>
 										</span>
 										</div>
 									</form>
