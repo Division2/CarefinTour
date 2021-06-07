@@ -24,41 +24,39 @@
 						<h1 class="h3 mb-0 text-gray-800">Package Management</h1>
 					</div>
 					<hr>	
-					
-						<div class="row" align="left">
-							<div class="col-sm-9">
-								<form action="ProductPackageSearch" role="form" method="GET" class="form-inline">
-									<select class="form-control" id="searchArea" name="searchArea">
-										<option value="noArea">지역</option>
-										<option value="미주/중남미/하와이">미주/중남미/하와이</option>
-										<option value="대만/동남아/서남아">대만/동남아/서남아</option>
-										<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
-										<option value="유럽/아프리카">유럽/아프리카</option>
-										<option value="일본">일본</option>
-									</select>
-									<select class="form-control" id="searchTheme" name="searchTheme">
-										<option value="noTheme">테마</option>
-										<option value="낚시">낚시</option>
-										<option value="허니문">허니문</option>
-										<option value="골프">골프</option>
-										<option value="해외">해외</option>
-									</select>
-									<input type="text" id="searchKeyword" name="searchKeyword" placeholder="상품명을 입력하세요." class="form-control">
-									<button type="submit" class="btn px-3 btn-primary">
-										<i class="fas fa-search"></i>
-									</button>
-								</form>	
-							</div>
-							<div class="col-sm-3">
-								<div class="d-flex">
-									<div class="ml-auto">
-										<button class="btn btn-primary"  onclick="location.href='insertpackage'">등록</button>
-										<button class="btn btn-primary" onclick="deleteValue();">삭제</button>
-									</div>
+					<div class="row" align="left">
+						<div class="col-sm-9">
+							<form action="ProductPackageSearch" role="form" method="GET" class="form-inline">
+								<select class="form-control" id="searchArea" name="searchArea">
+									<option value="noArea">지역</option>
+									<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+									<option value="대만/동남아/서남아">대만/동남아/서남아</option>
+									<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
+									<option value="유럽/아프리카">유럽/아프리카</option>
+									<option value="일본">일본</option>
+								</select>
+								<select class="form-control" id="searchTheme" name="searchTheme">
+									<option value="noTheme">테마</option>
+									<option value="낚시">낚시</option>
+									<option value="허니문">허니문</option>
+									<option value="골프">골프</option>
+									<option value="해외">해외</option>
+								</select>
+								<input type="text" id="searchKeyword" name="searchKeyword" placeholder="상품명을 입력하세요." class="form-control">
+								<button type="submit" class="btn px-3 btn-primary">
+									<i class="fas fa-search"></i>
+								</button>
+							</form>	
+						</div>
+						<div class="col-sm-3">
+							<div class="d-flex">
+								<div class="ml-auto">
+									<button class="btn btn-primary"  onclick="location.href='insertpackage'">등록</button>
+									<button class="btn btn-primary" onclick="deleteValue();">삭제</button>
 								</div>
 							</div>
-	                    </div>
-                   
+						</div>
+                    </div>
                     <br>
 					<!-- 게시판 시작 -->	
 					<table class="table table-hover table-white">

@@ -247,14 +247,14 @@ public class CareController {
 		return "admin/index";
 	}
 	
-	//사이트 관리(배너 관리, 호텔, 패키지, 테마 패키지, 여행 정보)
+	//사이트 관리(배너 관리, 패키지, 테마 패키지, 여행 정보)
 	@RequestMapping("admin/banner")
 	public String admin_banner() {
 		return "admin/site/banner";
 	}
-	@RequestMapping("admin/hotel")
-	public String admin_hotel() {
-		return "admin/site/hotelproduct";
+	@RequestMapping("admin/topangler")
+	public String admin_topangler() {
+		return "admin/site/topangler";
 	}
 	@RequestMapping("admin/packageproduct")
 	public String admin_package() {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
 <%
@@ -68,7 +69,7 @@
 											</div>
 										</div>
 										<div class="tour-two__text">
-											<p>${plist8.getOverview()}</p>
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(plist8.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 										</div>
 										<ul class="tour-one__meta list-unstyled">
 											<li><a href="detailInfo?PID=${plist8.getPid()}"><i class="far fa-clock"></i>${plist8.getStartravelperiod()}~${plist8.getArrivaltravelperiod()}</a></li>

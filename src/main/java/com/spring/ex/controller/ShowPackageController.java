@@ -277,8 +277,10 @@ public class ShowPackageController {
   		vo.setPhonenum(request.getParameter("phonenum"));
   		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
+  		vo.setaId(Integer.valueOf(request.getParameter("aId")));
+  		
   		int result = service.OrderWrite(vo);
-
+  		
   		if (result == 1) {
   			response.setContentType("text/html;charset=utf-8");
   			PrintWriter out = response.getWriter();
@@ -286,7 +288,6 @@ public class ShowPackageController {
   			out.println("<script>location.href='main'</script>");
   			out.close();
   		}
-  		
   	}
   	
 	 //여행패키지 예약보류 작성

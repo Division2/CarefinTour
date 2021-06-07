@@ -73,9 +73,9 @@
 								<td>${AdminOrderList.getoId()}</td>
 								<td><a href="packageProductDetail?PID=${AdminOrderList.getpId()}">${AdminOrderList.getpId()}</a></td>
 								<td>${AdminOrderList.getProductname()}</td>
-								<td><a href="memberView?${AdminOrderList.getAid()}">${AdminOrderList.getUserId()}</a></td>
-								<td><a href="memberView?${AdminOrderList.getAid()}">${AdminOrderList.getName()}</a></td>
-								<td><a href="memberView?${AdminOrderList.getAid()}">${AdminOrderList.getPhonenum()}</a></td>
+								<td>${AdminOrderList.getUserId()}</td>
+								<td><a href="memberView?AID=${AdminOrderList.getaId()}">${AdminOrderList.getName()}</a></td>
+								<td>${AdminOrderList.getPhonenum()}</td>
 								<td>${AdminOrderList.getOrderdate()}</td>
 								<td>${AdminOrderList.getStartdate()}</td>
 								<td>${AdminOrderList.getPayment()}</td>

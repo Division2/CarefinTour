@@ -5,6 +5,7 @@ import java.sql.Date;
 public class OrderVO {
 	private int oId;
 	private int pId;
+	private int aId;
 	private String productname;
 	private String userId;
 	private String name;
@@ -19,7 +20,6 @@ public class OrderVO {
 	private int num2;
 	private int num3;
 	private int nonmember;
-	private int aid;
 	
 	public int getoId() {
 		return oId;
@@ -32,6 +32,12 @@ public class OrderVO {
 	}
 	public void setpId(int pId) {
 		this.pId = pId;
+	}
+	public int getaId() {
+		return aId;
+	}
+	public void setaId(int aId) {
+		this.aId = aId;
 	}
 	public String getProductname() {
 		return productname;
@@ -117,14 +123,4 @@ public class OrderVO {
 	public void setNonmember(int nonmember) {
 		this.nonmember = nonmember;
 	}
-	public int getAid() {
-		return aid;
-	}
-	public void setAid(int aid) {
-		this.aid = aid;
-	}
-
-	
-	
-	
 }

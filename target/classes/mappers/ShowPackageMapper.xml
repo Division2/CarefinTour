@@ -90,7 +90,7 @@
 	
 	<!-- 여행패키지 예약내역 작성 -->
 	<insert id="OrderWrite">
-		INSERT INTO historyorder(PID,ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3) VALUES (#{pId},#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3})
+		INSERT INTO historyorder(PID, AID, ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentStatus,num,num2,num3) VALUES (#{pId}, #{aId}, #{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment},2,#{num},#{num2},#{num3})
 	</insert>
 	
 	<!-- 여행패키지 예약내역 보류 -->
