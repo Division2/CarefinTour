@@ -71,7 +71,7 @@
 								</div>
 								<div class="tour-two__text">
 									<p>
-										<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
+										<c:out escapeXml="false" value="${fn:replace(fn:replace(plist.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 									</p>
 								</div>
 								<ul class="tour-one__meta list-unstyled">
