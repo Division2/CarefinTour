@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%pageContext.setAttribute("crlf", "\r\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,7 +189,7 @@ function cal3(){
 								<form id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
 								<c:if test="${sessionScope.member ne null}">
 									<div class="input-group">
-									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
+									성인 1인 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" name="num" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -204,7 +203,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
+									아동 1인(만 12세 미만) 가격 :<p id="kid">${pdtail.getKidprice()}</p>
 										<select class="selectpicker" id="num2" name="num2" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -218,7 +217,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									애기 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
+									유아 1인(만 2세 미만) 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
 										<select class="selectpicker" id="num3" name="num3" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -242,7 +241,7 @@ function cal3(){
 									
 									<c:if test="${sessionScope.member eq null}">
 									<div class="input-group">
-									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
+									성인 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" name="num" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -256,7 +255,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
+									아동(만 12세 미만) 가격 :<p id="kid">${pdtail.getKidprice()}</p>
 										<select class="selectpicker" id="num2" name="num2" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -270,7 +269,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									애기 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
+									유아(만 2세 미만) 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
 										<select class="selectpicker" id="num3" name="num3" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>

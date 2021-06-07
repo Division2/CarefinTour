@@ -166,7 +166,7 @@
 								<h4>여행준비물</h4>
 							</div>
 							<div class="d-flex flex-column text-center">
-								<form action="suppliesInfoModify" method="POST" id="TravelInfo" name="TravelInfo">
+								<form action="travelSuppliesModify" method="POST" id="TravelInfo" name="TravelInfo">
 									<div class="form-group">
 										<textarea id="TravelContent1" name="suppliesContent"><c:out escapeXml="false" value="${fn:replace(fn:replace(SuppliesInfo.getSuppliesContent(), '&lt;', '<'), '&gt;', '>')}"/></textarea>
 									</div>
