@@ -20,7 +20,7 @@
 	
 	<!-- 관리자 예약내역 작성 -->
 	<insert id="OrderWrite">
-		INSERT INTO historyorder(ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentDate, PaymentStatus) VALUES (#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment}, #{paymentdate},#{status})
+		INSERT INTO historyorder(ProductName,UserID,Name, PhoneNum, StartDate,Payment, PaymentDate, PaymentStatus, AID) VALUES (#{productname}, #{userId}, #{name}, #{phonenum}, #{startdate}, #{payment}, #{paymentdate},#{status},#{aid})
 	</insert>
 	
 	<!-- 관리자 예약내역 검색 -->

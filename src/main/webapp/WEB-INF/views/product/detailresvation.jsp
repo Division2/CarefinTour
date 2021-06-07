@@ -329,6 +329,7 @@ function card(creditcard) {
 												<input type="hidden" value="${member.getName()}" id="name" name="name"></input>
 												<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
 												<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
+												<input type="hidden" value="${member.getAid()}" id="aid" name="aid"></input>
 												<input type="hidden" value="${param.Payment }" id="payment" name="payment"></input>
 												<input type="hidden" value="${param.num }" id="num" name="num"></input>
 												<input type="hidden" value="${param.num2 }" id="num2" name="num2"></input>
