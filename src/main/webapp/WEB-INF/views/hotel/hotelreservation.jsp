@@ -26,7 +26,7 @@ ul {
 	//페이징
 	var fr = []; //숙박업소 이미지
 	var fName = []; //숙박업소 이름
-	var totalData = localStorage.getItem("count");    // 총 데이터 수
+	var totalData = sessionStorage.getItem("count");    // 총 데이터 수
 	var dataPerPage = 12;    // 한 페이지에 나타낼 데이터 수
 	var pageCount = 10;        // 한 화면에 나타낼 페이지 수
 	var currentPage = 1;
@@ -82,7 +82,7 @@ ul {
 			paging(totalData, dataPerPage, pageCount, selectedPage);
 			
 			try {
-				localStorage.setItem("pas",selectedPage);
+				sessionStorage.setItem("pas",selectedPage);
 			}
 			catch(e) {
 				if (e == QUOTA_EXCEEDED_ERR) {
@@ -99,9 +99,9 @@ ul {
 		ga = a.options[a.selectedIndex].value; 
 		searcharea = a.options[a.selectedIndex].text;
 		try {
-			localStorage.setItem("searchPag", ga);
-			localStorage.setItem("searchTag", searcharea);
-			console.log(localStorage.getItem("searchPag"));
+			sessionStorage.setItem("searchPag", ga);
+			sessionStorage.setItem("searchTag", searcharea);
+			console.log(sessionStorage.getItem("searchPag"));
 		}
         catch (e) {
 		}
@@ -110,7 +110,7 @@ ul {
 	var fCount = [];
 	var countId = [ ];
 	ga = " ";
-	ga = localStorage.getItem("searchPag");
+	ga = sessionStorage.getItem("searchPag");
 	function sta(x) {
 		$.ajax({
 			url : 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=Q84iTs0OivxYSzXgMqJWORyolBgT87Mu5lXE6sSWgEFI%2BhLRrMmdyfML5z3g6HYBCfWqS0YiGkrXpzfT07XhJg%3D%3D&areaCode='  + ga + '&sigunguCode=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=P&numOfRows=12&pageNo='+ x,
@@ -129,51 +129,51 @@ ul {
 						countId.push(data.response.body.items.item[c].contentid);
 					}
 					try {
-						localStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
-						localStorage.setItem("fCount", fCount);
+						sessionStorage.setItem("count", count); // 전체 데이터 수, 페이징 계산위해서 사용
+						sessionStorage.setItem("fCount", fCount);
 						
-						localStorage.setItem("titleSearchResultsOne", oneTitle); 
-						localStorage.setItem("imgSearchResultsOne", oneImg); 
-						localStorage.setItem("cidSearchResultsOne", oneCid); 
+						sessionStorage.setItem("titleSearchResultsOne", oneTitle); 
+						sessionStorage.setItem("imgSearchResultsOne", oneImg); 
+						sessionStorage.setItem("cidSearchResultsOne", oneCid); 
 						
-						localStorage.setItem('cId0', countId[0]);
-						localStorage.setItem('cId1', countId[1]);
-						localStorage.setItem('cId2', countId[2]);
-						localStorage.setItem('cId3', countId[3]);
-						localStorage.setItem('cId4', countId[4]);
-						localStorage.setItem('cId5', countId[5]);
-						localStorage.setItem('cId6', countId[6]);
-						localStorage.setItem('cId7', countId[7]);
-						localStorage.setItem('cId8', countId[8]);
-						localStorage.setItem('cId9', countId[9]);
-						localStorage.setItem('cId10', countId[10]);
-						localStorage.setItem('cId11', countId[11]);
+						sessionStorage.setItem('cId0', countId[0]);
+						sessionStorage.setItem('cId1', countId[1]);
+						sessionStorage.setItem('cId2', countId[2]);
+						sessionStorage.setItem('cId3', countId[3]);
+						sessionStorage.setItem('cId4', countId[4]);
+						sessionStorage.setItem('cId5', countId[5]);
+						sessionStorage.setItem('cId6', countId[6]);
+						sessionStorage.setItem('cId7', countId[7]);
+						sessionStorage.setItem('cId8', countId[8]);
+						sessionStorage.setItem('cId9', countId[9]);
+						sessionStorage.setItem('cId10', countId[10]);
+						sessionStorage.setItem('cId11', countId[11]);
 						
-						localStorage.setItem("img0", fr[0]); // key-value 형식으로 저장
-						localStorage.setItem("img1", fr[1]); // 숙박업소 이미지
-						localStorage.setItem("img2", fr[2]);
-						localStorage.setItem("img3", fr[3]);
-						localStorage.setItem("img4", fr[4]);
-						localStorage.setItem("img5", fr[5]);
-						localStorage.setItem("img6", fr[6]);
-						localStorage.setItem("img7", fr[7]);
-						localStorage.setItem("img8", fr[8]);
-						localStorage.setItem("img9", fr[9]);
-						localStorage.setItem("img10", fr[10]);
-						localStorage.setItem("img11", fr[11]);
+						sessionStorage.setItem("img0", fr[0]); // key-value 형식으로 저장
+						sessionStorage.setItem("img1", fr[1]); // 숙박업소 이미지
+						sessionStorage.setItem("img2", fr[2]);
+						sessionStorage.setItem("img3", fr[3]);
+						sessionStorage.setItem("img4", fr[4]);
+						sessionStorage.setItem("img5", fr[5]);
+						sessionStorage.setItem("img6", fr[6]);
+						sessionStorage.setItem("img7", fr[7]);
+						sessionStorage.setItem("img8", fr[8]);
+						sessionStorage.setItem("img9", fr[9]);
+						sessionStorage.setItem("img10", fr[10]);
+						sessionStorage.setItem("img11", fr[11]);
 						
-						localStorage.setItem("title0", fName[0]); //숙박업소 이름
-						localStorage.setItem("title1", fName[1]);
-						localStorage.setItem("title2", fName[2]);
-						localStorage.setItem("title3", fName[3]);
-						localStorage.setItem("title4", fName[4]);
-						localStorage.setItem("title5", fName[5]);
-						localStorage.setItem("title6", fName[6]);
-						localStorage.setItem("title7", fName[7]);
-						localStorage.setItem("title8", fName[8]);
-						localStorage.setItem("title9", fName[9]);
-						localStorage.setItem("title10", fName[10]);
-						localStorage.setItem("title11", fName[11]);
+						sessionStorage.setItem("title0", fName[0]); //숙박업소 이름
+						sessionStorage.setItem("title1", fName[1]);
+						sessionStorage.setItem("title2", fName[2]);
+						sessionStorage.setItem("title3", fName[3]);
+						sessionStorage.setItem("title4", fName[4]);
+						sessionStorage.setItem("title5", fName[5]);
+						sessionStorage.setItem("title6", fName[6]);
+						sessionStorage.setItem("title7", fName[7]);
+						sessionStorage.setItem("title8", fName[8]);
+						sessionStorage.setItem("title9", fName[9]);
+						sessionStorage.setItem("title10", fName[10]);
+						sessionStorage.setItem("title11", fName[11]);
 						
 						location.reload();
 					} catch (e) {
@@ -187,41 +187,41 @@ ul {
 	
 	//검색된 태그 출력
 	function showTitleView() {
-		if(localStorage.getItem("searchTag") == null) {
+		if(sessionStorage.getItem("searchTag") == null) {
 			for(var i=0; i<4;i++) {
 				document.write("<br><br><br><br><br>" );
 			}
 		}
-		else if(localStorage.getItem("searchTag") != null) {
-			document.write(" <h4> <strong>" + localStorage.getItem("searchTag") +"</strong></h4><hr>");
+		else if(sessionStorage.getItem("searchTag") != null) {
+			document.write(" <h4> <strong>" + sessionStorage.getItem("searchTag") +"</strong></h4><hr>");
 		}
 	}
 	
 	//숙박업소 목록 출력
 	function showView() {
-		if((localStorage.getItem("fCount").length+1)/16 == 1) { // 결과 값이 1이면 값이 들어가지 않아서 여기서 처리
-				document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cidSearchResultsOne") +"'>");
-			if(localStorage.getItem("img0")=="undefined") {
+		if((sessionStorage.getItem("fCount").length+1)/16 == 1) { // 결과 값이 1이면 값이 들어가지 않아서 여기서 처리
+				document.write("<a href='hoteldetail?cId=" + sessionStorage.getItem("cidSearchResultsOne") +"'>");
+			if(sessionStorage.getItem("img0")=="undefined") {
 				document.write("<ul><li><img src='<c:url value='/resources/images/noImage.png'/>' width='220' height='168'> ");
 			}
 			else {
-				document.write("<ul><li><img src='" + localStorage.getItem("imgSearchResultsOne") + "' width='220' height='168' /> ");
+				document.write("<ul><li><img src='" + sessionStorage.getItem("imgSearchResultsOne") + "' width='220' height='168' /> ");
 			}
-		    document.write("<h6>" + localStorage.getItem("titleSearchResultsOne") + "</h6> </ul></li>");
+		    document.write("<h6>" + sessionStorage.getItem("titleSearchResultsOne") + "</h6> </ul></li>");
 		    document.write("</a>");
 		}
 		else {
-			for(var i=0;i<(localStorage.getItem("fCount").length+1)/16;i++) { // 나머지 경우 출력
-				if(localStorage.getItem("title"+i)=="undefined") {}
+			for(var i=0;i<(sessionStorage.getItem("fCount").length+1)/16;i++) { // 나머지 경우 출력
+				if(sessionStorage.getItem("title"+i)=="undefined") {}
 				else {
-					document.write("<a href='hoteldetail?cId=" + localStorage.getItem("cId"+i)+"'>");
-					if(localStorage.getItem("img"+i)=="undefined") {
+					document.write("<a href='hoteldetail?cId=" + sessionStorage.getItem("cId"+i)+"'>");
+					if(sessionStorage.getItem("img"+i)=="undefined") {
 						document.write("<ul><li><img src='<c:url value='/resources/images/noImage.png'/>' width='220' height='168'> ");
 					}
 					else{
-						document.write("<ul><li><img src='" + localStorage.getItem("img"+i) + "' width='220' height='168' /> ");
+						document.write("<ul><li><img src='" + sessionStorage.getItem("img"+i) + "' width='220' height='168' /> ");
 					}
-				    document.write("<h6>" + localStorage.getItem("title"+i) + "</h6> </ul></li>");
+				    document.write("<h6>" + sessionStorage.getItem("title"+i) + "</h6> </ul></li>");
 				    document.write("</a>");
 				}
 		    }
@@ -231,15 +231,15 @@ ul {
 	//지역검색
 	function search() {
 		sta(1);
-		localStorage.setItem("pas", 1);
-		paging(totalData, dataPerPage, pageCount, localStorage.getItem("pas"));
+		sessionStorage.setItem("pas", 1);
+		paging(totalData, dataPerPage, pageCount, sessionStorage.getItem("pas"));
 	}﻿
 
 	//페이징 출력
 	$("document").ready(function() { 
-       console.log("1   :  "+localStorage.getItem("fCount").length);
-       console.log(localStorage.getItem("searchPag"));
-       paging(totalData, dataPerPage, pageCount, localStorage.getItem("pas"));
+       console.log("1   :  "+sessionStorage.getItem("fCount").length);
+       console.log(sessionStorage.getItem("searchPag"));
+       paging(totalData, dataPerPage, pageCount, sessionStorage.getItem("pas"));
         
     });
 	</script>
