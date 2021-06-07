@@ -141,7 +141,7 @@ function cal3(){
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
 										<div class="tour-details__gallery-image">
-											<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' alt="">
+											<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' alt="" width="1000" height="500">
 											<div class="tour-details__gallery-links">
 												<a href="#"><i class="fab fa-youtube"></i></a>
 												<a href="#"><i class="fa fa-heart"></i></a>
