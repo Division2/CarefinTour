@@ -11,6 +11,30 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script>
 function insert() {
+	if(!$("input:checked[id='agree']").is(":checked")){
+		swal({
+			title: "이용약관",
+			text: "이용약관을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else if(!$("input:checked[id='agree2']").is(":checked")){
+		swal({
+			title: "이용안내",
+			text: "이용안내을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+	}else if(!$("input:checked[id='agree3']").is(":checked")){
+		swal({
+			title: "위탁안내",
+			text: "위탁안내을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+	}else{
+	
 	Swal.fire({
 		title: '결제하기',
 		text: "정말 결제하시겠습니까?",
@@ -40,6 +64,7 @@ function insert() {
 		
 		}
 	})
+	}
 
 }
 
@@ -77,6 +102,29 @@ function insert2() {
 }
 
 function insert3() {
+	if(!$("input:checked[id='agree']").is(":checked")){
+		swal({
+			title: "이용약관",
+			text: "이용약관을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else if(!$("input:checked[id='agree2']").is(":checked")){
+		swal({
+			title: "이용안내",
+			text: "이용안내을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+	}else if(!$("input:checked[id='agree3']").is(":checked")){
+		swal({
+			title: "위탁안내",
+			text: "위탁안내을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+	}else{
 	Swal.fire({
 		title: '결제하기',
 		text: "정말 결제하시겠습니까?",
@@ -106,8 +154,20 @@ function insert3() {
 		
 		}
 	})
+	}
 
 }
+
+$( document ).ready( function() {
+    
+    $("sh").click(function(){
+
+          $("cards").attr('value');
+
+    });
+
+});
+
 </script>
 </head>
 <body>
@@ -277,19 +337,8 @@ function insert3() {
 					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</c:if>
 					<c:if test="${sessionScope.member eq null}">
-					<form action="detailResvationAdd3" method="POST" name="inserts" id="inserts">
-					<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-						<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-						<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-						<input type="hidden" value="<%= request.getParameter("name")%>" id="name" name ="name"></input>
-						<input type="hidden" value="<%= request.getParameter("email")%>" id="userId" name="userId"></input>
-						<input type="hidden" value="<%= request.getParameter("phone")%>" id="phonenum" name="phonenum"></input>
-						<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
-						<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
-						<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
-						<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
-						<input type="hidden" value="1" id="nonmember" name="nonmember"></input>
-					<button type="button" name="pay" id="pay" onclick="insert3()" style="margin-left:470px;">결제하기</button>
+					<form>
+					<button type="button" name="pay" id="pay" data-toggle="modal" data-target="#PurchaseModals" style="margin-left:470px;">결제하기</button>
 					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</form>
 					</c:if>
@@ -306,6 +355,7 @@ function insert3() {
 									<span class="form-inline"><h2>KG 이니시스</h2><h6 style="margin-left:180px;margin-top:10px;">안전하고 편리한 이니시스 결제창입니다</h6></span><hr style="width:670px;margin-left:-20px;">
 								</div>
 								<div class="d-flex flex-column text-center">
+									<c:if test="${sessionScope.member ne null}">
 									<form action="detailResvationAdd" method="POST" name="inserts" id="inserts">
 										<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
 										<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
@@ -318,12 +368,12 @@ function insert3() {
 										<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
 										<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
 										<div class="form-group">
-											<span class="form-inline"><h5 style="color:black;">이용약관</h5> <div style="margin-left:450px;"><input type="checkbox">전체동의</div></span><hr style="width:670px;margin-left:-20px;">
+											<span class="form-inline"><h5 style="color:black;">이용약관</h5> <div style="margin-left:450px;"><input type="checkbox" id="agree" name="agree">전체동의</div></span><hr style="width:670px;margin-left:-20px;">
 										</div>
 										<div class="form-group">
 											<small style="margin-left:-84%;">전자금융거래 이용약관</small>
-											<span class="form-inline"><small>개인정보 수집 및 이용안내</small> <div style="margin-left:30px"><input type="checkbox">동의</div>
-												 <small style="margin-left:100px;">개인정보 제공 및 위탁안내</small><input type="checkbox" style="margin-left:50px;">동의</span>
+											<span class="form-inline"><small>개인정보 수집 및 이용안내</small> <div style="margin-left:30px"><input type="checkbox"  id="agree2" name="agree2">동의</div>
+												 <small style="margin-left:100px;">개인정보 제공 및 위탁안내</small><input type="checkbox" id="agree3" name="agree3" style="margin-left:50px;">동의</span>
 										</div><hr style="width:670px;margin-left:-20px;">
 										<div class="form-group">
 										<span class="form-inline"  style="margin-right:120px;">
@@ -350,6 +400,54 @@ function insert3() {
 										</span>
 										</div>
 									</form>
+									</c:if>
+									<c:if test="${sessionScope.member eq null}">
+									<form action="detailResvationAdd3" method="POST" name="inserts" id="inserts">
+										<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
+										<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
+										<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
+										<input type="hidden" value="<%= request.getParameter("name")%>" id="name" name ="name"></input>
+										<input type="hidden" value="<%= request.getParameter("email")%>" id="userId" name="userId"></input>
+										<input type="hidden" value="<%= request.getParameter("phone")%>" id="phonenum" name="phonenum"></input>
+										<input type="hidden" value="<%= request.getParameter("Payment")%>" id="payment" name="payment"></input>
+										<input type="hidden" value="<%= request.getParameter("num")%>" id="num" name="num"></input>
+										<input type="hidden" value="<%= request.getParameter("num2")%>" id="num2" name="num2"></input>
+										<input type="hidden" value="<%= request.getParameter("num3")%>" id="num3" name="num3"></input>
+										<input type="hidden" value="1" id="nonmember" name="nonmember"></input>
+										<div class="form-group">
+											<span class="form-inline"><h5 style="color:black;">이용약관</h5> <div style="margin-left:450px;"><input type="checkbox" id="agree" name="agree">전체동의</div></span><hr style="width:670px;margin-left:-20px;">
+										</div>
+										<div class="form-group">
+											<small style="margin-left:-84%;">전자금융거래 이용약관</small>
+											<span class="form-inline"><small>개인정보 수집 및 이용안내</small> <div style="margin-left:30px"><input type="checkbox"  id="agree2" name="agree2">동의</div>
+												 <small style="margin-left:100px;">개인정보 제공 및 위탁안내</small><input type="checkbox" id="agree3" name="agree3" style="margin-left:50px;">동의</span>
+										</div><hr style="width:670px;margin-left:-20px;">
+										<div class="form-group">
+										<span class="form-inline"  style="margin-right:120px;">
+											<input type="button" id="hd" name="hd" value="현대카드" style="width:320px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="hd" name="sm" value="삼성카드" style="width:320px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="bc" name="bc" value="BC카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="nh" name="kb" value="KB국민" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="sh" name="sh" value="신한카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="lt" name="lt" value="롯데카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="nh" name="nh" value="NH채움" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="hn" name="hn" value="하나카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="ct" name="ct" value="씨티카드" style="width:160px;height:50px;background:white;border-color:#E2E2E2">
+											<input type="button" id="ui" name="ui" value="UnionPay" style="width:160px;height:50px;background:white;border-color:#E2E2E2"><br>
+											<input type="button" id="money" name="money" value="무통장입금" style="width:160px;height:50px;background:white;border-color:#E2E2E2">	
+										</span>
+										</div>
+										<div class="form-group"  style="margin-left:600px;margin-top:-470px;">
+										<span>
+										<h3>KG 이니시스</h3><br>
+										상품명 : ${pdtail.getProductname()}<br>
+										<div style="margin-left:-50px;">상품가격 : <%= request.getParameter("Payment")%></div><br>
+										<div style="margin-left:45px;margin-top:-27px;">제공기간 : 별도제공기간X</div><br>
+										<button type="button" class="thm-btn tour-search-one__btn" name="pay" id="pay" onclick="insert3()" style="width:200px;height:130px;margin-right:-70px;margin-top:120px;"><div style="margin-top:-10px;">결제하기</div></button>
+										</span>
+										</div>
+									</form>
+									</c:if>
 								</div>
 							</div>
 						</div>

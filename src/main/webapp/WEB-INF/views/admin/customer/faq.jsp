@@ -40,7 +40,6 @@
 								<div class="ml-auto">
 									<button class="btn btn-primary" data-toggle="modal" data-target="#CategoryModal">카테고리추가</button>
 									<button class="btn btn-primary" onclick="location.href='faqWrite'">등록</button>
-									<button class="btn btn-primary" onclick="location.href='faqModify'">수정</button>
 									<button class="btn btn-danger" type="button" onclick="FAQDeleteSelection()">삭제</button>
 								</div>
 							</div>

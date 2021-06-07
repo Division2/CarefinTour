@@ -11,6 +11,29 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script>
 function insert() {
+	if(!$("input:checked[id='agree']").is(":checked")){
+		swal({
+			title: "이용약관",
+			text: "이용약관을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}else if(!$("input:checked[id='agree2']").is(":checked")){
+		swal({
+			title: "이용안내",
+			text: "이용안내을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+	}else if(!$("input:checked[id='agree3']").is(":checked")){
+		swal({
+			title: "위탁안내",
+			text: "위탁안내을 체크해주세요",
+			icon: "warning",
+			timer: 3000
+		});
+	}else{
 	Swal.fire({
 		title: '결제하기',
 		text: "정말 결제하시겠습니까?",
@@ -40,6 +63,7 @@ function insert() {
 		
 		}
 	})
+	}
 
 }
 
@@ -252,7 +276,7 @@ function insert2() {
 										<span>
 										<h3>KG 이니시스</h3><br>
 										상품명 : ${pdtail.getProductname()}<br>
-										<div style="margin-left:-50px;">상품가격 : <%= request.getParameter("Payment")%></div><br>
+										<div style="margin-left:-40px;">상품가격 : <%= request.getParameter("Payment")%></div><br>
 										<div style="margin-left:45px;margin-top:-27px;">제공기간 : 별도제공기간X</div><br>
 										<button type="button" class="thm-btn tour-search-one__btn" name="pay" id="pay" onclick="insert()" style="width:200px;height:130px;margin-right:-70px;margin-top:120px;"><div style="margin-top:-10px;">결제하기</div></button>
 										</span>
