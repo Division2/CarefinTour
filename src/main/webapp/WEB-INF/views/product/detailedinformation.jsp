@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%pageContext.setAttribute("crlf", "\r\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,13 +153,15 @@ function cal3(){
 							</div>
 							<h3 class="tour-details__title">여행 설명</h3>
 							<p>
-							${pdtail.getOverview()}
+								<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 							</p>
 							<h3 class="tour-details__subtitle">여행 준비물</h3>
 							<div class="row">
 								<div class="col-md-6">
 									<ul class="tour-details__list list-unstyled">
-										<li><i class="fa fa-check"></i> ${pdtail.getSupplies()}</li>
+										<li><i class="fa fa-check"></i>
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getSupplies(), '&lt;', '<'), '&gt;', '>')}"/>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -167,13 +171,8 @@ function cal3(){
 								<div class="tour-details__plan-single">
 									<div class="tour-details__plan-content">
 										<p>
-										${pdtail.getTravelplan()}
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getTravelplan(), '&lt;', '<'), '&gt;', '>')}"/>
 										</p>
-										<ul class="list-unstyled">
-											<li>무료 음로</li>
-											<li>완벽한 식사</li>
-											<li>좋은 평점</li>
-										</ul>
 									</div>
 								</div>
 							</div>
