@@ -25,18 +25,18 @@
 					<hr>
 					<div class="row">
 						<div class="col-sm-8">
-						<form action="memberSearch" role="form" method="GET" class="form-inline">
-							<select class="form-control" id="search" name="search">
-								<option value="UserID">아이디</option>
-								<option value="Name">이름</option>
-							</select>
-							<div class="col-sm-4">
-							<input type="text" id="keyword" name="keyword" placeholder="회원 아이디를 입력하세요.">
-							<button type="submit" class="btn px-3 btn-primary">
-								<i class="fas fa-search"></i>
-							</button>
-							</div>
-						</form>
+							<form action="memberSearch" role="form" method="GET" class="form-inline">
+								<select class="form-control" id="search" name="search">
+									<option value="UserID">아이디</option>
+									<option value="Name">이름</option>
+								</select>
+								<div class="col-sm-4">
+									<input type="text" id="keyword" name="keyword" placeholder="회원 아이디를 입력하세요." class="form-control">
+									<button type="submit" class="btn px-3 btn-primary">
+										<i class="fas fa-search"></i>
+									</button>
+								</div>
+							</form>
 						</div>
 						
 						<div class="col-sm-4">
@@ -65,9 +65,7 @@
 								<th><font size="3">성별</font></th>
 								<th><font size="3">주소</font></th>
 								<th><font size="3">마일리지</font></th>
-								<th><font size="3">특이사항</font></th>
 								<th><font size="3">가입일자</font></th>
-								<th><font size="3">최근 접속일자</font></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -83,12 +81,17 @@
 								<td><font size="3"><c:out value="${MemberVO.email}"></c:out></font></td>
 								<td><font size="3"><c:out value="${MemberVO.phone}"></c:out></font></td>
 								<td><font size="3"><c:out value="${MemberVO.birth}"></c:out></font></td>
-								<td><font size="3"><c:out value="${MemberVO.sex}"></c:out></font></td>
+								<c:choose>
+									<c:when test="${MemberVO.sex eq 0}">
+										<td><font size="3">여자</font></td>
+									</c:when>
+									<c:when test="${MemberVO.sex eq 1}">
+										<td><font size="3">남자</font></td>
+									</c:when>
+								</c:choose>
 								<td><font size="3"><c:out value="${MemberVO.address}"></c:out></font></td>
 								<td><font size="3"><c:out value="${MemberVO.mileage}"></c:out></font></td>
-								<td><font size="3"><c:out value="${MemberVO.comment}"></c:out></font></td>
 								<td><font size="3"><c:out value="${MemberVO.regDate}"></c:out></font></td>
-								<td><font size="3"><c:out value="${MemberVO.lastDate}"></c:out></font></td>
 							</tr>
 							</c:forEach>
 						</tbody>

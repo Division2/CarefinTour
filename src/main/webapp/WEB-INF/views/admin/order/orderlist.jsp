@@ -30,7 +30,7 @@
 								<option>작성자</option>
 							</select> <input type="text" name="userId" id="userId"
 								class="form-control ml-1 mr-1" placeholder="작성자 아이디를 입력" required>
-							<button type="submit" class="btn px-3 thm-btn-psd">
+							<button type="submit" class="btn px-3 btn-primary">
 								<i class="fas fa-search"></i>
 							</button>
 							
