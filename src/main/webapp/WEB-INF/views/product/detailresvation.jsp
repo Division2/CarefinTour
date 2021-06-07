@@ -379,8 +379,8 @@ function card() {
 					<c:if test="${sessionScope.member eq null}">
 					<form>
 					<button type="button" name="pay" id="pay" data-toggle="modal" data-target="#PurchaseModals" style="margin-left:470px;">결제하기</button>
-					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</form>
+					<button type="submit" name="cancel" id="cancel" style="margin-left:10px;" onclick="location.href='main'">취소하기</button>
 					</c:if>
 					</div>
 				</div>	
