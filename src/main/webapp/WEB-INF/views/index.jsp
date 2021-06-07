@@ -166,7 +166,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${ChinaPackageViewList.s_file_name }"/>' alt="">
+								<img src='<c:url value="/resources/images/tour/${ChinaPackageViewList.s_file_name }"/>' alt="" >
 								<a href="detailInfo?PID=${ChinaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">

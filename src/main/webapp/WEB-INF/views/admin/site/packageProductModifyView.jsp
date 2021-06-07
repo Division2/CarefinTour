@@ -176,13 +176,13 @@
 								여행준비물
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea  name="supplies" id="supplies" class="form-control">${pdtail.getSupplies()}</textarea>
+										<textarea  name="supplies" id="supplies" class="form-control">${fn:replace(pdtail.getSupplies(), '<br>', crlf)}</textarea>
 									</div>
 								</div>
 								여행일정
 								<div class="form-group">
 									<div class="input-group my-2 mb-1">
-										<textarea name="travelplan" id="travelplan" class="form-control">${pdtail.getTravelplan()}</textarea>
+										<textarea name="travelplan" id="travelplan" class="form-control">${fn:replace(pdtail.getTravelplan(), '<br>', crlf)}</textarea>
 									</div>
 								</div>
 								<!-- 사진 -->
