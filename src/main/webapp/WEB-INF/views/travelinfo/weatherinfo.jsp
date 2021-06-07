@@ -105,7 +105,13 @@
 				<select name="city" id="city" class="selectpicker" onchange="weather()" data-width="100%">
 					<option>도시를 선택해주세요</option>
 					<option value="Seoul">서울</option>
-					<option value="Busan">부산</option>
+					<option value="Uijeongbu-si">의정부</option>
+					<option value="Pocheon-si">포천</option>
+					<option value="Incheon">인천</option>
+					<option value="United States">미국</option>
+					<option value="Japan">일본</option>
+					<option value="China">중국</option>
+					<option value="Malaysia">말레이시아</option>
 				</select>
 				<br>
 				<table class="table table-borderess">

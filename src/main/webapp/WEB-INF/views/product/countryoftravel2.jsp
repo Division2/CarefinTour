@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
 <%
@@ -53,8 +54,8 @@
 							<c:forEach var="plist2" items="${plist2}">
 								<div class="tour-two__single tour-one__single">
 									<div class="tour-two__image-wrap">
-										<div class="tour-one__image">
-											<img src='<c:url value="/resources/images/product_package/${plist2.getS_file_name()}"/>' height=292 width=270 alt=""> 
+										<div class="tour-one__image" style="width:350px;">
+											<img src='<c:url value="/resources/images/product_package/${plist2.getS_file_name()}"/>' height=400 alt=""> 
 											<a><i class="fa fa-heart"></i></a>
 										</div>
 									</div>
@@ -68,7 +69,7 @@
 											</div>
 										</div>
 										<div class="tour-two__text">
-											<p>${plist2.getOverview()}</p>
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(plist2.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 										</div>
 										<ul class="tour-one__meta list-unstyled">
 											<li><a href="detailInfo?PID=${plist2.getPid()}"><i class="far fa-clock"></i>${plist2.getStartravelperiod()}~${plist2.getArrivaltravelperiod()}</a></li>

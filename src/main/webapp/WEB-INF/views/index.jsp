@@ -144,7 +144,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${UsaPackageViewList.s_file_name }"/>' alt="" >
+								<img src='<c:url value="/resources/images/product_package/${UsaPackageViewList.s_file_name }"/>' alt=""  width="379" height="292" >
 								<a href="detailInfo?PID=${UsaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">			
@@ -167,7 +167,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${ChinaPackageViewList.s_file_name }"/>' alt="" >
+								<img src='<c:url value="/resources/images/product_package/${ChinaPackageViewList.s_file_name }"/>' alt=""  width="379" height="292" >
 								<a href="detailInfo?PID=${ChinaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
@@ -190,7 +190,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">	
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${MylPackageViewList.s_file_name }"/>' alt="">
+								<img src='<c:url value="/resources/images/product_package/${MylPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
 								<a href="detailInfo?PID=${MylPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
@@ -213,7 +213,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${JapanPackageViewList.s_file_name }"/>' alt="">
+								<img src='<c:url value="/resources/images/product_package/${JapanPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
 								<a href="detailInfo?PID=${JapanPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
@@ -236,7 +236,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${SurfingPackageViewList.s_file_name }"/>' alt="">
+								<img src='<c:url value="/resources/images/product_package/${SurfingPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
 								<a href="detailInfo?PID=${SurfingPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
@@ -260,7 +260,7 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${EuPackageViewList.s_file_name }"/>' alt="">
+								<img src='<c:url value="/resources/images/product_package/${EuPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
 								<a href="detailInfo?PID=${EuPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
