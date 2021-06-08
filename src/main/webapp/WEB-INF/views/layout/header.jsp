@@ -121,7 +121,7 @@
 						<div class="main-nav__main-navigation">
 							<ul class=" main-nav__navigation-box">
 								<li class="dropdown">
-								<c:if test="${member == null }">
+								<c:if test="${member == null}">
 									<a href="#" class="main-nav__login" data-toggle="modal" data-target="#loginModal"><i class="tripo-icon-avatar"></i></a>
 									<ul>
 										<li><a href="#" id="twayFont" data-toggle="modal" data-target="#loginModal">로그인</a></li>
@@ -130,12 +130,20 @@
 										<li><a href="support" id="twayFont">고객센터</a></li>
 									</ul>
 								</c:if>
-								<c:if test="${member != null }">
+								<c:if test="${member.getGrade() == 'Admin'}">
 									<a href="#" class="main-nav__login"><i class="tripo-icon-avatar"></i></a>
 									<ul>
 										<li><a href="logout" id="twayFont">로그아웃</a></li>
 										<li><a href="mypage" id="twayFont">마이페이지</a></li>
 										<li><a href="admin/main" id="twayFont">관리자페이지</a></li>
+										<li><a href="support" id="twayFont">고객센터</a></li>
+									</ul>
+								</c:if>
+								<c:if test="${member.getGrade() != 'Admin' and member != null}">
+									<a href="#" class="main-nav__login"><i class="tripo-icon-avatar"></i></a>
+									<ul>
+										<li><a href="logout" id="twayFont">로그아웃</a></li>
+										<li><a href="mypage" id="twayFont">마이페이지</a></li>
 										<li><a href="support" id="twayFont">고객센터</a></li>
 									</ul>
 								</c:if>
