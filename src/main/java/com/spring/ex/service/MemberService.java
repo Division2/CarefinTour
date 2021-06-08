@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 import com.spring.ex.vo.OrderVO;
 
 @Service
@@ -26,6 +27,9 @@ public interface MemberService {
 	
 	//회원가입
 	public int SignUp(MemberVO vo) throws Exception;
+	
+	//회원가입 마일리지 적립
+	public int MemberSignUpSavingMileage(MileageVO vo) throws Exception;
 	
 	//회원가입 시 아이디 중복확인
 	public MemberVO IDCheck(MemberVO vo) throws Exception;
