@@ -215,7 +215,6 @@
 								</div>
 								<input type="hidden" id="Grade" name="Grade" value="User">
 								<input type="hidden" id="Mileage" name="Mileage" value="1000">
-								
 								<!-- 마일리지 적립 -->
 								<input type="hidden" id="MileageType" name="Type" value="회원가입">
 								<input type="hidden" id="MileageContent" name="Content" value="가입 축하">
