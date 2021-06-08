@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.ex.TravelReviewMapper">
+
 	<!-- 여행 포토 작성  -->
 	<insert id="TravelPhotoWrite" parameterType="hashMap">
 			INSERT INTO photoreview(UserID, Title, Content, Good, Bad, s_file_name) VALUES (#{userId}, #{title}, #{content}, #{good}, #{bad}, #{s_file_name})
 	</insert>
-	
 	
 	<!-- 여행 포토 수정(사진) -->
    <update id="TravelPhotoUpdateFile" parameterType="hashMap">

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.MyPageService;
 import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.InquiryVO;
@@ -26,10 +27,22 @@ import com.spring.ex.vo.PagingVO;
 @Controller
 public class MyPageController {
 	@Inject MyPageService service;
+	@Inject AdminBannerService serviceBanner;
+	
+	//마이페이지 메인? 배너 출력
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String mypage(Model model) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
+		
+		return "mypage/mypage";
+	}
 	
 	//마이페이지 예약 내역 출력
 	@RequestMapping(value = "/booking", method = RequestMethod.GET)
 	public String MyPageOrderList(HttpServletRequest request, Model model, MemberVO vo, HttpSession session) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
 		
 		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
 			
@@ -62,6 +75,8 @@ public class MyPageController {
 	//마이페이지 마일리지 내역 출력
 	@RequestMapping(value = "/mileage", method = RequestMethod.GET)
 	public String MyPageMileageList(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
 		
 		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
 		
@@ -91,10 +106,18 @@ public class MyPageController {
 		return "mypage/mileage";
 	}
 	
+	//마이페이지 회원 정보 수정페이지 배너 출력
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	public String info(Model model) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
+		
+		return "mypage/info";
+	}
+	
 	//마이페이지 회원 정보 수정
 	@RequestMapping(value = "/MyPageInfoUpdate", method = RequestMethod.POST)
 	public String MyPageInfoUpdate(MemberVO vo, HttpSession session) throws Exception {
-		
 		int result = service.MyPageInfoUpdate(vo);
 
 		if (result != 0) {
@@ -108,6 +131,8 @@ public class MyPageController {
 	//마이페이지 1:1 문의 내역 출력
 	@RequestMapping(value = "/inquirylist", method = RequestMethod.GET)
 	public String MyPageInquiryList(HttpServletRequest request, Model model, MemberVO vo,HttpSession session) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
 		
 		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");		
 		
@@ -140,11 +165,22 @@ public class MyPageController {
 	//마이페이지 1:1 문의 내역 조회
 	@RequestMapping(value = "/inquirydetails", method = {RequestMethod.GET})
 	public String MyPageInquiryRead(InquiryVO vo, Model model) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
 		
 		model.addAttribute("MyPageInquiryQuestion", service.MyPageInquiryQuestion(vo.getiId()));
 		model.addAttribute("MyPageInquiryAnswer", service.MyPageInquiryAnswer(vo.getiId()));
 		
 		return "mypage/inquirydetails";
+	}
+	
+	//마이페이지 회원 탈퇴 배너 출력
+	@RequestMapping(value = "/withdrawal", method = RequestMethod.GET)
+	public String withdrawal(Model model) throws Exception {
+		//마이 페이지 배너
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(27));
+		
+		return "mypage/withdrawal";
 	}
 	
 	//마이페이지 회원 탈퇴

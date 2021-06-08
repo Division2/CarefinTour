@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Repository
 public interface MemberDAO {
@@ -23,9 +24,15 @@ public interface MemberDAO {
 	//회원가입 시 아이디 중복확인
 	public MemberVO IDCheck(MemberVO vo) throws Exception;
 	
-	// 아이디 찾기
-	public MemberVO UserID(MemberVO vo) throws Exception;
+	//비회원 예약 확인
+	public OrderVO NonMemberView(OrderVO vo) throws Exception;
+	
+	//아이디 찾기
+	public MemberVO findID(MemberVO vo) throws Exception;
 		
-	// 비밀번호 찾기
-	public MemberVO Password(MemberVO vo) throws Exception;
+	//비밀번호 찾기
+	public MemberVO findPassword(MemberVO vo) throws Exception;
+	
+	//임시 비밀번호 발급
+	public int UpdateTempPassword(MemberVO vo) throws Exception;
 }

@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.NoticeBoardService;
 import com.spring.ex.vo.NoticeBoardVO;
 import com.spring.ex.vo.PagingVO;
@@ -28,6 +29,17 @@ public class NoticeBoardController {
 	
 	@Inject
 	NoticeBoardService service;
+	@Inject
+	AdminBannerService serviceBanner;
+	
+	//공지사항 작성 배너 출력
+	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
+	public String noticewrite(Model model) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
+		
+		return "customer/noticeWrite";
+	}
+	
 	
 	//공지사항 작성
 	@RequestMapping(value = "/noticeWrite", method = RequestMethod.POST)
@@ -49,7 +61,8 @@ public class NoticeBoardController {
 	//공지사항 출력
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
 	public String NoticeView(HttpServletRequest request, Model model) throws Exception {
-
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
+		
 		int totalCount = service.NoticeTotalCount();
 		int importantCount = service.ImportantNoticeTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -76,6 +89,7 @@ public class NoticeBoardController {
 	//공지사항 검색
 	@RequestMapping(value = "/noticeSearch", method = RequestMethod.GET)
 	public String NoticeSearchView(NoticeBoardVO vo, HttpServletRequest request, Model model) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
 		
 		String searchType = request.getParameter("searchType");
 		String keyword = request.getParameter("keyword");
@@ -111,6 +125,7 @@ public class NoticeBoardController {
 	//공지사항 게시글 내용
 	@RequestMapping(value = "/noticeView", method = RequestMethod.GET)
 	public String NoticeBoardView(NoticeBoardVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
 		
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		
@@ -149,6 +164,7 @@ public class NoticeBoardController {
 	//공지사항 수정 내용
 	@RequestMapping(value = "/noticeModifyView", method = RequestMethod.GET)
 	public String ModifyView(NoticeBoardVO vo, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		model.addAttribute("BannerRespectivelyView", serviceBanner.BannerRespectivelyView(26));
 		
 		int nId = Integer.parseInt(request.getParameter("nId"));
 		

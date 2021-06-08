@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import com.spring.ex.vo.FAQVO;
 import com.spring.ex.vo.InquiryAnswerVO;
 import com.spring.ex.vo.InquiryVO;
-import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.NoticeBoardVO;
 
 @Repository
@@ -81,8 +80,6 @@ public class AdminServiceCenterDAOImpl implements AdminServiceCenterDAO{
 		return sqlSession.selectOne(namespace + ".getNoticeSearchTotalCount", searchMap);
 	}
 	
-	
-
 //---------------------------------------------------------1:1문의 시작-----------------------------------------------------		
 	
 	//1:1 문의 등록

@@ -1,21 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
+	<li>
 		<div class="sidebar-brand-icon">
-			<img src='<c:url value="/resources/images/Logo.png"/>' width="100" height="100" style="float:left;">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
+				<img src='<c:url value="/resources/images/Logo.png"/>' width="100" height="100" style="float:left;">
+			</a>
 		</div>
-		<div class="sidebar-brand-text mx-1">케어핀투어</div>
-	</a>
-	<hr class="sidebar-divider my-0">
+	</li>
+	<li>
+		<hr class="sidebar-divider my-0">
+	</li>
 	<li class="nav-item active">
 		<a class="nav-link" href="main">
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			<span>Home</span>
 		</a>
 	</li>
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">사이트 관리</div>
+	<li>
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">사이트 관리</div>
+	</li>
 	<li class="nav-item">
 		<a class="nav-link" href="banner">
 			<i class="fas fa-fw fa-table"></i>
@@ -29,28 +34,40 @@
 		</a>
 	</li>
 	<li class="nav-item">
+		<a class="nav-link" href="topangler">
+			<i class="fas fa-fw fa-table"></i>
+			<span>탑앵글러</span>
+		</a>
+	</li>
+	<li class="nav-item">
 		<a class="nav-link" href="info">
 			<i class="fas fa-fw fa-table"></i>
 			<span>여행 정보</span>
 		</a>
 	</li>
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">회원 관리</div>
+	<li>
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">회원 관리</div>
+	</li>
 	<li class="nav-item">
 		<a class="nav-link" href="member">
 			<i class="fas fa-fw fa-table"></i>
 			<span>회원 목록</span>
 		</a>
 	</li>
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">주문 관리</div>
+	<li>
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">주문 관리</div>
+	</li>
 	<li class="nav-item"><a class="nav-link" href="order">
 		<i class="fas fa-fw fa-table"></i>
 		<span>주문 관리</span>
 	</a>
 	</li>
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">통계</div>
+	<li>
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">통계</div>
+	</li>
 	<li class="nav-item">
 		<a class="nav-link" href="visit">
 			<i class="fas fa-fw fa-table"></i>
@@ -69,8 +86,10 @@
 			<span>기간별 매출</span>
 		</a>
 	</li>
-	<hr class="sidebar-divider">
-	<div class="sidebar-heading">고객센터</div>
+	<li>
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">고객센터</div>
+	</li>
 	<li class="nav-item">
 		<a class="nav-link" href="notice">
 			<i class="fas fa-fw fa-table"></i>

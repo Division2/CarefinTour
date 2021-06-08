@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/photo.png"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>여행 포토</h2>
 				<ul class="thm-breadcrumb list-unstyled">
@@ -59,10 +60,10 @@
 								</c:choose>
 							</div>
 							<div class="tour-one__content">
-								<h3>
-									<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${TravelPhotoList.title}" /></a>
+								<h3 style="font-size: 19px;">
+									<a href="travelphotoView?prid=${TravelPhotoList.prid}"><c:out value="${fn:substring(TravelPhotoList.title, 0 ,35)}" /></a>
 								</h3>
-								<p><c:out value="${TravelPhotoList.content}" /></p>
+								<p><c:out value="${fn:substring(TravelPhotoList.content,0,17)}" /></p>
 								<ul class="tour-one__meta list-unstyled">
 									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-user-circle"></i> <c:out value="${TravelPhotoList.userId}" /></a></li>
 									<li><a href="travelphotoView?prid=${TravelPhotoList.prid}"><i class="far fa-clock"></i> <fmt:formatDate value="${TravelPhotoList.redate}" pattern="yyyy-MM-dd" /></a></li>

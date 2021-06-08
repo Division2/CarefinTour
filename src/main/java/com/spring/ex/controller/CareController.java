@@ -12,6 +12,18 @@ public class CareController {
 		return "index";
 	}
 	
+	//아이디 찾기
+	@RequestMapping("findID")
+	public String findID() {
+		return "customer/findId";
+	}
+
+	//비밀번호 찾기
+	@RequestMapping("findPassword")
+	public String findPassword() {
+		return "customer/findPassword";
+	}
+	
 	/*
 	 * 해외 여행(상품, 테마)
 	 * 미주/중남미/하와이/
@@ -235,14 +247,14 @@ public class CareController {
 		return "admin/index";
 	}
 	
-	//사이트 관리(배너 관리, 호텔, 패키지, 테마 패키지, 여행 정보)
+	//사이트 관리(배너 관리, 패키지, 테마 패키지, 여행 정보)
 	@RequestMapping("admin/banner")
 	public String admin_banner() {
 		return "admin/site/banner";
 	}
-	@RequestMapping("admin/hotel")
-	public String admin_hotel() {
-		return "admin/site/hotelproduct";
+	@RequestMapping("admin/topangler")
+	public String admin_topangler() {
+		return "admin/site/topangler";
 	}
 	@RequestMapping("admin/packageproduct")
 	public String admin_package() {

@@ -4,89 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			var chkObj = document.getElementsByName("RowCheck");
-			var rowCnt = chkObj.length;
-			
-			$("input[name='allCheck']").click(function(){
-				var chk_listArr = $("input[name='RowCheck']");
-				for (var i=0; i<chk_listArr.length; i++){
-					chk_listArr[i].checked = this.checked;
-				}
-			});
-			$("input[name='RowCheck']").click(function(){
-				if($("input[name='RowCheck']:checked").length == rowCnt){
-					$("input[name='allCheck']")[0].checked = true;
-				}
-				else{
-					$("input[name='allCheck']")[0].checked = false;
-				}
-			});
-		});
-		function deleteValue(){
-			var url = "OrderDelete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
-			var valueArr = new Array();
-		    var list = $("input[name='RowCheck']");
-		    for(var i = 0; i < list.length; i++){
-		        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
-		            valueArr.push(list[i].value);
-		        }
-		    }
-		    if (valueArr.length == 0){
-	    		Swal.fire({
-		  			title: '선택된 예약이 없습니다.',
-			  		text: "삭제하실 예약를 선택해주세요.",
-			  		icon: 'warning',
-			  		confirmButtonColor: '#3085d6',
-			  		confirmButtonText: '확인',
-			  	})
-		    }else{
-		    	Swal.fire({
-		  		  	title: '예약 을 삭제하시겠습니까?',
-	  		  		text: "삭제하시면 다시 복구시킬 수 없습니다.",
-	  		    	icon: 'warning',
-	  		   		showCancelButton: true,
-	  		   		confirmButtonColor: '#3085d6',
-	  		   		cancelButtonColor: '#d33',
-	  		  	 	confirmButtonText: '삭제',
-	  		  	 	cancelButtonText: '취소'
-		  		}).then((result) => {
-		  		  if (result.value) {
-			  			$.ajax({
-						    url : url,                    // 전송 URL
-						    type : 'POST',                // GET or POST 방식
-						    traditional : true,
-						    data : {
-						    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
-						    },
-			                success: function(jdata){
-			                    if(jdata = 1) {
-			                    	 location.replace("order")
-			                    	  
-			                    }
-			                    else{
-			                      
-			                    	alert("삭제 실패(문의전화 : 010-0000-0000)");
-			                    }
-			                }
-						});
-		  		  }
-		  		})
-			}
-		}
-	</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -113,7 +30,7 @@
 								<option>작성자</option>
 							</select> <input type="text" name="userId" id="userId"
 								class="form-control ml-1 mr-1" placeholder="작성자 아이디를 입력" required>
-							<button type="submit" class="btn px-3 thm-btn-psd">
+							<button type="submit" class="btn px-3 btn-primary">
 								<i class="fas fa-search"></i>
 							</button>
 							
@@ -154,10 +71,10 @@
 							<tr>
 								<td><input type="checkbox" name="RowCheck" value="${AdminOrderList.getoId()}"></td>
 								<td>${AdminOrderList.getoId()}</td>
-								<td>${AdminOrderList.getpId()}</td>
+								<td><a href="packageProductDetail?PID=${AdminOrderList.getpId()}">${AdminOrderList.getpId()}</a></td>
 								<td>${AdminOrderList.getProductname()}</td>
 								<td>${AdminOrderList.getUserId()}</td>
-								<td>${AdminOrderList.getName()}</td>
+								<td><a href="memberView?AID=${AdminOrderList.getaId()}">${AdminOrderList.getName()}</a></td>
 								<td>${AdminOrderList.getPhonenum()}</td>
 								<td>${AdminOrderList.getOrderdate()}</td>
 								<td>${AdminOrderList.getStartdate()}</td>
@@ -280,6 +197,78 @@
 			<!-- 하단 푸터 부분 -->
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
+			<script type="text/javascript">
+				$(function(){
+					var chkObj = document.getElementsByName("RowCheck");
+					var rowCnt = chkObj.length;
+					
+					$("input[name='allCheck']").click(function(){
+						var chk_listArr = $("input[name='RowCheck']");
+						for (var i=0; i<chk_listArr.length; i++){
+							chk_listArr[i].checked = this.checked;
+						}
+					});
+					$("input[name='RowCheck']").click(function(){
+						if($("input[name='RowCheck']:checked").length == rowCnt){
+							$("input[name='allCheck']")[0].checked = true;
+						}
+						else{
+							$("input[name='allCheck']")[0].checked = false;
+						}
+					});
+				});
+				function deleteValue(){
+					var url = "OrderDelete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+					var valueArr = new Array();
+				    var list = $("input[name='RowCheck']");
+				    for(var i = 0; i < list.length; i++){
+				        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+				            valueArr.push(list[i].value);
+				        }
+				    }
+				    if (valueArr.length == 0){
+			    		Swal.fire({
+				  			title: '선택된 예약이 없습니다.',
+					  		text: "삭제하실 예약를 선택해주세요.",
+					  		icon: 'warning',
+					  		confirmButtonColor: '#3085d6',
+					  		confirmButtonText: '확인',
+					  	})
+				    }else{
+				    	Swal.fire({
+				  		  	title: '예약 을 삭제하시겠습니까?',
+			  		  		text: "삭제하시면 다시 복구시킬 수 없습니다.",
+			  		    	icon: 'warning',
+			  		   		showCancelButton: true,
+			  		   		confirmButtonColor: '#3085d6',
+			  		   		cancelButtonColor: '#d33',
+			  		  	 	confirmButtonText: '삭제',
+			  		  	 	cancelButtonText: '취소'
+				  		}).then((result) => {
+				  		  if (result.value) {
+					  			$.ajax({
+								    url : url,                    // 전송 URL
+								    type : 'POST',                // GET or POST 방식
+								    traditional : true,
+								    data : {
+								    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+								    },
+					                success: function(jdata){
+					                    if(jdata = 1) {
+					                    	 location.replace("order")
+					                    	  
+					                    }
+					                    else{
+					                      
+					                    	alert("삭제 실패(문의전화 : 010-0000-0000)");
+					                    }
+					                }
+								});
+				  		  }
+				  		})
+					}
+				}
+			</script>
 		</div>
 	</div>
 </body>

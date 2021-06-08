@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MainPageDAO;
 import com.spring.ex.vo.PackageVO;
+import com.spring.ex.vo.SexVO;
 import com.spring.ex.vo.TravelPhotoVO;
 
 @Service
@@ -51,7 +53,31 @@ public class MainPageServiceImpl implements MainPageService {
 	}
 	
 	//메인 한줄평 리뷰
-		public List<TravelPhotoVO> LineReview() throws Exception {
-			return dao.LineReview();
-		}
+	public List<SexVO> LineReview() throws Exception {
+		return dao.LineReview();
+	}
+		
+	//메인 여행패키지 지역 날짜 테마로 상품 검색
+	@Override
+	public List<PackageVO> MainProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return dao.MainProductPackageSearch(map);
+	}
+	
+	//메인 여행패키지 지역 날짜 테마로 상품 검색 총 갯수
+	@Override
+	public int getMainProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.getMainProductPackageSearchTotalCount(searchMap);
+	}
+	
+	//메인 여행패키지 이름으로 상품 검색
+	@Override
+	public List<PackageVO> MainNameProductPackageSearch(HashMap<String, Object> map) throws Exception {
+		return dao.MainNameProductPackageSearch(map);
+	}
+	
+	//메인 여행패키지 이름으로 상품 검색 총 갯수
+	@Override
+	public int getMainNameProductPackageSearchTotalCount(HashMap<String, String> searchMap) throws Exception {
+		return dao.getMainNameProductPackageSearchTotalCount(searchMap);
+	}
 }

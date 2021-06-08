@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="features-one__title" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner.png"/>);">
+		<section class="features-one__title" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView.getS_file_name()}"/>);">
 			<div class="container">
 				<div class="block-title text-center">
 					<p>TopAngler TOP 100</p>
@@ -124,7 +124,7 @@
 									</div>
 								</td>
 								<td>${topangler.getFishname() }</td>
-								<td>${topangler.getFishsize() }</td>
+								<td>${topangler.getFishsize() } cm</td>
 							</tr>
 						</c:forEach>
 					</tbody>

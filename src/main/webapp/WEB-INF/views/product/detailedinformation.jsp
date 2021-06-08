@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,7 +108,7 @@ function cal3(){
 	<div class="page-wrapper">
     	<jsp:include page="../layout/header.jsp" />     
     	
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/hawaii.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>상세 정보</h2>
 				<ul class="thm-breadcrumb list-unstyled">
@@ -140,24 +141,22 @@ function cal3(){
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
 										<div class="tour-details__gallery-image">
-											<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' alt="">
-											<div class="tour-details__gallery-links">
-												<a href="#"><i class="fab fa-youtube"></i></a>
-												<a href="#"><i class="fa fa-heart"></i></a>
-											</div>
+											<img src='<c:url value="/resources/images/product_package/${pdtail.getS_file_name()}"/>' alt="" width="1000" height="500">
 										</div>
 									</div>
 								</div>
 							</div>
 							<h3 class="tour-details__title">여행 설명</h3>
 							<p>
-							${pdtail.getOverview()}
+								<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 							</p>
 							<h3 class="tour-details__subtitle">여행 준비물</h3>
 							<div class="row">
 								<div class="col-md-6">
 									<ul class="tour-details__list list-unstyled">
-										<li><i class="fa fa-check"></i> ${pdtail.getSupplies()}</li>
+										<li>
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getSupplies(), '&lt;', '<'), '&gt;', '>')}"/>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -167,21 +166,12 @@ function cal3(){
 								<div class="tour-details__plan-single">
 									<div class="tour-details__plan-content">
 										<p>
-										${pdtail.getTravelplan()}
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(pdtail.getTravelplan(), '&lt;', '<'), '&gt;', '>')}"/>
 										</p>
-										<ul class="list-unstyled">
-											<li>무료 음로</li>
-											<li>완벽한 식사</li>
-											<li>좋은 평점</li>
-										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="tour-details__spacer"></div>
-							<div class="tour-details__spacer"></div>
-
-							<div class="tour-details__review-comment">
-							</div>
+							<div class="tour-details__review-comment"></div>
 						</div>
 					</div>
 					<div class="col-lg-4">
@@ -191,7 +181,7 @@ function cal3(){
 								<form id="calcul" name="calcul" class="tour-sidebar__search-form" method="POST">
 								<c:if test="${sessionScope.member ne null}">
 									<div class="input-group">
-									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
+									성인 1인 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" name="num" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -205,7 +195,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
+									아동 1인(만 12세 미만) 가격 :<p id="kid">${pdtail.getKidprice()}</p>
 										<select class="selectpicker" id="num2" name="num2" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -219,7 +209,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									애기 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
+									유아 1인(만 2세 미만) 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
 										<select class="selectpicker" id="num3" name="num3" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -243,7 +233,7 @@ function cal3(){
 									
 									<c:if test="${sessionScope.member eq null}">
 									<div class="input-group">
-									어른 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
+									성인 가격 : <p id ="adult">${pdtail.getAdultprice()}</p>
 									<select class="selectpicker" id="num" name="num" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -257,7 +247,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									아이 가격 :<p id="kid">${pdtail.getKidprice()}</p>
+									아동(만 12세 미만) 가격 :<p id="kid">${pdtail.getKidprice()}</p>
 										<select class="selectpicker" id="num2" name="num2" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>
@@ -271,7 +261,7 @@ function cal3(){
 										</select>
 									</div>
 									<div class="input-group">
-									애기 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
+									유아(만 2세 미만) 가격 :<p id = "baby">${pdtail.getSmallkidprice()}</p>
 										<select class="selectpicker" id="num3" name="num3" onchange="cal()">
 											<option value=0>0</option>
 											<option value=1>1</option>

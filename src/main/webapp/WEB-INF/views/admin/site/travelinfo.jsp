@@ -5,36 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 <style type="text/css">.ck-content{height:600px;}</style>
 <style type="text/css">.infoSection{margin:16px 8px 0;padding:32px 29px 30px;text-align:left;border:1px solid #dadada;border-radius:2px;background:#fff}</style>
-<script>
-$(document).ready(function() {
-	//비자 정보 버튼 눌렀을 때
-	$('#visaInfoWrite').click(function() {
-		//form의 action과 textarea의 name 속성을 변경
-		$("#TravelInfo").attr("action", "visaInfoWrite");
-		$("#TravelContent").attr("name","visaContent");
-	})
-	
-	//여행준비물 버튼 눌렀을 때
-	$('#travelSuppliesWrite').click(function() {
-		//form의 action과 textarea의 name 속성을 변경
-		$("#TravelInfo").attr("action", "travelSuppliesWrite");
-		$("#TravelContent").attr("name","suppliesContent");
-	})
-})
-</script>
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -133,6 +105,24 @@ $(document).ready(function() {
 			<jsp:include page="../layout/footer.jsp"/>
     		<!-- 하단 푸터 부분 -->
     		
+			<script>
+			$(document).ready(function() {
+				//비자 정보 버튼 눌렀을 때
+				$('#visaInfoWrite').click(function() {
+					//form의 action과 textarea의 name 속성을 변경
+					$("#TravelInfo").attr("action", "visaInfoWrite");
+					$("#TravelContent").attr("name","visaContent");
+				})
+				
+				//여행준비물 버튼 눌렀을 때
+				$('#travelSuppliesWrite').click(function() {
+					//form의 action과 textarea의 name 속성을 변경
+					$("#TravelInfo").attr("action", "travelSuppliesWrite");
+					$("#TravelContent").attr("name","suppliesContent");
+				})
+			})
+			</script>
+    		
 			<!-- 비자정보 수정 Modal 부분 -->
 			<div class="modal fade" id="visaInfoModal" tabindex="-1" role="dialog" aria-labelledby="visaInfoModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -176,7 +166,7 @@ $(document).ready(function() {
 								<h4>여행준비물</h4>
 							</div>
 							<div class="d-flex flex-column text-center">
-								<form action="suppliesInfoModify" method="POST" id="TravelInfo" name="TravelInfo">
+								<form action="travelSuppliesModify" method="POST" id="TravelInfo" name="TravelInfo">
 									<div class="form-group">
 										<textarea id="TravelContent1" name="suppliesContent"><c:out escapeXml="false" value="${fn:replace(fn:replace(SuppliesInfo.getSuppliesContent(), '&lt;', '<'), '&gt;', '>')}"/></textarea>
 									</div>

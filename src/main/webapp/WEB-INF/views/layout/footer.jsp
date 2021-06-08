@@ -97,8 +97,8 @@
 				<div class="cursor-follower"></div>
 			</div>
 			<div class="search-popup__inner">
-				<form action="#" class="search-popup__form">
-					<input type="text" name="search" placeholder="검색어를 입력하세요...">
+				<form action="travelNameSearch" class="search-popup__form">
+					<input type="text" name="searchKeyword" id="searchKeyword" placeholder="검색어를 입력하세요...">
 					<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>
@@ -156,7 +156,7 @@
 					<div class="modal-footer d-flex justify-content-center">
 						<div class="signup-section">
 							회원이 아니라면 <a href="#registerModal" class="text-primary" data-toggle="modal" data-target="#registerModal">회원가입</a> <br>							
-			                   <a href="idSearch">	아이디 찾기 | 비밀번호 찾기 </a>
+			                   <a href="findID">아이디 찾기</a> | <a href="findPassword">비밀번호 찾기</a>
 						</div>
 					</div>
 				</div>
@@ -223,7 +223,82 @@
 				</div>
 			</div>
 		</div>
+	<script>	
+	$(document).ready(function() {
+	$('#nonMembers').click(function() {
+		var UserID = $("#ReservationUserID").val();
+		var Name = $("#ReservationName").val();
+		var Phone = $("#ReservationPhone").val();
 		
+		var param = {'userId': UserID, 'name': Name, 'phonenum': Phone};
+		
+		if(!UserID){
+			swal({
+				title: "비회원 문의",
+				text: "아이디가 작성되지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}
+		else if(!Name) {
+			swal({
+				title: "비회원 문의",
+				text: "이름이 작성되지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}
+		else if(!Phone){
+			swal({
+				title: "비회원 문의",
+				text: "전화번호가 작성되지 않았습니다.",
+				icon: "warning",
+				timer: 3000
+			});
+			return false;
+		}
+		else {
+			$.ajax({
+				url: "NonMemberView",
+				type: "POST",
+				data: param,
+				success: function(data) {
+					if (data == null) {
+						swal({
+							title: "비회원 문의",
+							text: "최근 예약된 내역이 없습니다.",
+							icon: "warning",
+							timer: 3000
+						});
+					}
+					else {
+						swal({
+							title: "비회원 문의",
+							text: "회원님께서 예약하신 상품은 " + data.productname + "입니다.\n자세한 문의사항은 고객센터로 문의해주시길 바랍니다.",
+							icon: "success",
+							buttons : {
+								confirm : {
+									value : true
+								}
+							}
+						});
+					}
+				},
+				error: function() {
+					swal({
+						title: "케어핀투어",
+						text: "문제가 발생하였습니다.\n잠시 후 다시 시도해주세요.",
+						icon: "error",
+						timer: 3000
+					});
+				}
+			});
+		}
+	})
+})
+</script>
 		<!-- 예약확인 비회원 부분-->
 		<div class="modal fade" id="ReservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
@@ -233,21 +308,28 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-title text-center">
-							<h4>check my reservation</h4>
+							<h4>비회원 예약확인</h4>
 						</div>
 						<div class="d-flex flex-column text-center">
-							<form>
-								<div class="form-group">
-									<input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+							<div class="input-group my-2 mb-1">
+								<div class="input-group-prepend">
+									<span class="input-group-text">아이디　</span>
 								</div>
-								<div class="form-group">
-									<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요">
+								<input type="email" id="ReservationUserID" name="userId" class="form-control" required>
+							</div>
+							<div class="input-group my-2 mb-1">
+								<div class="input-group-prepend">
+									<span class="input-group-text">성　　명</span>
 								</div>
-								<div class="form-group">
-									<input type="text" class="form-control" id="phone" placeholder="휴대폰 번호를 입력하세요">
+								<input type="text" id="ReservationName" name="name"  class="form-control" required autofocus>
+							</div>
+							<div class="input-group my-2 mb-1">
+								<div class="input-group-prepend">
+									<span class="input-group-text">전화번호</span>
 								</div>
-								<button type="submit" class="btn btn-primary btn-block btn-round">조회하기</button>
-							</form>
+								<input type="text" id="ReservationPhone" name="phonenum" class="form-control" required autofocus>
+							</div>
+							<button type="button" class="thm-btn-psd btn-block btn-round" id="nonMembers" name="nonMembers">조회하기</button>
 						</div>
 					</div>
 				</div>

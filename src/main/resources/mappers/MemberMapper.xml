@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.spring.ex.MemberMapper">
+
 	<!-- 회원 로그인 -->
 	<select id="MemberLogin" resultType="MemberVO">
 		SELECT * FROM account WHERE UserID = #{UserID} AND Password = #{Password}
@@ -43,14 +44,23 @@
     	UPDATE account SET lastDate = #{lastDate} WHERE UserID = #{UserID}
     </update>
     
-    <!-- 회원아이디찾기 select문 -->
-	<select id="memberId" resultType="MemberVO">
-	SELECT * from account where Name = #{Name} and Phone = #{Phone}
-	</select>
-
-	<!-- 회원비번찾기 select문 -->
-	<select id="memberPw" resultType="MemberVO">
-	SELECT * from account where UserID = #{UserID} and Name = #{Name} and Email=#{Email}
+	<!-- 비회원 예약 확인-->
+	<select id="NonMemberView" resultType="OrderVO">
+		SELECT * FROM historyorder WHERE UserID = #{userId} AND Name = #{name} AND PhoneNum = #{phonenum}
 	</select>
     
+    <!-- 아이디 찾기 -->
+	<select id="findID" resultType="MemberVO">
+		SELECT * from account where Name = #{Name} AND Email = #{Email}
+	</select>
+
+	<!-- 비밀번호 찾기 -->
+	<select id="findPassword" resultType="MemberVO">
+		SELECT * from account where UserID = #{UserID} AND Name = #{Name} AND Email = #{Email}
+	</select>
+	
+	<!-- 임시 비밀번호 발급 -->
+	<update id="UpdateTempPassword">
+		UPDATE account SET Password = #{Password} WHERE UserID = #{UserID}
+	</update>
 </mapper>

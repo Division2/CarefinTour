@@ -26,6 +26,15 @@ public interface ShowPackageDAO {
 	//일본 패키지 출력
 	public List<PackageVO> PackageView5(HashMap<String, Object> map) throws Exception;
 	
+	//허니문 패키지 출력
+	public List<PackageVO> PackageView6(HashMap<String, Object> map) throws Exception;
+	
+	//낚시 패키지 출력
+	public List<PackageVO> PackageView7(HashMap<String, Object> map) throws Exception;
+	
+	//골프 패키지 출력
+	public List<PackageVO> PackageView8(HashMap<String, Object> map) throws Exception;
+	
 	//북미,중남미,하와이 패키지 총 갯수
 	public int PackageTotalCount() throws Exception;
 	
@@ -41,6 +50,15 @@ public interface ShowPackageDAO {
 	//일본 패키지 출력
 	public int PackageTotalCount5() throws Exception;
 	
+	//허니문 패키지 출력
+	public int PackageTotalCount6() throws Exception;
+	
+	//낚시 패키지 출력
+	public int PackageTotalCount7() throws Exception;
+	
+	//골프 패키지 출력
+	public int PackageTotalCount8() throws Exception;
+
 	//여행패키지 상세페이지 출력
 	public PackageVO ProductPackageDetail(int pid) throws Exception;
 	
@@ -53,11 +71,6 @@ public interface ShowPackageDAO {
 	//여행패키지 예약 비회원 등록
 	public int OrderWrite3(OrderVO vo) throws Exception;
 	
-	//비회원 예약 패키지 출력
-	public List<OrderVO> NonMemberView(HashMap<String, Object> map) throws Exception;
-	
 	//여행패키지 예약 상태 수정
 	public int detailModify(OrderVO vo) throws Exception;
-
-
 }

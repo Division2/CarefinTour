@@ -1,35 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src='<c:url value="/resources/js/Authority.js"/>'></script>
-<%-- <c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
+<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
 		<script>AuthCheck();</script>
 </c:if>
- --%>
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-	<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-		<i class="fa fa-bars"></i>
-	</button>
 	<ul class="navbar-nav ml-auto">
-		<li class="nav-item dropdown no-arrow d-sm-none">
-			<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<i class="fas fa-search fa-fw"></i>
-			</a>
-			<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-				<form class="form-inline mr-auto w-100 navbar-search">
-					<div class="input-group">
-						<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-						<div class="input-group-append">
-							<button class="btn btn-primary" type="button">
-								<i class="fas fa-search fa-sm"></i>
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</li>
 		<li class="nav-item dropdown no-arrow">
 			<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.member.getUserID() }</span>
@@ -37,14 +19,16 @@
 			 </a>
 			<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 				<a class="dropdown-item" href="#" data-toggle="modal" data-target="#profileEditModal">
-					<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-					Profile
+					<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile
 				</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-					logout
-			</a>
+				<a class="dropdown-item" href="/ex/main">
+					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>MainPage
+				</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="logout">
+					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>logout
+				</a>
 			</div>
 		</li>
 	</ul>

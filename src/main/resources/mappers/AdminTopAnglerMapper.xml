@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.ex.AdminTopAnglerMapper">
+
+	<!-- 탑앵글러 등록 -->
+	<insert id="TopAnglerWrite">
+		INSERT INTO topranking(Name, FishSize, FishName, s_file_fish) VALUES(#{name}, #{fishsize}, #{fishname}, #{s_file_fish})
+	</insert>
+
+	<!-- 탑앵글러 삭제 -->
+	<delete id="TopAnglerDelete">
+		DELETE FROM topranking WHERE TID = #{tId}
+	</delete>
+	
+	<!-- 탑앵글러 파일 이름 검색 -->
+	<select id="TopAnglerFileName" resultType="String">
+		SELECT s_file_fish FROM topranking WHERE TID = #{tId}
+	</select>
+</mapper>

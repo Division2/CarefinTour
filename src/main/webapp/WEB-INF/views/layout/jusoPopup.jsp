@@ -12,7 +12,7 @@
 <script>
 	function init(){
 		var url = location.href;
-		var confmKey = "devU01TX0FVVEgyMDIxMDUxNjE2MTcwMzExMTE2Njg=";
+		var confmKey = "devU01TX0FVVEgyMDIxMDYwODAwNDc0NDExMTI1NTU=";
 		var resultType = "4";
 		var inputYn= "<%=inputYn%>";
 		

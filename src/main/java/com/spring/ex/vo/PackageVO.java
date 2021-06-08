@@ -137,5 +137,4 @@ public class PackageVO {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
-	
 }

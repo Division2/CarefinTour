@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	//현재시간 구해서 String으로 formating
 	LocalDateTime nowTime = LocalDateTime.now();
@@ -23,7 +24,7 @@
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <title>CarefinTour</title>
 </head>
-<body>
+<body link="red">
 	<!-- 페이지 로딩 이미지 -->
 	<div class="preloader">
 		<img src='<c:url value="/resources/images/loader.png"/>' class="preloader__image" alt="">
@@ -35,7 +36,7 @@
 		<jsp:include page="layout/header.jsp"/>
 		
 		<!-- 여행 검색 -->
-		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/backgrounds/mainbanner2.jpg"/>);">
+		<section class="banner-one" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView1.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>
 					Carefin <span>Tour</span>
@@ -97,7 +98,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-tour-guide"></i>
 							<h3>
-								8000명 이상에 현지 가이드 
+								800명 이상의 현지 가이드
 							</h3>
 						</div>
 					</div>
@@ -113,7 +114,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-user-experience"></i>
 							<h3>
-								오래된 경험에서 나온 여행사 
+								오랜 경험이 있는 여행사
 							</h3>
 						</div>
 					</div>
@@ -121,7 +122,7 @@
 						<div class="features-one__single">
 							<i class=" tripo-icon-feedback"></i>
 							<h3>
-								98%이상에 만족도 
+								98%이상의 만족도
 							</h3>
 						</div>
 					</div>
@@ -143,8 +144,8 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${UsaPackageViewList.s_file_name }"/>' alt="" >
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<img src='<c:url value="/resources/images/product_package/${UsaPackageViewList.s_file_name }"/>' alt=""  width="379" height="292" >
+								<a href="detailInfo?PID=${UsaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">			
 								<h3>
@@ -166,12 +167,12 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${ChinaPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<img src='<c:url value="/resources/images/product_package/${ChinaPackageViewList.s_file_name }"/>' alt=""  width="379" height="292" >
+								<a href="detailInfo?PID=${ChinaPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${ChinaPackageViewList.pid}">${ChinaPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${ChinaPackageViewList.pid}">${ChinaPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${ChinaPackageViewList.adultprice }~</span> / 1인 기준
@@ -187,14 +188,14 @@
 					</c:forEach>
 					<c:forEach items="${MylPackageViewList }" var="MylPackageViewList">
 					<div class="col-xl-4 col-lg-6">
-						<div class="tour-one__single">
+						<div class="tour-one__single">	
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${MylPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<img src='<c:url value="/resources/images/product_package/${MylPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
+								<a href="detailInfo?PID=${MylPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${MylPackageViewList.pid}">${MylPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${MylPackageViewList.pid}">${MylPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${MylPackageViewList.adultprice }~</span> / 1인 기준
@@ -212,12 +213,12 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${JapanPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<img src='<c:url value="/resources/images/product_package/${JapanPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
+								<a href="detailInfo?PID=${JapanPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${JapanPackageViewList.pid}">${JapanPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${JapanPackageViewList.pid}">${JapanPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${JapanPackageViewList.adultprice }~</span> / 1인 기준
@@ -235,13 +236,13 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${SurfingPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<img src='<c:url value="/resources/images/product_package/${SurfingPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
+								<a href="detailInfo?PID=${SurfingPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								
 								<h3>
-									<a href="detailInfoPID=${SurfingPackageViewList.pid}">${SurfingPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${SurfingPackageViewList.pid}">${SurfingPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${SurfingPackageViewList.adultprice }~</span> / 1인 기준
@@ -259,12 +260,12 @@
 					<div class="col-xl-4 col-lg-6">
 						<div class="tour-one__single">
 							<div class="tour-one__image">
-								<img src='<c:url value="/resources/images/tour/${EuPackageViewList.s_file_name }"/>' alt="">
-								<a href="tour-details.html"><i class="fa fa-heart"></i></a>
+								<img src='<c:url value="/resources/images/product_package/${EuPackageViewList.s_file_name }"/>' alt=""  width="379" height="292">
+								<a href="detailInfo?PID=${EuPackageViewList.pid}"><i class="fa fa-heart"></i></a>
 							</div>
 							<div class="tour-one__content">
 								<h3>
-									<a href="detailInfoPID=${EuPackageViewList.pid}">${EuPackageViewList.productname }</a>
+									<a href="detailInfo?PID=${EuPackageViewList.pid}">${EuPackageViewList.productname }</a>
 								</h3>
 								<p>
 									<span>${EuPackageViewList.adultprice }~</span> / 1인 기준
@@ -283,9 +284,9 @@
 			</div>
 			
 		</section>
-		<section class="video-one" style="background-image: url(<c:url value="/resources/images/backgrounds/video-bg-1-1.png"/>);">
+		<section class="video-one" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView2.getS_file_name()}"/>);">
 			<div class="container text-center">
-				<a href="https://www.youtube.com/watch?v=i9E_Blai8vk" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
+				<a href="${BannerRespectivelyView22.getS_file_name()}" class="video-one__btn video-popup"><i class="fa fa-play"></i></a>
 				<p>Love where you're going</p>
 				<h3>
 					<span>케어핀투어</span>는 세계적인  <br> 
@@ -306,16 +307,23 @@
 				<c:forEach items="${LineReview }" var="LineReview">
 					<div class="item">
 						<div class="testimonials-one__single">
-							<div class="testimonials-one__content">								
-								<p>${LineReview.content }</p>
+							<div class="testimonials-one__content">	
+								<p>${fn:substring(LineReview.content, 0 ,70)}</p>
 							</div>
-							<div class="testimonials-one__info">
-								<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+							<div class="testimonials-one__info">									
+							<c:choose>
+									<c:when test="${LineReview.sex eq 1}">
+										<img src='<c:url value="/resources/images/testimonials/4w.png"/>' alt="">
+									</c:when>
+									<c:otherwise>
+										<img src='<c:url value="/resources/images/testimonials/7.png"/>' alt="">
+									</c:otherwise>
+								</c:choose>				
 								<h3>${LineReview.userId }</h3>
 							</div>
 						</div>
 					</div>
-							</c:forEach>
+			</c:forEach>
 				</div>
 			</div>
 		</section>
@@ -348,8 +356,8 @@
 									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-user-circle"></i>${NewTravelPhotoList.userId }</a></li>
 									<li><a href="travelphotoView?prid=${NewTravelPhotoList.prid}"><i class="far fa-eye"></i><c:out value="${NewTravelPhotoList.hit}" /></a></li>
 								</ul>
-								<h3>
-									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${NewTravelPhotoList.content }</a>
+								<h3 style="font-size: 15px;">
+									<a href="travelphotoView?prid=${NewTravelPhotoList.prid}">${fn:substring(NewTravelPhotoList.title, 0 ,40)}</a>
 								</h3>
 							</div>
 						</div>

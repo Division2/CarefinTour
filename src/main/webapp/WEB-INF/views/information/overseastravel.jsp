@@ -24,7 +24,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/sky.png"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>여행 약관(국내 &#38; 해외)</h2>
 			</div>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.ex.admin.service.AdminStatisticsService;
 import com.spring.ex.vo.InquiryVO;
 import com.spring.ex.vo.NoticeBoardVO;
-import com.spring.ex.vo.OrderVO;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.TravelPhotoVO;
 import com.spring.ex.vo.VisitVO;

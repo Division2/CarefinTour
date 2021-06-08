@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.OrderVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -46,16 +47,27 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace + ".IDCheck", vo);
 	}
 	
-	// 아이디 찾기
+	//비회원 패키지 확인
 	@Override
-	public MemberVO UserID(MemberVO vo) throws Exception {
-		return sqlSession.selectOne(namespace + ".memberId",vo);
-		}
-		
-	// 비번 찾기
-	@Override
-	public MemberVO Password(MemberVO vo) throws Exception{
-		return sqlSession.selectOne(namespace + ".memberPw",vo);
-		}
+	public OrderVO NonMemberView(OrderVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".NonMemberView", vo);
+	}
 	
+	//아이디 찾기
+	@Override
+	public MemberVO findID(MemberVO vo) throws Exception {
+		return sqlSession.selectOne(namespace + ".findID", vo);
+	}
+	
+	//비번 찾기
+	@Override
+	public MemberVO findPassword(MemberVO vo) throws Exception{
+		return sqlSession.selectOne(namespace + ".findPassword", vo);
+	}
+
+	//임시 비밀번호 발급
+	@Override
+	public int UpdateTempPassword(MemberVO vo) throws Exception {
+		return sqlSession.update(namespace + ".UpdateTempPassword", vo);
+	}
 }

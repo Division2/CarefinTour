@@ -50,6 +50,4 @@ public class OrderServiceImpl implements OrderService {
 	public int OrderSearchTotalCount(String userId) throws Exception {
 		return dao.OrderSearchTotalCount(userId);
 	}
-		
-
 }

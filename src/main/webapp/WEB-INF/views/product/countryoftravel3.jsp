@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="java.time.format.DateTimeFormatter"%>
+<%@ page import="java.time.LocalDateTime"%>
+<%
+	//현재시간 구해서 String으로 formating
+	LocalDateTime nowTime = LocalDateTime.now();
+	
+	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM");
+	String now = nowTime.format(dateTimeFormatter);
+	String beginMonth = nowTime.format(dateTimeFormatter2);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +36,7 @@
 	<div class="page-wrapper">
 		<jsp:include page="../layout/header.jsp"/>
 		
-		<section class="page-header" style="background-image: url(<c:url value="/resources/images/backgrounds/hongkong.jpg"/>);">
+		<section class="page-header" style="background-image: url(<c:url value="/resources/images/banner_main/${BannerRespectivelyView5.getS_file_name()}"/>);">
 			<div class="container">
 				<h2>중국/홍콩/러시아</h2>
 				<ul class="thm-breadcrumb list-unstyled">
@@ -42,8 +54,8 @@
 							<c:forEach var="plist3" items="${plist3}">
 								<div class="tour-two__single tour-one__single">
 									<div class="tour-two__image-wrap">
-										<div class="tour-one__image">
-											<img src='<c:url value="/resources/images/product_package/${plist3.getS_file_name()}"/>' height=292 width=270 alt=""> <i class="fa fa-heart"></i>
+									<div class="tour-one__image" style="width:350px;">
+											<img src='<c:url value="/resources/images/product_package/${plist3.getS_file_name()}"/>' height=400 alt="">
 											<a><i class="fa fa-heart"></i></a>
 										</div>
 									</div>
@@ -57,7 +69,7 @@
 											</div>
 										</div>
 										<div class="tour-two__text">
-											<p>${plist3.getOverview()}</p>
+											<c:out escapeXml="false" value="${fn:replace(fn:replace(plist3.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 										</div>
 										<ul class="tour-one__meta list-unstyled">
 											<li><a href="detailInfo?PID=${plist3.getPid()}"><i class="far fa-clock"></i>${plist3.getStartravelperiod()}~${plist3.getArrivaltravelperiod()}</a></li>
@@ -103,26 +115,32 @@
 						<div class="tour-sidebar">
 							<div class="tour-sidebar__search tour-sidebar__single">
 								<h3>여행 찾기</h3>
-								<form action="#" class="tour-sidebar__search-form">
-									<div class="input-group">
-										<input type="text" placeholder="목적지">
+								<form action="travelSearch" class="tour-sidebar__search-form">
+										<div class="input-group">
+										<select class="selectpicker" id="searchArea" name="searchArea">
+											<option value="미주/중남미/하와이">미주/중남미/하와이</option>
+											<option value="대만/동남아/서남아">대만/동남아/서남아</option>
+											<option value="중국/홍콩/러시아">중국/홍콩/러시아</option>
+											<option value="유럽/아프리카">유럽/아프리카</option>
+											<option value="일본">일본</option>
+										</select>
 									</div>
 									<div class="input-group">
-										<input type="text" data-provide="datepicker" placeholder="기간">
+										<input type="date" class="form-control" value="<%=beginMonth %>" id="searchStartDate" name="searchStartDate" placeholder="여행출발일" >
 									</div>
 									<div class="input-group">
-										<select class="selectpicker">
-											<option value="Type">허니문</option>
-											<option value="Adventure">골프</option>
-											<option value="Wildlife">낚시</option>
-											<option value="Sightseeing">패키지</option>
+									<select class="selectpicker" id="searchTheme" name="searchTheme">
+											<option value="허니문">허니문</option>
+											<option value="골프">골프</option>
+											<option value="낚시">낚시</option>
+											<option value="해외">해외</option>
 										</select>
 									</div>
 									<div class="input-group">
 										<button type="submit" class="thm-btn">검색</button>
 									</div>
 								</form>
-							</div>							
+							</div>
 						</div>
 					</div>
 				</div>

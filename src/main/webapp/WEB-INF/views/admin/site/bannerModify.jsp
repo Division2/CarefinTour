@@ -2,21 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src='<c:url value="/resources/js/sb-admin-2.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.min.js"/>'></script>
-<script src='<c:url value="/resources/js/bootstrap.bundle.min.js"/>'></script>
-<script src='<c:url value="/resources/js/jquery.easing.min.js"/>'></script>
-
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -48,35 +38,62 @@
 					<div class="container-fluid">
 						<h1 class="h3 mb-0 text-gray-800">Banner Management</h1>
 						<div align="right"><font size="4" class="h6 mb-0 text-gray-800">Category : ${bmodify.getBannercategory()}</font></div>
-						<hr>
-						<div class="comment-form">
-							<form action="bannerModify" role="form" method="POST" name="travelphotoUpdate" id="modify" enctype="multipart/form-data" class="contact-one__form">
-								<div class="row low-gutters">
-									<input type="hidden" id="bid" name="bid" value="${bmodify.getBid()}" />
-									<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
-									<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
-									
-									<div class="col-md-12">				
-										<div class="inputArea"> 
-											<label for="imgLabel">이미지</label>
-											<div class="select_img"> 
-											<img src='<c:url value="/resources/images/banner_main/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
-											<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
-											
-											<input type="file" id="imgFile" name="file" /><br>
+						<c:choose>	
+						<c:when test="${bmodify.getBid() ne 22}">
+							
+							<hr>
+							<div class="comment-form">
+								<form action="bannerModify" role="form" method="POST" name="travelphotoUpdate" id="modify" enctype="multipart/form-data" class="contact-one__form">
+									<div class="row low-gutters">
+										<input type="hidden" id="bid" name="bid" value="${bmodify.getBid()}" />
+										<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
+										<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
+										
+										<div class="col-md-12">				
+											<div class="inputArea"> 
+												<label for="imgLabel">이미지</label>
+												<div class="select_img"> 
+												<img src='<c:url value="/resources/images/banner_main/${bmodify.getS_file_name()}"/>' alt="" class="img-fluid" >
+												<input type="hidden" name="imgFile" value="${bmodify.getS_file_name() }" />
+												
+												<input type="file" id="imgFile" name="file" /><br>
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-md-12" align="right">
+											<div >
+							            		<input class="btn btn-primary" type="submit" value="변경">
+							            		<input class="btn btn-primary" type="button" value="취소" onclick="location.href='banner'">
 											</div>
 										</div>
 									</div>
-									
-									<div class="col-md-12" align="right">
-										<div >
+								</form>
+							</div>
+						</c:when>
+						<c:when test="${bmodify.getBid() eq 22 }">
+							<hr>
+							<div class="comment-form">
+								<form action="bannerYoutubeModify" role="form" method="POST" name="travelphotoUpdate" id="modify" enctype="multipart/form-data" class="contact-one__form">
+									<div class="row low-gutters">
+										<input type="hidden" id="bid" name="bid" value="${bmodify.getBid()}" />
+										
+										현재영상	<br>
+										<iframe width="100%" height="500px" src="${fn:replace(bmodify.getS_file_name(), 'watch?v=', 'embed/')}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+										<br>
+										<label >링크</label>
+										<input  type="text" id="s_file_name" name="s_file_name" value="${bmodify.getS_file_name()}">
+										
+										<div class="col-md-12" align="right">
 						            		<input class="btn btn-primary" type="submit" value="변경">
 						            		<input class="btn btn-primary" type="button" value="취소" onclick="location.href='banner'">
 										</div>
 									</div>
-								</div>
-							</form>
-						</div>
+								</form>
+							</div>
+							
+						</c:when>
+						</c:choose>
 					</div>
 				</section>
 				<!-- 본문 -->
