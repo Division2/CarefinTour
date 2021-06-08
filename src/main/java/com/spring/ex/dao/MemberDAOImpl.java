@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 import com.spring.ex.vo.OrderVO;
 
 @Repository
@@ -39,6 +40,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int SignUp(MemberVO vo) throws Exception {
 		return sqlSession.insert(namespace + ".MemberSignUp", vo);
+	}
+	
+	//회원가입 마일리지 적립
+	@Override
+	public int MemberSignUpSavingMileage(MileageVO vo) throws Exception {
+		return sqlSession.insert(namespace + ".MemberSignUpSavingMileage", vo);
 	}
 	
 	//회원가입 시 아이디 중복확인

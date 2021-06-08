@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDAO;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 import com.spring.ex.vo.OrderVO;
 
 @Service
@@ -51,6 +52,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int SignUp(MemberVO vo) throws Exception {
 		return dao.SignUp(vo);
+	}
+
+	//회원가입 마일리지 적립
+	@Override
+	public int MemberSignUpSavingMileage(MileageVO vo) throws Exception {
+		return dao.MemberSignUpSavingMileage(vo);
 	}
 
 	//회원가입 시 아이디 중복확인

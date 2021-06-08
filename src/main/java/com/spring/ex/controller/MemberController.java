@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.MemberService;
 import com.spring.ex.vo.MemberVO;
+import com.spring.ex.vo.MileageVO;
 import com.spring.ex.vo.OrderVO;
 
 @Controller
@@ -24,6 +25,7 @@ public class MemberController {
 	private MemberService service;
 	@Inject AdminBannerService serviceBanner;
 
+	//로그인
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
 	public @ResponseBody int Login(MemberVO vo, HttpServletRequest request) throws Exception {
 		
@@ -56,12 +58,18 @@ public class MemberController {
 	
 	//회원가입
 	@RequestMapping(value = "/SignUp", method = RequestMethod.POST)
-	public void postSignUp(MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void postSignUp(MemberVO vo, MileageVO vo2, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		
 		int result = service.SignUp(vo);
 		
+		System.out.println(vo2.getUserID());
+		System.out.println(vo2.getType());
+		System.out.println(vo2.getContent());
+		System.out.println(vo2.getSaving());
+		
 		if (result == 1) {
+			service.MemberSignUpSavingMileage(vo2);
 			session.setAttribute("member", vo);
 			
 			response.setContentType("text/html;charset=utf-8");

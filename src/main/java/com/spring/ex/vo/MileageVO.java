@@ -1,68 +1,68 @@
 package com.spring.ex.vo;
 
 public class MileageVO {
-	private int mId;
-	private String userId;
-	private String type;
-	private String content;
-	private int saving;
-	private int using;
-	private int remainder;
-	private Object earnDate;
-	private Object expirationDate;
+	private int MID;
+	private String UserID;
+	private String Type;
+	private String Content;
+	private int Saving;
+	private int Using;
+	private int Remainder;
+	private Object EarnDate;
+	private Object ExpirationDate;
 	
-	public int getmId() {
-		return mId;
+	public int getMID() {
+		return MID;
 	}
-	public void setmId(int mId) {
-		this.mId = mId;
+	public void setMID(int mID) {
+		MID = mID;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUserID() {
+		return UserID;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserID(String userID) {
+		UserID = userID;
 	}
 	public String getType() {
-		return type;
+		return Type;
 	}
 	public void setType(String type) {
-		this.type = type;
+		Type = type;
 	}
 	public String getContent() {
-		return content;
+		return Content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		Content = content;
 	}
 	public int getSaving() {
-		return saving;
+		return Saving;
 	}
 	public void setSaving(int saving) {
-		this.saving = saving;
+		Saving = saving;
 	}
 	public int getUsing() {
-		return using;
+		return Using;
 	}
 	public void setUsing(int using) {
-		this.using = using;
+		Using = using;
 	}
 	public int getRemainder() {
-		return remainder;
+		return Remainder;
 	}
 	public void setRemainder(int remainder) {
-		this.remainder = remainder;
+		Remainder = remainder;
 	}
 	public Object getEarnDate() {
-		return earnDate;
+		return EarnDate;
 	}
 	public void setEarnDate(Object earnDate) {
-		this.earnDate = earnDate;
+		EarnDate = earnDate;
 	}
 	public Object getExpirationDate() {
-		return expirationDate;
+		return ExpirationDate;
 	}
 	public void setExpirationDate(Object expirationDate) {
-		this.expirationDate = expirationDate;
+		ExpirationDate = expirationDate;
 	}
 }
