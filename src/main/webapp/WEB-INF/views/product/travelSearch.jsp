@@ -1,18 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%String beginMonth = request.getParameter("searchStartDate");%>
-<<<<<<< HEAD
-<%
-%>
-=======
-
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,10 +60,6 @@
 									</div>
 								</div>
 								<div class="tour-two__text">
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
 									<p>
 										<c:out escapeXml="false" value="${fn:replace(fn:replace(plist.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
 									</p>
