@@ -7,9 +7,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href='<c:url value="/resources/css/sb-admin-2.min.css"/>' rel="stylesheet">
-<c:if test="${sessionScope.member eq null || sessionScope.member.getGrade() ne 'Admin'}">
-		<script>AuthCheck();</script>
-</c:if>
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item dropdown no-arrow">

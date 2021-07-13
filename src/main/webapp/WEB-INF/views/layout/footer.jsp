@@ -214,7 +214,11 @@
 									</div>
 								</div>
 								<input type="hidden" id="Grade" name="Grade" value="User">
-								<input type="hidden" id="Mileage" name="Mileage" value="0">
+								<input type="hidden" id="Mileage" name="Mileage" value="1000">
+								<!-- 마일리지 적립 -->
+								<input type="hidden" id="MileageType" name="Type" value="회원가입">
+								<input type="hidden" id="MileageContent" name="Content" value="가입 축하">
+								<input type="hidden" id="MileageSaving" name="Saving" value="1000">
 								<button type="button" id="register" class="thm-btn-psd btn-block btn-round" onclick="Register()" disabled>회원가입</button>
 								<button type="reset" id="registerReset" class="thm-btn-psd btn-block btn-round">취소</button>
 							</form>

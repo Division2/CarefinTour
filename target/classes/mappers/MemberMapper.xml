@@ -34,6 +34,11 @@
 			#{Mileage})
     </insert>
     
+    <!-- 회원가입 마일리지 적립 -->
+    <insert id="MemberSignUpSavingMileage">
+    	INSERT INTO mileage(UserID, Type, Content, Saving) VALUES(#{UserID}, #{Type}, #{Content}, #{Saving})
+    </insert>
+    
     <!-- 회원가입 시 아이디 중복확인 -->
     <select id="IDCheck" resultType="MemberVO">
     	SELECT * FROM account WHERE UserID = #{UserID}
