@@ -121,7 +121,6 @@
 						<div class="main-nav__main-navigation">
 							<ul class=" main-nav__navigation-box">
 								<li class="dropdown">
-<<<<<<< HEAD
 								<c:choose>
 									<c:when test="${member eq null }">
 										<a href="#" class="main-nav__login" data-toggle="modal" data-target="#loginModal"><i class="tripo-icon-avatar"></i></a>
@@ -144,7 +143,6 @@
 										</ul>
 									</c:when>
 								</c:choose>
-=======
 								<c:if test="${member == null}">
 									<a href="#" class="main-nav__login" data-toggle="modal" data-target="#loginModal"><i class="tripo-icon-avatar"></i></a>
 									<ul>
@@ -171,7 +169,6 @@
 										<li><a href="support" id="twayFont">고객센터</a></li>
 									</ul>
 								</c:if>
->>>>>>> branch 'master' of https://github.com/Division2/CarefinTour.git
 								</li>
 							</ul>
 						</div>
