@@ -47,15 +47,15 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">이름</td>
+									<td id="stresstable">이름</td>
 									<td>${content.getName() }</td>
-									<td style="background: rgb(198, 198, 198);">등록일</td>
+									<td id="stresstable">등록일</td>
 									<td>${content.getReDate() }</td>
 								</tr>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">카테고리</td>
+									<td id="stresstable">카테고리</td>
 									<td>${content.getCategory() }</td>
-									<td style="background: rgb(198, 198, 198);">답변여부</td>
+									<td id="stresstable">답변여부</td>
 							<c:choose>
 								<c:when test="${content.getStatus() eq 0}">
 									<td><span class="inquiry-status status-0">답변대기</span></td>
@@ -69,11 +69,11 @@
 							</c:choose>
 								</tr>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">제목</td>
+									<td id="stresstable">제목</td>
 									<td colspan="3"><c:out escapeXml="false" value="${content.getTitle() }"/></td>
 								</tr>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">내용</td>
+									<td id="stresstable">내용</td>
 									<td colspan="3">
 										<div style="width:500px; height: 300px;">
 											<c:out escapeXml="false" value="${fn:replace(content.getContent(), crlf, '<br>')}"/>
@@ -99,7 +99,7 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td style="background: rgb(198, 198, 198);">내용</td>
+									<td id="stresstable">내용</td>
 									<td colspan="3">
 										<div style="width:500px; height: 300px;">
 											<c:out escapeXml="false" value="${fn:replace(answerContent.getAnswerContent(), crlf, '<br>')}"/>

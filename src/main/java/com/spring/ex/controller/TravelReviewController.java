@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.ex.admin.service.AdminBannerService;
 import com.spring.ex.service.TravelReviewService;
 import com.spring.ex.util.UploadFileUtils;
-import com.spring.ex.vo.MemberVO;
 import com.spring.ex.vo.PagingVO;
 import com.spring.ex.vo.ReplyVO;
 import com.spring.ex.vo.TopAnlgerVO;
@@ -190,33 +188,21 @@ public class TravelReviewController {
 		return "redirect:travelphotoView?prid=" + prid;
 	}
 	
-	//여행 포토 내 게시글 리스트
-	@RequestMapping(value = "/myaddphoto", method = RequestMethod.GET)
-	public String MyTravelPhotoMyList(Model model, HttpServletRequest request, MemberVO vo, HttpSession session) throws Exception {
+	//탑앵글러 등록
+	@RequestMapping(value = "/TopAnglerWrite", method = RequestMethod.POST)
+	public String TopAnglerWrite(TopAnlgerVO vo, MultipartFile file, HttpServletRequest request) throws Exception {
 		
-		MemberVO sessioninfo = (MemberVO)session.getAttribute("member");
-		System.out.println("Session : " + sessioninfo.getUserID());
+		String Path = request.getSession().getServletContext().getRealPath("resources/images/topangler");
+		String fileName = null;
 		
-		int totalCount = service.MyPhotoTotalCount(sessioninfo);
-		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			fileName =  UploadFileUtils.fileUpload(Path, file.getOriginalFilename(), file.getBytes());
+		}
 		
-		PagingVO paging = new PagingVO();
-		paging.setPageNo(page);
-		paging.setPageSize(12);
-		paging.setTotalCount(totalCount);
+		vo.setS_file_fish(fileName);
+		service.TopAnglerWrite(vo);
 		
-		page = (page - 1) * 12;
-		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("Page", page);
-		map.put("PageSize", paging.getPageSize());
-		
-		List<TravelPhotoVO> List = service.TravelPhotoMyList(map);
-		
-		model.addAttribute("TravelPhotoMyList", List);
-		model.addAttribute("Paging", paging);
-		
-		return "ranking/myaddphoto";
+		return "redirect:topangler";
 	}
 	
 	//탑앵글러 출력

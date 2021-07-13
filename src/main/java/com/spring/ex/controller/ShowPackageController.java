@@ -272,38 +272,59 @@ public class ShowPackageController {
 	
 	//여행패키지 예약내역 작성
   	@RequestMapping(value = "/detailResvationAdd", method = RequestMethod.POST)
-  	public String Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  	public void Write(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
   		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
-  		service.OrderWrite(vo);
+  		vo.setaId(Integer.valueOf(request.getParameter("aId")));
   		
-  		return "index";
+  		int result = service.OrderWrite(vo);
+  		
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='main'</script>");
+  			out.close();
+  		}
   	}
   	
 	 //여행패키지 예약보류 작성
   	@RequestMapping(value = "/detailResvationAdd2", method = RequestMethod.POST)
-  	public String Write2(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  	public void Write2(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
   		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
-  		service.OrderWrite2(vo);
+  		int result = service.OrderWrite2(vo);
+
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='main'</script>");
+  			out.close();
+  		}
   		
-  		return "index";
   	}
   	
   	//여행패키지 비회원 예약 작성
   	@RequestMapping(value = "/detailResvationAdd3", method = RequestMethod.POST)
-  	public String Write3(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  	public void Write3(OrderVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception {
   		vo.setProductname(request.getParameter("productname"));
   		vo.setPhonenum(request.getParameter("phonenum"));
   		vo.setUserId(request.getParameter("userId"));
   		vo.setName(request.getParameter("name"));
-  		service.OrderWrite3(vo);
+  		int result = service.OrderWrite3(vo);
   		
-  		return "index";
+  		if (result == 1) {
+  			response.setContentType("text/html;charset=utf-8");
+  			PrintWriter out = response.getWriter();
+  			
+  			out.println("<script>location.href='main'</script>");
+  			out.close();
+  		}
   		
   	}
   	

@@ -60,16 +60,14 @@ function find_pw() {
         		swal({
 					title: "비밀번호 찾기",
 					text: "존재하지 않는 아이디거나 입력된 정보가 일치하지 않습니다.",
-					icon: "error",
-					timer: 3000
+					icon: "error"
 				});
 			}
            	else if(msg == "Success") {
 				swal({
 					title: "비밀번호 찾기",
 					text: "회원님의 이메일로 임시 비밀번호가 발송되었습니다.",
-					icon: "success",
-					timer: 3000
+					icon: "success"
 				});
 			}
 		},
@@ -77,8 +75,7 @@ function find_pw() {
 			swal({
 				title: "비밀번호 찾기",
 				text: "오류가 발생하였습니다. 잠시 후 다시 시도해주세요.",
-				icon: "error",
-				timer: 3000
+				icon: "error"
 			});
 		}
 	});

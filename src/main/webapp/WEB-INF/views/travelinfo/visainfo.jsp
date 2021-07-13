@@ -45,6 +45,13 @@
 				<div class="container">
 					<c:out escapeXml="false" value="${fn:replace(fn:replace(VisaInfo.getVisaContent(), '&lt;', '<'), '&gt;', '>')}"/>
 				</div>
+				<div class="d-flex">
+					<div class="ml-auto">
+						<c:if test="${sessionScope.member.getGrade() eq 'Admin'}">
+							<a class="btn btn-primary" href="admin/info">수정하기</a>
+						</c:if>
+					</div>
+				</div>
 			</div>
 		</section>
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href='<c:url value="/resources/images/favicons/favicon-16x16.png"/>'>
 <link rel="manifest" href='<c:url value="/resources/images/favicons/site.webmanifest"/>'>
 <link href='<c:url value="/resources/css/my_table.css"/>' rel="stylesheet">
+<link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 <title>CarefinTour</title>
 </head>
 <body>
@@ -77,20 +79,20 @@
 										<tr>
 											<td>${MyPageOrderList.getoId()}</td>
 											<td>${MyPageOrderList.getpId()}</td>
-											<td>${MyPageOrderList.getProductname()}</td>
+											<td><a href="detailInfo?PID=${MyPageOrderList.getpId()}">${MyPageOrderList.getProductname()}</a></td>
 											<td>${MyPageOrderList.getNum()}</td>
 											<td>${MyPageOrderList.getNum2()}</td>
 											<td>${MyPageOrderList.getNum3()}</td>
-											<td>${MyPageOrderList.getPayment()}</td>
-												<c:choose>
-										<c:when test="${MyPageOrderList.getPaymentstatus() eq 1}">
-											<td><span class="inquiry-status status-0">
-												<a href="detailResvation2?PID=${MyPageOrderList.getpId()}&OID=${MyPageOrderList.getoId()}&Payment=${MyPageOrderList.getPayment()}&num=${MyPageOrderList.getNum()}&num2=${MyPageOrderList.getNum2()}&num3=${MyPageOrderList.getNum3()}">결제보류</a></span></td>
-										</c:when>
-										<c:when test="${MyPageOrderList.getPaymentstatus() eq 2}">
-											<td><span class="inquiry-status status-1">결제완료</span></td>
-										</c:when>
-									</c:choose>
+											<td><fmt:formatNumber value="${MyPageOrderList.getPayment()}" pattern="###,###,###"/></td>
+											<c:choose>
+												<c:when test="${MyPageOrderList.getPaymentstatus() eq 1}">
+													<td><span class="payment-status status-0">
+														<a href="detailResvation2?PID=${MyPageOrderList.getpId()}&OID=${MyPageOrderList.getoId()}&Payment=${MyPageOrderList.getPayment()}&num=${MyPageOrderList.getNum()}&num2=${MyPageOrderList.getNum2()}&num3=${MyPageOrderList.getNum3()}">결제보류</a></span></td>
+												</c:when>
+												<c:when test="${MyPageOrderList.getPaymentstatus() eq 2}">
+													<td><span class="payment-status status-1">결제완료</span></td>
+												</c:when>
+											</c:choose>
 										</tr>
 										</c:forEach>
 									</tbody>

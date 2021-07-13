@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,9 +176,9 @@ function card(creditcard) {
 								<tbody>
 									<tr>
 										<td>기본상품가</td>
-										<td><span style="float: center;">${pdtail.getAdultprice()}</span></td>
-										<td><span style="float: center;">${pdtail.getKidprice()}</span></td>
-										<td><span style="float: center;">${pdtail.getSmallkidprice()}</span></td>
+										<td><span style="float: center;"><fmt:formatNumber value="${pdtail.getAdultprice()}" pattern="###,###,###"/></span></td>
+										<td><span style="float: center;"><fmt:formatNumber value="${pdtail.getKidprice()}" pattern="###,###,###"/></span></td>
+										<td><span style="float: center;"><fmt:formatNumber value="${pdtail.getSmallkidprice()}" pattern="###,###,###"/></span></td>
 									</tr>
 									<tr>
 										<td>인원</td>
@@ -188,7 +189,7 @@ function card(creditcard) {
 									<tr>
 										<td>총 상품가격</td>
 										<td><span style="color: red; float: center;"></span></td>
-										<td><span style="color: red; float: center;">${param.Payment }원</span></td>
+										<td><span style="color: red; float: center;"><fmt:formatNumber value="${param.Payment}" pattern="###,###,###"/>원</span></td>
 										<td><span style="color: red; float: center;"></span></td>
 									</tr>
 								</tbody>
@@ -253,18 +254,6 @@ function card(creditcard) {
 				<div class="d-flex">
 					<div class="mx-auto">
 						<c:if test="${sessionScope.member ne null}">
-							<form action="detailResvationAdd2" method="POST" name="inserted" id="inserted">
-								<input type="hidden" value="${pdtail.getPid()}" id="pId" name="pId"></input>
-								<input type="hidden" value="${pdtail.getProductname()}" id="productname" name="productname"></input>
-								<input type="hidden" value="${pdtail.getStartravelperiod()}" id="startdate" name="startdate"></input>
-								<input type="hidden" value="${member.getName()}" id="name" name="name"></input>
-								<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
-								<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
-								<input type="hidden" value="${param.Payment}" id="payment" name="payment"></input>
-								<input type="hidden" value="${param.num}" id="num" name="num"></input>
-								<input type="hidden" value="${param.num2}" id="num2" name="num2"></input>
-								<input type="hidden" value="${param.num3}" id="num3" name="num3"></input>
-							</form>
 							<button type="button" name="pay" id="pay" data-toggle="modal" data-target="#PurchaseModals" class="thm-btn-psd">결제하기</button>
 							<button type="button" name="paydelay" id="paydealy" onclick="insert2()" class="thm-btn-psd">결제보류</button>
 							<button type="submit" name="cancel" id="cancel" onclick="location.href='main'" class="thm-btn-psd">취소하기</button>
@@ -329,6 +318,7 @@ function card(creditcard) {
 												<input type="hidden" value="${member.getName()}" id="name" name="name"></input>
 												<input type="hidden" value="${member.getUserID()}" id="userId" name="userId"></input>
 												<input type="hidden" value="${member.getPhone()}" id="phonenum" name="phonenum"></input>
+												<input type="hidden" value="${member.getAID()}" id="aId" name="aId"></input>
 												<input type="hidden" value="${param.Payment }" id="payment" name="payment"></input>
 												<input type="hidden" value="${param.num }" id="num" name="num"></input>
 												<input type="hidden" value="${param.num2 }" id="num2" name="num2"></input>

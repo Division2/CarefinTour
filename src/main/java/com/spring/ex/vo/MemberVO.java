@@ -1,7 +1,7 @@
 package com.spring.ex.vo;
 
 public class MemberVO {
-	private int aid;
+	private int AID;
 	private String UserID;
 	private String Password;
 	private String Name;
@@ -16,6 +16,12 @@ public class MemberVO {
 	private Object regDate;
 	private Object lastDate;
 
+	public int getAID() {
+		return AID;
+	}
+	public void setAID(int aID) {
+		AID = aID;
+	}
 	public String getUserID() {
 		return UserID;
 	}
@@ -93,11 +99,5 @@ public class MemberVO {
 	}
 	public void setLastDate(Object lastDate) {
 		this.lastDate = lastDate;
-	}
-	public int getAid() {
-		return aid;
-	}
-	public void setAid(int aid) {
-		this.aid = aid;
 	}
 }

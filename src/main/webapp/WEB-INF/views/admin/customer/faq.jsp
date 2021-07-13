@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href='<c:url value="/resources/css/inquiry.css"/>' rel="stylesheet">
 <title>케어핀투어 관리자</title>
 </head>
 <body id="page-top">
@@ -68,7 +69,7 @@
 								<tr>
 									<th><input type="checkbox"name="RowCheck" value="${faqList.fId }"></th>
 									<td>${faqList.fId}</td>
-									<td>${faqList.category}</td>
+									<td><span class="inquiry-category">${faqList.category}</span></td>
 									<td><a href="faqModify?fId=${faqList.fId}">${faqList.title }</a></td>
 									<td>${faqList.content}</td>
 								</tr>

@@ -72,11 +72,11 @@
 								<c:forEach items="${memberList}" var="MemberVO">
 							<tr>
 								<td>
-									<input name="RowCheck" type="checkbox" value="${MemberVO.getAid()}">			
+									<input name="RowCheck" type="checkbox" value="${MemberVO.getAID()}">			
 								</td>
-								<td><font size="3">${MemberVO.getAid()}</font></td>
+								<td><font size="3">${MemberVO.getAID()}</font></td>
 								<td><font size="3"><c:out value="${MemberVO.userID}"></c:out></font></td>
-								<td><font size="3"><a href="memberView?AID=${MemberVO.getAid()}"><c:out value="${MemberVO.name}"></c:out></a></font></td>
+								<td><font size="3"><a href="memberView?AID=${MemberVO.getAID()}"><c:out value="${MemberVO.name}"></c:out></a></font></td>
 								<td><font size="3"><c:out value="${MemberVO.grade}"></c:out></font></td>
 								<td><font size="3"><c:out value="${MemberVO.email}"></c:out></font></td>
 								<td><font size="3"><c:out value="${MemberVO.phone}"></c:out></font></td>

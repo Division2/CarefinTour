@@ -34,6 +34,12 @@
 		</a>
 	</li>
 	<li class="nav-item">
+		<a class="nav-link" href="topangler">
+			<i class="fas fa-fw fa-table"></i>
+			<span>탑앵글러</span>
+		</a>
+	</li>
+	<li class="nav-item">
 		<a class="nav-link" href="info">
 			<i class="fas fa-fw fa-table"></i>
 			<span>여행 정보</span>

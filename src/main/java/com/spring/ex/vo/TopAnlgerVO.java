@@ -4,15 +4,15 @@ import java.sql.Date;
 
 public class TopAnlgerVO {
 	private int tid;
+	private int AID;
+	private String UserID;
 	private String name;
-	private String title;
-	private String content;
 	private double fishsize;
 	private String fishname;
 	private Date redate;
 	private String s_file_fish;
-	private String o_file_fish;
 	private int ranking;
+	private int status;
 	
 	public int getTid() {
 		return tid;
@@ -20,23 +20,23 @@ public class TopAnlgerVO {
 	public void setTid(int tid) {
 		this.tid = tid;
 	}
+	public int getAID() {
+		return AID;
+	}
+	public void setAID(int aID) {
+		AID = aID;
+	}
+	public String getUserID() {
+		return UserID;
+	}
+	public void setUserID(String userID) {
+		UserID = userID;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
 	}
 	public double getFishsize() {
 		return fishsize;
@@ -62,16 +62,16 @@ public class TopAnlgerVO {
 	public void setS_file_fish(String s_file_fish) {
 		this.s_file_fish = s_file_fish;
 	}
-	public String getO_file_fish() {
-		return o_file_fish;
-	}
-	public void setO_file_fish(String o_file_fish) {
-		this.o_file_fish = o_file_fish;
-	}
 	public int getRanking() {
 		return ranking;
 	}
 	public void setRanking(int ranking) {
 		this.ranking = ranking;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

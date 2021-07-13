@@ -5,6 +5,7 @@ import java.sql.Date;
 public class OrderVO {
 	private int oId;
 	private int pId;
+	private int aId;
 	private String productname;
 	private String userId;
 	private String name;
@@ -31,6 +32,12 @@ public class OrderVO {
 	}
 	public void setpId(int pId) {
 		this.pId = pId;
+	}
+	public int getaId() {
+		return aId;
+	}
+	public void setaId(int aId) {
+		this.aId = aId;
 	}
 	public String getProductname() {
 		return productname;

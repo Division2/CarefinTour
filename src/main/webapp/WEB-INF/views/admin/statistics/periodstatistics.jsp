@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
 <%
@@ -67,11 +68,11 @@
 							<tr>
 								<td>${List.getoId() }</td>
 								<td><a href="/ex/detailInfo?PID=${List.getpId() }">${List.getProductname() }</a></td>
-								<td>${List.getName() }</td>
+								<td><a href="memberView?AID=${List.getaId() }">${List.getName() }</a></td>
 								<td>${List.getPhonenum() }</td>
 								<td>${List.getOrderdate() }</td>
 								<td>${List.getStartdate() }</td>
-								<td>${List.getPayment() }</td>
+								<td><fmt:formatNumber value="${List.getPayment() }" pattern="###,###,###"/></td>
 								<td>${List.getPaymentdate() }</td>
 							</tr>
 							</c:forEach>

@@ -111,6 +111,12 @@ public class TravelReviewDAOImpl implements TravelReviewDAO {
 		return sqlSession.selectOne(namespace + ".getMyPhotoTotalCount", vo);
 	}
 	
+	//탑앵글러 등록
+	@Override
+	public void TopAnglerWrite(TopAnlgerVO vo) throws Exception {
+		sqlSession.insert(namespace + ".TopAnglerWrite", vo);
+	}
+	
 	//탑 앵글러 출력
 	@Override
 	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception {
