@@ -71,8 +71,8 @@
 							<tr>
 								<td><input type="checkbox" name="RowCheck" value="${AdminOrderList.getoId()}"></td>
 								<td>${AdminOrderList.getoId()}</td>
-								<td><a href="packageProductDetail?PID=${AdminOrderList.getpId()}">${AdminOrderList.getpId()}</a></td>
-								<td>${AdminOrderList.getProductname()}</td>
+								<td>${AdminOrderList.getpId()}</td>
+								<td><a href="packageProductDetail?PID=${AdminOrderList.getpId()}">${AdminOrderList.getProductname()}</a></td>
 								<td>${AdminOrderList.getUserId()}</td>
 								<td><a href="memberView?AID=${AdminOrderList.getaId()}">${AdminOrderList.getName()}</a></td>
 								<td>${AdminOrderList.getPhonenum()}</td>

@@ -5,7 +5,7 @@
 
 	<!-- 여행 포토 작성  -->
 	<insert id="TravelPhotoWrite" parameterType="hashMap">
-			INSERT INTO photoreview(UserID, Title, Content, Good, Bad, s_file_name) VALUES (#{userId}, #{title}, #{content}, #{good}, #{bad}, #{s_file_name})
+		INSERT INTO photoreview(UserID, Title, Content, Good, Bad, s_file_name) VALUES (#{userId}, #{title}, #{content}, #{good}, #{bad}, #{s_file_name})
 	</insert>
 	
 	<!-- 여행 포토 수정(사진) -->
@@ -27,8 +27,7 @@
 	<select id="getTravelPhotoTotalCount" resultType="int">
 		SELECT COUNT(*) FROM photoreview
 	</select>
-	
-    
+
     <!-- 여행 포토 수정(내용) -->
     <update id="TravelPhotoUpdate" parameterType="TravelPhotoVO">
     	UPDATE photoreview SET Title=#{title}, content=#{content} WHERE prid = #{prid}
@@ -88,6 +87,11 @@
 	<select id="getMyPhotoTotalCount" resultType="int">
 		SELECT COUNT(*) FROM photoreview WHERE Name = #{Name}
 	</select>
+	
+	<!-- 탑앵글러 등록 -->
+	<insert id="TopAnglerWrite">
+		INSERT INTO topranking(AID, UserID, Name, FishSize, FishName, s_file_fish) VALUES(#{AID}, #{UserID}, #{name}, #{fishsize}, #{fishname}, #{s_file_fish})
+	</insert>
 	
 	<!-- 탑 앵글러 출력 -->
 	<select id="TopAnglerView" resultType="TopAnlgerVO">

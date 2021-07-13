@@ -39,60 +39,60 @@
 				<hr>
 				<div class="row">
 			<c:forEach items="${topangler}" var="topangler">
-			<c:if test="${topangler.getRanking() le 3}">
-				<div class="col-sm-4">
-				<c:if test="${topangler.getRanking() eq 1}">
-					<div class="leaderboard-card leaderboard-card--first">
-						<div class="leaderboard-card__top">
-							<h3 class="text-center">1st</h3>
-						</div>
-						<div class="leaderboard-card__body">
-							<div class="text-center">
-								<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">${topangler.getName() }</h5>
-								<hr>
-								<div class="d-flex justify-content-between align-items-center">
-									<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+				<c:if test="${topangler.getRanking() le 3}">
+					<div class="col-sm-4">
+						<c:if test="${topangler.getRanking() eq 1}">
+							<div class="leaderboard-card leaderboard-card--first">
+								<div class="leaderboard-card__top">
+									<h3 class="text-center">1st</h3>
+								</div>
+								<div class="leaderboard-card__body">
+									<div class="text-center">
+										<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+										<h5 class="mb-0">${topangler.getName() }</h5>
+										<hr>
+										<div class="d-flex justify-content-between align-items-center">
+											<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</c:if>
-				<c:if test="${topangler.getRanking() eq 2}">
-					<div class="leaderboard-card leaderboard-card--second">
-						<div class="leaderboard-card__top">
-							<h3 class="text-center">2nd</h3>
-						</div>
-						<div class="leaderboard-card__body">
-							<div class="text-center">
-								<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">${topangler.getName() }</h5>
-								<hr>
-								<div class="d-flex justify-content-between align-items-center">
-									<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+						</c:if>
+						<c:if test="${topangler.getRanking() eq 2}">
+							<div class="leaderboard-card leaderboard-card--second">
+								<div class="leaderboard-card__top">
+									<h3 class="text-center">2nd</h3>
+								</div>
+								<div class="leaderboard-card__body">
+									<div class="text-center">
+										<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+										<h5 class="mb-0">${topangler.getName() }</h5>
+										<hr>
+										<div class="d-flex justify-content-between align-items-center">
+											<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</c:if>
-				<c:if test="${topangler.getRanking() eq 3}">
-					<div class="leaderboard-card leaderboard-card--third">
-						<div class="leaderboard-card__top">
-							<h3 class="text-center">3rd</h3>
-						</div>
-						<div class="leaderboard-card__body">
-							<div class="text-center">
-								<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
-								<h5 class="mb-0">${topangler.getName() }</h5>
-								<hr>
-								<div class="d-flex justify-content-between align-items-center">
-									<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+						</c:if>
+						<c:if test="${topangler.getRanking() eq 3}">
+							<div class="leaderboard-card leaderboard-card--third">
+								<div class="leaderboard-card__top">
+									<h3 class="text-center">3rd</h3>
+								</div>
+								<div class="leaderboard-card__body">
+									<div class="text-center">
+										<img src='<c:url value="/resources/images/topangler/${topangler.getS_file_fish() }"/>' class="circle-img mb-2" alt="User Img">
+										<h5 class="mb-0">${topangler.getName() }</h5>
+										<hr>
+										<div class="d-flex justify-content-between align-items-center">
+											<span><i class="fas fa-fish"></i> ${topangler.getFishname() } ${topangler.getFishsize() }cm</span>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+						</c:if>
 					</div>
-				</c:if>
-				</div>
 				</c:if>
 			</c:forEach>
 				</div>
@@ -109,6 +109,7 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${topangler}" var="topangler">
+							<c:if test="${topangler.getStatus() eq 1 }">
 							<tr>
 								<td>
 									<div class="d-flex align-items-baseline">
@@ -126,11 +127,75 @@
 								<td>${topangler.getFishname() }</td>
 								<td>${topangler.getFishsize() } cm</td>
 							</tr>
+							</c:if>
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				<div class="d-flex">
+					<div class="ml-auto">
+						<a class="thm-btn-psd" href="#" id="twayFont" data-toggle="modal" data-target="#TopAnglerWriteModal">등록 요청</a>
+					</div>
+				</div>
 			</div>
 		</section>
+		
+			<!-- 탑앵글러 등록 -->
+			<div class="modal fade" id="TopAnglerWriteModal" tabindex="-1" role="dialog" aria-labelledby="TopAnglerWriteModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header border-bottom-0">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-title text-center">
+								<h4>탑앵글러</h4>
+								<hr>
+							</div>
+							<div class="d-flex flex-column">
+								<form id="TopAnglerWrite" name="TopAnglerWrite" action="TopAnglerWrite" method="POST" enctype="multipart/form-data">
+									<div class="form-group">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text">이름(Angler)</span>
+											</div>
+											<input type="text" id="Name" name="name" class="form-control" placeholder="홍길동" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text">물고기 종류</span>
+											</div>
+											<input type="text" id="FishName" name="fishname" class="form-control" placeholder="청새치" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text">물고기 크기</span>
+											</div>
+											<input type="text" id="FishSize" name="fishsize" class="form-control" placeholder="22" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<span class="input-group-text">랭킹 이미지</span>
+										<div class="inputArea"> 
+											<div class="select_img"> 
+												<img src="" class="img-fluid">
+												<input type="file" id="imgFile" name="file"/>
+											</div>
+										</div>
+									</div>
+									<input type="hidden" id="AID" name="AID" value="${sessionScope.member.getAID() }">
+									<input type="hidden" id="UserID" name="UserID" value="${sessionScope.member.getUserID() }">
+									<button type="submit" class="btn btn-primary btn-block btn-round">탑앵글러 등록</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		
 		<!-- 게시글 페이징 처리(기준 10개) -->
 		<div class="post-pagination">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,7 +129,7 @@ function cal3(){
 									<div class="tour-one__stars"></div>
 								</div>
 								<div class="tour-two__right">
-									<p><span>${pdtail.getAdultprice()}</span> <br> Per Person</p>
+									<p><span>$<fmt:formatNumber value="${pdtail.getAdultprice()}" pattern="###,###,###"/></span> <br> Per Person</p>
 								</div>
 							</div>
 							<ul class="tour-one__meta list-unstyled">

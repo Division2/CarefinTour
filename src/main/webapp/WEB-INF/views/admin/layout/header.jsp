@@ -19,15 +19,15 @@
 			 </a>
 			<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 				<a class="dropdown-item" href="#" data-toggle="modal" data-target="#profileEditModal">
-					<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile
+					<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>내 정보
 				</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="/ex/main">
-					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>MainPage
+					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>메인화면
 				</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="logout">
-					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>logout
+					<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그아웃
 				</a>
 			</div>
 		</li>

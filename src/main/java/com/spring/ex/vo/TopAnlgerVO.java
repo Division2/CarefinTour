@@ -4,18 +4,33 @@ import java.sql.Date;
 
 public class TopAnlgerVO {
 	private int tid;
+	private int AID;
+	private String UserID;
 	private String name;
 	private double fishsize;
 	private String fishname;
 	private Date redate;
 	private String s_file_fish;
 	private int ranking;
+	private int status;
 	
 	public int getTid() {
 		return tid;
 	}
 	public void setTid(int tid) {
 		this.tid = tid;
+	}
+	public int getAID() {
+		return AID;
+	}
+	public void setAID(int aID) {
+		AID = aID;
+	}
+	public String getUserID() {
+		return UserID;
+	}
+	public void setUserID(String userID) {
+		UserID = userID;
 	}
 	public String getName() {
 		return name;
@@ -52,5 +67,11 @@ public class TopAnlgerVO {
 	}
 	public void setRanking(int ranking) {
 		this.ranking = ranking;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

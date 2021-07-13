@@ -120,10 +120,6 @@ public class CareController {
 	public String travelphotoModify() {
 		return "ranking/travelphotoModify";
 	}
-	@RequestMapping("myaddphoto")
-	public String myaddphoto() {
-		return "ranking/myaddphoto";
-	}
 
 	//여행정보
 	@RequestMapping("exchangeinfo")

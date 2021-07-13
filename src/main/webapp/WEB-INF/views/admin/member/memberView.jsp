@@ -137,7 +137,7 @@
 									<tr>
 										<td>${OrderVO.oId }</td>
 										<td>${OrderVO.pId }</td>
-										<td>${OrderVO.productname }</td>
+										<td><a href="/ex/detailInfo?PID=${OrderVO.pId }" target="_blank">${OrderVO.productname }</a></td>
 										<td>${OrderVO.payment }</td>
 										<td>${OrderVO.accumlatemileage }</td>
 										<td>${OrderVO.paymentdate }</td>
@@ -161,7 +161,7 @@
 								<c:forEach items="${minquiry}" var="InquiryVO">
 									<tr>
 										<td>${InquiryVO.iId }</td>
-										<td>${InquiryVO.title }</td>
+										<td><a href="inquiryView?iId=${InquiryVO.iId }" target="_blank">${InquiryVO.title }</a></td>
 										<td>${InquiryVO.reDate }</td>
 										<td>${InquiryVO.status }</td>
 									</tr>

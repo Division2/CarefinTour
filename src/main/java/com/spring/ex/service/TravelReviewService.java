@@ -59,6 +59,9 @@ public interface TravelReviewService {
 	//여행 포토 내 게시글 총 갯수
 	public int MyPhotoTotalCount(MemberVO vo) throws Exception;
 	
+	//탑앵글러 등록
+	public void TopAnglerWrite(TopAnlgerVO vo) throws Exception;
+	
 	//탑 앵글러 출력
 	public List<TopAnlgerVO> TopAnglerView(HashMap<String, Integer> map) throws Exception;
 

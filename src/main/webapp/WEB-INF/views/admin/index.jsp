@@ -87,7 +87,7 @@
 											<div class="h5 mb-0 font-weight-bold text-gray-800">
 												<c:choose>
 													<c:when test="${TodayRevenueTotalCount ne null}">
-														<fmt:formatNumber value="${TodayRevenueTotalCount }" pattern="###,###,###" />원
+														<fmt:formatNumber value="${TodayRevenueTotalCount }" pattern="###,###,###"/>원
 													</c:when>
 													<c:otherwise>
 														금일 매출이 없습니다.

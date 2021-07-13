@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	String beginMonth = request.getParameter("searchStartDate");
-%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%String beginMonth = request.getParameter("searchStartDate");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +60,9 @@
 									</div>
 								</div>
 								<div class="tour-two__text">
-									<p>${plist.getOverview()}</p>
+									<p>
+										<c:out escapeXml="false" value="${fn:replace(fn:replace(plist.getOverview(), '&lt;', '<'), '&gt;', '>')}"/>
+									</p>
 								</div>
 								<ul class="tour-one__meta list-unstyled">
 									<li><a href="detailInfo?PID=${plist.getPid()}"><i class="far fa-clock"></i>${plist.getStartravelperiod()}~${plist.getArrivaltravelperiod()}</a></li>

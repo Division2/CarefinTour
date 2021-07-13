@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	//현재시간 구해서 String으로 formating
 	LocalDateTime nowTime = LocalDateTime.now();
@@ -152,10 +153,10 @@
 									<a href="detailInfo?PID=${UsaPackageViewList.pid}">${UsaPackageViewList.productname}</a>
 								</h3>
 								<p>
-									<span>${UsaPackageViewList.adultprice }~</span> / 1인 기준
+									<span><fmt:formatNumber value="${UsaPackageViewList.adultprice }" pattern="###,###,###"/>~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><i class="far fa-clock"> 2박3일 </i></li>
+									<li><i class="far fa-clock">2박3일 </i></li>
 									<li><i class="far fa-user-circle"><c:out value="${UsaPackageViewList.hit}"/></i> </li>
 									<li><i class="far fa-map"> ${UsaPackageViewList.area}</i> </li>
 								</ul>
@@ -175,10 +176,10 @@
 									<a href="detailInfo?PID=${ChinaPackageViewList.pid}">${ChinaPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>${ChinaPackageViewList.adultprice }~</span> / 1인 기준
+									<span><fmt:formatNumber value="${ChinaPackageViewList.adultprice }" pattern="###,###,###"/>~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><i class="far fa-clock"> 3박 4일</i></li>
+									<li><i class="far fa-clock">3박 4일</i></li>
 									<li><i class="far fa-user-circle"><c:out value="${ChinaPackageViewList.hit}"/></i></li>
 									<li><i class="far fa-map"> ${ChinaPackageViewList.area}</i></li>
 								</ul>
@@ -198,7 +199,7 @@
 									<a href="detailInfo?PID=${MylPackageViewList.pid}">${MylPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>${MylPackageViewList.adultprice }~</span> / 1인 기준
+									<span><fmt:formatNumber value="${MylPackageViewList.adultprice }" pattern="###,###,###"/>~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
 									<li><i class="far fa-clock">4박 5일</i></li>
@@ -221,7 +222,7 @@
 									<a href="detailInfo?PID=${JapanPackageViewList.pid}">${JapanPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>${JapanPackageViewList.adultprice }~</span> / 1인 기준
+									<span><fmt:formatNumber value="${JapanPackageViewList.adultprice }" pattern="###,###,###"/>~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
 									<li><i class="far fa-clock">2박 3일</i></li>
@@ -245,10 +246,10 @@
 									<a href="detailInfo?PID=${SurfingPackageViewList.pid}">${SurfingPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>${SurfingPackageViewList.adultprice }~</span> / 1인 기준
+									<span><fmt:formatNumber value="${SurfingPackageViewList.adultprice }" pattern="###,###,###"/>~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><i class="far fa-clock"> 6박 7일</i></li>
+									<li><i class="far fa-clock">6박 7일</i></li>
 									<li><i class="far fa-user-circle"> <c:out value="${SurfingPackageViewList.hit}"/></i></li>
 									<li><i class="far fa-map"> ${SurfingPackageViewList.area}</i></li>
 								</ul>
@@ -268,10 +269,10 @@
 									<a href="detailInfo?PID=${EuPackageViewList.pid}">${EuPackageViewList.productname }</a>
 								</h3>
 								<p>
-									<span>${EuPackageViewList.adultprice }~</span> / 1인 기준
+									<span><fmt:formatNumber value="${EuPackageViewList.adultprice }" pattern="###,###,###"/>~</span> / 1인 기준
 								</p>
 								<ul class="tour-one__meta list-unstyled">
-									<li><i class="far fa-clock"> 6박 7일</i></li>
+									<li><i class="far fa-clock">6박 7일</i></li>
 									<li><i class="far fa-user-circle"> ${EuPackageViewList.hit }</i></li>
 									<li><i class="far fa-map">${EuPackageViewList.area }</i></li>
 								</ul>

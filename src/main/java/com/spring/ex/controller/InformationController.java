@@ -21,6 +21,7 @@ public class InformationController {
 		
 		return "information/companyoverview";
 	}
+	
 	// 여행약관 국내 해외 배너 출력
 	@RequestMapping(value = "/domestictttac", method = RequestMethod.GET)
 	public String domestictttac(Model model) throws Exception {

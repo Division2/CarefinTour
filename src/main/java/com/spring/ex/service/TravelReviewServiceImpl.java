@@ -114,6 +114,12 @@ public class TravelReviewServiceImpl implements TravelReviewService {
 	public int MyPhotoTotalCount(MemberVO vo) throws Exception {
 		return dao.MyPhotoTotalCount(vo);
 	}
+	
+	//탑앵글러 등록
+	@Override
+	public void TopAnglerWrite(TopAnlgerVO vo) throws Exception {
+		dao.TopAnglerWrite(vo);
+	}
 
 	//탑 앵글러 출력
 	@Override

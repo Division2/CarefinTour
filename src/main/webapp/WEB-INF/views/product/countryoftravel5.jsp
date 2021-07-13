@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <%@ page import="java.time.LocalDateTime"%>
 <%
@@ -66,7 +67,7 @@
 												<h3><a href="detailInfo?PID=${plist5.getPid()}">${plist5.getProductname()}</a></h3>
 											</div>
 											<div class="tour-two__right">
-												<p><span>${plist5.getAdultprice()}$</span> <br> 인당 가격</p>
+												<p><span>$<fmt:formatNumber value="${plist5.getAdultprice()}" pattern="###,###,###"/></span> <br> 인당 가격</p>
 											</div>
 										</div>
 										<div class="tour-two__text">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,9 +176,9 @@ function card(creditcard) {
 								<tbody>
 									<tr>
 										<td>기본상품가</td>
-										<td><span style="float: center;">${pdtail.getAdultprice()}</span></td>
-										<td><span style="float: center;">${pdtail.getKidprice()}</span></td>
-										<td><span style="float: center;">${pdtail.getSmallkidprice()}</span></td>
+										<td><span style="float: center;"><fmt:formatNumber value="${pdtail.getAdultprice()}" pattern="###,###,###"/></span></td>
+										<td><span style="float: center;"><fmt:formatNumber value="${pdtail.getKidprice()}" pattern="###,###,###"/></span></td>
+										<td><span style="float: center;"><fmt:formatNumber value="${pdtail.getSmallkidprice()}" pattern="###,###,###"/></span></td>
 									</tr>
 									<tr>
 										<td>인원</td>
@@ -188,7 +189,7 @@ function card(creditcard) {
 									<tr>
 										<td>총 상품가격</td>
 										<td><span style="color: red; float: center;"></span></td>
-										<td><span style="color: red; float: center;">${param.Payment }원</span></td>
+										<td><span style="color: red; float: center;"><fmt:formatNumber value="${param.Payment}" pattern="###,###,###"/>원</span></td>
 										<td><span style="color: red; float: center;"></span></td>
 									</tr>
 								</tbody>
