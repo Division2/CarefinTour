@@ -60,7 +60,7 @@
 								<tr align="center">
 									<td><input type="checkbox" name="RowCheck" value="${topangler.getTid()}"></td>
 									<td><font size="2">${topangler.getRanking() }위</font></td>
-									<td><font size="2">${topangler.getName() }</font></td>
+									<td><a href="memberView?AID=${topangler.getTid()}"><font size="2">${topangler.getName() }</font></a></td>
 									<td><font size="2">${topangler.getFishname() }</font></td>
 									<td><font size="2">${topangler.getFishsize() } cm</font></td>
 								</tr>
