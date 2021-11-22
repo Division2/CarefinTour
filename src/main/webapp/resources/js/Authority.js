@@ -11,7 +11,7 @@ function AuthCheck() {
 		}
 	}).then((result) => {
 		if(result) {
-			history.back();
+			location.href="/ex/main";
 		}
 	});
 }

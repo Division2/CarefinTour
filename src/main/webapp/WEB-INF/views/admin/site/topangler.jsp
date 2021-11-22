@@ -53,22 +53,56 @@
 								<th>이름(angler)</th>
 								<th>물고기 종류</th>
 								<th>물고기 크기</th>
+								<th>게시 여부</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${topangler}" var="topangler">
-								<tr align="center">
+							<c:forEach items="${topangler}" var="topangler" varStatus="i">
+								<tr id="test1234" align="center">
 									<td><input type="checkbox" name="RowCheck" value="${topangler.getTid()}"></td>
 									<td><font size="2">${topangler.getRanking() }위</font></td>
-									<td><a href="memberView?AID=${topangler.getTid()}"><font size="2">${topangler.getName() }</font></a></td>
+									<td><a href="memberView?AID=${topangler.getAID()}"><font size="2">${topangler.getName() }</font></a></td>
 									<td><font size="2">${topangler.getFishname() }</font></td>
 									<td><font size="2">${topangler.getFishsize() } cm</font></td>
+									<c:choose>
+										<c:when test="${topangler.getStatus() eq 1}">
+											<td><input type="checkbox" id="${topangler.getTid()}" name="chkBox" data-toggle="toggle" data-size="xs" data-onstyle="primary" checked="checked"></td>
+										</c:when>
+										<c:when test="${topangler.getStatus() eq 0}">
+											<td><input type="checkbox" id="${topangler.getTid()}" name="chkBox" data-toggle="toggle" data-size="xs" data-onstyle="primary"></td>
+										</c:when>
+									</c:choose>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 			</div>
+			
+			<script>
+				$('input[name="chkBox"]').change(function() {
+					var tid = this.id;
+					var status;
+					if (this.checked == true) {
+						status = 1;
+			  			$.ajax({
+						    url : "TopAnglerStatusChange",
+						    type : 'POST',
+						    traditional : true,
+						    data : { "tid" : tid, "status" : status }
+						});
+					}
+					else {
+						status = 0;
+			  			$.ajax({
+						    url : "TopAnglerStatusChange",
+						    type : 'POST',
+						    traditional : true,
+						    data : { "tid" : tid, "status" : status }
+						});
+					}
+				});
+			</script>
 			
 			<!-- 게시글 페이징 처리(기준 10개) -->
 			<nav aria-label="Page navigation">
@@ -154,11 +188,17 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<span class="input-group-text">랭킹 이미지</span>
-										<div class="inputArea"> 
-											<div class="select_img"> 
-												<img src="" class="img-fluid">
-												<input type="file" id="imgFile" name="file"/>
+										<div class="input-group my-2 mb-1">
+											<div class="input-group-prepend">
+												<span class="input-group-text">물고기 사진</span>
+											</div>
+											<input type="file" id="imgFile" name="file">
+											<div class="d-flex">
+												<div class="mx-auto">
+													<div class="select_img"> 
+														<img src="" class="img-fluid">
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -242,6 +282,9 @@
 					}
 				}
 				
+				$(".custom-file-input").on("change", function() {
+					$(this).siblings(".custom-file-label").addClass("selected").html($(this).val().split("\\").pop());
+				});
 				$("#imgFile").change(function(){
 					if(this.files && this.files[0]) {
 						var reader = new FileReader;

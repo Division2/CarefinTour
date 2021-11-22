@@ -19,7 +19,7 @@
 				<!-- 상단 헤더 부분 -->
 				<jsp:include page="../layout/header.jsp"/>
 				<!-- 상단 헤더 부분 -->
-						<div class="container">
+						<div class="container-fluid">
 							<h1>1:1 문의</h1>
 							<hr>
 							<div class="card">
@@ -148,7 +148,6 @@
 											</div>
 											<input type="hidden" id="iId" name="iId" value="<%=request.getParameter("iId")%>">
 											<button type="submit" class="btn btn-primary btn-block btn-round">수정하기</button>
-											<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
 										</form>
 									</div>
 								</div>

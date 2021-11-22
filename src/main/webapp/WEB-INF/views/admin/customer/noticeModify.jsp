@@ -25,44 +25,46 @@
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Modify Notice</h1>
 					</div>
-					<hr>
-				<form id="NoticeBoardModify" name="NoticeBoardModify" action="noticeModify" method="POST">
-						<div class="form-group row">
-							<label class="form-label col-sm-1" for="important">중요</label>
-							<div class="col-sm-1">
-								<c:choose>
-									<c:when test="${content.important eq 'Y' }">
-										<input class="form-control" type="checkbox" id="Important_CheckBox" name="Important_CheckBox" checked>
-										<input type="hidden" id="Important" name="Important">
-									</c:when>
-									<c:when test="${content.important eq 'N' }">
-										<input class="form-control" type="checkbox" id="Important_CheckBox" name="Important_CheckBox">
-										<input type="hidden" id="Important" name="Important">
-									</c:when>
-								</c:choose>
+					<form id="NoticeBoardModify" name="NoticeBoardModify" action="noticeModify" method="POST">
+						<table class="table">
+							<tbody>
+								<tr>
+									<td style="width: 5%">중요</td>
+									<td>
+										<c:choose>
+											<c:when test="${content.important eq 'Y' }">
+												<input type="checkbox" id="Important_CheckBox" name="Important_CheckBox" checked>
+												<input type="hidden" id="Important" name="Important">
+											</c:when>
+											<c:when test="${content.important eq 'N' }">
+												<input type="checkbox" id="Important_CheckBox" name="Important_CheckBox">
+												<input type="hidden" id="Important" name="Important">
+											</c:when>
+										</c:choose>
+									</td>
+								</tr>
+								<tr>
+									<td>제목</td>
+									<td>
+										<input class="form-control" type="text" id="Title" name="Title" value='<c:out escapeXml="false" value="${content.getTitle() }"/>'>
+									</td>
+								</tr>
+								<tr>
+									<td>내용</td>
+									<td>
+										<textarea class="form-control" rows="10" id="Content" name="Content"><c:out escapeXml="false" value="${fn:replace(content.getContent(), '<br>', crlf)}"/></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<input type="hidden" id="nId" name="nId" value="<%=request.getParameter("nId")%>">
+						<div class="d-flex">
+							<div class="ml-auto">
+								<button type="button" class="btn btn-primary" onclick="NoticeModify()">수정</button>
+								<button type="reset" class="btn btn-primary">취소</button>
+								<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
+								<button type="button" class="btn btn-primary" onclick="location.href='notice'">목록</button>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-1" for="title">제목</label>
-							<div class="col-sm-10">
-								<input class="form-control" type="text" id="Title" name="Title" value='<c:out escapeXml="false" value="${content.getTitle() }"/>'>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="form-label col-sm-1">내용</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" rows="10" id="Content" name="Content"><c:out escapeXml="false" value="${fn:replace(content.getContent(), '<br>', crlf)}"/></textarea>
-							</div>
-						</div>
-						<div class="form-group row">
-							<input type="hidden" id="nId" name="nId" value="<%=request.getParameter("nId")%>">
-								<div class="col-sm-2"></div>
-								<div class="col-sm-10">
-									<button type="button" class="btn btn-primary" onclick="NoticeModify()">수정</button>
-									<button type="reset" class="btn btn-primary">취소</button>
-									<button type="button" class="btn btn-primary" onclick="history.back()">이전</button>
-									<button type="button" class="btn btn-primary" onclick="location.href='notice'">목록</button>
-								</div>
 						</div>
 					</form>
 				</div>
