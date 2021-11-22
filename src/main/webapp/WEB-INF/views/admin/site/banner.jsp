@@ -29,7 +29,7 @@
 					<h1 class="h3 mb-0 text-gray-800">&emsp;Banner Management</h1>
 				</div>
 				<hr class="text-gray-800" ><br>
-				<h5 class="h3 mb-0 text-gray-800">&nbsp;메인 및 상품</h5><br>
+				<h5 class="h3 mb-0 text-gray-800">&nbsp; &nbsp; 메인 및 상품</h5><br>
 				<div class="container-fluid" align="center"> 			
 					<c:forEach items="${blist}" var="blist">
 					<c:choose>	
