@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.ex.admin.service.AdminTopAnglerService;
@@ -30,7 +31,7 @@ public class AdminTopAnglerController {
 	@RequestMapping(value = "/admin/topangler", method = RequestMethod.GET)
 	public String TopAngler(HttpServletRequest request, Model model) throws Exception {
 		
-		int totalCount = TRservice.TopAnglerTotalCount();
+		int totalCount = service.TopAnglerTotalCount();
 		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
 		PagingVO paging = new PagingVO();
@@ -44,7 +45,7 @@ public class AdminTopAnglerController {
 		map.put("Page", page);
 		map.put("PageSize", paging.getPageSize());
 		
-		List<TopAnlgerVO> topanglerList = TRservice.TopAnglerView(map);
+		List<TopAnlgerVO> topanglerList = service.TopAnglerView(map);
 		
 		model.addAttribute("topangler", topanglerList);
 		model.addAttribute("Paging", paging);
@@ -87,5 +88,16 @@ public class AdminTopAnglerController {
         }
 		
 		return "admin/site/topangler";
+	}
+	
+	@RequestMapping(value = "/admin/TopAnglerStatusChange", method = RequestMethod.POST)
+	public @ResponseBody int TopAnglerStatusChange(TopAnlgerVO vo) throws Exception {
+		
+		int result = 0;
+		if (vo != null) {
+			result = service.TopAnglerStatusChange(vo);
+		}
+		
+		return result;
 	}
 }

@@ -879,3 +879,57 @@ function AdminFaqCategory() {
 		}
 	});
 }
+
+/* 탑앵글러 등록 유효성 검사 */
+function TopAnglerWriteCheck() {
+	var fishName = $("#FishName").val();
+	var fishSize = $("#FishSize").val();
+	
+	if(!fishName) {
+		swal({
+			title: "탑 앵글러",
+			text: "물고기 이름이 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else if(!fishSize) {
+		swal({
+			title: "탑 앵글러",
+			text: "물고기 실측 사이즈가 입력되지 않았습니다.",
+			icon: "warning",
+			timer: 3000
+		});
+		return false;
+	}
+	else {
+		Swal.fire({
+			title: '탑 앵글러',
+			text: "랭킹 등록 요청을 하시겠습니까?",
+			icon: 'info',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '확인',
+			cancelButtonText: '취소'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				swal({
+					title: "탑 앵글러",
+					text: "요청이 완료되었습니다.",
+					icon: "success",
+					buttons : {
+						confirm : {
+							value : true
+						}
+					}
+				}).then((result) => {
+					if(result) {
+						$("#TopAnglerWrite").submit();
+					}
+				});
+			}
+		})
+	}
+}

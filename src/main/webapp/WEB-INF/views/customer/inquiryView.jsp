@@ -117,7 +117,7 @@
 					<div class="ml-auto">
 					<c:if test="${answerContent ne null && sessionScope.member ne null && sessionScope.member.getGrade() eq 'Admin'}">
 						<button class="thm-btn-psd" type="button" data-toggle="modal" data-target="#AnswerEditModal">수정</button>
-						<button class="thm-btn-psd" type="button"  onclick="answerInquiryDelete()">삭제</button>
+						<button class="thm-btn-psd" type="button" onclick="answerInquiryDelete()">삭제</button>
 					</c:if>
 					<c:if test="${answerContent ne null}">
 						<button class="thm-btn-psd" type="button" onclick="location.href='inquiry'">목록</button>
