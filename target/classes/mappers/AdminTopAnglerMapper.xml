@@ -3,18 +3,33 @@
 
 <mapper namespace="com.spring.ex.AdminTopAnglerMapper">
 
-	<!-- 탑앵글러 등록 -->
+	<!-- 탑 앵글러 등록 -->
 	<insert id="TopAnglerWrite">
 		INSERT INTO topranking(Name, FishSize, FishName, s_file_fish) VALUES(#{name}, #{fishsize}, #{fishname}, #{s_file_fish})
 	</insert>
 
-	<!-- 탑앵글러 삭제 -->
+	<!-- 탑 앵글러 삭제 -->
 	<delete id="TopAnglerDelete">
 		DELETE FROM topranking WHERE TID = #{tId}
 	</delete>
 	
-	<!-- 탑앵글러 파일 이름 검색 -->
+	<!-- 탑 앵글러 파일 이름 검색 -->
 	<select id="TopAnglerFileName" resultType="String">
 		SELECT s_file_fish FROM topranking WHERE TID = #{tId}
 	</select>
+	
+	<!-- 탑 앵글러 출력 -->
+	<select id="TopAnglerView" resultType="TopAnlgerVO">
+		SELECT *, ROW_NUMBER() OVER(ORDER BY FishSize DESC) AS ranking FROM topranking LIMIT #{Page}, #{PageSize}
+	</select>
+	
+	<!-- 탑 앵글러 총 갯수 -->
+	<select id="getTopAnglerTotalCount" resultType="int">
+		SELECT COUNT(*) FROM topranking
+	</select>
+	
+	<!-- 탑 앵글러 요청 상태 전환(0 <-> 1) / 0 : 미등록, 1 : 등록 -->
+	<update id="TopAnglerStatusChange">
+		UPDATE topranking SET status = #{status} WHERE TID = #{tid};
+	</update>
 </mapper>

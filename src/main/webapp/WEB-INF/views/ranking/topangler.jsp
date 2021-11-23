@@ -134,68 +134,13 @@
 				
 				<div class="d-flex">
 					<div class="ml-auto">
-						<a class="thm-btn-psd" href="#" id="twayFont" data-toggle="modal" data-target="#TopAnglerWriteModal">등록 요청</a>
+						<c:if test="${sessionScope.member ne null && sessionScope.member.getGrade() eq 'User'}">
+							<a class="thm-btn-psd" href="#" id="twayFont" data-toggle="modal" data-target="#TopAnglerWriteModal">등록 요청</a>
+						</c:if>
 					</div>
 				</div>
 			</div>
 		</section>
-		
-			<!-- 탑앵글러 등록 -->
-			<div class="modal fade" id="TopAnglerWriteModal" tabindex="-1" role="dialog" aria-labelledby="TopAnglerWriteModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header border-bottom-0">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="modal-body">
-							<div class="form-title text-center">
-								<h4>탑앵글러</h4>
-								<hr>
-							</div>
-							<div class="d-flex flex-column">
-								<form id="TopAnglerWrite" name="TopAnglerWrite" action="TopAnglerWrite" method="POST" enctype="multipart/form-data">
-									<div class="form-group">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text">이름(Angler)</span>
-											</div>
-											<input type="text" id="Name" name="name" class="form-control" placeholder="홍길동" required>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text">물고기 종류</span>
-											</div>
-											<input type="text" id="FishName" name="fishname" class="form-control" placeholder="청새치" required>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="input-group my-2 mb-1">
-											<div class="input-group-prepend">
-												<span class="input-group-text">물고기 크기</span>
-											</div>
-											<input type="text" id="FishSize" name="fishsize" class="form-control" placeholder="22" required>
-										</div>
-									</div>
-									<div class="form-group">
-										<span class="input-group-text">랭킹 이미지</span>
-										<div class="inputArea"> 
-											<div class="select_img"> 
-												<img src="" class="img-fluid">
-												<input type="file" id="imgFile" name="file"/>
-											</div>
-										</div>
-									</div>
-									<input type="hidden" id="AID" name="AID" value="${sessionScope.member.getAID() }">
-									<input type="hidden" id="UserID" name="UserID" value="${sessionScope.member.getUserID() }">
-									<button type="submit" class="btn btn-primary btn-block btn-round">탑앵글러 등록</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		
 		<!-- 게시글 페이징 처리(기준 10개) -->
 		<div class="post-pagination">
@@ -230,8 +175,94 @@
 			</c:choose>
 		</div>
 		<br>
-		
 		<jsp:include page="../layout/footer.jsp"/>
+		<script src='<c:url value="resources/js/Board.js"/>'></script>
+		
+		<!-- 탑앵글러 등록 -->
+		<div class="modal fade" id="TopAnglerWriteModal" tabindex="-1" role="dialog" aria-labelledby="TopAnglerWriteModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header border-bottom-0">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-title text-center">
+							<h4>탑앵글러</h4>
+							<hr>
+						</div>
+						<div class="d-flex flex-column">
+							<form id="TopAnglerWrite" name="TopAnglerWrite" action="TopAnglerWrite" method="POST" enctype="multipart/form-data">
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text">이름(Angler)</span>
+										</div>
+										<input type="text" id="Name" name="name" value="${sessionScope.member.getName() }" class="form-control" readonly="readonly">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text">물고기 종류</span>
+										</div>
+										<input type="text" id="FishName" name="fishname" class="form-control" placeholder="청새치" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<div class="input-group-prepend">
+											<span class="input-group-text">물고기 크기</span>
+										</div>
+										<input type="text" id="FishSize" name="fishsize" class="form-control" placeholder="22" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group my-2 mb-1">
+										<span class="input-group-text">물고기 사진</span>
+										<div class="custom-file">
+											<input type="file" id="imgFile" name="file" class="custom-file-input">
+											<label class="custom-file-label" for="imgFile">파일을 선택하세요</label>
+										</div>
+									</div>
+									<div class="d-flex">
+										<div class="mx-auto">
+											<div class="select_img"> 
+												<img src="" class="img-fluid">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<input type="hidden" id="AID" name="AID" value="${sessionScope.member.getAID() }">
+								<input type="hidden" id="topUserID" name="UserID" value="${sessionScope.member.getUserID() }">
+								<div class="d-flex">
+									<div class="mx-auto">
+										<button class="thm-btn-psd btn-block btn-round" type="button" onclick="TopAnglerWriteCheck()">등록 요청하기</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			//랭킹 등록 요청 script 임시
+			$(".custom-file-input").on("change", function() {
+				$(this).siblings(".custom-file-label").addClass("selected").html($(this).val().split("\\").pop());
+			});
+			$("#imgFile").change(function(){
+				if(this.files && this.files[0]) {
+					var reader = new FileReader;
+					reader.onload = function(data) {
+						$(".select_img img").attr("src", data.target.result).width(500);								
+					}
+					reader.readAsDataURL(this.files[0]);
+				}
+			});
+		</script>
+		
 	</div>
 	<!-- 메인 영역 -->
 </body>

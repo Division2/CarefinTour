@@ -19,6 +19,7 @@
 				<!-- 상단 헤더 부분 -->
 				
 				<!-- 본문 -->
+				<div class="container-fluid">
 					<div class="form-title text-center">
 						<h4>회원 상세정보</h4>
 						<hr>
@@ -172,17 +173,18 @@
 						</form>
 					</div>
 				</div>
-				<!-- 본문 -->
 			</div>
-			<!-- 하단 푸터 부분 -->
-				</div>
-			<jsp:include page="../layout/footer.jsp"/>
-    		<!-- 하단 푸터 부분 -->
-			<script type="text/javascript">
-			$(document).ready(function(){
-				$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
-				$("#sex").val("${mDetail.getSex()}").prop("selected", true);
-			})
-			</script>
+			<!-- 본문 -->
+		</div>
+	<!-- 하단 푸터 부분 -->
+	</div>
+	<jsp:include page="../layout/footer.jsp"/>
+  		<!-- 하단 푸터 부분 -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#grade").val("${mDetail.getGrade()}").prop("selected", true);
+		$("#sex").val("${mDetail.getSex()}").prop("selected", true);
+	})
+	</script>
 </body>
 </html>

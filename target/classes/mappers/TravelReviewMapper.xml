@@ -88,18 +88,18 @@
 		SELECT COUNT(*) FROM photoreview WHERE Name = #{Name}
 	</select>
 	
-	<!-- 탑앵글러 등록 -->
+	<!-- 탑 앵글러 등록 -->
 	<insert id="TopAnglerWrite">
 		INSERT INTO topranking(AID, UserID, Name, FishSize, FishName, s_file_fish) VALUES(#{AID}, #{UserID}, #{name}, #{fishsize}, #{fishname}, #{s_file_fish})
 	</insert>
 	
 	<!-- 탑 앵글러 출력 -->
 	<select id="TopAnglerView" resultType="TopAnlgerVO">
-		SELECT *, ROW_NUMBER() OVER(ORDER BY FishSize DESC) AS ranking FROM topranking LIMIT #{Page}, #{PageSize}
+		SELECT *, ROW_NUMBER() OVER(ORDER BY FishSize DESC) AS ranking FROM topranking WHERE status = 1 LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 탑 앵글러 총 갯수 -->
 	<select id="getTopAnglerTotalCount" resultType="int">
-		SELECT COUNT(*) FROM topranking
+		SELECT COUNT(*) FROM topranking WHERE status = 1
 	</select>
 </mapper>

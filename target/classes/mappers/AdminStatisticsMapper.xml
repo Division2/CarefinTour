@@ -10,7 +10,7 @@
 	
 	<!-- 방문자 전체 출력 -->
 	<select id="VisitorAllView" resultType="VisitVO">
-		SELECT * FROM visitor ORDER BY visitor_id, visit_time DESC LIMIT #{Page}, #{PageSize}
+		SELECT * FROM visitor ORDER BY visitor_id DESC LIMIT #{Page}, #{PageSize}
 	</select>
 	
 	<!-- 방문자 총 갯수 -->
