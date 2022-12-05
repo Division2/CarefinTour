@@ -49,8 +49,8 @@
 		}
 		#twayFont{ font-family: 'twayfly'; } 
 		#container{
-         max-width: 2000px;
-     	 }
+			max-width: 2000px;
+		}
 	</style>
 	
 	<!-- 상단 헤더 -->
